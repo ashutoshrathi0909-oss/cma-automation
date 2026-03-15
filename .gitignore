@@ -46,3 +46,6 @@ everything-claude-code/
 # Claude internal
 .claude/plan/
 .claude/checkpoints.log
+
+# Git worktrees
+.worktrees/
