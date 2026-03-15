@@ -338,9 +338,8 @@ def test_generator_cleans_up_temp_file():
         mock_load.return_value = wb_mock
 
         with patch("app.services.excel_generator.os.unlink") as mock_unlink:
-            with patch("app.services.excel_generator.os.path.exists", return_value=True):
-                gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-                gen.generate(report_id="report-aaa", user_id="user-xxx")
+            gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+            gen.generate(report_id="report-aaa", user_id="user-xxx")
 
     mock_unlink.assert_called_once()
     unlinked = mock_unlink.call_args[0][0]
@@ -421,7 +420,7 @@ def test_fetch_documents_returns_empty_for_no_ids():
 def test_fetch_classified_data_returns_empty_for_no_ids():
     """_fetch_classified_data returns [] immediately when given an empty list."""
     gen = ExcelGenerator(service=MagicMock(), template_path="/fake/CMA.xlsm")
-    result = gen._fetch_classified_data([])
+    result = gen._fetch_classified_data([], {})
     assert result == []
 
 
@@ -435,7 +434,7 @@ def test_fetch_classified_data_returns_empty_when_no_items():
     service.table.return_value = chain
 
     gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-    result = gen._fetch_classified_data(["doc-1"])
+    result = gen._fetch_classified_data(["doc-1"], {"doc-1": 2024})
     assert result == []
 
 
@@ -444,7 +443,6 @@ def test_fetch_classified_data_skips_clf_without_field_name():
     service = MagicMock()
     item_row = {"id": "item-1", "document_id": "doc-1", "amount": 50.0}
     clf_row_no_field = {"line_item_id": "item-1", "cma_field_name": None}
-    doc_row = {"id": "doc-1", "financial_year": 2024}
 
     def table_side_effect(name):
         chain = MagicMock()
@@ -454,15 +452,13 @@ def test_fetch_classified_data_skips_clf_without_field_name():
         chain.execute.return_value = MagicMock(data=[])
         if name == "extracted_line_items":
             chain.execute.return_value = MagicMock(data=[item_row])
-        elif name == "documents":
-            chain.execute.return_value = MagicMock(data=[doc_row])
         elif name == "classifications":
             chain.execute.return_value = MagicMock(data=[clf_row_no_field])
         return chain
 
     service.table.side_effect = table_side_effect
     gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-    result = gen._fetch_classified_data(["doc-1"])
+    result = gen._fetch_classified_data(["doc-1"], {"doc-1": 2024})
     assert result == []
 
 
@@ -471,7 +467,6 @@ def test_fetch_classified_data_skips_clf_with_unknown_item():
     service = MagicMock()
     item_row = {"id": "item-1", "document_id": "doc-1", "amount": 50.0}
     clf_row_orphan = {"line_item_id": "item-UNKNOWN", "cma_field_name": "Wages"}
-    doc_row = {"id": "doc-1", "financial_year": 2024}
 
     def table_side_effect(name):
         chain = MagicMock()
@@ -481,15 +476,13 @@ def test_fetch_classified_data_skips_clf_with_unknown_item():
         chain.execute.return_value = MagicMock(data=[])
         if name == "extracted_line_items":
             chain.execute.return_value = MagicMock(data=[item_row])
-        elif name == "documents":
-            chain.execute.return_value = MagicMock(data=[doc_row])
         elif name == "classifications":
             chain.execute.return_value = MagicMock(data=[clf_row_orphan])
         return chain
 
     service.table.side_effect = table_side_effect
     gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-    result = gen._fetch_classified_data(["doc-1"])
+    result = gen._fetch_classified_data(["doc-1"], {"doc-1": 2024})
     assert result == []
 
 
@@ -498,7 +491,7 @@ def test_fetch_classified_data_skips_item_without_year():
     service = MagicMock()
     item_row = {"id": "item-1", "document_id": "doc-ORPHAN", "amount": 50.0}
     clf_row = {"line_item_id": "item-1", "cma_field_name": "Wages"}
-    # doc_years will be empty because documents returns []
+    # doc_years does not contain doc-ORPHAN → year lookup returns None → item skipped
 
     def table_side_effect(name):
         chain = MagicMock()
@@ -510,10 +503,64 @@ def test_fetch_classified_data_skips_item_without_year():
             chain.execute.return_value = MagicMock(data=[item_row])
         elif name == "classifications":
             chain.execute.return_value = MagicMock(data=[clf_row])
-        # documents returns [] → doc_years will be empty
         return chain
 
     service.table.side_effect = table_side_effect
     gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-    result = gen._fetch_classified_data(["doc-ORPHAN"])
+    # Pass a non-empty doc_years but with a different doc id — year lookup will miss
+    result = gen._fetch_classified_data(["doc-ORPHAN"], {"doc-OTHER": 2024})
     assert result == []
+
+
+def test_fetch_classified_data_filters_out_doubt_items():
+    """_fetch_classified_data calls .eq('is_doubt', False) on classifications query — doubt items never silently classified."""
+    service = MagicMock()
+
+    # Items exist
+    items_chain = MagicMock()
+    items_chain.select.return_value = items_chain
+    items_chain.in_.return_value = items_chain
+    items_chain.execute.return_value = MagicMock(data=[{"id": "item-1", "document_id": "doc-1", "amount": 100.0}])
+
+    # Classifications chain — capture the eq call
+    clf_chain = MagicMock()
+    clf_chain.select.return_value = clf_chain
+    clf_chain.in_.return_value = clf_chain
+    clf_chain.eq.return_value = clf_chain
+    clf_chain.execute.return_value = MagicMock(data=[])
+
+    def table_se(name):
+        if name == "extracted_line_items":
+            return items_chain
+        elif name == "classifications":
+            return clf_chain
+        chain = MagicMock()
+        chain.select.return_value = chain
+        chain.in_.return_value = chain
+        chain.execute.return_value = MagicMock(data=[])
+        return chain
+
+    service.table.side_effect = table_se
+
+    gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+    doc_years = {"doc-1": 2024}
+    gen._fetch_classified_data(["doc-1"], doc_years)
+
+    # CRITICAL: verify is_doubt=False filter was applied
+    clf_chain.eq.assert_called_once_with("is_doubt", False)
+
+
+def test_generator_swallows_oserror_on_temp_cleanup():
+    """OSError during temp file cleanup is swallowed (logged as warning, not raised)."""
+    service = _build_full_mock_service()
+
+    with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
+        wb_mock, _ = _make_mock_wb()
+        mock_load.return_value = wb_mock
+
+        with patch("app.services.excel_generator.os.unlink", side_effect=OSError("locked")):
+            gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+            # Should NOT raise — OSError is caught and logged
+            storage_path = gen.generate(report_id="report-aaa", user_id="user-xxx")
+
+    assert storage_path == "cma_reports/report-aaa/output.xlsm"

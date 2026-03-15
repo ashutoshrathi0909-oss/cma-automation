@@ -83,7 +83,8 @@ class ExcelGenerator:
         client_name = self._fetch_client_name(report["client_id"])
         doc_ids: list[str] = report.get("document_ids") or []
         docs = self._fetch_documents(doc_ids)
-        cell_data = self._fetch_classified_data(doc_ids)
+        doc_years = {d["id"]: d.get("financial_year") for d in docs}
+        cell_data = self._fetch_classified_data(doc_ids, doc_years)
 
         # 2. Open template (keep_vba=True — MANDATORY for macros)
         wb = openpyxl.load_workbook(self.template_path, keep_vba=True)
@@ -176,8 +177,11 @@ class ExcelGenerator:
             return storage_path
 
         finally:
-            if tmp_path and os.path.exists(tmp_path):
-                os.unlink(tmp_path)
+            if tmp_path:
+                try:
+                    os.unlink(tmp_path)
+                except OSError:
+                    logger.warning("Could not delete temp file: %s", tmp_path)
 
     # ── Private: DB fetch helpers ─────────────────────────────────────────
 
@@ -216,9 +220,9 @@ class ExcelGenerator:
         )
         return result.data or []
 
-    def _fetch_classified_data(self, document_ids: list[str]) -> list[dict]:
+    def _fetch_classified_data(self, document_ids: list[str], doc_years: dict) -> list[dict]:
         """Return [{cma_field_name, financial_year, amount}] for all non-doubt classifications."""
-        if not document_ids:
+        if not document_ids or not doc_years:
             return []
 
         # Get all line items for these documents
@@ -231,17 +235,6 @@ class ExcelGenerator:
         items = {row["id"]: row for row in (items_result.data or [])}
         if not items:
             return []
-
-        # Get document → financial_year mapping
-        docs_result = (
-            self.service.table("documents")
-            .select("id,financial_year")
-            .in_("id", document_ids)
-            .execute()
-        )
-        doc_years = {
-            doc["id"]: doc["financial_year"] for doc in (docs_result.data or [])
-        }
 
         # Get all non-doubt classifications for these line items
         item_ids = list(items.keys())
