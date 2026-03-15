@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FileText, Trash2, Clock, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { FileText, Trash2, Clock, CheckCircle2, AlertCircle, Loader2, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { apiClient } from "@/lib/api";
@@ -59,6 +60,7 @@ interface DocumentListProps {
 }
 
 export function DocumentList({ documents, onDeleted }: DocumentListProps) {
+  const router = useRouter();
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
   async function handleDelete(doc: Document) {
@@ -114,6 +116,19 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
               {status.icon}
               {status.label}
             </span>
+
+            {/* Extract & Verify button */}
+            {(doc.extraction_status === "pending" || doc.extraction_status === "failed") && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => router.push(`/cma/${doc.id}/verify`)}
+                className="shrink-0"
+              >
+                <Zap className="h-3.5 w-3.5" />
+                Extract &amp; Verify
+              </Button>
+            )}
 
             {/* Delete */}
             <Button

@@ -100,3 +100,38 @@ class DocumentResponse(BaseModel):
     extraction_status: ExtractionStatus
     uploaded_by: str
     uploaded_at: datetime
+
+
+# ── Extraction / Line Item schemas ────────────────────────────────────────────
+
+
+class LineItemResponse(BaseModel):
+    id: str
+    document_id: str
+    description: str
+    amount: float | None
+    section: str | None
+    raw_text: str | None
+    is_verified: bool
+
+
+class LineItemUpdate(BaseModel):
+    description: str | None = Field(None, min_length=1)
+    amount: float | None = None
+    section: str | None = None
+
+
+TaskStatus = Literal["queued", "in_progress", "complete", "failed", "not_found"]
+
+
+class TaskStatusResponse(BaseModel):
+    task_id: str
+    status: TaskStatus
+    document_id: str | None = None
+    progress: int | None = None  # 0-100
+
+
+class ExtractionTriggerResponse(BaseModel):
+    task_id: str
+    document_id: str
+    message: str

@@ -88,6 +88,29 @@ export interface Classification {
   created_at: string;
 }
 
+export interface LineItemResponse {
+  id: string;
+  document_id: string;
+  description: string;
+  amount: number | null;
+  section: string | null;
+  raw_text: string | null;
+  is_verified: boolean;
+}
+
+export interface TaskStatusResponse {
+  task_id: string;
+  status: "queued" | "in_progress" | "complete" | "failed" | "not_found";
+  document_id: string | null;
+  progress: number | null;
+}
+
+export interface ExtractionTriggerResponse {
+  task_id: string;
+  document_id: string;
+  message: string;
+}
+
 export type ReportStatus =
   | "draft"
   | "extraction_pending"
