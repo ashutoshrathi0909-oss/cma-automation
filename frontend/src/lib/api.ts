@@ -31,5 +31,10 @@ export async function apiClient<T = unknown>(
     throw new Error(error.detail || `API error: ${response.status}`);
   }
 
+  // 204 No Content (e.g. DELETE) — no body to parse
+  if (response.status === 204) {
+    return null as T;
+  }
+
   return response.json();
 }
