@@ -135,3 +135,77 @@ class ExtractionTriggerResponse(BaseModel):
     task_id: str
     document_id: str
     message: str
+
+
+# ── Classification schemas ─────────────────────────────────────────────────────
+
+ClassificationMethod = Literal[
+    "fuzzy_match", "learned", "ai_haiku", "ai_sonnet", "manual"
+]
+ClassificationStatus = Literal[
+    "pending", "auto_classified", "needs_review", "approved", "corrected"
+]
+
+
+class ClassificationResponse(BaseModel):
+    """API response for a single classification result."""
+
+    id: str
+    line_item_id: str
+    client_id: str
+    cma_field_name: str | None
+    cma_sheet: str | None
+    cma_row: int | None
+    cma_column: str | None
+    broad_classification: str | None
+    classification_method: str | None
+    confidence_score: float | None
+    fuzzy_match_score: float | None
+    is_doubt: bool
+    doubt_reason: str | None
+    ai_best_guess: str | None
+    alternative_fields: list | None
+    status: str
+    reviewed_by: str | None
+    reviewed_at: datetime | None
+    correction_note: str | None
+    created_at: datetime
+    # Joined from extracted_line_items for convenience
+    line_item_description: str | None = None
+    line_item_amount: float | None = None
+
+
+class ClassificationApproveRequest(BaseModel):
+    note: str | None = None
+
+
+class ClassificationCorrectRequest(BaseModel):
+    cma_field_name: str
+    cma_row: int
+    cma_sheet: str = "input_sheet"
+    broad_classification: str
+    correction_reason: str | None = None
+
+
+class BulkApproveRequest(BaseModel):
+    """Bulk approve request. If classification_ids is None, approve all high-confidence."""
+
+    classification_ids: list[str] | None = None
+
+
+class BulkApproveResponse(BaseModel):
+    approved_count: int
+    message: str
+
+
+class ClassificationTriggerResponse(BaseModel):
+    task_id: str
+    document_id: str
+    message: str
+
+
+class ClassificationSummary(BaseModel):
+    total: int
+    high_confidence: int
+    medium_confidence: int
+    needs_review: int
