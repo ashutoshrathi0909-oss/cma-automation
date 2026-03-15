@@ -69,12 +69,12 @@ export interface Classification {
   id: string;
   line_item_id: string;
   client_id: string;
-  cma_field_name: string;
-  cma_sheet: "input_sheet" | "tl_sheet";
-  cma_row: number;
+  cma_field_name: string | null;
+  cma_sheet: "input_sheet" | "tl_sheet" | null;
+  cma_row: number | null;
   cma_column: string | null;
   broad_classification: string | null;
-  classification_method: ClassificationMethod;
+  classification_method: ClassificationMethod | null;
   confidence_score: number | null;
   fuzzy_match_score: number | null;
   is_doubt: boolean;
@@ -86,6 +86,9 @@ export interface Classification {
   reviewed_at: string | null;
   correction_note: string | null;
   created_at: string;
+  // Joined from extracted_line_items (present in API responses)
+  line_item_description?: string | null;
+  line_item_amount?: number | null;
 }
 
 export interface LineItemResponse {
@@ -111,31 +114,40 @@ export interface ExtractionTriggerResponse {
   message: string;
 }
 
-export type ReportStatus =
-  | "draft"
-  | "extraction_pending"
-  | "extraction_complete"
-  | "classification_pending"
-  | "classification_complete"
-  | "review_in_progress"
-  | "approved"
-  | "excel_generated";
+// ── CMA Report schemas (Phase 6) ─────────────────────────────────────────
+
+export type CMAReportStatus = "draft" | "in_review" | "approved" | "generating" | "complete";
 
 export interface CMAReport {
   id: string;
   client_id: string;
-  financial_years: number[];
-  year_natures: Record<string, DocumentNature>;
-  status: ReportStatus;
-  total_line_items: number;
-  high_confidence_count: number;
-  medium_confidence_count: number;
-  needs_review_count: number;
-  output_file_path: string | null;
-  generated_at: string | null;
-  approved_by: string | null;
-  approved_at: string | null;
+  title: string;
+  status: CMAReportStatus;
+  document_ids: string[];
   created_by: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface CMAReportCreate {
+  title: string;
+  document_ids: string[];
+}
+
+export interface ConfidenceSummary {
+  total: number;
+  high_confidence: number;
+  medium_confidence: number;
+  needs_review: number;
+  approved: number;
+  corrected: number;
+}
+
+export interface AuditEntry {
+  id: string;
+  cma_report_id: string;
+  action: string;
+  action_details: Record<string, unknown> | null;
+  performed_by: string;
+  performed_at: string;
 }

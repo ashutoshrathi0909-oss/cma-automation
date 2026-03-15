@@ -16,7 +16,7 @@ import {
 import { apiClient } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { DocumentList } from "@/components/documents/DocumentList";
-import type { Client, Document } from "@/types";
+import type { Client, CMAReport, Document } from "@/types";
 
 const INDUSTRY_STYLES: Record<string, string> = {
   manufacturing: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
@@ -33,6 +33,7 @@ export default function ClientDetailPage() {
 
   const [client, setClient] = useState<Client | null>(null);
   const [documents, setDocuments] = useState<Document[]>([]);
+  const [reports, setReports] = useState<CMAReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(false);
 
@@ -41,10 +42,12 @@ export default function ClientDetailPage() {
     Promise.all([
       apiClient<Client>(`/api/clients/${id}`),
       apiClient<Document[]>(`/api/documents/?client_id=${id}`),
+      apiClient<CMAReport[]>(`/api/clients/${id}/cma-reports`),
     ])
-      .then(([c, docs]) => {
+      .then(([c, docs, rpts]) => {
         setClient(c);
         setDocuments(docs);
+        setReports(rpts);
       })
       .catch(() => router.replace("/clients"))
       .finally(() => setLoading(false));
@@ -165,23 +168,74 @@ export default function ClientDetailPage() {
         />
       </div>
 
-      {/* CMA Reports section — Phase 6+ */}
+      {/* CMA Reports section */}
       <div>
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">CMA Reports</h2>
-          <Button size="sm" disabled title="Available after document extraction">
-            <Plus className="mr-1.5 h-3.5 w-3.5" />
-            New Report
-          </Button>
+          <h2 className="text-lg font-semibold">
+            CMA Reports
+            {reports.length > 0 && (
+              <span className="ml-2 text-sm font-normal text-muted-foreground">
+                ({reports.length})
+              </span>
+            )}
+          </h2>
+          <Link href={`/clients/${client.id}/cma/new`}>
+            <Button
+              size="sm"
+              disabled={!documents.some((d) => d.extraction_status === "verified")}
+              title={
+                documents.some((d) => d.extraction_status === "verified")
+                  ? "Start a new CMA report"
+                  : "Verify at least one document first"
+              }
+            >
+              <Plus className="mr-1.5 h-3.5 w-3.5" />
+              New Report
+            </Button>
+          </Link>
         </div>
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-10 text-center">
-            <FileText className="mb-3 h-8 w-8 text-muted-foreground/30" />
-            <p className="text-sm text-muted-foreground">
-              Upload and extract documents to start a CMA report
-            </p>
-          </CardContent>
-        </Card>
+
+        {reports.length === 0 ? (
+          <Card>
+            <CardContent className="flex flex-col items-center justify-center py-10 text-center">
+              <FileText className="mb-3 h-8 w-8 text-muted-foreground/30" />
+              <p className="text-sm text-muted-foreground">
+                {documents.some((d) => d.extraction_status === "verified")
+                  ? "No CMA reports yet — click New Report to start."
+                  : "Upload and verify documents to start a CMA report."}
+              </p>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="space-y-2">
+            {reports.map((report) => (
+              <Link key={report.id} href={`/cma/${report.id}`}>
+                <Card className="cursor-pointer transition-colors hover:bg-muted/30">
+                  <CardContent className="flex items-center justify-between p-4">
+                    <div>
+                      <p className="text-sm font-medium">{report.title}</p>
+                      <p className="mt-0.5 text-xs text-muted-foreground">
+                        {report.document_ids.length} document
+                        {report.document_ids.length !== 1 ? "s" : ""}
+                      </p>
+                    </div>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${
+                        report.status === "approved"
+                          ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+                          : report.status === "complete"
+                          ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
+                          : "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                      }`}
+                    >
+                      {report.status.replace(/_/g, " ")}
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -209,3 +209,40 @@ class ClassificationSummary(BaseModel):
     high_confidence: int
     medium_confidence: int
     needs_review: int
+
+
+# ── CMA Report schemas ─────────────────────────────────────────────────────
+
+
+class CMAReportCreate(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+    document_ids: list[str] = Field(..., min_length=1)
+
+
+class CMAReportResponse(BaseModel):
+    id: str
+    client_id: str
+    title: str
+    status: str
+    document_ids: list[str]
+    created_by: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class ConfidenceSummary(BaseModel):
+    total: int
+    high_confidence: int
+    medium_confidence: int
+    needs_review: int
+    approved: int
+    corrected: int
+
+
+class AuditEntry(BaseModel):
+    id: str
+    cma_report_id: str
+    action: str
+    action_details: dict | None
+    performed_by: str
+    performed_at: datetime
