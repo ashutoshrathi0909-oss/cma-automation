@@ -116,7 +116,7 @@ export interface ExtractionTriggerResponse {
 
 // ── CMA Report schemas (Phase 6) ─────────────────────────────────────────
 
-export type CMAReportStatus = "draft" | "in_review" | "approved" | "generating" | "complete";
+export type CMAReportStatus = "draft" | "in_review" | "approved" | "generating" | "complete" | "failed";
 
 export interface CMAReport {
   id: string;
@@ -125,6 +125,7 @@ export interface CMAReport {
   status: CMAReportStatus;
   document_ids: string[];
   created_by: string;
+  output_path: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -150,4 +151,17 @@ export interface AuditEntry {
   action_details: Record<string, unknown> | null;
   performed_by: string;
   performed_at: string;
+}
+
+// ── Phase 7: Excel Generation ─────────────────────────────────────────────
+
+export interface GenerateTriggerResponse {
+  task_id: string;
+  report_id: string;
+  message: string;
+}
+
+export interface DownloadUrlResponse {
+  signed_url: string;
+  expires_in: number;
 }
