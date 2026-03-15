@@ -226,6 +226,7 @@ class CMAReportResponse(BaseModel):
     status: str
     document_ids: list[str]
     created_by: str
+    output_path: str | None = None
     created_at: datetime
     updated_at: datetime
 
@@ -246,3 +247,17 @@ class AuditEntry(BaseModel):
     action_details: dict | None
     performed_by: str
     performed_at: datetime
+
+
+# ── Phase 7: Excel Generation schemas ──────────────────────────────────────
+
+
+class GenerateTriggerResponse(BaseModel):
+    task_id: str
+    report_id: str
+    message: str
+
+
+class DownloadUrlResponse(BaseModel):
+    signed_url: str
+    expires_in: int = 60
