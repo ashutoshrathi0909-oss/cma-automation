@@ -168,8 +168,6 @@ export default function CMAOverviewPage() {
           )}
         </CardContent>
       </Card>
-
-
     </div>
   );
 }

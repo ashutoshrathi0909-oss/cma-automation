@@ -56,6 +56,7 @@ export default function GeneratePage() {
   }
 
   function startPolling() {
+    if (pollRef.current) clearInterval(pollRef.current);
     pollRef.current = setInterval(async () => {
       try {
         const report = await apiClient<CMAReport>(`/api/cma-reports/${reportId}`);
@@ -111,8 +112,8 @@ export default function GeneratePage() {
         </CardHeader>
         <CardContent className="space-y-4">
           {(state === "starting" || state === "generating") && (
-            <div className="flex flex-col items-center gap-3 py-6">
-              <Loader2 className="h-10 w-10 animate-spin text-muted-foreground" />
+            <div className="flex flex-col items-center gap-3 py-6" role="status">
+              <Loader2 className="h-10 w-10 animate-spin text-muted-foreground" aria-hidden="true" />
               <p className="text-sm text-muted-foreground">
                 {state === "starting"
                   ? "Starting generation…"
