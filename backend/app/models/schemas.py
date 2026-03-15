@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 UserRole = Literal["admin", "employee"]
 
@@ -40,20 +40,23 @@ class AuthResponse(BaseModel):
 # ── Client schemas ────────────────────────────────────────────────────────────
 
 
+IndustryType = Literal["manufacturing", "service", "trading", "other"]
+
+
 class ClientCreate(BaseModel):
-    name: str
-    industry_type: Literal["manufacturing", "service", "trading", "other"]
-    financial_year_ending: str = "31st March"
-    currency: str = "INR"
-    notes: str | None = None
+    name: str = Field(..., min_length=1, max_length=255)
+    industry_type: IndustryType
+    financial_year_ending: str = Field("31st March", max_length=50)
+    currency: str = Field("INR", min_length=1, max_length=10)
+    notes: str | None = Field(None, max_length=2000)
 
 
 class ClientUpdate(BaseModel):
-    name: str | None = None
-    industry_type: Literal["manufacturing", "service", "trading", "other"] | None = None
-    financial_year_ending: str | None = None
-    currency: str | None = None
-    notes: str | None = None
+    name: str | None = Field(None, min_length=1, max_length=255)
+    industry_type: IndustryType | None = None
+    financial_year_ending: str | None = Field(None, max_length=50)
+    currency: str | None = Field(None, min_length=1, max_length=10)
+    notes: str | None = Field(None, max_length=2000)
 
 
 class ClientResponse(BaseModel):

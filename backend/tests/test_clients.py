@@ -215,8 +215,13 @@ class TestUpdateClient:
         assert response.status_code == 200
         assert response.json()["name"] == "Updated Name"
 
-
-# ── Delete ─────────────────────────────────────────────────────────────────────
+    def test_update_client_empty_body_400(self, admin_client):
+        """PUT with empty body (no fields set) → 400."""
+        response = admin_client.put(
+            "/api/clients/client-uuid-0001",
+            json={},
+        )
+        assert response.status_code == 400
 
 
 class TestDeleteClient:
@@ -230,7 +235,40 @@ class TestDeleteClient:
 
         assert response.status_code == 204
 
+    def test_delete_client_not_found_404(self, admin_client):
+        """Delete a non-existent client ID → 404."""
+        with patch(
+            "app.routers.clients.get_service_client",
+            return_value=_mock_service([]),
+        ):
+            response = admin_client.delete("/api/clients/nonexistent-id")
+
+        assert response.status_code == 404
+
     def test_delete_client_employee_403(self, employee_client):
         """Employee attempting delete → 403 Forbidden."""
         response = employee_client.delete("/api/clients/client-uuid-0001")
         assert response.status_code == 403
+
+
+# ── Unauthenticated access ─────────────────────────────────────────────────────
+
+
+class TestUnauthenticated:
+    def test_list_clients_unauthenticated_401(self, client):
+        """No auth header → 401 on list."""
+        response = client.get("/api/clients/")
+        assert response.status_code == 401
+
+    def test_create_client_unauthenticated_401(self, client):
+        """No auth header → 401 on create."""
+        response = client.post(
+            "/api/clients/",
+            json={"name": "Test Co", "industry_type": "manufacturing"},
+        )
+        assert response.status_code == 401
+
+    def test_get_client_unauthenticated_401(self, client):
+        """No auth header → 401 on get by ID."""
+        response = client.get("/api/clients/some-client-id")
+        assert response.status_code == 401

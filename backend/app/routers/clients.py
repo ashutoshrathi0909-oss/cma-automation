@@ -1,6 +1,7 @@
 """Client CRUD endpoints."""
 
 from fastapi import APIRouter, Depends, HTTPException
+from postgrest.exceptions import APIError
 
 from app.dependencies import get_current_user, get_service_client, require_admin
 from app.models.schemas import ClientCreate, ClientResponse, ClientUpdate, UserProfile
@@ -18,8 +19,8 @@ async def list_clients(
     service = get_service_client()
     query = service.table("clients").select("*")
 
-    if search:
-        query = query.ilike("name", f"%{search}%")
+    if search and search.strip():
+        query = query.ilike("name", f"%{search.strip()}%")
     if industry:
         query = query.eq("industry_type", industry)
 
@@ -62,7 +63,8 @@ async def get_client(
             .single()
             .execute()
         )
-    except Exception:
+    except APIError:
+        # postgrest raises APIError (PGRST116) when .single() finds zero rows
         raise HTTPException(status_code=404, detail="Client not found")
 
     if not result.data:
@@ -103,5 +105,9 @@ async def delete_client(
 ) -> None:
     """Delete a client and all associated data. Admin only."""
     service = get_service_client()
-    service.table("clients").delete().eq("id", client_id).execute()
+    result = service.table("clients").delete().eq("id", client_id).execute()
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Client not found")
+
     return None
