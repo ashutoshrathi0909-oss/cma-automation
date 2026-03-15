@@ -1,5 +1,6 @@
 """Document upload, listing, and deletion endpoints."""
 
+import os
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
@@ -15,11 +16,17 @@ from app.models.schemas import (
 
 router = APIRouter(prefix="/api/documents", tags=["documents"])
 
-# Allowed file extensions (extension → FileType literal)
 ALLOWED_EXTENSIONS: dict[str, str] = {
     "pdf": "pdf",
     "xlsx": "xlsx",
     "xls": "xls",
+}
+
+# Magic bytes (file signatures) for each allowed type
+MAGIC_BYTES: dict[str, bytes] = {
+    "pdf": b"%PDF",
+    "xlsx": b"PK\x03\x04",      # ZIP-based (OOXML)
+    "xls": b"\xd0\xcf\x11\xe0", # OLE2 compound document
 }
 
 STORAGE_BUCKET = "documents"
@@ -32,6 +39,20 @@ def _get_extension(filename: str) -> str:
     return ""
 
 
+def _check_magic_bytes(content: bytes, file_type: str) -> bool:
+    """Return True if content starts with the expected magic bytes for file_type."""
+    expected = MAGIC_BYTES.get(file_type, b"")
+    return len(content) >= len(expected) and content[: len(expected)] == expected
+
+
+def _cleanup_storage(service, path: str) -> None:
+    """Best-effort removal of a storage file; errors are silently ignored."""
+    try:
+        service.storage.from_(STORAGE_BUCKET).remove([path])
+    except Exception:
+        pass
+
+
 @router.post("/", response_model=DocumentResponse, status_code=201)
 async def upload_document(
     client_id: str = Form(...),
@@ -42,6 +63,7 @@ async def upload_document(
     current_user: UserProfile = Depends(get_current_user),
 ) -> DocumentResponse:
     """Upload a financial document (PDF/Excel) and link it to a client."""
+    # ── 1. Validate extension ────────────────────────────────────────────────
     ext = _get_extension(file.filename or "")
     if ext not in ALLOWED_EXTENSIONS:
         raise HTTPException(
@@ -49,38 +71,80 @@ async def upload_document(
             detail=f"File type '.{ext}' not allowed. Accepted: pdf, xlsx, xls.",
         )
 
+    # ── 2. Validate financial year range ─────────────────────────────────────
+    if not (1990 <= financial_year <= 2100):
+        raise HTTPException(
+            status_code=400,
+            detail="financial_year must be between 1990 and 2100.",
+        )
+
     file_type = ALLOWED_EXTENSIONS[ext]
 
-    # Read file content (whole file — large files handled by uvicorn streaming)
+    # ── 3. Read file content ─────────────────────────────────────────────────
     content = await file.read()
 
-    # Store in Supabase Storage using a UUID path to avoid collisions + path traversal
-    storage_path = f"{client_id}/{uuid4()}.{ext}"
-    service = get_service_client()
-    service.storage.from_(STORAGE_BUCKET).upload(storage_path, content)
-
-    # Create database record
-    result = (
-        service.table("documents")
-        .insert(
-            {
-                "client_id": client_id,
-                "file_name": file.filename,
-                "file_path": storage_path,
-                "file_type": file_type,
-                "document_type": document_type,
-                "financial_year": financial_year,
-                "nature": nature,
-                "extraction_status": "pending",
-                "uploaded_by": current_user.id,
-            }
+    # ── 4. Magic-byte validation (guards against renamed executables) ─────────
+    if not _check_magic_bytes(content, file_type):
+        raise HTTPException(
+            status_code=400,
+            detail=f"File content does not match declared type .{ext}.",
         )
-        .execute()
-    )
+
+    service = get_service_client()
+
+    # ── 5. Verify the client exists (CRITICAL: blocks cross-client uploads) ──
+    try:
+        client_result = (
+            service.table("clients")
+            .select("id")
+            .eq("id", client_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Client not found")
+
+    if not client_result.data:
+        raise HTTPException(status_code=404, detail="Client not found")
+
+    # ── 6. Upload to Supabase Storage ────────────────────────────────────────
+    # UUID path prevents collisions and path-traversal attacks
+    safe_name = os.path.basename(file.filename or f"upload.{ext}")
+    storage_path = f"{client_id}/{uuid4()}.{ext}"
+
+    try:
+        service.storage.from_(STORAGE_BUCKET).upload(storage_path, content)
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Storage upload failed. Please try again.",
+        )
+
+    # ── 7. Create database record ────────────────────────────────────────────
+    try:
+        result = (
+            service.table("documents")
+            .insert(
+                {
+                    "client_id": client_id,
+                    "file_name": safe_name,
+                    "file_path": storage_path,
+                    "file_type": file_type,
+                    "document_type": document_type,
+                    "financial_year": financial_year,
+                    "nature": nature,
+                    "extraction_status": "pending",
+                    "uploaded_by": current_user.id,
+                }
+            )
+            .execute()
+        )
+    except Exception:
+        _cleanup_storage(service, storage_path)
+        raise HTTPException(status_code=500, detail="Failed to save document record")
 
     if not result.data:
-        # Attempt to clean up the orphaned storage file
-        service.storage.from_(STORAGE_BUCKET).remove([storage_path])
+        _cleanup_storage(service, storage_path)
         raise HTTPException(status_code=500, detail="Failed to save document record")
 
     return DocumentResponse(**result.data[0])
@@ -93,6 +157,22 @@ async def list_documents(
 ) -> list[DocumentResponse]:
     """List all documents for a client, newest first."""
     service = get_service_client()
+
+    # Verify the client exists before listing (CRITICAL: blocks cross-client reads)
+    try:
+        client_result = (
+            service.table("clients")
+            .select("id")
+            .eq("id", client_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Client not found")
+
+    if not client_result.data:
+        raise HTTPException(status_code=404, detail="Client not found")
+
     result = (
         service.table("documents")
         .select("*")
@@ -111,7 +191,6 @@ async def delete_document(
     """Delete a document: removes the file from storage and the DB record."""
     service = get_service_client()
 
-    # Fetch the record first to get the storage path
     try:
         result = (
             service.table("documents")
@@ -127,11 +206,6 @@ async def delete_document(
         raise HTTPException(status_code=404, detail="Document not found")
 
     doc = result.data
-
-    # Remove from Supabase Storage
     service.storage.from_(STORAGE_BUCKET).remove([doc["file_path"]])
-
-    # Remove the DB record
     service.table("documents").delete().eq("id", document_id).execute()
-
     return None

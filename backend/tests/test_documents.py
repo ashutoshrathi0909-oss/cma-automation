@@ -12,7 +12,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 
-# ── Fixtures ───────────────────────────────────────────────────────────────────
+# ── Sample data ────────────────────────────────────────────────────────────────
 
 SAMPLE_DOCUMENT = {
     "id": "doc-uuid-0001",
@@ -42,32 +42,64 @@ SAMPLE_DOCUMENT_2 = {
     "uploaded_at": "2025-01-02T00:00:00+00:00",
 }
 
+SAMPLE_CLIENT = {"id": "client-uuid-0001"}
 
-def _mock_service(data):
-    """
-    Supabase service mock with both table and storage operations.
-    Self-chaining query builder so any chain depth reaches .execute().
-    """
-    svc = MagicMock()
-    result = MagicMock()
-    result.data = data
 
+# ── Mock helpers ───────────────────────────────────────────────────────────────
+
+
+def _make_query_mock():
+    """Self-chaining query builder mock — any chain depth reaches .execute()."""
     q = MagicMock()
-    q.execute.return_value = result
     for method in (
         "select", "insert", "update", "delete",
         "eq", "neq", "ilike", "order", "single", "limit",
     ):
         getattr(q, method).return_value = q
+    return q
 
-    svc.table.return_value = q
 
-    # Storage mock
+def _make_storage_mock():
     bucket = MagicMock()
     bucket.upload.return_value = MagicMock()
     bucket.remove.return_value = MagicMock()
-    svc.storage.from_.return_value = bucket
+    return bucket
 
+
+def _mock_service(data):
+    """
+    Single-result mock: every execute() call returns the same data.
+    Use for simple single-query endpoints (e.g. delete).
+    """
+    svc = MagicMock()
+    result = MagicMock()
+    result.data = data
+
+    q = _make_query_mock()
+    q.execute.return_value = result
+    svc.table.return_value = q
+    svc.storage.from_.return_value = _make_storage_mock()
+    return svc
+
+
+def _mock_service_seq(*data_list):
+    """
+    Sequential mock: the N-th execute() call returns data_list[N-1].
+
+    Upload endpoints make two round-trips:
+      1. client existence check → should return SAMPLE_CLIENT / None
+      2. document insert / list query → should return [doc] / []
+
+    Example:
+        _mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT])
+    """
+    svc = MagicMock()
+
+    results = [MagicMock(data=d) for d in data_list]
+    q = _make_query_mock()
+    q.execute.side_effect = results
+    svc.table.return_value = q
+    svc.storage.from_.return_value = _make_storage_mock()
     return svc
 
 
@@ -79,7 +111,7 @@ class TestUploadDocument:
         """Upload a valid PDF → 201 with document record."""
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([SAMPLE_DOCUMENT]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT]),
         ):
             response = admin_client.post(
                 "/api/documents/",
@@ -101,14 +133,14 @@ class TestUploadDocument:
         """Upload a valid .xlsx file → 201."""
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([SAMPLE_DOCUMENT_2]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT_2]),
         ):
             response = admin_client.post(
                 "/api/documents/",
                 files={
                     "file": (
                         "balance_sheet.xlsx",
-                        b"PK content",
+                        b"PK\x03\x04 xlsx content",   # correct OOXML magic bytes
                         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                     )
                 },
@@ -128,14 +160,14 @@ class TestUploadDocument:
         xls_doc = {**SAMPLE_DOCUMENT, "file_type": "xls", "file_name": "old_format.xls"}
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([xls_doc]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, [xls_doc]),
         ):
             response = admin_client.post(
                 "/api/documents/",
                 files={
                     "file": (
                         "old_format.xls",
-                        b"D0CF11E0 content",
+                        b"\xd0\xcf\x11\xe0 xls content",  # correct OLE2 magic bytes
                         "application/vnd.ms-excel",
                     )
                 },
@@ -151,7 +183,7 @@ class TestUploadDocument:
         assert response.json()["file_type"] == "xls"
 
     def test_upload_invalid_filetype_400(self, admin_client):
-        """Upload a .txt file → 400 invalid file type."""
+        """Upload a .txt file → 400 invalid file type (no DB call needed)."""
         response = admin_client.post(
             "/api/documents/",
             files={"file": ("notes.txt", b"plain text", "text/plain")},
@@ -164,11 +196,44 @@ class TestUploadDocument:
         )
         assert response.status_code == 400
 
+    def test_upload_magic_bytes_mismatch_400(self, admin_client):
+        """File renamed to .pdf but contains non-PDF bytes → 400 (no DB call)."""
+        response = admin_client.post(
+            "/api/documents/",
+            files={"file": ("malicious.pdf", b"MZ\x90\x00 this is an exe", "application/pdf")},
+            data={
+                "client_id": "client-uuid-0001",
+                "document_type": "profit_and_loss",
+                "financial_year": "2024",
+                "nature": "audited",
+            },
+        )
+        assert response.status_code == 400
+        assert "content does not match" in response.json()["detail"]
+
+    def test_upload_nonexistent_client_404(self, admin_client):
+        """Upload to a client_id that doesn't exist → 404."""
+        with patch(
+            "app.routers.documents.get_service_client",
+            return_value=_mock_service_seq(None),  # client check returns no data
+        ):
+            response = admin_client.post(
+                "/api/documents/",
+                files={"file": ("test.pdf", b"%PDF content", "application/pdf")},
+                data={
+                    "client_id": "nonexistent-client",
+                    "document_type": "profit_and_loss",
+                    "financial_year": "2024",
+                    "nature": "audited",
+                },
+            )
+        assert response.status_code == 404
+
     def test_upload_sets_status_pending(self, admin_client):
         """Newly uploaded document always has extraction_status = 'pending'."""
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([SAMPLE_DOCUMENT]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT]),
         ):
             response = admin_client.post(
                 "/api/documents/",
@@ -186,7 +251,7 @@ class TestUploadDocument:
 
     def test_upload_stores_in_supabase_storage(self, admin_client):
         """File bytes are sent to Supabase Storage on upload."""
-        mock_svc = _mock_service([SAMPLE_DOCUMENT])
+        mock_svc = _mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT])
         with patch("app.routers.documents.get_service_client", return_value=mock_svc):
             admin_client.post(
                 "/api/documents/",
@@ -200,6 +265,25 @@ class TestUploadDocument:
             )
 
         mock_svc.storage.from_.return_value.upload.assert_called_once()
+
+    def test_storage_cleaned_up_on_db_failure(self, admin_client):
+        """If the DB insert fails after storage upload, the orphaned file is removed."""
+        # Client check returns valid client; DB insert returns empty → triggers cleanup
+        mock_svc = _mock_service_seq(SAMPLE_CLIENT, [])
+        with patch("app.routers.documents.get_service_client", return_value=mock_svc):
+            response = admin_client.post(
+                "/api/documents/",
+                files={"file": ("test.pdf", b"%PDF content", "application/pdf")},
+                data={
+                    "client_id": "client-uuid-0001",
+                    "document_type": "profit_and_loss",
+                    "financial_year": "2024",
+                    "nature": "audited",
+                },
+            )
+
+        assert response.status_code == 500
+        mock_svc.storage.from_.return_value.remove.assert_called_once()
 
     def test_upload_requires_document_type(self, admin_client):
         """Missing document_type form field → 422."""
@@ -238,11 +322,9 @@ class TestListDocuments:
         """List docs for a client → 200 with all documents."""
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([SAMPLE_DOCUMENT, SAMPLE_DOCUMENT_2]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, [SAMPLE_DOCUMENT, SAMPLE_DOCUMENT_2]),
         ):
-            response = admin_client.get(
-                "/api/documents/?client_id=client-uuid-0001"
-            )
+            response = admin_client.get("/api/documents/?client_id=client-uuid-0001")
 
         assert response.status_code == 200
         data = response.json()
@@ -253,14 +335,22 @@ class TestListDocuments:
         """Client with no documents → 200 empty list."""
         with patch(
             "app.routers.documents.get_service_client",
-            return_value=_mock_service([]),
+            return_value=_mock_service_seq(SAMPLE_CLIENT, []),
         ):
-            response = admin_client.get(
-                "/api/documents/?client_id=client-uuid-0001"
-            )
+            response = admin_client.get("/api/documents/?client_id=client-uuid-0001")
 
         assert response.status_code == 200
         assert response.json() == []
+
+    def test_list_documents_nonexistent_client_404(self, admin_client):
+        """List docs for a client that doesn't exist → 404."""
+        with patch(
+            "app.routers.documents.get_service_client",
+            return_value=_mock_service_seq(None),
+        ):
+            response = admin_client.get("/api/documents/?client_id=nonexistent-client")
+
+        assert response.status_code == 404
 
 
 # ── Delete ─────────────────────────────────────────────────────────────────────
@@ -284,3 +374,42 @@ class TestDeleteDocument:
 
         assert response.status_code == 204
         mock_svc.table.return_value.delete.assert_called_once()
+
+    def test_delete_nonexistent_document_404(self, admin_client):
+        """DELETE a document that doesn't exist → 404."""
+        with patch(
+            "app.routers.documents.get_service_client",
+            return_value=_mock_service(None),
+        ):
+            response = admin_client.delete("/api/documents/nonexistent-doc")
+
+        assert response.status_code == 404
+
+
+# ── Unauthenticated ────────────────────────────────────────────────────────────
+
+
+class TestUnauthenticated:
+    def test_upload_requires_auth(self, client):
+        """Upload without auth token → 401."""
+        response = client.post(
+            "/api/documents/",
+            files={"file": ("test.pdf", b"%PDF content", "application/pdf")},
+            data={
+                "client_id": "client-uuid-0001",
+                "document_type": "profit_and_loss",
+                "financial_year": "2024",
+                "nature": "audited",
+            },
+        )
+        assert response.status_code == 401
+
+    def test_list_requires_auth(self, client):
+        """List documents without auth token → 401."""
+        response = client.get("/api/documents/?client_id=client-uuid-0001")
+        assert response.status_code == 401
+
+    def test_delete_requires_auth(self, client):
+        """Delete document without auth token → 401."""
+        response = client.delete("/api/documents/doc-uuid-0001")
+        assert response.status_code == 401
