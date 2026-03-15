@@ -669,3 +669,44 @@ def test_generate_returns_202_when_no_doubts(admin_client):
     body = resp.json()
     assert body["report_id"] == REPORT_ID_GEN
     assert body["task_id"] == "task-gen-001"
+
+
+def test_generate_returns_409_when_already_generating(admin_client):
+    """POST /generate returns 409 when the report is already generating (CAS conflict)."""
+    with patch("app.routers.cma_reports.get_service_client") as mock_svc:
+        svc = MagicMock()
+        mock_svc.return_value = svc
+
+        # Report exists (ownership check passes)
+        report_chain = MagicMock()
+        report_chain.select.return_value = report_chain
+        report_chain.eq.return_value = report_chain
+        report_chain.in_.return_value = report_chain
+        report_chain.single.return_value = report_chain
+        report_chain.update.return_value = report_chain
+
+        call_count = 0
+        def execute_side_effect():
+            nonlocal call_count
+            call_count += 1
+            if call_count == 1:
+                # _get_owned_report fetch
+                return MagicMock(data=_REPORT_DRAFT)
+            elif call_count == 2:
+                # extracted_line_items (empty = no doubts)
+                return MagicMock(data=[])
+            else:
+                # CAS update returns empty (already generating)
+                return MagicMock(data=[])
+
+        report_chain.execute.side_effect = execute_side_effect
+
+        def table_se(name):
+            return report_chain
+
+        svc.table.side_effect = table_se
+
+        resp = admin_client.post(f"/api/cma-reports/{REPORT_ID_GEN}/generate")
+
+    assert resp.status_code == 409
+    assert "already" in resp.json()["detail"].lower()

@@ -111,6 +111,7 @@ class ExcelGenerator:
             year = doc.get("financial_year")
             col_letter = YEAR_TO_COLUMN.get(year)
             if col_letter is None:
+                logger.warning("Year %s not in YEAR_TO_COLUMN mapping — skipping header", year)
                 continue
             col = column_index_from_string(col_letter)
             ws.cell(row=_ROW_FINANCIAL_YEAR, column=col).value = year
@@ -128,6 +129,10 @@ class ExcelGenerator:
             row = ALL_FIELD_TO_ROW.get(field)
             col_letter = YEAR_TO_COLUMN.get(year)
             if row is None or col_letter is None:
+                if row is None:
+                    logger.debug("Field '%s' not in ALL_FIELD_TO_ROW — skipping", field)
+                if col_letter is None:
+                    logger.warning("Year %s not in YEAR_TO_COLUMN mapping — skipping data cell", year)
                 continue
 
             col = column_index_from_string(col_letter)
@@ -160,7 +165,8 @@ class ExcelGenerator:
                 path=storage_path,
                 file=file_bytes,
                 file_options={
-                    "content-type": "application/vnd.ms-excel.sheet.macroenabled.12"
+                    "content-type": "application/vnd.ms-excel.sheet.macroenabled.12",
+                    "upsert": "true",
                 },
             )
 

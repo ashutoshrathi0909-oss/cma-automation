@@ -37,6 +37,7 @@ from app.models.schemas import (
 from app.workers.worker import _get_redis_settings
 
 _ADMIN_ROLE = "admin"
+_SIGNED_URL_TTL_SECONDS = 60
 
 # Confidence thresholds — must match pipeline.py
 _HIGH_CONFIDENCE_THRESHOLD = 0.85
@@ -462,8 +463,8 @@ async def download_cma_excel(
         )
 
     result = service.storage.from_("generated").create_signed_url(
-        path=output_path, expires_in=60
+        path=output_path, expires_in=_SIGNED_URL_TTL_SECONDS
     )
     signed_url: str = result["signedURL"]
 
-    return DownloadUrlResponse(signed_url=signed_url, expires_in=60)
+    return DownloadUrlResponse(signed_url=signed_url, expires_in=_SIGNED_URL_TTL_SECONDS)
