@@ -581,8 +581,8 @@ def test_download_returns_signed_url(admin_client):
     assert body["expires_in"] == 60
 
 
-def test_download_404_when_not_generated(admin_client):
-    """GET /download returns 404 if the report has no output_path yet."""
+def test_download_409_when_not_complete(admin_client):
+    """GET /download returns 409 if the report status is not 'complete'."""
     with patch("app.routers.cma_reports.get_service_client") as mock_svc:
         svc = MagicMock()
         mock_svc.return_value = svc
@@ -596,4 +596,76 @@ def test_download_404_when_not_generated(admin_client):
 
         resp = admin_client.get(f"/api/cma-reports/{REPORT_ID_GEN}/download")
 
-    assert resp.status_code == 404
+    assert resp.status_code == 409
+    assert "draft" in resp.json()["detail"]
+
+
+def test_generate_returns_202_when_no_doubts(admin_client):
+    """POST /generate returns 202 with task_id when all doubts are resolved."""
+    from unittest.mock import AsyncMock
+
+    with patch("app.routers.cma_reports.get_service_client") as mock_svc, \
+         patch("app.routers.cma_reports.create_pool", new_callable=AsyncMock) as mock_pool:
+
+        svc = MagicMock()
+        mock_svc.return_value = svc
+
+        # report chain — used for _get_owned_report, CAS update, and audit insert
+        # execute() is called multiple times:
+        #   1st call: _get_owned_report → result.data must be a dict
+        #   2nd call: CAS update → result.data must be a list (non-empty to pass guard)
+        #   3rd call: audit insert → ignored
+        report_chain = MagicMock()
+        report_chain.select.return_value = report_chain
+        report_chain.eq.return_value = report_chain
+        report_chain.in_.return_value = report_chain
+        report_chain.single.return_value = report_chain
+        report_chain.update.return_value = report_chain
+        report_chain.insert.return_value = report_chain
+        report_chain.execute.side_effect = [
+            MagicMock(data=_REPORT_DRAFT),   # _get_owned_report → dict
+            MagicMock(data=[_REPORT_DRAFT]),  # CAS update → list (passes guard)
+            MagicMock(data=[{}]),             # audit log insert → ignored
+        ]
+
+        # Line items — none so doubt check is skipped
+        items_chain = MagicMock()
+        items_chain.select.return_value = items_chain
+        items_chain.in_.return_value = items_chain
+        items_chain.execute.return_value = MagicMock(data=[])
+
+        # audit history table
+        history_chain = MagicMock()
+        history_chain.insert.return_value = history_chain
+        history_chain.execute.return_value = MagicMock(data=[{}])
+
+        def table_se(name):
+            if name == "cma_reports":
+                return report_chain
+            elif name == "extracted_line_items":
+                return items_chain
+            elif name == "cma_report_history":
+                return history_chain
+            m = MagicMock()
+            m.select.return_value = m
+            m.in_.return_value = m
+            m.execute.return_value = MagicMock(data=[])
+            return m
+
+        svc.table.side_effect = table_se
+
+        # Mock ARQ pool: create_pool is awaited, so AsyncMock makes it return
+        # a value when awaited
+        job_mock = MagicMock()
+        job_mock.job_id = "task-gen-001"
+        redis_mock = AsyncMock()
+        redis_mock.enqueue_job = AsyncMock(return_value=job_mock)
+        redis_mock.aclose = AsyncMock()
+        mock_pool.return_value = redis_mock
+
+        resp = admin_client.post(f"/api/cma-reports/{REPORT_ID_GEN}/generate")
+
+    assert resp.status_code == 202, resp.json()
+    body = resp.json()
+    assert body["report_id"] == REPORT_ID_GEN
+    assert body["task_id"] == "task-gen-001"

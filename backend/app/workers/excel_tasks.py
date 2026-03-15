@@ -30,6 +30,22 @@ async def run_excel_generation(ctx: dict, report_id: str) -> dict:
     service = get_service_client()
     logger.info("run_excel_generation started for report_id=%s", report_id)
 
+    # Idempotency: if already complete, return immediately (safe on retry)
+    report = (
+        service.table("cma_reports")
+        .select("status,output_path")
+        .eq("id", report_id)
+        .single()
+        .execute()
+    )
+    if report.data and report.data.get("status") == "complete":
+        logger.info("run_excel_generation: report_id=%s already complete, skipping", report_id)
+        return {
+            "report_id": report_id,
+            "status": "complete",
+            "path": report.data.get("output_path", ""),
+        }
+
     try:
         generator = ExcelGenerator(service=service)
         storage_path = generator.generate(report_id=report_id, user_id="system")

@@ -23,6 +23,7 @@ from postgrest.exceptions import APIError
 from arq import create_pool
 
 from app.dependencies import get_current_user, get_service_client
+from app.services import audit_service
 from app.models.schemas import (
     AuditEntry,
     CMAReportCreate,
@@ -381,10 +382,20 @@ async def generate_cma_excel(
                 ),
             )
 
-    # Update status → generating
-    service.table("cma_reports").update({"status": "generating"}).eq(
-        "id", report_id
-    ).execute()
+    # Atomic status transition: only update from draft/failed → generating
+    # This prevents double-enqueue race conditions
+    update_result = (
+        service.table("cma_reports")
+        .update({"status": "generating"})
+        .eq("id", report_id)
+        .in_("status", ["draft", "failed"])
+        .execute()
+    )
+    if not update_result.data:
+        raise HTTPException(
+            status_code=409,
+            detail="Report is already generating or complete. Check its current status.",
+        )
 
     # Enqueue ARQ task
     redis_settings = _get_redis_settings()
@@ -394,10 +405,25 @@ async def generate_cma_excel(
     finally:
         await redis_pool.aclose()
 
+    if job is None:
+        raise HTTPException(
+            status_code=409,
+            detail="A generation job for this report is already queued or running.",
+        )
+
     logger.info(
         "Enqueued Excel generation for report_id=%s task_id=%s",
         report_id,
         job.job_id,
+    )
+
+    audit_service.log_action(
+        service,
+        current_user.id,
+        "excel_generation_triggered",
+        "cma_report",
+        report_id,
+        after={"task_id": job.job_id},
     )
 
     return GenerateTriggerResponse(
@@ -421,6 +447,12 @@ async def download_cma_excel(
     """Return a 60-second signed Supabase Storage URL for the generated .xlsm."""
     service = get_service_client()
     report = _get_owned_report(service, report_id, current_user)
+
+    if report.get("status") != "complete":
+        raise HTTPException(
+            status_code=409,
+            detail=f"Report is not ready for download. Current status: '{report.get('status')}'.",
+        )
 
     output_path: str | None = report.get("output_path")
     if not output_path:
