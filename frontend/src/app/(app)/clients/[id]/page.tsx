@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Building2, Edit2, FileText, Plus, Trash2 } from "lucide-react";
+import { ArrowLeft, Building2, Edit2, FileText, Plus, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,8 @@ import {
 } from "@/components/ui/card";
 import { apiClient } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-import type { Client } from "@/types";
+import { DocumentList } from "@/components/documents/DocumentList";
+import type { Client, Document } from "@/types";
 
 const INDUSTRY_STYLES: Record<string, string> = {
   manufacturing: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
@@ -31,13 +32,20 @@ export default function ClientDetailPage() {
   const { user } = useCurrentUser();
 
   const [client, setClient] = useState<Client | null>(null);
+  const [documents, setDocuments] = useState<Document[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (!id) return;
-    apiClient<Client>(`/api/clients/${id}`)
-      .then(setClient)
+    Promise.all([
+      apiClient<Client>(`/api/clients/${id}`),
+      apiClient<Document[]>(`/api/documents/?client_id=${id}`),
+    ])
+      .then(([c, docs]) => {
+        setClient(c);
+        setDocuments(docs);
+      })
       .catch(() => router.replace("/clients"))
       .finally(() => setLoading(false));
   }, [id, router]);
@@ -133,23 +141,44 @@ export default function ClientDetailPage() {
         )}
       </Card>
 
-      {/* CMA Reports section — Phase 3+ */}
+      {/* Documents section */}
+      <div>
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-lg font-semibold">
+            Documents
+            {documents.length > 0 && (
+              <span className="ml-2 text-sm font-normal text-muted-foreground">
+                ({documents.length})
+              </span>
+            )}
+          </h2>
+          <Link href={`/clients/${client.id}/upload`}>
+            <Button size="sm">
+              <Upload className="mr-1.5 h-3.5 w-3.5" />
+              Upload
+            </Button>
+          </Link>
+        </div>
+        <DocumentList
+          documents={documents}
+          onDeleted={(docId) => setDocuments((prev) => prev.filter((d) => d.id !== docId))}
+        />
+      </div>
+
+      {/* CMA Reports section — Phase 6+ */}
       <div>
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-lg font-semibold">CMA Reports</h2>
-          <Button size="sm" disabled title="Available after Phase 3">
+          <Button size="sm" disabled title="Available after document extraction">
             <Plus className="mr-1.5 h-3.5 w-3.5" />
             New Report
           </Button>
         </div>
         <Card>
-          <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-            <FileText className="mb-3 h-10 w-10 text-muted-foreground/30" />
-            <p className="text-sm font-medium text-muted-foreground">
-              No CMA reports yet
-            </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Upload financial documents to start a new CMA report
+          <CardContent className="flex flex-col items-center justify-center py-10 text-center">
+            <FileText className="mb-3 h-8 w-8 text-muted-foreground/30" />
+            <p className="text-sm text-muted-foreground">
+              Upload and extract documents to start a CMA report
             </p>
           </CardContent>
         </Card>

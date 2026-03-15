@@ -5,6 +5,20 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+# ── Shared type aliases ───────────────────────────────────────────────────────
+
+FileType = Literal["pdf", "xlsx", "xls"]
+DocumentType = Literal[
+    "profit_and_loss",
+    "balance_sheet",
+    "notes_to_accounts",
+    "schedules",
+    "loan_repayment_schedule",
+    "combined_financial_statement",
+]
+DocumentNature = Literal["audited", "provisional"]
+ExtractionStatus = Literal["pending", "processing", "extracted", "verified", "failed"]
+
 UserRole = Literal["admin", "employee"]
 
 
@@ -69,3 +83,20 @@ class ClientResponse(BaseModel):
     created_by: str | None
     created_at: datetime
     updated_at: datetime
+
+
+# ── Document schemas ──────────────────────────────────────────────────────────
+
+
+class DocumentResponse(BaseModel):
+    id: str
+    client_id: str
+    file_name: str
+    file_path: str
+    file_type: FileType
+    document_type: DocumentType
+    financial_year: int
+    nature: DocumentNature
+    extraction_status: ExtractionStatus
+    uploaded_by: str
+    uploaded_at: datetime
