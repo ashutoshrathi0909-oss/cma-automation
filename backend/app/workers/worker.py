@@ -8,6 +8,7 @@ from arq.connections import RedisSettings
 
 from app.config import get_settings
 from app.workers.classification_tasks import run_classification
+from app.workers.excel_tasks import run_excel_generation
 from app.workers.extraction_tasks import run_extraction
 
 settings = get_settings()
@@ -52,7 +53,7 @@ def _get_redis_settings(url: str | None = None) -> RedisSettings:
 class WorkerSettings:
     """ARQ worker configuration class."""
 
-    functions = [run_extraction, run_classification]
+    functions = [run_extraction, run_classification, run_excel_generation]
     redis_settings = _get_redis_settings()
     max_jobs = 10
     job_timeout = 300  # 5 minutes

@@ -20,6 +20,8 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException
 from postgrest.exceptions import APIError
 
+from arq import create_pool
+
 from app.dependencies import get_current_user, get_service_client
 from app.models.schemas import (
     AuditEntry,
@@ -27,8 +29,11 @@ from app.models.schemas import (
     CMAReportResponse,
     ClassificationResponse,
     ConfidenceSummary,
+    DownloadUrlResponse,
+    GenerateTriggerResponse,
     UserProfile,
 )
+from app.workers.worker import _get_redis_settings
 
 _ADMIN_ROLE = "admin"
 
@@ -337,3 +342,96 @@ async def get_audit_trail(
         .execute()
     )
     return [AuditEntry(**r) for r in (result.data or [])]
+
+
+# ── Generate Excel ─────────────────────────────────────────────────────────
+
+
+@router.post(
+    "/cma-reports/{report_id}/generate",
+    response_model=GenerateTriggerResponse,
+    status_code=202,
+)
+async def generate_cma_excel(
+    report_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> GenerateTriggerResponse:
+    """Enqueue Excel generation. Blocked if any is_doubt=True classifications remain."""
+    service = get_service_client()
+    report = _get_owned_report(service, report_id, current_user)
+
+    # Guard: block if any unresolved doubts exist
+    document_ids = report.get("document_ids") or []
+    item_ids = _get_report_item_ids(service, document_ids)
+    if item_ids:
+        doubt_result = (
+            service.table("classifications")
+            .select("id")
+            .in_("line_item_id", item_ids)
+            .eq("is_doubt", True)
+            .execute()
+        )
+        doubts = doubt_result.data or []
+        if doubts:
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    f"Cannot generate: {len(doubts)} unresolved doubt(s) remain. "
+                    "Resolve all doubts before generating the Excel file."
+                ),
+            )
+
+    # Update status → generating
+    service.table("cma_reports").update({"status": "generating"}).eq(
+        "id", report_id
+    ).execute()
+
+    # Enqueue ARQ task
+    redis_settings = _get_redis_settings()
+    redis_pool = await create_pool(redis_settings)
+    try:
+        job = await redis_pool.enqueue_job("run_excel_generation", report_id)
+    finally:
+        await redis_pool.aclose()
+
+    logger.info(
+        "Enqueued Excel generation for report_id=%s task_id=%s",
+        report_id,
+        job.job_id,
+    )
+
+    return GenerateTriggerResponse(
+        task_id=job.job_id,
+        report_id=report_id,
+        message="Excel generation queued.",
+    )
+
+
+# ── Download signed URL ────────────────────────────────────────────────────
+
+
+@router.get(
+    "/cma-reports/{report_id}/download",
+    response_model=DownloadUrlResponse,
+)
+async def download_cma_excel(
+    report_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> DownloadUrlResponse:
+    """Return a 60-second signed Supabase Storage URL for the generated .xlsm."""
+    service = get_service_client()
+    report = _get_owned_report(service, report_id, current_user)
+
+    output_path: str | None = report.get("output_path")
+    if not output_path:
+        raise HTTPException(
+            status_code=404,
+            detail="Excel file not yet generated. Trigger generation first.",
+        )
+
+    result = service.storage.from_("generated").create_signed_url(
+        path=output_path, expires_in=60
+    )
+    signed_url: str = result["signedURL"]
+
+    return DownloadUrlResponse(signed_url=signed_url, expires_in=60)

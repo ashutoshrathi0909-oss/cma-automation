@@ -473,3 +473,127 @@ class TestConfidenceData:
         data = response.json()
         assert data["total"] == 0
         assert data["approved"] == 0
+
+
+# ── Phase 7: Generate + Download endpoint tests ────────────────────────────
+
+REPORT_ID_GEN = "report-gen-0001"
+STORAGE_PATH = f"cma_reports/{REPORT_ID_GEN}/output.xlsm"
+SIGNED_URL = "https://storage.example.com/signed-url?token=abc"
+
+_REPORT_COMPLETE = {
+    "id": REPORT_ID_GEN,
+    "client_id": CLIENT_ID,
+    "title": "Phase 7 Report",
+    "status": "complete",
+    "document_ids": [DOC_ID_1],
+    "created_by": "admin-uuid-0001",
+    "output_path": STORAGE_PATH,
+    "created_at": "2025-01-01T00:00:00+00:00",
+    "updated_at": "2025-01-01T00:00:00+00:00",
+}
+
+_REPORT_DRAFT = {
+    "id": REPORT_ID_GEN,
+    "client_id": CLIENT_ID,
+    "title": "Phase 7 Report",
+    "status": "draft",
+    "document_ids": [DOC_ID_1],
+    "created_by": "admin-uuid-0001",
+    "output_path": None,
+    "created_at": "2025-01-01T00:00:00+00:00",
+    "updated_at": "2025-01-01T00:00:00+00:00",
+}
+
+
+def test_generate_blocked_if_doubts_unresolved(admin_client):
+    """POST /generate returns 400 when unresolved doubts exist."""
+    with patch("app.routers.cma_reports.get_service_client") as mock_svc:
+        svc = MagicMock()
+        mock_svc.return_value = svc
+
+        # Setup chained mock for _get_owned_report
+        report_chain = MagicMock()
+        report_chain.select.return_value = report_chain
+        report_chain.eq.return_value = report_chain
+        report_chain.single.return_value = report_chain
+        report_chain.execute.return_value = MagicMock(data=_REPORT_DRAFT)
+
+        # Line items chain
+        items_chain = MagicMock()
+        items_chain.select.return_value = items_chain
+        items_chain.in_.return_value = items_chain
+        items_chain.execute.return_value = MagicMock(data=[{"id": ITEM_ID_1}])
+
+        # Doubts chain (returns 2 doubts)
+        doubt_chain = MagicMock()
+        doubt_chain.select.return_value = doubt_chain
+        doubt_chain.in_.return_value = doubt_chain
+        doubt_chain.eq.return_value = doubt_chain
+        doubt_chain.execute.return_value = MagicMock(
+            data=[{"id": "clf-doubt-1"}, {"id": "clf-doubt-2"}]
+        )
+
+        call_count = 0
+        def table_se(name):
+            nonlocal call_count
+            call_count += 1
+            if name == "cma_reports":
+                return report_chain
+            elif name == "extracted_line_items" and call_count <= 10:
+                return items_chain
+            elif name == "classifications":
+                return doubt_chain
+            return MagicMock()
+
+        svc.table.side_effect = table_se
+
+        resp = admin_client.post(f"/api/cma-reports/{REPORT_ID_GEN}/generate")
+
+    assert resp.status_code == 400
+    assert "doubt" in resp.json()["detail"].lower()
+
+
+def test_download_returns_signed_url(admin_client):
+    """GET /download returns a signed URL for the generated file."""
+    with patch("app.routers.cma_reports.get_service_client") as mock_svc:
+        svc = MagicMock()
+        mock_svc.return_value = svc
+
+        # Report with output_path set
+        report_chain = MagicMock()
+        report_chain.select.return_value = report_chain
+        report_chain.eq.return_value = report_chain
+        report_chain.single.return_value = report_chain
+        report_chain.execute.return_value = MagicMock(data=_REPORT_COMPLETE)
+        svc.table.return_value = report_chain
+
+        # Storage signed URL
+        svc.storage.from_.return_value.create_signed_url.return_value = {
+            "signedURL": SIGNED_URL
+        }
+
+        resp = admin_client.get(f"/api/cma-reports/{REPORT_ID_GEN}/download")
+
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["signed_url"] == SIGNED_URL
+    assert body["expires_in"] == 60
+
+
+def test_download_404_when_not_generated(admin_client):
+    """GET /download returns 404 if the report has no output_path yet."""
+    with patch("app.routers.cma_reports.get_service_client") as mock_svc:
+        svc = MagicMock()
+        mock_svc.return_value = svc
+
+        report_chain = MagicMock()
+        report_chain.select.return_value = report_chain
+        report_chain.eq.return_value = report_chain
+        report_chain.single.return_value = report_chain
+        report_chain.execute.return_value = MagicMock(data=_REPORT_DRAFT)
+        svc.table.return_value = report_chain
+
+        resp = admin_client.get(f"/api/cma-reports/{REPORT_ID_GEN}/download")
+
+    assert resp.status_code == 404
