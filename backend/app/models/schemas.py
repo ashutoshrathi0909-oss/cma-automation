@@ -260,4 +260,4 @@ class GenerateTriggerResponse(BaseModel):
 
 class DownloadUrlResponse(BaseModel):
     signed_url: str
-    expires_in: int = 60
+    expires_in: int = Field(default=60, description="Seconds until the signed URL expires.", gt=0)
