@@ -9,7 +9,7 @@ from __future__ import annotations
 import logging
 
 from app.dependencies import get_service_client
-from app.services.extraction.extractor_factory import ExtractionError, extract_document
+from app.services.extraction.extractor_factory import extract_document
 
 logger = logging.getLogger(__name__)
 

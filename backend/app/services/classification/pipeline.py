@@ -12,7 +12,6 @@ from __future__ import annotations
 import logging
 
 from app.dependencies import get_service_client
-from app.mappings.cma_field_rows import ALL_FIELD_TO_ROW
 from app.mappings.year_columns import YEAR_TO_COLUMN
 from app.services.classification.ai_classifier import AIClassifier
 from app.services.classification.fuzzy_matcher import FuzzyMatcher

@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 import tempfile
 
 import openpyxl
@@ -30,6 +31,10 @@ from app.mappings.year_columns import YEAR_TO_COLUMN
 from app.services.audit_service import log_action
 
 logger = logging.getLogger(__name__)
+
+_UUID_RE = re.compile(
+    r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+)
 
 DEFAULT_TEMPLATE_PATH = "/app/DOCS/CMA.xlsm"
 STORAGE_BUCKET = "generated"
@@ -140,12 +145,22 @@ class ExcelGenerator:
             accumulator[key] = accumulator.get(key, 0.0) + amount
 
         for (row, col), value in accumulator.items():
+            existing = ws.cell(row=row, column=col).value
+            if isinstance(existing, str) and existing.startswith("="):
+                logger.warning(
+                    "Skipping formula cell at row=%d col=%d field data would overwrite formula",
+                    row,
+                    col,
+                )
+                continue
             ws.cell(row=row, column=col).value = value
 
     # ── Private: I/O helpers ──────────────────────────────────────────────
 
     def _save_upload_cleanup(self, wb, report_id: str, user_id: str) -> str:
         """Save workbook to temp file, upload to Supabase Storage, cleanup."""
+        if not _UUID_RE.match(report_id):
+            raise ValueError(f"Invalid report_id format: {report_id!r}")
         storage_path = f"cma_reports/{report_id}/output.xlsm"
         tmp_path: str | None = None
 

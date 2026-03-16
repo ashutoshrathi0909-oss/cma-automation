@@ -202,11 +202,11 @@ def _build_full_mock_service() -> MagicMock:
     service = MagicMock()
 
     report_row = {
-        "id": "report-aaa",
-        "client_id": "client-bbb",
+        "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "client_id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
         "document_ids": ["doc-ccc"],
     }
-    client_row = {"id": "client-bbb", "name": "Test Client Ltd"}
+    client_row = {"id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb", "name": "Test Client Ltd"}
     doc_row = {"id": "doc-ccc", "financial_year": 2024, "nature": "audited"}
     item_row = {"id": "item-ddd", "document_id": "doc-ccc", "amount": 100.0}
     clf_row = {"line_item_id": "item-ddd", "cma_field_name": "Domestic Sales"}
@@ -236,7 +236,7 @@ def _build_full_mock_service() -> MagicMock:
     service.table.side_effect = table_side_effect
 
     storage_bucket = MagicMock()
-    storage_bucket.upload.return_value = {"Key": "cma_reports/report-aaa/output.xlsm"}
+    storage_bucket.upload.return_value = {"Key": "cma_reports/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/output.xlsm"}
     service.storage.from_.return_value = storage_bucket
 
     return service
@@ -259,7 +259,7 @@ def test_generator_opens_template_with_keep_vba():
     with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
         mock_load.return_value, _ = _make_mock_wb()
         gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-        gen.generate(report_id="report-aaa", user_id="user-xxx")
+        gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     mock_load.assert_called_once_with("/fake/CMA.xlsm", keep_vba=True)
 
@@ -271,7 +271,7 @@ def test_generator_preserves_macros():
     with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
         mock_load.return_value, _ = _make_mock_wb()
         gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-        gen.generate(report_id="report-aaa", user_id="user-xxx")
+        gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     _, kwargs = mock_load.call_args
     assert kwargs.get("keep_vba") is True
@@ -288,7 +288,7 @@ def test_generator_saves_as_xlsm():
         mock_load.return_value = wb_mock
 
         gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-        gen.generate(report_id="report-aaa", user_id="user-xxx")
+        gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     assert saved_paths, "wb.save was never called"
     assert saved_paths[0].endswith(".xlsm"), f"Expected .xlsm, got: {saved_paths[0]}"
@@ -303,11 +303,11 @@ def test_generator_uploads_to_supabase_storage():
         mock_load.return_value = wb_mock
 
         gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-        storage_path = gen.generate(report_id="report-aaa", user_id="user-xxx")
+        storage_path = gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     service.storage.from_.assert_called_with("generated")
     service.storage.from_().upload.assert_called_once()
-    assert storage_path == "cma_reports/report-aaa/output.xlsm"
+    assert storage_path == "cma_reports/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/output.xlsm"
 
 
 def test_generator_logs_audit_trail():
@@ -320,13 +320,13 @@ def test_generator_logs_audit_trail():
 
         with patch("app.services.excel_generator.log_action") as mock_log:
             gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-            gen.generate(report_id="report-aaa", user_id="user-xxx")
+            gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     mock_log.assert_called_once()
     args = mock_log.call_args[0]
     assert args[2] == "excel_generated"
     assert args[3] == "cma_report"
-    assert args[4] == "report-aaa"
+    assert args[4] == "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 
 
 def test_generator_cleans_up_temp_file():
@@ -339,7 +339,7 @@ def test_generator_cleans_up_temp_file():
 
         with patch("app.services.excel_generator.os.unlink") as mock_unlink:
             gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
-            gen.generate(report_id="report-aaa", user_id="user-xxx")
+            gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
     mock_unlink.assert_called_once()
     unlinked = mock_unlink.call_args[0][0]
@@ -561,6 +561,29 @@ def test_generator_swallows_oserror_on_temp_cleanup():
         with patch("app.services.excel_generator.os.unlink", side_effect=OSError("locked")):
             gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
             # Should NOT raise — OSError is caught and logged
-            storage_path = gen.generate(report_id="report-aaa", user_id="user-xxx")
+            storage_path = gen.generate(report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa", user_id="user-xxx")
 
-    assert storage_path == "cma_reports/report-aaa/output.xlsm"
+    assert storage_path == "cma_reports/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/output.xlsm"
+
+
+def test_save_upload_cleanup_rejects_non_uuid_report_id():
+    """_save_upload_cleanup raises ValueError for non-UUID report_id (path traversal guard)."""
+    gen = ExcelGenerator(service=MagicMock(), template_path="/fake/CMA.xlsm")
+    wb = openpyxl.Workbook()
+
+    with pytest.raises(ValueError, match="Invalid report_id format"):
+        gen._save_upload_cleanup(wb, "../../etc/passwd", "user-xxx")
+
+
+def test_fill_data_cells_skips_formula_cells():
+    """_fill_data_cells does not overwrite cells that already contain a formula."""
+    _, ws = _make_ws()
+    # Pre-set a formula in the Domestic Sales cell (row 22, col B = col 2)
+    ws.cell(row=22, column=2).value = "=SUM(C22:D22)"
+    gen = _make_generator()
+
+    cell_data = [{"cma_field_name": "Domestic Sales", "financial_year": 2023, "amount": 99999.0}]
+    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+
+    # Formula must be preserved — not overwritten with the data amount
+    assert ws.cell(row=22, column=2).value == "=SUM(C22:D22)"
