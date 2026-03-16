@@ -1,7 +1,12 @@
-from fastapi import FastAPI
+import logging
+
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.config import get_settings
+from app.dependencies import get_service_client
 from app.routers import (
     auth,
     clients,
@@ -16,6 +21,8 @@ from app.routers import (
 )
 
 settings = get_settings()
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="CMA Automation API",
@@ -43,6 +50,58 @@ app.include_router(rollover.router)
 app.include_router(users.router)
 
 
+# ── Exception handlers ────────────────────────────────────────────────────────
+
+
+async def validation_error_handler(
+    request: Request, exc: RequestValidationError
+) -> JSONResponse:
+    """Convert Pydantic RequestValidationError into a structured 422 response."""
+    fields = []
+    for error in exc.errors():
+        loc = error.get("loc", ())
+        # Strip leading "body" segment so callers see clean field names
+        parts = [str(p) for p in loc if p != "body"]
+        field_name = ".".join(parts) if parts else ".".join(str(p) for p in loc)
+        fields.append({"field": field_name, "message": error.get("msg", "")})
+
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": "Validation failed",
+            "code": "VALIDATION_ERROR",
+            "fields": fields,
+        },
+    )
+
+
+async def unhandled_exception_handler(
+    request: Request, exc: Exception
+) -> JSONResponse:
+    """Catch-all handler for unexpected exceptions — logs server-side, never leaks details."""
+    logger.exception("Unhandled exception on %s %s", request.method, request.url)
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error"},
+    )
+
+
+app.add_exception_handler(RequestValidationError, validation_error_handler)
+app.add_exception_handler(Exception, unhandled_exception_handler)
+
+
+# ── Routes ────────────────────────────────────────────────────────────────────
+
+
 @app.get("/health")
-async def health():
-    return {"status": "ok", "version": "1.0.0"}
+async def health() -> dict:
+    """Health check. Probes DB connectivity and returns degraded status on failure."""
+    db_status = "ok"
+    try:
+        svc = get_service_client()
+        svc.table("user_profiles").select("id").limit(1).execute()
+    except Exception:
+        logger.warning("Health check: DB probe failed", exc_info=True)
+        db_status = "error"
+
+    return {"status": "ok" if db_status == "ok" else "degraded", "db": db_status}
