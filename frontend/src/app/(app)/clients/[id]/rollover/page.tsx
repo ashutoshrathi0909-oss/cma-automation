@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { toast } from "sonner";
 import { apiClient } from "@/lib/api";
 import { RolloverWizard } from "@/components/cma/RolloverWizard";
 import type { Client, Document } from "@/types";
@@ -36,7 +37,11 @@ export default function RolloverPage() {
         setClient(c);
         setDocuments(docs);
       })
-      .catch(() => setError("Failed to load client data"))
+      .catch(() => {
+        const msg = "Failed to load client data";
+        setError(msg);
+        toast.error(msg);
+      })
       .finally(() => setLoading(false));
   }, [clientId]);
 
