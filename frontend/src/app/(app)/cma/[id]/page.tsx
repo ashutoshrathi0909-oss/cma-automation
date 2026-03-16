@@ -110,14 +110,27 @@ export default function CMAOverviewPage() {
               Audit Trail
             </Button>
           </Link>
-          <Button
-            size="sm"
-            disabled
-            title="Complete review first — available in Phase 7"
-          >
-            <FileBarChart className="mr-1.5 h-4 w-4" />
-            Generate Excel
-          </Button>
+          {allReviewed ? (
+            <Link href={`/cma/${reportId}/generate`}>
+              <Button size="sm">
+                <FileBarChart className="mr-1.5 h-4 w-4" />
+                Generate Excel
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              size="sm"
+              disabled
+              title={
+                summary.needs_review > 0
+                  ? `Resolve ${summary.needs_review} doubt(s) first`
+                  : "Complete review first"
+              }
+            >
+              <FileBarChart className="mr-1.5 h-4 w-4" />
+              Generate Excel
+            </Button>
+          )}
         </div>
       </div>
 
@@ -155,14 +168,6 @@ export default function CMAOverviewPage() {
           )}
         </CardContent>
       </Card>
-
-      {allReviewed && (
-        <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-900 dark:bg-green-950/20">
-          <p className="text-sm font-medium text-green-800 dark:text-green-300">
-            All items reviewed — ready to generate Excel (Phase 7).
-          </p>
-        </div>
-      )}
     </div>
   );
 }
