@@ -60,9 +60,9 @@ async def validation_error_handler(
     fields = []
     for error in exc.errors():
         loc = error.get("loc", ())
-        # Strip leading "body" segment so callers see clean field names
-        parts = [str(p) for p in loc if p != "body"]
-        field_name = ".".join(parts) if parts else ".".join(str(p) for p in loc)
+        # Strip only the leading "body" segment (FastAPI prepends it for request-body fields)
+        trimmed = loc[1:] if loc and loc[0] == "body" else loc
+        field_name = ".".join(str(p) for p in trimmed) if trimmed else (str(loc[0]) if loc else "")
         fields.append({"field": field_name, "message": error.get("msg", "")})
 
     return JSONResponse(
@@ -100,8 +100,8 @@ async def health() -> dict:
     try:
         svc = get_service_client()
         svc.table("user_profiles").select("id").limit(1).execute()
-    except Exception:
-        logger.warning("Health check: DB probe failed", exc_info=True)
+    except Exception as exc:
+        logger.warning("Health check: DB probe failed — %s", exc)
         db_status = "error"
 
     return {"status": "ok" if db_status == "ok" else "degraded", "db": db_status}

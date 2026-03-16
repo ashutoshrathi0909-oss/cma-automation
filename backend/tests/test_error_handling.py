@@ -1,6 +1,5 @@
 """Tests for global exception handlers in main.py (TDD — tests written before implementation)."""
 
-import pytest
 from fastapi.testclient import TestClient
 
 
@@ -108,3 +107,19 @@ class TestHealthEndpoint:
         resp = client.get("/health")
         body = resp.json()
         assert "version" not in body
+
+    def test_health_degrades_when_db_is_down(self, monkeypatch):
+        """Health endpoint returns degraded (200) when DB probe raises."""
+        import app.main as main_module
+
+        class _FailSvc:
+            def table(self, *a, **kw):
+                raise RuntimeError("simulated DB failure")
+
+        monkeypatch.setattr(main_module, "get_service_client", lambda: _FailSvc())
+        client = TestClient(main_module.app)
+        resp = client.get("/health")
+        assert resp.status_code == 200
+        body = resp.json()
+        assert body["status"] == "degraded"
+        assert body["db"] == "error"
