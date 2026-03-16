@@ -5,6 +5,16 @@ import { Header } from "@/components/layout/Header";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import type { UserProfile } from "@/types";
 
+const DISABLE_AUTH = process.env.NEXT_PUBLIC_DISABLE_AUTH === "true";
+
+const MOCK_ADMIN_USER: UserProfile = {
+  id: "00000000-0000-0000-0000-000000000001",
+  full_name: "Dev Admin",
+  role: "admin",
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+};
+
 /**
  * Authenticated app layout — wraps all routes except /login.
  * Server-side session check: unauthenticated users are redirected to /login.
@@ -14,25 +24,31 @@ export default async function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  // Use getUser() — validates JWT signature + expiry against Supabase server.
-  // getSession() only reads the cookie without cryptographic validation.
-  const {
-    data: { user: authUser },
-  } = await supabase.auth.getUser();
+  let userProfile: UserProfile | null = null;
 
-  if (!authUser) {
-    redirect("/login");
+  if (DISABLE_AUTH) {
+    userProfile = MOCK_ADMIN_USER;
+  } else {
+    const supabase = await createClient();
+    // Use getUser() — validates JWT signature + expiry against Supabase server.
+    // getSession() only reads the cookie without cryptographic validation.
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+
+    if (!authUser) {
+      redirect("/login");
+    }
+
+    // Fetch user profile for the Header
+    const { data: profileData } = await supabase
+      .from("user_profiles")
+      .select("*")
+      .eq("id", authUser.id)
+      .single();
+
+    userProfile = profileData ?? null;
   }
-
-  // Fetch user profile for the Header
-  const { data: profileData } = await supabase
-    .from("user_profiles")
-    .select("*")
-    .eq("id", authUser.id)
-    .single();
-
-  const userProfile: UserProfile | null = profileData ?? null;
 
   return (
     <div className="flex h-screen overflow-hidden">

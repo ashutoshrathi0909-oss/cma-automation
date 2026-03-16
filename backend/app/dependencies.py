@@ -1,10 +1,41 @@
 """FastAPI dependencies: Supabase clients, JWT validation, role enforcement."""
 
+import os
+
 from fastapi import Depends, HTTPException, Request
 from supabase import Client, create_client
 
 from app.config import get_settings
 from app.models.schemas import UserProfile
+
+# ── Auth bypass (testing only) ────────────────────────────────────────────────
+# Set DISABLE_AUTH=true in .env to skip JWT validation during local testing.
+# NEVER enable in production.
+
+from datetime import datetime, timezone
+
+_DISABLE_AUTH = os.getenv("DISABLE_AUTH", "false").lower() == "true"
+
+if _DISABLE_AUTH:
+    _env = os.getenv("ENVIRONMENT", "development").lower()
+    if _env == "production":
+        raise RuntimeError(
+            "DISABLE_AUTH=true is forbidden in production environments. "
+            "Remove it from your production environment variables immediately."
+        )
+    import logging as _logging
+    _logging.getLogger(__name__).warning(
+        "⚠️  DISABLE_AUTH is enabled — JWT validation bypassed. Dev use only."
+    )
+
+_MOCK_ADMIN_USER = UserProfile(
+    id="00000000-0000-0000-0000-000000000001",
+    full_name="Dev Admin",
+    role="admin",
+    is_active=True,
+    created_at=datetime.now(timezone.utc),
+    updated_at=datetime.now(timezone.utc),
+)
 
 # ── Supabase client factories ─────────────────────────────────────────────────
 # Module-level functions (not FastAPI Depends) so they can be patched in tests.
@@ -41,7 +72,15 @@ async def get_current_user(request: Request) -> UserProfile:
     Extract and validate the Supabase JWT from the Authorization header.
     Fetches the user profile from user_profiles table.
     Raises 401 for missing/invalid/expired tokens.
+
+    When DISABLE_AUTH=true (dev only), skips all validation and returns a
+    hardcoded mock admin user so you can test without credentials.
     """
+    # ── Dev bypass ────────────────────────────────────────────────────────────
+    if _DISABLE_AUTH:
+        return _MOCK_ADMIN_USER
+    # ── Normal auth flow (unchanged) ─────────────────────────────────────────
+
     auth_header = request.headers.get("Authorization", "")
     if not auth_header.startswith("Bearer "):
         raise HTTPException(

@@ -122,6 +122,7 @@ export function ClientForm({ initialData, onSuccess }: ClientFormProps) {
           value={form.currency}
           onChange={(e) => update("currency", e.target.value)}
           placeholder="INR"
+          maxLength={10}
         />
       </div>
 
