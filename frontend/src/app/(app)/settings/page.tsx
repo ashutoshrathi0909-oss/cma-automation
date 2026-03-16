@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, ShieldOff, UserCog } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,6 +13,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { apiClient } from "@/lib/api";
 import { createClient } from "@/lib/supabase/client";
 import type { UserProfileFull } from "@/types";
@@ -23,6 +34,7 @@ export default function SettingsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [deactivateTarget, setDeactivateTarget] = useState<string | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -51,24 +63,30 @@ export default function SettingsPage() {
         body: JSON.stringify({ role: newRole }),
       });
       setUsers((prev) => prev.map((u) => (u.id === userId ? updated : u)));
+      toast.success("Role updated");
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Update failed");
+      const msg = err instanceof Error ? err.message : "Update failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setUpdatingId(null);
     }
   }
 
   async function handleDeactivate(userId: string) {
-    if (!confirm("Deactivate this user? They will no longer be able to log in.")) return;
     setUpdatingId(userId);
+    setDeactivateTarget(null);
     setError(null);
     try {
       const updated = await apiClient<UserProfileFull>(`/api/users/${userId}/deactivate`, {
         method: "PUT",
       });
       setUsers((prev) => prev.map((u) => (u.id === userId ? updated : u)));
+      toast.success("User deactivated");
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Deactivation failed");
+      const msg = err instanceof Error ? err.message : "Deactivation failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setUpdatingId(null);
     }
@@ -161,7 +179,7 @@ export default function SettingsPage() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={() => handleDeactivate(user.id)}
+                        onClick={() => setDeactivateTarget(user.id)}
                         disabled={isUpdating}
                         className="text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
@@ -185,6 +203,30 @@ export default function SettingsPage() {
           </div>
         </CardContent>
       </Card>
+
+      <AlertDialog
+        open={deactivateTarget !== null}
+        onOpenChange={(open) => { if (!open) setDeactivateTarget(null); }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Deactivate this user?</AlertDialogTitle>
+            <AlertDialogDescription>
+              They will no longer be able to log in. This can be reversed by
+              re-activating the account.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={() => deactivateTarget && handleDeactivate(deactivateTarget)}
+            >
+              Deactivate
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

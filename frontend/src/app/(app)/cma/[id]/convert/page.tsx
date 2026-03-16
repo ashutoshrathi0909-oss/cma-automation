@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,6 +13,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { apiClient } from "@/lib/api";
 import { ConversionDiff } from "@/components/cma/ConversionDiff";
 import type {
@@ -31,6 +42,7 @@ export default function ConvertPage() {
   const [loading, setLoading] = useState(true);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
   const [confirmResult, setConfirmResult] = useState<ConversionConfirmResponse | null>(null);
@@ -95,10 +107,14 @@ export default function ConvertPage() {
       });
       setConfirmResult(data);
       setConfirmed(true);
+      toast.success("Conversion confirmed successfully");
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Conversion failed");
+      const msg = err instanceof Error ? err.message : "Conversion failed";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setConfirmLoading(false);
+      setShowConfirmDialog(false);
     }
   }
 
@@ -222,10 +238,25 @@ export default function ConvertPage() {
                   flag affected classifications for re-review.
                 </div>
 
-                <Button onClick={handleConfirm} disabled={confirmLoading}>
-                  {confirmLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Confirm Conversion
-                </Button>
+                <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+                  <Button onClick={() => setShowConfirmDialog(true)} disabled={confirmLoading}>
+                    {confirmLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    Confirm Conversion
+                  </Button>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Confirm conversion?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This will update provisional amounts to audited values and flag
+                        affected classifications for re-review. This action cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={handleConfirm}>Confirm</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </CardContent>
             </Card>
           )}
