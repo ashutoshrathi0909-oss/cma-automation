@@ -177,6 +177,7 @@ class ClassificationResponse(BaseModel):
 
 class ClassificationApproveRequest(BaseModel):
     note: str | None = None
+    cma_report_id: str | None = None  # When provided, writes audit log to cma_report_history
 
 
 class ClassificationCorrectRequest(BaseModel):
@@ -185,6 +186,7 @@ class ClassificationCorrectRequest(BaseModel):
     cma_sheet: str = "input_sheet"
     broad_classification: str
     correction_reason: str | None = None
+    cma_report_id: str | None = None  # When provided, writes audit log to cma_report_history
 
 
 class BulkApproveRequest(BaseModel):

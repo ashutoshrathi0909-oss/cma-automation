@@ -119,7 +119,7 @@ class TestApproveClassification:
         )
 
     def test_approve_creates_learned_mapping_when_new(self):
-        """approve_classification inserts new entry in learned_mappings."""
+        """approve_classification upserts new entry in learned_mappings (times_used=1)."""
         from app.services.classification.learning_system import LearningSystem
 
         mock_service = _make_service()
@@ -129,9 +129,8 @@ class TestApproveClassification:
         mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
         # learned_mappings check (no existing row)
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
-        # update + insert returns
         mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
-        mock_service.table.return_value.insert.return_value.execute.return_value.data = [SAMPLE_LEARNED_EXISTING]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [SAMPLE_LEARNED_EXISTING]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -144,9 +143,10 @@ class TestApproveClassification:
                 industry_type="manufacturing",
             )
 
-        # Verify insert was called on learned_mappings
-        insert_calls = mock_service.table.return_value.insert.call_args_list
-        assert len(insert_calls) >= 1
+        # Verify upsert was called on learned_mappings with times_used=1
+        upsert_calls = mock_service.table.return_value.upsert.call_args_list
+        assert len(upsert_calls) >= 1
+        assert upsert_calls[0][0][0]["times_used"] == 1
 
     def test_approve_increments_times_used_on_existing(self):
         """approve_classification increments times_used when mapping exists."""
@@ -155,9 +155,10 @@ class TestApproveClassification:
         mock_service = _make_service()
         mock_service.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = SAMPLE_CLASSIFICATION
         mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
-        # Existing learned mapping (times_used=3)
+        # Existing learned mapping (times_used=3) → expect upsert with times_used=4
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LEARNED_EXISTING]
         mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -170,15 +171,14 @@ class TestApproveClassification:
                 industry_type="manufacturing",
             )
 
-        # Verify update was called (for incrementing times_used), not insert
-        update_calls = mock_service.table.return_value.update.call_args_list
-        # Check at least one update call contains times_used
-        times_used_updated = any(
-            call_args[0][0].get("times_used") is not None
-            for call_args in update_calls
+        # Verify upsert was called with times_used incremented from 3 → 4
+        upsert_calls = mock_service.table.return_value.upsert.call_args_list
+        times_used_incremented = any(
+            call_args[0][0].get("times_used") == 4
+            for call_args in upsert_calls
             if call_args[0]
         )
-        assert times_used_updated, "times_used should be incremented via update"
+        assert times_used_incremented, "times_used should be incremented to 4 via upsert"
 
     def test_approve_logs_audit_trail(self):
         """approve_classification writes an entry to cma_report_history."""
@@ -346,7 +346,7 @@ class TestCorrectClassification:
         assert corrected_status
 
     def test_correction_saves_to_learned_mappings(self):
-        """correct_classification writes the corrected mapping to learned_mappings."""
+        """correct_classification upserts the corrected mapping to learned_mappings."""
         from app.services.classification.learning_system import LearningSystem
 
         mock_service = _make_service()
@@ -354,6 +354,7 @@ class TestCorrectClassification:
         mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
         mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
         mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
 
         with patch(
@@ -368,13 +369,13 @@ class TestCorrectClassification:
                 industry_type="service",
             )
 
-        # At least one insert must be for learned_mappings (source="correction")
-        insert_calls = mock_service.table.return_value.insert.call_args_list
-        learned_inserts = [
-            c for c in insert_calls
+        # Upsert must be called with source="correction"
+        upsert_calls = mock_service.table.return_value.upsert.call_args_list
+        learned_upserts = [
+            c for c in upsert_calls
             if c[0] and c[0][0].get("source") == "correction"
         ]
-        assert len(learned_inserts) >= 1
+        assert len(learned_upserts) >= 1
 
     def test_correction_logs_audit_trail(self):
         """correct_classification writes to cma_report_history."""
@@ -443,7 +444,7 @@ class TestBulkApprove:
         mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
         mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
-        mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -454,6 +455,7 @@ class TestBulkApprove:
                 classification_ids=["clf-001"],
                 user_id=USER_ID,
                 industry_type="manufacturing",
+                client_id=CLIENT_ID,
             )
 
         assert count == 1
@@ -467,7 +469,7 @@ class TestBulkApprove:
         mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
         mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
-        mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -478,21 +480,40 @@ class TestBulkApprove:
                 classification_ids=["clf-001", "clf-002"],
                 user_id=USER_ID,
                 industry_type="manufacturing",
+                client_id=CLIENT_ID,
             )
 
         assert count == 2
 
     def test_bulk_approve_none_ids_approves_high_confidence(self):
-        """bulk_approve with ids=None approves all auto_classified with confidence >= 0.85."""
+        """bulk_approve with ids=None approves all auto_classified with confidence >= 0.85,
+        scoped to the given client_id."""
         from app.services.classification.learning_system import LearningSystem
 
-        mock_service = _make_service()
-        # When ids=None, query auto_classified items
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = self.SAMPLE_AUTO_CLASSIFIED
-        mock_service.table.return_value.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
-        mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
-        mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
+        sample_auto = self.SAMPLE_AUTO_CLASSIFIED
+
+        # Use table-name-aware mock to avoid conflicts between:
+        # - classifications bulk-fetch (3 eq: status, is_doubt, client_id)
+        # - learned_mappings existing check (3 eq: source_text, field, industry)
+        def table_side_effect(table_name):
+            t = MagicMock()
+            if table_name == "classifications":
+                # None-IDs bulk fetch path
+                t.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = sample_auto
+                # _fetch_classification path (uses .single())
+                t.select.return_value.eq.return_value.single.return_value.execute.return_value.data = SAMPLE_CLASSIFICATION
+                t.update.return_value.eq.return_value.execute.return_value.data = [SAMPLE_CLASSIFICATION]
+            elif table_name == "extracted_line_items":
+                t.select.return_value.eq.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
+            elif table_name == "learned_mappings":
+                t.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
+                t.upsert.return_value.execute.return_value.data = [{}]
+            elif table_name == "cma_report_history":
+                t.insert.return_value.execute.return_value.data = [{}]
+            return t
+
+        mock_service = MagicMock()
+        mock_service.table.side_effect = table_side_effect
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -503,6 +524,7 @@ class TestBulkApprove:
                 classification_ids=None,
                 user_id=USER_ID,
                 industry_type="manufacturing",
+                client_id=CLIENT_ID,
             )
 
         # Both sample items have confidence >= 0.85
@@ -518,13 +540,13 @@ class TestLearnedMappingUpsert:
     """Tests for the learned_mappings upsert (insert new / increment existing)."""
 
     def test_upsert_inserts_new_mapping(self):
-        """_upsert_learned_mapping inserts when no existing row found."""
+        """_upsert_learned_mapping upserts with times_used=1 when no existing row found."""
         from app.services.classification.learning_system import LearningSystem
 
         mock_service = _make_service()
         # No existing mapping
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = []
-        mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -539,8 +561,11 @@ class TestLearnedMappingUpsert:
                 source="approval",
             )
 
-        insert_calls = mock_service.table.return_value.insert.call_args_list
-        assert len(insert_calls) >= 1
+        # DB-level upsert must be called (not insert)
+        upsert_calls = mock_service.table.return_value.upsert.call_args_list
+        assert len(upsert_calls) >= 1
+        upsert_data = upsert_calls[0][0][0]
+        assert upsert_data["times_used"] == 1
 
     def test_upsert_increments_times_used_on_existing(self):
         """_upsert_learned_mapping increments times_used when row exists."""
@@ -549,7 +574,7 @@ class TestLearnedMappingUpsert:
         existing = {**SAMPLE_LEARNED_EXISTING, "times_used": 3}
         mock_service = _make_service()
         mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.execute.return_value.data = [existing]
-        mock_service.table.return_value.update.return_value.eq.return_value.execute.return_value.data = [existing]
+        mock_service.table.return_value.upsert.return_value.execute.return_value.data = [{}]
 
         with patch(
             "app.services.classification.learning_system.get_service_client",
@@ -564,13 +589,11 @@ class TestLearnedMappingUpsert:
                 source="approval",
             )
 
-        update_calls = mock_service.table.return_value.update.call_args_list
-        times_used_incremented = any(
-            call_args[0][0].get("times_used") == 4
-            for call_args in update_calls
-            if call_args[0]
-        )
-        assert times_used_incremented, "times_used should be incremented to 4"
+        # Upsert must be called with times_used incremented from 3 → 4
+        upsert_calls = mock_service.table.return_value.upsert.call_args_list
+        assert len(upsert_calls) >= 1
+        upsert_data = upsert_calls[0][0][0]
+        assert upsert_data["times_used"] == 4, "times_used should be incremented to 4"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -668,6 +691,7 @@ class TestLearningSystemEdgeCases:
                 classification_ids=["clf-a", "clf-b"],
                 user_id=USER_ID,
                 industry_type="manufacturing",
+                client_id=CLIENT_ID,
             )
 
         # Only 1 should succeed (clf-b raises)

@@ -170,6 +170,7 @@ async def approve_classification(
         classification_id=classification_id,
         user_id=current_user.id,
         industry_type=industry_type,
+        cma_report_id=body.cma_report_id,
     )
 
     return ClassificationResponse(**updated)
@@ -202,6 +203,7 @@ async def correct_classification(
         correction=body.model_dump(exclude_none=True),
         user_id=current_user.id,
         industry_type=industry_type,
+        cma_report_id=body.cma_report_id,
     )
 
     return ClassificationResponse(**updated)
@@ -230,6 +232,7 @@ async def bulk_approve(
         classification_ids=body.classification_ids,
         user_id=current_user.id,
         industry_type=industry_type,
+        client_id=doc["client_id"],
     )
 
     return BulkApproveResponse(
@@ -315,7 +318,11 @@ def _get_document_item_ids(service, document_id: str) -> set[str]:
 
 
 def _get_industry_type(service, client_id: str) -> str:
-    """Return the industry_type for a client."""
+    """Return the industry_type for a client.
+
+    Raises 503 on DB failure rather than silently defaulting to 'other' —
+    a wrong industry label would corrupt learned_mappings for future queries.
+    """
     try:
         result = (
             service.table("clients")
@@ -325,7 +332,15 @@ def _get_industry_type(service, client_id: str) -> str:
         )
         rows = result.data or []
         if rows:
-            return rows[0].get("industry_type", "other")
-    except Exception:
-        logger.warning("Failed to fetch industry_type for client_id=%s; defaulting to 'other'", client_id)
-    return "other"
+            return rows[0].get("industry_type") or "other"
+    except Exception as exc:
+        logger.error(
+            "Failed to fetch industry_type for client_id=%s: %s",
+            client_id,
+            type(exc).__name__,
+        )
+        raise HTTPException(
+            status_code=503,
+            detail="Database unavailable — could not fetch client industry type. Retry shortly.",
+        )
+    raise HTTPException(status_code=404, detail=f"Client not found: {client_id}")

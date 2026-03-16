@@ -185,6 +185,7 @@ class LearningSystem:
         classification_ids: list[str] | None,
         user_id: str,
         industry_type: str,
+        client_id: str,
         cma_report_id: str | None = None,
     ) -> int:
         """Approve multiple classifications at once.
@@ -193,7 +194,10 @@ class LearningSystem:
         ----------
         classification_ids:
             If provided, approve only these IDs.
-            If None, approve all auto_classified items with confidence >= 0.85.
+            If None, approve all auto_classified items with confidence >= 0.85
+            scoped to the requesting user's client.
+        client_id:
+            Required. Scopes the global query to prevent cross-client mutation.
 
         Returns
         -------
@@ -210,12 +214,13 @@ class LearningSystem:
                 .execute()
             )
         else:
-            # Approve all high-confidence auto-classified items
+            # Approve all high-confidence auto-classified items scoped to this client
             result = (
                 service.table("classifications")
                 .select("*")
                 .eq("status", "auto_classified")
                 .eq("is_doubt", False)
+                .eq("client_id", client_id)
                 .execute()
             )
 
@@ -261,43 +266,41 @@ class LearningSystem:
         industry_type: str,
         source: str,  # "approval" or "correction"
     ) -> None:
-        """Insert a new learned mapping or increment times_used on existing."""
+        """Insert or update a learned mapping using DB-level upsert.
+
+        Uses upsert with on_conflict to prevent duplicate rows under concurrent
+        bulk-approve operations. The times_used count is fetched first for
+        best-effort increment; the upsert guarantees no duplicate rows even if
+        two workers race on the same (source_text, cma_field_name, industry_type).
+        """
         service = get_service_client()
         now = datetime.now(timezone.utc).isoformat()
 
-        # Check for existing mapping (source_text + cma_field_name + industry_type)
+        # Fetch existing to compute incremented times_used (best-effort)
         existing_result = (
             service.table("learned_mappings")
-            .select("id,times_used")
+            .select("times_used")
             .eq("source_text", source_text)
             .eq("cma_field_name", cma_field_name)
             .eq("industry_type", industry_type)
             .execute()
         )
         existing = existing_result.data
+        times_used = (existing[0]["times_used"] + 1) if existing else 1
 
-        if existing:
-            # Increment times_used
-            row = existing[0]
-            service.table("learned_mappings").update(
-                {
-                    "times_used": row["times_used"] + 1,
-                    "last_used_at": now,
-                }
-            ).eq("id", row["id"]).execute()
-        else:
-            # Insert new mapping
-            service.table("learned_mappings").insert(
-                {
-                    "source_text": source_text,
-                    "cma_field_name": cma_field_name,
-                    "cma_input_row": cma_input_row,
-                    "industry_type": industry_type,
-                    "times_used": 1,
-                    "last_used_at": now,
-                    "source": source,
-                }
-            ).execute()
+        # Upsert — on_conflict prevents duplicate rows from concurrent calls
+        service.table("learned_mappings").upsert(
+            {
+                "source_text": source_text,
+                "cma_field_name": cma_field_name,
+                "cma_input_row": cma_input_row,
+                "industry_type": industry_type,
+                "times_used": times_used,
+                "last_used_at": now,
+                "source": source,
+            },
+            on_conflict="source_text,cma_field_name,industry_type",
+        ).execute()
 
     def _fetch_classification(self, service, classification_id: str) -> dict:
         """Fetch a classification by ID. Raises ValueError if not found."""

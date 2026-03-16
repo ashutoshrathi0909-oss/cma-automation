@@ -6,6 +6,7 @@ can proceed. This mirrors the API-level guard in require_verified_document().
 
 from __future__ import annotations
 
+import asyncio
 import logging
 
 from app.dependencies import get_service_client
@@ -88,8 +89,11 @@ async def run_classification(ctx: dict, document_id: str) -> dict:
         )
 
     # ── 4. Run pipeline ───────────────────────────────────────────────────────
+    # classify_document is synchronous (N Supabase + Anthropic calls).
+    # asyncio.to_thread keeps the ARQ worker event loop responsive.
     pipeline = ClassificationPipeline()
-    summary = pipeline.classify_document(
+    summary = await asyncio.to_thread(
+        pipeline.classify_document,
         document_id=document_id,
         client_id=client_id,
         industry_type=industry_type,

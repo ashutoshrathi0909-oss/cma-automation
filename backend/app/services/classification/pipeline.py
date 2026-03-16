@@ -215,7 +215,7 @@ class ClassificationPipeline:
                 logger.error(
                     "classify_document failed for item_id=%s: %s",
                     item.get("id"),
-                    exc,
+                    type(exc).__name__,
                 )
                 # On item-level error, create a doubt record so nothing is lost
                 service.table("classifications").insert(
