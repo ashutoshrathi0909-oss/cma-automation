@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { Header } from "@/components/layout/Header";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import type { UserProfile } from "@/types";
 
 /**
@@ -38,7 +39,9 @@ export default async function AppLayout({
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header user={userProfile} />
-        <main className="flex-1 overflow-y-auto bg-muted/20 p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto bg-muted/20 p-6">
+          <ErrorBoundary>{children}</ErrorBoundary>
+        </main>
       </div>
     </div>
   );
