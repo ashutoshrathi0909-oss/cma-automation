@@ -59,9 +59,27 @@ class TestUnhandledExceptionHandler:
         assert "runtimeerror" not in resp.text.lower()
         assert "boom" not in resp.text.lower()
 
-    def test_http_exception_passes_through(self, admin_client):
-        resp = admin_client.get("/api/clients/nonexistent-uuid-that-does-not-exist")
-        assert resp.status_code in (404, 422)
+    def test_http_exception_passes_through(self):
+        """HTTPException (e.g. 404) is NOT caught by the bare Exception handler."""
+        from fastapi import FastAPI, HTTPException
+        from fastapi.exceptions import RequestValidationError
+        from fastapi.testclient import TestClient
+        from app.main import validation_error_handler, unhandled_exception_handler
+
+        mini = FastAPI()
+        mini.add_exception_handler(RequestValidationError, validation_error_handler)
+        mini.add_exception_handler(Exception, unhandled_exception_handler)
+
+        @mini.get("/notfound")
+        async def raise_404():
+            raise HTTPException(status_code=404, detail="not found")
+
+        client = TestClient(mini, raise_server_exceptions=False)
+        resp = client.get("/notfound")
+        assert resp.status_code == 404
+        assert resp.json()["detail"] == "not found"
+        # Must not be converted to 500 by the Exception handler
+        assert resp.status_code != 500
 
     def test_500_body_has_no_exception_message(self):
         from fastapi import FastAPI

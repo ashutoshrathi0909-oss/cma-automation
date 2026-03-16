@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { FileText, Trash2, Clock, CheckCircle2, AlertCircle, Loader2, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { apiClient } from "@/lib/api";
 import type { Document, ExtractionStatus } from "@/types";
 
@@ -62,9 +66,9 @@ interface DocumentListProps {
 export function DocumentList({ documents, onDeleted }: DocumentListProps) {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<Document | null>(null);
 
   async function handleDelete(doc: Document) {
-    if (!window.confirm(`Delete "${doc.file_name}"? This cannot be undone.`)) return;
     setDeletingId(doc.id);
     try {
       await apiClient(`/api/documents/${doc.id}`, { method: "DELETE" });
@@ -74,6 +78,7 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
       toast.error(err instanceof Error ? err.message : "Failed to delete document");
     } finally {
       setDeletingId(null);
+      setDeleteTarget(null);
     }
   }
 
@@ -134,7 +139,7 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => handleDelete(doc)}
+              onClick={() => setDeleteTarget(doc)}
               disabled={isDeleting}
               className="shrink-0 text-muted-foreground hover:text-destructive"
             >
@@ -147,6 +152,26 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
           </div>
         );
       })}
+
+      <AlertDialog open={deleteTarget !== null} onOpenChange={(open) => { if (!open) setDeleteTarget(null) }}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete &quot;{deleteTarget?.file_name}&quot;?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the document. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={() => deleteTarget && handleDelete(deleteTarget)}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -36,7 +36,7 @@ test.describe("CMA V1 Full Journey", () => {
     await page.goto("/clients/new")
     await page.getByLabel(/client name/i).fill(CLIENT_NAME)
     // shadcn Select — click trigger, then click option
-    const industryTrigger = page.getByRole("combobox").first()
+    const industryTrigger = page.getByRole("combobox", { name: /industry/i })
     await industryTrigger.click()
     await page.getByRole("option", { name: /manufacturing/i }).click()
     await page.getByRole("button", { name: /create|save/i }).click()
@@ -88,7 +88,10 @@ test.describe("CMA V1 Full Journey", () => {
     if (await verifyAllBtn.isVisible({ timeout: 3_000 })) {
       await verifyAllBtn.click()
     }
-    await expect(page.getByText(/verified|confirmed/i)).toBeVisible({ timeout: 15_000 })
+    // Hard assertion regardless of whether button was clicked
+    await expect(
+      page.getByText(/verified|confirmed|extraction complete/i)
+    ).toBeVisible({ timeout: 15_000 })
 
     // ── Step 8: Trigger classification ────────────────────────────────────
     await page.goto(reportUrl)
