@@ -81,7 +81,11 @@ async def get_current_user(request: Request) -> UserProfile:
     if not result.data:
         raise HTTPException(status_code=401, detail="User profile not found")
 
-    return UserProfile(**result.data)
+    profile = result.data
+    if not profile.get("is_active", True):
+        raise HTTPException(status_code=401, detail="Account is deactivated")
+
+    return UserProfile(**profile)
 
 
 async def require_admin(

@@ -41,6 +41,7 @@ class UserProfile(BaseModel):
     id: str
     full_name: str
     role: UserRole
+    is_active: bool = True  # Phase 8: user management
     created_at: datetime
     updated_at: datetime
 
@@ -263,3 +264,83 @@ class GenerateTriggerResponse(BaseModel):
 class DownloadUrlResponse(BaseModel):
     signed_url: str
     expires_in: int = Field(default=60, description="Seconds until the signed URL expires.", gt=0)
+
+
+# ── Phase 8: Conversion schemas ───────────────────────────────────────────
+
+ChangeType = Literal["changed", "added", "removed"]
+
+
+class ConversionDiffItem(BaseModel):
+    description: str
+    provisional_amount: float | None
+    audited_amount: float | None
+    change_type: ChangeType
+
+
+class ConversionPreviewRequest(BaseModel):
+    provisional_doc_id: str
+    audited_doc_id: str
+
+
+class ConversionDiffResponse(BaseModel):
+    provisional_doc_id: str
+    audited_doc_id: str
+    changed: list[ConversionDiffItem]
+    added: list[ConversionDiffItem]
+    removed: list[ConversionDiffItem]
+
+
+class ConversionConfirmRequest(BaseModel):
+    provisional_doc_id: str
+    audited_doc_id: str
+    cma_report_id: str
+
+
+class ConversionConfirmResponse(BaseModel):
+    status: str
+    updated_count: int
+    flagged_for_review: int
+
+
+# ── Phase 8: Rollover schemas ─────────────────────────────────────────────
+
+
+class RolloverItem(BaseModel):
+    description: str
+    amount: float | None
+    cma_field_name: str | None
+    broad_classification: str | None
+
+
+class RolloverPreviewRequest(BaseModel):
+    client_id: str
+    from_year: int
+    to_year: int
+
+
+class RolloverPreviewResponse(BaseModel):
+    client_id: str
+    from_year: int
+    to_year: int
+    items_to_carry_forward: list[RolloverItem]
+
+
+class RolloverConfirmRequest(BaseModel):
+    client_id: str
+    from_year: int
+    to_year: int
+
+
+class RolloverConfirmResponse(BaseModel):
+    status: str
+    document_ids: list[str]
+    items_created: int
+
+
+# ── Phase 8: User Management schemas ────────────────────────────────────
+
+
+class UserUpdateRequest(BaseModel):
+    full_name: str | None = Field(None, min_length=1, max_length=255)
+    role: UserRole | None = None
