@@ -165,3 +165,52 @@ export interface DownloadUrlResponse {
   signed_url: string;
   expires_in: number;
 }
+
+// ── Phase 8: Advanced Features ────────────────────────────────────────────
+
+export type ChangeType = "changed" | "added" | "removed";
+
+export interface ConversionDiffItem {
+  description: string;
+  provisional_amount: number | null;
+  audited_amount: number | null;
+  change_type: ChangeType;
+}
+
+export interface ConversionDiffResponse {
+  provisional_doc_id: string;
+  audited_doc_id: string;
+  changed: ConversionDiffItem[];
+  added: ConversionDiffItem[];
+  removed: ConversionDiffItem[];
+}
+
+export interface ConversionConfirmResponse {
+  status: string;
+  updated_count: number;
+  flagged_for_review: number;
+}
+
+export interface RolloverItem {
+  description: string;
+  amount: number | null;
+  cma_field_name: string | null;
+  broad_classification: string | null;
+}
+
+export interface RolloverPreviewResponse {
+  client_id: string;
+  from_year: number;
+  to_year: number;
+  items_to_carry_forward: RolloverItem[];
+}
+
+export interface RolloverConfirmResponse {
+  status: string;
+  document_ids: string[];
+  items_created: number;
+}
+
+export interface UserProfileFull extends UserProfile {
+  is_active: boolean;
+}

@@ -8,7 +8,6 @@ import {
   ArrowLeft,
   CheckSquare,
   FileBarChart,
-  Loader2,
   MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +21,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { apiClient } from "@/lib/api";
 import { ConfidenceDashboard } from "@/components/classification/ConfidenceDashboard";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { CMAReport, Client, ConfidenceSummary } from "@/types";
 
 export default function CMAOverviewPage() {
@@ -51,8 +51,19 @@ export default function CMAOverviewPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      <div className="space-y-6">
+        <Skeleton className="h-5 w-32" />
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-2">
+            <Skeleton className="h-8 w-64" />
+            <Skeleton className="h-4 w-40" />
+          </div>
+          <div className="flex gap-2">
+            <Skeleton className="h-8 w-28" />
+            <Skeleton className="h-8 w-28" />
+          </div>
+        </div>
+        <Skeleton className="h-48 w-full rounded-xl" />
       </div>
     );
   }

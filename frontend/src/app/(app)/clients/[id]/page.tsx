@@ -13,6 +13,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { apiClient } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { DocumentList } from "@/components/documents/DocumentList";
@@ -36,6 +46,7 @@ export default function ClientDetailPage() {
   const [reports, setReports] = useState<CMAReport[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -55,9 +66,8 @@ export default function ClientDetailPage() {
 
   async function handleDelete() {
     if (!client) return;
-    if (!window.confirm(`Delete "${client.name}"? This cannot be undone.`)) return;
-
     setDeleting(true);
+    setShowDeleteDialog(false);
     try {
       await apiClient(`/api/clients/${client.id}`, { method: "DELETE" });
       toast.success(`"${client.name}" deleted`);
@@ -105,7 +115,7 @@ export default function ClientDetailPage() {
             <Button
               variant="destructive"
               size="sm"
-              onClick={handleDelete}
+              onClick={() => setShowDeleteDialog(true)}
               disabled={deleting}
             >
               <Trash2 className="mr-1.5 h-3.5 w-3.5" />
@@ -237,6 +247,27 @@ export default function ClientDetailPage() {
           </div>
         )}
       </div>
+
+      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete "{client.name}"?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the client and all associated data.
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={handleDelete}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import { DoubtReport } from "@/components/classification/DoubtReport";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { Classification } from "@/types";
 
 export default function DoubtsPage() {
@@ -29,8 +30,17 @@ export default function DoubtsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      <div className="space-y-6">
+        <Skeleton className="h-5 w-32" />
+        <div className="space-y-2">
+          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-4 w-64" />
+        </div>
+        <div className="space-y-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <Skeleton key={i} className="h-20 w-full rounded-lg" />
+          ))}
+        </div>
       </div>
     );
   }
@@ -54,7 +64,17 @@ export default function DoubtsPage() {
         </p>
       </div>
 
-      <DoubtReport doubts={doubts} onResolved={handleResolved} />
+      {doubts.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <CheckCircle2 className="mb-3 h-12 w-12 text-green-500/60" />
+          <p className="font-medium text-muted-foreground">No doubt items</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            All classifications resolved
+          </p>
+        </div>
+      ) : (
+        <DoubtReport doubts={doubts} onResolved={handleResolved} />
+      )}
     </div>
   );
 }
