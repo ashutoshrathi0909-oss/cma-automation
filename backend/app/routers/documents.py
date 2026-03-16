@@ -30,6 +30,7 @@ MAGIC_BYTES: dict[str, bytes] = {
 }
 
 STORAGE_BUCKET = "documents"
+MAX_UPLOAD_BYTES = 50 * 1024 * 1024  # 50 MB
 
 
 def _get_extension(filename: str) -> str:
@@ -83,7 +84,14 @@ async def upload_document(
     # ── 3. Read file content ─────────────────────────────────────────────────
     content = await file.read()
 
-    # ── 4. Magic-byte validation (guards against renamed executables) ─────────
+    # ── 4. File size guard (must check before storage upload) ────────────────
+    if len(content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(
+            status_code=413,
+            detail="File too large. Maximum allowed size is 50 MB.",
+        )
+
+    # ── 5. Magic-byte validation (guards against renamed executables) ─────────
     if not _check_magic_bytes(content, file_type):
         raise HTTPException(
             status_code=400,
@@ -92,7 +100,7 @@ async def upload_document(
 
     service = get_service_client()
 
-    # ── 5. Verify the client exists (CRITICAL: blocks cross-client uploads) ──
+    # ── 6. Verify the client exists (CRITICAL: blocks cross-client uploads) ──
     try:
         client_result = (
             service.table("clients")
@@ -107,7 +115,7 @@ async def upload_document(
     if not client_result.data:
         raise HTTPException(status_code=404, detail="Client not found")
 
-    # ── 6. Upload to Supabase Storage ────────────────────────────────────────
+    # ── 7. Upload to Supabase Storage ────────────────────────────────────────
     # UUID path prevents collisions and path-traversal attacks
     safe_name = os.path.basename(file.filename or f"upload.{ext}")
     storage_path = f"{client_id}/{uuid4()}.{ext}"
@@ -120,7 +128,7 @@ async def upload_document(
             detail="Storage upload failed. Please try again.",
         )
 
-    # ── 7. Create database record ────────────────────────────────────────────
+    # ── 8. Create database record ────────────────────────────────────────────
     try:
         result = (
             service.table("documents")

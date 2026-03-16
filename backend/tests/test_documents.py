@@ -211,6 +211,23 @@ class TestUploadDocument:
         assert response.status_code == 400
         assert "content does not match" in response.json()["detail"]
 
+    def test_upload_file_too_large_413(self, admin_client):
+        """File exceeding 50 MB → 413 (rejected before storage call)."""
+        # 50 MB + 1 byte — starts with valid PDF magic bytes so extension check passes
+        large_content = b"%PDF" + b"x" * (50 * 1024 * 1024 - 3)
+        response = admin_client.post(
+            "/api/documents/",
+            files={"file": ("huge.pdf", large_content, "application/pdf")},
+            data={
+                "client_id": "client-uuid-0001",
+                "document_type": "profit_and_loss",
+                "financial_year": "2024",
+                "nature": "audited",
+            },
+        )
+        assert response.status_code == 413
+        assert "50 MB" in response.json()["detail"]
+
     def test_upload_nonexistent_client_404(self, admin_client):
         """Upload to a client_id that doesn't exist → 404."""
         with patch(
