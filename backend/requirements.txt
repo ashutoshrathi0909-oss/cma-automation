@@ -12,15 +12,19 @@ xlrd>=2.0.1
 
 # PDF Processing
 pdfplumber>=0.11.0
+pikepdf>=9.0.0
 
 # OCR (scanned PDFs) — added in Phase 4 when needed
 # surya-ocr has heavy PyTorch deps, keep Docker image lean
 # surya-ocr>=0.17.0
-# pdf2image>=1.17.0
+pdf2image>=1.17.0
 Pillow>=11.0.0
 
 # AI Classification
 anthropic>=0.44.0
+
+# OpenRouter (via OpenAI-compatible SDK)
+openai>=1.60.0
 
 # Fuzzy Matching
 rapidfuzz>=3.10.0
