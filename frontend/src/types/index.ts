@@ -49,6 +49,10 @@ export interface Document {
   filtered_file_path?: string;
   removed_pages?: number[];
   original_page_count?: number;
+  version_number?: number;
+  parent_document_id?: string;
+  superseded_at?: string;
+  superseded_by?: string;
 }
 
 export interface ExtractedLineItem {
@@ -213,6 +217,42 @@ export interface ConversionConfirmResponse {
   status: string;
   updated_count: number;
   flagged_for_review: number;
+}
+
+// ── Phase 8: Conversion V2 ──────────────────────────────────────────────
+
+export type DiffCategory = "unchanged" | "amount_changed" | "desc_changed" | "added" | "removed";
+
+export interface ConversionDiffItemV2 {
+  provisional_item_id: string | null;
+  audited_item_id: string | null;
+  provisional_desc: string | null;
+  audited_desc: string | null;
+  provisional_amount: number | null;
+  audited_amount: number | null;
+  category: DiffCategory;
+  match_score: number;
+  needs_reclassification: boolean;
+}
+
+export interface ConversionPreviewResponseV2 {
+  source_doc_id: string;
+  target_doc_id: string;
+  unchanged: ConversionDiffItemV2[];
+  amount_changed: ConversionDiffItemV2[];
+  desc_changed: ConversionDiffItemV2[];
+  added: ConversionDiffItemV2[];
+  removed: ConversionDiffItemV2[];
+  summary: Record<DiffCategory, number>;
+}
+
+export interface ConversionConfirmResponseV2 {
+  unchanged: number;
+  amount_updated: number;
+  reclassified: number;
+  added: number;
+  removed: number;
+  message: string;
 }
 
 export interface RolloverItem {
