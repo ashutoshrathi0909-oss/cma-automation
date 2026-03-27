@@ -18,6 +18,8 @@ DocumentType = Literal[
 ]
 DocumentNature = Literal["audited", "provisional"]
 ExtractionStatus = Literal["pending", "processing", "extracted", "verified", "failed"]
+SourceUnit = Literal["rupees", "thousands", "lakhs", "crores"]
+CMAOutputUnit = Literal["lakhs", "crores"]
 
 UserRole = Literal["admin", "employee"]
 
@@ -99,8 +101,25 @@ class DocumentResponse(BaseModel):
     financial_year: int
     nature: DocumentNature
     extraction_status: ExtractionStatus
+    source_unit: SourceUnit = "rupees"
     uploaded_by: str
     uploaded_at: datetime
+
+
+class FilterPagesRequest(BaseModel):
+    pages_to_remove: str  # "1-2, 7, 10-15"
+
+
+class FilterPagesResponse(BaseModel):
+    document_id: str
+    original_page_count: int
+    removed_pages: list[int]
+    filtered_page_count: int
+
+
+class PageCountResponse(BaseModel):
+    document_id: str
+    page_count: int
 
 
 # ── Extraction / Line Item schemas ────────────────────────────────────────────
@@ -114,12 +133,29 @@ class LineItemResponse(BaseModel):
     section: str | None
     raw_text: str | None
     is_verified: bool
+    ambiguity_question: str | None = None
+
+    @classmethod
+    def from_db(cls, row: dict) -> "LineItemResponse":
+        """Construct from a DB row, mapping source_text → description/raw_text."""
+        source = row.get("source_text") or row.get("description") or ""
+        return cls(
+            id=row["id"],
+            document_id=row["document_id"],
+            description=source,
+            amount=row.get("amount"),
+            section=row.get("section"),
+            raw_text=row.get("raw_text") or source,
+            is_verified=row.get("is_verified", False),
+            ambiguity_question=row.get("ambiguity_question"),
+        )
 
 
 class LineItemUpdate(BaseModel):
     description: str | None = Field(None, min_length=1)
     amount: float | None = None
     section: str | None = None
+    ambiguity_question: str | None = None
 
 
 TaskStatus = Literal["queued", "in_progress", "complete", "failed", "not_found"]
@@ -220,6 +256,7 @@ class ClassificationSummary(BaseModel):
 class CMAReportCreate(BaseModel):
     title: str = Field(..., min_length=1, max_length=255)
     document_ids: list[str] = Field(..., min_length=1)
+    cma_output_unit: CMAOutputUnit = "lakhs"
 
 
 class CMAReportResponse(BaseModel):
@@ -228,6 +265,7 @@ class CMAReportResponse(BaseModel):
     title: str
     status: str
     document_ids: list[str]
+    cma_output_unit: CMAOutputUnit = "lakhs"
     created_by: str
     output_path: str | None = None
     created_at: datetime
@@ -303,6 +341,43 @@ class ConversionConfirmResponse(BaseModel):
     flagged_for_review: int
 
 
+# ── Phase 8: Conversion V2 schemas ──────────────────────────────────────
+
+DiffCategoryType = Literal["unchanged", "amount_changed", "desc_changed", "added", "removed"]
+
+
+class ConversionDiffItemV2(BaseModel):
+    provisional_item_id: str | None = None
+    audited_item_id: str | None = None
+    provisional_desc: str | None = None
+    audited_desc: str | None = None
+    provisional_amount: float | None = None
+    audited_amount: float | None = None
+    category: DiffCategoryType
+    match_score: float
+    needs_reclassification: bool
+
+
+class ConversionPreviewResponseV2(BaseModel):
+    source_doc_id: str
+    target_doc_id: str
+    unchanged: list[ConversionDiffItemV2]
+    amount_changed: list[ConversionDiffItemV2]
+    desc_changed: list[ConversionDiffItemV2]
+    added: list[ConversionDiffItemV2]
+    removed: list[ConversionDiffItemV2]
+    summary: dict
+
+
+class ConversionConfirmResponseV2(BaseModel):
+    unchanged: int
+    amount_updated: int
+    reclassified: int
+    added: int
+    removed: int
+    message: str
+
+
 # ── Phase 8: Rollover schemas ─────────────────────────────────────────────
 
 
@@ -344,3 +419,21 @@ class RolloverConfirmResponse(BaseModel):
 class UserUpdateRequest(BaseModel):
     full_name: str | None = Field(None, min_length=1, max_length=255)
     role: UserRole | None = None
+
+
+# ── Roll Forward schemas ─────────────────────────────────────────────────
+
+
+class RollForwardPreviewRequest(BaseModel):
+    source_report_id: str
+    client_id: str
+    add_year: int | None = None
+
+
+class RollForwardConfirmRequest(BaseModel):
+    source_report_id: str
+    client_id: str
+    add_year: int
+    new_document_ids: list[str]
+    title: str | None = None
+    cma_output_unit: CMAOutputUnit = "lakhs"

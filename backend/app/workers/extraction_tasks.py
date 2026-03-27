@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 STORAGE_BUCKET = "documents"
 
 
-async def run_extraction(ctx: dict, document_id: str) -> dict:
+async def run_extraction(ctx: dict, document_id: str, selected_sheets: list[str] | None = None) -> dict:
     """ARQ task: extract line items from a document and persist them to the DB.
 
     Flow
@@ -41,7 +41,7 @@ async def run_extraction(ctx: dict, document_id: str) -> dict:
     # ── 1. Fetch document record ──────────────────────────────────────────────
     doc_result = (
         service.table("documents")
-        .select("id, file_path, file_type, client_id")
+        .select("id, file_path, file_type, client_id, financial_year, filtered_file_path")
         .eq("id", document_id)
         .single()
         .execute()
@@ -53,6 +53,7 @@ async def run_extraction(ctx: dict, document_id: str) -> dict:
     doc = doc_result.data
     file_path: str = doc["file_path"]
     file_type: str = doc["file_type"]
+    financial_year: int | None = doc.get("financial_year")
 
     try:
         # ── 2. IDEMPOTENCY: delete any prior line items ───────────────────────
@@ -60,28 +61,40 @@ async def run_extraction(ctx: dict, document_id: str) -> dict:
             "document_id", document_id
         ).execute()
 
-        # ── 3. Download from Supabase Storage ────────────────────────────────
-        logger.info("Downloading %s from storage", file_path)
-        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+        # ── 3. Download from Supabase Storage (prefer filtered PDF) ──────────
+        download_path = file_path
+        if doc.get("filtered_file_path"):
+            download_path = doc["filtered_file_path"]
+            logger.info("Using filtered PDF at %s", download_path)
+        logger.info("Downloading %s from storage", download_path)
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(download_path)
 
         # ── 4. Extract line items ─────────────────────────────────────────────
-        logger.info("Extracting line items from %s (type=%s)", file_path, file_type)
-        line_items = await extract_document(file_content, file_type, file_path)
+        logger.info("Extracting line items from %s (type=%s, selected_sheets=%s)", file_path, file_type, selected_sheets)
+        line_items = await extract_document(file_content, file_type, file_path, selected_sheets=selected_sheets)
 
         # ── 5. Save line items to DB ──────────────────────────────────────────
+        # DB column is source_text (description + raw_text combined).
+        # Insert in batches of 500 to avoid Supabase row limits.
         if line_items:
             rows = [
                 {
                     "document_id": document_id,
-                    "description": item.description,
+                    "client_id": doc.get("client_id"),
+                    "source_text": item.description,
                     "amount": item.amount,
                     "section": item.section,
-                    "raw_text": item.raw_text,
+                    "financial_year": financial_year,
                     "is_verified": False,
+                    "ambiguity_question": item.ambiguity_question,
                 }
                 for item in line_items
             ]
-            service.table("extracted_line_items").insert(rows).execute()
+            # Batch insert (500 rows at a time)
+            batch_size = 500
+            for i in range(0, len(rows), batch_size):
+                batch = rows[i:i + batch_size]
+                service.table("extracted_line_items").insert(batch).execute()
             logger.info("Saved %d line items for document %s", len(rows), document_id)
 
         # ── 6. Update status → extracted ─────────────────────────────────────

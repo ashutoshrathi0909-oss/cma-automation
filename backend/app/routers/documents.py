@@ -11,7 +11,17 @@ from app.models.schemas import (
     DocumentNature,
     DocumentResponse,
     DocumentType,
+    FilterPagesRequest,
+    FilterPagesResponse,
+    PageCountResponse,
+    SourceUnit,
     UserProfile,
+)
+from app.services.pdf.page_manager import (
+    get_page_count,
+    pages_to_keep,
+    parse_page_ranges,
+    remove_pages,
 )
 
 router = APIRouter(prefix="/api/documents", tags=["documents"])
@@ -31,6 +41,13 @@ MAGIC_BYTES: dict[str, bytes] = {
 
 STORAGE_BUCKET = "documents"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024  # 50 MB
+
+# MIME types for each file type (used when uploading to Supabase Storage)
+MIME_TYPES: dict[str, str] = {
+    "pdf": "application/pdf",
+    "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "xls": "application/vnd.ms-excel",
+}
 
 
 def _get_extension(filename: str) -> str:
@@ -60,6 +77,7 @@ async def upload_document(
     document_type: DocumentType = Form(...),
     financial_year: int = Form(...),
     nature: DocumentNature = Form(...),
+    source_unit: SourceUnit = Form("rupees"),
     file: UploadFile = File(...),
     current_user: UserProfile = Depends(get_current_user),
 ) -> DocumentResponse:
@@ -121,7 +139,11 @@ async def upload_document(
     storage_path = f"{client_id}/{uuid4()}.{ext}"
 
     try:
-        service.storage.from_(STORAGE_BUCKET).upload(storage_path, content)
+        service.storage.from_(STORAGE_BUCKET).upload(
+            storage_path,
+            content,
+            {"content-type": MIME_TYPES.get(file_type, "application/octet-stream")},
+        )
     except Exception:
         raise HTTPException(
             status_code=503,
@@ -141,6 +163,7 @@ async def upload_document(
                     "document_type": document_type,
                     "financial_year": financial_year,
                     "nature": nature,
+                    "source_unit": source_unit,
                     "extraction_status": "pending",
                     "uploaded_by": current_user.id,
                 }
@@ -191,6 +214,30 @@ async def list_documents(
     return [DocumentResponse(**r) for r in (result.data or [])]
 
 
+@router.get("/{document_id}", response_model=DocumentResponse)
+async def get_document(
+    document_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> DocumentResponse:
+    """Return a single document by ID."""
+    service = get_service_client()
+    try:
+        result = (
+            service.table("documents")
+            .select("*")
+            .eq("id", document_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    return DocumentResponse(**result.data)
+
+
 @router.delete("/{document_id}", status_code=204)
 async def delete_document(
     document_id: str,
@@ -217,3 +264,144 @@ async def delete_document(
     service.storage.from_(STORAGE_BUCKET).remove([doc["file_path"]])
     service.table("documents").delete().eq("id", document_id).execute()
     return None
+
+
+@router.get("/{document_id}/page-count", response_model=PageCountResponse)
+async def get_document_page_count(
+    document_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> PageCountResponse:
+    """Return total page count for a PDF document."""
+    service = get_service_client()
+
+    # ── 1. Fetch document record ──────────────────────────────────────────────
+    try:
+        result = (
+            service.table("documents")
+            .select("*")
+            .eq("id", document_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    doc = result.data
+
+    # ── 2. Verify it's a PDF ──────────────────────────────────────────────────
+    if doc.get("file_type") != "pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Page count is only supported for PDF documents.",
+        )
+
+    # ── 3. Download PDF from Supabase Storage ─────────────────────────────────
+    file_path: str = doc["file_path"]
+    try:
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to download document from storage.")
+
+    # ── 4. Get page count ─────────────────────────────────────────────────────
+    page_count = get_page_count(file_content)
+
+    # ── 5. Update original_page_count in DB if not already set ───────────────
+    if not doc.get("original_page_count"):
+        service.table("documents").update(
+            {"original_page_count": page_count}
+        ).eq("id", document_id).execute()
+
+    return PageCountResponse(document_id=document_id, page_count=page_count)
+
+
+@router.post("/{document_id}/filter-pages", response_model=FilterPagesResponse)
+async def filter_document_pages(
+    document_id: str,
+    body: FilterPagesRequest,
+    current_user: UserProfile = Depends(get_current_user),
+) -> FilterPagesResponse:
+    """Remove specified pages from PDF, save filtered version for OCR."""
+    service = get_service_client()
+
+    # ── 1. Fetch document, verify PDF ────────────────────────────────────────
+    try:
+        result = (
+            service.table("documents")
+            .select("*")
+            .eq("id", document_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    doc = result.data
+
+    if doc.get("file_type") != "pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Page filtering is only supported for PDF documents.",
+        )
+
+    # ── 2. Download original PDF ──────────────────────────────────────────────
+    file_path: str = doc["file_path"]
+    try:
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to download document from storage.")
+
+    # ── 3. Get page count and validate pages_to_remove ───────────────────────
+    page_count = get_page_count(file_content)
+
+    # ── 4. Parse removal list ─────────────────────────────────────────────────
+    removed_pages = parse_page_ranges(body.pages_to_remove, page_count)
+
+    # ── 5. Guard: nothing to remove → 400 ────────────────────────────────────
+    if not removed_pages:
+        raise HTTPException(
+            status_code=400,
+            detail="No valid pages to remove. Check the pages_to_remove value.",
+        )
+
+    # ── 6. Build keep list and create filtered PDF ────────────────────────────
+    keep_pages = pages_to_keep(body.pages_to_remove, page_count)
+    filtered_bytes = remove_pages(file_content, keep_pages)
+
+    # ── 7. Upload filtered PDF to Storage ────────────────────────────────────
+    filtered_path = f"{file_path}_filtered.pdf"
+    try:
+        # Try remove first (idempotent re-filter support) — ignore errors
+        try:
+            service.storage.from_(STORAGE_BUCKET).remove([filtered_path])
+        except Exception:
+            pass
+        service.storage.from_(STORAGE_BUCKET).upload(
+            filtered_path,
+            filtered_bytes,
+            {"content-type": "application/pdf"},
+        )
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to upload filtered PDF to storage.")
+
+    # ── 8. Update document record ─────────────────────────────────────────────
+    service.table("documents").update(
+        {
+            "filtered_file_path": filtered_path,
+            "removed_pages": removed_pages,
+            "original_page_count": page_count,
+        }
+    ).eq("id", document_id).execute()
+
+    # ── 9. Return response ────────────────────────────────────────────────────
+    return FilterPagesResponse(
+        document_id=document_id,
+        original_page_count=page_count,
+        removed_pages=removed_pages,
+        filtered_page_count=page_count - len(removed_pages),
+    )
