@@ -42,9 +42,13 @@ export interface Document {
   document_type: DocumentType;
   financial_year: number;
   nature: DocumentNature;
+  source_unit?: "rupees" | "thousands" | "lakhs" | "crores";
   extraction_status: ExtractionStatus;
   uploaded_by: string;
   uploaded_at: string;
+  filtered_file_path?: string;
+  removed_pages?: number[];
+  original_page_count?: number;
 }
 
 export interface ExtractedLineItem {
@@ -60,6 +64,7 @@ export interface ExtractedLineItem {
   verified_by: string | null;
   verified_at: string | null;
   created_at: string;
+  ambiguity_question: string | null;
 }
 
 export type ClassificationMethod = "fuzzy_match" | "ai_haiku" | "ai_sonnet" | "manual" | "learned";
@@ -99,6 +104,21 @@ export interface LineItemResponse {
   section: string | null;
   raw_text: string | null;
   is_verified: boolean;
+  ambiguity_question: string | null;
+}
+
+// ── Sheet preview (Excel files) ──────────────────────────────────────────
+
+export interface SheetInfo {
+  name: string;
+  rows: number;
+  auto_included: boolean;
+}
+
+export interface SheetsPreviewResponse {
+  document_id: string;
+  file_type: string;
+  sheets: SheetInfo[];
 }
 
 export interface TaskStatusResponse {
@@ -124,15 +144,19 @@ export interface CMAReport {
   title: string;
   status: CMAReportStatus;
   document_ids: string[];
+  cma_output_unit?: "lakhs" | "crores";
   created_by: string;
   output_path: string | null;
   created_at: string;
   updated_at: string;
+  rolled_from_report_id?: string;
+  roll_forward_metadata?: Record<string, unknown>;
 }
 
 export interface CMAReportCreate {
   title: string;
   document_ids: string[];
+  cma_output_unit?: "lakhs" | "crores";
 }
 
 export interface ConfidenceSummary {
@@ -213,4 +237,34 @@ export interface RolloverConfirmResponse {
 
 export interface UserProfileFull extends UserProfile {
   is_active: boolean;
+}
+
+// ── Roll Forward ──────────────────────────────────────────────────────────
+
+export interface RollForwardPreviewResponse {
+  source_report_id: string;
+  source_report_title: string;
+  source_years: number[];
+  drop_year: number | null;
+  keep_years: number[];
+  add_year: number;
+  target_years: number[];
+  carried_documents: Document[];
+  dropped_documents: Document[];
+  carried_classifications_count: number;
+  new_year_documents: Document[];
+  new_year_docs_ready: boolean;
+  can_confirm: boolean;
+  blocking_reasons: string[];
+}
+
+export interface RollForwardConfirmResponse {
+  new_report_id: string;
+  title: string;
+  status: string;
+  document_ids: string[];
+  financial_years: number[];
+  carried_classifications_count: number;
+  pending_classification_docs: number;
+  message: string;
 }
