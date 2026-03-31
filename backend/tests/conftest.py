@@ -28,9 +28,14 @@ EMPLOYEE_USER = UserProfile(
 
 @pytest.fixture
 def client():
-    """Unauthenticated test client."""
+    """Unauthenticated test client — real auth logic, no bypass."""
+    import app.dependencies as _deps
+    _original = _deps._DISABLE_AUTH
+    _deps._DISABLE_AUTH = False
     app.dependency_overrides.clear()
-    return TestClient(app)
+    yield TestClient(app)
+    app.dependency_overrides.clear()
+    _deps._DISABLE_AUTH = _original
 
 
 @pytest.fixture
