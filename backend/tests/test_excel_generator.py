@@ -544,13 +544,15 @@ def test_fetch_classified_data_filters_out_doubt_items():
     """_fetch_classified_data calls .eq('is_doubt', False) on classifications query — doubt items never silently classified."""
     service = MagicMock()
 
-    # Items exist
+    # Items chain — must support .select().eq().range().execute() for paginated fetch
     items_chain = MagicMock()
     items_chain.select.return_value = items_chain
+    items_chain.eq.return_value = items_chain
     items_chain.in_.return_value = items_chain
+    items_chain.range.return_value = items_chain
     items_chain.execute.return_value = MagicMock(data=[{"id": "item-1", "document_id": "doc-1", "amount": 100.0}])
 
-    # Classifications chain — capture the eq call
+    # Classifications chain — capture the eq call (.select().in_().eq().execute())
     clf_chain = MagicMock()
     clf_chain.select.return_value = clf_chain
     clf_chain.in_.return_value = clf_chain

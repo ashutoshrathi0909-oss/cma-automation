@@ -16,6 +16,25 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 
+# ── Force Anthropic provider for all tests in this file ─────────────────────────
+# The environment uses classifier_provider="openrouter", but these tests exercise
+# the Anthropic code path. Patch get_settings at module level via autouse fixture.
+
+@pytest.fixture(autouse=True)
+def force_anthropic_classifier():
+    """Override classifier_provider to 'anthropic' for all tests in this module."""
+    settings_mock = MagicMock(
+        classifier_provider="anthropic",
+        anthropic_api_key="test-key",
+        classifier_model="claude-haiku-4-5-20251001",
+    )
+    with patch(
+        "app.services.classification.ai_classifier.get_settings",
+        return_value=settings_mock,
+    ):
+        yield
+
+
 # ── Shared test data ────────────────────────────────────────────────────────────
 
 from app.services.classification.fuzzy_matcher import FuzzyMatchResult
