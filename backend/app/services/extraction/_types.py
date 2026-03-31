@@ -9,8 +9,38 @@ parse_amount without creating circular imports with extractor_factory.py.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import re
+from dataclasses import dataclass, field
 from typing import Optional
+
+
+# ── Text normalisation ────────────────────────────────────────────────────────
+
+# Strips Excel note/item prefixes like "Item 1 (i) : Domestic sales" → "Domestic sales"
+_NOTE_PREFIX = re.compile(
+    r'^(?:(?:Item|Note|Particulars)\s*\d*\s*(?:\([^)]*\))?\s*[:.\-]\s*)',
+    re.IGNORECASE,
+)
+_NUMBERED = re.compile(r'^\d+[.)]\s*')
+_LETTERED = re.compile(r'^[a-z][.)]\s*', re.IGNORECASE)
+
+
+def normalize_line_text(raw: str) -> str:
+    """Strip Excel note prefixes, numbered/lettered list markers, and whitespace.
+
+    Examples
+    --------
+    "Item 1 (i) : Domestic sales"  → "Domestic sales"
+    "Note 3 - Depreciation"        → "Depreciation"
+    "1. Salaries & Wages"          → "Salaries & Wages"
+    "a) Travel expenses"           → "Travel expenses"
+    "  Raw Materials  "            → "Raw Materials"
+    """
+    text = raw.strip()
+    text = _NOTE_PREFIX.sub('', text)
+    text = _NUMBERED.sub('', text)
+    text = _LETTERED.sub('', text)
+    return text.strip()
 
 
 # ── LineItem ──────────────────────────────────────────────────────────────────
@@ -24,6 +54,7 @@ class LineItem:
     amount: float      # 1234567.89 — always normalised to float
     section: str       # "expenses", "income", "assets", "liabilities", ""
     raw_text: str      # original text / cell value before parsing
+    ambiguity_question: str | None = field(default=None, kw_only=True)
 
 
 # ── Domain exception ──────────────────────────────────────────────────────────

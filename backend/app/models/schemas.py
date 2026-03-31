@@ -104,10 +104,18 @@ class DocumentResponse(BaseModel):
     source_unit: SourceUnit = "rupees"
     uploaded_by: str
     uploaded_at: datetime
+    # Page filter fields (set after filter-pages endpoint is called)
+    original_page_count: int | None = None
+    removed_pages: list[int] | None = None
+    filtered_file_path: str | None = None
+    # Redaction fields (set after apply-redaction endpoint is called)
+    redacted_file_path: str | None = None
+    redaction_terms: list[str] | None = None
+    redaction_count: int | None = None
 
 
 class FilterPagesRequest(BaseModel):
-    pages_to_remove: str  # "1-2, 7, 10-15"
+    pages_to_remove: str = Field(..., max_length=500)  # "1-2, 7, 10-15"
 
 
 class FilterPagesResponse(BaseModel):
@@ -437,3 +445,32 @@ class RollForwardConfirmRequest(BaseModel):
     new_document_ids: list[str]
     title: str | None = None
     cma_output_unit: CMAOutputUnit = "lakhs"
+
+
+# ── Redaction schemas ─────────────────────────────────────────────────────
+
+
+class RedactionPreviewRequest(BaseModel):
+    terms: list[str]
+
+
+class RedactionPreviewResponse(BaseModel):
+    document_id: str
+    term_counts: dict[str, int]
+    total_instances: int
+
+
+class RedactionApplyRequest(BaseModel):
+    terms: list[str]
+
+
+class RedactionApplyResponse(BaseModel):
+    document_id: str
+    redacted_file_path: str
+    redaction_count: int
+    per_term_counts: dict[str, int]
+
+
+class DetectNamesResponse(BaseModel):
+    document_id: str
+    detected_names: list[str]

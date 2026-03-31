@@ -81,10 +81,16 @@ async def run_classification(ctx: dict, document_id: str) -> dict:
     item_ids = [item["id"] for item in (items_result.data or [])]
 
     if item_ids:
-        service.table("classifications").delete().in_("line_item_id", item_ids).execute()
+        # Delete in batches of 200 to avoid URL length limits with large documents
+        _BATCH_SIZE = 200
+        deleted_total = 0
+        for i in range(0, len(item_ids), _BATCH_SIZE):
+            batch = item_ids[i : i + _BATCH_SIZE]
+            service.table("classifications").delete().in_("line_item_id", batch).execute()
+            deleted_total += len(batch)
         logger.info(
             "Deleted existing classifications for %d line items (document_id=%s)",
-            len(item_ids),
+            deleted_total,
             document_id,
         )
 

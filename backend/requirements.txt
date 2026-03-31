@@ -13,6 +13,7 @@ xlrd>=2.0.1
 # PDF Processing
 pdfplumber>=0.11.0
 pikepdf>=9.0.0
+pymupdf>=1.24.0
 
 # OCR (scanned PDFs) — added in Phase 4 when needed
 # surya-ocr has heavy PyTorch deps, keep Docker image lean

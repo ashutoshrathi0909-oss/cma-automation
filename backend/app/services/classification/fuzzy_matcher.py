@@ -185,36 +185,54 @@ class FuzzyMatcher:
 
         Note: matches against item_name but returns cma_form_item as the
         CMA field name (critical — the form item is the canonical field).
+
+        Uses token_set_ratio (word-order insensitive) with a length penalty
+        to avoid false positives where short queries like "Share Capital"
+        match any long string containing those tokens (e.g. "Redeemable
+        Preference Share Capital (redeemable after 1 year)").
         """
         choices = {m["item_name"]: m for m in mappings if m.get("item_name")}
         if not choices:
             return []
 
+        # Fetch more candidates than needed so we can re-rank after penalty
         matches = process.extract(
             raw_text,
             list(choices.keys()),
             scorer=fuzz.token_set_ratio,
-            limit=top_n,
+            limit=top_n * 3,
         )
 
         results = []
+        query_len = len(raw_text.strip())
         for text, score, _ in matches:
             m = choices[text]
             cma_field = m["cma_form_item"]
             cma_row = m["cma_input_row"]
             if cma_field is None or cma_row is None:
-                continue  # extra safety guard
+                continue
+
+            # Length penalty: if the reference item_name is much longer than
+            # the query, the match is likely a false positive (subset match).
+            # Penalty = min(query_len, match_len) / max(query_len, match_len)
+            match_len = len(text.strip())
+            length_ratio = min(query_len, match_len) / max(query_len, match_len) if max(query_len, match_len) > 0 else 1.0
+            adjusted_score = score * (0.5 + 0.5 * length_ratio)
+
             results.append(
                 FuzzyMatchResult(
                     cma_field_name=cma_field,
                     cma_row=cma_row,
                     cma_sheet=_determine_sheet(cma_field),
                     broad_classification=m.get("broad_classification") or "",
-                    score=float(score),
+                    score=float(adjusted_score),
                     source="reference",
                 )
             )
-        return results
+
+        # Re-sort by adjusted score
+        results.sort(key=lambda r: r.score, reverse=True)
+        return results[:top_n]
 
 
 def _determine_sheet(cma_field_name: str) -> str:

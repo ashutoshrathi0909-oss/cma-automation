@@ -61,6 +61,7 @@ async def extract_document(
     file_content: bytes,
     file_type: str,
     file_path: str,
+    selected_sheets: list[str] | None = None,
 ) -> list[LineItem]:
     """
     Route *file_content* to the appropriate extractor and return line items.
@@ -73,6 +74,9 @@ async def extract_document(
         One of "xlsx", "xls", "pdf".
     file_path : str
         Supabase Storage path (used only for logging / error messages).
+    selected_sheets : list[str] | None
+        If provided, only extract from these sheet names (Excel only).
+        If None, uses auto-detection.
 
     Returns
     -------
@@ -84,13 +88,13 @@ async def extract_document(
     ExtractionError
         If the file cannot be extracted or *file_type* is not supported.
     """
-    logger.info("Extracting document: %s (type=%s)", file_path, file_type)
+    logger.info("Extracting document: %s (type=%s, selected_sheets=%s)", file_path, file_type, selected_sheets)
     try:
         file_type = file_type.lower()
 
         if file_type in ("xlsx", "xls"):
             extractor = ExcelExtractor()
-            return await extractor.extract(file_content, file_type)
+            return await extractor.extract(file_content, file_type, selected_sheets=selected_sheets)
 
         if file_type == "pdf":
             if is_scanned_pdf(file_content):

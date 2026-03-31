@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, Trash2, Clock, CheckCircle2, AlertCircle, Loader2, Zap } from "lucide-react";
+import { FileText, Trash2, Clock, CheckCircle2, AlertCircle, Loader2, Zap, Shield } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
   AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { apiClient } from "@/lib/api";
+import { RedactionModal } from "@/components/documents/RedactionModal";
 import type { Document, ExtractionStatus } from "@/types";
 
 const STATUS_CONFIG: Record<
@@ -61,12 +62,19 @@ const DOC_TYPE_LABELS: Record<string, string> = {
 interface DocumentListProps {
   documents: Document[];
   onDeleted: (id: string) => void;
+  onRedacted?: (updatedDoc: Document) => void;
 }
 
-export function DocumentList({ documents, onDeleted }: DocumentListProps) {
+export function DocumentList({ documents, onDeleted, onRedacted }: DocumentListProps) {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<Document | null>(null);
+  const [redactTarget, setRedactTarget] = useState<Document | null>(null);
+
+  function handleRedactionComplete(updatedDoc: Document) {
+    setRedactTarget(null);
+    onRedacted?.(updatedDoc);
+  }
 
   async function handleDelete(doc: Document) {
     setDeletingId(doc.id);
@@ -122,6 +130,14 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
               {status.label}
             </span>
 
+            {/* Redacted badge */}
+            {doc.redaction_count && doc.redaction_count > 0 && (
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                <Shield className="h-3 w-3" />
+                Redacted
+              </span>
+            )}
+
             {/* Extract & Verify button */}
             {(doc.extraction_status === "pending" || doc.extraction_status === "failed") && (
               <Button
@@ -132,6 +148,19 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
               >
                 <Zap className="h-3.5 w-3.5" />
                 Extract &amp; Verify
+              </Button>
+            )}
+
+            {/* Redact button (PDFs only) */}
+            {doc.file_type === "pdf" && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setRedactTarget(doc)}
+                className="shrink-0"
+              >
+                <Shield className="h-3.5 w-3.5" />
+                Redact
               </Button>
             )}
 
@@ -172,6 +201,13 @@ export function DocumentList({ documents, onDeleted }: DocumentListProps) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <RedactionModal
+        document={redactTarget ?? documents[0]}
+        isOpen={redactTarget !== null}
+        onClose={() => setRedactTarget(null)}
+        onRedactionComplete={handleRedactionComplete}
+      />
     </div>
   );
 }

@@ -25,7 +25,6 @@ from app.services.extraction.extractor_factory import (
 from app.services.extraction._types import parse_amount
 from app.services.extraction.excel_extractor import ExcelExtractor
 from app.services.extraction.pdf_extractor import PdfExtractor
-from app.services.extraction.ocr_extractor import OcrExtractor
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
@@ -73,6 +72,20 @@ class TestLineItem:
         a = LineItem("Revenue", 1000000.0, "income", "Revenue 10,00,000")
         b = LineItem("Revenue", 1000000.0, "income", "Revenue 10,00,000")
         assert a == b
+
+    def test_ambiguity_question_default_none(self):
+        item = LineItem(description="Revenue", amount=1000.0, section="income", raw_text="Revenue 1000")
+        assert item.ambiguity_question is None
+
+    def test_ambiguity_question_can_be_set_as_keyword(self):
+        item = LineItem(
+            description="Wages & Other",
+            amount=2000.0,
+            section="expenses",
+            raw_text="Wages & Other 2000",
+            ambiguity_question="Please split between Row 45 and Row 49",
+        )
+        assert item.ambiguity_question is not None
 
 
 # ── Indian Number Format ───────────────────────────────────────────────────────
@@ -420,168 +433,7 @@ class TestPdfExtractor:
         assert items[0].description == "Revenue"
 
 
-# ── OcrExtractor ───────────────────────────────────────────────────────────────
-
-
-class TestOcrExtractor:
-    @pytest.fixture
-    def extractor(self):
-        return OcrExtractor()
-
-    @pytest.mark.asyncio
-    async def test_ocr_extractor_converts_pages_to_images(self, extractor):
-        """OcrExtractor converts PDF pages to PIL Images before calling surya."""
-        mock_images = [MagicMock(), MagicMock()]
-
-        mock_haiku_response = MagicMock()
-        mock_haiku_response.content = [
-            MagicMock(text='[{"description": "Salaries", "amount": "500000", "section": "expenses"}]')
-        ]
-
-        mock_settings = MagicMock()
-        mock_settings.anthropic_api_key = "test-api-key"
-
-        with (
-            patch("app.services.extraction.ocr_extractor.get_settings", return_value=mock_settings),
-            patch("app.services.extraction.ocr_extractor.convert_from_bytes", return_value=mock_images) as mock_convert,
-            patch("app.services.extraction.ocr_extractor.run_surya_ocr", return_value=["Salaries  5,00,000\n"]),
-            patch("app.services.extraction.ocr_extractor.anthropic.Anthropic") as MockAnthropic,
-        ):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_haiku_response
-            MockAnthropic.return_value = mock_client
-
-            items = await extractor.extract(_make_pdf_bytes_no_text())
-
-        mock_convert.assert_called_once()
-
-    @pytest.mark.asyncio
-    async def test_ocr_extractor_calls_surya(self, extractor):
-        """OcrExtractor calls surya OCR with the page images."""
-        mock_images = [MagicMock()]
-
-        mock_haiku_response = MagicMock()
-        mock_haiku_response.content = [
-            MagicMock(text='[{"description": "Revenue", "amount": "1000000", "section": "income"}]')
-        ]
-
-        mock_settings = MagicMock()
-        mock_settings.anthropic_api_key = "test-api-key"
-
-        with (
-            patch("app.services.extraction.ocr_extractor.get_settings", return_value=mock_settings),
-            patch("app.services.extraction.ocr_extractor.convert_from_bytes", return_value=mock_images),
-            patch("app.services.extraction.ocr_extractor.run_surya_ocr", return_value=["Revenue 10,00,000\n"]) as mock_surya,
-            patch("app.services.extraction.ocr_extractor.anthropic.Anthropic") as MockAnthropic,
-        ):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_haiku_response
-            MockAnthropic.return_value = mock_client
-
-            items = await extractor.extract(_make_pdf_bytes_no_text())
-
-        mock_surya.assert_called_once_with(mock_images)
-
-    @pytest.mark.asyncio
-    async def test_ocr_extractor_structures_via_haiku(self, extractor):
-        """OcrExtractor sends OCR text to Claude Haiku for structuring."""
-        mock_images = [MagicMock()]
-        ocr_text = "Salaries & Wages  5,00,000\nRent  1,20,000\n"
-
-        mock_haiku_response = MagicMock()
-        mock_haiku_response.content = [
-            MagicMock(
-                text=(
-                    '[{"description": "Salaries & Wages", "amount": "500000", "section": "expenses"},'
-                    ' {"description": "Rent", "amount": "120000", "section": "expenses"}]'
-                )
-            )
-        ]
-
-        mock_settings = MagicMock()
-        mock_settings.anthropic_api_key = "test-api-key"
-
-        with (
-            patch("app.services.extraction.ocr_extractor.get_settings", return_value=mock_settings),
-            patch("app.services.extraction.ocr_extractor.convert_from_bytes", return_value=mock_images),
-            patch("app.services.extraction.ocr_extractor.run_surya_ocr", return_value=[ocr_text]),
-            patch("app.services.extraction.ocr_extractor.anthropic.Anthropic") as MockAnthropic,
-        ):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_haiku_response
-            MockAnthropic.return_value = mock_client
-
-            items = await extractor.extract(_make_pdf_bytes_no_text())
-
-        # Claude was called with the OCR text
-        mock_client.messages.create.assert_called_once()
-        call_kwargs = mock_client.messages.create.call_args
-        # The OCR text should appear somewhere in the messages payload
-        messages_arg = call_kwargs.kwargs.get("messages") or call_kwargs.args[0] if call_kwargs.args else None
-        if messages_arg is None and call_kwargs.kwargs:
-            messages_arg = call_kwargs.kwargs.get("messages", [])
-        assert messages_arg is not None
-
-    @pytest.mark.asyncio
-    async def test_ocr_extractor_returns_line_items(self, extractor):
-        """OcrExtractor returns list[LineItem] parsed from Haiku JSON response."""
-        mock_images = [MagicMock()]
-
-        mock_haiku_response = MagicMock()
-        mock_haiku_response.content = [
-            MagicMock(
-                text=(
-                    '[{"description": "Salaries & Wages", "amount": "500000", "section": "expenses"},'
-                    ' {"description": "Rent", "amount": "120000", "section": "expenses"}]'
-                )
-            )
-        ]
-
-        mock_settings = MagicMock()
-        mock_settings.anthropic_api_key = "test-api-key"
-
-        with (
-            patch("app.services.extraction.ocr_extractor.get_settings", return_value=mock_settings),
-            patch("app.services.extraction.ocr_extractor.convert_from_bytes", return_value=mock_images),
-            patch("app.services.extraction.ocr_extractor.run_surya_ocr", return_value=["text"]),
-            patch("app.services.extraction.ocr_extractor.anthropic.Anthropic") as MockAnthropic,
-        ):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_haiku_response
-            MockAnthropic.return_value = mock_client
-
-            items = await extractor.extract(_make_pdf_bytes_no_text())
-
-        assert len(items) == 2
-        assert items[0].description == "Salaries & Wages"
-        assert items[0].amount == pytest.approx(500000.0)
-        assert items[1].description == "Rent"
-        assert items[1].amount == pytest.approx(120000.0)
-
-    @pytest.mark.asyncio
-    async def test_ocr_extractor_handles_malformed_haiku_json(self, extractor):
-        """If Haiku returns malformed JSON, OcrExtractor returns empty list (no crash)."""
-        mock_images = [MagicMock()]
-
-        mock_haiku_response = MagicMock()
-        mock_haiku_response.content = [MagicMock(text="not valid json at all")]
-
-        mock_settings = MagicMock()
-        mock_settings.anthropic_api_key = "test-api-key"
-
-        with (
-            patch("app.services.extraction.ocr_extractor.get_settings", return_value=mock_settings),
-            patch("app.services.extraction.ocr_extractor.convert_from_bytes", return_value=mock_images),
-            patch("app.services.extraction.ocr_extractor.run_surya_ocr", return_value=["text"]),
-            patch("app.services.extraction.ocr_extractor.anthropic.Anthropic") as MockAnthropic,
-        ):
-            mock_client = MagicMock()
-            mock_client.messages.create.return_value = mock_haiku_response
-            MockAnthropic.return_value = mock_client
-
-            items = await extractor.extract(_make_pdf_bytes_no_text())
-
-        assert items == []
+# OcrExtractor tests moved to tests/test_vision_ocr.py (Claude Vision pipeline, Phase 10)
 
 
 # ── Factory: scanned PDF detection ────────────────────────────────────────────

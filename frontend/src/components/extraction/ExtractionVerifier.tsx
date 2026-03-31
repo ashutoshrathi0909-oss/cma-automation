@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { apiClient } from "@/lib/api";
@@ -103,22 +103,41 @@ export function ExtractionVerifier({ documentId, onVerified }: ExtractionVerifie
           </thead>
           <tbody className="divide-y">
             {items.map((item) => (
-              <tr key={item.id} className="hover:bg-muted/30 transition-colors">
-                <td className="px-4 py-2.5 text-xs text-muted-foreground">
-                  {item.section ?? "—"}
-                </td>
-                <td className="max-w-xs px-4 py-2.5">
-                  <span className="line-clamp-2">{item.description}</span>
-                  {item.raw_text && item.raw_text !== item.description && (
-                    <span className="mt-0.5 block truncate text-xs text-muted-foreground">
-                      {item.raw_text}
-                    </span>
-                  )}
-                </td>
-                <td className="px-4 py-2.5 text-right">
-                  <LineItemEditor item={item} onSaved={handleSaved} />
-                </td>
-              </tr>
+              <>
+                <tr key={item.id} className="hover:bg-muted/30 transition-colors">
+                  <td className="px-4 py-2.5 text-xs text-muted-foreground">
+                    {item.section ?? "—"}
+                  </td>
+                  <td className="max-w-xs px-4 py-2.5">
+                    <span className="line-clamp-2">{item.description}</span>
+                    {item.raw_text && item.raw_text !== item.description && (
+                      <span className="mt-0.5 block truncate text-xs text-muted-foreground">
+                        {item.raw_text}
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-4 py-2.5 text-right">
+                    <LineItemEditor item={item} onSaved={handleSaved} />
+                  </td>
+                </tr>
+                {item.ambiguity_question && (
+                  <tr key={`${item.id}-ambiguity`} className="bg-amber-50 dark:bg-amber-950/20 border-b border-amber-100">
+                    <td colSpan={3} className="px-4 py-2">
+                      <div className="flex items-start gap-2 text-xs">
+                        <AlertTriangle className="h-3.5 w-3.5 text-amber-500 mt-0.5 shrink-0" />
+                        <div>
+                          <span className="font-semibold text-amber-700 dark:text-amber-400">
+                            Needs clarification:{" "}
+                          </span>
+                          <span className="text-amber-600 dark:text-amber-300">
+                            {item.ambiguity_question}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </>
             ))}
           </tbody>
         </table>

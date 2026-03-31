@@ -316,16 +316,16 @@ class LearningSystem:
         return result.data
 
     def _get_source_text(self, service, line_item_id: str) -> str | None:
-        """Fetch the description from extracted_line_items for a line_item_id."""
+        """Fetch the source_text from extracted_line_items for a line_item_id."""
         result = (
             service.table("extracted_line_items")
-            .select("description")
+            .select("source_text")
             .eq("id", line_item_id)
             .execute()
         )
         items = result.data or []
         if items:
-            return items[0].get("description")
+            return items[0].get("source_text")
         return None
 
     def _log_audit(

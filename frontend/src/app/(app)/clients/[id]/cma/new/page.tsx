@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { apiClient } from "@/lib/api";
 import type { CMAReport, Client, Document } from "@/types";
@@ -28,6 +29,7 @@ export default function NewCMAReportPage() {
   const [loading, setLoading] = useState(true);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [title, setTitle] = useState("");
+  const [cmaOutputUnit, setCmaOutputUnit] = useState("lakhs");
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
@@ -65,6 +67,7 @@ export default function NewCMAReportPage() {
           body: JSON.stringify({
             title: title.trim(),
             document_ids: Array.from(selectedIds),
+            cma_output_unit: cmaOutputUnit,
           }),
         }
       );
@@ -115,6 +118,19 @@ export default function NewCMAReportPage() {
             placeholder="e.g. FY2024 CMA Report"
             className="mt-1"
           />
+
+          <div className="mt-4">
+            <Label htmlFor="cma_output_unit">CMA Output Unit</Label>
+            <Select
+              id="cma_output_unit"
+              value={cmaOutputUnit}
+              onChange={(e) => setCmaOutputUnit(e.target.value)}
+              className="mt-1"
+            >
+              <option value="lakhs">Lakhs</option>
+              <option value="crores">Crores</option>
+            </Select>
+          </div>
         </CardContent>
       </Card>
 

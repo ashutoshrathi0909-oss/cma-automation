@@ -50,50 +50,62 @@ def test_generator_fills_client_name_in_header():
 
 
 def test_generator_fills_year_headers():
-    """Financial year is written to row 9 of the corresponding YEAR_TO_COLUMN column."""
+    """All 7 year columns (B-H) rewritten starting from base year."""
     _, ws = _make_ws()
     gen = _make_generator()
     docs = [{"financial_year": 2024, "nature": "audited"}]
 
     gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=[])
 
-    # 2024 → column 'C' → index 3
-    assert ws.cell(row=9, column=3).value == 2024
+    # base=2024 → B=2024, C=2025, D=2026, ..., H=2030
+    assert ws.cell(row=8, column=2).value == 2024
+    assert ws.cell(row=8, column=3).value == 2025
+    assert ws.cell(row=8, column=8).value == 2030
+    # Nature: 2024 is historical, rest are projected
+    assert ws.cell(row=10, column=2).value == "audited"
+    assert ws.cell(row=10, column=3).value == "Projected"
 
 
 def test_generator_fills_nature_of_financials():
-    """Nature of financials ('audited'/'provisional') is written to row 10."""
+    """Historical docs get their nature; projection columns get 'Projected'."""
     _, ws = _make_ws()
     gen = _make_generator()
-    docs = [{"financial_year": 2025, "nature": "provisional"}]
+    docs = [
+        {"financial_year": 2024, "nature": "audited"},
+        {"financial_year": 2025, "nature": "provisional"},
+    ]
 
     gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=[])
 
-    # 2025 → column 'D' → index 4
-    assert ws.cell(row=10, column=4).value == "provisional"
+    # base=2024 → B=2024(audited), C=2025(provisional), D+=Projected
+    assert ws.cell(row=10, column=2).value == "audited"
+    assert ws.cell(row=10, column=3).value == "provisional"
+    assert ws.cell(row=10, column=4).value == "Projected"
 
 
 def test_generator_fills_pnl_domestic_sales_row_22():
     """'Domestic Sales' (PNL row 22) is filled for financial year 2024."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
     cell_data = [{"cma_field_name": "Domestic Sales", "financial_year": 2024, "amount": 500_000.0}]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # 2024 → col C (index 3), row 22
-    assert ws.cell(row=22, column=3).value == 500_000.0
+    # Only year is 2024 → base=2024 → column B → index 2
+    assert ws.cell(row=22, column=2).value == 500_000.0
 
 
 def test_generator_fills_pnl_wages_row_45():
     """'Wages' (PNL row 45) is filled correctly."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2023, "nature": "audited"}]
     cell_data = [{"cma_field_name": "Wages", "financial_year": 2023, "amount": 120_000.0}]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # 2023 → col B (index 2), row 45
+    # Only year is 2023 → base=2023 → column B → index 2
     assert ws.cell(row=45, column=2).value == 120_000.0
 
 
@@ -101,6 +113,7 @@ def test_generator_fills_bs_share_capital_row_116():
     """'Issued, Subscribed and Paid up' (BS row 116) is filled correctly."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
     cell_data = [
         {
             "cma_field_name": "Issued, Subscribed and Paid up",
@@ -109,37 +122,42 @@ def test_generator_fills_bs_share_capital_row_116():
         }
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    assert ws.cell(row=116, column=3).value == 1_000_000.0
+    # Only year is 2024 → base=2024 → column B → index 2
+    assert ws.cell(row=116, column=2).value == 1_000_000.0
 
 
 def test_generator_fills_bs_debtors_row_206():
     """'Domestic Receivables' (BS row 206) is filled correctly."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2025, "nature": "audited"}]
     cell_data = [
         {"cma_field_name": "Domestic Receivables", "financial_year": 2025, "amount": 250_000.0}
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # 2025 → col D (index 4)
-    assert ws.cell(row=206, column=4).value == 250_000.0
+    # Only year is 2025 → base=2025 → column B → index 2
+    assert ws.cell(row=206, column=2).value == 250_000.0
 
 
 def test_generator_maps_year_to_correct_column():
-    """Each year maps to the correct Excel column per YEAR_TO_COLUMN."""
+    """Each year maps to the correct Excel column dynamically."""
     _, ws = _make_ws()
     gen = _make_generator()
 
+    # Docs with 4 years → base=2023 → 2023=B(2), 2024=C(3), 2025=D(4), 2026=E(5)
+    years = [2023, 2024, 2025, 2026]
+    docs = [{"financial_year": yr, "nature": "audited"} for yr in years]
     year_to_expected_col = {2023: 2, 2024: 3, 2025: 4, 2026: 5}
     cell_data = [
         {"cma_field_name": "Domestic Sales", "financial_year": yr, "amount": 1.0}
-        for yr in year_to_expected_col
+        for yr in years
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
     for yr, col in year_to_expected_col.items():
         assert ws.cell(row=22, column=col).value == 1.0, f"Year {yr} → col {col} failed"
@@ -149,35 +167,43 @@ def test_generator_handles_multiple_years():
     """Data for different years lands in different columns."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [
+        {"financial_year": 2024, "nature": "audited"},
+        {"financial_year": 2025, "nature": "provisional"},
+    ]
     cell_data = [
         {"cma_field_name": "Wages", "financial_year": 2024, "amount": 100.0},
         {"cma_field_name": "Wages", "financial_year": 2025, "amount": 200.0},
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    assert ws.cell(row=45, column=3).value == 100.0  # 2024 → col C
-    assert ws.cell(row=45, column=4).value == 200.0  # 2025 → col D
+    # base=2024 → 2024=B(2), 2025=C(3)
+    assert ws.cell(row=45, column=2).value == 100.0  # 2024 → col B
+    assert ws.cell(row=45, column=3).value == 200.0  # 2025 → col C
 
 
 def test_generator_sums_multiple_items_same_row():
     """Multiple line items mapping to the same (field_name, year) are summed."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
     cell_data = [
         {"cma_field_name": "Domestic Sales", "financial_year": 2024, "amount": 300_000.0},
         {"cma_field_name": "Domestic Sales", "financial_year": 2024, "amount": 200_000.0},
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    assert ws.cell(row=22, column=3).value == 500_000.0
+    # Only year is 2024 → base=2024 → column B → index 2
+    assert ws.cell(row=22, column=2).value == 500_000.0
 
 
 def test_generator_does_not_overwrite_formula_cells():
     """Cells not in PNL_FIELD_TO_ROW / BS_FIELD_TO_ROW are left untouched."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2023, "nature": "audited"}]
 
     # Row 21 is NOT in PNL_FIELD_TO_ROW (first mapping entry is row 22)
     ws.cell(row=21, column=2).value = "=SUM(B17:B20)"
@@ -185,9 +211,9 @@ def test_generator_does_not_overwrite_formula_cells():
         {"cma_field_name": "Domestic Sales", "financial_year": 2023, "amount": 999.0}
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # Row 22 col B (2023) should be written
+    # Only year is 2023 → base=2023 → column B → index 2
     assert ws.cell(row=22, column=2).value == 999.0
     # Row 21 formula should be UNTOUCHED
     assert ws.cell(row=21, column=2).value == "=SUM(B17:B20)"
@@ -349,33 +375,35 @@ def test_generator_cleans_up_temp_file():
 # ── Branch coverage tests (edge cases for 100% coverage) ──────────────────
 
 
-def test_fill_headers_skips_unknown_year():
-    """_fill_headers silently skips docs with a year not in YEAR_TO_COLUMN."""
+def test_fill_headers_writes_all_years_from_any_base():
+    """Any base year maps correctly — B through H get sequential years."""
     _, ws = _make_ws()
     gen = _make_generator()
-    docs = [{"financial_year": 1900, "nature": "audited"}]  # 1900 not in YEAR_TO_COLUMN
+    docs = [{"financial_year": 1900, "nature": "audited"}]
 
-    # Should not raise; nothing written to the year/nature rows
     gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=[])
 
-    # Row 9 / 10 untouched for any column (check a broad range)
-    for col in range(1, 10):
-        assert ws.cell(row=9, column=col).value is None
-        assert ws.cell(row=10, column=col).value is None
+    # base=1900 → B=1900, C=1901, ..., H=1906
+    assert ws.cell(row=8, column=2).value == 1900
+    assert ws.cell(row=8, column=8).value == 1906
+    assert ws.cell(row=10, column=2).value == "audited"
+    assert ws.cell(row=10, column=3).value == "Projected"
 
 
 def test_fill_data_cells_skips_unknown_field_and_year():
     """_fill_data_cells silently skips items with unknown field or year."""
     _, ws = _make_ws()
     gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
     cell_data = [
         {"cma_field_name": "Nonexistent Field XYZ", "financial_year": 2024, "amount": 999.0},
         {"cma_field_name": "Domestic Sales", "financial_year": 1900, "amount": 888.0},
     ]
 
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # Nothing should have been written to row 22 (Domestic Sales row)
+    # Unknown field: skipped. Year 1900 not in year_map (only 2024): skipped.
+    # Row 22 col B (index 2) should be None because the only valid-year item had unknown field
     for col in range(1, 10):
         assert ws.cell(row=22, column=col).value is None
 
@@ -576,14 +604,15 @@ def test_save_upload_cleanup_rejects_non_uuid_report_id():
 
 
 def test_fill_data_cells_skips_formula_cells():
-    """_fill_data_cells does not overwrite cells that already contain a formula."""
+    """_fill_data_cells does not overwrite cells that already contain a real formula."""
     _, ws = _make_ws()
-    # Pre-set a formula in the Domestic Sales cell (row 22, col B = col 2)
+    # Pre-set a formula in the Domestic Sales cell (row 22, col B = col 2, for year 2023)
     ws.cell(row=22, column=2).value = "=SUM(C22:D22)"
     gen = _make_generator()
+    docs = [{"financial_year": 2023, "nature": "audited"}]
 
     cell_data = [{"cma_field_name": "Domestic Sales", "financial_year": 2023, "amount": 99999.0}]
-    gen.fill_workbook(ws, client_name="Test Co", docs=[], cell_data=cell_data)
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # Formula must be preserved — not overwritten with the data amount
+    # Real formula must be preserved — not overwritten with the data amount
     assert ws.cell(row=22, column=2).value == "=SUM(C22:D22)"

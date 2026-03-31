@@ -103,7 +103,19 @@ class TestPipelineTierRouting:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ) as mock_ai_cls:
+        ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [high_score_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -122,7 +134,7 @@ class TestPipelineTierRouting:
 
         # AI should NOT be called when fuzzy score >= 85
         mock_ai.classify.assert_not_called()
-        assert result["status"] == "auto_classified"
+        assert result["status"] == "approved"  # high confidence auto-approved
         assert result["is_doubt"] is False
 
     def test_tier1_miss_triggers_tier2_ai(self):
@@ -156,14 +168,30 @@ class TestPipelineTierRouting:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ) as mock_ai_cls:
+        ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [low_score_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_result
+            mock_ai.classify_sync.return_value = ai_result
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             result = pipeline.classify_item(
@@ -174,11 +202,11 @@ class TestPipelineTierRouting:
                 financial_year=2024,
             )
 
-        mock_ai.classify.assert_called_once()
-        assert result["status"] == "auto_classified"
+        assert mock_ai.classify.called or mock_ai.classify_sync.called
+        assert result["status"] == "approved"  # confidence 0.87 >= 0.85 → auto-approved
 
     def test_tier2_high_confidence_classifies(self):
-        """AI confidence >= 0.8 → status=auto_classified, is_doubt=False."""
+        """AI confidence >= 0.85 → status=approved (auto-approved), is_doubt=False."""
         from app.services.classification.pipeline import ClassificationPipeline
         from app.services.classification.fuzzy_matcher import FuzzyMatchResult
         from app.services.classification.ai_classifier import AIClassificationResult
@@ -207,14 +235,30 @@ class TestPipelineTierRouting:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ) as mock_ai_cls:
+        ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [low_fuzzy]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_result
+            mock_ai.classify_sync.return_value = ai_result
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             result = pipeline.classify_item(
@@ -226,7 +270,7 @@ class TestPipelineTierRouting:
             )
 
         assert result["is_doubt"] is False
-        assert result["status"] == "auto_classified"
+        assert result["status"] == "approved"  # confidence 0.85 >= 0.85 → auto-approved
         assert result["classification_method"] == "ai_haiku"
 
     def test_tier2_low_confidence_creates_doubt(self):
@@ -259,14 +303,30 @@ class TestPipelineTierRouting:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ) as mock_ai_cls:
+        ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [low_fuzzy]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_doubt
+            mock_ai.classify_sync.return_value = ai_doubt
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             result = pipeline.classify_item(
@@ -303,14 +363,30 @@ class TestPipelineTierRouting:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ) as mock_ai_cls:
+        ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = []
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_doubt
+            mock_ai.classify_sync.return_value = ai_doubt
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             result = pipeline.classify_item(
@@ -366,7 +442,19 @@ class TestPipelineFieldResolution:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [wages_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -382,8 +470,8 @@ class TestPipelineFieldResolution:
 
         assert result["cma_row"] == 45
 
-    def test_financial_year_2024_maps_to_column_c(self):
-        """financial_year=2024 maps to cma_column='C' per YEAR_TO_COLUMN."""
+    def test_financial_year_2024_maps_to_column_b(self):
+        """financial_year=2024 maps to cma_column='B' (placeholder — actual column set by generator)."""
         from app.services.classification.pipeline import ClassificationPipeline
         from app.services.classification.fuzzy_matcher import FuzzyMatchResult
 
@@ -400,7 +488,19 @@ class TestPipelineFieldResolution:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [result_item]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -414,10 +514,10 @@ class TestPipelineFieldResolution:
                 financial_year=2024,
             )
 
-        assert result["cma_column"] == "C"
+        assert result["cma_column"] == "B"
 
     def test_financial_year_2023_maps_to_column_b(self):
-        """financial_year=2023 maps to cma_column='B'."""
+        """financial_year=2023 maps to cma_column='B' (placeholder — actual column set by generator)."""
         from app.services.classification.pipeline import ClassificationPipeline
         from app.services.classification.fuzzy_matcher import FuzzyMatchResult
 
@@ -434,7 +534,19 @@ class TestPipelineFieldResolution:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [result_item]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -468,7 +580,19 @@ class TestPipelineFieldResolution:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [learned_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -502,7 +626,19 @@ class TestPipelineFieldResolution:
             "app.services.classification.pipeline.FuzzyMatcher"
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [reference_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
@@ -542,8 +678,8 @@ class TestPipelineClassifyDocument:
         )
 
         mock_service = _make_service()
-        # Return 2 verified line items
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = [
+        # Return 2 verified line items (pipeline uses .range() for pagination)
+        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.range.return_value.execute.return_value.data = [
             SAMPLE_ITEM_1,
             SAMPLE_ITEM_2,
         ]
@@ -554,15 +690,30 @@ class TestPipelineClassifyDocument:
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
         ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
             "app.services.classification.pipeline.get_service_client",
             return_value=mock_service,
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [good_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             summary = pipeline.classify_document(
@@ -592,7 +743,7 @@ class TestPipelineClassifyDocument:
         )
 
         mock_service = _make_service()
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
+        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.range.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
         mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
 
         with patch(
@@ -600,15 +751,30 @@ class TestPipelineClassifyDocument:
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
         ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
             "app.services.classification.pipeline.get_service_client",
             return_value=mock_service,
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [good_result]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             summary = pipeline.classify_document(
@@ -653,7 +819,7 @@ class TestPipelineClassifyDocument:
 
         inserted_rows = []
         mock_service = _make_service()
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = [SAMPLE_ITEM_2]
+        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.range.return_value.execute.return_value.data = [SAMPLE_ITEM_2]
 
         def capture_insert(row):
             inserted_rows.append(row)
@@ -668,16 +834,32 @@ class TestPipelineClassifyDocument:
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
         ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
             "app.services.classification.pipeline.get_service_client",
             return_value=mock_service,
-        ):
+        ), patch(
+            "app.services.classification.pipeline.RuleEngine"
+        ) as mock_rule_cls, patch(
+            "app.services.classification.pipeline.GoldenRuleLookup"
+        ) as mock_golden_cls:
+            mock_rule = MagicMock()
+            mock_rule.apply.return_value = None
+            mock_rule_cls.return_value = mock_rule
+
+            mock_golden = MagicMock()
+            mock_golden.find_rule.return_value = None
+            mock_golden_cls.return_value = mock_golden
+
             mock_fuzzy = MagicMock()
             mock_fuzzy.match.return_value = [low_fuzzy]
             mock_fuzzy_cls.return_value = mock_fuzzy
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_doubt
+            mock_ai.classify_sync.return_value = ai_doubt
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             pipeline.classify_document(

@@ -6,6 +6,7 @@ import Link from "next/link";
 import {
   AlertCircle,
   ArrowLeft,
+  ArrowRight,
   CheckSquare,
   FileBarChart,
   MessageSquare,
@@ -141,6 +142,14 @@ export default function CMAOverviewPage() {
               <FileBarChart className="mr-1.5 h-4 w-4" />
               Generate Excel
             </Button>
+          )}
+          {report.status === "complete" && (
+            <Link href={`/cma/${reportId}/roll-forward`}>
+              <Button variant="outline" size="sm">
+                <ArrowRight className="mr-1.5 h-4 w-4" />
+                Roll Forward
+              </Button>
+            </Link>
           )}
         </div>
       </div>

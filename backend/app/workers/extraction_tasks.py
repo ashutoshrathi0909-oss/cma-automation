@@ -41,7 +41,7 @@ async def run_extraction(ctx: dict, document_id: str, selected_sheets: list[str]
     # ── 1. Fetch document record ──────────────────────────────────────────────
     doc_result = (
         service.table("documents")
-        .select("id, file_path, file_type, client_id, financial_year, filtered_file_path")
+        .select("id, file_path, file_type, client_id, financial_year, filtered_file_path, redacted_file_path")
         .eq("id", document_id)
         .single()
         .execute()
@@ -61,9 +61,12 @@ async def run_extraction(ctx: dict, document_id: str, selected_sheets: list[str]
             "document_id", document_id
         ).execute()
 
-        # ── 3. Download from Supabase Storage (prefer filtered PDF) ──────────
+        # ── 3. Download from Supabase Storage (priority: redacted > filtered > original) ──
         download_path = file_path
-        if doc.get("filtered_file_path"):
+        if doc.get("redacted_file_path"):
+            download_path = doc["redacted_file_path"]
+            logger.info("Using redacted PDF at %s", download_path)
+        elif doc.get("filtered_file_path"):
             download_path = doc["filtered_file_path"]
             logger.info("Using filtered PDF at %s", download_path)
         logger.info("Downloading %s from storage", download_path)

@@ -55,5 +55,5 @@ class WorkerSettings:
 
     functions = [run_extraction, run_classification, run_excel_generation]
     redis_settings = _get_redis_settings()
-    max_jobs = 10
-    job_timeout = 300  # 5 minutes
+    max_jobs = 1  # Sequential: avoids concurrent Supabase HTTP/2 connection overload
+    job_timeout = 3600  # 60 minutes (large documents with AI classification can take 30-45 min)

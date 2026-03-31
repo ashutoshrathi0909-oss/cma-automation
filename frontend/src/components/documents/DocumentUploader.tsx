@@ -39,6 +39,7 @@ export function DocumentUploader({ clientId, onUploaded }: DocumentUploaderProps
   const [documentType, setDocumentType] = useState("profit_and_loss");
   const [financialYear, setFinancialYear] = useState(new Date().getFullYear().toString());
   const [nature, setNature] = useState("audited");
+  const [sourceUnit, setSourceUnit] = useState("rupees");
   const [uploadState, setUploadState] = useState<UploadState>("idle");
 
   const onDrop = useCallback((accepted: File[]) => {
@@ -70,6 +71,7 @@ export function DocumentUploader({ clientId, onUploaded }: DocumentUploaderProps
       formData.append("document_type", documentType);
       formData.append("financial_year", financialYear);
       formData.append("nature", nature);
+      formData.append("source_unit", sourceUnit);
 
       const res = await fetch(`${API_URL}/api/documents/`, {
         method: "POST",
@@ -101,7 +103,7 @@ export function DocumentUploader({ clientId, onUploaded }: DocumentUploaderProps
   }
 
   const currentYear = new Date().getFullYear();
-  const yearOptions = Array.from({ length: 5 }, (_, i) => currentYear - i);
+  const yearOptions = Array.from({ length: 10 }, (_, i) => currentYear - i);
 
   return (
     <div className="space-y-5">
@@ -150,7 +152,7 @@ export function DocumentUploader({ clientId, onUploaded }: DocumentUploaderProps
 
       {/* Form fields (shown when file selected) */}
       {file && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-1.5">
             <Label htmlFor="doc_type">Document Type</Label>
             <Select
@@ -190,6 +192,20 @@ export function DocumentUploader({ clientId, onUploaded }: DocumentUploaderProps
             >
               <option value="audited">Audited</option>
               <option value="provisional">Provisional</option>
+            </Select>
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="source_unit">Source Unit</Label>
+            <Select
+              id="source_unit"
+              value={sourceUnit}
+              onChange={(e) => setSourceUnit(e.target.value)}
+            >
+              <option value="rupees">Full Rupees</option>
+              <option value="thousands">Thousands (Rs.&apos;000)</option>
+              <option value="lakhs">Lakhs</option>
+              <option value="crores">Crores</option>
             </Select>
           </div>
         </div>

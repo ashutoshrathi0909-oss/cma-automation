@@ -3,11 +3,16 @@
 from __future__ import annotations
 
 import logging
+import uuid
 
 from app.dependencies import get_service_client
 from app.services.excel_generator import ExcelGenerator
 
 logger = logging.getLogger(__name__)
+
+# Deterministic UUID for the "system" worker identity.
+# Used in audit logs when no real user triggered the action (e.g. ARQ tasks).
+SYSTEM_USER_ID = "00000000-0000-0000-0000-000000000000"
 
 
 async def run_excel_generation(ctx: dict, report_id: str) -> dict:
@@ -48,7 +53,7 @@ async def run_excel_generation(ctx: dict, report_id: str) -> dict:
 
     try:
         generator = ExcelGenerator(service=service)
-        storage_path = generator.generate(report_id=report_id, user_id="system")
+        storage_path = generator.generate(report_id=report_id, user_id=SYSTEM_USER_ID)
 
         service.table("cma_reports").update(
             {"status": "complete", "output_path": storage_path}

@@ -8,6 +8,7 @@ services:
     volumes:
       - ./backend:/app
       - backend_cache:/root/.cache
+      - ./CMA_Ground_Truth_v1:/app/CMA_Ground_Truth_v1:ro
     env_file:
       - .env
     depends_on:
@@ -28,6 +29,23 @@ services:
       - .env
     environment:
       - WATCHPACK_POLLING=true
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: arq app.workers.worker.WorkerSettings
+    volumes:
+      - ./backend:/app
+      - backend_cache:/root/.cache
+      - ./DOCS/CMA.xlsm:/app/DOCS/CMA.xlsm:ro
+      - ./DOCS/extractions:/app/DOCS/extractions:ro
+      - ./CMA_Ground_Truth_v1:/app/CMA_Ground_Truth_v1:ro
+    env_file:
+      - .env
+    depends_on:
+      - redis
     restart: unless-stopped
 
   redis:

@@ -214,7 +214,7 @@ class TestAIClassifierHappyPath:
 
     def test_classify_uses_haiku_model(self):
         """AI classifier calls messages.create with the Haiku model."""
-        from app.services.classification.ai_classifier import AIClassifier, HAIKU_MODEL
+        from app.services.classification.ai_classifier import AIClassifier, ANTHROPIC_HAIKU_MODEL as HAIKU_MODEL
 
         mock_response = _make_mock_anthropic_response(HIGH_CONF_TOOL_INPUT)
 

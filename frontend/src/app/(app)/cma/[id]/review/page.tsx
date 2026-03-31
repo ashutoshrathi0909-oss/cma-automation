@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Check, Loader2 } from "lucide-react";
+import { ArrowLeft, Check, Eye, EyeOff, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { apiClient } from "@/lib/api";
 import { ClassificationReview } from "@/components/classification/ClassificationReview";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Classification } from "@/types";
+
+type FilterMode = "needs_review" | "all";
 
 export default function ReviewPage() {
   const { id: reportId } = useParams<{ id: string }>();
@@ -18,6 +20,7 @@ export default function ReviewPage() {
   const [classifications, setClassifications] = useState<Classification[]>([]);
   const [loading, setLoading] = useState(true);
   const [bulkApproving, setBulkApproving] = useState(false);
+  const [filter, setFilter] = useState<FilterMode>("needs_review");
 
   useEffect(() => {
     if (!reportId) return;
@@ -40,36 +43,32 @@ export default function ReviewPage() {
   }
 
   async function handleBulkApprove() {
-    // Collect high-confidence, non-doubt, non-reviewed IDs
-    const highConf = classifications.filter(
+    const targets = filtered.filter(
       (c) =>
         !c.is_doubt &&
         (c.confidence_score ?? 0) >= 0.85 &&
         c.status === "auto_classified"
     );
 
-    if (highConf.length === 0) {
+    if (targets.length === 0) {
       toast.info("No high-confidence items left to approve.");
       return;
     }
 
     setBulkApproving(true);
     try {
-      // The bulk-approve endpoint is document-scoped; call per document
-      const docIds = [...new Set(classifications.map((c) => c.line_item_id))];
-      // Use the report-level classifications we already have
       await Promise.all(
-        highConf.map((c) =>
+        targets.map((c) =>
           apiClient(`/api/classifications/${c.id}/approve`, {
             method: "POST",
             body: JSON.stringify({}),
           })
         )
       );
-      toast.success(`Approved ${highConf.length} high-confidence items`);
+      toast.success(`Approved ${targets.length} high-confidence items`);
       setClassifications((prev) =>
         prev.map((c) =>
-          highConf.some((h) => h.id === c.id) ? { ...c, status: "approved" } : c
+          targets.some((h) => h.id === c.id) ? { ...c, status: "approved" } : c
         )
       );
     } catch (err) {
@@ -79,7 +78,22 @@ export default function ReviewPage() {
     }
   }
 
-  const highConfCount = classifications.filter(
+  // Filter logic: "needs_review" shows only items needing CA attention
+  const filtered =
+    filter === "needs_review"
+      ? classifications.filter(
+          (c) =>
+            c.status === "needs_review" ||
+            c.status === "auto_classified" ||
+            c.is_doubt
+        )
+      : classifications;
+
+  const needsReviewCount = classifications.filter(
+    (c) => c.status === "needs_review" || c.status === "auto_classified" || c.is_doubt
+  ).length;
+
+  const highConfCount = filtered.filter(
     (c) => !c.is_doubt && (c.confidence_score ?? 0) >= 0.85 && c.status === "auto_classified"
   ).length;
 
@@ -117,29 +131,59 @@ export default function ReviewPage() {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Review Classifications</h1>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            {classifications.length} items total — approve or correct each classification.
+            {filter === "needs_review" ? (
+              <>
+                Showing <span className="font-medium text-foreground">{filtered.length}</span> items
+                needing review ({classifications.length} total,{" "}
+                {classifications.length - needsReviewCount} auto-approved)
+              </>
+            ) : (
+              <>
+                Showing all <span className="font-medium text-foreground">{classifications.length}</span> classifications
+              </>
+            )}
           </p>
         </div>
 
-        {highConfCount > 0 && (
+        <div className="flex gap-2">
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
-            disabled={bulkApproving}
-            onClick={handleBulkApprove}
+            onClick={() => setFilter(filter === "needs_review" ? "all" : "needs_review")}
           >
-            {bulkApproving ? (
-              <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+            {filter === "needs_review" ? (
+              <>
+                <Eye className="mr-1.5 h-4 w-4" />
+                Show All ({classifications.length})
+              </>
             ) : (
-              <Check className="mr-1.5 h-4 w-4 text-green-600" />
+              <>
+                <EyeOff className="mr-1.5 h-4 w-4" />
+                Needs Review Only ({needsReviewCount})
+              </>
             )}
-            Approve All High Confidence ({highConfCount})
           </Button>
-        )}
+
+          {highConfCount > 0 && (
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={bulkApproving}
+              onClick={handleBulkApprove}
+            >
+              {bulkApproving ? (
+                <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+              ) : (
+                <Check className="mr-1.5 h-4 w-4 text-green-600" />
+              )}
+              Approve All High Confidence ({highConfCount})
+            </Button>
+          )}
+        </div>
       </div>
 
       <ClassificationReview
-        classifications={classifications}
+        classifications={filtered}
         onApproved={handleApproved}
         onCorrected={handleCorrected}
       />

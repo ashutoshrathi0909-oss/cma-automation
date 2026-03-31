@@ -163,6 +163,22 @@ async def create_cma_report(
                 ),
             )
 
+    # Derive financial_years and year_natures from the linked documents
+    docs_detail = (
+        service.table("documents")
+        .select("id, financial_year, nature")
+        .in_("id", body.document_ids)
+        .execute()
+    )
+    financial_years = sorted(set(
+        d["financial_year"] for d in (docs_detail.data or []) if d.get("financial_year")
+    ))
+    year_natures = sorted(set(
+        d.get("nature", "").capitalize()
+        for d in (docs_detail.data or [])
+        if d.get("nature")
+    ))
+
     insert_result = (
         service.table("cma_reports")
         .insert(
@@ -171,6 +187,9 @@ async def create_cma_report(
                 "title": body.title,
                 "status": "draft",
                 "document_ids": body.document_ids,
+                "financial_years": financial_years,
+                "year_natures": year_natures,
+                "cma_output_unit": body.cma_output_unit,
                 "created_by": current_user.id,
             }
         )
@@ -254,13 +273,18 @@ async def get_confidence(
             corrected=0,
         )
 
-    clf_result = (
-        service.table("classifications")
-        .select("*")
-        .in_("line_item_id", item_ids)
-        .execute()
-    )
-    clfs = clf_result.data or []
+    # Batch queries to avoid PostgREST URL length limits with large documents
+    _BATCH = 100
+    clfs: list[dict] = []
+    for i in range(0, len(item_ids), _BATCH):
+        batch = item_ids[i : i + _BATCH]
+        clf_result = (
+            service.table("classifications")
+            .select("*")
+            .in_("line_item_id", batch)
+            .execute()
+        )
+        clfs.extend(clf_result.data or [])
 
     total = len(clfs)
     high_confidence = sum(
@@ -311,14 +335,30 @@ async def get_report_classifications(
     if not item_ids:
         return []
 
-    result = (
-        service.table("classifications")
-        .select("*")
-        .in_("line_item_id", item_ids)
-        .order("created_at")
-        .execute()
-    )
-    return [ClassificationResponse(**r) for r in (result.data or [])]
+    # Batch queries to avoid PostgREST URL length limits with large documents
+    # Join extracted_line_items to get description + amount for the UI
+    _BATCH = 100
+    all_rows: list[dict] = []
+    for i in range(0, len(item_ids), _BATCH):
+        batch = item_ids[i : i + _BATCH]
+        result = (
+            service.table("classifications")
+            .select("*, extracted_line_items(source_text, amount)")
+            .in_("line_item_id", batch)
+            .order("created_at")
+            .execute()
+        )
+        all_rows.extend(result.data or [])
+
+    # Flatten the joined data into the response model
+    flat_rows: list[dict] = []
+    for row in all_rows:
+        line_item = row.pop("extracted_line_items", None) or {}
+        row["line_item_description"] = line_item.get("source_text")
+        row["line_item_amount"] = line_item.get("amount")
+        flat_rows.append(row)
+
+    return [ClassificationResponse(**r) for r in flat_rows]
 
 
 # ── Audit trail ────────────────────────────────────────────────────────────
@@ -366,14 +406,19 @@ async def generate_cma_excel(
     document_ids = report.get("document_ids") or []
     item_ids = _get_report_item_ids(service, document_ids)
     if item_ids:
-        doubt_result = (
-            service.table("classifications")
-            .select("id")
-            .in_("line_item_id", item_ids)
-            .eq("is_doubt", True)
-            .execute()
-        )
-        doubts = doubt_result.data or []
+        # Batch queries to avoid PostgREST URL length limits with large documents
+        _BATCH = 100
+        doubts: list[dict] = []
+        for i in range(0, len(item_ids), _BATCH):
+            batch = item_ids[i : i + _BATCH]
+            doubt_result = (
+                service.table("classifications")
+                .select("id")
+                .in_("line_item_id", batch)
+                .eq("is_doubt", True)
+                .execute()
+            )
+            doubts.extend(doubt_result.data or [])
         if doubts:
             raise HTTPException(
                 status_code=400,

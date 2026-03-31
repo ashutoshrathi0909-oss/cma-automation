@@ -100,15 +100,31 @@ async def get_classifications(
     if not item_ids:
         return []
 
-    result = (
-        service.table("classifications")
-        .select("*")
-        .in_("line_item_id", item_ids)
-        .order("created_at")
-        .execute()
-    )
+    # Batch queries to avoid PostgREST URL length limits with large documents
+    # Join extracted_line_items to get description + amount for the UI
+    _BATCH = 100
+    all_rows: list[dict] = []
+    id_list = list(item_ids)
+    for i in range(0, len(id_list), _BATCH):
+        batch = id_list[i : i + _BATCH]
+        result = (
+            service.table("classifications")
+            .select("*, extracted_line_items(source_text, amount)")
+            .in_("line_item_id", batch)
+            .order("created_at")
+            .execute()
+        )
+        all_rows.extend(result.data or [])
 
-    return [ClassificationResponse(**row) for row in (result.data or [])]
+    # Flatten the joined data into the response model
+    flat_rows: list[dict] = []
+    for row in all_rows:
+        line_item = row.pop("extracted_line_items", None) or {}
+        row["line_item_description"] = line_item.get("source_text")
+        row["line_item_amount"] = line_item.get("amount")
+        flat_rows.append(row)
+
+    return [ClassificationResponse(**r) for r in flat_rows]
 
 
 # ── Get doubt items ───────────────────────────────────────────────────────────
@@ -131,16 +147,32 @@ async def get_doubts(
     if not item_ids:
         return []
 
-    result = (
-        service.table("classifications")
-        .select("*")
-        .in_("line_item_id", item_ids)
-        .eq("is_doubt", True)
-        .order("created_at")
-        .execute()
-    )
+    # Batch queries to avoid PostgREST URL length limits with large documents
+    # Join extracted_line_items to get description + amount for the UI
+    _BATCH = 100
+    all_rows: list[dict] = []
+    id_list = list(item_ids)
+    for i in range(0, len(id_list), _BATCH):
+        batch = id_list[i : i + _BATCH]
+        result = (
+            service.table("classifications")
+            .select("*, extracted_line_items(source_text, amount)")
+            .in_("line_item_id", batch)
+            .eq("is_doubt", True)
+            .order("created_at")
+            .execute()
+        )
+        all_rows.extend(result.data or [])
 
-    return [ClassificationResponse(**row) for row in (result.data or [])]
+    # Flatten the joined data into the response model
+    flat_rows: list[dict] = []
+    for row in all_rows:
+        line_item = row.pop("extracted_line_items", None) or {}
+        row["line_item_description"] = line_item.get("source_text")
+        row["line_item_amount"] = line_item.get("amount")
+        flat_rows.append(row)
+
+    return [ClassificationResponse(**r) for r in flat_rows]
 
 
 # ── Approve single classification ─────────────────────────────────────────────

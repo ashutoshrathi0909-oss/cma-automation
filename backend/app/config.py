@@ -11,6 +11,14 @@ class Settings(BaseSettings):
     # Anthropic (optional until Phase 5)
     anthropic_api_key: str = ""
 
+    # OpenRouter (cheaper alternative for OCR + classification)
+    openrouter_api_key: str = ""
+    ocr_provider: str = "openrouter"          # "anthropic" or "openrouter"
+    ocr_model: str = "qwen/qwen3.5-9b"      # OpenRouter model ID for OCR
+    classifier_provider: str = "openrouter"  # "anthropic" or "openrouter"
+    classifier_model: str = "anthropic/claude-haiku-4-5"  # Haiku via OpenRouter
+    classifier_mode: str = "scoped"  # "scoped" (DeepSeek+Gemini debate) or "legacy" (old Haiku-only)
+
     # Redis
     redis_url: str = "redis://redis:6379"
 

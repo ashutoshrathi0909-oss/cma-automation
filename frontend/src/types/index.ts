@@ -53,6 +53,9 @@ export interface Document {
   parent_document_id?: string;
   superseded_at?: string;
   superseded_by?: string;
+  redacted_file_path?: string;
+  redaction_terms?: string[];
+  redaction_count?: number;
 }
 
 export interface ExtractedLineItem {

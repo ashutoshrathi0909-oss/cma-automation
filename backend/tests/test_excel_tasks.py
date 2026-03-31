@@ -24,7 +24,7 @@ async def test_excel_task_calls_generator():
 
             result = await run_excel_generation({}, "rep-aaa")
 
-    instance.generate.assert_called_once_with(report_id="rep-aaa", user_id="system")
+    instance.generate.assert_called_once_with(report_id="rep-aaa", user_id="00000000-0000-0000-0000-000000000000")
     assert result["status"] == "complete"
 
 

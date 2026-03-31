@@ -15,6 +15,7 @@ from app.routers import (
     conversion,
     documents,
     extraction,
+    roll_forward,
     rollover,
     tasks,
     users,
@@ -47,6 +48,7 @@ app.include_router(classification.router)
 app.include_router(cma_reports.router)
 app.include_router(conversion.router)
 app.include_router(rollover.router)
+app.include_router(roll_forward.router)
 app.include_router(users.router)
 
 

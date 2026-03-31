@@ -1,6 +1,7 @@
 """Extraction API endpoints.
 
 Provides routes for:
+  - Previewing sheets in an uploaded Excel file (for user selection)
   - Triggering background extraction (enqueues ARQ job)
   - Fetching extracted line items
   - Editing individual line items (user verification step)
@@ -9,11 +10,14 @@ Provides routes for:
 
 from __future__ import annotations
 
+import io
 import logging
+from typing import Optional
 
 from arq import create_pool
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Body, Depends, HTTPException
 from postgrest.exceptions import APIError
+from pydantic import BaseModel
 
 from app.dependencies import get_current_user, get_service_client
 from app.models.schemas import (
@@ -121,6 +125,83 @@ async def require_verified_document(
     return doc
 
 
+# ── Sheet preview schemas ────────────────────────────────────────────────────
+
+
+class SheetInfo(BaseModel):
+    name: str
+    rows: int
+    auto_included: bool
+
+
+class SheetsPreviewResponse(BaseModel):
+    document_id: str
+    file_type: str
+    sheets: list[SheetInfo]
+
+
+class ExtractionRequest(BaseModel):
+    selected_sheets: list[str] | None = None
+
+
+# ── Preview sheets ───────────────────────────────────────────────────────────
+
+
+STORAGE_BUCKET = "documents"
+
+
+@router.get(
+    "/{document_id}/sheets",
+    response_model=SheetsPreviewResponse,
+)
+async def preview_sheets(
+    document_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> SheetsPreviewResponse:
+    """List all sheets in an uploaded Excel file with auto-detected include/exclude."""
+    doc = _get_owned_document(document_id, current_user)
+    file_type = doc["file_type"]
+
+    if file_type not in ("xls", "xlsx"):
+        raise HTTPException(
+            status_code=400,
+            detail="Sheet preview is only available for Excel files (.xls, .xlsx).",
+        )
+
+    # Download file from storage
+    service = get_service_client()
+    file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(doc["file_path"])
+
+    from app.services.extraction.excel_extractor import _is_relevant_sheet
+
+    sheets: list[SheetInfo] = []
+    if file_type == "xls":
+        import xlrd
+        wb = xlrd.open_workbook(file_contents=file_content)
+        for s in wb.sheets():
+            sheets.append(SheetInfo(
+                name=s.name,
+                rows=s.nrows,
+                auto_included=_is_relevant_sheet(s.name),
+            ))
+    else:
+        import openpyxl
+        wb = openpyxl.load_workbook(io.BytesIO(file_content), read_only=True)
+        for s in wb.worksheets:
+            sheets.append(SheetInfo(
+                name=s.title,
+                rows=s.max_row or 0,
+                auto_included=_is_relevant_sheet(s.title),
+            ))
+        wb.close()
+
+    return SheetsPreviewResponse(
+        document_id=document_id,
+        file_type=file_type,
+        sheets=sheets,
+    )
+
+
 # ── Trigger extraction ────────────────────────────────────────────────────────
 
 
@@ -131,9 +212,13 @@ async def require_verified_document(
 )
 async def trigger_extraction(
     document_id: str,
+    body: ExtractionRequest | None = None,
     current_user: UserProfile = Depends(get_current_user),
 ) -> ExtractionTriggerResponse:
-    """Enqueue background extraction. Atomically sets status to 'processing'."""
+    """Enqueue background extraction. Atomically sets status to 'processing'.
+
+    Optionally pass selected_sheets to override auto-detection.
+    """
     # Verify document exists and belongs to an accessible client (ownership check)
     doc = _get_owned_document(document_id, current_user)
 
@@ -167,18 +252,22 @@ async def trigger_extraction(
             detail="Extraction already in progress for this document.",
         )
 
+    # Build kwargs for the extraction task
+    selected_sheets = body.selected_sheets if body else None
+
     # Enqueue ARQ job (status is already 'processing')
     redis_settings = _get_redis_settings()
     redis_pool = await create_pool(redis_settings)
     try:
-        job = await redis_pool.enqueue_job("run_extraction", document_id)
+        job = await redis_pool.enqueue_job("run_extraction", document_id, selected_sheets)
     finally:
         await redis_pool.aclose()
 
     logger.info(
-        "Enqueued extraction for document_id=%s, task_id=%s",
+        "Enqueued extraction for document_id=%s, task_id=%s, selected_sheets=%s",
         document_id,
         job.job_id,
+        selected_sheets,
     )
 
     return ExtractionTriggerResponse(
@@ -204,15 +293,26 @@ async def get_line_items(
     _get_owned_document(document_id, current_user)
 
     service = get_service_client()
-    items_result = (
-        service.table("extracted_line_items")
-        .select("*")
-        .eq("document_id", document_id)
-        .order("created_at")
-        .execute()
-    )
+    # Fetch all items — paginate to bypass Supabase's 1000-row default limit
+    PAGE_SIZE = 1000
+    all_items: list[dict] = []
+    offset = 0
+    while True:
+        page = (
+            service.table("extracted_line_items")
+            .select("*")
+            .eq("document_id", document_id)
+            .order("created_at")
+            .range(offset, offset + PAGE_SIZE - 1)
+            .execute()
+        )
+        batch = page.data or []
+        all_items.extend(batch)
+        if len(batch) < PAGE_SIZE:
+            break
+        offset += PAGE_SIZE
 
-    return [LineItemResponse(**item) for item in (items_result.data or [])]
+    return [LineItemResponse.from_db(item) for item in all_items]
 
 
 # ── Edit line item ────────────────────────────────────────────────────────────
@@ -232,8 +332,16 @@ async def update_line_item(
     # Ownership check
     _get_owned_document(document_id, current_user)
 
-    # Build update payload (only include explicitly set fields)
-    payload = update.model_dump(exclude_none=True)
+    # Build update payload: map description → source_text for DB compatibility
+    raw_payload = update.model_dump(exclude_none=True)
+    payload = {}
+    for k, v in raw_payload.items():
+        if k == "description":
+            payload["source_text"] = v
+        elif k == "raw_text":
+            pass  # raw_text not a DB column; skip
+        else:
+            payload[k] = v
     if not payload:
         raise HTTPException(status_code=400, detail="No fields to update")
 
@@ -250,7 +358,7 @@ async def update_line_item(
     if not result.data:
         raise HTTPException(status_code=404, detail="Line item not found")
 
-    return LineItemResponse(**result.data[0])
+    return LineItemResponse.from_db(result.data[0])
 
 
 # ── Verify extraction ─────────────────────────────────────────────────────────

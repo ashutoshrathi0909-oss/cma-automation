@@ -8,12 +8,17 @@ from postgrest.exceptions import APIError
 
 from app.dependencies import get_current_user, get_service_client
 from app.models.schemas import (
+    DetectNamesResponse,
     DocumentNature,
     DocumentResponse,
     DocumentType,
     FilterPagesRequest,
     FilterPagesResponse,
     PageCountResponse,
+    RedactionApplyRequest,
+    RedactionApplyResponse,
+    RedactionPreviewRequest,
+    RedactionPreviewResponse,
     SourceUnit,
     UserProfile,
 )
@@ -22,6 +27,11 @@ from app.services.pdf.page_manager import (
     pages_to_keep,
     parse_page_ranges,
     remove_pages,
+)
+from app.services.pdf.redaction_service import (
+    apply_redaction,
+    detect_company_names,
+    preview_redaction,
 )
 
 router = APIRouter(prefix="/api/documents", tags=["documents"])
@@ -61,6 +71,38 @@ def _check_magic_bytes(content: bytes, file_type: str) -> bool:
     """Return True if content starts with the expected magic bytes for file_type."""
     expected = MAGIC_BYTES.get(file_type, b"")
     return len(content) >= len(expected) and content[: len(expected)] == expected
+
+
+def _get_owned_document(document_id: str, current_user: UserProfile) -> dict:
+    """Fetch document and verify ownership. Admins can access all documents.
+
+    Raises
+    ------
+    HTTPException 404  — document not found
+    HTTPException 403  — user does not own this document (non-admin)
+    """
+    service = get_service_client()
+    try:
+        result = (
+            service.table("documents")
+            .select("*")
+            .eq("id", document_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    doc = result.data
+    if current_user.role != "admin" and doc.get("uploaded_by") != current_user.id:
+        raise HTTPException(
+            status_code=403,
+            detail="You do not have access to this document",
+        )
+    return doc
 
 
 def _cleanup_storage(service, path: str) -> None:
@@ -272,24 +314,9 @@ async def get_document_page_count(
     current_user: UserProfile = Depends(get_current_user),
 ) -> PageCountResponse:
     """Return total page count for a PDF document."""
+    # ── 1. Fetch document record + ownership check ────────────────────────────
+    doc = _get_owned_document(document_id, current_user)
     service = get_service_client()
-
-    # ── 1. Fetch document record ──────────────────────────────────────────────
-    try:
-        result = (
-            service.table("documents")
-            .select("*")
-            .eq("id", document_id)
-            .single()
-            .execute()
-        )
-    except APIError:
-        raise HTTPException(status_code=404, detail="Document not found")
-
-    if not result.data:
-        raise HTTPException(status_code=404, detail="Document not found")
-
-    doc = result.data
 
     # ── 2. Verify it's a PDF ──────────────────────────────────────────────────
     if doc.get("file_type") != "pdf":
@@ -324,24 +351,9 @@ async def filter_document_pages(
     current_user: UserProfile = Depends(get_current_user),
 ) -> FilterPagesResponse:
     """Remove specified pages from PDF, save filtered version for OCR."""
+    # ── 1. Fetch document + ownership check ───────────────────────────────────
+    doc = _get_owned_document(document_id, current_user)
     service = get_service_client()
-
-    # ── 1. Fetch document, verify PDF ────────────────────────────────────────
-    try:
-        result = (
-            service.table("documents")
-            .select("*")
-            .eq("id", document_id)
-            .single()
-            .execute()
-        )
-    except APIError:
-        raise HTTPException(status_code=404, detail="Document not found")
-
-    if not result.data:
-        raise HTTPException(status_code=404, detail="Document not found")
-
-    doc = result.data
 
     if doc.get("file_type") != "pdf":
         raise HTTPException(
@@ -371,6 +383,11 @@ async def filter_document_pages(
 
     # ── 6. Build keep list and create filtered PDF ────────────────────────────
     keep_pages = pages_to_keep(body.pages_to_remove, page_count)
+    if not keep_pages:
+        raise HTTPException(
+            status_code=400,
+            detail="Cannot remove all pages. At least one page must remain.",
+        )
     filtered_bytes = remove_pages(file_content, keep_pages)
 
     # ── 7. Upload filtered PDF to Storage ────────────────────────────────────
@@ -404,4 +421,124 @@ async def filter_document_pages(
         original_page_count=page_count,
         removed_pages=removed_pages,
         filtered_page_count=page_count - len(removed_pages),
+    )
+
+
+@router.post("/{document_id}/detect-names", response_model=DetectNamesResponse)
+async def detect_document_names(
+    document_id: str,
+    current_user: UserProfile = Depends(get_current_user),
+) -> DetectNamesResponse:
+    """Auto-detect company names from PDF header (first page)."""
+    doc = _get_owned_document(document_id, current_user)
+    service = get_service_client()
+
+    if doc.get("file_type") != "pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Name detection is only supported for PDF documents.",
+        )
+
+    file_path: str = doc["file_path"]
+    try:
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to download document from storage.")
+
+    detected = detect_company_names(file_content)
+    return DetectNamesResponse(document_id=document_id, detected_names=detected)
+
+
+@router.post("/{document_id}/preview-redaction", response_model=RedactionPreviewResponse)
+async def preview_document_redaction(
+    document_id: str,
+    body: RedactionPreviewRequest,
+    current_user: UserProfile = Depends(get_current_user),
+) -> RedactionPreviewResponse:
+    """Count redaction instances across all pages without modifying the PDF."""
+    doc = _get_owned_document(document_id, current_user)
+    service = get_service_client()
+
+    if doc.get("file_type") != "pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Redaction preview is only supported for PDF documents.",
+        )
+
+    if not body.terms:
+        raise HTTPException(status_code=400, detail="At least one term is required.")
+
+    file_path: str = doc["file_path"]
+    try:
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to download document from storage.")
+
+    term_counts = preview_redaction(file_content, body.terms)
+    total = sum(term_counts.values())
+    return RedactionPreviewResponse(
+        document_id=document_id,
+        term_counts=term_counts,
+        total_instances=total,
+    )
+
+
+@router.post("/{document_id}/apply-redaction", response_model=RedactionApplyResponse)
+async def apply_document_redaction(
+    document_id: str,
+    body: RedactionApplyRequest,
+    current_user: UserProfile = Depends(get_current_user),
+) -> RedactionApplyResponse:
+    """Apply true redaction to PDF. Creates redacted copy, preserves original."""
+    doc = _get_owned_document(document_id, current_user)
+    service = get_service_client()
+
+    if doc.get("file_type") != "pdf":
+        raise HTTPException(
+            status_code=400,
+            detail="Redaction is only supported for PDF documents.",
+        )
+
+    if not body.terms:
+        raise HTTPException(status_code=400, detail="At least one term is required.")
+
+    # Prefer filtered PDF if it exists, else use original
+    file_path: str = doc.get("filtered_file_path") or doc["file_path"]
+    try:
+        file_content: bytes = service.storage.from_(STORAGE_BUCKET).download(file_path)
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to download document from storage.")
+
+    # Apply redaction
+    redacted_bytes, stats = apply_redaction(file_content, body.terms)
+
+    # Upload redacted PDF to Storage
+    redacted_path = f"{doc['file_path']}_redacted.pdf"
+    try:
+        try:
+            service.storage.from_(STORAGE_BUCKET).remove([redacted_path])
+        except Exception:
+            pass
+        service.storage.from_(STORAGE_BUCKET).upload(
+            redacted_path,
+            redacted_bytes,
+            {"content-type": "application/pdf"},
+        )
+    except Exception:
+        raise HTTPException(status_code=503, detail="Failed to upload redacted PDF to storage.")
+
+    # Update document record
+    service.table("documents").update(
+        {
+            "redacted_file_path": redacted_path,
+            "redaction_terms": body.terms,
+            "redaction_count": stats.total_redactions,
+        }
+    ).eq("id", document_id).execute()
+
+    return RedactionApplyResponse(
+        document_id=document_id,
+        redacted_file_path=redacted_path,
+        redaction_count=stats.total_redactions,
+        per_term_counts=stats.per_term,
     )
