@@ -1504,6 +1504,88 @@
       "auto_resolved": true,
       "industry_specific": null,
       "context_specific": null
+    },
+    "d075": {
+      "item_id": "d075",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Interest on PPF — is it row 30 (Interest Received) or 34 (Other Income)? PPF is personal savings, not typical bank interest.",
+      "options": [
+        30,
+        34
+      ],
+      "company": "Mehta_Computer"
+    },
+    "d079": {
+      "item_id": "d079",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Trading company Opening Stock — row 53 (Stock-in-Process Opening) or 58 (FG Opening)? Trading has no WIP, so 58 seems correct but GT consistently uses 53.",
+      "options": [
+        53,
+        58
+      ],
+      "company": "Mehta_Computer"
+    },
+    "d080": {
+      "item_id": "d080",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Trading company Closing Stock — row 54 (Stock-in-Process Closing) or 59 (FG Closing)? Same question as d079.",
+      "options": [
+        54,
+        59
+      ],
+      "company": "Mehta_Computer"
+    },
+    "d084": {
+      "item_id": "d084",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Freight Charges under Admin Expenses in trading company — row 47 (Freight inward), 70 (Selling), or 71 (Others)? Context is admin, not inward.",
+      "options": [
+        47,
+        70,
+        71
+      ],
+      "company": "Mehta_Computer"
+    },
+    "d121": {
+      "item_id": "d121",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Bad Debts Written Off — row 69 (Bad Debts, trade receivables) or 90 (Sundry Balances Written Off, non-trade)? CA Q27 says 69 but GT=90.",
+      "options": [
+        69,
+        90
+      ],
+      "company": "SLIPL"
+    },
+    "d129": {
+      "item_id": "d129",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Labour Charges — row 45 (Wages, CA Q1j confirmed) or 49 (Others, GT choice)? May be outsourced contract labor (49) vs direct labor (45).",
+      "options": [
+        45,
+        49
+      ],
+      "company": "SR_Papers"
+    },
+    "d168": {
+      "item_id": "d168",
+      "decision": null,
+      "doubt": true,
+      "notes": "DOUBT: Manpower Charges — same ambiguity as d129. Row 45 (Wages) or 49 (Others)? d171 and d173 will inherit this answer.",
+      "options": [
+        45,
+        49
+      ],
+      "company": "SR_Papers",
+      "dedup_children": [
+        "d171",
+        "d173"
+      ]
     }
   },
   "lastSaved": "2026-03-31T00:00:00Z",
