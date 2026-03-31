@@ -215,9 +215,10 @@ class FuzzyMatcher:
             # Length penalty: if the reference item_name is much longer than
             # the query, the match is likely a false positive (subset match).
             # Penalty = min(query_len, match_len) / max(query_len, match_len)
+            # Light penalty (0.8 weight) to avoid over-penalising near-synonym pairs.
             match_len = len(text.strip())
             length_ratio = min(query_len, match_len) / max(query_len, match_len) if max(query_len, match_len) > 0 else 1.0
-            adjusted_score = score * (0.5 + 0.5 * length_ratio)
+            adjusted_score = score * (0.8 + 0.2 * length_ratio)
 
             results.append(
                 FuzzyMatchResult(

@@ -11,7 +11,7 @@ def get_page_count(pdf_bytes: bytes) -> int:
 def parse_page_ranges(range_str: str, total_pages: int) -> list[int]:
     """Parse '1-3, 7, 10-15' into sorted list of pages to REMOVE (1-indexed).
 
-    Handles: empty string, invalid ranges, out-of-bounds, duplicates.
+    Handles: empty string, invalid ranges, out-of-bounds, duplicates, reversed ranges.
     Returns only valid page numbers within [1, total_pages].
     """
     if not range_str or not range_str.strip():
@@ -23,6 +23,9 @@ def parse_page_ranges(range_str: str, total_pages: int) -> list[int]:
             try:
                 start, end = part.split("-", 1)
                 s, e = int(start.strip()), int(end.strip())
+                # Normalise reversed ranges (e.g. "5-3" → 3..5)
+                if s > e:
+                    s, e = e, s
                 to_remove.update(range(max(1, s), min(e, total_pages) + 1))
             except ValueError:
                 continue
@@ -46,7 +49,14 @@ def remove_pages(pdf_bytes: bytes, keep_pages: list[int]) -> bytes:
     """Create new PDF with only the specified pages (1-indexed).
 
     Uses pikepdf for lossless page removal with automatic dead object cleanup.
+
+    Raises
+    ------
+    ValueError
+        If keep_pages is empty — removing all pages is not supported.
     """
+    if not keep_pages:
+        raise ValueError("keep_pages must not be empty")
     with pikepdf.Pdf.open(BytesIO(pdf_bytes)) as pdf:
         total = len(pdf.pages)
         keep_indices = sorted(set(p - 1 for p in keep_pages if 1 <= p <= total))
