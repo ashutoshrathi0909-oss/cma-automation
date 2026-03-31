@@ -1,0 +1,130 @@
+{
+  "mapping": {
+    "Profit & Loss": "profit_and_loss",
+    "Profit and Loss": "profit_and_loss",
+    "Profit & Loss Account": "profit_and_loss",
+    "Profit & Loss Account / Capital Account": "profit_and_loss",
+    "Statement of Profit and Loss": "profit_and_loss",
+    "Trading and Profit and Loss Account": "profit_and_loss",
+    "Trading Account": "profit_and_loss",
+    "P & L Ac": "profit_and_loss",
+    "Cons_PL": "profit_and_loss",
+    "Conso-p&L": "profit_and_loss",
+    "Balance Sheet": "balance_sheet",
+    "BS": "balance_sheet",
+    "Conso - BS": "balance_sheet",
+    "Cons_BS": "balance_sheet",
+    "Notes to P&L": "notes_pl",
+    "Notes to P & L": "notes_pl",
+    "Subnotes to PL": "notes_pl",
+    "P&L Other Income": "notes_pl",
+    "Administration Expenses (Sch BS)": "notes_pl",
+    "Administration Expenses": "notes_pl",
+    "Interest Incomes (Sch BS)": "notes_pl",
+    "Direct Expense (Sch BS)": "notes_pl",
+    "Other Incomes (Sch BS)": "notes_pl",
+    "Computation of Tax": "notes_pl",
+    "Trial Balance": "notes_pl",
+    "Notes to B/S": "notes_bs",
+    "Notes to B&S": "notes_bs",
+    "Notes to BS": "notes_bs",
+    "Notes to Balance Sheet": "notes_bs",
+    "Notes BS (1)": "notes_bs",
+    "Notes BS (2)": "notes_bs",
+    "Balance Sheet / Notes": "notes_bs",
+    "Notes to BS / Fixed Assets Schedule": "notes_bs",
+    "Investments (Sch BS)": "notes_bs",
+    "Details of Loans & Advances (Sch BS)": "notes_bs",
+    "Details of Deposits (Sch BS)": "notes_bs",
+    "Details of Bank Balance": "notes_bs",
+    "Details of Bank Balance + Investments": "notes_bs",
+    "Conso-sch Bs": "notes_bs",
+    "Cons_SCH": "notes_general",
+    "CMA Form": "cma_form",
+    "CMA Working": "cma_form",
+    "Deprn": "cma_form",
+    "Cons_Dep": "cma_form",
+    "Fixed Asset Schedule": "cma_form",
+    "FA Schedule": "cma_form"
+  },
+  "categories": {
+    "profit_and_loss": {
+      "count": 109,
+      "sheet_names": [
+        "Cons_PL",
+        "Conso-p&L",
+        "P & L Ac",
+        "Profit & Loss",
+        "Profit & Loss Account",
+        "Profit & Loss Account / Capital Account",
+        "Profit and Loss",
+        "Statement of Profit and Loss",
+        "Trading Account",
+        "Trading and Profit and Loss Account"
+      ]
+    },
+    "balance_sheet": {
+      "count": 108,
+      "sheet_names": [
+        "BS",
+        "Balance Sheet",
+        "Cons_BS",
+        "Conso - BS"
+      ]
+    },
+    "notes_pl": {
+      "count": 593,
+      "sheet_names": [
+        "Administration Expenses",
+        "Administration Expenses (Sch BS)",
+        "Computation of Tax",
+        "Direct Expense (Sch BS)",
+        "Interest Incomes (Sch BS)",
+        "Notes to P & L",
+        "Notes to P&L",
+        "Other Incomes (Sch BS)",
+        "P&L Other Income",
+        "Subnotes to PL",
+        "Trial Balance"
+      ]
+    },
+    "notes_bs": {
+      "count": 401,
+      "sheet_names": [
+        "Balance Sheet / Notes",
+        "Conso-sch Bs",
+        "Details of Bank Balance",
+        "Details of Bank Balance + Investments",
+        "Details of Deposits (Sch BS)",
+        "Details of Loans & Advances (Sch BS)",
+        "Investments (Sch BS)",
+        "Notes BS (1)",
+        "Notes BS (2)",
+        "Notes to B&S",
+        "Notes to B/S",
+        "Notes to BS",
+        "Notes to BS / Fixed Assets Schedule",
+        "Notes to Balance Sheet"
+      ]
+    },
+    "notes_general": {
+      "count": 43,
+      "sheet_names": [
+        "Cons_SCH"
+      ]
+    },
+    "cma_form": {
+      "count": 72,
+      "sheet_names": [
+        "CMA Form",
+        "CMA Working",
+        "Cons_Dep",
+        "Deprn",
+        "FA Schedule",
+        "Fixed Asset Schedule"
+      ]
+    }
+  },
+  "total_unique_sheet_names": 46,
+  "total_entries_mapped": 1326
+}

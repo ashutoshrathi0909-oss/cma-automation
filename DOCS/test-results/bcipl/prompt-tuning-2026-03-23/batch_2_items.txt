@@ -1,0 +1,90 @@
+Item 1:
+  Description: Axis Bank Suppliers Credit - Fair Oaks
+  Amount: Rs 22,840,532.14
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 2:
+  Description: Axis Bank ECGS A/C NO:920060046321519
+  Amount: Rs 28,706,957.00
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 3:
+  Description: Axis Bank 915060043569330 TLV Business Empower
+  Amount: Rs 14,300,000.00
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 4:
+  Description: Mr. Chaitra Sunderesh (Director Loan)
+  Amount: Rs 12,400,000.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 5:
+  Description: Depreciation - Air Compressor (For the Year)
+  Amount: Rs 114,329.68
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 6:
+  Description: Depreciation - Weighing Machines (For the Year)
+  Amount: Rs 360,150.83
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 7:
+  Description: Other Materials Comsumed - Scrap
+  Amount: Rs -111,230.30
+  Section: note 21 - other materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 8:
+  Description: Salaries & Wages
+  Amount: Rs 56,003,188.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 9:
+  Description: Contribution to PF & Other Funds
+  Amount: Rs 5,435,611.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 10:
+  Description: Labour Welfare Expenses
+  Amount: Rs 5,322,378.44
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 11:
+  Description: Directors Remuneration
+  Amount: Rs 3,000,000.00
+  Section: salaries & wages
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 12:
+  Description: Mrs. Ronak S. Bagadia (Director Loan)
+  Amount: Rs 19,401,126.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 13:
+  Description: Mr. Nishanth Sunderesh (Director Loan)
+  Amount: Rs 9,632,173.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 14:
+  Description: Capital Work-In-Progress
+  Amount: Rs 1,700,713.88
+  Section: note 10 - non-current investments
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 15:
+  Description: Intangible Assets Net Block
+  Amount: Rs 69,278.57
+  Section: tangible & intangible assets
+  Sheet: Notes BS (2)
+  Financial Year: 2021

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Assist — Design Concept</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    gap: 40px;
+    min-height: 100vh;
+  }
+
+  .page-title {
+    text-align: center;
+    color: #1e293b;
+  }
+  .page-title h1 { font-size: 22px; font-weight: 700; }
+  .page-title p { font-size: 14px; color: #64748b; margin-top: 4px; }
+
+  /* ── BROWSER CHROME ── */
+  .browser {
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+    background: white;
+  }
+  .browser-bar {
+    background: #e8ecf0;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-r { background: #fc5c65; }
+  .dot-y { background: #ffd32a; }
+  .dot-g { background: #05c46b; }
+  .address-bar {
+    flex: 1;
+    background: white;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #64748b;
+    margin: 0 24px;
+  }
+
+  /* ── APP SHELL ── */
+  .app {
+    display: flex;
+    height: 580px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: #0f3460;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+  }
+  .sidebar-logo {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+  }
+  .logo-text { color: white; font-size: 15px; font-weight: 700; line-height: 1.1; }
+  .logo-sub { color: rgba(255,255,255,0.45); font-size: 10px; font-weight: 400; letter-spacing: 0.5px; }
+
+  .nav-section { padding: 16px 12px 8px; flex: 1; }
+  .nav-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); padding: 0 8px; margin-bottom: 6px; text-transform: uppercase; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .nav-item.active {
+    background: rgba(249,115,22,0.15);
+    color: #fb923c;
+    border: 1px solid rgba(249,115,22,0.2);
+  }
+  .nav-item .icon { width: 16px; height: 16px; border-radius: 4px; background: currentColor; opacity: 0.7; flex-shrink: 0; }
+  .nav-item.active .icon { background: #fb923c; opacity: 1; }
+
+  .sidebar-bottom {
+    padding: 14px 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+  }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg,#f97316,#0f3460); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
+  .user-info { flex: 1; min-width: 0; }
+  .user-name { font-size: 12px; font-weight: 600; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .user-role { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    flex: 1;
+    background: #f8faff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .topbar {
+    background: white;
+    border-bottom: 1px solid #e8edf5;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .topbar-left h2 { font-size: 16px; font-weight: 700; color: #0f172a; }
+  .topbar-left p { font-size: 12px; color: #94a3b8; margin-top: 1px; }
+  .btn-orange {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.3);
+  }
+  .btn-orange::before { content: '+'; font-size: 16px; line-height: 1; }
+
+  .content { padding: 20px 24px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 18px; }
+
+  /* Stat cards */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid #eef2f8;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    border-radius: 0 12px 0 60px;
+    opacity: 0.07;
+  }
+  .stat-card.blue::after { background: #1e6fd9; }
+  .stat-card.orange::after { background: #f97316; }
+  .stat-card.green::after { background: #10b981; }
+  .stat-card.purple::after { background: #8b5cf6; }
+
+  .stat-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .stat-icon.blue { background: #eff6ff; }
+  .stat-icon.orange { background: #fff7ed; }
+  .stat-icon.green { background: #ecfdf5; }
+  .stat-icon.purple { background: #f5f3ff; }
+  .icon-sq { width: 16px; height: 16px; border-radius: 3px; }
+  .icon-sq.blue { background: #1e6fd9; }
+  .icon-sq.orange { background: #f97316; }
+  .icon-sq.green { background: #10b981; }
+  .icon-sq.purple { background: #8b5cf6; }
+  .stat-value { font-size: 26px; font-weight: 800; color: #0f172a; line-height: 1; }
+  .stat-label { font-size: 11px; color: #94a3b8; margin-top: 3px; font-weight: 500; }
+  .stat-trend { font-size: 10px; color: #10b981; margin-top: 6px; font-weight: 600; }
+
+  /* Recent clients table */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .section-title { font-size: 14px; font-weight: 700; color: #0f172a; }
+  .view-all { font-size: 11px; color: #1e6fd9; font-weight: 600; cursor: pointer; }
+
+  .two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+
+  .panel { background: white; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #eef2f8; padding: 16px; }
+
+  .client-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .client-row:last-child { border-bottom: none; }
+  .client-avatar {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+  }
+  .client-name { font-size: 12px; font-weight: 600; color: #1e293b; }
+  .client-meta { font-size: 10px; color: #94a3b8; }
+  .tag {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .tag-mfg { background: #eff6ff; color: #1e6fd9; }
+  .tag-trd { background: #fff7ed; color: #f97316; }
+  .tag-svc { background: #ecfdf5; color: #10b981; }
+
+  /* Pipeline status */
+  .pipeline-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    background: #f8faff;
+    border: 1px solid #eef2f8;
+  }
+  .step-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .step-name { font-size: 11px; font-weight: 600; color: #334155; flex: 1; }
+  .step-count { font-size: 11px; color: #94a3b8; }
+  .progress-bar { height: 4px; background: #e2e8f0; border-radius: 2px; margin-top: 4px; }
+  .progress-fill { height: 100%; border-radius: 2px; }
+
+  /* Orange highlight bar at top of sidebar */
+  .sidebar-accent { height: 3px; background: linear-gradient(90deg, #f97316, #fb923c, #fdba74); }
+
+  /* Activity feed */
+  .activity-item { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f1f5f9; }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .activity-text { font-size: 11px; color: #475569; line-height: 1.4; }
+  .activity-time { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <h1>CMA Assist — Redesign Concept</h1>
+  <p>White · Navy Blue (#0f3460) · Orange (#f97316) — Your brand colors, fully applied</p>
+</div>
+
+<div class="browser">
+  <div class="browser-bar">
+    <div class="dot dot-r"></div>
+    <div class="dot dot-y"></div>
+    <div class="dot dot-g"></div>
+    <div class="address-bar">localhost:3002/dashboard</div>
+  </div>
+
+  <div class="app">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-accent"></div>
+      <div class="sidebar-logo">
+        <div class="logo-mark">
+          <div class="logo-icon">CA</div>
+          <div>
+            <div class="logo-text">CMA Assist</div>
+            <div class="logo-sub">AUTOMATION PLATFORM</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Workspace</div>
+        <div class="nav-item active">
+          <div class="icon" style="background:#fb923c; mask:none; width:14px; height:14px; border-radius:3px;"></div>
+          Dashboard
+        </div>
+        <div class="nav-item">
+          <div class="icon"></div>
+          Clients
+        </div>
+        <div class="nav-item">
+          <div class="icon"></div>
+          CMA Reports
+        </div>
+        <div class="nav-label" style="margin-top:14px;">System</div>
+        <div class="nav-item">
+          <div class="icon"></div>
+          Settings
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="user-chip">
+          <div class="avatar">AK</div>
+          <div class="user-info">
+            <div class="user-name">Ashutosh K.</div>
+            <div class="user-role">Admin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-left">
+          <h2>Good morning, Ashutosh 👋</h2>
+          <p>Thursday, 19 March 2026 · 3 reports pending review</p>
+        </div>
+        <button class="btn-orange">New Client</button>
+      </div>
+
+      <div class="content">
+        <!-- STATS -->
+        <div class="stats">
+          <div class="stat-card blue">
+            <div class="stat-icon blue"><div class="icon-sq blue"></div></div>
+            <div class="stat-value">12</div>
+            <div class="stat-label">Total Clients</div>
+            <div class="stat-trend">↑ 2 this month</div>
+          </div>
+          <div class="stat-card orange">
+            <div class="stat-icon orange"><div class="icon-sq orange"></div></div>
+            <div class="stat-value">8</div>
+            <div class="stat-label">CMA Reports Active</div>
+            <div class="stat-trend">3 pending review</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-icon green"><div class="icon-sq green"></div></div>
+            <div class="stat-value">94%</div>
+            <div class="stat-label">Extraction Accuracy</div>
+            <div class="stat-trend">↑ 6% from last run</div>
+          </div>
+          <div class="stat-card purple">
+            <div class="stat-icon purple"><div class="icon-sq purple"></div></div>
+            <div class="stat-value">31</div>
+            <div class="stat-label">Docs Processed</div>
+            <div class="stat-trend">This quarter</div>
+          </div>
+        </div>
+
+        <!-- TWO COL -->
+        <div class="two-col">
+          <!-- CLIENTS -->
+          <div class="panel">
+            <div class="section-header">
+              <span class="section-title">Recent Clients</span>
+              <span class="view-all">View all →</span>
+            </div>
+
+            <div class="client-row">
+              <div class="client-avatar" style="background: linear-gradient(135deg,#1e6fd9,#0f3460);">DE</div>
+              <div>
+                <div class="client-name">Dynamic Air Engineering</div>
+                <div class="client-meta">FY ending March · FY22–25</div>
+              </div>
+              <span class="tag tag-mfg">Manufacturing</span>
+            </div>
+            <div class="client-row">
+              <div class="client-avatar" style="background: linear-gradient(135deg,#f97316,#ea580c);">MC</div>
+              <div>
+                <div class="client-name">Mehta Computers Pvt Ltd</div>
+                <div class="client-meta">FY ending March · FY21–24</div>
+              </div>
+              <span class="tag tag-trd">Trading</span>
+            </div>
+            <div class="client-row">
+              <div class="client-avatar" style="background: linear-gradient(135deg,#10b981,#059669);">SR</div>
+              <div>
+                <div class="client-name">Sunrise Retail Solutions</div>
+                <div class="client-meta">FY ending March · FY23–25</div>
+              </div>
+              <span class="tag tag-svc">Service</span>
+            </div>
+            <div class="client-row">
+              <div class="client-avatar" style="background: linear-gradient(135deg,#8b5cf6,#7c3aed);">PL</div>
+              <div>
+                <div class="client-name">Patel Logistics Ltd</div>
+                <div class="client-meta">FY ending March · FY22–25</div>
+              </div>
+              <span class="tag tag-trd">Trading</span>
+            </div>
+          </div>
+
+          <!-- PIPELINE -->
+          <div class="panel">
+            <div class="section-header">
+              <span class="section-title">Pipeline Status</span>
+              <span class="view-all">Details →</span>
+            </div>
+
+            <div class="pipeline-item">
+              <div class="step-dot" style="background:#10b981;"></div>
+              <div style="flex:1;">
+                <div class="step-name">Documents Uploaded</div>
+                <div class="progress-bar" style="margin-top:5px;">
+                  <div class="progress-fill" style="width:100%; background:#10b981;"></div>
+                </div>
+              </div>
+              <div class="step-count" style="color:#10b981; font-weight:700;">7/7</div>
+            </div>
+
+            <div class="pipeline-item">
+              <div class="step-dot" style="background:#1e6fd9;"></div>
+              <div style="flex:1;">
+                <div class="step-name">Extraction Complete</div>
+                <div class="progress-bar" style="margin-top:5px;">
+                  <div class="progress-fill" style="width:71%; background:#1e6fd9;"></div>
+                </div>
+              </div>
+              <div class="step-count" style="color:#1e6fd9; font-weight:700;">5/7</div>
+            </div>
+
+            <div class="pipeline-item">
+              <div class="step-dot" style="background:#f97316;"></div>
+              <div style="flex:1;">
+                <div class="step-name">Classified</div>
+                <div class="progress-bar" style="margin-top:5px;">
+                  <div class="progress-fill" style="width:43%; background:#f97316;"></div>
+                </div>
+              </div>
+              <div class="step-count" style="color:#f97316; font-weight:700;">3/7</div>
+            </div>
+
+            <div class="pipeline-item" style="background:#f8fafc; border-color:#e2e8f0;">
+              <div class="step-dot" style="background:#cbd5e1;"></div>
+              <div style="flex:1;">
+                <div class="step-name" style="color:#94a3b8;">CMA Generated</div>
+                <div class="progress-bar" style="margin-top:5px;">
+                  <div class="progress-fill" style="width:14%; background:#cbd5e1;"></div>
+                </div>
+              </div>
+              <div class="step-count">1/7</div>
+            </div>
+
+            <div style="margin-top:14px; padding:10px 12px; background:linear-gradient(135deg,#fff7ed,#ffedd5); border-radius:8px; border:1px solid #fed7aa;">
+              <div style="font-size:11px; font-weight:700; color:#c2410c;">⚡ Action needed</div>
+              <div style="font-size:11px; color:#9a3412; margin-top:2px;">2 documents awaiting verification · 1 doubt report pending</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; color:#64748b; font-size:13px; max-width:600px;">
+  <strong style="color:#0f3460;">What you're seeing:</strong> Navy sidebar with orange accents — your brand colors applied to every component.
+  Orange = actions &amp; highlights. Blue = structure &amp; trust. White = clarity.
+  <br><br>
+  Tell me what you love, what you'd change, or what to adjust.
+</div>
+
+</body>
+</html>

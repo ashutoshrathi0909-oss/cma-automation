@@ -21,7 +21,8 @@
       "mcp__claude_ai_Supabase__list_projects",
       "Bash(curl:*)",
       "Bash(docker compose:*)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(claude:*)"
     ]
   }
 }

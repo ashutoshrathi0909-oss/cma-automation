@@ -1,0 +1,638 @@
+{
+  "metadata": {
+    "date": "2026-03-27",
+    "source_1_rules": 398,
+    "source_2_answers": 69,
+    "total_cross_contradictions": 14,
+    "total_incomplete_rules": 3,
+    "total_internal_contradictions": 21
+  },
+  "cross_source_contradictions": [
+    {
+      "question_id": "Q1a",
+      "ca_item_text": "Staff Welfare Expenses",
+      "rule_fs_item": "Staff welfare expenses",
+      "fuzzy_score": 100.0,
+      "industry": "manufacturing",
+      "ca_row": 45,
+      "ca_name": "Wages",
+      "ca_source": "industry_specific[manufacturing]",
+      "rule_row": 67,
+      "rule_name": "Salary and staff expenses",
+      "rule_id": 208,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q1a",
+      "ca_item_text": "Staff Welfare Expenses",
+      "rule_fs_item": "Staff Welfare Expenses",
+      "fuzzy_score": 100.0,
+      "industry": "trading",
+      "ca_row": 67,
+      "ca_name": "Salary and staff expenses",
+      "ca_source": "industry_specific[trading]",
+      "rule_row": 45,
+      "rule_name": "Wages",
+      "rule_id": "CA_R01",
+      "rule_source_sheet": "P&L",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q1a",
+      "ca_item_text": "Staff Welfare Expenses",
+      "rule_fs_item": "Staff Welfare Expenses",
+      "fuzzy_score": 100.0,
+      "industry": "services",
+      "ca_row": 67,
+      "ca_name": "Salary and staff expenses",
+      "ca_source": "industry_specific[services]",
+      "rule_row": 45,
+      "rule_name": "Wages",
+      "rule_id": "CA_R01",
+      "rule_source_sheet": "P&L",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q1g",
+      "ca_item_text": "Bonus",
+      "rule_fs_item": "Bonus",
+      "fuzzy_score": 100.0,
+      "industry": "manufacturing",
+      "ca_row": 45,
+      "ca_name": "Wages",
+      "ca_source": "industry_specific[manufacturing]",
+      "rule_row": 67,
+      "rule_name": "Salary and staff expenses",
+      "rule_id": 245,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q3a",
+      "ca_item_text": "Miscellaneous Expenses",
+      "rule_fs_item": "Miscellaneous Expenditure",
+      "fuzzy_score": 85.1063829787234,
+      "industry": "all",
+      "ca_row": 71,
+      "ca_name": "Others (Admin & Selling)",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 170,
+      "rule_name": "Misc Expenditure (to the extent not w/o)",
+      "rule_id": 135,
+      "rule_source_sheet": "Balance Sheet",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q3a",
+      "ca_item_text": "Miscellaneous Expenses",
+      "rule_fs_item": "Miscellaneous Advances",
+      "fuzzy_score": 77.27272727272727,
+      "industry": "all",
+      "ca_row": 71,
+      "ca_name": "Others (Admin & Selling)",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 238,
+      "rule_name": "Other non current assets",
+      "rule_id": 103,
+      "rule_source_sheet": "Balance Sheet",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q3a",
+      "ca_item_text": "Miscellaneous Expenses",
+      "rule_fs_item": "Miscellaneous Income",
+      "fuzzy_score": 76.19047619047619,
+      "industry": "all",
+      "ca_row": 71,
+      "ca_name": "Others (Admin & Selling)",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 34,
+      "rule_name": "Others",
+      "rule_id": 371,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q3b",
+      "ca_item_text": "Selling & Distribution Expenses",
+      "rule_fs_item": "Selling & Distribution expenses",
+      "fuzzy_score": 100.0,
+      "industry": "all",
+      "ca_row": 70,
+      "ca_name": "Advertisements and Sales Promotions",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 71,
+      "rule_name": "Others",
+      "rule_id": 302,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q5",
+      "ca_item_text": "Carriage Inward / Freight Inward",
+      "rule_fs_item": "Freight inward / carriage inward",
+      "fuzzy_score": 100.0,
+      "industry": "all",
+      "ca_row": 47,
+      "ca_name": "Freight and Transportation Charges",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 41,
+      "rule_name": "Raw Materials Consumed ( Imported)",
+      "rule_id": 161,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q12e",
+      "ca_item_text": "Water Charges",
+      "rule_fs_item": "Water Charges",
+      "fuzzy_score": 100.0,
+      "industry": "all",
+      "ca_row": 48,
+      "ca_name": "Power, Coal, Fuel and Water",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 49,
+      "rule_name": "Others",
+      "rule_id": 162,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q12e",
+      "ca_item_text": "Water Charges",
+      "rule_fs_item": "Xerox Charges",
+      "fuzzy_score": 76.92307692307692,
+      "industry": "all",
+      "ca_row": 48,
+      "ca_name": "Power, Coal, Fuel and Water",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 71,
+      "rule_name": "Others",
+      "rule_id": 288,
+      "rule_source_sheet": "Profit and Loss",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q12g",
+      "ca_item_text": "Stores, Spares & Consumables (manufacturing)",
+      "rule_fs_item": "Stores & Spares (non-consumable)",
+      "fuzzy_score": 76.31578947368422,
+      "industry": "all",
+      "ca_row": 44,
+      "ca_name": "Stores & spares consumed (Indigenous)",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 238,
+      "rule_name": "Other non current assets",
+      "rule_id": 140,
+      "rule_source_sheet": "Balance Sheet",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q12g",
+      "ca_item_text": "Stores, Spares & Consumables (manufacturing)",
+      "rule_fs_item": "Stores & Spares (consumable)",
+      "fuzzy_score": 75.0,
+      "industry": "all",
+      "ca_row": 44,
+      "ca_name": "Stores & spares consumed (Indigenous)",
+      "ca_source": "ai_suggested (CA agreed)",
+      "rule_row": 198,
+      "rule_name": "Indigenous",
+      "rule_id": 139,
+      "rule_source_sheet": "Balance Sheet",
+      "type": "cross_source_contradiction"
+    },
+    {
+      "question_id": "Q38",
+      "ca_item_text": "Subsidy Income / Government Grant",
+      "rule_fs_item": "Subsidy / Government Grant",
+      "fuzzy_score": 88.13559322033898,
+      "industry": "all",
+      "ca_row": 34,
+      "ca_name": "Others (Non-Op Income)",
+      "ca_source": "ai_suggested (no default)",
+      "rule_row": 33,
+      "rule_name": "Extraordinary income",
+      "rule_id": "CA_R12",
+      "rule_source_sheet": "P&L",
+      "type": "cross_source_contradiction"
+    }
+  ],
+  "incomplete_rules": [
+    {
+      "question_id": "Q1a",
+      "ca_item_text": "Staff Welfare Expenses",
+      "rule_fs_item": "Staff welfare expenses",
+      "fuzzy_score": 100.0,
+      "rule_row": 67,
+      "rule_id": 208,
+      "ca_industry_rows": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      },
+      "type": "incomplete_rule_no_industry_split"
+    },
+    {
+      "question_id": "Q1a",
+      "ca_item_text": "Staff Welfare Expenses",
+      "rule_fs_item": "Staff Welfare Expenses",
+      "fuzzy_score": 100.0,
+      "rule_row": 45,
+      "rule_id": "CA_R01",
+      "ca_industry_rows": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      },
+      "type": "incomplete_rule_no_industry_split"
+    },
+    {
+      "question_id": "Q1g",
+      "ca_item_text": "Bonus",
+      "rule_fs_item": "Bonus",
+      "fuzzy_score": 100.0,
+      "rule_row": 67,
+      "rule_id": 245,
+      "ca_industry_rows": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      },
+      "type": "incomplete_rule_no_industry_split"
+    }
+  ],
+  "internal_contradictions": [
+    {
+      "fs_item": "trial balance difference",
+      "source_sheet": "Balance Sheet",
+      "conflicting_rules": [
+        {
+          "rule_id": 88,
+          "row": 250,
+          "canonical_name": "Other current liabilities",
+          "broad_classification": "Current Liability"
+        },
+        {
+          "rule_id": 146,
+          "row": 172,
+          "canonical_name": "Other Intangible assets",
+          "broad_classification": "Fictitious Asset"
+        }
+      ],
+      "type": "internal_exact_duplicate_different_row"
+    },
+    {
+      "fs_item": "suspense account",
+      "source_sheet": "Balance Sheet",
+      "conflicting_rules": [
+        {
+          "rule_id": 89,
+          "row": 250,
+          "canonical_name": "Other current liabilities",
+          "broad_classification": "Current Liability"
+        },
+        {
+          "rule_id": 145,
+          "row": 172,
+          "canonical_name": "Other Intangible assets",
+          "broad_classification": "Fictitious Asset"
+        }
+      ],
+      "type": "internal_exact_duplicate_different_row"
+    },
+    {
+      "fs_item": "bank interest",
+      "source_sheet": "Profit and Loss",
+      "conflicting_rules": [
+        {
+          "rule_id": 234,
+          "row": 83,
+          "canonical_name": "Interest on Fixed Loans / Term loans",
+          "broad_classification": "Interest"
+        },
+        {
+          "rule_id": 357,
+          "row": 30,
+          "canonical_name": "Interest Received",
+          "broad_classification": "Non-operating Income"
+        }
+      ],
+      "type": "internal_exact_duplicate_different_row"
+    },
+    {
+      "fs_item": "kasar account",
+      "source_sheet": "Profit and Loss",
+      "conflicting_rules": [
+        {
+          "rule_id": 276,
+          "row": 71,
+          "canonical_name": "Others",
+          "broad_classification": "Selling, Gen. & Adm. Exp."
+        },
+        {
+          "rule_id": 368,
+          "row": 22,
+          "canonical_name": "Domestic",
+          "broad_classification": "Gross Sales"
+        }
+      ],
+      "type": "internal_exact_duplicate_different_row"
+    },
+    {
+      "fs_item": "vatav account",
+      "source_sheet": "Profit and Loss",
+      "conflicting_rules": [
+        {
+          "rule_id": 277,
+          "row": 71,
+          "canonical_name": "Others",
+          "broad_classification": "Selling, Gen. & Adm. Exp."
+        },
+        {
+          "rule_id": 369,
+          "row": 22,
+          "canonical_name": "Domestic",
+          "broad_classification": "Gross Sales"
+        }
+      ],
+      "type": "internal_exact_duplicate_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 20,
+        "fs_item": "Special Capital Incentive (refundable)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 21,
+        "fs_item": "Special Capital Incentive (non-refundable)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 95.0,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 22,
+        "fs_item": "Capital Subsidy from Government (non-refundable)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "rule_2": {
+        "rule_id": 23,
+        "fs_item": "Capital Subsidy from Government (Refundable)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "fuzzy_score": 95.65217391304348,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 43,
+        "fs_item": "Aid From Government (Refundable)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 44,
+        "fs_item": "Aid From Government (non-refundable)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 94.11764705882352,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 61,
+        "fs_item": "Unsecured Loans from associate concerns (without shortfall undertaking)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 65,
+        "fs_item": "Unsecured Loans from associate concerns (with shortfall undertaking)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 97.84172661870504,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 62,
+        "fs_item": "Unsecured Loans from director (without shortfall undertaking)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 66,
+        "fs_item": "Unsecured Loans from director (with shortfall undertaking)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 97.47899159663865,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 63,
+        "fs_item": "Unsecured Loans from relatives (without shortfall undertaking)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 67,
+        "fs_item": "Unsecured Loans from relatives (with shortfall undertaking)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 97.52066115702479,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 64,
+        "fs_item": "Unsecured Loans from friends (without shortfall undertaking)",
+        "row": 153,
+        "canonical_name": "As Long Term Debt"
+      },
+      "rule_2": {
+        "rule_id": 68,
+        "fs_item": "Unsecured Loans from friends (with shortfall undertaking)",
+        "row": 125,
+        "canonical_name": "Other Reserve"
+      },
+      "fuzzy_score": 97.43589743589743,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 88,
+        "fs_item": "Trial Balance Difference",
+        "row": 250,
+        "canonical_name": "Other current liabilities"
+      },
+      "rule_2": {
+        "rule_id": 146,
+        "fs_item": "Trial Balance Difference",
+        "row": 172,
+        "canonical_name": "Other Intangible assets"
+      },
+      "fuzzy_score": 100.0,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 89,
+        "fs_item": "Suspense Account",
+        "row": 250,
+        "canonical_name": "Other current liabilities"
+      },
+      "rule_2": {
+        "rule_id": 145,
+        "fs_item": "Suspense Account",
+        "row": 172,
+        "canonical_name": "Other Intangible assets"
+      },
+      "fuzzy_score": 100.0,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 119,
+        "fs_item": "Fixed Deposits with banks & accrued interest (under lien)",
+        "row": 234,
+        "canonical_name": "Fixed Deposits (Non Current)"
+      },
+      "rule_2": {
+        "rule_id": 121,
+        "fs_item": "Fixed Deposits with banks & accrued interest (without lien)",
+        "row": 215,
+        "canonical_name": "Other Fixed Deposits"
+      },
+      "fuzzy_score": 91.37931034482759,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 139,
+        "fs_item": "Stores & Spares (consumable)",
+        "row": 198,
+        "canonical_name": "Indigenous"
+      },
+      "rule_2": {
+        "rule_id": 140,
+        "fs_item": "Stores & Spares (non-consumable)",
+        "row": 238,
+        "canonical_name": "Other non current assets"
+      },
+      "fuzzy_score": 93.33333333333333,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 153,
+        "fs_item": "Mobilisation Advance (adjustment period less than 1year)",
+        "row": 243,
+        "canonical_name": "Advance received from customers"
+      },
+      "rule_2": {
+        "rule_id": 154,
+        "fs_item": "Mobilisation Advance (adjustment period more than 1year)",
+        "row": 149,
+        "canonical_name": "Balance Other Debts"
+      },
+      "fuzzy_score": 91.07142857142857,
+      "source_sheet": "Balance Sheet",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 228,
+        "fs_item": "Laundry Expenses",
+        "row": 45,
+        "canonical_name": "Wages"
+      },
+      "rule_2": {
+        "rule_id": 257,
+        "fs_item": "Sundry expenses",
+        "row": 71,
+        "canonical_name": "Others"
+      },
+      "fuzzy_score": 90.32258064516128,
+      "source_sheet": "Profit and Loss",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 234,
+        "fs_item": "Bank Interest",
+        "row": 83,
+        "canonical_name": "Interest on Fixed Loans / Term loans"
+      },
+      "rule_2": {
+        "rule_id": 357,
+        "fs_item": "Bank Interest",
+        "row": 30,
+        "canonical_name": "Interest Received"
+      },
+      "fuzzy_score": 100.0,
+      "source_sheet": "Profit and Loss",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 276,
+        "fs_item": "Kasar account",
+        "row": 71,
+        "canonical_name": "Others"
+      },
+      "rule_2": {
+        "rule_id": 368,
+        "fs_item": "Kasar account",
+        "row": 22,
+        "canonical_name": "Domestic"
+      },
+      "fuzzy_score": 100.0,
+      "source_sheet": "Profit and Loss",
+      "type": "internal_similar_different_row"
+    },
+    {
+      "rule_1": {
+        "rule_id": 277,
+        "fs_item": "Vatav account",
+        "row": 71,
+        "canonical_name": "Others"
+      },
+      "rule_2": {
+        "rule_id": 369,
+        "fs_item": "Vatav account",
+        "row": 22,
+        "canonical_name": "Domestic"
+      },
+      "fuzzy_score": 100.0,
+      "source_sheet": "Profit and Loss",
+      "type": "internal_similar_different_row"
+    }
+  ]
+}

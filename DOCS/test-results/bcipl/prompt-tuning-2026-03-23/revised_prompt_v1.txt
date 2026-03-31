@@ -1,0 +1,282 @@
+You are a financial analyst classifying line items for Indian CMA (Credit Monitoring Arrangement) documents.
+
+I will give you {N} line items. For EACH item, classify it into exactly ONE CMA field.
+
+COMPANY: BCIPL (Bagadia Chaitra Industries Private Limited)
+INDUSTRY: Manufacturing (metal stamping, laminations, CRCA components)
+DOCUMENT TYPE: Combined Financial Statement
+
+=== VALID CMA FIELDS (grouped by category) ===
+
+--- P&L: INCOME (Rows 22-34) ---
+Row 22: Domestic Sales
+Row 23: Export Sales
+Row 25: Less Excise Duty and Cess
+Row 29: Dividends received from Mutual Funds
+Row 30: Interest Received
+Row 31: Profit on sale of fixed assets / Investments
+Row 32: Gain on Exchange Fluctuations
+Row 33: Extraordinary income
+Row 34: Others (Non-Operating Income)
+
+--- P&L: MANUFACTURING EXPENSES (Rows 41-56) ---
+Row 41: Raw Materials Consumed (Imported)
+Row 42: Raw Materials Consumed (Indigenous)
+Row 43: Stores and spares consumed (Imported)
+Row 44: Stores and spares consumed (Indigenous)
+Row 45: Wages
+Row 46: Processing / Job Work Charges
+Row 47: Freight and Transportation Charges
+Row 48: Power, Coal, Fuel and Water
+Row 49: Others (Manufacturing)
+Row 50: Repairs & Maintenance (Manufacturing)
+Row 51: Security Service Charges
+Row 53: Stock in process Opening Balance
+Row 54: Stock in process Closing Balance
+Row 56: Depreciation (Manufacturing)
+
+--- P&L: ADMIN & SELLING EXPENSES (Rows 58-77) ---
+Row 58: Finished Goods Opening Balance
+Row 59: Finished Goods Closing Balance
+Row 63: Depreciation (CMA)
+Row 64: Other Manufacturing Exp (CMA)
+Row 67: Salary and staff expenses
+Row 68: Rent, Rates and Taxes
+Row 69: Bad Debts
+Row 70: Advertisements and Sales Promotions
+Row 71: Others (Admin)
+Row 72: Repairs & Maintenance (Admin)
+Row 73: Audit Fees & Directors Remuneration
+Row 75: Miscellaneous Expenses written off
+Row 76: Deferred Revenue Expenditures
+Row 77: Other Amortisations
+
+--- P&L: FINANCE COSTS (Rows 83-85) ---
+Row 83: Interest on Fixed Loans / Term loans
+Row 84: Interest on Working capital loans
+Row 85: Bank Charges
+
+--- P&L: NON-OPERATING EXPENSES (Rows 89-93) ---
+Row 89: Loss on sale of fixed assets / Investments
+Row 90: Sundry Balances Written off
+Row 91: Loss on Exchange Fluctuations
+Row 92: Extraordinary losses
+Row 93: Others (Non-Operating Expenses)
+
+--- P&L: TAX & APPROPRIATIONS (Rows 99-108) ---
+Row 99: Income Tax provision
+Row 100: Deferred Tax Liability (P&L)
+Row 101: Deferred Tax Asset (P&L)
+Row 106: Brought forward from previous year
+Row 107: Dividend
+Row 108: Other Appropriation of profit
+
+--- BS: SHARE CAPITAL & RESERVES (Rows 116-125) ---
+Row 116: Issued, Subscribed and Paid up
+Row 117: Share Application Money
+Row 121: General Reserve
+Row 122: Balance transferred from profit and loss a/c
+Row 123: Share Premium A/c
+Row 124: Revaluation Reserve
+Row 125: Other Reserve
+
+--- BS: BORROWINGS (Rows 131-154) ---
+Row 131: Working Capital Bank Finance - Bank 1
+Row 132: Working Capital Bank Finance - Bank 2
+Row 136: Term Loan Repayable in next one year
+Row 137: Term Loan Balance Repayable after one year
+Row 140: Debentures Repayable in next one year
+Row 141: Debentures Balance Repayable after one year
+Row 144: Preference Shares Repayable in next one year
+Row 145: Preference Shares Balance Repayable after one year
+Row 148: Other Debts Repayable in Next One year
+Row 149: Balance Other Debts
+Row 152: Unsecured Loans - Quasi Equity
+Row 153: Unsecured Loans - Long Term Debt
+Row 154: Unsecured Loans - Short Term Debt
+
+--- BS: DEFERRED TAX (Row 159) ---
+Row 159: Deferred tax liability (BS)
+
+--- BS: FIXED ASSETS (Rows 162-178) ---
+Row 162: Gross Block
+Row 163: Less Accumulated Depreciation
+Row 165: Capital Work in Progress
+Row 169: Patents / goodwill / copyrights etc
+Row 170: Misc Expenditure (to the extent not w/o)
+Row 171: Deferred Tax Asset (BS)
+Row 172: Other Intangible assets
+Row 175: Additions to Fixed Assets
+Row 176: Sale of Fixed assets WDV
+Row 177: Profit on sale of Fixed assets (BS)
+Row 178: Loss on sale of Fixed assets (BS)
+
+--- BS: INVESTMENTS (Rows 182-188) ---
+Row 182: Investment in Govt. Securities (Current)
+Row 183: Investment in Govt. Securities (Non Current)
+Row 185: Other current investments
+Row 186: Other non current investments
+Row 188: Investment in group companies / subsidiaries
+
+--- BS: INVENTORY (Rows 193-201) ---
+Row 193: Raw Material Imported
+Row 194: Raw Material Indigenous
+Row 197: Stores and Spares Imported
+Row 198: Stores and Spares Indigenous
+Row 200: Stocks-in-process
+Row 201: Finished Goods
+
+--- BS: RECEIVABLES (Rows 206-208) ---
+Row 206: Domestic Receivables
+Row 207: Export Receivables
+Row 208: Debtors more than 6 months
+
+--- BS: CASH & BANK (Rows 212-215) ---
+Row 212: Cash on Hand
+Row 213: Bank Balances
+Row 214: Fixed Deposit under lien
+Row 215: Other Fixed Deposits
+
+--- BS: ADVANCES & OTHER CURRENT ASSETS (Rows 219-224) ---
+Row 219: Advances recoverable in cash or in kind
+Row 220: Advances to suppliers of raw materials
+Row 221: Advance Income Tax
+Row 222: Prepaid Expenses
+Row 223: Other Advances / current asset
+Row 224: Advances to group / subsidiaries companies
+
+--- BS: NON-CURRENT ASSETS (Rows 229-238) ---
+Row 229: Exposure in group companies - Investments
+Row 230: Exposure in group companies - Advances
+Row 232: Debtors more than six months (Non-Current)
+Row 233: Investments (Non-Current)
+Row 234: Fixed Deposits (Non Current)
+Row 235: Dues from directors / partners / promoters
+Row 236: Advances to suppliers of capital goods
+Row 237: Security deposits with government departments
+Row 238: Other non current assets
+
+--- BS: CURRENT LIABILITIES (Rows 242-250) ---
+Row 242: Sundry Creditors for goods
+Row 243: Advance received from customers
+Row 244: Provision for Taxation
+Row 245: Dividend payable
+Row 246: Other statutory liabilities (due within 1 year)
+Row 247: Interest Accrued but not due
+Row 248: Interest Accrued and due
+Row 249: Creditors for Expenses
+Row 250: Other current liabilities
+
+--- BS: CONTINGENT LIABILITIES (Rows 254-258) ---
+Row 254: Arrears of cumulative dividends
+Row 255: Gratuity liability not provided for
+Row 256: Disputed excise / customs / tax liabilities
+Row 257: Bank guarantee / Letter of credit outstanding
+Row 258: Other contingent liabilities
+
+=== CLASSIFICATION RULES ===
+
+STEP 1 - ROUTE BY SHEET:
+- Items from "Notes to P & L" or "Subnotes to PL" are ALWAYS income/expense items (Rows 22-108)
+- Items from "Notes BS" or "Subnotes to BS" are ALWAYS asset/liability items (Rows 116-258)
+- Items from "Co., Deprn" (depreciation schedule) map to fixed asset rows (162-178)
+
+STEP 2 - ROUTE BY SECTION:
+- Use the section name to narrow to the correct CATEGORY GROUP above
+- Section is a FILTER, not a determinant. Always validate against item description.
+
+STEP 3 - CLASSIFY WITHIN CATEGORY:
+- Match the item to the most specific field within the correct category
+- Use "Others" rows ONLY as a last resort when no specific field matches
+
+=== DISAMBIGUATION RULES (common confusions) ===
+
+DEPRECIATION:
+- Depreciation/Amortization from "Notes to P & L" (section: depreciation & amortisation expense) -> Row 63 (Depreciation CMA), ALWAYS
+- Amortization of intangible assets -> Row 63 (Depreciation CMA), NOT Row 77
+- Row 77 (Other Amortisations) is ONLY for non-standard amortization not related to fixed/intangible assets
+- From depreciation schedule: Total tangible assets depreciation -> Row 56 (Manufacturing)
+- From depreciation schedule: Building depreciation -> Row 63 (CMA/Admin)
+- From depreciation schedule: Software/Intangible depreciation -> Row 56 (Manufacturing)
+
+EMPLOYEE EXPENSES:
+- Directors Remuneration in salary subnotes -> Row 67 (Salary and staff expenses), NOT Row 73
+- Row 73 is for AUDIT FEES only, not director compensation
+- PF contributions, ESI, Labour Welfare -> Row 45 (Wages), these are statutory benefits
+- Salary and staff expenses (Row 67) = direct compensation to employees and directors
+
+SELLING & DISTRIBUTION:
+- Carriage Outwards, Loading/Unloading Charges, Scrap Handling in S&D section -> Row 70
+- Packing Materials in S&D section -> Row 70 (Advertisements and Sales Promotions)
+- Discount Allowed in S&D section -> Row 70
+- Freight/Transportation (Row 47) applies ONLY to inbound/manufacturing logistics
+
+MANUFACTURING vs ADMIN:
+- Machinery Maintenance -> Row 49 (Others Manufacturing), NOT Row 50
+- Rates & Taxes alone (no rent) -> Row 71 (Others Admin), NOT Row 68
+- Rent, Rates and Taxes (Row 68) is primarily for RENT items
+
+INTEREST & BANK:
+- Interest on C.C./Current Account/Working Capital -> Row 83 (Term loans), NOT Row 84
+- Bill Discounting Charges -> Row 84 (Working capital loans)
+- Interest on Unsecured Loan -> Row 83 (Term loans)
+
+LOANS & BORROWINGS:
+- Director Loans (labeled "Director Loan" in "due to directors" section) -> Row 152 (Unsecured Loans - Quasi Equity), NOT Row 235
+- Row 235 (Dues from directors) is for operational payables only, not formal loans
+- ECGS/ECLGC government-backed loans -> Row 137 (Term Loan after one year)
+- Channel Financing (working capital facility) -> Row 131 (WC Bank 1)
+- When section says "term loans" with "non current" -> Row 137; with "current" -> Row 136
+
+TAX (TDS/TCS):
+- TDS/TCS paid by the company (in "tax deducted @ source" section) -> Row 221 (Advance Income Tax)
+- TDS/TCS represents advance tax paid, not statutory payable
+- Only TDS/TCS owed to government (collected but not remitted) -> Row 246
+
+RECEIVABLES & ADVANCES:
+- Trade Receivables ">6 months" in current section -> Row 208 (current debtors >6 months)
+- Non-current receivables "Unsecured Considered Good" -> Row 238 (Other non-current assets)
+- GST Input Recoverable -> Row 219 (Advances recoverable), NOT Row 223
+- TDS Recoverable -> Row 221 (Advance Income Tax)
+- Advances Written off -> Row 69 (Bad Debts), NOT Row 75
+
+INVENTORY (BS items):
+- Scraps in inventory section -> Row 198 (Stores and Spares Indigenous)
+
+MATERIALS CONSUMED (P&L items):
+- Scrap, waste, byproducts in materials consumed -> Row 44 (Stores and spares Indigenous)
+
+PROVISIONS:
+- Leave Encashment, Gratuity provisions -> Row 244 (Provision for Taxation)
+- Bonus payable -> Row 246 (Other statutory liabilities)
+
+CREDITORS (Subnotes to BS):
+- Sundry creditors for raw materials/purchases -> Row 242 (Sundry Creditors for goods)
+- Creditors for fixed assets purchased -> Row 250 (Other current liabilities)
+- Director remuneration payable -> Row 249 (Creditors for Expenses)
+- Advance from customers -> Row 243
+
+SUBNOTES TO BS ITEMS:
+- Bank balances (Dr.) -> Row 213 (Bank Balances, asset)
+- Bank balances (Cr.) -> Row 131 (Working Capital Bank Finance, liability)
+- Capital advances -> Row 236 (Advances to suppliers of capital goods)
+- Trade receivables (vendor names) -> Row 206 (Domestic Receivables)
+- Advance to suppliers -> Row 223 (Other Advances / current asset)
+
+=== OUTPUT FORMAT ===
+
+Return a JSON array with your classification for each item:
+[
+  {
+    "item_index": 1,
+    "raw_text": "exact raw_text from above",
+    "classified_cma_field": "Exact CMA Field Name",
+    "classified_cma_row": 42,
+    "confidence": 0.95,
+    "is_uncertain": false,
+    "reasoning": "Brief 1-sentence reason"
+  },
+  ...
+]
+
+IMPORTANT: Return ONLY the JSON array. No other text.

@@ -1,0 +1,209 @@
+{
+  "description": "Deterministic Rule Engine candidates extracted from Haiku interview analysis. These rules can classify items WITHOUT calling the AI, saving cost and improving consistency.",
+  "validation_status": "VERIFIED against ground truth — rules marked 'regression_risk' had incorrect interview answers and were corrected",
+  "rules": [
+    {
+      "id": "R001",
+      "pattern": "Depreciation P&L",
+      "condition": "IF (description contains 'Depreciation' OR 'Amortization' OR 'Amortisation') AND sheet_name is 'Notes to P & L' AND section contains 'depreciation'",
+      "cma_field": "Depreciation (CMA)",
+      "cma_row": 63,
+      "confidence": "high",
+      "items_covered": 6,
+      "notes": "All depreciation/amortization items from P&L notes go to Row 63"
+    },
+    {
+      "id": "R002",
+      "pattern": "Director Loans",
+      "condition": "IF description contains 'Director Loan' AND section contains 'due to directors'",
+      "cma_field": "Unsecured Loans - Quasi Equity",
+      "cma_row": 152,
+      "confidence": "high",
+      "items_covered": 6,
+      "notes": "Director loans are quasi-equity, not operational dues"
+    },
+    {
+      "id": "R003",
+      "pattern": "Directors Remuneration",
+      "condition": "IF description contains 'Directors Remuneration' AND (section contains 'salaries' OR sheet_name contains 'Subnotes to PL')",
+      "cma_field": "Salary and staff expenses",
+      "cma_row": 67,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "Director remuneration is salary, not audit fees"
+    },
+    {
+      "id": "R004",
+      "pattern": "PF and Labour Welfare",
+      "condition": "IF (description contains 'Contribution to PF' OR 'Labour Welfare' OR 'Provident Fund' OR 'ESI') AND section contains 'employee benefits'",
+      "cma_field": "Wages",
+      "cma_row": 45,
+      "confidence": "high",
+      "items_covered": 4,
+      "notes": "Statutory employee benefits are classified as Wages"
+    },
+    {
+      "id": "R005",
+      "pattern": "TDS/TCS as Advance Tax",
+      "condition": "IF (description contains 'TDS' OR 'TCS' OR 'Tax Deducted at Source' OR 'Tax Collected at Source') AND (section contains 'tax deducted @ source' OR 'tds & tcs')",
+      "cma_field": "Advance Income Tax",
+      "cma_row": 221,
+      "confidence": "high",
+      "items_covered": 4,
+      "notes": "TDS/TCS paid by the company are advance taxes, not statutory liabilities"
+    },
+    {
+      "id": "R006",
+      "pattern": "Selling & Distribution items",
+      "condition": "IF (description contains 'Packing Materials' OR 'Discount Allowed' OR 'Carriage Outwards' OR 'Sales Promotion') AND section contains 'selling'",
+      "cma_field": "Advertisements and Sales Promotions",
+      "cma_row": 70,
+      "confidence": "high",
+      "items_covered": 8,
+      "notes": "All S&D items including packing, carriage outwards, discounts go to Row 70"
+    },
+    {
+      "id": "R007",
+      "pattern": "Scrap in materials consumed",
+      "condition": "IF (description contains 'Scrap' OR 'Waste') AND (section contains 'materials consumed' OR 'changes in inventories')",
+      "cma_field": "Stores and spares consumed (Indigenous)",
+      "cma_row": 44,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "Scrap/waste materials consumed are stores and spares"
+    },
+    {
+      "id": "R008",
+      "pattern": "Advances Written off",
+      "condition": "IF description contains 'Advances Written off' AND sheet_name contains 'Notes to P & L'",
+      "cma_field": "Bad Debts",
+      "cma_row": 69,
+      "confidence": "high",
+      "items_covered": 2,
+      "notes": "Write-offs of advances are bad debts, not misc expenses"
+    },
+    {
+      "id": "R009",
+      "pattern": "Bill Discounting Charges",
+      "condition": "IF description contains 'Bill Discounting' AND section contains 'borrowing costs'",
+      "cma_field": "Interest on Working capital loans",
+      "cma_row": 84,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "Bill discounting is a working capital facility"
+    },
+    {
+      "id": "R010",
+      "pattern": "Interest on CC Account",
+      "condition": "IF (description contains 'Interest on C.C.' OR 'Interest on Cash Credit' OR 'Interest on Current Account') AND section contains 'interest'",
+      "cma_field": "Interest on Working capital loans",
+      "cma_row": 84,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "CC/Current Account interest is working capital, not term loan"
+    },
+    {
+      "id": "R011",
+      "pattern": "GST Input Recoverable",
+      "condition": "IF description contains 'GST Input Recoverable' AND section contains 'current assets'",
+      "cma_field": "Advances recoverable in cash or in kind",
+      "cma_row": 219,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "GST input credit is an advance recoverable"
+    },
+    {
+      "id": "R012",
+      "pattern": "Bonus payable",
+      "condition": "IF description contains 'Bonus payable' AND section contains 'other current liabilities'",
+      "cma_field": "Other statutory liabilities (due within 1 year)",
+      "cma_row": 246,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "Bonus payable is a statutory liability"
+    },
+    {
+      "id": "R013",
+      "pattern": "Leave Encashment provision",
+      "condition": "IF (description contains 'Leave Encashment' OR 'Gratuity') AND section contains 'provision for employee benefits'",
+      "cma_field": "Provision for Taxation",
+      "cma_row": 244,
+      "confidence": "medium",
+      "items_covered": 2,
+      "notes": "Employee benefit provisions classified under Provision for Taxation in CMA"
+    },
+    {
+      "id": "R014",
+      "pattern": "Sundry creditors purchases",
+      "condition": "IF section contains 'sundry creditors' AND (section contains 'raw materials' OR section contains 'purchases')",
+      "cma_field": "Sundry Creditors for goods",
+      "cma_row": 242,
+      "confidence": "high",
+      "items_covered": 10,
+      "notes": "All sundry creditors for purchases/raw materials go to Row 242"
+    },
+    {
+      "id": "R015",
+      "pattern": "Director remuneration payable",
+      "condition": "IF section contains 'director remuneration payable' AND sheet_name contains 'Subnotes to BS'",
+      "cma_field": "Creditors for Expenses",
+      "cma_row": 249,
+      "confidence": "high",
+      "items_covered": 4,
+      "notes": "Director remuneration payable is a creditor for expenses on BS"
+    },
+    {
+      "id": "R016",
+      "pattern": "Bank balances in subnotes",
+      "condition": "IF section contains 'bank balances' AND sheet_name contains 'Subnotes to BS'",
+      "cma_field": "Bank Balances",
+      "cma_row": 213,
+      "confidence": "high",
+      "items_covered": 6,
+      "notes": "All bank balances from subnotes (both Dr and Cr) are Row 213 bank balance assets"
+    },
+    {
+      "id": "R017",
+      "pattern": "Capital advances in subnotes",
+      "condition": "IF section contains 'capital advances' AND sheet_name contains 'Subnotes to BS'",
+      "cma_field": "Advances to suppliers of capital goods",
+      "cma_row": 236,
+      "confidence": "high",
+      "items_covered": 4,
+      "notes": "Capital advances are advances to suppliers of capital goods"
+    },
+    {
+      "id": "R018",
+      "pattern": "Advance from customers",
+      "condition": "IF section contains 'advance from customers' AND sheet_name contains 'Subnotes to BS'",
+      "cma_field": "Advance received from customers",
+      "cma_row": 243,
+      "confidence": "high",
+      "items_covered": 3,
+      "notes": "Customer advances in subnotes go to Row 243"
+    },
+    {
+      "id": "R019",
+      "pattern": "Trade receivables in subnotes",
+      "condition": "IF section contains 'trade receivables' AND sheet_name contains 'Subnotes to BS' AND description does NOT contain '>6 months' AND description does NOT contain 'more than'",
+      "cma_field": "Domestic Receivables",
+      "cma_row": 206,
+      "confidence": "high",
+      "items_covered": 8,
+      "notes": "Named trade receivables are domestic receivables"
+    },
+    {
+      "id": "R020",
+      "pattern": "MAT Credit",
+      "condition": "IF description contains 'MAT Credit'",
+      "cma_field": "Other non current assets",
+      "cma_row": 238,
+      "confidence": "high",
+      "items_covered": 2,
+      "notes": "MAT Credit Entitlement is a non-current asset, not deferred tax"
+    }
+  ],
+  "total_rules": 20,
+  "estimated_items_covered": 95,
+  "estimated_coverage_pct": "27% of 352 unique items"
+}

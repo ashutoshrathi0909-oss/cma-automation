@@ -1,0 +1,148 @@
+{
+  "agent": "2-intelligence",
+  "company": "Dynamic Air Engineering India Pvt Ltd",
+  "company_cin": "U29192TN2008PTC066303",
+  "company_location": "No 4, Boopathy Nagar, Industrial Estate, Keelkattalai, Chennai - 600 117",
+  "industry_detected": "Manufacturing",
+  "industry_confidence": "HIGH",
+  "industry_evidence": [
+    "Raw Materials Consumed & Direct Costs (FY22 P&L Sheet)",
+    "Changes in inventories of WIP, Finished goods and Stock-in-Trade (FY22 P&L)",
+    "Factory Building as fixed asset (FY25 FA Sheet)",
+    "Plant & Machineries (FY25 FA Sheet)",
+    "Purchases and Direct Costs (FY25 P&L)"
+  ],
+  "documents": [
+    {
+      "file": "BS-Dynamic 2022 - Companies Act.xlsx",
+      "path": "DOCS/Financials/FY_22/Financials/BS-Dynamic 2022 - Companies Act.xlsx",
+      "year": "FY22",
+      "type": "Excel",
+      "extractor": "ExcelExtractor",
+      "sheets": ["TB-22", "Link Sheet", "STI ", "115JB ", "Dep IT", "Key Ratios", "FA Additions", "BS", "PL", "BS Notes", "PL Notes", "CFS", "Dep - co", "Def Tax", "FA  Register", "Debtors Ageing", "Sheet1", "Sheet2"],
+      "key_sheets": ["BS", "PL", "BS Notes", "PL Notes"],
+      "size_bytes": 645296,
+      "size_mb": 0.62,
+      "readable": true,
+      "text_extractable": true,
+      "notes": "Comprehensive workbook with 18 sheets. BS and PL sheets contain FY22 and FY21 comparative data. Amounts in Indian Rupees in thousands."
+    },
+    {
+      "file": "Notes to Financials.pdf",
+      "path": "DOCS/Financials/FY_22/Financials/Notes to Financials.pdf",
+      "year": "FY22",
+      "type": "ScannedPDF",
+      "extractor": "OcrExtractor",
+      "pages": 16,
+      "size_bytes": 4282999,
+      "size_mb": 4.08,
+      "readable": true,
+      "text_extractable": false,
+      "encrypted": false,
+      "notes": "Scanned PDF - zero extractable text via pdfplumber and pypdfium2. Requires OCR (Vision). 16 pages, 4.08 MB confirms image-based scan."
+    },
+    {
+      "file": "ITR BS P&L.pdf",
+      "path": "DOCS/Financials/FY_22/Financials/ITR BS P&L.pdf",
+      "year": "FY22",
+      "type": "ScannedPDF",
+      "extractor": "OcrExtractor",
+      "pages": 8,
+      "size_bytes": 2034900,
+      "size_mb": 1.94,
+      "readable": true,
+      "text_extractable": false,
+      "encrypted": false,
+      "notes": "Scanned PDF - zero extractable text. Requires OCR (Vision). ITR filed Balance Sheet and P&L for FY22."
+    },
+    {
+      "file": "ITR PL & BS.pdf",
+      "path": "DOCS/Financials/FY-23/ITR PL & BS.pdf",
+      "year": "FY23",
+      "type": "ScannedPDF",
+      "extractor": "OcrExtractor",
+      "pages": 8,
+      "size_bytes": 2057647,
+      "size_mb": 1.96,
+      "readable": true,
+      "text_extractable": false,
+      "encrypted": false,
+      "notes": "Scanned PDF - zero extractable text. Requires OCR (Vision). ITR filed Balance Sheet and P&L for FY23."
+    },
+    {
+      "file": "Notes..pdf",
+      "path": "DOCS/Financials/FY-23/Notes..pdf",
+      "year": "FY23",
+      "type": "ScannedPDF",
+      "extractor": "OcrExtractor",
+      "pages": 15,
+      "size_bytes": 3964997,
+      "size_mb": 3.78,
+      "readable": true,
+      "text_extractable": false,
+      "encrypted": false,
+      "notes": "Scanned PDF - zero extractable text. Requires OCR (Vision). 15 pages of notes to financial statements for FY23."
+    },
+    {
+      "file": "Audited Financials FY-2024 (1).pdf",
+      "path": "DOCS/Financials/FY-24/Audited Financials FY-2024 (1).pdf",
+      "year": "FY24",
+      "type": "ScannedPDF",
+      "extractor": "OcrExtractor",
+      "pages": 33,
+      "size_bytes": 15710285,
+      "size_mb": 14.98,
+      "readable": true,
+      "text_extractable": false,
+      "encrypted": false,
+      "scanned_confirmed": true,
+      "notes": "CONFIRMED SCANNED PDF. 33 pages, 14.98 MB. Zero text extractable via both pdfplumber and pypdfium2. Large file size per page (~454 KB/page) is characteristic of high-resolution scanned images. OcrExtractor (Vision) MUST be used."
+    },
+    {
+      "file": "Provisional financial 31.03.25 (3).xlsx",
+      "path": "DOCS/Financials/FY2025/Provisional financial 31.03.25 (3).xlsx",
+      "year": "FY25",
+      "type": "Excel",
+      "extractor": "ExcelExtractor",
+      "sheets": ["P&L", "B&S", "Notes", "FA"],
+      "key_sheets": ["P&L", "B&S", "Notes", "FA"],
+      "size_bytes": 28796,
+      "size_mb": 0.03,
+      "readable": true,
+      "text_extractable": true,
+      "financial_summary": {
+        "revenue": 776549567,
+        "profit_before_tax": 12880215,
+        "total_assets": 577696534,
+        "fixed_assets_net": 183750113,
+        "inventories": 162740000,
+        "trade_receivables": 179229073,
+        "short_term_borrowings": 173963356,
+        "long_term_borrowings": 76951624
+      },
+      "notes": "Provisional financials for FY2024-25. Clean structured Excel with P&L, Balance Sheet, Notes and Fixed Assets schedule. Amounts in Indian Rupees (full, not thousands)."
+    }
+  ],
+  "extraction_plan": {
+    "FY22_primary_source": "BS-Dynamic 2022 - Companies Act.xlsx (ExcelExtractor)",
+    "FY22_supplementary": "Notes to Financials.pdf + ITR BS P&L.pdf (OcrExtractor)",
+    "FY23_primary_source": "ITR PL & BS.pdf + Notes..pdf (OcrExtractor - both scanned)",
+    "FY24_primary_source": "Audited Financials FY-2024 (1).pdf (OcrExtractor - confirmed scanned)",
+    "FY25_primary_source": "Provisional financial 31.03.25 (3).xlsx (ExcelExtractor)"
+  },
+  "ocr_workload": {
+    "total_scanned_pdfs": 5,
+    "total_scanned_pages": 80,
+    "files_needing_ocr": [
+      "FY_22/Financials/Notes to Financials.pdf (16 pages)",
+      "FY_22/Financials/ITR BS P&L.pdf (8 pages)",
+      "FY-23/ITR PL & BS.pdf (8 pages)",
+      "FY-23/Notes..pdf (15 pages)",
+      "FY-24/Audited Financials FY-2024 (1).pdf (33 pages)"
+    ],
+    "note": "All 5 PDFs are scanned. Zero text extractable via digital means. Vision/OCR required for all PDF documents."
+  },
+  "overall": "PASS",
+  "ready_for_extraction": true,
+  "generated_at": "2026-03-19"
+}

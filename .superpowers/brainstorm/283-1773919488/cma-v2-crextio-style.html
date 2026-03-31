@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Assist — V2 Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #dde3ed;
+  min-height: 100vh;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.page-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+.page-label strong { color: #0f3460; }
+
+/* ── BROWSER SHELL ── */
+.browser {
+  width: 100%;
+  max-width: 1120px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(15,52,96,0.22), 0 8px 24px rgba(0,0,0,0.1);
+}
+.browser-bar {
+  background: #e2e8f0;
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #fc5c65; } .dot-y { background: #ffd32a; } .dot-g { background: #05c46b; }
+.url {
+  flex: 1; margin: 0 28px;
+  background: white; border-radius: 7px;
+  padding: 4px 14px; font-size: 12px; color: #94a3b8;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── APP ── */
+.app {
+  background: #f5f7fa;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── TOP NAV ── */
+.topnav {
+  background: white;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  height: 58px;
+  border-bottom: 1px solid #edf0f5;
+  gap: 0;
+  flex-shrink: 0;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 40px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 800; color: white;
+  letter-spacing: -0.5px;
+  box-shadow: 0 3px 8px rgba(249,115,22,0.35);
+}
+.nav-logo-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px; font-weight: 700; color: #0f172a;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+.nav-link {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.nav-link.active {
+  background: #0f3460;
+  color: white;
+  font-weight: 600;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.bell {
+  width: 34px; height: 34px;
+  border-radius: 10px; background: #f1f5f9;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; cursor: pointer;
+  position: relative;
+}
+.bell-dot {
+  width: 8px; height: 8px; background: #f97316;
+  border-radius: 50%; position: absolute; top: 6px; right: 6px;
+  border: 1.5px solid white;
+}
+.user-pill {
+  display: flex; align-items: center; gap: 8px;
+  background: #f1f5f9; border-radius: 20px;
+  padding: 4px 12px 4px 4px;
+}
+.user-av {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg,#f97316,#0f3460);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: white;
+}
+.user-pill span { font-size: 12px; font-weight: 600; color: #1e293b; }
+
+/* ── HERO STRIP ── */
+.hero {
+  background: linear-gradient(120deg, #f0f5ff 0%, #fff7f0 100%);
+  padding: 28px 32px 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-shrink: 0;
+  border-bottom: 1px solid #e8edf5;
+}
+.hero-left h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #0a0f1e;
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+.hero-left p {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 6px;
+  font-weight: 400;
+}
+.hero-pills {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.pill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pill-dark { background: #0f3460; color: white; }
+.pill-orange { background: #f97316; color: white; box-shadow: 0 3px 10px rgba(249,115,22,0.3); }
+.pill-outline { background: white; color: #475569; border: 1px solid #e2e8f0; }
+
+/* Big hero numbers */
+.hero-numbers {
+  display: flex;
+  gap: 28px;
+  align-items: flex-end;
+}
+.hero-num {
+  text-align: right;
+}
+.hero-num-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: #0a0f1e;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.hero-num-val.orange { color: #f97316; }
+.hero-num-label {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+/* ── BENTO GRID ── */
+.bento {
+  padding: 20px 24px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.card-dark {
+  background: #0f3460;
+  border-radius: 16px;
+  padding: 20px;
+  border: none;
+}
+.card-orange {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border-radius: 16px;
+  padding: 20px;
+  border: none;
+}
+
+.card-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+}
+.card-title.light { color: rgba(255,255,255,0.5); }
+
+/* Pipeline card */
+.pipeline-rows { display: flex; flex-direction: column; gap: 10px; }
+.pipe-row { display: flex; align-items: center; gap: 12px; }
+.pipe-label { font-size: 12px; font-weight: 500; color: #334155; width: 90px; flex-shrink: 0; }
+.pipe-track {
+  flex: 1; height: 6px;
+  background: #f1f5f9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.pipe-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.pipe-count { font-size: 11px; font-weight: 700; color: #334155; width: 28px; text-align: right; }
+
+/* Client rows */
+.c-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.c-row:last-child { border-bottom: none; }
+.c-av {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: white;
+  flex-shrink: 0;
+}
+.c-name { font-size: 13px; font-weight: 600; color: #1e293b; }
+.c-sub { font-size: 11px; color: #94a3b8; margin-top: 1px; }
+.c-badge {
+  margin-left: auto;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 10px; font-weight: 600;
+}
+.c-mfg { background: #eff6ff; color: #1e6fd9; }
+.c-trd { background: #fff7ed; color: #f97316; }
+.c-svc { background: #ecfdf5; color: #10b981; }
+
+/* Accuracy ring */
+.acc-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 0;
+}
+.ring-wrap {
+  position: relative;
+  width: 80px; height: 80px;
+}
+.ring-wrap svg { transform: rotate(-90deg); }
+.ring-num {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+}
+.ring-label {
+  font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500;
+}
+
+/* Action items */
+.action-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+.action-item:last-child { margin-bottom: 0; }
+.action-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.action-text { flex: 1; }
+.action-name { font-size: 12px; font-weight: 600; color: white; }
+.action-meta { font-size: 10px; color: rgba(255,255,255,0.5); margin-top: 1px; }
+.action-arrow { font-size: 14px; color: rgba(255,255,255,0.3); }
+.action-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Mini bar chart */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60px;
+  margin-top: 10px;
+}
+.bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  min-height: 8px;
+}
+.bar-labels {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.bar-lbl { flex: 1; text-align: center; font-size: 9px; color: #94a3b8; font-weight: 500; }
+
+/* Span helpers */
+.span2 { grid-column: span 2; }
+.tall { grid-row: span 2; }
+</style>
+</head>
+<body>
+
+<div class="page-label">
+  <strong>CMA Assist — Redesign V2</strong> &nbsp;·&nbsp; Inspired by your reference · Navy + Orange + White
+</div>
+
+<div class="browser">
+  <div class="browser-bar">
+    <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+    <div class="url">localhost:3002/dashboard</div>
+  </div>
+
+  <div class="app">
+
+    <!-- TOP NAV -->
+    <div class="topnav">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">CA</div>
+        <div class="nav-logo-text">CMA Assist</div>
+      </div>
+      <div class="nav-links">
+        <div class="nav-link active">Dashboard</div>
+        <div class="nav-link">Clients</div>
+        <div class="nav-link">Reports</div>
+        <div class="nav-link">Documents</div>
+        <div class="nav-link">Settings</div>
+      </div>
+      <div class="nav-right">
+        <div class="bell">🔔<div class="bell-dot"></div></div>
+        <div class="user-pill">
+          <div class="user-av">AK</div>
+          <span>Ashutosh K.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO STRIP -->
+    <div class="hero">
+      <div class="hero-left">
+        <h1>Welcome back,<br>Ashutosh.</h1>
+        <p>Thursday, 19 March 2026 &nbsp;·&nbsp; 3 reports need your attention</p>
+        <div class="hero-pills" style="margin-top:14px;">
+          <div class="pill pill-orange">+ New Client</div>
+          <div class="pill pill-dark">New Report</div>
+          <div class="pill pill-outline">Upload Docs</div>
+        </div>
+      </div>
+      <div class="hero-numbers">
+        <div class="hero-num">
+          <div class="hero-num-val">12</div>
+          <div class="hero-num-label">Clients</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-val orange">8</div>
+          <div class="hero-num-label">Active Reports</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-val">94%</div>
+          <div class="hero-num-label">Accuracy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENTO GRID -->
+    <div class="bento">
+
+      <!-- Card 1: Recent Clients (tall, left) -->
+      <div class="card" style="grid-row: span 2;">
+        <div class="card-title">Recent Clients</div>
+        <div class="c-row">
+          <div class="c-av" style="background:linear-gradient(135deg,#1e6fd9,#0f3460);">DE</div>
+          <div>
+            <div class="c-name">Dynamic Air Engineering</div>
+            <div class="c-sub">Manufacturing · FY22–25</div>
+          </div>
+          <span class="c-badge c-mfg">Mfg</span>
+        </div>
+        <div class="c-row">
+          <div class="c-av" style="background:linear-gradient(135deg,#f97316,#ea580c);">MC</div>
+          <div>
+            <div class="c-name">Mehta Computers</div>
+            <div class="c-sub">Trading · FY21–24</div>
+          </div>
+          <span class="c-badge c-trd">Trade</span>
+        </div>
+        <div class="c-row">
+          <div class="c-av" style="background:linear-gradient(135deg,#10b981,#059669);">SR</div>
+          <div>
+            <div class="c-name">Sunrise Retail</div>
+            <div class="c-sub">Service · FY23–25</div>
+          </div>
+          <span class="c-badge c-svc">Svc</span>
+        </div>
+        <div class="c-row">
+          <div class="c-av" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">PL</div>
+          <div>
+            <div class="c-name">Patel Logistics</div>
+            <div class="c-sub">Trading · FY22–25</div>
+          </div>
+          <span class="c-badge c-trd">Trade</span>
+        </div>
+        <div class="c-row">
+          <div class="c-av" style="background:linear-gradient(135deg,#0f3460,#1e6fd9);">GI</div>
+          <div>
+            <div class="c-name">Global Infra Ltd</div>
+            <div class="c-sub">Manufacturing · FY23–25</div>
+          </div>
+          <span class="c-badge c-mfg">Mfg</span>
+        </div>
+
+        <!-- mini summary below -->
+        <div style="margin-top:18px; display:flex; gap:8px;">
+          <div style="flex:1; background:#f8faff; border-radius:10px; padding:10px 12px; border:1px solid #edf0f5;">
+            <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#0f3460;">4</div>
+            <div style="font-size:10px; color:#94a3b8; font-weight:500; margin-top:1px;">Manufacturing</div>
+          </div>
+          <div style="flex:1; background:#fff7ed; border-radius:10px; padding:10px 12px; border:1px solid #fed7aa;">
+            <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#f97316;">5</div>
+            <div style="font-size:10px; color:#f97316; font-weight:500; margin-top:1px;">Trading / Svc</div>
+          </div>
+          <div style="flex:1; background:#f0fdf4; border-radius:10px; padding:10px 12px; border:1px solid #bbf7d0;">
+            <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:#10b981;">3</div>
+            <div style="font-size:10px; color:#10b981; font-weight:500; margin-top:1px;">Completed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Pipeline Tracker -->
+      <div class="card">
+        <div class="card-title">Document Pipeline</div>
+        <div class="pipeline-rows">
+          <div class="pipe-row">
+            <div class="pipe-label">Uploaded</div>
+            <div class="pipe-track"><div class="pipe-fill" style="width:100%; background:#10b981;"></div></div>
+            <div class="pipe-count" style="color:#10b981;">7/7</div>
+          </div>
+          <div class="pipe-row">
+            <div class="pipe-label">Extracted</div>
+            <div class="pipe-track"><div class="pipe-fill" style="width:71%; background:#1e6fd9;"></div></div>
+            <div class="pipe-count" style="color:#1e6fd9;">5/7</div>
+          </div>
+          <div class="pipe-row">
+            <div class="pipe-label">Verified</div>
+            <div class="pipe-track"><div class="pipe-fill" style="width:57%; background:#f97316;"></div></div>
+            <div class="pipe-count" style="color:#f97316;">4/7</div>
+          </div>
+          <div class="pipe-row">
+            <div class="pipe-label">Classified</div>
+            <div class="pipe-track"><div class="pipe-fill" style="width:43%; background:#8b5cf6;"></div></div>
+            <div class="pipe-count" style="color:#8b5cf6;">3/7</div>
+          </div>
+          <div class="pipe-row">
+            <div class="pipe-label">Generated</div>
+            <div class="pipe-track"><div class="pipe-fill" style="width:14%; background:#0f3460;"></div></div>
+            <div class="pipe-count" style="color:#0f3460;">1/7</div>
+          </div>
+        </div>
+
+        <!-- Mini doc-by-month chart -->
+        <div style="margin-top:16px;">
+          <div style="font-size:10px; font-weight:600; color:#94a3b8; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:2px;">Docs processed / month</div>
+          <div class="bars">
+            <div class="bar" style="height:30%; background:#e2e8f0;"></div>
+            <div class="bar" style="height:55%; background:#e2e8f0;"></div>
+            <div class="bar" style="height:40%; background:#e2e8f0;"></div>
+            <div class="bar" style="height:70%; background:#dbeafe;"></div>
+            <div class="bar" style="height:50%; background:#dbeafe;"></div>
+            <div class="bar" style="height:85%; background:#f97316;"></div>
+            <div class="bar" style="height:60%; background:#fdba74; opacity:0.5;"></div>
+          </div>
+          <div class="bar-labels">
+            <div class="bar-lbl">Sep</div><div class="bar-lbl">Oct</div><div class="bar-lbl">Nov</div>
+            <div class="bar-lbl">Dec</div><div class="bar-lbl">Jan</div>
+            <div class="bar-lbl" style="color:#f97316;font-weight:700;">Mar</div>
+            <div class="bar-lbl">Apr</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Accuracy + OCR (dark navy) -->
+      <div class="card-dark">
+        <div class="card-title light">Extraction Quality</div>
+        <div class="acc-ring">
+          <div class="ring-wrap">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#f97316" stroke-width="8"
+                stroke-dasharray="201" stroke-dashoffset="14" stroke-linecap="round"/>
+            </svg>
+            <div class="ring-num">94%</div>
+          </div>
+          <div class="ring-label">Accuracy Score</div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:4px;">
+          <div style="flex:1; text-align:center; padding:8px; background:rgba(255,255,255,0.06); border-radius:8px;">
+            <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:white;">31</div>
+            <div style="font-size:9px; color:rgba(255,255,255,0.4); margin-top:1px;">Docs total</div>
+          </div>
+          <div style="flex:1; text-align:center; padding:8px; background:rgba(249,115,22,0.15); border-radius:8px; border:1px solid rgba(249,115,22,0.25);">
+            <div style="font-family:'Syne',sans-serif; font-size:18px; font-weight:800; color:#fb923c;">3</div>
+            <div style="font-size:9px; color:rgba(249,115,22,0.7); margin-top:1px;">Need review</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Pending Actions (middle-bottom) -->
+      <div class="card">
+        <div class="card-title">Pending Actions</div>
+        <div class="action-item">
+          <div class="action-icon">📄</div>
+          <div class="action-text">
+            <div class="action-name" style="color:#1e293b;">Dynamic Air · FY24 Verify</div>
+            <div class="action-meta" style="color:#94a3b8;">164 items · 2 doubts flagged</div>
+          </div>
+          <div class="action-dot" style="background:#f97316;"></div>
+        </div>
+        <div class="action-item" style="background:#f8faff;">
+          <div class="action-icon" style="background:#eff6ff;">📊</div>
+          <div class="action-text">
+            <div class="action-name" style="color:#1e293b;">Mehta · Classify &amp; Generate</div>
+            <div class="action-meta" style="color:#94a3b8;">Classification complete · Ready</div>
+          </div>
+          <div class="action-dot" style="background:#10b981;"></div>
+        </div>
+        <div class="action-item" style="background:#f8faff;">
+          <div class="action-icon" style="background:#f0fdf4;">✅</div>
+          <div class="action-text">
+            <div class="action-name" style="color:#1e293b;">Patel Logistics · Download CMA</div>
+            <div class="action-meta" style="color:#94a3b8;">Generated · Awaiting download</div>
+          </div>
+          <div class="action-dot" style="background:#1e6fd9;"></div>
+        </div>
+      </div>
+
+      <!-- Card 5: Orange CTA card -->
+      <div class="card-orange" style="display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <div style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.65); letter-spacing:1px; text-transform:uppercase; margin-bottom:10px;">Quick Start</div>
+          <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:800; color:white; line-height:1.2;">Start a new<br>CMA Report</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.7); margin-top:8px; line-height:1.5;">Upload financials, extract, verify and generate in minutes.</div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:16px;">
+          <div style="background:rgba(255,255,255,0.2); border-radius:8px; padding:8px 16px; font-size:12px; font-weight:700; color:white; cursor:pointer;">Get started →</div>
+          <div style="font-family:'Syne',sans-serif; font-size:32px; font-weight:800; color:rgba(255,255,255,0.15);">CMA</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div style="text-align:center; font-family:'DM Sans',sans-serif; color:#64748b; font-size:13px; max-width:640px; line-height:1.6;">
+  <strong style="color:#0f3460;">Key changes from V1:</strong><br>
+  Top navigation (no sidebar) · Big editorial numbers in hero · Syne display font for headings ·
+  Dark navy card for extraction quality · Orange used for actions &amp; the CTA card · Bento card grid layout
+</div>
+
+</body>
+</html>

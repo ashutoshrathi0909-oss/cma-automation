@@ -1,0 +1,50 @@
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+CANDIDATE CMA FIELDS (you MUST pick from ONLY these rows):
+- Row 22: Domestic Sales
+- Row 45: Wages
+- Row 46: Processing / Job Work Charges
+- Row 49: Others (Manufacturing)
+- Row 58: Finished Goods Opening Balance
+- Row 59: Finished Goods Closing Balance
+- Row 63: Depreciation (CMA)
+- Row 64: Other Manufacturing Exp (CMA)
+- Row 67: Salary and staff expenses
+- Row 69: Bad Debts
+- Row 70: Advertisements and Sales Promotions
+- Row 71: Others (Admin)
+- Row 73: Audit Fees & Directors Remuneration
+- Row 93: Others (Non-Operating Expenses)
+- Row 250: Other current liabilities
+
+SIMILAR ITEMS ALREADY CLASSIFIED (use as reference examples):
+1. "Directors Remuneration" (Note 18-24 | note 15 : employee benefits ex) -> Row 73: Audit Fees & Directors Remuneration
+2. "Salary and Wages" (Note 18-24 | note 15 : employee benefits ex) -> Row 45: Wages
+3. "Labour Charges" (Note 18-24 | note 17 : other expenses) -> Row 45: Wages
+4. "Expenses Payable" (Note 3-17 | note 6 : other current liabili) -> Row 250: Other current liabilities
+5. "Contractor Fees" (Note 18-24 | note 17 : other expenses) -> Row 45: Wages
+6. "Printing and stationery" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+7. "P&L on Sale of Car" (Note 18-24 | note 17 : other expenses) -> Row 93: Others (Non-Operating Expenses)
+8. "Paper & Paper Products" (Note 18-24 | note 12 : revenue from operati) -> Row 22: Domestic Sales
+9. "Shop Expences" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+10. "Miscellaneous expenses" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+
+CLASSIFY THESE 10 ITEMS:
+1. "Directors Remuneration" | Subnotes to PL | salaries & wages
+2. "Job Work Charges & Contract Labour" | Notes to P & L | other expenses
+3. "Opening - Finished Goods" | Notes to P & L | note 22 - changes in inventories
+4. "Less: Closing - Finished Goods" | Notes to P & L | note 22 - changes in inventories
+5. "Depreciation" | Notes to P & L | depreciation & amortisation expense
+6. "Amortization Expenses" | Notes to P & L | depreciation & amortisation expense
+7. "Bad debts written off" | Notes to P & L | auditor's remuneration:
+8. "Packing Materials - GST @ 12%" | Subnotes to PL | selling and distribution expenses - subnotes
+9. "Packing Materials - GST @ 18%" | Subnotes to PL | selling and distribution expenses - subnotes
+10. "Administrative & General Expenses" | Notes to P & L | auditor's remuneration:
+
+Return a JSON array with exactly 10 objects. Each object must have:
+- "item_index": integer 1-10 (matching the item number above)
+- "classified_cma_row": integer (the row number from CANDIDATE CMA FIELDS)
+- "classified_cma_field": string (the field name)
+- "confidence": float 0.0-1.0
+
+Return ONLY valid JSON array, no other text.

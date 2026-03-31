@@ -1,0 +1,90 @@
+Item 1:
+  Description: Kone Cranes and Demag Pvt Ltd
+  Amount: Rs 6,048,294.51
+  Section: subnotes to BS - creditors for fixed assets purchased
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 2:
+  Description: ASHWINI M CHAITRA REMUNERATION
+  Amount: Rs 20,089,342.00
+  Section: subnotes to BS - director remuneration payable
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 3:
+  Description: TRIVENI ENTERPRISES
+  Amount: Rs 113,634,709.03
+  Section: subnotes to BS - sundry creditors-raw materials
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 4:
+  Description: Sri Manjunatheswara Petrolium
+  Amount: Rs 10,547,907.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 5:
+  Description: ELRKE INDUSTRIAL ENTERPRIESES
+  Amount: Rs 1,728,498.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 6:
+  Description: CON Com Tooligs
+  Amount: Rs 25,760.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 7:
+  Description: JR & Co.,
+  Amount: Rs 89,380.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 8:
+  Description: Bisineer Sales & Marketing
+  Amount: Rs 161,112.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 9:
+  Description: Raghunath Fabricators
+  Amount: Rs 81,833.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 10:
+  Description: RAJALAKSHMI LAMINATIONS
+  Amount: Rs 43,279.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 11:
+  Description: Sanjay Enterprises
+  Amount: Rs 22,848.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 12:
+  Description: STARLINE PACKERS PVT LTD
+  Amount: Rs 226,384.00
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 13:
+  Description: TDS 2022-23
+  Amount: Rs 2,559,562.75
+  Section: subnotes to BS - tax deducted @ source
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 14:
+  Description: Advance Income Tax 22-23
+  Amount: Rs 15,750,000.00
+  Section: subnotes to BS - advance income tax 21-22
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 15:
+  Description: AXIS BANK - 911030050652024
+  Amount: Rs 81,365,930.58
+  Section: subnotes to BS - bank balances(cr.)
+  Sheet: Subnotes to BS
+  Financial Year: 2023

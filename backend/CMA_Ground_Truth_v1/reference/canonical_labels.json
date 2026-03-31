@@ -1,0 +1,788 @@
+[
+  {
+    "sheet_row": 22,
+    "code": "II_A1",
+    "name": "Domestic",
+    "section": "Operating Statement - Income - Sales"
+  },
+  {
+    "sheet_row": 23,
+    "code": "II_A2",
+    "name": "Exports",
+    "section": "Operating Statement - Income - Sales"
+  },
+  {
+    "sheet_row": 25,
+    "code": "II_A4",
+    "name": "Less Excise Duty and Cess",
+    "section": "Operating Statement - Income - Sales"
+  },
+  {
+    "sheet_row": 29,
+    "code": "II_B1",
+    "name": "Dividends received from Mutual Funds",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 30,
+    "code": "II_B2",
+    "name": "Interest Received",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 31,
+    "code": "II_B3",
+    "name": "Profit on sale of fixed assets / Investments",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 32,
+    "code": "II_B4",
+    "name": "Gain on Exchange Fluctuations",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 33,
+    "code": "II_B5",
+    "name": "Extraordinary income",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 34,
+    "code": "II_B6a",
+    "name": "Others",
+    "section": "Operating Statement - Non Operating Income"
+  },
+  {
+    "sheet_row": 41,
+    "code": "II_C1",
+    "name": "Raw Materials Consumed ( Imported)",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 42,
+    "code": "II_C2",
+    "name": "Raw Materials Consumed ( Indigenous)",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 43,
+    "code": "II_C3",
+    "name": "Stores and spares consumed ( Imported)",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 44,
+    "code": "II_C4",
+    "name": "Stores and spares consumed ( Indigenous)",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 45,
+    "code": "II_C5",
+    "name": "Wages",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 46,
+    "code": "II_C6",
+    "name": "Processing / Job Work Charges",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 47,
+    "code": "II_C7",
+    "name": "Freight and Transportation Charges",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 48,
+    "code": "II_C8",
+    "name": "Power, Coal, Fuel and Water",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 49,
+    "code": "II_C9",
+    "name": "Others",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 50,
+    "code": "II_C10",
+    "name": "Repairs & Maintenance",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 51,
+    "code": "II_C10a",
+    "name": "Security Service Charges",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 53,
+    "code": "II_C12",
+    "name": "Stock in process Opening Balance",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 54,
+    "code": "II_C13a",
+    "name": "Stock in process Closing Balance",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 56,
+    "code": "II_C14",
+    "name": "Depreciation",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 58,
+    "code": "II_C17",
+    "name": "Finished Goods Opening Balance",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 59,
+    "code": "II_C18a",
+    "name": "Finished Goods Closing Balance",
+    "section": "Operating Statement - Manufacturing Expenses"
+  },
+  {
+    "sheet_row": 63,
+    "code": "II_C20",
+    "name": "Depreciation",
+    "section": "Operating Statement - Manufacturing Expenses (CMA)"
+  },
+  {
+    "sheet_row": 64,
+    "code": "II_C21",
+    "name": "Other Manufacturing Exp",
+    "section": "Operating Statement - Manufacturing Expenses (CMA)"
+  },
+  {
+    "sheet_row": 67,
+    "code": "II_D1",
+    "name": "Salary and staff expenses",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 68,
+    "code": "II_D2",
+    "name": "Rent , Rates and Taxes",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 69,
+    "code": "II_D3",
+    "name": "Bad Debts",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 70,
+    "code": "II_D4",
+    "name": "Advertisements and Sales Promotions",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 71,
+    "code": "II_D5",
+    "name": "Others",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 72,
+    "code": "II_D6",
+    "name": "Repairs & Maintenance",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 73,
+    "code": "II_D7a",
+    "name": "Audit Fees & Directors Remuneration",
+    "section": "Operating Statement - Admin & Selling Expenses"
+  },
+  {
+    "sheet_row": 75,
+    "code": "II_E1",
+    "name": "Miscellaneous Expenses written off",
+    "section": "Operating Statement - Misc Amortisation"
+  },
+  {
+    "sheet_row": 76,
+    "code": "II_E2",
+    "name": "Deferred Revenue Expenditures",
+    "section": "Operating Statement - Misc Amortisation"
+  },
+  {
+    "sheet_row": 77,
+    "code": "II_E3a",
+    "name": "Other Amortisations",
+    "section": "Operating Statement - Misc Amortisation"
+  },
+  {
+    "sheet_row": 83,
+    "code": "II_F1",
+    "name": "Interest on Fixed Loans / Term loans",
+    "section": "Operating Statement - Finance Charges"
+  },
+  {
+    "sheet_row": 84,
+    "code": "II_F2",
+    "name": "Interest on Working capital loans",
+    "section": "Operating Statement - Finance Charges"
+  },
+  {
+    "sheet_row": 85,
+    "code": "II_F3",
+    "name": "Bank Charges",
+    "section": "Operating Statement - Finance Charges"
+  },
+  {
+    "sheet_row": 89,
+    "code": "II_G1",
+    "name": "Loss on sale of fixed assets / Investments",
+    "section": "Operating Statement - Non Operating Expenses"
+  },
+  {
+    "sheet_row": 90,
+    "code": "II_G2",
+    "name": "Sundry Balances Written off",
+    "section": "Operating Statement - Non Operating Expenses"
+  },
+  {
+    "sheet_row": 91,
+    "code": "II_G3",
+    "name": "Loss on Exchange Fluctuations",
+    "section": "Operating Statement - Non Operating Expenses"
+  },
+  {
+    "sheet_row": 92,
+    "code": "II_G4",
+    "name": "Extraordinary losses",
+    "section": "Operating Statement - Non Operating Expenses"
+  },
+  {
+    "sheet_row": 93,
+    "code": "II_G5",
+    "name": "Others",
+    "section": "Operating Statement - Non Operating Expenses"
+  },
+  {
+    "sheet_row": 99,
+    "code": "II_H1",
+    "name": "Income Tax  provision",
+    "section": "Operating Statement - Tax"
+  },
+  {
+    "sheet_row": 100,
+    "code": "II_H2",
+    "name": "Deferred Tax Liability",
+    "section": "Operating Statement - Tax"
+  },
+  {
+    "sheet_row": 101,
+    "code": "II_H3",
+    "name": "Deferred Tax Asset",
+    "section": "Operating Statement - Tax"
+  },
+  {
+    "sheet_row": 106,
+    "code": "II_I1",
+    "name": "Brought forward from previous year",
+    "section": "Operating Statement - Profit Appropriation"
+  },
+  {
+    "sheet_row": 107,
+    "code": "II_I2",
+    "name": "Dividend ( Final + Interim , Including Dividend Tax )",
+    "section": "Operating Statement - Profit Appropriation"
+  },
+  {
+    "sheet_row": 108,
+    "code": "II_I3",
+    "name": "Other Appropriation of profit",
+    "section": "Operating Statement - Profit Appropriation"
+  },
+  {
+    "sheet_row": 116,
+    "code": "III_L1",
+    "name": "Issued, Subscribed and Paid up",
+    "section": "Balance Sheet - Share Capital"
+  },
+  {
+    "sheet_row": 117,
+    "code": "III_L1a",
+    "name": "Share Application Money",
+    "section": "Balance Sheet - Share Capital"
+  },
+  {
+    "sheet_row": 121,
+    "code": "III_L2a",
+    "name": "General Reserve",
+    "section": "Balance Sheet - Reserves and Surplus"
+  },
+  {
+    "sheet_row": 122,
+    "code": "III_L2b",
+    "name": "Balance transferred from profit and loss a/c",
+    "section": "Balance Sheet - Reserves and Surplus"
+  },
+  {
+    "sheet_row": 123,
+    "code": "III_L2c",
+    "name": "Share Premium A/c",
+    "section": "Balance Sheet - Reserves and Surplus"
+  },
+  {
+    "sheet_row": 124,
+    "code": "III_L2d",
+    "name": "Revaluation Reserve",
+    "section": "Balance Sheet - Reserves and Surplus"
+  },
+  {
+    "sheet_row": 125,
+    "code": "III_L2e",
+    "name": "Other Reserve",
+    "section": "Balance Sheet - Reserves and Surplus"
+  },
+  {
+    "sheet_row": 131,
+    "code": "III_L3a",
+    "name": "From Indian Bank",
+    "section": "Balance Sheet - Working Capital Bank Finance"
+  },
+  {
+    "sheet_row": 132,
+    "code": "III_L3b",
+    "name": "From Indian Overseas Bank",
+    "section": "Balance Sheet - Working Capital Bank Finance"
+  },
+  {
+    "sheet_row": 133,
+    "code": "III_L3c",
+    "name": "(o/s bill discounting balance to be included)",
+    "section": "Balance Sheet - Working Capital Bank Finance"
+  },
+  {
+    "sheet_row": 136,
+    "code": "III_L4a",
+    "name": "Term Loan Repayable in next one year",
+    "section": "Balance Sheet - Term Loans"
+  },
+  {
+    "sheet_row": 137,
+    "code": "III_L4b",
+    "name": "Balance Repayable after one year",
+    "section": "Balance Sheet - Term Loans"
+  },
+  {
+    "sheet_row": 140,
+    "code": "III_L5a",
+    "name": "Repayable in next one year",
+    "section": "Balance Sheet - Debentures"
+  },
+  {
+    "sheet_row": 141,
+    "code": "III_L5b",
+    "name": "Balance Repayable after one year",
+    "section": "Balance Sheet - Debentures"
+  },
+  {
+    "sheet_row": 144,
+    "code": "III_L6a",
+    "name": "Repayable in next one year",
+    "section": "Balance Sheet - Preference Shares"
+  },
+  {
+    "sheet_row": 145,
+    "code": "III_L6b",
+    "name": "Balance Repayable after one year",
+    "section": "Balance Sheet - Preference Shares"
+  },
+  {
+    "sheet_row": 148,
+    "code": "III_L7a",
+    "name": "Debts Repayable in Next One year",
+    "section": "Balance Sheet - Other Debts"
+  },
+  {
+    "sheet_row": 149,
+    "code": "III_L7b",
+    "name": "Balance Other Debts",
+    "section": "Balance Sheet - Other Debts"
+  },
+  {
+    "sheet_row": 152,
+    "code": "III_L8a",
+    "name": "As Quasi Equity",
+    "section": "Balance Sheet - Unsecured Loans"
+  },
+  {
+    "sheet_row": 153,
+    "code": "III_L8b",
+    "name": "As Long Term Debt",
+    "section": "Balance Sheet - Unsecured Loans"
+  },
+  {
+    "sheet_row": 154,
+    "code": "III_L8c",
+    "name": "As Short Term Debt",
+    "section": "Balance Sheet - Unsecured Loans"
+  },
+  {
+    "sheet_row": 159,
+    "code": "III_L9",
+    "name": "Deferred tax liability",
+    "section": "Balance Sheet - Deferred Tax"
+  },
+  {
+    "sheet_row": 162,
+    "code": "III_A1",
+    "name": "Gross Block",
+    "section": "Balance Sheet - Fixed Assets"
+  },
+  {
+    "sheet_row": 163,
+    "code": "III_A2",
+    "name": "Less Accumulated Depreciation",
+    "section": "Balance Sheet - Fixed Assets"
+  },
+  {
+    "sheet_row": 165,
+    "code": "III_A3a",
+    "name": "Add : Capital Work in Progress",
+    "section": "Balance Sheet - Fixed Assets"
+  },
+  {
+    "sheet_row": 169,
+    "code": "III_A5a",
+    "name": "Patents / goodwill / copyrights etc",
+    "section": "Balance Sheet - Intangibles"
+  },
+  {
+    "sheet_row": 170,
+    "code": "III_A5b",
+    "name": "Misc Expenditure ( to the extent not w/o)",
+    "section": "Balance Sheet - Intangibles"
+  },
+  {
+    "sheet_row": 171,
+    "code": "III_A5c",
+    "name": "Deferred Tax Asset",
+    "section": "Balance Sheet - Intangibles"
+  },
+  {
+    "sheet_row": 172,
+    "code": "III_A5d",
+    "name": "Other Intangible assets",
+    "section": "Balance Sheet - Intangibles"
+  },
+  {
+    "sheet_row": 175,
+    "code": "III_A6",
+    "name": "Additions to Fixed Assets",
+    "section": "Balance Sheet - Fixed Asset Movement"
+  },
+  {
+    "sheet_row": 176,
+    "code": "III_A7",
+    "name": "Sale of  Fixed assets WDV of asset sold",
+    "section": "Balance Sheet - Fixed Asset Movement"
+  },
+  {
+    "sheet_row": 177,
+    "code": "III_A8",
+    "name": "Profit on sale of Fixed assets / Investments",
+    "section": "Balance Sheet - Fixed Asset Movement"
+  },
+  {
+    "sheet_row": 178,
+    "code": "III_A9",
+    "name": "Loss on sale of Fixed assets / Investments",
+    "section": "Balance Sheet - Fixed Asset Movement"
+  },
+  {
+    "sheet_row": 182,
+    "code": "III_A10a",
+    "name": "Investment in Govt. Securities ( Current )",
+    "section": "Balance Sheet - Investments"
+  },
+  {
+    "sheet_row": 183,
+    "code": "III_A10b",
+    "name": "Investment in Govt. Securities ( Non Current )",
+    "section": "Balance Sheet - Investments"
+  },
+  {
+    "sheet_row": 185,
+    "code": "III_A10c",
+    "name": "Other current investments",
+    "section": "Balance Sheet - Investments"
+  },
+  {
+    "sheet_row": 186,
+    "code": "III_A10d",
+    "name": "Other non current investments",
+    "section": "Balance Sheet - Investments"
+  },
+  {
+    "sheet_row": 188,
+    "code": "III_A10e",
+    "name": "Investment in group companies / subsidiaries",
+    "section": "Balance Sheet - Investments"
+  },
+  {
+    "sheet_row": 193,
+    "code": "III_A11a",
+    "name": "Imported",
+    "section": "Balance Sheet - Inventories - Raw Material"
+  },
+  {
+    "sheet_row": 194,
+    "code": "III_A11b",
+    "name": "Indigenous",
+    "section": "Balance Sheet - Inventories - Raw Material"
+  },
+  {
+    "sheet_row": 197,
+    "code": "III_A12a",
+    "name": "Imported",
+    "section": "Balance Sheet - Inventories - Stores & Spares"
+  },
+  {
+    "sheet_row": 198,
+    "code": "III_A12b",
+    "name": "Indigenous",
+    "section": "Balance Sheet - Inventories - Stores & Spares"
+  },
+  {
+    "sheet_row": 200,
+    "code": "III_A13",
+    "name": "Stocks-in-process",
+    "section": "Balance Sheet - Inventories"
+  },
+  {
+    "sheet_row": 201,
+    "code": "III_A14",
+    "name": "Finished Goods",
+    "section": "Balance Sheet - Inventories"
+  },
+  {
+    "sheet_row": 206,
+    "code": "III_A15a",
+    "name": "Domestic Receivables ( including bills purchased and discounted)",
+    "section": "Balance Sheet - Sundry Debtors"
+  },
+  {
+    "sheet_row": 207,
+    "code": "III_A15b",
+    "name": "Export Receivables ( including bills purchased and discounted)",
+    "section": "Balance Sheet - Sundry Debtors"
+  },
+  {
+    "sheet_row": 208,
+    "code": "III_A15c",
+    "name": "Debtors more than 6 months",
+    "section": "Balance Sheet - Sundry Debtors"
+  },
+  {
+    "sheet_row": 212,
+    "code": "III_A16a",
+    "name": "Cash on Hand",
+    "section": "Balance Sheet - Cash and Bank Balances"
+  },
+  {
+    "sheet_row": 213,
+    "code": "III_A16b",
+    "name": "Bank Balances",
+    "section": "Balance Sheet - Cash and Bank Balances"
+  },
+  {
+    "sheet_row": 214,
+    "code": "III_A16c",
+    "name": "Fixed Deposit under lien",
+    "section": "Balance Sheet - Cash and Bank Balances"
+  },
+  {
+    "sheet_row": 215,
+    "code": "III_A16d",
+    "name": "Other Fixed Deposits",
+    "section": "Balance Sheet - Cash and Bank Balances"
+  },
+  {
+    "sheet_row": 219,
+    "code": "III_A17a",
+    "name": "Advances recoverable in cash or in kind",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 220,
+    "code": "III_A17b",
+    "name": "Advances to suppliers of raw materials",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 221,
+    "code": "III_A17c",
+    "name": "Advance Income Tax",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 222,
+    "code": "III_A17d",
+    "name": "Prepaid Expenses",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 223,
+    "code": "III_A17e",
+    "name": "Other Advances / current asset",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 224,
+    "code": "III_A17f",
+    "name": "Advances to group / subsidiaries companies",
+    "section": "Balance Sheet - Loans and Advances"
+  },
+  {
+    "sheet_row": 229,
+    "code": "III_A18a",
+    "name": "Investments",
+    "section": "Balance Sheet - Non Current Assets - Group Exposure"
+  },
+  {
+    "sheet_row": 230,
+    "code": "III_A18b",
+    "name": "Advances",
+    "section": "Balance Sheet - Non Current Assets - Group Exposure"
+  },
+  {
+    "sheet_row": 232,
+    "code": "III_A19",
+    "name": "Debtors more than six months",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 233,
+    "code": "III_A20",
+    "name": "Investments",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 234,
+    "code": "III_A21",
+    "name": "Fixed Deposits ( Non Current )",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 235,
+    "code": "III_A22a",
+    "name": "Dues from directors / partners / promoters",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 236,
+    "code": "III_A22b",
+    "name": "Advances to suppliers of capital goods",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 237,
+    "code": "III_A22c",
+    "name": "Security deposits with government departments",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 238,
+    "code": "III_A22d",
+    "name": "Other non current assets",
+    "section": "Balance Sheet - Non Current Assets"
+  },
+  {
+    "sheet_row": 242,
+    "code": "III_L10a",
+    "name": "Sundry Creditors for goods",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 243,
+    "code": "III_L10b",
+    "name": "Advance received from customers",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 244,
+    "code": "III_L10c",
+    "name": "Provision for Taxation",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 245,
+    "code": "III_L10d",
+    "name": "Dividend payable",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 246,
+    "code": "III_L10e",
+    "name": "Other statutory liabilities (due within 1 year)",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 247,
+    "code": "III_L10f",
+    "name": "Interest Accrued but not due",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 248,
+    "code": "III_L10g",
+    "name": "Interest Accrued and due",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 249,
+    "code": "III_L10h",
+    "name": "Creditors for Expenses",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 250,
+    "code": "III_L10i",
+    "name": "Other current liabilities",
+    "section": "Balance Sheet - Current Liabilities"
+  },
+  {
+    "sheet_row": 254,
+    "code": "III_CL1",
+    "name": "Arrears of cumulative dividends",
+    "section": "Balance Sheet - Contingent Liabilities"
+  },
+  {
+    "sheet_row": 255,
+    "code": "III_CL2",
+    "name": "Gratuity liability not provided for",
+    "section": "Balance Sheet - Contingent Liabilities"
+  },
+  {
+    "sheet_row": 256,
+    "code": "III_CL3",
+    "name": "Disputed excise / customs / tax liabilities",
+    "section": "Balance Sheet - Contingent Liabilities"
+  },
+  {
+    "sheet_row": 257,
+    "code": "III_CL4",
+    "name": "Bank guarantee / Letter of credit outstanding",
+    "section": "Balance Sheet - Contingent Liabilities"
+  },
+  {
+    "sheet_row": 258,
+    "code": "III_CL5",
+    "name": "Other contingent liabilities",
+    "section": "Balance Sheet - Contingent Liabilities"
+  }
+]

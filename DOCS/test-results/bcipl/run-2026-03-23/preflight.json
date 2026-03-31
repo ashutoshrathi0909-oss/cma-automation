@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-03-23T00:00:00Z",
+  "docker_services": "all_up",
+  "backend_health": "ok",
+  "frontend_status": 200,
+  "output_dir": "DOCS/test-results/bcipl/run-2026-03-23",
+  "notes": "Frontend returns 307 redirect -> 200 final (normal Next.js behavior with DISABLE_AUTH=true)"
+}

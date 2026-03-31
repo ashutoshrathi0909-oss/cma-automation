@@ -1,0 +1,393 @@
+{
+  "mapping": {
+    "Administrative Expenses": "admin_expense",
+    "Assets": "other_assets",
+    "Capital and Liabilities": "share_capital",
+    "Cash & Bank Balances": "cash",
+    "Cash & Bank Balances / Investments": "investments",
+    "Cash and Bank Balances": "cash",
+    "Cash and Cash Equivalents": "cash",
+    "Changes in Inventories": "raw_materials",
+    "Changes in inventories of finished goods & work-in-progress": "raw_materials",
+    "Cost of Goods Sold": "raw_materials",
+    "Cost of Material Consumed": "raw_materials",
+    "Cost of Materials Consumed": "raw_materials",
+    "Cost of Raw Materials Consumed": "raw_materials",
+    "Current Assets": "other_assets",
+    "Current Assets & Advances": "other_assets",
+    "Current Liabilities": "current_liabilities",
+    "Current Liabilities - Sundry Creditors": "current_liabilities",
+    "Current Liabilities - Trade Payables": "current_liabilities",
+    "Deferred Tax": "tax",
+    "Deposits": "other_assets",
+    "Depreciation Schedule": "depreciation",
+    "Depreciation Schedule / Fixed Assets": "depreciation",
+    "Details of Cash and Balances": "cash",
+    "Direct Expenses": "manufacturing_expense",
+    "Employee Benefit Expense": "employee_cost",
+    "Employee Benefit Expenses": "employee_cost",
+    "Employee Benefits Expense": "employee_cost",
+    "Employee Benefits Expenses": "employee_cost",
+    "Equity": "share_capital",
+    "Expenditure": "raw_materials",
+    "Expenses": "raw_materials",
+    "Finance Cost": "finance_cost",
+    "Finance Costs": "finance_cost",
+    "Finance cost": "finance_cost",
+    "Fixed Asset Additions": "fixed_assets",
+    "Fixed Assets": "fixed_assets",
+    "Fixed Assets Schedule": "fixed_assets",
+    "Inventories": "inventories",
+    "Investments": "investments",
+    "Liabilities": "current_liabilities",
+    "Loans & Advances": "other_assets",
+    "Long-term Borrowings": "borrowings_long",
+    "Long-term Borrowings - Secured": "borrowings_long",
+    "Long-term Borrowings - Unsecured": "borrowings_long",
+    "Long-term Borrowings / Short Term Borrowings": "borrowings_long",
+    "Long-term Borrowings reclassified": "borrowings_long",
+    "Long-term Provisions": "borrowings_long",
+    "Non Current Assets": "other_assets",
+    "Non-Current Assets": "fixed_assets",
+    "Non-Current Investments": "investments",
+    "Non-Current Liabilities": "borrowings_long",
+    "Non-current Assets": "fixed_assets",
+    "Non-current Liabilities": "borrowings_long",
+    "Non-current assets": "fixed_assets",
+    "Operating Statement": "manufacturing_expense",
+    "Other Current Asset": "other_assets",
+    "Other Current Assets": "other_assets",
+    "Other Current Liabilities": "current_liabilities",
+    "Other Expenses": "admin_expense",
+    "Other Expenses - Admin": "admin_expense",
+    "Other Expenses - Administration & Other Expenses": "admin_expense",
+    "Other Expenses - Auditors": "admin_expense",
+    "Other Expenses - Payment to Auditors": "admin_expense",
+    "Other Expenses - Repairs": "admin_expense",
+    "Other Expenses - Selling": "selling_expense",
+    "Other Expenses - Selling Expenses": "selling_expense",
+    "Other Income": "other_income",
+    "Other Long Term Liabilities": "borrowings_long",
+    "Other Non-Current Assets": "other_assets",
+    "P&L Account — Credit Side": "other_income",
+    "P&L Account — Debit Side": "admin_expense",
+    "P&L Expenditure": "depreciation",
+    "Profit Appropriation": "appropriation",
+    "Property Plant & Equipment": "fixed_assets",
+    "Property, Plant and Equipments — Depreciation": "depreciation",
+    "Property, Plant and Equipments — Gross Block": "fixed_assets",
+    "Provision for taxation": "tax",
+    "Purchase of Stock in Trade": "raw_materials",
+    "Purchases": "raw_materials",
+    "Purchases of Goods": "raw_materials",
+    "Reserves & Surplus": "reserves",
+    "Reserves and Surplus": "reserves",
+    "Reserves and Surplus - Reserves": "reserves",
+    "Reserves and Surplus - Surplus": "reserves",
+    "Reserves and Surplus — Surplus of Profit & loss Account": "reserves",
+    "Revenue / Cost of Goods Sold": "revenue",
+    "Revenue from Operations": "revenue",
+    "Salaries & Wages": "employee_cost",
+    "Sale of Manufactured Goods": "revenue",
+    "Schedule of Loans": "borrowings_long",
+    "Secured Loans": "borrowings_long",
+    "Share Capital": "share_capital",
+    "Shareholder's Funds": "share_capital",
+    "Shareholders' Funds": "share_capital",
+    "Shareholders' funds": "share_capital",
+    "Short Term Borrowings": "borrowings_short",
+    "Short Term Provisions": "current_liabilities",
+    "Short term loans and advances": "other_assets",
+    "Short-term Borrowings": "borrowings_short",
+    "Short-term Borrowings - Loans payable on demand": "borrowings_short",
+    "Short-term Borrowings - Unsecured": "borrowings_short",
+    "Short-term Loans and Advances": "other_assets",
+    "Short-term Provisions": "current_liabilities",
+    "Tax Computation": "tax",
+    "Tax Expense": "tax",
+    "Tax expense": "tax",
+    "Tax expense / Short-term Provisions": "tax",
+    "Trade Payables": "current_liabilities",
+    "Trade Payables (reclassified)": "current_liabilities",
+    "Trade Receivables": "receivables",
+    "Trade Receivables - Ageing": "receivables",
+    "Trading Account — Credit Side": "revenue",
+    "Trading Account — Debit Side": "raw_materials",
+    "Unsecured Loans": "borrowings_long",
+    "admin_expenses": "admin_expense",
+    "cash_bank": "cash",
+    "current_liabilities": "current_liabilities",
+    "debtors": "receivables",
+    "equity": "share_capital",
+    "finance_charges": "finance_cost",
+    "fixed_assets": "fixed_assets",
+    "inventories": "inventories",
+    "loans_advances": "other_assets",
+    "manufacturing_expenses": "manufacturing_expense",
+    "non_current_assets": "other_assets",
+    "non_operating_expenses": "exceptional",
+    "other_income": "other_income",
+    "reserves": "reserves",
+    "sales": "revenue",
+    "tax": "tax",
+    "term_loans": "borrowings_long",
+    "unsecured_loans": "borrowings_long",
+    "working_capital": "borrowings_short"
+  },
+  "categories": {
+    "revenue": {
+      "count": 49,
+      "sections": [
+        "Revenue / Cost of Goods Sold",
+        "Revenue from Operations",
+        "Sale of Manufactured Goods",
+        "Trading Account — Credit Side",
+        "sales"
+      ]
+    },
+    "other_income": {
+      "count": 69,
+      "sections": [
+        "Other Income",
+        "P&L Account — Credit Side",
+        "other_income"
+      ]
+    },
+    "raw_materials": {
+      "count": 95,
+      "sections": [
+        "Changes in Inventories",
+        "Changes in inventories of finished goods & work-in-progress",
+        "Cost of Goods Sold",
+        "Cost of Material Consumed",
+        "Cost of Materials Consumed",
+        "Cost of Raw Materials Consumed",
+        "Expenditure",
+        "Expenses",
+        "Purchase of Stock in Trade",
+        "Purchases",
+        "Purchases of Goods",
+        "Trading Account — Debit Side"
+      ]
+    },
+    "employee_cost": {
+      "count": 61,
+      "sections": [
+        "Employee Benefit Expense",
+        "Employee Benefit Expenses",
+        "Employee Benefits Expense",
+        "Employee Benefits Expenses",
+        "Salaries & Wages"
+      ]
+    },
+    "manufacturing_expense": {
+      "count": 17,
+      "sections": [
+        "Direct Expenses",
+        "Operating Statement",
+        "manufacturing_expenses"
+      ]
+    },
+    "admin_expense": {
+      "count": 332,
+      "sections": [
+        "Administrative Expenses",
+        "Other Expenses",
+        "Other Expenses - Admin",
+        "Other Expenses - Administration & Other Expenses",
+        "Other Expenses - Auditors",
+        "Other Expenses - Payment to Auditors",
+        "Other Expenses - Repairs",
+        "P&L Account — Debit Side",
+        "admin_expenses"
+      ]
+    },
+    "selling_expense": {
+      "count": 23,
+      "sections": [
+        "Other Expenses - Selling",
+        "Other Expenses - Selling Expenses"
+      ]
+    },
+    "depreciation": {
+      "count": 13,
+      "sections": [
+        "Depreciation Schedule",
+        "Depreciation Schedule / Fixed Assets",
+        "P&L Expenditure",
+        "Property, Plant and Equipments — Depreciation"
+      ]
+    },
+    "finance_cost": {
+      "count": 55,
+      "sections": [
+        "Finance Cost",
+        "Finance Costs",
+        "Finance cost",
+        "finance_charges"
+      ]
+    },
+    "tax": {
+      "count": 45,
+      "sections": [
+        "Deferred Tax",
+        "Provision for taxation",
+        "Tax Computation",
+        "Tax Expense",
+        "Tax expense",
+        "Tax expense / Short-term Provisions",
+        "tax"
+      ]
+    },
+    "exceptional": {
+      "count": 1,
+      "sections": [
+        "non_operating_expenses"
+      ]
+    },
+    "appropriation": {
+      "count": 1,
+      "sections": [
+        "Profit Appropriation"
+      ]
+    },
+    "share_capital": {
+      "count": 19,
+      "sections": [
+        "Capital and Liabilities",
+        "Equity",
+        "Share Capital",
+        "Shareholder's Funds",
+        "Shareholders' Funds",
+        "Shareholders' funds",
+        "equity"
+      ]
+    },
+    "reserves": {
+      "count": 55,
+      "sections": [
+        "Reserves & Surplus",
+        "Reserves and Surplus",
+        "Reserves and Surplus - Reserves",
+        "Reserves and Surplus - Surplus",
+        "Reserves and Surplus — Surplus of Profit & loss Account",
+        "reserves"
+      ]
+    },
+    "borrowings_long": {
+      "count": 61,
+      "sections": [
+        "Long-term Borrowings",
+        "Long-term Borrowings - Secured",
+        "Long-term Borrowings - Unsecured",
+        "Long-term Borrowings / Short Term Borrowings",
+        "Long-term Borrowings reclassified",
+        "Long-term Provisions",
+        "Non-Current Liabilities",
+        "Non-current Liabilities",
+        "Other Long Term Liabilities",
+        "Schedule of Loans",
+        "Secured Loans",
+        "Unsecured Loans",
+        "term_loans",
+        "unsecured_loans"
+      ]
+    },
+    "borrowings_short": {
+      "count": 36,
+      "sections": [
+        "Short Term Borrowings",
+        "Short-term Borrowings",
+        "Short-term Borrowings - Loans payable on demand",
+        "Short-term Borrowings - Unsecured",
+        "working_capital"
+      ]
+    },
+    "fixed_assets": {
+      "count": 50,
+      "sections": [
+        "Fixed Asset Additions",
+        "Fixed Assets",
+        "Fixed Assets Schedule",
+        "Non-Current Assets",
+        "Non-current Assets",
+        "Non-current assets",
+        "Property Plant & Equipment",
+        "Property, Plant and Equipments — Gross Block",
+        "fixed_assets"
+      ]
+    },
+    "investments": {
+      "count": 8,
+      "sections": [
+        "Cash & Bank Balances / Investments",
+        "Investments",
+        "Non-Current Investments"
+      ]
+    },
+    "inventories": {
+      "count": 38,
+      "sections": [
+        "Inventories",
+        "inventories"
+      ]
+    },
+    "receivables": {
+      "count": 39,
+      "sections": [
+        "Trade Receivables",
+        "Trade Receivables - Ageing",
+        "debtors"
+      ]
+    },
+    "cash": {
+      "count": 47,
+      "sections": [
+        "Cash & Bank Balances",
+        "Cash and Bank Balances",
+        "Cash and Cash Equivalents",
+        "Details of Cash and Balances",
+        "cash_bank"
+      ]
+    },
+    "current_liabilities": {
+      "count": 104,
+      "sections": [
+        "Current Liabilities",
+        "Current Liabilities - Sundry Creditors",
+        "Current Liabilities - Trade Payables",
+        "Liabilities",
+        "Other Current Liabilities",
+        "Short Term Provisions",
+        "Short-term Provisions",
+        "Trade Payables",
+        "Trade Payables (reclassified)",
+        "current_liabilities"
+      ]
+    },
+    "other_assets": {
+      "count": 108,
+      "sections": [
+        "Assets",
+        "Current Assets",
+        "Current Assets & Advances",
+        "Deposits",
+        "Loans & Advances",
+        "Non Current Assets",
+        "Other Current Asset",
+        "Other Current Assets",
+        "Other Non-Current Assets",
+        "Short term loans and advances",
+        "Short-term Loans and Advances",
+        "loans_advances",
+        "non_current_assets"
+      ]
+    },
+    "other": {
+      "count": 0,
+      "sections": []
+    }
+  },
+  "total_unique_sections": 133,
+  "total_entries_mapped": 1326
+}

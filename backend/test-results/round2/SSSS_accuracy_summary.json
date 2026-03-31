@@ -1,0 +1,13 @@
+{
+  "company": "SSSS",
+  "industry": "trading",
+  "total_items": 294,
+  "correct": 66,
+  "wrong": 218,
+  "doubts": 10,
+  "accuracy_pct": 22.45,
+  "elapsed_seconds": 664.95,
+  "total_tokens": 25618,
+  "run_date": "2026-03-27 02:53",
+  "note": "Round 2: industry corrected to 'trading', CA rules CA-001..CA-024 active"
+}

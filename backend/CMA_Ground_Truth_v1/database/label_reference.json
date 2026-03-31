@@ -1,0 +1,793 @@
+{
+  "labels": {
+    "21": {
+      "code": "II_A1",
+      "name": "Domestic",
+      "section": "Operating Statement - Income - Sales",
+      "train_count": 38
+    },
+    "22": {
+      "code": "II_A2",
+      "name": "Exports",
+      "section": "Operating Statement - Income - Sales",
+      "train_count": 14
+    },
+    "24": {
+      "code": "II_A4",
+      "name": "Less Excise Duty and Cess",
+      "section": "Operating Statement - Income - Sales",
+      "train_count": 0
+    },
+    "28": {
+      "code": "II_B1",
+      "name": "Dividends received from Mutual Funds",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 1
+    },
+    "29": {
+      "code": "II_B2",
+      "name": "Interest Received",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 26
+    },
+    "30": {
+      "code": "II_B3",
+      "name": "Profit on sale of fixed assets / Investments",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 3
+    },
+    "31": {
+      "code": "II_B4",
+      "name": "Gain on Exchange Fluctuations",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 5
+    },
+    "32": {
+      "code": "II_B5",
+      "name": "Extraordinary income",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 0
+    },
+    "33": {
+      "code": "II_B6a",
+      "name": "Others",
+      "section": "Operating Statement - Non Operating Income",
+      "train_count": 27
+    },
+    "40": {
+      "code": "II_C1",
+      "name": "Raw Materials Consumed ( Imported)",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 7
+    },
+    "41": {
+      "code": "II_C2",
+      "name": "Raw Materials Consumed ( Indigenous)",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 27
+    },
+    "42": {
+      "code": "II_C3",
+      "name": "Stores and spares consumed ( Imported)",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 0
+    },
+    "43": {
+      "code": "II_C4",
+      "name": "Stores and spares consumed ( Indigenous)",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 11
+    },
+    "44": {
+      "code": "II_C5",
+      "name": "Wages",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 45
+    },
+    "45": {
+      "code": "II_C6",
+      "name": "Processing / Job Work Charges",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 7
+    },
+    "46": {
+      "code": "II_C7",
+      "name": "Freight and Transportation Charges",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 16
+    },
+    "47": {
+      "code": "II_C8",
+      "name": "Power, Coal, Fuel and Water",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 18
+    },
+    "48": {
+      "code": "II_C9",
+      "name": "Others",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 35
+    },
+    "49": {
+      "code": "II_C10",
+      "name": "Repairs & Maintenance",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 20
+    },
+    "50": {
+      "code": "II_C10a",
+      "name": "Security Service Charges",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 2
+    },
+    "52": {
+      "code": "II_C12",
+      "name": "Stock in process Opening Balance",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 6
+    },
+    "53": {
+      "code": "II_C13a",
+      "name": "Stock in process Closing Balance",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 6
+    },
+    "55": {
+      "code": "II_C14",
+      "name": "Depreciation",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 19
+    },
+    "57": {
+      "code": "II_C17",
+      "name": "Finished Goods Opening Balance",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 14
+    },
+    "58": {
+      "code": "II_C18a",
+      "name": "Finished Goods Closing Balance",
+      "section": "Operating Statement - Manufacturing Expenses",
+      "train_count": 15
+    },
+    "62": {
+      "code": "II_C20",
+      "name": "Depreciation",
+      "section": "Operating Statement - Manufacturing Expenses (CMA)",
+      "train_count": 3
+    },
+    "63": {
+      "code": "II_C21",
+      "name": "Other Manufacturing Exp",
+      "section": "Operating Statement - Manufacturing Expenses (CMA)",
+      "train_count": 3
+    },
+    "66": {
+      "code": "II_D1",
+      "name": "Salary and staff expenses",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 25
+    },
+    "67": {
+      "code": "II_D2",
+      "name": "Rent , Rates and Taxes",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 25
+    },
+    "68": {
+      "code": "II_D3",
+      "name": "Bad Debts",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 7
+    },
+    "69": {
+      "code": "II_D4",
+      "name": "Advertisements and Sales Promotions",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 29
+    },
+    "70": {
+      "code": "II_D5",
+      "name": "Others",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 125
+    },
+    "71": {
+      "code": "II_D6",
+      "name": "Repairs & Maintenance",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 17
+    },
+    "72": {
+      "code": "II_D7a",
+      "name": "Audit Fees & Directors Remuneration",
+      "section": "Operating Statement - Admin & Selling Expenses",
+      "train_count": 28
+    },
+    "74": {
+      "code": "II_E1",
+      "name": "Miscellaneous Expenses written off",
+      "section": "Operating Statement - Misc Amortisation",
+      "train_count": 1
+    },
+    "75": {
+      "code": "II_E2",
+      "name": "Deferred Revenue Expenditures",
+      "section": "Operating Statement - Misc Amortisation",
+      "train_count": 0
+    },
+    "76": {
+      "code": "II_E3a",
+      "name": "Other Amortisations",
+      "section": "Operating Statement - Misc Amortisation",
+      "train_count": 0
+    },
+    "82": {
+      "code": "II_F1",
+      "name": "Interest on Fixed Loans / Term loans",
+      "section": "Operating Statement - Finance Charges",
+      "train_count": 30
+    },
+    "83": {
+      "code": "II_F2",
+      "name": "Interest on Working capital loans",
+      "section": "Operating Statement - Finance Charges",
+      "train_count": 21
+    },
+    "84": {
+      "code": "II_F3",
+      "name": "Bank Charges",
+      "section": "Operating Statement - Finance Charges",
+      "train_count": 21
+    },
+    "88": {
+      "code": "II_G1",
+      "name": "Loss on sale of fixed assets / Investments",
+      "section": "Operating Statement - Non Operating Expenses",
+      "train_count": 3
+    },
+    "89": {
+      "code": "II_G2",
+      "name": "Sundry Balances Written off",
+      "section": "Operating Statement - Non Operating Expenses",
+      "train_count": 2
+    },
+    "90": {
+      "code": "II_G3",
+      "name": "Loss on Exchange Fluctuations",
+      "section": "Operating Statement - Non Operating Expenses",
+      "train_count": 3
+    },
+    "91": {
+      "code": "II_G4",
+      "name": "Extraordinary losses",
+      "section": "Operating Statement - Non Operating Expenses",
+      "train_count": 0
+    },
+    "92": {
+      "code": "II_G5",
+      "name": "Others",
+      "section": "Operating Statement - Non Operating Expenses",
+      "train_count": 4
+    },
+    "98": {
+      "code": "II_H1",
+      "name": "Income Tax  provision",
+      "section": "Operating Statement - Tax",
+      "train_count": 20
+    },
+    "99": {
+      "code": "II_H2",
+      "name": "Deferred Tax Liability",
+      "section": "Operating Statement - Tax",
+      "train_count": 14
+    },
+    "100": {
+      "code": "II_H3",
+      "name": "Deferred Tax Asset",
+      "section": "Operating Statement - Tax",
+      "train_count": 6
+    },
+    "105": {
+      "code": "II_I1",
+      "name": "Brought forward from previous year",
+      "section": "Operating Statement - Profit Appropriation",
+      "train_count": 9
+    },
+    "106": {
+      "code": "II_I2",
+      "name": "Dividend ( Final + Interim , Including Dividend Tax )",
+      "section": "Operating Statement - Profit Appropriation",
+      "train_count": 0
+    },
+    "107": {
+      "code": "II_I3",
+      "name": "Other Appropriation of profit",
+      "section": "Operating Statement - Profit Appropriation",
+      "train_count": 2
+    },
+    "115": {
+      "code": "III_L1",
+      "name": "Issued, Subscribed and Paid up",
+      "section": "Balance Sheet - Share Capital",
+      "train_count": 19
+    },
+    "116": {
+      "code": "III_L1a",
+      "name": "Share Application Money",
+      "section": "Balance Sheet - Share Capital",
+      "train_count": 0
+    },
+    "120": {
+      "code": "III_L2a",
+      "name": "General Reserve",
+      "section": "Balance Sheet - Reserves and Surplus",
+      "train_count": 7
+    },
+    "121": {
+      "code": "III_L2b",
+      "name": "Balance transferred from profit and loss a/c",
+      "section": "Balance Sheet - Reserves and Surplus",
+      "train_count": 19
+    },
+    "122": {
+      "code": "III_L2c",
+      "name": "Share Premium A/c",
+      "section": "Balance Sheet - Reserves and Surplus",
+      "train_count": 16
+    },
+    "123": {
+      "code": "III_L2d",
+      "name": "Revaluation Reserve",
+      "section": "Balance Sheet - Reserves and Surplus",
+      "train_count": 0
+    },
+    "124": {
+      "code": "III_L2e",
+      "name": "Other Reserve",
+      "section": "Balance Sheet - Reserves and Surplus",
+      "train_count": 4
+    },
+    "130": {
+      "code": "III_L3a",
+      "name": "From Indian Bank",
+      "section": "Balance Sheet - Working Capital Bank Finance",
+      "train_count": 20
+    },
+    "131": {
+      "code": "III_L3b",
+      "name": "From Indian Overseas Bank",
+      "section": "Balance Sheet - Working Capital Bank Finance",
+      "train_count": 4
+    },
+    "132": {
+      "code": "III_L3c",
+      "name": "(o/s bill discounting balance to be included)",
+      "section": "Balance Sheet - Working Capital Bank Finance",
+      "train_count": 0
+    },
+    "135": {
+      "code": "III_L4a",
+      "name": "Term Loan Repayable in next one year",
+      "section": "Balance Sheet - Term Loans",
+      "train_count": 12
+    },
+    "136": {
+      "code": "III_L4b",
+      "name": "Balance Repayable after one year",
+      "section": "Balance Sheet - Term Loans",
+      "train_count": 18
+    },
+    "139": {
+      "code": "III_L5a",
+      "name": "Repayable in next one year",
+      "section": "Balance Sheet - Debentures",
+      "train_count": 2
+    },
+    "140": {
+      "code": "III_L5b",
+      "name": "Balance Repayable after one year",
+      "section": "Balance Sheet - Debentures",
+      "train_count": 3
+    },
+    "143": {
+      "code": "III_L6a",
+      "name": "Repayable in next one year",
+      "section": "Balance Sheet - Preference Shares",
+      "train_count": 0
+    },
+    "144": {
+      "code": "III_L6b",
+      "name": "Balance Repayable after one year",
+      "section": "Balance Sheet - Preference Shares",
+      "train_count": 0
+    },
+    "147": {
+      "code": "III_L7a",
+      "name": "Debts Repayable in Next One year",
+      "section": "Balance Sheet - Other Debts",
+      "train_count": 0
+    },
+    "148": {
+      "code": "III_L7b",
+      "name": "Balance Other Debts",
+      "section": "Balance Sheet - Other Debts",
+      "train_count": 3
+    },
+    "151": {
+      "code": "III_L8a",
+      "name": "As Quasi Equity",
+      "section": "Balance Sheet - Unsecured Loans",
+      "train_count": 14
+    },
+    "152": {
+      "code": "III_L8b",
+      "name": "As Long Term Debt",
+      "section": "Balance Sheet - Unsecured Loans",
+      "train_count": 18
+    },
+    "153": {
+      "code": "III_L8c",
+      "name": "As Short Term Debt",
+      "section": "Balance Sheet - Unsecured Loans",
+      "train_count": 0
+    },
+    "158": {
+      "code": "III_L9",
+      "name": "Deferred tax liability",
+      "section": "Balance Sheet - Deferred Tax",
+      "train_count": 13
+    },
+    "161": {
+      "code": "III_A1",
+      "name": "Gross Block",
+      "section": "Balance Sheet - Fixed Assets",
+      "train_count": 21
+    },
+    "162": {
+      "code": "III_A2",
+      "name": "Less Accumulated Depreciation",
+      "section": "Balance Sheet - Fixed Assets",
+      "train_count": 18
+    },
+    "164": {
+      "code": "III_A3a",
+      "name": "Add : Capital Work in Progress",
+      "section": "Balance Sheet - Fixed Assets",
+      "train_count": 7
+    },
+    "168": {
+      "code": "III_A5a",
+      "name": "Patents / goodwill / copyrights etc",
+      "section": "Balance Sheet - Intangibles",
+      "train_count": 2
+    },
+    "169": {
+      "code": "III_A5b",
+      "name": "Misc Expenditure ( to the extent not w/o)",
+      "section": "Balance Sheet - Intangibles",
+      "train_count": 0
+    },
+    "170": {
+      "code": "III_A5c",
+      "name": "Deferred Tax Asset",
+      "section": "Balance Sheet - Intangibles",
+      "train_count": 4
+    },
+    "171": {
+      "code": "III_A5d",
+      "name": "Other Intangible assets",
+      "section": "Balance Sheet - Intangibles",
+      "train_count": 6
+    },
+    "174": {
+      "code": "III_A6",
+      "name": "Additions to Fixed Assets",
+      "section": "Balance Sheet - Fixed Asset Movement",
+      "train_count": 3
+    },
+    "175": {
+      "code": "III_A7",
+      "name": "Sale of  Fixed assets WDV of asset sold",
+      "section": "Balance Sheet - Fixed Asset Movement",
+      "train_count": 0
+    },
+    "176": {
+      "code": "III_A8",
+      "name": "Profit on sale of Fixed assets / Investments",
+      "section": "Balance Sheet - Fixed Asset Movement",
+      "train_count": 0
+    },
+    "177": {
+      "code": "III_A9",
+      "name": "Loss on sale of Fixed assets / Investments",
+      "section": "Balance Sheet - Fixed Asset Movement",
+      "train_count": 0
+    },
+    "181": {
+      "code": "III_A10a",
+      "name": "Investment in Govt. Securities ( Current )",
+      "section": "Balance Sheet - Investments",
+      "train_count": 2
+    },
+    "182": {
+      "code": "III_A10b",
+      "name": "Investment in Govt. Securities ( Non Current )",
+      "section": "Balance Sheet - Investments",
+      "train_count": 0
+    },
+    "184": {
+      "code": "III_A10c",
+      "name": "Other current investments",
+      "section": "Balance Sheet - Investments",
+      "train_count": 1
+    },
+    "185": {
+      "code": "III_A10d",
+      "name": "Other non current investments",
+      "section": "Balance Sheet - Investments",
+      "train_count": 1
+    },
+    "187": {
+      "code": "III_A10e",
+      "name": "Investment in group companies / subsidiaries",
+      "section": "Balance Sheet - Investments",
+      "train_count": 1
+    },
+    "192": {
+      "code": "III_A11a",
+      "name": "Imported",
+      "section": "Balance Sheet - Inventories - Raw Material",
+      "train_count": 0
+    },
+    "193": {
+      "code": "III_A11b",
+      "name": "Indigenous",
+      "section": "Balance Sheet - Inventories - Raw Material",
+      "train_count": 13
+    },
+    "196": {
+      "code": "III_A12a",
+      "name": "Imported",
+      "section": "Balance Sheet - Inventories - Stores & Spares",
+      "train_count": 0
+    },
+    "197": {
+      "code": "III_A12b",
+      "name": "Indigenous",
+      "section": "Balance Sheet - Inventories - Stores & Spares",
+      "train_count": 5
+    },
+    "199": {
+      "code": "III_A13",
+      "name": "Stocks-in-process",
+      "section": "Balance Sheet - Inventories",
+      "train_count": 6
+    },
+    "200": {
+      "code": "III_A14",
+      "name": "Finished Goods",
+      "section": "Balance Sheet - Inventories",
+      "train_count": 15
+    },
+    "205": {
+      "code": "III_A15a",
+      "name": "Domestic Receivables ( including bills purchased and discounted)",
+      "section": "Balance Sheet - Sundry Debtors",
+      "train_count": 18
+    },
+    "206": {
+      "code": "III_A15b",
+      "name": "Export Receivables ( including bills purchased and discounted)",
+      "section": "Balance Sheet - Sundry Debtors",
+      "train_count": 4
+    },
+    "207": {
+      "code": "III_A15c",
+      "name": "Debtors more than 6 months",
+      "section": "Balance Sheet - Sundry Debtors",
+      "train_count": 15
+    },
+    "211": {
+      "code": "III_A16a",
+      "name": "Cash on Hand",
+      "section": "Balance Sheet - Cash and Bank Balances",
+      "train_count": 19
+    },
+    "212": {
+      "code": "III_A16b",
+      "name": "Bank Balances",
+      "section": "Balance Sheet - Cash and Bank Balances",
+      "train_count": 18
+    },
+    "213": {
+      "code": "III_A16c",
+      "name": "Fixed Deposit under lien",
+      "section": "Balance Sheet - Cash and Bank Balances",
+      "train_count": 2
+    },
+    "214": {
+      "code": "III_A16d",
+      "name": "Other Fixed Deposits",
+      "section": "Balance Sheet - Cash and Bank Balances",
+      "train_count": 9
+    },
+    "218": {
+      "code": "III_A17a",
+      "name": "Advances recoverable in cash or in kind",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 16
+    },
+    "219": {
+      "code": "III_A17b",
+      "name": "Advances to suppliers of raw materials",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 10
+    },
+    "220": {
+      "code": "III_A17c",
+      "name": "Advance Income Tax",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 13
+    },
+    "221": {
+      "code": "III_A17d",
+      "name": "Prepaid Expenses",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 11
+    },
+    "222": {
+      "code": "III_A17e",
+      "name": "Other Advances / current asset",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 18
+    },
+    "223": {
+      "code": "III_A17f",
+      "name": "Advances to group / subsidiaries companies",
+      "section": "Balance Sheet - Loans and Advances",
+      "train_count": 0
+    },
+    "228": {
+      "code": "III_A18a",
+      "name": "Investments",
+      "section": "Balance Sheet - Non Current Assets - Group Exposure",
+      "train_count": 0
+    },
+    "229": {
+      "code": "III_A18b",
+      "name": "Advances",
+      "section": "Balance Sheet - Non Current Assets - Group Exposure",
+      "train_count": 0
+    },
+    "231": {
+      "code": "III_A19",
+      "name": "Debtors more than six months",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 10
+    },
+    "232": {
+      "code": "III_A20",
+      "name": "Investments",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 0
+    },
+    "233": {
+      "code": "III_A21",
+      "name": "Fixed Deposits ( Non Current )",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 0
+    },
+    "234": {
+      "code": "III_A22a",
+      "name": "Dues from directors / partners / promoters",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 2
+    },
+    "235": {
+      "code": "III_A22b",
+      "name": "Advances to suppliers of capital goods",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 6
+    },
+    "236": {
+      "code": "III_A22c",
+      "name": "Security deposits with government departments",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 13
+    },
+    "237": {
+      "code": "III_A22d",
+      "name": "Other non current assets",
+      "section": "Balance Sheet - Non Current Assets",
+      "train_count": 7
+    },
+    "241": {
+      "code": "III_L10a",
+      "name": "Sundry Creditors for goods",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 19
+    },
+    "242": {
+      "code": "III_L10b",
+      "name": "Advance received from customers",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 6
+    },
+    "243": {
+      "code": "III_L10c",
+      "name": "Provision for Taxation",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 12
+    },
+    "244": {
+      "code": "III_L10d",
+      "name": "Dividend payable",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 0
+    },
+    "245": {
+      "code": "III_L10e",
+      "name": "Other statutory liabilities (due within 1 year)",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 22
+    },
+    "246": {
+      "code": "III_L10f",
+      "name": "Interest Accrued but not due",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 0
+    },
+    "247": {
+      "code": "III_L10g",
+      "name": "Interest Accrued and due",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 1
+    },
+    "248": {
+      "code": "III_L10h",
+      "name": "Creditors for Expenses",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 14
+    },
+    "249": {
+      "code": "III_L10i",
+      "name": "Other current liabilities",
+      "section": "Balance Sheet - Current Liabilities",
+      "train_count": 24
+    },
+    "253": {
+      "code": "III_CL1",
+      "name": "Arrears of cumulative dividends",
+      "section": "Balance Sheet - Contingent Liabilities",
+      "train_count": 0
+    },
+    "254": {
+      "code": "III_CL2",
+      "name": "Gratuity liability not provided for",
+      "section": "Balance Sheet - Contingent Liabilities",
+      "train_count": 0
+    },
+    "255": {
+      "code": "III_CL3",
+      "name": "Disputed excise / customs / tax liabilities",
+      "section": "Balance Sheet - Contingent Liabilities",
+      "train_count": 0
+    },
+    "256": {
+      "code": "III_CL4",
+      "name": "Bank guarantee / Letter of credit outstanding",
+      "section": "Balance Sheet - Contingent Liabilities",
+      "train_count": 0
+    },
+    "257": {
+      "code": "III_CL5",
+      "name": "Other contingent liabilities",
+      "section": "Balance Sheet - Contingent Liabilities",
+      "train_count": 0
+    }
+  },
+  "total_labels": 131,
+  "covered_labels": 98,
+  "uncovered_labels": 33
+}

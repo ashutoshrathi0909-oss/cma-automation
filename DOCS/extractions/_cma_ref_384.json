@@ -1,0 +1,2848 @@
+{
+  "Balance Sheet": [
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "BALANCE SHEET ITEMS",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Sr. No.",
+      "Items",
+      "CMA Classification Form III – Item no.",
+      "CMA – Broad Classification",
+      "Remarks"
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "Liability",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      1.0,
+      "Share Capital",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      2.0,
+      "Equity Share Capital",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      3.0,
+      "Redeemable Preference Share Capital (redeemable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      4.0,
+      "Redeemable Preference Share Capital (redeemable after 1 year)",
+      "Item 12: Preference shares (redeemable after 1 year)",
+      "Term Liability",
+      "If the same is redeemable after 12 years then to be considered as part of NETWORTH"
+    ],
+    [
+      5.0,
+      "Share Application Money (without any undertaking)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      6.0,
+      "Share Application Money (Undertaking for converting it into Share Capital is obtained)",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      7.0,
+      "Proprietor's Capital A/c",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      8.0,
+      "Proprietor's Current A/c",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      9.0,
+      "Partners' Capital A/c",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      10.0,
+      "Partners' Current A/c",
+      "Item 19: Ordinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      11.0,
+      "Profit & Loss A/c (Credit Balance)",
+      "Item 23: Surplus / Deficit in Profit & Loss A/c",
+      "Networth",
+      ""
+    ],
+    [
+      12.0,
+      "General Reserve",
+      "Item 20: General Reserve",
+      "Networth",
+      ""
+    ],
+    [
+      13.0,
+      "Share Premium",
+      "Item 23: Share Premium",
+      "Networth",
+      ""
+    ],
+    [
+      14.0,
+      "Depreciation Reserve",
+      "Item 36: Depreciation to date",
+      "Fixed Assets",
+      ""
+    ],
+    [
+      15.0,
+      "Investment Allowance Reserve",
+      "Item 22: Other Reserves",
+      "Networth",
+      ""
+    ],
+    [
+      16.0,
+      "Capital Reserve",
+      "Item 22: Other Reserves",
+      "Networth",
+      ""
+    ],
+    [
+      17.0,
+      "Revaluation Reserve",
+      "Item 21: Revaluation Reserve",
+      "Networth. Being a non-free reserve it should not be included in net worth, which is taken care by formula in CMA.",
+      ""
+    ],
+    [
+      18.0,
+      "Capital Redemption Reserve",
+      "Item 23: Capital Redemption Reserve",
+      "Networth",
+      ""
+    ],
+    [
+      19.0,
+      "Debenture Redemption Reserve",
+      "Item 23: Others",
+      "Networth",
+      ""
+    ],
+    [
+      20.0,
+      "Special Capital Incentive (refundable)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      21.0,
+      "Special Capital Incentive (non-refundable)",
+      "Item 23: Others",
+      "Networth",
+      ""
+    ],
+    [
+      22.0,
+      "Capital Subsidy from Government (non-refundable)",
+      "Item 23: Others",
+      "Networth",
+      ""
+    ],
+    [
+      23.0,
+      "Capital Subsidy from Government (Refundable)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      24.0,
+      "Interim dividend",
+      "Item 6: Dividend payable",
+      "Current Liability",
+      ""
+    ],
+    [
+      25.0,
+      "Unclaimed dividend",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      26.0,
+      "Factoring",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      27.0,
+      "Term Loan from Bank (excluding repayment within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      28.0,
+      "Term Loan from Bank (repayable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      29.0,
+      "Rupee Term Loan (repayable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      30.0,
+      "Rupee Term Loan (excluding repayment within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      31.0,
+      "Foreign Currency Term Loan (excluding repayments within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      32.0,
+      "Foreign Currency Term Loan (repayable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      33.0,
+      "External Commercial Borrowings (for long term use)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      34.0,
+      "Deferred tax liability",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      35.0,
+      "Deferred Sales Tax Loan (excluding instalment payable within 1 year)",
+      "Item 14: Deferred payment credits",
+      "Term Liability",
+      ""
+    ],
+    [
+      36.0,
+      "Deferred Sales Tax Loan (instalment payable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      37.0,
+      "Packing Credit",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      38.0,
+      "Pre-shipment Finance",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      39.0,
+      "Post-shipment Finance",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      40.0,
+      "Bills discounted / Bills Purchased",
+      "Item 1 (i) / (ii) : Short term borrowings from banks - of which BD / BP (Also to be included in (iii) )",
+      "Current Liability",
+      ""
+    ],
+    [
+      41.0,
+      "Short Term Loans from banks",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      42.0,
+      "Short Term Loans from others",
+      "Item 2: Short term borrowings from others",
+      "Current Liability",
+      ""
+    ],
+    [
+      43.0,
+      "Aid From Government (Refundable)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      44.0,
+      "Aid From Government (non-refundable)",
+      "Item 23: Others",
+      "Networth",
+      ""
+    ],
+    [
+      45.0,
+      "Bank overdraft (unsecured)",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      46.0,
+      "Bank Overdraft",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      47.0,
+      "Cash Credit",
+      "Item 1: Short term borrowings from banks",
+      "Current Liability",
+      ""
+    ],
+    [
+      48.0,
+      "Debentures (not redeemable within 1 year)",
+      "Item 11: Debentures",
+      "Term Liability",
+      ""
+    ],
+    [
+      49.0,
+      "Debentures (redeemable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      50.0,
+      "Working Capital Demand Loan",
+      "Item 1: Short term borrowings from banks (Being excess borrowings placed on repayment basis)",
+      "Current Liability",
+      ""
+    ],
+    [
+      51.0,
+      "Hire Purchase Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      52.0,
+      "Machinery Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      53.0,
+      "In case of Proprietory Concern – Housing Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      54.0,
+      "Car Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      55.0,
+      "Vehicle Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      56.0,
+      "In case of Proprietory Concern –Personal Loan (excluding repayable within 1 year)",
+      "Item 13: Term Loans",
+      "Term Liability",
+      ""
+    ],
+    [
+      57.0,
+      "Intercorporate deposits (not repayable within 1 year)",
+      "Item 15: Term deposits",
+      "Term Liability",
+      ""
+    ],
+    [
+      58.0,
+      "Intercorporate deposits (repayable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      59.0,
+      "Company Deposits (not repayable within 1 year)",
+      "Item 15: Term deposits",
+      "Term Liability",
+      ""
+    ],
+    [
+      60.0,
+      "Company Deposits (repayable within 1 year)",
+      "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+      "Current Liability",
+      ""
+    ],
+    [
+      61.0,
+      "Unsecured Loans from associate concerns (without shortfall undertaking)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      62.0,
+      "Unsecured Loans from director (without shortfall undertaking)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      63.0,
+      "Unsecured Loans from relatives (without shortfall undertaking)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      64.0,
+      "Unsecured Loans from friends (without shortfall undertaking)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      65.0,
+      "Unsecured Loans from associate concerns (with shortfall undertaking)",
+      "Item 23: Net worth - Others",
+      "Networth",
+      ""
+    ],
+    [
+      66.0,
+      "Unsecured Loans from director (with shortfall undertaking)",
+      "Item 23: Net worth - Others",
+      "Networth",
+      ""
+    ],
+    [
+      67.0,
+      "Unsecured Loans from relatives (with shortfall undertaking)",
+      "Item 23: Net worth - Others",
+      "Networth",
+      ""
+    ],
+    [
+      68.0,
+      "Unsecured Loans from friends (with shortfall undertaking)",
+      "Item 23: Networth – Others",
+      "Networth",
+      ""
+    ],
+    [
+      69.0,
+      "Creditors for goods",
+      "Item 3: Sundry creditors (Trade)",
+      "Current Liability",
+      ""
+    ],
+    [
+      70.0,
+      "Creditors for expenses",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      71.0,
+      "Creditors for capital expenditure (Repayable within 1 year)",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      72.0,
+      "Creditors for capital expenditure (Excluding repayable within 1 year)",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      73.0,
+      "Outstanding Expenses",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      74.0,
+      "Provision for tax",
+      "Item 5: Provision for taxation",
+      "Current Liability",
+      ""
+    ],
+    [
+      75.0,
+      "Proposed Dividend",
+      "Item 6: Dividend payable",
+      "Current Liability",
+      ""
+    ],
+    [
+      76.0,
+      "Bills Payable",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      77.0,
+      "Electricity Expenses Payable",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      78.0,
+      "Audit Fees Payable",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      79.0,
+      "Telephone Expenses Payable",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      80.0,
+      "Salaries Payable",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      81.0,
+      "Deposits from customers",
+      "Item 4: Advance payment from customers / deposits from dealers",
+      "Current Liability",
+      "As per RBI Circular deposits  from dealers may be treated as term liability irrespective of tenure, if such deposits are accepted to be repayable only when the dealership is terminated after due verification by bank. However, in the absence of the same it is to be considered as current liability. "
+    ],
+    [
+      82.0,
+      "Advances from customers",
+      "Item 4: Advance payment from customers / deposits from dealers",
+      "Current Liability",
+      ""
+    ],
+    [
+      83.0,
+      "Outstanding provident fund contribution",
+      "Item 7: Other statutory liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      84.0,
+      "Sales Tax Payable",
+      "Item 7: Other statutory liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      85.0,
+      "Service Tax Payable",
+      "Item 7: Other statutory liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      86.0,
+      "Profession Tax Payable",
+      "Item 7: Other statutory liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      87.0,
+      "Turnover Tax Payable",
+      "Item 7: Other statutory liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      88.0,
+      "Trial Balance Difference",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      89.0,
+      "Suspense Account",
+      "Item 9: Other current liabilities",
+      "Current Liability",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "Asset",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      90.0,
+      "Fixed Assets (Gross block)",
+      "Item 35: Gross block under Fixed Assets",
+      "Fixed Assets",
+      ""
+    ],
+    [
+      91.0,
+      "Accumulated depreciation",
+      "Item 36: Depreciation to date",
+      "Depreciation",
+      ""
+    ],
+    [
+      92.0,
+      "Capital Work in progress",
+      "Item 35: Gross block under fixed assets",
+      "Fixed Assets",
+      ""
+    ],
+    [
+      93.0,
+      "Long Term Investments",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Investments",
+      ""
+    ],
+    [
+      94.0,
+      "Short Term Investments",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Investments",
+      ""
+    ],
+    [
+      95.0,
+      "NSC",
+      "Item 27 (i) : Investments – Gvt. And other trustee securities",
+      "Investments",
+      ""
+    ],
+    [
+      96.0,
+      "Inventories of raw materials",
+      "Item 30 (i): Inventory - Raw Materials",
+      "Current Assets",
+      ""
+    ],
+    [
+      97.0,
+      "Inventories of work-in-progress",
+      "Item 30 (ii): Inventory - stocks-in-progress",
+      "Current Assets",
+      ""
+    ],
+    [
+      98.0,
+      "Inventories of finished goods",
+      "Item 30 (iii): Inventory - Finished goods",
+      "Current Assets",
+      ""
+    ],
+    [
+      99.0,
+      "Debtors outstanding for more than 6 months",
+      "Item 38 (iv) (c): Investments / book debts / advances / deposits which are non-current ",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      100.0,
+      "Debtors outstanding for less than 6 months (considered good) ",
+      "Item 28: Receivables",
+      "Current Assets",
+      ""
+    ],
+    [
+      101.0,
+      "Debtors outstanding for less than 6 months (considered doubtful)",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      102.0,
+      "Staff Advances",
+      "Item 33 (c): Other current assets - Loans & advances",
+      "Current Assets",
+      ""
+    ],
+    [
+      103.0,
+      "Miscellaneous Advances",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      104.0,
+      "Loan / advance to directors",
+      "Item 40: Other non-current assets including dues from directors",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      105.0,
+      "Cash on hand",
+      "Item 26: Cash & bank balances",
+      "Current Assets",
+      ""
+    ],
+    [
+      106.0,
+      "Cash at bank",
+      "Item 26: Cash & bank balances",
+      "Current Assets",
+      ""
+    ],
+    [
+      107.0,
+      "Insurance Claim Receivable",
+      "Item 33: Other current assets",
+      "Current Assets",
+      ""
+    ],
+    [
+      108.0,
+      "Bank current account",
+      "Item 26: Cash & bank balances",
+      "Current Assets",
+      ""
+    ],
+    [
+      109.0,
+      "Bills Receivable",
+      "Item 28: Receivables",
+      "Current Assets",
+      ""
+    ],
+    [
+      110.0,
+      "Security Deposit",
+      "Item 38 (iv) (a) : Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      111.0,
+      "Earnest Money Deposit",
+      "Item 38 (iv) (a) : Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      112.0,
+      "Advance Service Tax",
+      "Item 32: Advance payment of taxes",
+      "Current Assets",
+      ""
+    ],
+    [
+      113.0,
+      "License Deposit",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      114.0,
+      "Water Connection Deposit",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      115.0,
+      "Deposit with excise",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      116.0,
+      "PLA Balance with excise",
+      "Item 32: Advance payment of taxes",
+      "Current Assets",
+      ""
+    ],
+    [
+      117.0,
+      "Telephone Deposit",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      118.0,
+      "Deposit with electricity board",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      119.0,
+      "Fixed Deposits with banks & accrued interest (under lien)",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      120.0,
+      "Fixed Deposits with banks & accrued interest (as margin money)",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      121.0,
+      "Fixed Deposits with banks & accrued interest (without lien)",
+      "Item 27 (ii): Investments (other than long term) - Fixed Deposits with banks",
+      "Current Assets",
+      ""
+    ],
+    [
+      122.0,
+      "Deposits to suppliers",
+      "Item 38: Investments / book debts / advances / deposits which are non-current",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      123.0,
+      "Advances to suppliers",
+      "Item 31: Advance to supplier of raw material and stores / spares",
+      "Current Assets",
+      ""
+    ],
+    [
+      124.0,
+      "Advance Tax",
+      "Item 32: Advance payment of taxes",
+      "Current Assets",
+      ""
+    ],
+    [
+      125.0,
+      "Octroi Receivable",
+      "Item 33: Other current assets",
+      "Current Assets",
+      ""
+    ],
+    [
+      126.0,
+      "Advance Sales Tax",
+      "Item 32: Advance payment of taxes",
+      "Current Assets",
+      ""
+    ],
+    [
+      127.0,
+      "Prepaid Expenses",
+      "Item 33: Other current assets",
+      "Current Assets",
+      ""
+    ],
+    [
+      128.0,
+      "Tax Deducted at Source",
+      "Item 32: Advance payment of taxes",
+      "Current Assets",
+      ""
+    ],
+    [
+      129.0,
+      "Advance to employees",
+      "Item 33: Other current assets",
+      "Current Assets",
+      ""
+    ],
+    [
+      130.0,
+      "Advances recoverable in cash or kind",
+      "Item 33: Other current assets",
+      "Current Assets",
+      ""
+    ],
+    [
+      131.0,
+      "Deferred Tax Asset",
+      "Item 42: Intangible Assets",
+      "Fictitious Asset (To be excluded from Networth, which is taken care by Tangible net worth formula)",
+      ""
+    ],
+    [
+      132.0,
+      "Goodwill",
+      "Item 42: Intangible Assets",
+      "Intangible Asset",
+      ""
+    ],
+    [
+      133.0,
+      "Profit & Loss A/c (Debit Balance)",
+      "Item 23: Surplus / deficit in Profit & Loss A/c (Put figure with – ve sign)",
+      "Fictitious Asset",
+      ""
+    ],
+    [
+      134.0,
+      "Preliminary expenses",
+      "Item 42: Intangible Assets",
+      "Fictitious Asset",
+      ""
+    ],
+    [
+      135.0,
+      "Miscellaneous Expenditure",
+      "Item 42: Intangible Assets",
+      "Fictitious Asset",
+      ""
+    ],
+    [
+      136.0,
+      "Partners' Capital A/c (Debit Balance)",
+      "Deduct from Item 19: Orinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      137.0,
+      "Partners' Current A/c (Debit Balance)",
+      "Deduct from Item 19: Orinary Share Capital",
+      "Networth",
+      ""
+    ],
+    [
+      138.0,
+      "Advances to subsidiaries or group companies",
+      "Item 38 (i) (b) : Investments / book debts / advances / deposits which are non-current - Loans to subsidiaries",
+      "Non-Current Assets",
+      "Although the classification falls under item 38 (iv) (b), the formula for ATNW in CMA does not pick the value from 38 (iv) (b) hence to be classified under 38(i) (b)"
+    ],
+    [
+      139.0,
+      "Stores & Spares (consumable)",
+      "Item 30: Inventory",
+      "Current Assets",
+      ""
+    ],
+    [
+      140.0,
+      "Stores & Spares (non-consumable)",
+      "Item 39: Non-consumable stores and spares",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      141.0,
+      "Advance to supplier of capital goods and contractors",
+      "Item 38 (ii): Investments / book debts / advances / deposits which are non-current - Advance to supplier of capital goods / contractors",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      142.0,
+      "Loan / advance to partners",
+      "Item 40: Other non-current assets including dues from directors",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      143.0,
+      "Loan / advance to proprietor",
+      "Item 40: Other non-current assets including dues from directors",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      144.0,
+      "Loan / advance to relatives of directors / partners / proprietor",
+      "Item 40: Other non-current assets including dues from directors",
+      "Non-Current Assets",
+      ""
+    ],
+    [
+      145.0,
+      "Suspense Account",
+      "Item 42: Intangible Assets",
+      "Fictitious Asset",
+      ""
+    ],
+    [
+      146.0,
+      "Trial Balance Difference",
+      "Item 42: Intangible Assets",
+      "Fictitious Asset",
+      ""
+    ],
+    [
+      147.0,
+      "Arrears of Depreciation",
+      "A. Additional Information",
+      "Additional Info.",
+      ""
+    ],
+    [
+      148.0,
+      "Dividend on Cumulative Preference Shares",
+      "B. Additional Information",
+      "Contingent Liability",
+      ""
+    ],
+    [
+      149.0,
+      "Dividend on Non-Cumulative Preference Shares",
+      "Not appear in Balance Sheet until its declared.",
+      "--",
+      ""
+    ],
+    [
+      150.0,
+      "Gratuity Liability not provided for",
+      "B. Additional Information",
+      "Contingent Liability",
+      ""
+    ],
+    [
+      151.0,
+      "Disputed Excise / Customs / Tax liabilities",
+      "B. Additional Information",
+      "Contingent Liability",
+      ""
+    ],
+    [
+      152.0,
+      "Other Liabilities not provided for",
+      "B. Additional Information",
+      "Contingent Liability",
+      ""
+    ],
+    [
+      153.0,
+      "Mobilisation Advance (adjustment period less than 1year) ",
+      "Item 4: Advance payment from customers / deposits from dealers",
+      "Current Liability",
+      ""
+    ],
+    [
+      154.0,
+      "Mobilisation Advance (adjustment period more than 1year) ",
+      "Item 16: Other term liabilities",
+      "Term Liability",
+      ""
+    ],
+    [
+      155.0,
+      "Bills Discounted (appearing as contingent liability)",
+      "Item 1 (i) / (ii) : Short term borrowings from banks - of which BD / BP (Also to be included in (iii) )",
+      "Current Liability",
+      ""
+    ],
+    [
+      "",
+      "",
+      "Item 28: Receivables",
+      "Current Assets",
+      ""
+    ],
+    [
+      155.0,
+      "Cheques Issued but not presented",
+      "Item 3: Sundry creditors (Trade)",
+      "Current Liability",
+      ""
+    ]
+  ],
+  "Profit and Loss": [
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "PROFIT & LOSS ITEMS",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "Sr. No.",
+      "Items",
+      "CMA Classification Form III – Item no.",
+      "CMA – Broad Classification",
+      "Remarks"
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "Expenses",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      1.0,
+      "Purchases of raw materials",
+      "Item 5 (i) (b) : RM - Indigenous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      2.0,
+      "Wages & Salary",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      3.0,
+      "Electricity expenses - Factory",
+      "Item 5 (iii) : Power & Fuel",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      4.0,
+      "Provident Fund - factory workers",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      5.0,
+      "Freight inward / carriage inward",
+      "Item 5 (i) (a) or (b) : RM – Indigenous / Imported",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      6.0,
+      "Water Charges",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      7.0,
+      "Fuel Expenses - factory",
+      "Item 5 (iii) : Power & Fuel",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      8.0,
+      "Octroi on purchases",
+      "Item 5 (i) (b) : RM – Indigenous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      9.0,
+      "Excise duty on purchases",
+      "Item 5 (i) (b) : RM – Indigenous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      10.0,
+      "Imports of raw material",
+      "Item 5 (i) (a) : RM - Imported",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      11.0,
+      "Customs duty on purchases",
+      "Item 5 (i) (a) : RM - Imported",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      12.0,
+      "Labour charges",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      13.0,
+      "Loading & unloading charges",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      14.0,
+      "Machinery Maintenance",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      15.0,
+      "Building Maintenance (Factory Building)",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      16.0,
+      "Building Maintenance (Others)",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      17.0,
+      "ESI Fund",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      18.0,
+      "Purchase Tax",
+      "Item 5 (i) (b) : RM – Indigenous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      19.0,
+      "Salary of supervisors",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      20.0,
+      "Salary of plant manager",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      21.0,
+      "General expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      22.0,
+      "Conveyance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      23.0,
+      "Packing charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "Primary packing expenses to be included in other mfg. Cost & secondary packing cost to be included in SGA"
+    ],
+    [
+      24.0,
+      "Cartage",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "If related to purchase of raw material than to be added in RM cost."
+    ],
+    [
+      25.0,
+      "Clearing & Forwarding – For Imports",
+      "Item 5 (i) (a) : RM - Imported",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      26.0,
+      "Clearing & Forwarding – For Exports",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      27.0,
+      "Office Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      28.0,
+      "Car Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      29.0,
+      "Postage & Telegram",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      30.0,
+      "Courier Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      31.0,
+      "Sales Tax",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      32.0,
+      "Bank Charges",
+      "Item 9 : Interest",
+      "Interest",
+      ""
+    ],
+    [
+      33.0,
+      "Insurance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      34.0,
+      "Consultancy Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      35.0,
+      "Audit Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      36.0,
+      "Freight outward",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      37.0,
+      "Factory Rent",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      38.0,
+      "Office Rent",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      39.0,
+      "Rates & Taxes",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      40.0,
+      "Rent, Rates & Taxes",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      41.0,
+      "Traveling Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      42.0,
+      "Advertising & Publicity",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      43.0,
+      "Repairs & Renewals",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      44.0,
+      "Depreciation on factory building",
+      "Item 5 (vi) : Depreciation",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      45.0,
+      "Depreciation on machinery",
+      "Item 5 (vi) : Depreciation",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      46.0,
+      "Depreciation on office building",
+      "Item 5 (vi) : Depreciation",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      47.0,
+      "Depreciation on office equipments",
+      "Item 5 (vi) : Depreciation",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      48.0,
+      "Depreciation on furniture",
+      "Item 5 (vi) : Depreciation",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      49.0,
+      "Legal expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      50.0,
+      "Printing & Stationery",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      51.0,
+      "Vehicle Maintenance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      52.0,
+      "Staff welfare expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      53.0,
+      "Trade license fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      54.0,
+      "Road Tax",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      55.0,
+      "Vehicle insurance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      56.0,
+      "Telephone expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      57.0,
+      "Mobile expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      58.0,
+      "Profession tax",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      59.0,
+      "Fire insurance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      60.0,
+      "Theft insurance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      61.0,
+      "Loss by fire",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      62.0,
+      "Loss by theft",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      63.0,
+      "Court fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      64.0,
+      "Income Tax",
+      "Item 13 : Provision for Taxes",
+      "Tax",
+      ""
+    ],
+    [
+      65.0,
+      "Dividend Tax",
+      "Item 15 (a) : Equity Dividend paid amount",
+      "Dividend",
+      ""
+    ],
+    [
+      66.0,
+      "Provision for tax",
+      "Item 13 : Provision for Taxes",
+      "Tax",
+      ""
+    ],
+    [
+      67.0,
+      "Bad debts",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "In case of a non-recurring write-off, to be classified as non-operating expense"
+    ],
+    [
+      68.0,
+      "Provision for bad debts",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      69.0,
+      "Provision for gratuity",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      70.0,
+      "Provision for retirement benefits",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      71.0,
+      "Workers uniform",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      72.0,
+      "Laundry Expenses",
+      "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      73.0,
+      "Sales Promotion Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      74.0,
+      "Directors Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      75.0,
+      "Directors Remuneration",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      76.0,
+      "Salary to partners",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      77.0,
+      "Interest on unsecured loans from friends and relatives",
+      "Item 9 : Interest",
+      "Interest",
+      "Interest"
+    ],
+    [
+      78.0,
+      "Bank Interest",
+      "Item 9 : Interest",
+      "Interest",
+      ""
+    ],
+    [
+      79.0,
+      "Interest on long term loans",
+      "Item 9 : Bank Interest",
+      "Interest",
+      ""
+    ],
+    [
+      80.0,
+      "Hire Charges",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      81.0,
+      "Lease Rent",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "In case the lease rent is paid towards manufacturing facilities, it should be classified under 5 (v) - Other Manufacturing Exp"
+    ],
+    [
+      82.0,
+      "Purchase of stores",
+      "Item 5 (ii) (b) : Other Spares - Indegineous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      83.0,
+      "Purchase of spares",
+      "Item 5 (ii) (b) : Other Spares - Indegineous",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      84.0,
+      "Loss on sale of Asset",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      85.0,
+      "Loss on sale of Investment",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      86.0,
+      "Job Work Charges paid",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      87.0,
+      "Job Work Charges Received",
+      "Item 1 : Gross Sales",
+      "Sales",
+      ""
+    ],
+    [
+      88.0,
+      "Generator Expenses",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      89.0,
+      "Bonus ",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      90.0,
+      "Inspection Charges",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      91.0,
+      "Diwali Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      92.0,
+      "Donation",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      93.0,
+      "Internet Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      94.0,
+      "Loss on evaporation",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      95.0,
+      "Transportation",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      96.0,
+      "Computer maintenance",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      97.0,
+      "Newapaper & Periodicals",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      98.0,
+      "Rate Difference",
+      "Item 1 : Deduct from Gross Sales",
+      "Sales",
+      ""
+    ],
+    [
+      99.0,
+      "Gratuity expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      100.0,
+      "Miscellaneous expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      101.0,
+      "Sundry expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      102.0,
+      "Prior period expenses",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      103.0,
+      "Mediclaim",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      104.0,
+      "Insurance Premium",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      105.0,
+      "Trade Discount allowed",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Netted off against sales",
+      ""
+    ],
+    [
+      106.0,
+      "Cash Discount allowed",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Netted off against sales",
+      ""
+    ],
+    [
+      107.0,
+      "Speculation Loss",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      108.0,
+      "Security Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      109.0,
+      "Service Tax",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      110.0,
+      "Free Sample distribution expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      111.0,
+      "Gift",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      112.0,
+      "Business Promotion",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      113.0,
+      "Royalty Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "Royalty paid for manufacturing facility / technical knowhow to  be classified under 5(v): other manufacturing exp"
+    ],
+    [
+      114.0,
+      "Know how expenditure incurred",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      115.0,
+      "License fees paid",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      116.0,
+      "Professional Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      117.0,
+      "Accounting Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      118.0,
+      "Deferred tax expenses",
+      "Item 13 : Provision for Taxes",
+      "Tax",
+      "The CMA format does not have any bifurcation for taxes, hence to be classified under provision for taxes"
+    ],
+    [
+      119.0,
+      "Foreign Exchange expenditure",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      120.0,
+      "Kasar account",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      121.0,
+      "Vatav account",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      122.0,
+      "Penalty Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      123.0,
+      "Pooja expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      124.0,
+      "Festival expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      125.0,
+      "Ex – Gratia expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      126.0,
+      "Warehouse expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      127.0,
+      "Brokerage expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      128.0,
+      "Hel Majuri/  Hamali",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      129.0,
+      "Municipal Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      130.0,
+      "ROC Filing Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      131.0,
+      "Motor Car expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      132.0,
+      "Xerox Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      133.0,
+      "Books & Periodicals",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      134.0,
+      "AMC Charges (For Machiery)",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      135.0,
+      "AMC Charges (For Office Equipments)",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      136.0,
+      "Membership & Subscription",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      137.0,
+      "Conference expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      138.0,
+      "Seminar Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      139.0,
+      "Petrol Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      140.0,
+      "Uniform expenses",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      141.0,
+      "Vakil Fees",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      142.0,
+      "Interest on Partners' Loan",
+      "Item 9 : Interest",
+      "Interest",
+      ""
+    ],
+    [
+      143.0,
+      "Interest on Partners' Capital",
+      "Item 15 (a) : Equity Dividend paid amount",
+      "Dividend",
+      ""
+    ],
+    [
+      144.0,
+      "Commission to Directors",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      145.0,
+      "Marketing Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      146.0,
+      "Selling & Distribution expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      147.0,
+      "Preliminary expenses Write off",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      148.0,
+      "Pre Operative expenses write off",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      149.0,
+      "Gardening Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      150.0,
+      "Shop expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      151.0,
+      "Suspense account w/off",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      152.0,
+      "Trial Balance Difference w/off",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      153.0,
+      "Cash Theft",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      154.0,
+      "Pump Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      155.0,
+      "Goods lost in transit",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "If extraordinary then should be treated as non operating i.e. Item 11 (ii)"
+    ],
+    [
+      156.0,
+      "Dividend Paid",
+      "Item 15 (a) : Equity Dividend paid amount",
+      "Dividend",
+      ""
+    ],
+    [
+      157.0,
+      "Franking Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      158.0,
+      "Research & Development expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      159.0,
+      "Entertainment expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      160.0,
+      "Self Assessment tax",
+      "Item 13 : Provision for Taxes",
+      "Tax",
+      ""
+    ],
+    [
+      161.0,
+      "Canteen Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      162.0,
+      "Hotel Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      163.0,
+      "Medical Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      164.0,
+      "Tanker Rent",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      "Will depend on usage of tanker. If the tanker is used for procure RM than to be added in RM cost, if for transporting FG than part of selling, gen & admn"
+    ],
+    [
+      165.0,
+      "Incentives to Client",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      166.0,
+      "Stamping Charges",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      167.0,
+      "Name Board and Fittings",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      168.0,
+      "Power",
+      "Item 5 (iii) : Power & Fuel",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      169.0,
+      "Club Expenses",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      170.0,
+      "Quantity Discount payable",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      171.0,
+      "Sales return",
+      "Item 1 : Less from Sales",
+      "Sales",
+      ""
+    ],
+    [
+      172.0,
+      "Formation Expenses",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      173.0,
+      "Devaluation Loss",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      174.0,
+      "Impairment of fixed Assets (Machinery / Factory Land & Building)",
+      "Item 5 (v) : Other manufacturing expenses",
+      "Cost of Sales",
+      "In case it arises out of non-routine operations then to be classified under 11(ii) - non-operating"
+    ],
+    [
+      175.0,
+      "Impairment of fixed Assets (Office Assets)",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      "In case it arises out of non-routine operations then to be classified under 11(ii) - non-operating"
+    ],
+    [
+      176.0,
+      "Deferred Revenue Expenditure w/off",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      177.0,
+      "Increase / Decrease in Stock",
+      "Same is to be bifurcated into Opening and Closing Stock and effect is to be given accordingly.",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      178.0,
+      "Premium on redemtion of securities",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      179.0,
+      "Debenture Interest",
+      "Item 9 : Interest",
+      "Interest",
+      ""
+    ],
+    [
+      180.0,
+      "Branch Loss",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      181.0,
+      "IT Penalties",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      182.0,
+      "Other Penalies",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      183.0,
+      "Turnover Tax",
+      "Item 2 : Less Excise duty",
+      "Sales",
+      ""
+    ],
+    [
+      184.0,
+      "Professional Tax",
+      "Item 6 : Selling, General & Administrative Expenses",
+      "Selling, Gen. & Adm. Exp.",
+      ""
+    ],
+    [
+      185.0,
+      "Goodwill written off",
+      "Item 11 (ii) : Other non-operating expenses",
+      "non-operating expenses",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "Incomes",
+      "",
+      "",
+      ""
+    ],
+    [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    [
+      186.0,
+      "Sales",
+      "Item 1 (i) : Domestic sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      187.0,
+      "Sale of import license",
+      "Item 1 (ii) : Export sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      188.0,
+      "Sale of DEPB license",
+      "Item 1 (ii) : Export sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      189.0,
+      "Consignment Sales",
+      "Item 1 (i) : Domestic sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      190.0,
+      "Duty Drawback",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      "If received towards deemed exports then classified as domestic sales otherwise as export sale"
+    ],
+    [
+      191.0,
+      "Export Sales",
+      "Item 1 (ii) : Export sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      192.0,
+      "Refund of income tax",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      193.0,
+      "Refund of sales tax",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      194.0,
+      "Interest received",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      195.0,
+      "Dividend Received",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      196.0,
+      "Bad debts recovered",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      197.0,
+      "Commission / Brokerage Received (Recurring)",
+      "Item 1 (i) : Domestic sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      198.0,
+      "Commission / Brokerage Received (One time)",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      199.0,
+      "Profit on sale of Asset",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      200.0,
+      "Profit on sale of Investment",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      201.0,
+      "Bank Interest",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      202.0,
+      "Scrap Sale",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      203.0,
+      "Delivery Charges",
+      "Item 1 (i) : Domestic sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      204.0,
+      "Rate Difference",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      205.0,
+      "Insurance Receipts",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      206.0,
+      "Trade Discounts Received",
+      "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      207.0,
+      "Cash Discounts Received",
+      "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      208.0,
+      "Speculation Profit",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      209.0,
+      "Royalty Fees (Recurring and Related to business)",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      210.0,
+      "Royalty Fees (One time)",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      211.0,
+      "Foreign Exchange earning",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      212.0,
+      "Kasar account",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      213.0,
+      "Vatav account",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      214.0,
+      "Interest on FD",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      215.0,
+      "Miscellaneous Income",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      216.0,
+      "Other Income",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      217.0,
+      "Hire Income (Recurring and Related to business)",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      218.0,
+      "Hire Income (One time)",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      219.0,
+      "Chit Fund Income",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      220.0,
+      "Rent Income (Recurring and Related to business)",
+      "Item 1 : Domestic / Export sales as applicable",
+      "Gross Sales",
+      ""
+    ],
+    [
+      221.0,
+      "Rent Income (One time)",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      222.0,
+      "Transport Income",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      223.0,
+      "PUC Receipts",
+      "Item 1 (i) : Domestic sales",
+      "Gross Sales",
+      ""
+    ],
+    [
+      224.0,
+      "PCO Income",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      225.0,
+      "Interest on IT Refund",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ],
+    [
+      226.0,
+      "Quantity Discount Receivable / Received",
+      "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      227.0,
+      "Purchase return",
+      "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      228.0,
+      "Subsidies (Recurring for Operative Exp)",
+      "Deduct from respective expenses",
+      "Cost of Sales",
+      ""
+    ],
+    [
+      229.0,
+      "Subsidies (One time)",
+      "Item 11 (i) : Other non-operating income",
+      "Non-operating Income",
+      ""
+    ]
+  ]
+}

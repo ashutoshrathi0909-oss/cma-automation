@@ -1,0 +1,10 @@
+{
+  "company": "SSSS",
+  "industry": "manufacturing",
+  "total_items": 294,
+  "correct": 64,
+  "wrong": 217,
+  "doubts": 13,
+  "accuracy_pct": 21.77,
+  "elapsed_seconds": 668.03
+}

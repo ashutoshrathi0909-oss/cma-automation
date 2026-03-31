@@ -1,0 +1,47 @@
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+CANDIDATE CMA FIELDS (you MUST pick from ONLY these rows):
+- Row 22: Domestic Sales
+- Row 30: Interest Received
+- Row 31: Profit on sale of fixed assets / Investments
+- Row 32: Gain on Exchange Fluctuations
+- Row 34: Others (Non-Operating Income)
+- Row 41: Raw Materials Consumed (Imported)
+- Row 42: Raw Materials Consumed (Indigenous)
+- Row 49: Others (Manufacturing)
+- Row 67: Salary and staff expenses
+- Row 70: Advertisements and Sales Promotions
+- Row 71: Others (Admin)
+- Row 83: Interest on Fixed Loans / Term loans
+- Row 93: Others (Non-Operating Expenses)
+- Row 212: Cash on Hand
+
+SIMILAR ITEMS ALREADY CLASSIFIED (use as reference examples):
+1. "Paper & Paper Products" (Note 18-24 | note 12 : revenue from operati) -> Row 22: Domestic Sales
+2. "P&L on Sale of Car" (Note 18-24 | note 17 : other expenses) -> Row 93: Others (Non-Operating Expenses)
+3. "Profit on Sale of Assests" (Note 18-24 | note 13 : other income) -> Row 31: Profit on sale of fixed assets / Investments
+4. "Interest Income" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+5. "Interest from FD" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+6. "Cost of Material Consumed" (Note 18-24 | note 14 : cost of material con) -> Row 42: Raw Materials Consumed (Indigenous)
+7. "Tea & Food Expenses" (Note 18-24 | note 17 : other expenses) -> Row 67: Salary and staff expenses
+8. "Factory Expences" (Note 18-24 | note 17 : other expenses) -> Row 49: Others (Manufacturing)
+
+CLASSIFY THESE 10 ITEMS:
+1. "Sales of Manufactured Products" | Notes to P & L | sale of products:
+2. "Sales of Trading Goods" | Notes to P & L | sale of products:
+3. "Interest Income" | Notes to P & L | other income
+4. "Interest Received - Fixed Deposits" | Subnotes to PL | interest income
+5. "Interest Received - Others" | Subnotes to PL | interest income
+6. "MSME Interest Sub-vention Scheme" | Subnotes to PL | interest income
+7. "Profit on Sale of Fixed Asset" | Notes to P & L | other income
+8. "Total Raw Materials - Indigenous" | Notes to P & L | note 20 - cost of raw materials consumed
+9. "CRCA Sheets & Coils consumed" | Notes to P & L | details of cost of materials consumed
+10. "Aluminium consumed" | Notes to P & L | note 20 - cost of raw materials consumed
+
+Return a JSON array with exactly 10 objects. Each object must have:
+- "item_index": integer 1-10 (matching the item number above)
+- "classified_cma_row": integer (the row number from CANDIDATE CMA FIELDS)
+- "classified_cma_field": string (the field name)
+- "confidence": float 0.0-1.0
+
+Return ONLY valid JSON array, no other text.

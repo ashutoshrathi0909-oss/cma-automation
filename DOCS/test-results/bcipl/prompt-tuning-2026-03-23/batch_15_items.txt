@@ -1,0 +1,90 @@
+Item 1:
+  Description: Current Maturities of LT Debts (FY23)
+  Amount: Rs 50,518,600.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 2:
+  Description: Accumulated Depreciation - Vehicles (At 31st March)
+  Amount: Rs 2,328,228.98
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 3:
+  Description: Accumulated Depreciation - Computers (At 31st March)
+  Amount: Rs 1,282,691.60
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 4:
+  Description: CRCA Sheets & Coils consumed (FY23)
+  Amount: Rs 2,154,018,199.43
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 5:
+  Description: Aluminium consumed (FY23)
+  Amount: Rs 23,050,481.80
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 6:
+  Description: Consumption of Stores & Spares (FY23)
+  Amount: Rs 43,928,001.82
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 7:
+  Description: Other Materials Comsumed - Scrap (FY23)
+  Amount: Rs 292,853.97
+  Section: note 22 - changes in inventories
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 8:
+  Description: Salaries & Wages (FY23)
+  Amount: Rs 115,357,365.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 9:
+  Description: Axis Bank ELGC A/C NO:920060046321519 (FY23 non-current)
+  Amount: Rs 2,375,022.00
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 10:
+  Description: Axis Bank TL-V Business Empower (FY23)
+  Amount: Rs 6,500,000.00
+  Section: note 5 - short-term borrowings
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 11:
+  Description: Axis Term Loan No. 879974 (FY23)
+  Amount: Rs 7,072,348.43
+  Section: note 5 - short-term borrowings
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 12:
+  Description: Mr. Chaitra Sundaresh (FY23 Director Loan)
+  Amount: Rs 12,400,000.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 13:
+  Description: Mrs. Ronak S. Bagadia (FY23 Director Loan)
+  Amount: Rs 19,347,458.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 14:
+  Description: Accumulated Depreciation - Furniture & Fixtures (At 31st March)
+  Amount: Rs 3,606,367.71
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 15:
+  Description: Accumulated Depreciation - Total Tangible Assets (At 31st March)
+  Amount: Rs 186,286,504.32
+  Section: depreciation schedule - accumulated depreciation total
+  Sheet: Co., Deprn 
+  Financial Year: 2021

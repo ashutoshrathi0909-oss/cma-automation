@@ -1,0 +1,10 @@
+{
+  "company": "SR_Papers",
+  "industry": "manufacturing",
+  "total_items": 216,
+  "correct": 68,
+  "wrong": 145,
+  "doubts": 3,
+  "accuracy_pct": 31.48,
+  "elapsed_seconds": 449.31
+}

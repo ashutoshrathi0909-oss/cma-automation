@@ -1,0 +1,418 @@
+{
+  "responses": {
+    "d007": {
+      "item_id": "d007",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_008: Selling & Distribution Expenses",
+      "pre_resolved": true,
+      "win_row": 70,
+      "win_name": "Advertisements and Sales Promotions"
+    },
+    "d015": {
+      "item_id": "d015",
+      "decision": "other",
+      "selected_row": 70,
+      "selected_name": "Advertisements and Sales Promotions",
+      "notes": "[AUTO] via cross_008: Selling & Distribution Expenses",
+      "pre_resolved": true,
+      "win_row": 70,
+      "win_name": "Advertisements and Sales Promotions"
+    },
+    "d024": {
+      "item_id": "d024",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d039": {
+      "item_id": "d039",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d050": {
+      "item_id": "d050",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_004: Bonus",
+      "pre_resolved": true,
+      "win_row": 67,
+      "win_name": "Salary and staff expenses"
+    },
+    "d051": {
+      "item_id": "d051",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d065": {
+      "item_id": "d065",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_002: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 67,
+      "win_name": "Salary and staff expenses"
+    },
+    "d074": {
+      "item_id": "d074",
+      "decision": "other",
+      "selected_row": 215,
+      "selected_name": "Other Fixed Deposits",
+      "notes": "[AUTO] via int_029: Fixed Deposits with banks & accrued interest (under lien)",
+      "pre_resolved": true,
+      "win_row": 215,
+      "win_name": "Other Fixed Deposits"
+    },
+    "d003": {
+      "item_id": "d003",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d023": {
+      "item_id": "d023",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d052": {
+      "item_id": "d052",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d115": {
+      "item_id": "d115",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d131": {
+      "item_id": "d131",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d141": {
+      "item_id": "d141",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d142": {
+      "item_id": "d142",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d019": {
+      "item_id": "d019",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d020": {
+      "item_id": "d020",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d021": {
+      "item_id": "d021",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d041": {
+      "item_id": "d041",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d042": {
+      "item_id": "d042",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d043": {
+      "item_id": "d043",
+      "decision": "other",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": 149,
+      "selected_name": "Balance Other Debts"
+    },
+    "d044": {
+      "item_id": "d044",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d060": {
+      "item_id": "d060",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d061": {
+      "item_id": "d061",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d062": {
+      "item_id": "d062",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d063": {
+      "item_id": "d063",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d073": {
+      "item_id": "d073",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d087": {
+      "item_id": "d087",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d088": {
+      "item_id": "d088",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d107": {
+      "item_id": "d107",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d108": {
+      "item_id": "d108",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d109": {
+      "item_id": "d109",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d110": {
+      "item_id": "d110",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d111": {
+      "item_id": "d111",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d124": {
+      "item_id": "d124",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d125": {
+      "item_id": "d125",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d126": {
+      "item_id": "d126",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d137": {
+      "item_id": "d137",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d138": {
+      "item_id": "d138",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d139": {
+      "item_id": "d139",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d140": {
+      "item_id": "d140",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d149": {
+      "item_id": "d149",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d150": {
+      "item_id": "d150",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d151": {
+      "item_id": "d151",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d152": {
+      "item_id": "d152",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d001": {
+      "item_id": "d001",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d002": {
+      "item_id": "d002",
+      "decision": "other",
+      "confidence": null,
+      "notes": "If it is an income then 32 if it is an loss then 91",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": null,
+      "selected_name": ""
+    },
+    "d004": {
+      "item_id": "d004",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d005": {
+      "item_id": "d005",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    }
+  },
+  "lastSaved": "2026-03-30T11:32:53.625Z",
+  "reviewer": ""
+}

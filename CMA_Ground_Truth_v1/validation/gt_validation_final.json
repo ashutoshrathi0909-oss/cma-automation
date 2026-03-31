@@ -1,0 +1,5707 @@
+{
+  "metadata": {
+    "date": "2026-03-27",
+    "description": "Cross-validation of GT against 450+ golden rules (Source 1 + Source 2 + CA answers)",
+    "methodology": "3-pass: rapidfuzz (threshold 80) -> agent CA reasoning -> cross-company consistency",
+    "total_golden_rules": 481,
+    "rule_contradictions_found": 14
+  },
+  "summary": {
+    "total_entries": 844,
+    "confirmed": 691,
+    "disputes": 175,
+    "truly_unverified": 0,
+    "excluded": 0,
+    "cross_company_inconsistencies": 88,
+    "cross_check_disputes_added": 22,
+    "rule_contradictions_count": 14
+  },
+  "by_company": {
+    "BCIPL": {
+      "total": 107,
+      "confirmed": 86,
+      "dispute": 21,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "Dynamic_Air": {
+      "total": 110,
+      "confirmed": 87,
+      "dispute": 23,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "INPL": {
+      "total": 129,
+      "confirmed": 110,
+      "dispute": 19,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "Kurunji_Retail": {
+      "total": 49,
+      "confirmed": 39,
+      "dispute": 10,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "Mehta_Computer": {
+      "total": 71,
+      "confirmed": 47,
+      "dispute": 15,
+      "truly_unverified": 9,
+      "excluded": 0
+    },
+    "MSL": {
+      "total": 152,
+      "confirmed": 129,
+      "dispute": 23,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "SLIPL": {
+      "total": 101,
+      "confirmed": 85,
+      "dispute": 16,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "SR_Papers": {
+      "total": 64,
+      "confirmed": 51,
+      "dispute": 13,
+      "truly_unverified": 0,
+      "excluded": 0
+    },
+    "SSSS": {
+      "total": 61,
+      "confirmed": 47,
+      "dispute": 12,
+      "truly_unverified": 2,
+      "excluded": 0
+    }
+  },
+  "disputes": [
+    {
+      "company": "BCIPL",
+      "raw_text": "Profit on Sale of Fixed Asset",
+      "section": "Other Income",
+      "gt_row": 23,
+      "gt_field": "Exports",
+      "golden_rule_row": 31,
+      "golden_rule_name": "Profit on sale of fixed assets / Investments",
+      "golden_rule_source": "Source1_rule_355",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 93.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Forex Rate Fluctuation Gain/(Loss)",
+      "section": "Other Income",
+      "gt_row": 32,
+      "gt_field": "Gain on Exchange Fluctuations",
+      "golden_rule_row": 91,
+      "golden_rule_name": "Loss on Exchange Fluctuations",
+      "golden_rule_source": "CA_Q10c_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 83.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Rent",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent, Rates and Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent generally maps to row 68. GT has 49 (Others Mfg) - could be factory rent. | DISPUTE: Golden rule says row 68 but GT has row 49."
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Machinery Maintenance",
+      "section": "Other Expenses",
+      "gt_row": 50,
+      "gt_field": "Repairs & Maintenance",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_170",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Directors Remuneration",
+      "section": "Salaries & Wages",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 73,
+      "golden_rule_name": "Audit Fees & Directors Remuneration",
+      "golden_rule_source": "Source1_rule_231",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Rates & Taxes",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Selling & Distribution Expenses",
+      "section": "Other Expenses",
+      "gt_row": 70,
+      "gt_field": "Advertisements and Sales Promotions",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_302",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Administrative & General Expenses",
+      "section": "Other Expenses",
+      "gt_row": 70,
+      "gt_field": "Advertisements and Sales Promotions",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others (Admin & Selling)",
+      "golden_rule_source": "CA_Q3c_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Rates & Taxes",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Bad debts written off",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 69,
+      "golden_rule_name": "Bad Debts",
+      "golden_rule_source": "CA_Q27_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Auditor's Remuneration - Statutory Audit",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 73,
+      "golden_rule_name": "Audit Fees & Directors Remuneration",
+      "golden_rule_source": "CA_Q21b_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Auditor's Remuneration - Tax Audit",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 73,
+      "golden_rule_name": "Audit Fees & Directors Remuneration",
+      "golden_rule_source": "CA_Q21c_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 89.9,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Rent",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent, Rates and Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent generally maps to row 68. GT has 71 (Others Admin). | DISPUTE: Golden rule says row 68 but GT has row 71."
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Machinery Maintenance",
+      "section": "Other Expenses",
+      "gt_row": 72,
+      "gt_field": "Repairs & Maintenance",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_170",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Selling & Distribution Expenses",
+      "section": "Other Expenses",
+      "gt_row": 73,
+      "gt_field": "Audit Fees & Directors Remuneration",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_302",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Interest of Income Tax",
+      "section": "Finance Costs",
+      "gt_row": 83,
+      "gt_field": "Interest on Fixed Loans / Term loans",
+      "golden_rule_row": 84,
+      "golden_rule_name": "Interest on WC / Tax Delay",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Interest on Income Tax delay maps to row 84 per CA rules | DISPUTE: Golden rule says row 84 but GT has row 83."
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Deferred Tax",
+      "section": "Tax Expense",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Deferred Tax",
+      "section": "Tax Expense",
+      "gt_row": 101,
+      "gt_field": "Deferred Tax Asset",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Prepaid Expenses",
+      "section": "Short-term Loans and Advances",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Leave Encashment",
+      "section": "Short-term Provisions",
+      "gt_row": 244,
+      "gt_field": "Provision for Taxation",
+      "golden_rule_row": 249,
+      "golden_rule_name": "Creditors for Expenses",
+      "golden_rule_source": "CA_Q1f_bs",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "BCIPL",
+      "raw_text": "Creditors for Expenses",
+      "section": "Other Current Liabilities",
+      "gt_row": 249,
+      "gt_field": "Creditors for Expenses",
+      "golden_rule_row": 250,
+      "golden_rule_name": "Other current liabilities",
+      "golden_rule_source": "Source1_rule_70",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Carriage Inwards",
+      "section": "Cost of Materials Consumed",
+      "gt_row": 47,
+      "gt_field": "Freight and Transportation Charges",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "CA_Q3d_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 81.2,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(a) Salaries and incentives",
+      "section": "Employee Benefits Expense",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (Manufacturing - Salaries)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Salaries and incentives for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(c) Staff Welfare",
+      "section": "Employee Benefits Expense",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (Manufacturing - Staff Welfare)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Staff Welfare for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(d) Contribution to EPF and ESI",
+      "section": "Employee Benefits Expense",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "CA_Q1c_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 82.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Rates and taxes",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Interest on Delay in payment of taxes",
+      "section": "Other Expenses - Admin",
+      "gt_row": 83,
+      "gt_field": "Interest on Fixed Loans / Term loans",
+      "golden_rule_row": 84,
+      "golden_rule_name": "Interest on Working capital loans",
+      "golden_rule_source": "CA_Q10b_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Liquidty Damages",
+      "section": "Other Expenses - Admin",
+      "gt_row": 83,
+      "gt_field": "Interest on Fixed Loans / Term loans",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others (Admin)",
+      "golden_rule_source": "Source1_rule_CA_R04",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 88.2,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(a) Loan/Overdraft Processing Fee",
+      "section": "Finance Costs",
+      "gt_row": 84,
+      "gt_field": "Interest on Working capital loans",
+      "golden_rule_row": 85,
+      "golden_rule_name": "Bank Charges",
+      "golden_rule_source": "CA_Q10g_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 93.3,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(3) Deferred tax Liability / (Asset)",
+      "section": "Tax Expense",
+      "gt_row": 101,
+      "gt_field": "Deferred Tax Asset",
+      "golden_rule_row": 159,
+      "golden_rule_name": "Deferred tax liability",
+      "golden_rule_source": "Source1_rule_34",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(e) Gratuity",
+      "section": "Employee Benefits Expense",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "Source1_rule_CA_R02",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Rent - Factory",
+      "section": "Cost of Materials Consumed",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_193",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Rates and taxes",
+      "section": "Other Expenses - Admin",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Brokerage & Commission",
+      "section": "Other Expenses - Admin",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "CA_Q3e_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Interest on Delay in payment of taxes",
+      "section": "Other Expenses - Admin",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 84,
+      "golden_rule_name": "Interest on Working capital loans",
+      "golden_rule_source": "CA_Q10b_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(a) Loan/Overdraft Processing Fee",
+      "section": "Finance Costs",
+      "gt_row": 83,
+      "gt_field": "Interest on Fixed Loans / Term loans",
+      "golden_rule_row": 85,
+      "golden_rule_name": "Bank Charges",
+      "golden_rule_source": "CA_Q10g_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 93.3,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(3) Deferred tax Liability / (Asset)",
+      "section": "Tax Expense",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 159,
+      "golden_rule_name": "Deferred tax liability",
+      "golden_rule_source": "Source1_rule_34",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Security Service Charges",
+      "section": "Other Expenses - Admin",
+      "gt_row": 51,
+      "gt_field": "Security Service Charges",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_264",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "(c) Staff Welfare Expenses",
+      "section": "Employee Benefits Expense",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "CA_Q1a_manufacturing",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Interest due to Delay in payment of taxes",
+      "section": "Other Expenses - Admin",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 84,
+      "golden_rule_name": "Interest on Working capital loans",
+      "golden_rule_source": "CA_Q10b_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.2,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Advances recoverable in cash or in kind",
+      "section": "Other Current Assets",
+      "gt_row": 219,
+      "gt_field": "Advances recoverable in cash or in kind",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_130",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Vehicle HP Loans - current maturities",
+      "section": "Short-term Borrowings",
+      "gt_row": 140,
+      "gt_field": "Repayable in next one year",
+      "golden_rule_row": 148,
+      "golden_rule_name": "Repayable in next one year",
+      "golden_rule_source": "Source1_rule_CA_R08",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Vehicle HP Loans - non-current",
+      "section": "Long-term Borrowings",
+      "gt_row": 141,
+      "gt_field": "Balance Repayable after one year",
+      "golden_rule_row": 148,
+      "golden_rule_name": "Other Debts (Vehicle HP)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Vehicle HP Loans non-current maps to row 148 (Other Debts). GT has 141 (Debentures). | DISPUTE: Golden rule says row 148 but GT has row 141."
+    },
+    {
+      "company": "Dynamic_Air",
+      "raw_text": "Outstanding expenses (Salary + Other)",
+      "section": "Other Current Liabilities",
+      "gt_row": 249,
+      "gt_field": "Creditors for Expenses",
+      "golden_rule_row": 250,
+      "golden_rule_name": "Other current liabilities",
+      "golden_rule_source": "Source1_rule_73",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Discount received",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 42,
+      "golden_rule_name": "Raw Materials Consumed ( Indigenous)",
+      "golden_rule_source": "Source1_rule_363",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Changes in work-in-progress and stock-in-trade",
+      "section": "Expenses",
+      "gt_row": 42,
+      "gt_field": "Raw Materials Consumed ( Indigenous)",
+      "golden_rule_row": null,
+      "golden_rule_name": null,
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Changes in WIP/stock-in-trade is a NET change, not raw materials. Should be split into Opening/Closing rows (53/54). GT maps to 42 which seems incorrect."
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Security Service Charges",
+      "section": "Other Expenses",
+      "gt_row": 51,
+      "gt_field": "Security Service Charges",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_264",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Work in Progress",
+      "section": "Inventories",
+      "gt_row": 54,
+      "gt_field": "Stock in process Closing Balance",
+      "golden_rule_row": 165,
+      "golden_rule_name": "Add : Capital Work in Progress",
+      "golden_rule_source": "Source1_rule_92",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Work in Progress (Opening)",
+      "section": "Changes in Inventories",
+      "gt_row": 53,
+      "gt_field": "Stock in process Opening Balance",
+      "golden_rule_row": 165,
+      "golden_rule_name": "Add : Capital Work in Progress",
+      "golden_rule_source": "Source1_rule_92",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Salary, Wages and Bonus",
+      "section": "Employee Benefits Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (Manufacturing)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "'Salary, Wages and Bonus' for manufacturing maps to row 45 per CA rules (Salary/Wages/Bonus combined) | DISPUTE: Golden rule says row 45 but GT has row 67."
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Staff welfare Expenses",
+      "section": "Employee Benefits Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "CA_Q1a_manufacturing",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Contribution to Provident Fund and ESI",
+      "section": "Employee Benefits Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (Manufacturing - EPF/ESI)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "EPF/ESI contribution for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Gratutity to employees",
+      "section": "Employee Benefits Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "CA_Q1b_CA_disagreed_use_default",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 81.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Rates & Taxes",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Licence And Subscription",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others (Admin)",
+      "golden_rule_source": "Source1_rule_CA_R06",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 82.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Deferred Tax",
+      "section": "Tax Expense",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Deferred Tax (Asset)",
+      "section": "Tax Expense",
+      "gt_row": 101,
+      "gt_field": "Deferred Tax Asset",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Work in Progress",
+      "section": "Inventories",
+      "gt_row": 200,
+      "gt_field": "Stocks-in-process",
+      "golden_rule_row": 165,
+      "golden_rule_name": "Add : Capital Work in Progress",
+      "golden_rule_source": "Source1_rule_92",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Finished Goods + Stock in Trade",
+      "section": "Inventories",
+      "gt_row": 201,
+      "gt_field": "Finished Goods",
+      "golden_rule_row": 58,
+      "golden_rule_name": "Finished Goods Opening Balance",
+      "golden_rule_source": "Source1_rule_CA_R10",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Prepaid expenses",
+      "section": "Other Current Asset",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Prepaid Expenses",
+      "section": "Other Current Asset",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Prepaid Expenses",
+      "section": "Other Current Assets",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Creditors for Expenses",
+      "section": "Other Current Liabilities",
+      "gt_row": 249,
+      "gt_field": "Creditors for Expenses",
+      "golden_rule_row": 250,
+      "golden_rule_name": "Other current liabilities",
+      "golden_rule_source": "Source1_rule_70",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Packing Expenses",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 44,
+      "gt_field": "Stores and spares consumed ( Indigenous)",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "Source1_rule_301",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Staff Welfare",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary/Staff",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Trading rule: Staff Welfare->67 [DISPUTE golden=67 vs GT=45]"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Electric Charges",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 48,
+      "gt_field": "Power, Coal, Fuel and Water",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others Admin",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Trading rule: Electric->71 not 48 [DISPUTE golden=71 vs GT=48]"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Rent",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent/Rates/Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent->68 [DISPUTE golden=68 vs GT=49]"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Tds on Rent",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent/Rates/Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "TDS on Rent is rent compliance->68 [DISPUTE golden=68 vs GT=49]"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Rent - Parking",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent/Rates/Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent Parking->68 [DISPUTE golden=68 vs GT=49]"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Generator Expenses",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_244",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Delivery Charges",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 22,
+      "golden_rule_name": "Domestic",
+      "golden_rule_source": "Source1_rule_359",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Salary to Partners",
+      "section": "P&L Account — Debit Side",
+      "gt_row": 73,
+      "gt_field": "Audit Fees & Directors Remuneration",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "Source1_rule_232",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Partners Current Account",
+      "section": "Schedule of Loans",
+      "gt_row": 152,
+      "gt_field": "As Quasi Equity",
+      "golden_rule_row": 116,
+      "golden_rule_name": "Issued, Subscribed and Paid up",
+      "golden_rule_source": "Source1_rule_10",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 89.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Bank Interest",
+      "section": "Other Income",
+      "gt_row": 30,
+      "gt_field": "Interest Received",
+      "golden_rule_row": 83,
+      "golden_rule_name": "Interest on Fixed Loans / Term loans",
+      "golden_rule_source": "Source1_rule_234",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Interest on PPF",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 30,
+      "golden_rule_name": "Interest Received",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Interest on deposits/PPF->30 [DISPUTE golden=30 vs GT=34]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Electricty Charges",
+      "section": "Administrative Expenses",
+      "gt_row": 48,
+      "gt_field": "Power, Coal, Fuel and Water",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_264",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Courier Charges",
+      "section": "Direct Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_186",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Transport Charges",
+      "section": "Direct Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 47,
+      "golden_rule_name": "Freight/Transport",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Transport/Freight in direct expenses->47 [DISPUTE golden=47 vs GT=49]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "To Opening Stock",
+      "section": "Cost of Goods Sold",
+      "gt_row": 53,
+      "gt_field": "Stock in process Opening Balance",
+      "golden_rule_row": 58,
+      "golden_rule_name": "FG Opening",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Opening Stock P&L->58 (standard CMA: FG Opening; GT may use 53 SIP for trading cos) [DISPUTE golden=58 vs GT=53]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "By Closing Stock",
+      "section": "Revenue / Cost of Goods Sold",
+      "gt_row": 54,
+      "gt_field": "Stock in process Closing Balance",
+      "golden_rule_row": 59,
+      "golden_rule_name": "FG Closing",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Closing Stock P&L->59 (standard CMA: FG Closing; GT may use 54 SIP for trading cos) [DISPUTE golden=59 vs GT=54]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Carriage Outward",
+      "section": "Administrative Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "CA_Q3d_CA_agreed",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Commission on sales",
+      "section": "Administrative Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Ads/Sales(Commission)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Sundry Balance W/off",
+      "section": "Administrative Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 90,
+      "golden_rule_name": "Sundry Written off",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Sundry Balance W/off->90 [DISPUTE golden=90 vs GT=71]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Freight Charges",
+      "section": "Administrative Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 47,
+      "golden_rule_name": "Freight/Transport",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Freight in admin (trading): CA default Freight->47; could be 70 if outward or 71 if admin misc [DISPUTE golden=47 vs GT=71]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Bill Discount Charges",
+      "section": "Administrative Expenses",
+      "gt_row": 85,
+      "gt_field": "Bank Charges",
+      "golden_rule_row": 84,
+      "golden_rule_name": "Interest on Working capital loans",
+      "golden_rule_source": "CA_Q10e_CA_disagreed_use_default",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 93.3,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Stock-in-Trade ( Valued at Cost Or Market price Whichever Is Lower)",
+      "section": "Current Assets & Advances",
+      "gt_row": 200,
+      "gt_field": "Stocks-in-process",
+      "golden_rule_row": 201,
+      "golden_rule_name": "Finished Goods",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Stock-in-Trade (BS)->201 [DISPUTE golden=201 vs GT=200]"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Gst Receivable",
+      "section": "Current Assets & Advances",
+      "gt_row": 219,
+      "gt_field": "Advances recoverable in cash or in kind",
+      "golden_rule_row": 206,
+      "golden_rule_name": "Domestic Receivables ( including bills purchased and discounted)",
+      "golden_rule_source": "Source1_rule_109",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "FD Accrued Interest (reclassified from Investments to Kotak FD)",
+      "section": "Investments",
+      "gt_row": 182,
+      "gt_field": "Investment in Govt. Securities ( Current )",
+      "golden_rule_row": 215,
+      "golden_rule_name": "Other FDs",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "FD Accrued Interest->215 (reclassified) [DISPUTE golden=215 vs GT=182]"
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(d) Insurance Claim Received",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_107",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 92.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Raw Material Import Purchases",
+      "section": "Purchases",
+      "gt_row": 41,
+      "gt_field": "Raw Materials Consumed ( Imported)",
+      "golden_rule_row": 42,
+      "golden_rule_name": "Raw Materials Consumed ( Indigenous)",
+      "golden_rule_source": "Source1_rule_157",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(iii) Job Work Charges",
+      "section": "Other Expenses",
+      "gt_row": 46,
+      "gt_field": "Processing / Job Work Charges",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_242",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(b) Carriage Inwards",
+      "section": "Purchase of Stock in Trade",
+      "gt_row": 47,
+      "gt_field": "Freight and Transportation Charges",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "CA_Q3d_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 81.2,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Security Charges",
+      "section": "Other Expenses",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_264",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Rent",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent/Rates/Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent->68 [DISPUTE golden=68 vs GT=49]"
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Stores and spares consumed ( Indigenous)",
+      "section": "manufacturing_expenses",
+      "gt_row": 44,
+      "gt_field": "Stores and spares consumed ( Indigenous)",
+      "golden_rule_row": 198,
+      "golden_rule_name": "Indigenous",
+      "golden_rule_source": "Source1_rule_139",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 81.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Rates and taxes (excluding, taxes on income)",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(iv) Discount Allowed",
+      "section": "Other Expenses - Selling",
+      "gt_row": 70,
+      "gt_field": "Advertisements and Sales Promotions",
+      "golden_rule_row": 22,
+      "golden_rule_name": "Domestic",
+      "golden_rule_source": "Source1_rule_262",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(iii) Freight Outwards",
+      "section": "Other Expenses - Selling",
+      "gt_row": 70,
+      "gt_field": "Advertisements and Sales Promotions",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_192",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.8,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(ii) Tour & Travel Expenses",
+      "section": "Other Expenses - Selling",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Ads/Sales(Travel)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Tour & Travel under selling->70 [DISPUTE golden=70 vs GT=71]"
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(b) Bank Interest",
+      "section": "Finance Costs",
+      "gt_row": 84,
+      "gt_field": "Interest on Working capital loans",
+      "golden_rule_row": 83,
+      "golden_rule_name": "Interest on Fixed Loans / Term loans",
+      "golden_rule_source": "Source1_rule_234",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(c) Other Charges",
+      "section": "Finance Costs",
+      "gt_row": 84,
+      "gt_field": "Interest on Working capital loans",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_162",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 89.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(2) Deferred tax",
+      "section": "Tax Expense",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(i) Commission",
+      "section": "Other Expenses - Selling",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Ads/Sales(Commission)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]"
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(iv) Discount Allowed",
+      "section": "Other Expenses - Selling",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 22,
+      "golden_rule_name": "Domestic",
+      "golden_rule_source": "Source1_rule_262",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "(c) Other Charges",
+      "section": "Finance Costs",
+      "gt_row": 83,
+      "gt_field": "Interest on Fixed Loans / Term loans",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_162",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 89.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Deferred Tax Liability",
+      "section": "tax",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 159,
+      "golden_rule_name": "Deferred tax liability",
+      "golden_rule_source": "Source1_rule_34",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Prepaid Expenses",
+      "section": "Other Current Assets",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Provision for Gratuity (short-term)",
+      "section": "Short-term Provisions",
+      "gt_row": 250,
+      "gt_field": "Other current liabilities",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "Source1_rule_225",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Advances recoverable in cash or in kind",
+      "section": "loans_advances",
+      "gt_row": 219,
+      "gt_field": "Advances recoverable in cash or in kind",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_130",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Prepaid Expenses",
+      "section": "loans_advances",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "MSL",
+      "raw_text": "Creditors for Expenses",
+      "section": "current_liabilities",
+      "gt_row": 249,
+      "gt_field": "Creditors for Expenses",
+      "golden_rule_row": 250,
+      "golden_rule_name": "Other current liabilities",
+      "golden_rule_source": "Source1_rule_70",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Duty drawback / IGST received",
+      "section": "Other Income",
+      "gt_row": 23,
+      "gt_field": "Exports",
+      "golden_rule_row": 34,
+      "golden_rule_name": "Others (Non-Op Income)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Duty drawback/IGST is in Other Income section. Not actual export revenue. Should be 34 not 23."
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Consultancy Charges",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_190",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Packing Expenses",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Advertisements and Sales Promotions",
+      "golden_rule_source": "Source1_rule_301",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Rent",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent/Rates/Taxes",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Rent should be 68 per CA rules. GT says 49 (factory rent). Without factory designation, standard is 68."
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Rates and taxes (excluding taxes on income)",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Sundries",
+      "section": "Other Expenses - Administration & Other Expenses",
+      "gt_row": 69,
+      "gt_field": "Bad Debts",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others (Admin)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Sundries is generic admin expense -> 71. GT says 69 Bad Debts which is wrong for sundries."
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Repairs to Plant & Machinery",
+      "section": "Other Expenses - Repairs",
+      "gt_row": 72,
+      "gt_field": "Repairs & Maintenance",
+      "golden_rule_row": 50,
+      "golden_rule_name": "Repairs (Mfg)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Repairs to Plant and Machinery -> row 50 per CA rules. GT says 72 which is admin repairs."
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Interest expense",
+      "section": "Finance Costs",
+      "gt_row": 84,
+      "gt_field": "Interest on Working capital loans",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_249",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.9,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Other Charges (Finance Costs)",
+      "section": "Finance Costs",
+      "gt_row": 85,
+      "gt_field": "Bank Charges",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_162",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 89.6,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Bad Debts Written off",
+      "section": "Other Expenses - Administration & Other Expenses",
+      "gt_row": 90,
+      "gt_field": "Sundry Balances Written off",
+      "golden_rule_row": 69,
+      "golden_rule_name": "Bad Debts",
+      "golden_rule_source": "CA_Q27_CA_agreed",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 100.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Deferred tax",
+      "section": "Tax expense",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Deferred tax (credit)",
+      "section": "Tax expense",
+      "gt_row": 101,
+      "gt_field": "Deferred Tax Asset",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Margin money deposits",
+      "section": "Cash and Cash Equivalents",
+      "gt_row": 215,
+      "gt_field": "Other Fixed Deposits",
+      "golden_rule_row": 237,
+      "golden_rule_name": "Security deposits with government departments",
+      "golden_rule_source": "Source1_rule_111",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 86.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Prepaid Expenses",
+      "section": "Other Current Assets",
+      "gt_row": 222,
+      "gt_field": "Prepaid Expenses",
+      "golden_rule_row": 223,
+      "golden_rule_name": "Other Advances / current asset",
+      "golden_rule_source": "Source1_rule_127",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Security Deposits - Others",
+      "section": "Other Non-Current Assets",
+      "gt_row": 238,
+      "gt_field": "Other non current assets",
+      "golden_rule_row": 237,
+      "golden_rule_name": "Security deposits with government departments",
+      "golden_rule_source": "Source1_rule_110",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SLIPL",
+      "raw_text": "Freight Outward",
+      "section": "Other Expenses - Selling Expenses",
+      "gt_row": 47,
+      "gt_field": "Freight and Transportation Charges",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_192",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Unloading Charges - Mathadi",
+      "section": "Other Expenses",
+      "gt_row": 47,
+      "gt_field": "Freight and Transportation Charges",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "Source1_rule_169",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.8,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Labour Charges",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "Source1_rule_168",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Admin Exp for PF",
+      "section": "Other Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (EPF Admin)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Admin Exp for PF is EPFO admin charge. Per CA rules EPF -> 45. GT says 67."
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Tea & Food Expenses",
+      "section": "Other Expenses",
+      "gt_row": 67,
+      "gt_field": "Salary and staff expenses",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages (Staff Welfare)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Tea and Food in manufacturing: staff welfare -> 45 per industry rules. GT says 67."
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Rates and taxes",
+      "section": "Other Expenses",
+      "gt_row": 68,
+      "gt_field": "Rent , Rates and Taxes",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "Source1_rule_195",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 90.7,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Discount Recieved",
+      "section": "Other Income",
+      "gt_row": 29,
+      "gt_field": "Dividends received from Mutual Funds",
+      "golden_rule_row": 42,
+      "golden_rule_name": "Raw Materials Consumed ( Indigenous)",
+      "golden_rule_source": "Source1_rule_363",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Discount Recieved",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 42,
+      "golden_rule_name": "Raw Materials Consumed ( Indigenous)",
+      "golden_rule_source": "Source1_rule_363",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 85.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Rate Difference",
+      "section": "Other Income",
+      "gt_row": 34,
+      "gt_field": "Others",
+      "golden_rule_row": 22,
+      "golden_rule_name": "Domestic",
+      "golden_rule_source": "Source1_rule_254",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 95.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Deferred tax",
+      "section": "Provision for taxation",
+      "gt_row": 100,
+      "gt_field": "Deferred Tax Liability",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "manufacturing",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Expenses Payable",
+      "section": "Other Current Liabilities",
+      "gt_row": 250,
+      "gt_field": "Other current liabilities",
+      "golden_rule_row": 249,
+      "golden_rule_name": "Creditors for Expenses",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Expenses Payable should be 249. GT says 250 Other CL."
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Short Term Borrowings - Debentures portion",
+      "section": "Short Term Borrowings",
+      "gt_row": 141,
+      "gt_field": "Balance Repayable after one year",
+      "golden_rule_row": 140,
+      "golden_rule_name": "Debentures in 1yr",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "ST debentures should be 140 (within 1yr). GT says 141 (after 1yr)."
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Term Loans from banks",
+      "section": "Long-term Borrowings / Short Term Borrowings",
+      "gt_row": 137,
+      "gt_field": "Balance Repayable after one year",
+      "golden_rule_row": 131,
+      "golden_rule_name": "From Indian Bank",
+      "golden_rule_source": "Source1_rule_41",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 92.5,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Security deposits - Unsecured, considered good",
+      "section": "Short-term Loans and Advances",
+      "gt_row": 237,
+      "gt_field": "Security deposits with government departments",
+      "golden_rule_row": 238,
+      "golden_rule_name": "Other NCA",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "manufacturing",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "General security deposits should be 238 per CA rules. GT says 237 (govt depts only)."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(i) Power And Fuel",
+      "section": "Other Expenses",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others (Admin)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Power/Fuel in TRADING -> 71 per industry rules. GT says 49 (manufacturing only)."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(a). Employee Benefit Expense",
+      "section": "Employee Benefits Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary/Staff Expenses",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Employee Benefits in TRADING -> 67 per industry rules. GT says 71."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(a) Auditor's Remuneration",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 73,
+      "golden_rule_name": "Audit Fees & Directors Remuneration",
+      "golden_rule_source": "Source1_rule_231",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 93.4,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(b) Advertisement and Sales Promotion Expenses",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 70,
+      "golden_rule_name": "Ads/Sales Promotions",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Advertisement -> 70 per CA rules. GT says 71."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(j) Rent, Rates and Taxes",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 68,
+      "golden_rule_name": "Rent, Rates and Taxes",
+      "golden_rule_source": "Source1_rule_196",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 92.2,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(k) Repairs and Maintenance",
+      "section": "Other Expenses",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 72,
+      "golden_rule_name": "Repairs (Admin)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Repairs in trading -> 72 Repairs(Admin). GT says 71."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "Loss on disposal of fixed assets (estimated)",
+      "section": "Depreciation Schedule / Fixed Assets",
+      "gt_row": 93,
+      "gt_field": "Others",
+      "golden_rule_row": 89,
+      "golden_rule_name": "Loss on Sale",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "Loss on disposal of fixed assets -> 89. GT says 93 Others Non-Op."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(d) Deferred tax",
+      "section": "Tax expense",
+      "gt_row": 101,
+      "gt_field": "Deferred Tax Asset",
+      "golden_rule_row": 171,
+      "golden_rule_name": "Deferred Tax Asset",
+      "golden_rule_source": "Source1_rule_131",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 80.0,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "HSBC OD A/C",
+      "section": "Short-term Borrowings",
+      "gt_row": 131,
+      "gt_field": "From Indian Bank",
+      "golden_rule_row": 132,
+      "golden_rule_name": "WC Bank Finance (Bank 2)",
+      "golden_rule_source": "agent_reasoning",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "agent_reasoning",
+      "fuzzy_score": null,
+      "agent_reasoning": "HSBC OD should be 132 (second bank). GT says 131 combining both."
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "Current Maturities of Long-term Debt (CMLTD)",
+      "section": "Long-term Borrowings reclassified",
+      "gt_row": 131,
+      "gt_field": "From Indian Bank",
+      "golden_rule_row": 136,
+      "golden_rule_name": "Term Loan Repayable in next one year",
+      "golden_rule_source": "CA_Q16_CA_agreed",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.3,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "(B) Sundry Creditors for expenses",
+      "section": "Trade Payables",
+      "gt_row": 249,
+      "gt_field": "Creditors for Expenses",
+      "golden_rule_row": 250,
+      "golden_rule_name": "Other current liabilities",
+      "golden_rule_source": "Source1_rule_70",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 91.3,
+      "agent_reasoning": null
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "Share Investments",
+      "section": "Non-Current Investments",
+      "gt_row": 188,
+      "gt_field": "Investment in group companies / subsidiaries",
+      "golden_rule_row": 233,
+      "golden_rule_name": "Investments",
+      "golden_rule_source": "Source1_rule_94",
+      "industry_type": "trading",
+      "document_context": "bs",
+      "match_method": "rapidfuzz",
+      "fuzzy_score": 87.1,
+      "agent_reasoning": null
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "section": "",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 71, Location B says row 49 for FY 2023"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Packing and Forwarding Charges",
+      "section": "",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 47,
+      "golden_rule_name": "Freight and Transportation Charges",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 49, Location B says row 47 for FY 2023"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Project Cost",
+      "section": "",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 93,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 71, Location B says row 93 for FY 2023"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Research and Development",
+      "section": "",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 71, Location B says row 49 for FY 2023"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Staff Welfare Expenses",
+      "section": "",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 45, Location B says row 67 for FY 2024"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Gratuity to Employees",
+      "section": "",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 45, Location B says row 67 for FY 2024"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "section": "",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 71, Location B says row 49 for FY 2024"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Material Handling Charges",
+      "section": "",
+      "gt_row": 46,
+      "gt_field": "Processing / Job Work Charges",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 46, Location B says row 49 for FY 2024"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Staff Welfare Expenses",
+      "section": "",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 45, Location B says row 67 for FY 2025"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Gratuity to Employees",
+      "section": "",
+      "gt_row": 45,
+      "gt_field": "Wages",
+      "golden_rule_row": 67,
+      "golden_rule_name": "Salary and staff expenses",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 45, Location B says row 67 for FY 2025"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "section": "",
+      "gt_row": 71,
+      "gt_field": "Others",
+      "golden_rule_row": 49,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 71, Location B says row 49 for FY 2025"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Finished Goods",
+      "section": "",
+      "gt_row": 59,
+      "gt_field": "Finished Goods Closing Balance",
+      "golden_rule_row": 201,
+      "golden_rule_name": "Finished Goods",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 59, Location B says row 201 for FY 2025"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Closing Stock",
+      "section": "",
+      "gt_row": 59,
+      "gt_field": "Finished Goods Closing Balance",
+      "golden_rule_row": 201,
+      "golden_rule_name": "Finished Goods",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 59, Location B says row 201 for FY 2025"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Depreciation",
+      "section": "",
+      "gt_row": 56,
+      "gt_field": "Depreciation",
+      "golden_rule_row": 63,
+      "golden_rule_name": "Depreciation",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 56, Location B says row 63 for FY 2025"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Computer Maintanance",
+      "section": "",
+      "gt_row": 72,
+      "gt_field": "Repairs & Maintenance",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 72, Location B says row 71 for FY 2023"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "section": "",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 49, Location B says row 45 for FY 2023"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "TDS Receivable",
+      "section": "",
+      "gt_row": 219,
+      "gt_field": "Advances recoverable in cash or in kind",
+      "golden_rule_row": 221,
+      "golden_rule_name": "Advance Income Tax",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 219, Location B says row 221 for FY 2023"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "TCS Receivable",
+      "section": "",
+      "gt_row": 219,
+      "gt_field": "Advances recoverable in cash or in kind",
+      "golden_rule_row": 221,
+      "golden_rule_name": "Advance Income Tax",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 219, Location B says row 221 for FY 2023"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "section": "",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 49, Location B says row 45 for FY 2024"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Computer Maintanance",
+      "section": "",
+      "gt_row": 72,
+      "gt_field": "Repairs & Maintenance",
+      "golden_rule_row": 71,
+      "golden_rule_name": "Others",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 72, Location B says row 71 for FY 2025"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "section": "",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "golden_rule_row": 45,
+      "golden_rule_name": "Wages",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 49, Location B says row 45 for FY 2025"
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "Current tax expense",
+      "section": "",
+      "gt_row": 244,
+      "gt_field": "Provision for Taxation",
+      "golden_rule_row": 99,
+      "golden_rule_name": "Income Tax  provision",
+      "golden_rule_source": "cross_check_step1",
+      "industry_type": "",
+      "document_context": "",
+      "match_method": "cross_check",
+      "fuzzy_score": null,
+      "agent_reasoning": "Location A (GT) says row 244, Location B says row 99 for FY 2024"
+    },
+    {
+      "company": "Mehta_Computer",
+      "raw_text": "Packing Forwarding ",
+      "section": "Direct Expenses",
+      "sheet_name": "Direct Expense (Sch BS)",
+      "gt_row": 49,
+      "gt_field": "Others",
+      "industry_type": "trading",
+      "document_context": "pl",
+      "status": "dispute",
+      "golden_rule_row": 47,
+      "golden_rule_name": "Freight and Transportation Charges",
+      "golden_rule_source": "agent_reasoning",
+      "fuzzy_score": null,
+      "match_method": "agent_reasoning",
+      "agent_reasoning": "Packing/forwarding = freight row 47, GT has 49"
+    }
+  ],
+  "truly_unverified": [],
+  "cross_company_inconsistencies": [
+    {
+      "normalized_text": "sales",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        22,
+        23
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "EXPORT SALES",
+          "gt_row": 23,
+          "section": "Sale of Manufactured Goods"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Sales",
+          "gt_row": 22,
+          "section": "Revenue from Operations"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Export Sales",
+          "gt_row": 23,
+          "section": "Revenue from Operations"
+        }
+      ]
+    },
+    {
+      "normalized_text": "income",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        30,
+        34
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Interest Income",
+          "gt_row": 30,
+          "section": "Other Income"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Other income",
+          "gt_row": 34,
+          "section": "Other Income"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Interest Income",
+          "gt_row": 30,
+          "section": "Other Income"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Miscellaneous income",
+          "gt_row": 34,
+          "section": "Other Income"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Interest Income",
+          "gt_row": 30,
+          "section": "Other Income"
+        }
+      ]
+    },
+    {
+      "normalized_text": "materials consumed",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        42,
+        44
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Other Materials Consumed",
+          "gt_row": 42,
+          "section": "Expenditure"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Other Materials Consumed",
+          "gt_row": 44,
+          "section": "Expenditure"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Raw Materials Consumed ( Indigenous)",
+          "gt_row": 42,
+          "section": "manufacturing_expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        49,
+        70,
+        71,
+        222,
+        249
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Manufacturing Expenses",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Manufacturing Expenses (partial)",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "Short-term Loans and Advances"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Travelling Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Office Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Delivery Expenses",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "General Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Outstanding expenses (Salary + Other)",
+          "gt_row": 249,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Office Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Miscellenious Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Miscellaneous Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Prepaid expenses",
+          "gt_row": 222,
+          "section": "Other Current Asset"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "Other Current Asset"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "Other Current Assets"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Conveyance Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "General Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "Other Current Assets"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "loans_advances"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Packing Expenses",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Travelling Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Administration & Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Conveyance Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Administration & Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Prepaid Expenses",
+          "gt_row": 222,
+          "section": "Other Current Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "rent",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        49,
+        68,
+        71
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Rent",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Rent",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Rent",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Rent",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Rent",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Rent",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "maintenance",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        50,
+        72
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Machinery Maintenance",
+          "gt_row": 50,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Machinery Maintenance",
+          "gt_row": 72,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "and amortization expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        56,
+        63
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Depreciation and Amortization Expenses",
+          "gt_row": 56,
+          "section": "Expenditure"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Depreciation and Amortization Expenses",
+          "gt_row": 63,
+          "section": "Expenditure"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Depreciation and Amortization Expenses",
+          "gt_row": 56,
+          "section": "Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "goods",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        58,
+        59,
+        201
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Finished Goods (Opening)",
+          "gt_row": 58,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Finished Goods (Closing)",
+          "gt_row": 59,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Finished Goods",
+          "gt_row": 201,
+          "section": "Inventories"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Finished Goods",
+          "gt_row": 201,
+          "section": "Inventories"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Finished Goods",
+          "gt_row": 59,
+          "section": "Inventories"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Finished Goods (Opening)",
+          "gt_row": 58,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Finished Goods",
+          "gt_row": 201,
+          "section": "Inventories"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Finished Goods",
+          "gt_row": 201,
+          "section": "inventories"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Finished goods",
+          "gt_row": 201,
+          "section": "Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "remuneration",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        67,
+        73
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Directors Remuneration",
+          "gt_row": 67,
+          "section": "Salaries & Wages"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Auditor's Remuneration",
+          "gt_row": 73,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(b) Director Remuneration",
+          "gt_row": 73,
+          "section": "Employee Benefits Expense"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(b) Directors Remuneration",
+          "gt_row": 73,
+          "section": "Employee Benefits Expense"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Directors Remuneration",
+          "gt_row": 73,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Auditors Remuneration",
+          "gt_row": 73,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Directors Remuneration",
+          "gt_row": 73,
+          "section": "Employee Benefit Expense"
+        }
+      ]
+    },
+    {
+      "normalized_text": "& taxes",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        68,
+        71
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Rates & Taxes",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Rates & Taxes",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Rates & Taxes",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "debts written off",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        69,
+        71,
+        90
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Bad debts written off",
+          "gt_row": 69,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Bad debts written off",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Bad Debts Written off",
+          "gt_row": 69,
+          "section": "Other Expenses - Administration & Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Bad Debts Written off",
+          "gt_row": 90,
+          "section": "Other Expenses - Administration & Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "& distribution expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        73
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Selling & Distribution Expenses",
+          "gt_row": 70,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Selling & Distribution Expenses",
+          "gt_row": 73,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "& general expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Administrative & General Expenses",
+          "gt_row": 70,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Administrative & General Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "fees",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        71,
+        73
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Consultation  Fees",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(i) Audit fees",
+          "gt_row": 73,
+          "section": "Other Expenses - Auditors"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Audit fees",
+          "gt_row": 73,
+          "section": "Other Expenses - Payment to Auditors"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Audit  Fees",
+          "gt_row": 73,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "written off",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        71,
+        75,
+        90
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Advances Written off",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Advances Written off",
+          "gt_row": 75,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Liability Written off",
+          "gt_row": 90,
+          "section": "Other Expenses - Admin"
+        }
+      ]
+    },
+    {
+      "normalized_text": "charges",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        22,
+        34,
+        45,
+        46,
+        47,
+        49,
+        71,
+        83,
+        84,
+        85
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Freight Charges",
+          "gt_row": 22,
+          "section": "Revenue from Operations"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Transportation charges",
+          "gt_row": 47,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Transportation Charges",
+          "gt_row": 47,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Transportation Charges (estimated)",
+          "gt_row": 47,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Warehouse Charges",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Consultancy Charges",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Bank charges",
+          "gt_row": 85,
+          "section": "Finance cost"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Finance cost"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Finance Cost"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Security Charges",
+          "gt_row": 45,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Telephone Charges",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Filing charges",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(c) Other Charges",
+          "gt_row": 84,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(a) Bank Charges",
+          "gt_row": 85,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(c) Other Charges",
+          "gt_row": 83,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "finance_charges"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Consultancy Charges",
+          "gt_row": 34,
+          "section": "Other Income"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Conversion Charges (Job work & Stiching)",
+          "gt_row": 46,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Other Charges (Finance Costs)",
+          "gt_row": 85,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Other Expenses - Administration & Other Expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Hamali Charges",
+          "gt_row": 47,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Labour Charges",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Manpower Charges",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Bank charges",
+          "gt_row": 85,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "tax",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        99,
+        100,
+        101,
+        221
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Current Tax",
+          "gt_row": 99,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Deferred Tax",
+          "gt_row": 100,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Deferred Tax",
+          "gt_row": 101,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Net Tax (TDS + Advance Tax - Provision for IT)",
+          "gt_row": 221,
+          "section": "Short-term Loans and Advances"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(1) Current tax",
+          "gt_row": 99,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Current Tax",
+          "gt_row": 99,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Deferred Tax",
+          "gt_row": 100,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Deferred Tax (Asset)",
+          "gt_row": 101,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(1) Current tax",
+          "gt_row": 99,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(2) Deferred tax",
+          "gt_row": 100,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Deferred tax",
+          "gt_row": 100,
+          "section": "Tax expense"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Deferred tax (credit)",
+          "gt_row": 101,
+          "section": "Tax expense"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Current tax",
+          "gt_row": 99,
+          "section": "Provision for taxation"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Deferred tax",
+          "gt_row": 100,
+          "section": "Provision for taxation"
+        }
+      ]
+    },
+    {
+      "normalized_text": "borrowings",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        131,
+        137
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Short-term Borrowings",
+          "gt_row": 131,
+          "section": "Current Liabilities"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Long-term Borrowings (Secured)",
+          "gt_row": 137,
+          "section": "Non-Current Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "capital",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        116,
+        132
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "TATA Capital",
+          "gt_row": 132,
+          "section": "Short-term Borrowings"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Share capital",
+          "gt_row": 116,
+          "section": "Shareholders' Funds"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Share capital",
+          "gt_row": 116,
+          "section": "Equity"
+        }
+      ]
+    },
+    {
+      "normalized_text": "depreciation",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        56,
+        163
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Accumulated Depreciation (Tangible)",
+          "gt_row": 163,
+          "section": "Depreciation Schedule"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Accumulated Depreciation",
+          "gt_row": 163,
+          "section": "Fixed Assets"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Depreciation",
+          "gt_row": 56,
+          "section": "manufacturing_expenses"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Accumulated Depreciation",
+          "gt_row": 163,
+          "section": "Fixed Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "workinprogress",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        165,
+        200
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Capital Work-In-Progress",
+          "gt_row": 165,
+          "section": "Non-Current Assets"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Work-in-Progress",
+          "gt_row": 200,
+          "section": "Inventories"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Work-in-progress",
+          "gt_row": 200,
+          "section": "Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "assets",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        169,
+        172
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Intangible Assets (Net Block)",
+          "gt_row": 172,
+          "section": "Depreciation Schedule"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Intangible assets",
+          "gt_row": 172,
+          "section": "Fixed Assets"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Intangible Assets (Software)",
+          "gt_row": 169,
+          "section": "Fixed Assets"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Intangible Assets (Software + Licence)",
+          "gt_row": 169,
+          "section": "Fixed Assets"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Intangible assets",
+          "gt_row": 172,
+          "section": "Non-current Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "receivables",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        206,
+        207
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Trade Receivables (Domestic)",
+          "gt_row": 206,
+          "section": "Trade Receivables"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Trade Receivables (Export)",
+          "gt_row": 207,
+          "section": "Trade Receivables"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Trade Receivables",
+          "gt_row": 206,
+          "section": "Current Assets"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Export Receivables",
+          "gt_row": 207,
+          "section": "Trade Receivables"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Domestic Receivables ( including bills purchased and discounted)",
+          "gt_row": 206,
+          "section": "debtors"
+        }
+      ]
+    },
+    {
+      "normalized_text": "6 months",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        208,
+        232
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Exceeding 6 months",
+          "gt_row": 208,
+          "section": "Trade Receivables"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Exceeding 6 months",
+          "gt_row": 232,
+          "section": "Trade Receivables"
+        }
+      ]
+    },
+    {
+      "normalized_text": "deposits",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        215,
+        237
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Deposits (3-12 months)",
+          "gt_row": 215,
+          "section": "Cash & Bank Balances"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Fixed Deposits",
+          "gt_row": 215,
+          "section": "Cash and Bank Balances"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Security deposits",
+          "gt_row": 237,
+          "section": "Other Non-Current Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "advances",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        223,
+        236
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Other Advances",
+          "gt_row": 223,
+          "section": "Short-term Loans and Advances"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Capital Advances",
+          "gt_row": 236,
+          "section": "Other Current Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "dues",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        246,
+        250
+      ],
+      "companies": [
+        {
+          "company": "BCIPL",
+          "raw_text": "Statutory Dues",
+          "gt_row": 246,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "BCIPL",
+          "raw_text": "Other Dues",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Statutory Dues (TDS/GST/ESI/PF)",
+          "gt_row": 246,
+          "section": "Other Current Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "factory",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        49,
+        68
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Rent - Factory",
+          "gt_row": 49,
+          "section": "Cost of Materials Consumed"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Rent - Factory",
+          "gt_row": 68,
+          "section": "Cost of Materials Consumed"
+        }
+      ]
+    },
+    {
+      "normalized_text": "stock finished goods",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        58,
+        59
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Opening Stock - Finished Goods",
+          "gt_row": 58,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Closing Stock - Finished Goods",
+          "gt_row": 59,
+          "section": "Changes in Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "outward",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        47,
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Carriage Outward",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Frieght Outward",
+          "gt_row": 71,
+          "section": "Other Expenses - Selling Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Freight Outward",
+          "gt_row": 47,
+          "section": "Other Expenses - Selling Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "& commission",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Brokerage & Commission",
+          "gt_row": 70,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Brokerage & Commission",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        }
+      ]
+    },
+    {
+      "normalized_text": "on loan",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        83,
+        84
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Interest on loan (Term Loan portion)",
+          "gt_row": 83,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Interest on loan (Working Capital portion)",
+          "gt_row": 84,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Interest on Loan",
+          "gt_row": 83,
+          "section": "Finance cost"
+        }
+      ]
+    },
+    {
+      "normalized_text": "on delay in payment of taxes",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        71,
+        83
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Interest on Delay in payment of taxes",
+          "gt_row": 83,
+          "section": "Other Expenses - Admin"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Interest on Delay in payment of taxes",
+          "gt_row": 71,
+          "section": "Other Expenses - Admin"
+        }
+      ]
+    },
+    {
+      "normalized_text": "loan/overdraft processing fee",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        83,
+        84
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(a) Loan/Overdraft Processing Fee",
+          "gt_row": 84,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(a) Loan/Overdraft Processing Fee",
+          "gt_row": 83,
+          "section": "Finance Costs"
+        }
+      ]
+    },
+    {
+      "normalized_text": "tax liability /",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        100,
+        101
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(3) Deferred tax Liability / (Asset)",
+          "gt_row": 101,
+          "section": "Tax Expense"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(3) Deferred tax Liability / (Asset)",
+          "gt_row": 100,
+          "section": "Tax Expense"
+        }
+      ]
+    },
+    {
+      "normalized_text": "welfare expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        45,
+        67
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(c) Staff Welfare Expenses",
+          "gt_row": 67,
+          "section": "Employee Benefits Expense"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Staff Welfare Expenses",
+          "gt_row": 45,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Staff welfare Expenses",
+          "gt_row": 67,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(d) Staff Welfare Expenses",
+          "gt_row": 45,
+          "section": "Employee Benefit Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Staff welfare expenses",
+          "gt_row": 45,
+          "section": "Employee Benefits Expense"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Staff welfare expenses",
+          "gt_row": 45,
+          "section": "Employee Benefit Expense"
+        }
+      ]
+    },
+    {
+      "normalized_text": "receivables more than 6 months",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        208,
+        232
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Trade receivables - more than 6 months",
+          "gt_row": 208,
+          "section": "Trade Receivables"
+        },
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "Trade receivables - more than 6 months",
+          "gt_row": 232,
+          "section": "Non Current Assets"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Trade receivables - More than 6 months",
+          "gt_row": 208,
+          "section": "Trade Receivables - Ageing"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Trade receivables - More than 6 months (CMA reclassified)",
+          "gt_row": 232,
+          "section": "Trade Receivables"
+        }
+      ]
+    },
+    {
+      "normalized_text": "others",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        34,
+        49,
+        70,
+        71,
+        93,
+        250
+      ],
+      "companies": [
+        {
+          "company": "Dynamic_Air",
+          "raw_text": "(d) Others",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Others",
+          "gt_row": 34,
+          "section": "Other Income"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Others (Non Operating Expenses)",
+          "gt_row": 93,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Others",
+          "gt_row": 34,
+          "section": "other_income"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Others",
+          "gt_row": 49,
+          "section": "manufacturing_expenses"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Others",
+          "gt_row": 71,
+          "section": "admin_expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Others (Selling Expenses)",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "received",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        30,
+        34
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Discount received",
+          "gt_row": 34,
+          "section": "Other Income"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(a) Interest Received",
+          "gt_row": 30,
+          "section": "Other Income"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Interest Received",
+          "gt_row": 30,
+          "section": "other_income"
+        }
+      ]
+    },
+    {
+      "normalized_text": "charges paid",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        45,
+        49
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Labour charges Paid",
+          "gt_row": 45,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Warehouse charges Paid",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "wages and bonus",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        45,
+        67
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Salary, Wages and Bonus",
+          "gt_row": 45,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Salary, Wages and Bonus",
+          "gt_row": 67,
+          "section": "Employee Benefits Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to provident fund and esi",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        45,
+        67
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Contribution to Provident Fund and ESI",
+          "gt_row": 45,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Contribution to Provident Fund and ESI",
+          "gt_row": 67,
+          "section": "Employee Benefits Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to employees",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        45,
+        67
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Gratuity to Employees",
+          "gt_row": 45,
+          "section": "Employee Benefits Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Gratutity to employees",
+          "gt_row": 67,
+          "section": "Employee Benefits Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "and development",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        49,
+        71
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Research And Development",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Research and Development",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Research and development",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "cost",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        49,
+        71
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Project Cost",
+          "gt_row": 49,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Project Cost",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "in progress",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        53,
+        54,
+        200
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Work in Progress",
+          "gt_row": 54,
+          "section": "Inventories"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Work in Progress (Opening)",
+          "gt_row": 53,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Work in Progress",
+          "gt_row": 200,
+          "section": "Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "paid",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        68,
+        71
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Rent Paid",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Insurance Paid",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "and subscription",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        68,
+        71
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Licence And Subscription",
+          "gt_row": 68,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "INPL",
+          "raw_text": "Licence and Subscription",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "tax liability",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        100,
+        159
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Deferred Tax Liability (Net)",
+          "gt_row": 159,
+          "section": "Non-Current Liabilities"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Deferred Tax Liability",
+          "gt_row": 100,
+          "section": "tax"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Deferred Tax Liability (Net)",
+          "gt_row": 159,
+          "section": "Non-Current Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "liabilities",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        249,
+        250
+      ],
+      "companies": [
+        {
+          "company": "INPL",
+          "raw_text": "Other Liabilities (Directors + Related + Others)",
+          "gt_row": 249,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Other Liabilities",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "purchases",
+      "industry_type": "trading",
+      "rows_found": [
+        42,
+        242
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Purchases",
+          "gt_row": 42,
+          "section": "Trading Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "To Purchases",
+          "gt_row": 42,
+          "section": "Cost of Goods Sold"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": " - For Purchases",
+          "gt_row": 242,
+          "section": "Current Liabilities - Sundry Creditors"
+        }
+      ]
+    },
+    {
+      "normalized_text": "expenses",
+      "industry_type": "trading",
+      "rows_found": [
+        44,
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Packing Expenses",
+          "gt_row": 44,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Advertisement Expenses",
+          "gt_row": 70,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Generator Expenses",
+          "gt_row": 71,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Miscellaneous Expenses",
+          "gt_row": 71,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Office Expenses",
+          "gt_row": 71,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Telephone Expenses",
+          "gt_row": 71,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(h) Other Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "of packing materials",
+      "industry_type": "trading",
+      "rows_found": [
+        44,
+        198
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Stock of Packing Materials",
+          "gt_row": 44,
+          "section": "P&L Account — Credit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Stock of Packing Materials",
+          "gt_row": 198,
+          "section": "Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "welfare",
+      "industry_type": "trading",
+      "rows_found": [
+        45,
+        67
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Staff Welfare",
+          "gt_row": 45,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Staff Welfare",
+          "gt_row": 67,
+          "section": "Administrative Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "charges",
+      "industry_type": "trading",
+      "rows_found": [
+        47,
+        48,
+        49,
+        71,
+        85
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Electric Charges",
+          "gt_row": 48,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Telephone Charges",
+          "gt_row": 71,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Delivery Charges",
+          "gt_row": 71,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Transport Charges",
+          "gt_row": 47,
+          "section": "Direct Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Electricty Charges",
+          "gt_row": 48,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Courier Charges",
+          "gt_row": 49,
+          "section": "Direct Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Transport Charges",
+          "gt_row": 49,
+          "section": "Direct Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Freight Charges",
+          "gt_row": 71,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Bank Charges",
+          "gt_row": 85,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(e) Insurance Charges",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "depreciation",
+      "industry_type": "trading",
+      "rows_found": [
+        56,
+        163
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Depreciation",
+          "gt_row": 56,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "To Depreciation",
+          "gt_row": 56,
+          "section": "P&L Expenditure"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "To Depreciation",
+          "gt_row": 163,
+          "section": "P&L Expenditure"
+        }
+      ]
+    },
+    {
+      "normalized_text": "stock",
+      "industry_type": "trading",
+      "rows_found": [
+        58,
+        59
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Opening Stock",
+          "gt_row": 58,
+          "section": "Trading Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Closing Stock",
+          "gt_row": 59,
+          "section": "Trading Account — Credit Side"
+        }
+      ]
+    },
+    {
+      "normalized_text": "fees",
+      "industry_type": "trading",
+      "rows_found": [
+        71,
+        73
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Professional Fees",
+          "gt_row": 71,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Consultancy fees",
+          "gt_row": 71,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Audit Fees",
+          "gt_row": 73,
+          "section": "Administrative Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "and maintenance",
+      "industry_type": "trading",
+      "rows_found": [
+        71,
+        72
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Repairs and Maintenance",
+          "gt_row": 72,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(k) Repairs and Maintenance",
+          "gt_row": 71,
+          "section": "Other Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to partners",
+      "industry_type": "trading",
+      "rows_found": [
+        73,
+        83
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Salary to Partners",
+          "gt_row": 73,
+          "section": "P&L Account — Debit Side"
+        },
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Interest to partners",
+          "gt_row": 83,
+          "section": "P&L Account — Debit Side"
+        }
+      ]
+    },
+    {
+      "normalized_text": "stockintrade",
+      "industry_type": "trading",
+      "rows_found": [
+        200,
+        201
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Stock-in-trade",
+          "gt_row": 201,
+          "section": "Assets"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Stock-in-Trade ( Valued at Cost Or Market price Whichever Is Lower)",
+          "gt_row": 200,
+          "section": "Current Assets & Advances"
+        }
+      ]
+    },
+    {
+      "normalized_text": "balances",
+      "industry_type": "trading",
+      "rows_found": [
+        212,
+        213
+      ],
+      "companies": [
+        {
+          "company": "Kurunji_Retail",
+          "raw_text": "Bank Balances (6 ICICI accounts)",
+          "gt_row": 213,
+          "section": "Details of Cash and Balances"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a) Cash Balances",
+          "gt_row": 212,
+          "section": "Cash and Cash Equivalents"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(b) Bank Balances",
+          "gt_row": 213,
+          "section": "Cash and Cash Equivalents"
+        }
+      ]
+    },
+    {
+      "normalized_text": "on ppf",
+      "industry_type": "trading",
+      "rows_found": [
+        30,
+        34
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Interest on PPF",
+          "gt_row": 30,
+          "section": "Other Income"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Interest on PPF",
+          "gt_row": 34,
+          "section": "Other Income"
+        }
+      ]
+    },
+    {
+      "normalized_text": "paid",
+      "industry_type": "trading",
+      "rows_found": [
+        67,
+        83
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Salary Paid",
+          "gt_row": 67,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Interest Paid",
+          "gt_row": 83,
+          "section": "Administrative Expenses"
+        }
+      ]
+    },
+    {
+      "normalized_text": "account",
+      "industry_type": "trading",
+      "rows_found": [
+        68,
+        116
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Rent Account",
+          "gt_row": 68,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "CAPITAL ACCOUNT",
+          "gt_row": 116,
+          "section": "Capital and Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "tax",
+      "industry_type": "trading",
+      "rows_found": [
+        71,
+        99,
+        101,
+        244
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Professional tax",
+          "gt_row": 71,
+          "section": "Administrative Expenses"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "Current tax",
+          "gt_row": 99,
+          "section": "Tax expense"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(d) Deferred tax",
+          "gt_row": 101,
+          "section": "Tax expense"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "Current tax",
+          "gt_row": 244,
+          "section": "Tax expense / Short-term Provisions"
+        }
+      ]
+    },
+    {
+      "normalized_text": "balance",
+      "industry_type": "trading",
+      "rows_found": [
+        122,
+        213
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": " Bank Balance",
+          "gt_row": 213,
+          "section": "Cash & Bank Balances"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "Closing Balance",
+          "gt_row": 122,
+          "section": "Reserves and Surplus — Surplus of Profit & loss Account"
+        }
+      ]
+    },
+    {
+      "normalized_text": "deposits",
+      "industry_type": "trading",
+      "rows_found": [
+        223,
+        237
+      ],
+      "companies": [
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Deposits",
+          "gt_row": 223,
+          "section": "Current Assets & Advances"
+        },
+        {
+          "company": "Mehta_Computer",
+          "raw_text": "Telephone Deposits",
+          "gt_row": 237,
+          "section": "Deposits"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to plant & machinery",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        50,
+        72
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Repairs to Plant & Machinery",
+          "gt_row": 50,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Repairs to Plant & Machinery",
+          "gt_row": 72,
+          "section": "Other Expenses - Repairs"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Repairs to Plant & Machinery (manufacturing portion)",
+          "gt_row": 50,
+          "section": "Other Expenses - Repairs"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to others",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        50,
+        72
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Repairs to Others",
+          "gt_row": 50,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Repairs to Others",
+          "gt_row": 72,
+          "section": "Other Expenses - Repairs"
+        }
+      ]
+    },
+    {
+      "normalized_text": "stock",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        58,
+        59
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Opening Stock",
+          "gt_row": 58,
+          "section": "Changes in Inventories"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Closing Stock",
+          "gt_row": 59,
+          "section": "Changes in Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "to buildings",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        50,
+        72
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Repairs to Buildings",
+          "gt_row": 50,
+          "section": "Other Expenses"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Repairs to Buildings",
+          "gt_row": 72,
+          "section": "Other Expenses - Repairs"
+        }
+      ]
+    },
+    {
+      "normalized_text": "allowed",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "(iv) Discount Allowed",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(iv) Discount Allowed",
+          "gt_row": 71,
+          "section": "Other Expenses - Selling"
+        }
+      ]
+    },
+    {
+      "normalized_text": "outwards",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "(iii) Freight Outwards",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(iii) Freight Outwards",
+          "gt_row": 71,
+          "section": "Other Expenses - Selling"
+        }
+      ]
+    },
+    {
+      "normalized_text": "& travel expenses",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        70,
+        71
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "(ii) Tour & Travel Expenses",
+          "gt_row": 71,
+          "section": "Other Expenses - Selling"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "(ii) Tour & Travel Expenses",
+          "gt_row": 70,
+          "section": "Other Expenses - Selling"
+        }
+      ]
+    },
+    {
+      "normalized_text": "reserve",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        121,
+        125
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "(a) General Reserve",
+          "gt_row": 121,
+          "section": "Reserves and Surplus"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "General Reserve",
+          "gt_row": 121,
+          "section": "reserves"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Other Reserve",
+          "gt_row": 125,
+          "section": "reserves"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "General Reserve",
+          "gt_row": 121,
+          "section": "Reserves and Surplus"
+        }
+      ]
+    },
+    {
+      "normalized_text": "from related parties and directors",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        152,
+        153
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Loan from Related Parties and Directors",
+          "gt_row": 152,
+          "section": "Short-term Borrowings - Unsecured"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Loan from Related Parties and Directors (Quasi Equity portion)",
+          "gt_row": 152,
+          "section": "Short-term Borrowings - Unsecured"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Loan from Related Parties and Directors (LT Debt portion)",
+          "gt_row": 153,
+          "section": "Short-term Borrowings - Unsecured"
+        }
+      ]
+    },
+    {
+      "normalized_text": "with government authorities",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        219,
+        223
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Balance with government authorities",
+          "gt_row": 219,
+          "section": "Other Current Assets"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Balance with government authorities",
+          "gt_row": 223,
+          "section": "Other Current Assets"
+        }
+      ]
+    },
+    {
+      "normalized_text": "loans & advances",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        219,
+        223
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Staff Loans & Advances",
+          "gt_row": 223,
+          "section": "Short-term Loans and Advances"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Staff Loans & Advances",
+          "gt_row": 219,
+          "section": "Short-term Loans and Advances"
+        }
+      ]
+    },
+    {
+      "normalized_text": "more than 6 months",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        208,
+        232
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "Undisputed - more than 6 months (non-current memo)",
+          "gt_row": 232,
+          "section": "Trade Receivables - Ageing"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Debtors more than 6 months",
+          "gt_row": 208,
+          "section": "debtors"
+        }
+      ]
+    },
+    {
+      "normalized_text": "payable",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        153,
+        246,
+        250
+      ],
+      "companies": [
+        {
+          "company": "MSL",
+          "raw_text": "TDS Payable",
+          "gt_row": 246,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Salaries Payable",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "MSL",
+          "raw_text": "Bonus Payable",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Gratuity Payable",
+          "gt_row": 153,
+          "section": "Long-term Provisions"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Expenses Payable",
+          "gt_row": 250,
+          "section": "Other Current Liabilities"
+        }
+      ]
+    },
+    {
+      "normalized_text": "reserves",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        121,
+        125
+      ],
+      "companies": [
+        {
+          "company": "SLIPL",
+          "raw_text": "General Reserves",
+          "gt_row": 121,
+          "section": "Reserves and Surplus - Reserves"
+        },
+        {
+          "company": "SLIPL",
+          "raw_text": "Capital Reserves",
+          "gt_row": 125,
+          "section": "Reserves and Surplus - Reserves"
+        }
+      ]
+    },
+    {
+      "normalized_text": "recieved",
+      "industry_type": "manufacturing",
+      "rows_found": [
+        29,
+        34
+      ],
+      "companies": [
+        {
+          "company": "SR_Papers",
+          "raw_text": "Discount Recieved",
+          "gt_row": 29,
+          "section": "Other Income"
+        },
+        {
+          "company": "SR_Papers",
+          "raw_text": "Discount Recieved",
+          "gt_row": 34,
+          "section": "Other Income"
+        }
+      ]
+    },
+    {
+      "normalized_text": "purchased",
+      "industry_type": "trading",
+      "rows_found": [
+        41,
+        42
+      ],
+      "companies": [
+        {
+          "company": "SSSS",
+          "raw_text": "(a). Goods Purchased",
+          "gt_row": 41,
+          "section": "Purchases of Goods"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a). Goods Purchased",
+          "gt_row": 42,
+          "section": "Purchases of Goods"
+        }
+      ]
+    },
+    {
+      "normalized_text": "in trade",
+      "industry_type": "trading",
+      "rows_found": [
+        58,
+        59,
+        201
+      ],
+      "companies": [
+        {
+          "company": "SSSS",
+          "raw_text": "(a) Stock In Trade",
+          "gt_row": 58,
+          "section": "Inventories"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a) Stock In Trade",
+          "gt_row": 59,
+          "section": "Inventories"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a) Stock In Trade",
+          "gt_row": 201,
+          "section": "Inventories"
+        }
+      ]
+    },
+    {
+      "normalized_text": "costs",
+      "industry_type": "trading",
+      "rows_found": [
+        83,
+        84
+      ],
+      "companies": [
+        {
+          "company": "SSSS",
+          "raw_text": "(a). Finance Costs",
+          "gt_row": 83,
+          "section": "Finance Costs"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a). Finance Costs",
+          "gt_row": 84,
+          "section": "Finance Costs"
+        }
+      ]
+    },
+    {
+      "normalized_text": "four star estates llp",
+      "industry_type": "trading",
+      "rows_found": [
+        152,
+        153
+      ],
+      "companies": [
+        {
+          "company": "SSSS",
+          "raw_text": "Unsecured - Four Star Estates LLP",
+          "gt_row": 153,
+          "section": "Long-term Borrowings"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "Unsecured - Four Star Estates LLP",
+          "gt_row": 152,
+          "section": "Long-term Borrowings"
+        }
+      ]
+    },
+    {
+      "normalized_text": "with statutory authorities",
+      "industry_type": "trading",
+      "rows_found": [
+        221,
+        223
+      ],
+      "companies": [
+        {
+          "company": "SSSS",
+          "raw_text": "Balances with Statutory Authorities",
+          "gt_row": 221,
+          "section": "Short-term Loans and Advances"
+        },
+        {
+          "company": "SSSS",
+          "raw_text": "(a) Balances with Statutory Authorities ",
+          "gt_row": 223,
+          "section": "Short-term Loans and Advances"
+        }
+      ]
+    }
+  ],
+  "new_cross_check_disputes": [
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "financial_year": 2023,
+      "location_a_row": 71,
+      "location_b_row": 49,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Packing and Forwarding Charges",
+      "financial_year": 2023,
+      "location_a_row": 49,
+      "location_b_row": 47,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Project Cost",
+      "financial_year": 2023,
+      "location_a_row": 71,
+      "location_b_row": 93,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Research and Development",
+      "financial_year": 2023,
+      "location_a_row": 71,
+      "location_b_row": 49,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Staff Welfare Expenses",
+      "financial_year": 2024,
+      "location_a_row": 45,
+      "location_b_row": 67,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Gratuity to Employees",
+      "financial_year": 2024,
+      "location_a_row": 45,
+      "location_b_row": 67,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "financial_year": 2024,
+      "location_a_row": 71,
+      "location_b_row": 49,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Material Handling Charges",
+      "financial_year": 2024,
+      "location_a_row": 46,
+      "location_b_row": 49,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Staff Welfare Expenses",
+      "financial_year": 2025,
+      "location_a_row": 45,
+      "location_b_row": 67,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Gratuity to Employees",
+      "financial_year": 2025,
+      "location_a_row": 45,
+      "location_b_row": 67,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Consultancy Charges",
+      "financial_year": 2025,
+      "location_a_row": 71,
+      "location_b_row": 49,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "INPL",
+      "raw_text": "Finished Goods",
+      "financial_year": 2025,
+      "location_a_row": 59,
+      "location_b_row": 201,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Closing Stock",
+      "financial_year": 2025,
+      "location_a_row": 59,
+      "location_b_row": 201,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "Kurunji_Retail",
+      "raw_text": "Depreciation",
+      "financial_year": 2025,
+      "location_a_row": 56,
+      "location_b_row": 63,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Computer Maintanance",
+      "financial_year": 2023,
+      "location_a_row": 72,
+      "location_b_row": 71,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "financial_year": 2023,
+      "location_a_row": 49,
+      "location_b_row": 45,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "TDS Receivable",
+      "financial_year": 2023,
+      "location_a_row": 219,
+      "location_b_row": 221,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "TCS Receivable",
+      "financial_year": 2023,
+      "location_a_row": 219,
+      "location_b_row": 221,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "financial_year": 2024,
+      "location_a_row": 49,
+      "location_b_row": 45,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Computer Maintanance",
+      "financial_year": 2025,
+      "location_a_row": 72,
+      "location_b_row": 71,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SR_Papers",
+      "raw_text": "Manpower Charges",
+      "financial_year": 2025,
+      "location_a_row": 49,
+      "location_b_row": 45,
+      "source": "cross_check_step1"
+    },
+    {
+      "company": "SSSS",
+      "raw_text": "Current tax expense",
+      "financial_year": 2024,
+      "location_a_row": 244,
+      "location_b_row": 99,
+      "source": "cross_check_step1"
+    }
+  ]
+}

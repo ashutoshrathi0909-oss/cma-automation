@@ -1,0 +1,15 @@
+{
+  "company": "INPL",
+  "industry": "manufacturing",
+  "round": 2,
+  "date": "2026-03-27",
+  "total_items": 186,
+  "correct": 39,
+  "wrong": 141,
+  "doubts": 6,
+  "accuracy_pct": 20.97,
+  "elapsed_seconds": 413.31,
+  "tokens_used": 292446,
+  "round1_accuracy_pct": 20.97,
+  "delta_pct": 0.0
+}

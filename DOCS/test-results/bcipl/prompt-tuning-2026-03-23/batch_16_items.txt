@@ -1,0 +1,90 @@
+Item 1:
+  Description: Contribution to PF & Other Funds (FY23)
+  Amount: Rs 11,042,355.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 2:
+  Description: Labour Welfare Expenses (FY23)
+  Amount: Rs 11,455,141.84
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 3:
+  Description: Directors Remuneration (FY23)
+  Amount: Rs 12,550,000.00
+  Section: salaries & wages
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 4:
+  Description: Job Work Charges & Contract Labour (FY23)
+  Amount: Rs 22,638,670.22
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 5:
+  Description: Power & Fuel (FY23)
+  Amount: Rs 12,163,847.24
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 6:
+  Description: Mr. Nishanth Sunderesh (FY23 Director Loan)
+  Amount: Rs 9,565,354.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 7:
+  Description: DPT-3 Unsecured Loans (LT portion FY23)
+  Amount: Rs 32,394,000.00
+  Section: note 3 - long-term borrowings
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 8:
+  Description: Capital WIP (FY23)
+  Amount: Rs 3,113,082.00
+  Section: note 9 - fixed assets
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 9:
+  Description: Intangible Assets (FY23)
+  Amount: Rs 803,978.30
+  Section: property, plant & equipment
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 10:
+  Description: Raw Materials & Consumables (FY23 inventory)
+  Amount: Rs 168,254,039.88
+  Section: inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 11:
+  Description: Manufacturing Expenses (FY23)
+  Amount: Rs 331,010.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 12:
+  Description: Machinery Maintenance (FY23)
+  Amount: Rs 4,177,378.48
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 13:
+  Description: Opening Finished Goods (FY23)
+  Amount: Rs 33,894,242.38
+  Section: note 23 - employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 14:
+  Description: Less: Closing Finished Goods (FY23)
+  Amount: Rs 17,779,528.50
+  Section: finished goods
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 15:
+  Description: Depreciation (FY23)
+  Amount: Rs 41,642,446.24
+  Section: depreciation & amortisation expense
+  Sheet: Notes to P & L
+  Financial Year: 2023

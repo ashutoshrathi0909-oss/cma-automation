@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Assist — V4 Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #c5cedb;
+  min-height: 100vh;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── TABLET FRAME ── */
+.frame {
+  width: 100%;
+  max-width: 1160px;
+  background: #d4dbe8;
+  border-radius: 28px;
+  padding: 10px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.25), 0 8px 24px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* ── APP — background with color blobs for glass effect ── */
+.app {
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  /* Rich gradient base — needed for glass to look good */
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 5%,  rgba(249,115,22,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 5%  90%,  rgba(15, 52, 96,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%,  rgba(30, 80,180,0.06) 0%, transparent 70%),
+    #edf1f9;
+}
+
+/* ════════ NAV ════════ */
+.nav {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  padding: 0 28px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.logo-pill {
+  border: 1.5px solid rgba(15,52,96,0.3);
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f3460;
+  letter-spacing: -0.3px;
+  margin-right: 32px;
+  cursor: pointer;
+}
+.nav-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.nav-item {
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+}
+.nav-item.active {
+  background: #0f3460;
+  color: white;
+  font-weight: 600;
+}
+.nav-right {
+  display: flex; align-items: center; gap: 6px; margin-left: 32px;
+}
+.nav-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer; position: relative;
+  color: #475569;
+}
+.nav-icon.dot::after {
+  content: ''; position: absolute; top: 7px; right: 7px;
+  width: 7px; height: 7px; background: #f97316;
+  border-radius: 50%; border: 1.5px solid #edf1f9;
+}
+.nav-av {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg,#f97316,#0f3460);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: white; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(249,115,22,0.35);
+}
+
+/* ════════ HERO ════════ */
+.hero {
+  padding: 30px 32px 26px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.greeting {
+  font-size: 64px;
+  font-weight: 800;
+  color: #06101f;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin-bottom: 20px;
+}
+.pills {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.pill {
+  padding: 7px 16px; border-radius: 50px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.pill-navy  { background: #0f3460; color: white; }
+.pill-orange{ background: #f97316; color: white; box-shadow: 0 4px 14px rgba(249,115,22,0.3); }
+.pill-glass {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: #334155;
+}
+.hero-nums {
+  display: flex; gap: 36px; align-items: flex-end;
+  padding-bottom: 4px; margin-left: 40px; flex-shrink: 0;
+}
+.hnum { text-align: center; }
+.hnum-icon { font-size: 15px; opacity: 0.45; margin-bottom: 2px; }
+.hnum-val {
+  font-size: 62px; font-weight: 800; color: #06101f;
+  line-height: 1; letter-spacing: -3px;
+}
+.hnum-val.orange { color: #f97316; }
+.hnum-lbl { font-size: 11px; color: #94a3b8; font-weight: 500; margin-top: 2px; }
+
+/* ════════ GLASS CARD BASE ════════ */
+.card {
+  background: rgba(255,255,255,0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  overflow: hidden;
+  position: relative;
+}
+.card-title {
+  font-size: 15px; font-weight: 700; color: #0f172a;
+  letter-spacing: -0.3px; margin-bottom: 14px;
+}
+.expand-btn {
+  position: absolute; top: 16px; right: 16px;
+  width: 26px; height: 26px; border-radius: 8px;
+  background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.06);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #94a3b8; cursor: pointer;
+}
+
+/* ════════ DARK GLASS CARD ════════ */
+.card-dark {
+  background: rgba(10,28,60,0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ════════ BENTO GRID ════════ */
+.bento {
+  flex: 1;
+  padding: 14px 18px 18px;
+  display: grid;
+  grid-template-columns: 230px 1fr 1fr 210px;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─────────────────────────────────
+   CARD A: CMA Status (tall dark, col 1)
+   Shows where every client is in the workflow
+───────────────────────────────── */
+.card-a {
+  grid-row: span 2;
+}
+
+.stage-list { display: flex; flex-direction: column; gap: 7px; }
+.stage-row {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 11px;
+  border-radius: 11px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.stage-row.alert {
+  background: rgba(249,115,22,0.15);
+  border-color: rgba(249,115,22,0.25);
+}
+.stage-row.ready {
+  background: rgba(16,185,129,0.12);
+  border-color: rgba(16,185,129,0.2);
+}
+.stage-icon {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.stage-text { flex: 1; min-width: 0; }
+.stage-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.stage-sub  { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 1px; }
+.stage-count {
+  font-size: 18px; font-weight: 800; color: white;
+  letter-spacing: -1px; flex-shrink: 0;
+}
+.stage-count.orange { color: #fb923c; }
+.stage-count.green  { color: #34d399; }
+
+.dark-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 12px 0; }
+
+/* Bottom shortcuts */
+.shortcut-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.shortcut-av {
+  width: 26px; height: 26px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.shortcut-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); flex: 1; }
+.shortcut-arrow { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+/* ─────────────────────────────────
+   CARD B: Client List (col 2, row 1)
+───────────────────────────────── */
+.client-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.client-item:last-child { border: none; }
+.c-av {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.c-name { font-size: 12px; font-weight: 700; color: #1e293b; }
+.c-sub  { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+.status-badge {
+  margin-left: auto; padding: 3px 10px;
+  border-radius: 20px; font-size: 10px; font-weight: 700;
+  white-space: nowrap;
+}
+.s-ready    { background: #dcfce7; color: #16a34a; }
+.s-verify   { background: #fff7ed; color: #ea580c; }
+.s-progress { background: #eff6ff; color: #1d4ed8; }
+.s-doubt    { background: #fef3c7; color: #d97706; }
+
+/* ─────────────────────────────────
+   CARD C: This Month (col 3, row 1)
+───────────────────────────────── */
+.month-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+.month-stat {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+.month-val {
+  font-size: 32px; font-weight: 800; color: #0f172a;
+  line-height: 1; letter-spacing: -1.5px;
+}
+.month-val.orange { color: #f97316; }
+.month-val.navy   { color: #0f3460; }
+.month-label { font-size: 11px; color: #64748b; font-weight: 500; margin-top: 4px; }
+
+/* ─────────────────────────────────
+   CARD D: Action Required (col 4, dark, tall)
+───────────────────────────────── */
+.action-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2px;
+}
+.action-title { font-size: 15px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+.action-badge {
+  background: #f97316; color: white;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 800;
+}
+.action-sub { font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+
+.action-item {
+  display: flex; align-items: flex-start; gap: 9px;
+  padding: 10px 11px;
+  border-radius: 11px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+.action-item.urgent {
+  background: rgba(249,115,22,0.15);
+  border-color: rgba(249,115,22,0.3);
+}
+.action-item:last-child { margin-bottom: 0; }
+.action-icon-wrap {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.action-icon-wrap.orange-bg {
+  background: rgba(249,115,22,0.25);
+}
+.action-body { flex: 1; }
+.action-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1.3; }
+.action-desc { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.action-arrow { font-size: 14px; color: rgba(255,255,255,0.2); align-self: center; }
+
+/* ─────────────────────────────────
+   CARD E: Recently Completed (col 2, row 2)
+───────────────────────────────── */
+.completed-item {
+  display: flex; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  align-items: flex-start;
+}
+.completed-item:last-child { border: none; }
+.completed-dot {
+  width: 30px; height: 30px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.completed-text { flex: 1; }
+.completed-main { font-size: 12px; font-weight: 600; color: #1e293b; line-height: 1.3; }
+.completed-when { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+.completed-tag {
+  padding: 3px 9px; border-radius: 20px;
+  font-size: 10px; font-weight: 600;
+  align-self: flex-start; margin-top: 2px; flex-shrink: 0;
+}
+
+/* ─────────────────────────────────
+   CARD F: Documents Waiting (col 3, row 2)
+───────────────────────────────── */
+.doc-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.doc-item:last-child { border: none; }
+.doc-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.doc-name  { font-size: 12px; font-weight: 600; color: #1e293b; }
+.doc-meta  { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+.doc-action {
+  margin-left: auto; padding: 4px 11px; border-radius: 20px;
+  font-size: 10px; font-weight: 700; cursor: pointer; white-space: nowrap;
+}
+.da-orange { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; }
+.da-blue   { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.da-green  { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+ <div class="app">
+
+  <!-- ═══ NAV (glass) ═══ -->
+  <div class="nav">
+    <div class="logo-pill">CMA Assist</div>
+    <div class="nav-center">
+      <div class="nav-item active">Dashboard</div>
+      <div class="nav-item">Clients</div>
+      <div class="nav-item">Reports</div>
+      <div class="nav-item">Documents</div>
+      <div class="nav-item">Settings</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-icon">⚙</div>
+      <div class="nav-icon dot">🔔</div>
+      <div class="nav-av">AK</div>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <div>
+      <div class="greeting">Welcome back,<br>Ashutosh.</div>
+      <div class="pills">
+        <div class="pill pill-navy">12 Clients</div>
+        <div class="pill pill-orange">3 CMAs Ready</div>
+        <div class="pill pill-glass">5 Docs Waiting</div>
+        <div class="pill pill-glass">+ New Client</div>
+      </div>
+    </div>
+    <div class="hero-nums">
+      <div class="hnum">
+        <div class="hnum-icon">🏢</div>
+        <div class="hnum-val">12</div>
+        <div class="hnum-lbl">Clients</div>
+      </div>
+      <div class="hnum">
+        <div class="hnum-icon">✅</div>
+        <div class="hnum-val orange">3</div>
+        <div class="hnum-lbl">Ready</div>
+      </div>
+      <div class="hnum">
+        <div class="hnum-icon">📂</div>
+        <div class="hnum-val">31</div>
+        <div class="hnum-lbl">Docs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BENTO ═══ -->
+  <div class="bento">
+
+    <!-- A: CMA Stage Status (dark tall, col 1) -->
+    <div class="card-dark card-a">
+      <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">CMA Workflow</div>
+
+      <div class="stage-list">
+        <div class="stage-row">
+          <div class="stage-icon">📤</div>
+          <div class="stage-text">
+            <div class="stage-name">Documents Uploaded</div>
+            <div class="stage-sub">All financial years</div>
+          </div>
+          <div class="stage-count">12</div>
+        </div>
+        <div class="stage-row alert">
+          <div class="stage-icon">👁</div>
+          <div class="stage-text">
+            <div class="stage-name">Verify Extractions</div>
+            <div class="stage-sub">Your review needed</div>
+          </div>
+          <div class="stage-count orange">3</div>
+        </div>
+        <div class="stage-row alert">
+          <div class="stage-icon">❓</div>
+          <div class="stage-text">
+            <div class="stage-name">Doubt Items</div>
+            <div class="stage-sub">CA decision required</div>
+          </div>
+          <div class="stage-count orange">7</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-icon">⚙️</div>
+          <div class="stage-text">
+            <div class="stage-name">Classifying</div>
+            <div class="stage-sub">Auto-running</div>
+          </div>
+          <div class="stage-count">1</div>
+        </div>
+        <div class="stage-row ready">
+          <div class="stage-icon">📥</div>
+          <div class="stage-text">
+            <div class="stage-name">Ready to Download</div>
+            <div class="stage-sub">CMA Excel generated</div>
+          </div>
+          <div class="stage-count green">3</div>
+        </div>
+      </div>
+
+      <div class="dark-divider"></div>
+
+      <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;">Recent</div>
+      <div class="shortcut-row">
+        <div class="shortcut-av" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);">DE</div>
+        <span class="shortcut-name">Dynamic Air Engineering</span>
+        <span class="shortcut-arrow">›</span>
+      </div>
+      <div class="shortcut-row">
+        <div class="shortcut-av" style="background:linear-gradient(135deg,#f97316,#c2410c);">MC</div>
+        <span class="shortcut-name">Mehta Computers</span>
+        <span class="shortcut-arrow">›</span>
+      </div>
+      <div class="shortcut-row">
+        <div class="shortcut-av" style="background:linear-gradient(135deg,#16a34a,#14532d);">PL</div>
+        <span class="shortcut-name">Patel Logistics</span>
+        <span class="shortcut-arrow">›</span>
+      </div>
+    </div>
+
+    <!-- B: All Clients with CMA status (col 2, row 1) -->
+    <div class="card" style="grid-column:2; grid-row:1;">
+      <div class="expand-btn">↗</div>
+      <div class="card-title">Clients</div>
+      <div class="client-item">
+        <div class="c-av" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);">DE</div>
+        <div><div class="c-name">Dynamic Air Engineering</div><div class="c-sub">Manufacturing · FY22–25</div></div>
+        <div class="status-badge s-verify">Verify Docs</div>
+      </div>
+      <div class="client-item">
+        <div class="c-av" style="background:linear-gradient(135deg,#f97316,#c2410c);">MC</div>
+        <div><div class="c-name">Mehta Computers</div><div class="c-sub">Trading · FY21–24</div></div>
+        <div class="status-badge s-ready">Ready ↓</div>
+      </div>
+      <div class="client-item">
+        <div class="c-av" style="background:linear-gradient(135deg,#16a34a,#14532d);">SR</div>
+        <div><div class="c-name">Sunrise Retail</div><div class="c-sub">Service · FY23–25</div></div>
+        <div class="status-badge s-doubt">Doubts</div>
+      </div>
+      <div class="client-item">
+        <div class="c-av" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">PL</div>
+        <div><div class="c-name">Patel Logistics</div><div class="c-sub">Trading · FY22–25</div></div>
+        <div class="status-badge s-progress">In Progress</div>
+      </div>
+      <div class="client-item">
+        <div class="c-av" style="background:linear-gradient(135deg,#0f3460,#1e6fd9);">GI</div>
+        <div><div class="c-name">Global Infra Ltd</div><div class="c-sub">Manufacturing · FY23–25</div></div>
+        <div class="status-badge s-ready">Ready ↓</div>
+      </div>
+    </div>
+
+    <!-- C: This Month summary (col 3, row 1) -->
+    <div class="card" style="grid-column:3; grid-row:1;">
+      <div class="expand-btn">↗</div>
+      <div class="card-title">This Month</div>
+      <div class="month-grid">
+        <div class="month-stat">
+          <div class="month-val orange">3</div>
+          <div class="month-label">CMAs Generated</div>
+        </div>
+        <div class="month-stat">
+          <div class="month-val navy">8</div>
+          <div class="month-label">Docs Processed</div>
+        </div>
+        <div class="month-stat">
+          <div class="month-val">2</div>
+          <div class="month-label">New Clients Added</div>
+        </div>
+        <div class="month-stat" style="background:rgba(249,115,22,0.08); border-color:rgba(249,115,22,0.2);">
+          <div class="month-val orange" style="font-size:22px; letter-spacing:-1px;">₹175</div>
+          <div class="month-label">API cost this month</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D: Action Required (dark tall, col 4) -->
+    <div class="card-dark" style="grid-column:4; grid-row: span 2;">
+      <div class="action-header">
+        <div class="action-title">Action Required</div>
+        <div class="action-badge">5</div>
+      </div>
+      <div class="action-sub">Items needing your attention</div>
+
+      <div class="action-item urgent">
+        <div class="action-icon-wrap orange-bg">❓</div>
+        <div class="action-body">
+          <div class="action-name">Review 2 doubt items</div>
+          <div class="action-desc">Dynamic Air · FY24 classification</div>
+        </div>
+        <div class="action-arrow">›</div>
+      </div>
+      <div class="action-item urgent">
+        <div class="action-icon-wrap orange-bg">👁</div>
+        <div class="action-body">
+          <div class="action-name">Verify extracted data</div>
+          <div class="action-desc">Patel Logistics · 3 documents</div>
+        </div>
+        <div class="action-arrow">›</div>
+      </div>
+      <div class="action-item">
+        <div class="action-icon-wrap">📥</div>
+        <div class="action-body">
+          <div class="action-name">Download CMA</div>
+          <div class="action-desc">Mehta Computers · Ready</div>
+        </div>
+        <div class="action-arrow">›</div>
+      </div>
+      <div class="action-item">
+        <div class="action-icon-wrap">📥</div>
+        <div class="action-body">
+          <div class="action-name">Download CMA</div>
+          <div class="action-desc">Global Infra Ltd · Ready</div>
+        </div>
+        <div class="action-arrow">›</div>
+      </div>
+      <div class="action-item">
+        <div class="action-icon-wrap">📤</div>
+        <div class="action-body">
+          <div class="action-name">Upload FY25 documents</div>
+          <div class="action-desc">Sunrise Retail · Waiting</div>
+        </div>
+        <div class="action-arrow">›</div>
+      </div>
+
+      <div style="margin-top:14px; padding:11px 12px; background:rgba(249,115,22,0.12); border-radius:11px; border:1px solid rgba(249,115,22,0.25);">
+        <div style="font-size:11px; font-weight:700; color:#fb923c;">⚡ 3 CMAs ready for client</div>
+        <div style="font-size:10px; color:rgba(255,255,255,0.4); margin-top:2px;">Download and share with your bank</div>
+      </div>
+    </div>
+
+    <!-- E: Recently Completed (col 2, row 2) -->
+    <div class="card" style="grid-column:2; grid-row:2;">
+      <div class="expand-btn">↗</div>
+      <div class="card-title">Recently Completed</div>
+
+      <div class="completed-item">
+        <div class="completed-dot" style="background:#dcfce7;">✅</div>
+        <div class="completed-text">
+          <div class="completed-main">Mehta Computers — CMA Generated</div>
+          <div class="completed-when">Today, 9:14 AM</div>
+        </div>
+        <div class="completed-tag" style="background:#dcfce7; color:#16a34a;">Done</div>
+      </div>
+      <div class="completed-item">
+        <div class="completed-dot" style="background:#eff6ff;">📊</div>
+        <div class="completed-text">
+          <div class="completed-main">Dynamic Air FY24 — Extraction done</div>
+          <div class="completed-when">Today, 10:32 AM · 164 items</div>
+        </div>
+        <div class="completed-tag" style="background:#eff6ff; color:#1d4ed8;">Verify</div>
+      </div>
+      <div class="completed-item">
+        <div class="completed-dot" style="background:#dcfce7;">✅</div>
+        <div class="completed-text">
+          <div class="completed-main">Global Infra — CMA Generated</div>
+          <div class="completed-when">Yesterday, 4:55 PM</div>
+        </div>
+        <div class="completed-tag" style="background:#dcfce7; color:#16a34a;">Done</div>
+      </div>
+      <div class="completed-item">
+        <div class="completed-dot" style="background:#fef9c3;">⚠️</div>
+        <div class="completed-text">
+          <div class="completed-main">Sunrise Retail — 5 doubts flagged</div>
+          <div class="completed-when">Yesterday, 2:20 PM</div>
+        </div>
+        <div class="completed-tag" style="background:#fef9c3; color:#a16207;">Review</div>
+      </div>
+    </div>
+
+    <!-- F: Documents Waiting (col 3, row 2) -->
+    <div class="card" style="grid-column:3; grid-row:2;">
+      <div class="expand-btn">↗</div>
+      <div class="card-title">Documents Waiting</div>
+
+      <div class="doc-item">
+        <div class="doc-icon" style="background:#fff7ed;">📄</div>
+        <div>
+          <div class="doc-name">Dynamic Air — FY24 Audited</div>
+          <div class="doc-meta">33 pages · Extracted · Needs verification</div>
+        </div>
+        <div class="doc-action da-orange">Verify</div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon" style="background:#fff7ed;">📄</div>
+        <div>
+          <div class="doc-name">Patel Logistics — FY23 Notes</div>
+          <div class="doc-meta">12 pages · Awaiting extraction</div>
+        </div>
+        <div class="doc-action da-blue">Extract</div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon" style="background:#f0fdf4;">📄</div>
+        <div>
+          <div class="doc-name">Sunrise Retail — FY25 Provisional</div>
+          <div class="doc-meta">Not uploaded yet</div>
+        </div>
+        <div class="doc-action da-green">Upload</div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon" style="background:#eff6ff;">📄</div>
+        <div>
+          <div class="doc-name">Mehta Computers — FY24 ITR</div>
+          <div class="doc-meta">Verified · Ready to classify</div>
+        </div>
+        <div class="doc-action da-blue">Classify</div>
+      </div>
+    </div>
+
+  </div><!-- /bento -->
+ </div><!-- /app -->
+</div><!-- /frame -->
+
+<div style="font-family:'Plus Jakarta Sans',sans-serif; text-align:center; color:#4a5568; font-size:13px; max-width:620px; line-height:1.7; padding-bottom:8px;">
+  <strong style="color:#0f3460;">V4 Glass</strong> — glassmorphism cards · CA-relevant content · no technical jargon
+  <br>Tell me what to adjust — colours, card order, content, glass opacity, anything.
+</div>
+
+</body>
+</html>

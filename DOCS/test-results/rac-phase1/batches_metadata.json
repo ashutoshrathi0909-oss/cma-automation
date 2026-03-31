@@ -1,0 +1,577 @@
+[
+  {
+    "batch_num": 1,
+    "items": [
+      {
+        "position": 1,
+        "bcipl_index": 10,
+        "raw_text": "Bad Debts Written Back",
+        "sheet_name": "Notes to P & L",
+        "section": "other income",
+        "true_cma_row": 34,
+        "true_cma_field": "Others (Non-Operating Income)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 2,
+        "bcipl_index": 24,
+        "raw_text": "Manufacturing Expenses",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 49,
+        "true_cma_field": "Others (Manufacturing)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 3,
+        "bcipl_index": 25,
+        "raw_text": "Machinery Maintenance",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 49,
+        "true_cma_field": "Others (Manufacturing)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 4,
+        "bcipl_index": 32,
+        "raw_text": "Selling & Distribution Expenses",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 5,
+        "bcipl_index": 33,
+        "raw_text": "Carriage Outwards",
+        "sheet_name": "Subnotes to PL",
+        "section": "selling & distribution expenses",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 6,
+        "bcipl_index": 38,
+        "raw_text": "Consultation Fees",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 71,
+        "true_cma_field": "Others (Admin)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 7,
+        "bcipl_index": 40,
+        "raw_text": "Rates & Taxes",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 71,
+        "true_cma_field": "Others (Admin)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 8,
+        "bcipl_index": 64,
+        "raw_text": "Mr. Chaitra Sunderesh (Director Loan)",
+        "sheet_name": "Notes BS (2)",
+        "section": "(i) due to directors",
+        "true_cma_row": 152,
+        "true_cma_field": "Unsecured Loans - Quasi Equity",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 9,
+        "bcipl_index": 66,
+        "raw_text": "Mr. Nishanth Sunderesh (Director Loan)",
+        "sheet_name": "Notes BS (2)",
+        "section": "(i) due to directors",
+        "true_cma_row": 152,
+        "true_cma_field": "Unsecured Loans - Quasi Equity",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 10,
+        "bcipl_index": 88,
+        "raw_text": "Other Advances",
+        "sheet_name": "Notes BS (2)",
+        "section": "unsecured considered good",
+        "true_cma_row": 223,
+        "true_cma_field": "Other Advances / current asset",
+        "group": "A",
+        "true_in_candidates": true
+      }
+    ]
+  },
+  {
+    "batch_num": 2,
+    "items": [
+      {
+        "position": 1,
+        "bcipl_index": 101,
+        "raw_text": "Creditors for Capital Goods",
+        "sheet_name": "Notes BS (2)",
+        "section": "(ii) other dues",
+        "true_cma_row": 250,
+        "true_cma_field": "Other current liabilities",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 2,
+        "bcipl_index": 102,
+        "raw_text": "Salary & Wages payable",
+        "sheet_name": "Notes BS (2)",
+        "section": "(ii) other dues",
+        "true_cma_row": 250,
+        "true_cma_field": "Other current liabilities",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 3,
+        "bcipl_index": 108,
+        "raw_text": "Bad Debts Written Back",
+        "sheet_name": "Notes to P & L",
+        "section": "other income",
+        "true_cma_row": 34,
+        "true_cma_field": "Others (Non-Operating Income)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 4,
+        "bcipl_index": 130,
+        "raw_text": "Selling & Distribution Expenses (FY22)",
+        "sheet_name": "Notes to P & L",
+        "section": "tax audit",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 5,
+        "bcipl_index": 132,
+        "raw_text": "Consultation Fees (FY22)",
+        "sheet_name": "Notes to P & L",
+        "section": "tax audit",
+        "true_cma_row": 71,
+        "true_cma_field": "Others (Admin)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 6,
+        "bcipl_index": 2,
+        "raw_text": "Job Work Charges - Interstate",
+        "sheet_name": "Notes to P & L",
+        "section": "sale of products:",
+        "true_cma_row": 22,
+        "true_cma_field": "Domestic Sales",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 7,
+        "bcipl_index": 3,
+        "raw_text": "Job Work Charges - Local",
+        "sheet_name": "Notes to P & L",
+        "section": "note 18 - revenue from operations",
+        "true_cma_row": 22,
+        "true_cma_field": "Domestic Sales",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 8,
+        "bcipl_index": 4,
+        "raw_text": "Export Sales",
+        "sheet_name": "Subnotes to PL",
+        "section": "sale of manufactured goods",
+        "true_cma_row": 23,
+        "true_cma_field": "Export Sales",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 9,
+        "bcipl_index": 14,
+        "raw_text": "Consumption of Stores & Spares",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 44,
+        "true_cma_field": "Stores and spares consumed (Indigenous)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 10,
+        "bcipl_index": 15,
+        "raw_text": "Other Materials Comsumed - Scrap",
+        "sheet_name": "Notes to P & L",
+        "section": "note 21 - other materials consumed",
+        "true_cma_row": 44,
+        "true_cma_field": "Stores and spares consumed (Indigenous)",
+        "group": "A",
+        "true_in_candidates": true
+      }
+    ]
+  },
+  {
+    "batch_num": 3,
+    "items": [
+      {
+        "position": 1,
+        "bcipl_index": 19,
+        "raw_text": "Directors Remuneration",
+        "sheet_name": "Subnotes to PL",
+        "section": "salaries & wages",
+        "true_cma_row": 67,
+        "true_cma_field": "Salary and staff expenses",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 2,
+        "bcipl_index": 20,
+        "raw_text": "Job Work Charges & Contract Labour",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 46,
+        "true_cma_field": "Processing / Job Work Charges",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 3,
+        "bcipl_index": 26,
+        "raw_text": "Opening - Finished Goods",
+        "sheet_name": "Notes to P & L",
+        "section": "note 22 - changes in inventories",
+        "true_cma_row": 58,
+        "true_cma_field": "Finished Goods Opening Balance",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 4,
+        "bcipl_index": 27,
+        "raw_text": "Less: Closing - Finished Goods",
+        "sheet_name": "Notes to P & L",
+        "section": "note 22 - changes in inventories",
+        "true_cma_row": 59,
+        "true_cma_field": "Finished Goods Closing Balance",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 5,
+        "bcipl_index": 28,
+        "raw_text": "Depreciation",
+        "sheet_name": "Notes to P & L",
+        "section": "depreciation & amortisation expense",
+        "true_cma_row": 63,
+        "true_cma_field": "Depreciation (CMA)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 6,
+        "bcipl_index": 29,
+        "raw_text": "Amortization Expenses",
+        "sheet_name": "Notes to P & L",
+        "section": "depreciation & amortisation expense",
+        "true_cma_row": 63,
+        "true_cma_field": "Depreciation (CMA)",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 7,
+        "bcipl_index": 31,
+        "raw_text": "Bad debts written off",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 69,
+        "true_cma_field": "Bad Debts",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 8,
+        "bcipl_index": 34,
+        "raw_text": "Packing Materials - GST @ 12%",
+        "sheet_name": "Subnotes to PL",
+        "section": "selling and distribution expenses - subnotes",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 9,
+        "bcipl_index": 35,
+        "raw_text": "Packing Materials - GST @ 18%",
+        "sheet_name": "Subnotes to PL",
+        "section": "selling and distribution expenses - subnotes",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "A",
+        "true_in_candidates": true
+      },
+      {
+        "position": 10,
+        "bcipl_index": 39,
+        "raw_text": "Administrative & General Expenses",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 71,
+        "true_cma_field": "Others (Admin)",
+        "group": "A",
+        "true_in_candidates": true
+      }
+    ]
+  },
+  {
+    "batch_num": 4,
+    "items": [
+      {
+        "position": 1,
+        "bcipl_index": 0,
+        "raw_text": "Sales of Manufactured Products",
+        "sheet_name": "Notes to P & L",
+        "section": "sale of products:",
+        "true_cma_row": 22,
+        "true_cma_field": "Domestic Sales",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 2,
+        "bcipl_index": 1,
+        "raw_text": "Sales of Trading Goods",
+        "sheet_name": "Notes to P & L",
+        "section": "sale of products:",
+        "true_cma_row": 22,
+        "true_cma_field": "Domestic Sales",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 3,
+        "bcipl_index": 5,
+        "raw_text": "Interest Income",
+        "sheet_name": "Notes to P & L",
+        "section": "other income",
+        "true_cma_row": 30,
+        "true_cma_field": "Interest Received",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 4,
+        "bcipl_index": 6,
+        "raw_text": "Interest Received - Fixed Deposits",
+        "sheet_name": "Subnotes to PL",
+        "section": "interest income",
+        "true_cma_row": 30,
+        "true_cma_field": "Interest Received",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 5,
+        "bcipl_index": 7,
+        "raw_text": "Interest Received - Others",
+        "sheet_name": "Subnotes to PL",
+        "section": "interest income",
+        "true_cma_row": 30,
+        "true_cma_field": "Interest Received",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 6,
+        "bcipl_index": 8,
+        "raw_text": "MSME Interest Sub-vention Scheme",
+        "sheet_name": "Subnotes to PL",
+        "section": "interest income",
+        "true_cma_row": 30,
+        "true_cma_field": "Interest Received",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 7,
+        "bcipl_index": 9,
+        "raw_text": "Profit on Sale of Fixed Asset",
+        "sheet_name": "Notes to P & L",
+        "section": "other income",
+        "true_cma_row": 31,
+        "true_cma_field": "Profit on sale of fixed assets / Investments",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 8,
+        "bcipl_index": 11,
+        "raw_text": "Total Raw Materials - Indigenous",
+        "sheet_name": "Notes to P & L",
+        "section": "note 20 - cost of raw materials consumed",
+        "true_cma_row": 42,
+        "true_cma_field": "Raw Materials Consumed (Indigenous)",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 9,
+        "bcipl_index": 12,
+        "raw_text": "CRCA Sheets & Coils consumed",
+        "sheet_name": "Notes to P & L",
+        "section": "details of cost of materials consumed",
+        "true_cma_row": 42,
+        "true_cma_field": "Raw Materials Consumed (Indigenous)",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 10,
+        "bcipl_index": 13,
+        "raw_text": "Aluminium consumed",
+        "sheet_name": "Notes to P & L",
+        "section": "note 20 - cost of raw materials consumed",
+        "true_cma_row": 42,
+        "true_cma_field": "Raw Materials Consumed (Indigenous)",
+        "group": "B",
+        "true_in_candidates": true
+      }
+    ]
+  },
+  {
+    "batch_num": 5,
+    "items": [
+      {
+        "position": 1,
+        "bcipl_index": 16,
+        "raw_text": "Salaries & Wages",
+        "sheet_name": "Notes to P & L",
+        "section": "employee benefits expense",
+        "true_cma_row": 45,
+        "true_cma_field": "Wages",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 2,
+        "bcipl_index": 17,
+        "raw_text": "Contribution to PF & Other Funds",
+        "sheet_name": "Notes to P & L",
+        "section": "employee benefits expense",
+        "true_cma_row": 45,
+        "true_cma_field": "Wages",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 3,
+        "bcipl_index": 18,
+        "raw_text": "Labour Welfare Expenses",
+        "sheet_name": "Notes to P & L",
+        "section": "employee benefits expense",
+        "true_cma_row": 45,
+        "true_cma_field": "Wages",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 4,
+        "bcipl_index": 21,
+        "raw_text": "Power & Fuel",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 48,
+        "true_cma_field": "Power, Coal, Fuel and Water",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 5,
+        "bcipl_index": 22,
+        "raw_text": "Power Charges",
+        "sheet_name": "Subnotes to PL",
+        "section": "power & fuel",
+        "true_cma_row": 48,
+        "true_cma_field": "Power, Coal, Fuel and Water",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 6,
+        "bcipl_index": 23,
+        "raw_text": "Fuel Charges",
+        "sheet_name": "Subnotes to PL",
+        "section": "power & fuel",
+        "true_cma_row": 48,
+        "true_cma_field": "Power, Coal, Fuel and Water",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 7,
+        "bcipl_index": 30,
+        "raw_text": "Rent",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 68,
+        "true_cma_field": "Rent, Rates and Taxes",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 8,
+        "bcipl_index": 36,
+        "raw_text": "Discount Allowed",
+        "sheet_name": "Subnotes to PL",
+        "section": "selling & distribution expenses",
+        "true_cma_row": 70,
+        "true_cma_field": "Advertisements and Sales Promotions",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 9,
+        "bcipl_index": 37,
+        "raw_text": "Insurance",
+        "sheet_name": "Notes to P & L",
+        "section": "other expenses",
+        "true_cma_row": 71,
+        "true_cma_field": "Others (Admin)",
+        "group": "B",
+        "true_in_candidates": true
+      },
+      {
+        "position": 10,
+        "bcipl_index": 41,
+        "raw_text": "Statutory Audit",
+        "sheet_name": "Notes to P & L",
+        "section": "auditor's remuneration:",
+        "true_cma_row": 73,
+        "true_cma_field": "Audit Fees & Directors Remuneration",
+        "group": "B",
+        "true_in_candidates": true
+      }
+    ]
+  }
+]

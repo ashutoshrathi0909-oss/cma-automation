@@ -1,0 +1,90 @@
+Item 1:
+  Description: Bank Charges (FY23)
+  Amount: Rs 1,743,022.27
+  Section: other finance costs:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 2:
+  Description: Salary & Wages payable (FY23)
+  Amount: Rs 6,643,832.00
+  Section: (ii) other dues
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 3:
+  Description: TDS 2020-21
+  Amount: Rs 1,183,749.71
+  Section: subnotes to BS - tax deducted @ source
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 4:
+  Description: Advance Income Tax 20-21
+  Amount: Rs 10,707,600.00
+  Section: subnotes to BS - advance income tax 18-19
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 5:
+  Description: S.B.I-06891-Devanahalli Branch
+  Amount: Rs 6,445,702.96
+  Section: subnotes to BS - bank balances
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 6:
+  Description: Vat Deposit
+  Amount: Rs 2,460,627.00
+  Section: subnotes to BS - security deposits
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 7:
+  Description: Provision for IT 2021-22
+  Amount: Rs 10,090,474.00
+  Section: subnotes to BS - provision for income tax
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 8:
+  Description: MINGXU STAMPING SOLUTION PVT LTD
+  Amount: Rs 11,702,349.27
+  Section: subnotes to BS - capital advances
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 9:
+  Description: Mediclaim Amount Receivable
+  Amount: Rs 2,451,413.00
+  Section: subnotes to BS - other advances/ receivables
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 10:
+  Description: YELLOW  SPECTRUM TECHNOLOGIES
+  Amount: Rs 7,549,061.93
+  Section: subnotes to BS - advance to suppliers - others
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 11:
+  Description: V K TRADERS
+  Amount: Rs 12,698,082.45
+  Section: subnotes to BS - advance from customers
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 12:
+  Description: More than 365 days
+  Amount: Rs 185,409,793.49
+  Section: subnotes to BS - trade receivables
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 13:
+  Description: TDS-Rent-94I
+  Amount: Rs 760,179.98
+  Section: subnotes to BS - tds & tcs payable
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 14:
+  Description: Unpaid Trainee Stipend
+  Amount: Rs 201,140.00
+  Section: subnotes to BS - unpaid salary & wages
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 15:
+  Description: IMPACT MACHINES
+  Amount: Rs 1,555,591.00
+  Section: subnotes to BS - creditors for fixed assets purchased
+  Sheet: Subnotes to BS
+  Financial Year: 2021

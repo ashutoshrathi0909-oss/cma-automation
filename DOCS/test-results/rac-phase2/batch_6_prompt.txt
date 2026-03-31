@@ -1,0 +1,280 @@
+===
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+For each item below:
+- CANDIDATE CMA FIELDS lists the only valid options (pick from these only)
+- SIMILAR CLASSIFIED EXAMPLES shows already-classified items from other companies for reference
+- Return the single best CMA row number for each item
+
+
+--- ITEM 1 ---
+raw_text: "Rent (FY23)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 68: Rent, Rates and Taxes
+  Row 71: Others (Admin and Selling)
+  Row 47: Freight & Transportation Charges
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Rent" (Notes to P&L (Note 25) | other expenses) -> Row 68 (Rent, Rates & Taxes) [sim=0.923, company=MSL]
+2. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.910, company=INPL]
+3. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.910, company=INPL]
+4. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.910, company=INPL]
+5. "Miscellaneous Expenses" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.823, company=INPL]
+--- ITEM 2 ---
+raw_text: "Rent (FY22)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 68: Rent, Rates and Taxes
+  Row 71: Others (Admin and Selling)
+  Row 47: Freight & Transportation Charges
+  Row 73: Audit Fees & Directors Remuneration
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Rent" (Notes to P&L (Note 25) | other expenses) -> Row 68 (Rent, Rates & Taxes) [sim=0.919, company=MSL]
+2. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.904, company=INPL]
+3. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.904, company=INPL]
+4. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.904, company=INPL]
+5. "Miscellaneous Expenses" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.816, company=INPL]
+--- ITEM 3 ---
+raw_text: "Rates & Taxes (FY23)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 68: Rent, Rates & Taxes
+  Row 71: Others (Admin)
+  Row 73: Audit Fees & Directors Remuneration
+  Row 47: Freight & Transportation Charges
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.914, company=INPL]
+2. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.914, company=INPL]
+3. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.914, company=INPL]
+4. "Rates & Taxes" (Notes to P&L (Note 25) | other expenses) -> Row 68 (Rent, Rates & Taxes) [sim=0.911, company=MSL]
+5. "General Expenses" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.852, company=MSL]
+--- ITEM 4 ---
+raw_text: "Insurance (FY23)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 71: Others (Admin and Selling)
+  Row 90: Sundry Balances Written Off
+  Row 73: Audit Fees & Directors Remuneration
+  Row 72: Repairs & Maintenance (Admin)
+  Row 47: Freight & Transportation Charges
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Insurance" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.914, company=INPL]
+2. "Insurance" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.913, company=MSL]
+3. "Insurance Paid" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.899, company=INPL]
+4. "General Expenses" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.830, company=MSL]
+5. "Miscellaneous Expenses" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.821, company=INPL]
+--- ITEM 5 ---
+raw_text: "Total Raw Materials - Indigenous (FY22)"
+sheet: Notes to P & L
+section: note 20 - cost of raw materials consumed
+CANDIDATE CMA FIELDS for this item:
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+  Row 49: Others (Manufacturing)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Raw Materials Consumed (Indigenous)" (Notes to P&L (Note 21, FY24 Audit PDF) | cost of materials consumed) -> Row 42 (Raw Materials Consumed (Indigenous)) [sim=0.913, company=SLIPL]
+2. "Raw Materials Consumed (Indigenous)" (Notes to P&L (SLI AUDITED FINANCIALS FY 22-23.pdf) | cost of materials consumed) -> Row 42 (Raw Materials Consumed (Indigenous)) [sim=0.792, company=SLIPL]
+3. "Cost of Material Consumed" (Notes to P&L | note 23 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.777, company=INPL]
+4. "Cost of Material Consumed" (Notes to P&L | note 22 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.772, company=INPL]
+5. "Cost of Material Consumed" (Notes to P&L | note 22 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.772, company=INPL]
+--- ITEM 6 ---
+raw_text: "Rates & Taxes (FY22)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 68: Rent, Rates & Taxes
+  Row 71: Others (Admin)
+  Row 73: Audit Fees & Directors Remuneration
+  Row 47: Freight & Transportation Charges
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.905, company=INPL]
+2. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.905, company=INPL]
+3. "Rates and Taxes" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.905, company=INPL]
+4. "Rates & Taxes" (Notes to P&L (Note 25) | other expenses) -> Row 68 (Rent, Rates & Taxes) [sim=0.903, company=MSL]
+5. "General Expenses" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.845, company=MSL]
+--- ITEM 7 ---
+raw_text: "Insurance (FY22)"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 71: Others (Admin and Selling)
+  Row 73: Audit Fees & Directors Remuneration
+  Row 47: Freight & Transportation Charges
+  Row 90: Sundry Balances Written Off
+  Row 72: Repairs & Maintenance (Admin)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Insurance" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.904, company=MSL]
+2. "Insurance" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.901, company=INPL]
+3. "Insurance Paid" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.889, company=INPL]
+4. "General Expenses" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.820, company=MSL]
+5. "Audit Fees" (Notes to P&L (Note 25, FY24 Audit PDF) | other expenses) -> Row 73 (Audit Fees & Directors Remuneration) [sim=0.814, company=SLIPL]
+--- ITEM 8 ---
+raw_text: "Total Raw Materials - Indigenous"
+sheet: Notes to P & L
+section: note 20 - cost of raw materials consumed
+CANDIDATE CMA FIELDS for this item:
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+  Row 49: Others (Manufacturing)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Raw Materials Consumed (Indigenous)" (Notes to P&L (Note 21, FY24 Audit PDF) | cost of materials consumed) -> Row 42 (Raw Materials Consumed (Indigenous)) [sim=0.902, company=SLIPL]
+2. "Raw Materials Consumed (Indigenous)" (Notes to P&L (SLI AUDITED FINANCIALS FY 22-23.pdf) | cost of materials consumed) -> Row 42 (Raw Materials Consumed (Indigenous)) [sim=0.808, company=SLIPL]
+3. "Cost of Material Consumed" (Notes to P&L | note 23 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.769, company=INPL]
+4. "Cost of Material Consumed" (Notes to P&L | note 22 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.767, company=INPL]
+5. "Cost of Material Consumed" (Notes to P&L | note 22 - cost of materials consumed) -> Row 42 (Raw Material Consumed (Indigenous)) [sim=0.767, company=INPL]
+--- ITEM 9 ---
+raw_text: "Contribution to PF & Other Funds"
+sheet: Notes to P & L
+section: employee benefits expense
+CANDIDATE CMA FIELDS for this item:
+  Row 45: Wages
+  Row 67: Salary and Staff Expenses
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Provident Fund Contribution" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.898, company=MSL]
+2. "Contribution to PF and ESI" (Notes to P&L | note 25 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.866, company=INPL]
+3. "Contribution to PF and ESI" (Notes to P&L | note 24 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.860, company=INPL]
+4. "Contribution to PF and ESI" (Notes to P&L | note 24 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.860, company=INPL]
+5. "Bonus" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.836, company=MSL]
+--- ITEM 10 ---
+raw_text: "Contribution to PF & Other Funds (FY23)"
+sheet: Notes to P & L
+section: employee benefits expense
+CANDIDATE CMA FIELDS for this item:
+  Row 45: Wages
+  Row 67: Salary and Staff Expenses
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Provident Fund Contribution" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.897, company=MSL]
+2. "Contribution to PF and ESI" (Notes to P&L | note 25 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.862, company=INPL]
+3. "Contribution to PF and ESI" (Notes to P&L | note 24 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.858, company=INPL]
+4. "Contribution to PF and ESI" (Notes to P&L | note 24 - employee benefits expense) -> Row 67 (Salary and Staff Expenses) [sim=0.858, company=INPL]
+5. "Bonus" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.808, company=MSL]
+
+Return ONLY a JSON array with exactly 10 objects:
+[
+  {"item_index": 1, "classified_cma_row": <row_number>, "confidence": <0.0-1.0>, "reasoning": "<brief reason>"},
+  ...
+]
+
+Rules:
+- item_index must match the ITEM number above (1-10)
+- classified_cma_row must be one of the candidate row numbers listed for that item
+- Do not include any text outside the JSON array

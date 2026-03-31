@@ -1,0 +1,451 @@
+{
+  "date": "2026-03-27",
+  "canonical_labels_count": 131,
+  "companies": {
+    "BCIPL": {
+      "location_a": {
+        "total": 224,
+        "entries_with_code": 224,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 224
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 224,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 448,
+        "row_correct": 448,
+        "row_wrong": 0,
+        "field_name_mismatch": 39,
+        "unknown_rows": [],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (39 entries)"
+      },
+      "cross_check": {
+        "agree": 27,
+        "disagree": 3,
+        "disagree_details": [
+          {
+            "raw_text": "Machinery Maintenance",
+            "financial_year": 2021,
+            "location_a_row": 72,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Bad debts written off",
+            "financial_year": 2021,
+            "location_a_row": 71,
+            "location_b_row": 69
+          },
+          {
+            "raw_text": "Selling & Distribution Expenses",
+            "financial_year": 2021,
+            "location_a_row": 73,
+            "location_b_row": 70
+          }
+        ]
+      }
+    },
+    "Dynamic_Air": {
+      "location_a": {
+        "total": 230,
+        "entries_with_code": 230,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 230
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 230,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": null,
+      "cross_check": null
+    },
+    "INPL": {
+      "location_a": {
+        "total": 186,
+        "entries_with_code": 186,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 186
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 186,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 186,
+        "row_correct": 185,
+        "row_wrong": 1,
+        "field_name_mismatch": 73,
+        "unknown_rows": [
+          57
+        ],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (73 entries)"
+      },
+      "cross_check": {
+        "agree": 54,
+        "disagree": 13,
+        "disagree_details": [
+          {
+            "raw_text": "Salary, Wages and Bonus",
+            "financial_year": 2023,
+            "location_a_row": 67,
+            "location_b_row": 45
+          },
+          {
+            "raw_text": "Consultancy Charges",
+            "financial_year": 2023,
+            "location_a_row": 71,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Packing and Forwarding Charges",
+            "financial_year": 2023,
+            "location_a_row": 49,
+            "location_b_row": 47
+          },
+          {
+            "raw_text": "Project Cost",
+            "financial_year": 2023,
+            "location_a_row": 71,
+            "location_b_row": 93
+          },
+          {
+            "raw_text": "Research and Development",
+            "financial_year": 2023,
+            "location_a_row": 71,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Staff Welfare Expenses",
+            "financial_year": 2024,
+            "location_a_row": 45,
+            "location_b_row": 67
+          },
+          {
+            "raw_text": "Gratuity to Employees",
+            "financial_year": 2024,
+            "location_a_row": 45,
+            "location_b_row": 67
+          },
+          {
+            "raw_text": "Consultancy Charges",
+            "financial_year": 2024,
+            "location_a_row": 71,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Material Handling Charges",
+            "financial_year": 2024,
+            "location_a_row": 46,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Staff Welfare Expenses",
+            "financial_year": 2025,
+            "location_a_row": 45,
+            "location_b_row": 67
+          },
+          {
+            "raw_text": "Gratuity to Employees",
+            "financial_year": 2025,
+            "location_a_row": 45,
+            "location_b_row": 67
+          },
+          {
+            "raw_text": "Consultancy Charges",
+            "financial_year": 2025,
+            "location_a_row": 71,
+            "location_b_row": 49
+          },
+          {
+            "raw_text": "Finished Goods",
+            "financial_year": 2025,
+            "location_a_row": 59,
+            "location_b_row": 201
+          }
+        ]
+      }
+    },
+    "Kurunji_Retail": {
+      "location_a": {
+        "total": 49,
+        "entries_with_code": 49,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 49
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 49,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 136,
+        "row_correct": 136,
+        "row_wrong": 0,
+        "field_name_mismatch": 39,
+        "unknown_rows": [],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (39 entries)"
+      },
+      "cross_check": {
+        "agree": 18,
+        "disagree": 2,
+        "disagree_details": [
+          {
+            "raw_text": "Closing Stock",
+            "financial_year": 2025,
+            "location_a_row": 59,
+            "location_b_row": 201
+          },
+          {
+            "raw_text": "Depreciation",
+            "financial_year": 2025,
+            "location_a_row": 56,
+            "location_b_row": 63
+          }
+        ]
+      }
+    },
+    "Mehta_Computer": {
+      "location_a": {
+        "total": 74,
+        "entries_with_code": 74,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 74
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 74,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": null,
+      "cross_check": null
+    },
+    "MSL": {
+      "location_a": {
+        "total": 222,
+        "entries_with_code": 222,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 222
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 222,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 110,
+        "row_correct": 108,
+        "row_wrong": 2,
+        "field_name_mismatch": 40,
+        "unknown_rows": [
+          0
+        ],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (40 entries)"
+      },
+      "cross_check": {
+        "agree": 10,
+        "disagree": 0,
+        "disagree_details": []
+      }
+    },
+    "SLIPL": {
+      "location_a": {
+        "total": 114,
+        "entries_with_code": 114,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 114
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 114,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 65,
+        "row_correct": 65,
+        "row_wrong": 0,
+        "field_name_mismatch": 21,
+        "unknown_rows": [],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (21 entries)"
+      },
+      "cross_check": {
+        "agree": 4,
+        "disagree": 0,
+        "disagree_details": []
+      }
+    },
+    "SR_Papers": {
+      "location_a": {
+        "total": 164,
+        "entries_with_code": 164,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 164
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 164,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 216,
+        "row_correct": 216,
+        "row_wrong": 0,
+        "field_name_mismatch": 17,
+        "unknown_rows": [],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (17 entries)"
+      },
+      "cross_check": {
+        "agree": 72,
+        "disagree": 9,
+        "disagree_details": [
+          {
+            "raw_text": "Computer Maintanance",
+            "financial_year": 2023,
+            "location_a_row": 72,
+            "location_b_row": 71
+          },
+          {
+            "raw_text": "Manpower Charges",
+            "financial_year": 2023,
+            "location_a_row": 49,
+            "location_b_row": 45
+          },
+          {
+            "raw_text": "Labour Charges",
+            "financial_year": 2023,
+            "location_a_row": 49,
+            "location_b_row": 45
+          },
+          {
+            "raw_text": "TDS Receivable",
+            "financial_year": 2023,
+            "location_a_row": 219,
+            "location_b_row": 221
+          },
+          {
+            "raw_text": "TCS Receivable",
+            "financial_year": 2023,
+            "location_a_row": 219,
+            "location_b_row": 221
+          },
+          {
+            "raw_text": "Manpower Charges",
+            "financial_year": 2024,
+            "location_a_row": 49,
+            "location_b_row": 45
+          },
+          {
+            "raw_text": "Discount Recieved",
+            "financial_year": 2025,
+            "location_a_row": 29,
+            "location_b_row": 34
+          },
+          {
+            "raw_text": "Computer Maintanance",
+            "financial_year": 2025,
+            "location_a_row": 72,
+            "location_b_row": 71
+          },
+          {
+            "raw_text": "Manpower Charges",
+            "financial_year": 2025,
+            "location_a_row": 49,
+            "location_b_row": 45
+          }
+        ]
+      }
+    },
+    "SSSS": {
+      "location_a": {
+        "total": 63,
+        "entries_with_code": 63,
+        "unknown_codes": [],
+        "no_code_entries": 0,
+        "offset_distribution": {
+          "-1": 63
+        },
+        "dominant_offset": -1,
+        "dominant_pct": 100.0,
+        "offset_detected": -1,
+        "corrected": true,
+        "fixed_count": 63,
+        "correction_applied": "+1 row offset"
+      },
+      "location_b": {
+        "total": 294,
+        "row_correct": 294,
+        "row_wrong": 0,
+        "field_name_mismatch": 86,
+        "unknown_rows": [],
+        "offset_detected": 0,
+        "corrected": true,
+        "correction_applied": "field_name_normalized (86 entries)"
+      },
+      "cross_check": {
+        "agree": 2,
+        "disagree": 2,
+        "disagree_details": [
+          {
+            "raw_text": "Current tax expense",
+            "financial_year": 2024,
+            "location_a_row": 244,
+            "location_b_row": 99
+          },
+          {
+            "raw_text": "Share Investments",
+            "financial_year": 2025,
+            "location_a_row": 188,
+            "location_b_row": 186
+          }
+        ]
+      }
+    }
+  }
+}

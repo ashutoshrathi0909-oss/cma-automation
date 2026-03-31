@@ -1,0 +1,90 @@
+Item 1:
+  Description: Capital Advances (FY22)
+  Amount: Rs 1,691,035.44
+  Section: other current assets
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 2:
+  Description: Gross Block - Total Tangible Assets (At 31st March)
+  Amount: Rs 458,968,528.02
+  Section: depreciation schedule - gross block total
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 3:
+  Description: Accumulated Depreciation - Building (At 31st March)
+  Amount: Rs 18,671,132.41
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 4:
+  Description: Bad debts (FY22)
+  Amount: Rs 933,534.31
+  Section: tax audit
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 5:
+  Description: Advances Written off (FY22)
+  Amount: Rs 164,300.00
+  Section: note 27
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 6:
+  Description: Selling & Distribution Expenses (FY22)
+  Amount: Rs 32,084,836.54
+  Section: tax audit
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 7:
+  Description: Insurance (FY22)
+  Amount: Rs 1,677,925.64
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 8:
+  Description: Consultation Fees (FY22)
+  Amount: Rs 13,416,176.39
+  Section: tax audit
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 9:
+  Description: Security Deposits (FY22)
+  Amount: Rs 3,220,965.00
+  Section: long-term trade  receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 10:
+  Description: GST Input Recoverable (FY22)
+  Amount: Rs 6,745,730.20
+  Section: other current assets
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 11:
+  Description: Advance to Suppliers (FY22)
+  Amount: Rs 12,372,897.40
+  Section: note 16 - short-term loans and advances
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 12:
+  Description: Trade Receivables < 6 months (FY22)
+  Amount: Rs 363,221,722.22
+  Section: note 14 - trade receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 13:
+  Description: Trade Receivables > 6 months (FY22)
+  Amount: not provided
+  Section: note 14 - trade receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 14:
+  Description: Accumulated Depreciation - Plant & Machinery (At 31st March)
+  Amount: Rs 109,971,494.85
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 15:
+  Description: Accumulated Depreciation - Tools & Dies (At 31st March)
+  Amount: Rs 29,988,299.94
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021

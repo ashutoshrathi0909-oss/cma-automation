@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Ground Truth &mdash; Dispute Review</title>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;color:#2d3748;font-size:14px;line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:16px}
+.page-header{background:#1a365d;color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:14px}
+.page-header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.page-header .sub{opacity:.75;font-size:13px}
+.progress-box{background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.progress-lbl{font-size:13px;color:#4a5568;margin-bottom:5px;display:flex;justify-content:space-between}
+.pbar{background:#e2e8f0;border-radius:99px;height:10px;overflow:hidden}
+.pbar-fill{background:#27ae60;height:100%;border-radius:99px;transition:width .3s}
+.top-actions{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.ca-field{flex:1;min-width:200px}
+.ca-field label{font-size:12px;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.ca-field input{width:100%;padding:8px 12px;border:1px solid #cbd5e0;border-radius:6px;font-size:14px}
+.ca-field input:focus{outline:none;border-color:#1a365d;box-shadow:0 0 0 2px #bee3f8}
+.btn{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;white-space:nowrap}
+.btn-navy{background:#1a365d;color:#fff}.btn-navy:hover{background:#2c5282}
+.btn-orange{background:#e67e22;color:#fff}.btn-orange:hover{background:#d35400}
+.btn-outline{background:#fff;color:#4a5568;border:1px solid #cbd5e0}.btn-outline:hover{border-color:#1a365d;color:#1a365d}
+.restore-banner{background:#ebf8ff;border:1px solid #90cdf4;padding:10px 14px;border-radius:6px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:13px}
+.restore-banner.hidden{display:none}
+/* Section blocks */
+.sec-block{margin-bottom:14px}
+.sec-hdr{background:#1a365d;color:#fff;padding:11px 16px;border-radius:8px 8px 0 0;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none}
+.sec-hdr.green{background:#276749}
+.sec-hdr.closed{border-radius:8px;margin-bottom:0}
+.sec-letter{background:#e67e22;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.sec-letter.green{background:#48bb78}
+.sec-title-text{font-weight:600;flex:1;font-size:15px}
+.sec-count{font-size:12px;opacity:.8;white-space:nowrap}
+.chevron{transition:transform .2s;font-size:12px}
+.chevron.rot{transform:rotate(180deg)}
+.sec-qs{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.sec-qs.hidden{display:none}
+/* Dispute card */
+.d-card{padding:16px;border-bottom:1px solid #f0f4f8;transition:background .15s}
+.d-card:last-child{border-bottom:none}
+.d-card.done{background:#f0fff4}
+/* Pre-resolved card */
+.pr-card{padding:14px 16px;border-bottom:1px solid #c6f6d5;background:#f0fff4}
+.pr-card:last-child{border-bottom:none}
+.pr-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.pr-badge{background:#276749;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.pr-raw{font-size:15px;font-weight:700;color:#276749;flex:1}
+.pr-resolution{background:#c6f6d5;border-left:3px solid #48bb78;padding:6px 10px;font-size:12px;border-radius:0 4px 4px 0;margin-bottom:8px}
+.pr-rule-text{font-size:11px;color:#718096;margin-bottom:6px}
+.pr-override{margin-top:8px;border-top:1px solid #c6f6d5;padding-top:8px}
+.pr-override-toggle{background:none;border:1px solid #c6f6d5;padding:3px 10px;border-radius:4px;font-size:11px;cursor:pointer;color:#276749}
+.pr-override-toggle:hover{border-color:#276749}
+.pr-override-body{display:none;margin-top:8px}
+.pr-override-body.open{display:block}
+.d-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.d-num{background:#1a365d;color:#fff;padding:2px 9px;border-radius:4px;font-size:11px;font-weight:700;flex-shrink:0}
+.d-raw{font-size:16px;font-weight:700;color:#1a365d;flex:1}
+.pill{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.pill-mfg{background:#bee3f8;color:#2b6cb0}
+.pill-trading{background:#feebc8;color:#c05621}
+.pill-services{background:#c6f6d5;color:#276749}
+.pill-construction{background:#fed7d7;color:#9b2c2c}
+.pill-all{background:#e9d8fd;color:#553c9a}
+.pill-pl{background:#e9d8fd;color:#553c9a}
+.pill-bs{background:#b2f5ea;color:#234e52}
+.pill-green{background:#c6f6d5;color:#276749}
+.cmp-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px}
+.cmp-table th{background:#f7fafc;padding:7px 10px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:#4a5568;letter-spacing:.05em;border:1px solid #e2e8f0}
+.cmp-table td{padding:8px 10px;border:1px solid #e2e8f0;vertical-align:top}
+.cmp-gt{background:#fff5f5}
+.cmp-rule{background:#f0fff4}
+.row-num{font-weight:700;color:#1a365d;font-size:13px}
+.decision-block{margin-bottom:10px}
+.decision-lbl{font-size:12px;font-weight:700;color:#4a5568;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.opt-row{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:5px;margin-bottom:2px;cursor:pointer;border:1px solid transparent;transition:background .1s}
+.opt-row:hover{background:#f7fafc}
+.opt-row.sel{background:#f0fff4;border-color:#9ae6b4}
+.opt-row input[type=radio]{accent-color:#27ae60;cursor:pointer;flex-shrink:0}
+.opt-row label{cursor:pointer;flex:1;font-size:13px}
+.other-inputs{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:4px 8px 6px 28px}
+.other-inputs input{padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px}
+.other-inputs input:focus{outline:none;border-color:#1a365d}
+.other-num{width:70px}
+.other-name{flex:1;min-width:150px}
+.extra-toggle{background:none;border:1px solid #e2e8f0;padding:4px 10px;border-radius:4px;font-size:12px;cursor:pointer;color:#4a5568;display:flex;align-items:center;gap:5px;margin-bottom:6px}
+.extra-toggle:hover{border-color:#1a365d;color:#1a365d}
+.extra-body{display:none;padding:10px;background:#f7fafc;border:1px solid #e2e8f0;border-radius:6px;margin-bottom:8px}
+.extra-body.open{display:block}
+.ind-grid{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.ind-grid th{background:#edf2f7;padding:5px 8px;font-size:11px;text-align:left;font-weight:700;color:#4a5568;border:1px solid #e2e8f0}
+.ind-grid td{padding:5px 8px;border:1px solid #e2e8f0;vertical-align:middle}
+.ind-grid td:first-child{font-weight:600;font-size:12px;color:#2d3748;white-space:nowrap}
+.ind-grid input{width:100%;padding:3px 6px;border:1px solid #cbd5e0;border-radius:3px;font-size:12px}
+.ind-grid input:focus{outline:none;border-color:#1a365d}
+.conf-row{margin-bottom:8px}
+.conf-lbl{font-size:12px;font-weight:700;color:#4a5568;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.conf-opts{display:flex;gap:16px;flex-wrap:wrap}
+.conf-opt{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:13px}
+.conf-opt input{accent-color:#1a365d}
+.notes-row{margin-bottom:8px}
+.notes-row label{font-size:12px;font-weight:700;color:#4a5568;display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.notes-row textarea{width:100%;padding:6px 10px;border:1px solid #e2e8f0;border-radius:5px;font-size:13px;resize:vertical;min-height:34px;font-family:inherit}
+.notes-row textarea:focus{outline:none;border-color:#1a365d}
+.ai-box{background:#fef3e2;border-left:3px solid #e67e22;padding:8px 12px;font-size:12px;margin-bottom:10px;border-radius:0 4px 4px 0;color:#744210}
+.d-section{font-size:11px;color:#718096;margin-bottom:6px}
+.summary-cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.s-card{background:#fff;border-radius:8px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08);flex:1;min-width:120px}
+.s-card .val{font-size:24px;font-weight:700;color:#1a365d}
+.s-card .val.green{color:#276749}
+.s-card .lbl{font-size:12px;color:#718096;margin-top:2px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.tab{padding:6px 12px;border-radius:6px 6px 0 0;font-size:13px;font-weight:500;cursor:pointer;border:1px solid #e2e8f0;background:#f7fafc;color:#4a5568;transition:all .15s;border-bottom:none}
+.tab.active{background:#1a365d;color:#fff;border-color:#1a365d}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.violations-table{width:100%;border-collapse:collapse;font-size:13px}
+.violations-table th{background:#1a365d;color:#fff;padding:8px 10px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.violations-table td{padding:8px 10px;border-bottom:1px solid #e2e8f0;vertical-align:middle}
+.violations-table tr:hover td{background:#f7fafc}
+.violations-table tr.pre-res td{background:#f0fff4}
+.inline-radio{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.inline-radio input{accent-color:#1a365d}
+.inline-note{width:120px;padding:3px 6px;border:1px solid #cbd5e0;border-radius:3px;font-size:12px}
+.resolved-badge{background:#c6f6d5;color:#276749;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:600}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="page-header">
+  <h1>CMA Ground Truth &mdash; Dispute Review</h1>
+  <div class="sub">167 items need review &mdash; 8 pre-resolved by CA golden rule decisions</div>
+</div>
+
+<div class="restore-banner hidden" id="restore-banner">
+  &#128190;
+  <span class="restore-msg"></span>
+  <button class="btn btn-outline" onclick="localStorage.removeItem('cma_gt_disputes_v2');location.reload()">Clear &amp; Restart</button>
+</div>
+
+<div class="top-actions">
+  <div class="ca-field">
+    <label>CA Name</label>
+    <input type="text" id="ca-name" placeholder="Your name..." oninput="saveMeta()">
+  </div>
+  <div class="ca-field">
+    <label>Date</label>
+    <input type="text" id="review-date" value="2026-03-27">
+  </div>
+  <button class="btn btn-orange" onclick="exportJSON('cma_gt_disputes_v2','GT_disputes_responses.json')">Export JSON</button>
+</div>
+
+<div class="progress-box">
+  <div class="progress-lbl">
+    <span id="prog-counter">0 of 167 reviewed</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="pbar"><div class="pbar-fill" id="prog-bar" style="width:0%"></div></div>
+  <div style="font-size:11px;color:#718096;margin-top:4px">&#x2713; 8 items pre-resolved by golden rule decisions (see section below)</div>
+</div>
+
+<div class="summary-cards">
+  <div class="s-card"><div class="val">167</div><div class="lbl">Remaining to Review</div></div>
+  <div class="s-card"><div class="val green">8</div><div class="lbl">Pre-Resolved</div></div>
+  <div class='s-card'><div class='val'>21</div><div class='lbl'>BCIPL</div></div><div class='s-card'><div class='val'>23</div><div class='lbl'>Dynamic Air</div></div><div class='s-card'><div class='val'>19</div><div class='lbl'>INPL</div></div><div class='s-card'><div class='val'>10</div><div class='lbl'>Kurunji Retail</div></div><div class='s-card'><div class='val'>15</div><div class='lbl'>Mehta Computer</div></div><div class='s-card'><div class='val'>23</div><div class='lbl'>MSL</div></div><div class='s-card'><div class='val'>16</div><div class='lbl'>SLIPL</div></div><div class='s-card'><div class='val'>13</div><div class='lbl'>SR Papers</div></div><div class='s-card'><div class='val'>12</div><div class='lbl'>SSSS</div></div>
+</div>
+
+<!-- Pre-resolved section (collapsed, green) -->
+<div class="sec-block" id="sec-pre-resolved">
+  <div class="sec-hdr green closed">
+    <span class="sec-letter green">&#x2713;</span>
+    <span class="sec-title-text">Pre-Resolved by Golden Rule Decisions &mdash; 8 items</span>
+    <span class="sec-count">Expand to review or override</span>
+    <span class="chevron">&#9660;</span>
+  </div>
+  <div class="sec-qs hidden" id="qs-pre-resolved"></div>
+</div>
+
+
+<div class="sec-block" id="sec-industry">
+  <div class="sec-hdr">
+    <span class="sec-letter">1</span>
+    <span class="sec-title-text">Industry-Dependent Disputes</span>
+    <span class="sec-count">7 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-industry"></div>
+</div>
+<div class="sec-block" id="sec-bs">
+  <div class="sec-hdr">
+    <span class="sec-letter">2</span>
+    <span class="sec-title-text">Balance Sheet / Context-Dependent Disputes</span>
+    <span class="sec-count">33 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-bs"></div>
+</div>
+<div class="sec-block" id="sec-BCIPL">
+  <div class="sec-hdr">
+    <span class="sec-letter">3</span>
+    <span class="sec-title-text">BCIPL (Manufacturing)</span>
+    <span class="sec-count">15 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-BCIPL"></div>
+</div>
+<div class="sec-block" id="sec-Dynamic_Air">
+  <div class="sec-hdr">
+    <span class="sec-letter">4</span>
+    <span class="sec-title-text">Dynamic Air (Manufacturing)</span>
+    <span class="sec-count">16 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-Dynamic_Air"></div>
+</div>
+<div class="sec-block" id="sec-INPL">
+  <div class="sec-hdr">
+    <span class="sec-letter">5</span>
+    <span class="sec-title-text">INPL (Manufacturing)</span>
+    <span class="sec-count">22 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-INPL"></div>
+</div>
+<div class="sec-block" id="sec-Kurunji_Retail">
+  <div class="sec-hdr">
+    <span class="sec-letter">6</span>
+    <span class="sec-title-text">Kurunji Retail (Trading)</span>
+    <span class="sec-count">10 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-Kurunji_Retail"></div>
+</div>
+<div class="sec-block" id="sec-MSL">
+  <div class="sec-hdr">
+    <span class="sec-letter">7</span>
+    <span class="sec-title-text">MSL (Manufacturing)</span>
+    <span class="sec-count">18 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-MSL"></div>
+</div>
+<div class="sec-block" id="sec-Mehta_Computer">
+  <div class="sec-hdr">
+    <span class="sec-letter">8</span>
+    <span class="sec-title-text">Mehta Computer (Trading)</span>
+    <span class="sec-count">12 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-Mehta_Computer"></div>
+</div>
+<div class="sec-block" id="sec-SLIPL">
+  <div class="sec-hdr">
+    <span class="sec-letter">9</span>
+    <span class="sec-title-text">SLIPL (Manufacturing)</span>
+    <span class="sec-count">12 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-SLIPL"></div>
+</div>
+<div class="sec-block" id="sec-SR_Papers">
+  <div class="sec-hdr">
+    <span class="sec-letter">10</span>
+    <span class="sec-title-text">SR Papers (Manufacturing)</span>
+    <span class="sec-count">15 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-SR_Papers"></div>
+</div>
+<div class="sec-block" id="sec-SSSS">
+  <div class="sec-hdr">
+    <span class="sec-letter">11</span>
+    <span class="sec-title-text">SSSS (Trading)</span>
+    <span class="sec-count">7 disputes</span>
+    <span class="chevron rot">&#9660;</span>
+  </div>
+  <div class="sec-qs" id="qs-SSSS"></div>
+</div>
+
+</div>
+<script>
+const ROW_NAMES = {"22":"Domestic","23":"Exports","25":"Less Excise Duty and Cess","29":"Dividends received from Mutual Funds","30":"Interest Received","31":"Profit on sale of fixed assets / Investments","32":"Gain on Exchange Fluctuations","33":"Extraordinary income","34":"Others","41":"Raw Materials Consumed ( Imported)","42":"Raw Materials Consumed ( Indigenous)","43":"Stores and spares consumed ( Imported)","44":"Stores and spares consumed ( Indigenous)","45":"Wages","46":"Processing / Job Work Charges","47":"Freight and Transportation Charges","48":"Power, Coal, Fuel and Water","49":"Others","50":"Repairs & Maintenance","51":"Security Service Charges","53":"Stock in process Opening Balance","54":"Stock in process Closing Balance","56":"Depreciation","58":"Finished Goods Opening Balance","59":"Finished Goods Closing Balance","63":"Depreciation","64":"Other Manufacturing Exp","67":"Salary and staff expenses","68":"Rent , Rates and Taxes","69":"Bad Debts","70":"Advertisements and Sales Promotions","71":"Others","72":"Repairs & Maintenance","73":"Audit Fees & Directors Remuneration","75":"Miscellaneous Expenses written off","76":"Deferred Revenue Expenditures","77":"Other Amortisations","83":"Interest on Fixed Loans / Term loans","84":"Interest on Working capital loans","85":"Bank Charges","89":"Loss on sale of fixed assets / Investments","90":"Sundry Balances Written off","91":"Loss on Exchange Fluctuations","92":"Extraordinary losses","93":"Others","99":"Income Tax  provision","100":"Deferred Tax Liability","101":"Deferred Tax Asset","106":"Brought forward from previous year","107":"Dividend ( Final + Interim , Including Dividend Tax )","108":"Other Appropriation of profit","116":"Issued, Subscribed and Paid up","117":"Share Application Money","121":"General Reserve","122":"Balance transferred from profit and loss a/c","123":"Share Premium A/c","124":"Revaluation Reserve","125":"Other Reserve","131":"From Indian Bank","132":"From Indian Overseas Bank","133":"(o/s bill discounting balance to be included)","136":"Term Loan Repayable in next one year","137":"Balance Repayable after one year","140":"Repayable in next one year","141":"Balance Repayable after one year","144":"Repayable in next one year","145":"Balance Repayable after one year","148":"Debts Repayable in Next One year","149":"Balance Other Debts","152":"As Quasi Equity","153":"As Long Term Debt","154":"As Short Term Debt","159":"Deferred tax liability","162":"Gross Block","163":"Less Accumulated Depreciation","165":"Add : Capital Work in Progress","169":"Patents / goodwill / copyrights etc","170":"Misc Expenditure ( to the extent not w/o)","171":"Deferred Tax Asset","172":"Other Intangible assets","175":"Additions to Fixed Assets","176":"Sale of  Fixed assets WDV of asset sold","177":"Profit on sale of Fixed assets / Investments","178":"Loss on sale of Fixed assets / Investments","182":"Investment in Govt. Securities ( Current )","183":"Investment in Govt. Securities ( Non Current )","185":"Other current investments","186":"Other non current investments","188":"Investment in group companies / subsidiaries","193":"Imported","194":"Indigenous","197":"Imported","198":"Indigenous","200":"Stocks-in-process","201":"Finished Goods","206":"Domestic Receivables ( including bills purchased and discounted)","207":"Export Receivables ( including bills purchased and discounted)","208":"Debtors more than 6 months","212":"Cash on Hand","213":"Bank Balances","214":"Fixed Deposit under lien","215":"Other Fixed Deposits","219":"Advances recoverable in cash or in kind","220":"Advances to suppliers of raw materials","221":"Advance Income Tax","222":"Prepaid Expenses","223":"Other Advances / current asset","224":"Advances to group / subsidiaries companies","229":"Investments","230":"Advances","232":"Debtors more than six months","233":"Investments","234":"Fixed Deposits ( Non Current )","235":"Dues from directors / partners / promoters","236":"Advances to suppliers of capital goods","237":"Security deposits with government departments","238":"Other non current assets","242":"Sundry Creditors for goods","243":"Advance received from customers","244":"Provision for Taxation","245":"Dividend payable","246":"Other statutory liabilities (due within 1 year)","247":"Interest Accrued but not due","248":"Interest Accrued and due","249":"Creditors for Expenses","250":"Other current liabilities","254":"Arrears of cumulative dividends","255":"Gratuity liability not provided for","256":"Disputed excise / customs / tax liabilities","257":"Bank guarantee / Letter of credit outstanding","258":"Other contingent liabilities"};
+const PR_DATA   = [{"id":"d007","raw":"Selling & Distribution Expenses","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":70,"gt_name":"Advertisements and Sales Promotions","gr_row":71,"gr_name":"Others","decision":"gt","win_row":70,"win_name":"Advertisements and Sales Promotions","win_lbl":"GT correct (Row 70: Advertisements and Sales Promotions)","rule_id":"cross_008","rule_text":"Selling & Distribution Expenses","score":100.0,"ai":""},{"id":"d015","raw":"Selling & Distribution Expenses","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":73,"gt_name":"Audit Fees & Directors Remuneration","gr_row":71,"gr_name":"Others","decision":"other","win_row":70,"win_name":"Advertisements and Sales Promotions","win_lbl":"Other: Row 70: Advertisements and Sales Promotions","rule_id":"cross_008","rule_text":"Selling & Distribution Expenses","score":100.0,"ai":""},{"id":"d024","raw":"(c) Staff Welfare","section":"Employee Benefits Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","decision":"rule","win_row":45,"win_name":"Wages","win_lbl":"Golden Rule correct (Row 45: Wages)","rule_id":"cross_001","rule_text":"Staff Welfare Expenses","score":86.7,"ai":"Staff Welfare for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."},{"id":"d039","raw":"(c) Staff Welfare Expenses","section":"Employee Benefits Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","decision":"rule","win_row":45,"win_name":"Wages","win_lbl":"Golden Rule correct (Row 45: Wages)","rule_id":"cross_001","rule_text":"Staff Welfare Expenses","score":100.0,"ai":""},{"id":"d050","raw":"Salary, Wages and Bonus","section":"Employee Benefits Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","decision":"gt","win_row":67,"win_name":"Salary and staff expenses","win_lbl":"GT correct (Row 67: Salary and staff expenses)","rule_id":"cross_004","rule_text":"Bonus","score":100.0,"ai":"'Salary, Wages and Bonus' for manufacturing maps to row 45 per CA rules (Salary/Wages/Bonus combined) | DISPUTE: Golden rule says row 45 but GT has row 67."},{"id":"d051","raw":"Staff welfare Expenses","section":"Employee Benefits Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","decision":"rule","win_row":45,"win_name":"Wages","win_lbl":"Golden Rule correct (Row 45: Wages)","rule_id":"cross_001","rule_text":"Staff Welfare Expenses","score":100.0,"ai":""},{"id":"d065","raw":"Staff Welfare","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":45,"gt_name":"Wages","gr_row":67,"gr_name":"Salary and staff expenses","decision":"rule","win_row":67,"win_name":"Salary and staff expenses","win_lbl":"Golden Rule correct (Row 67: Salary and staff expenses)","rule_id":"cross_002","rule_text":"Staff Welfare Expenses","score":100.0,"ai":"Trading rule: Staff Welfare->67 [DISPUTE golden=67 vs GT=45]"},{"id":"d074","raw":"Bank Interest","section":"Other Income","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":30,"gt_name":"Interest Received","gr_row":83,"gr_name":"Interest on Fixed Loans / Term loans","decision":"other","win_row":215,"win_name":"Other Fixed Deposits","win_lbl":"Other: Row 215: Other Fixed Deposits","rule_id":"int_029","rule_text":"Fixed Deposits with banks & accrued interest (under lien)","score":76.2,"ai":""}];
+const UNRES_DATA= [{"id":"d001","group":"BCIPL","raw":"Profit on Sale of Fixed Asset","section":"Other Income","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":23,"gt_name":"Exports","gr_row":31,"gr_name":"Profit on sale of fixed assets / Investments","method":"rapidfuzz","score":93.5,"ai":""},{"id":"d002","group":"BCIPL","raw":"Forex Rate Fluctuation Gain/(Loss)","section":"Other Income","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":32,"gt_name":"Gain on Exchange Fluctuations","gr_row":91,"gr_name":"Loss on Exchange Fluctuations","method":"rapidfuzz","score":83.6,"ai":""},{"id":"d003","group":"industry","raw":"Rent","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent generally maps to row 68. GT has 49 (Others Mfg) - could be factory rent. | DISPUTE: Golden rule says row 68 but GT has row 49."},{"id":"d004","group":"BCIPL","raw":"Machinery Maintenance","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":50,"gt_name":"Repairs & Maintenance","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d005","group":"BCIPL","raw":"Directors Remuneration","section":"Salaries & Wages","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":73,"gr_name":"Audit Fees & Directors Remuneration","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d006","group":"BCIPL","raw":"Rates & Taxes","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d008","group":"BCIPL","raw":"Administrative & General Expenses","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":70,"gt_name":"Advertisements and Sales Promotions","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d009","group":"BCIPL","raw":"Rates & Taxes","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d010","group":"BCIPL","raw":"Bad debts written off","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":69,"gr_name":"Bad Debts","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d011","group":"BCIPL","raw":"Auditor's Remuneration - Statutory Audit","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":73,"gr_name":"Audit Fees & Directors Remuneration","method":"rapidfuzz","score":91.4,"ai":""},{"id":"d012","group":"BCIPL","raw":"Auditor's Remuneration - Tax Audit","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":73,"gr_name":"Audit Fees & Directors Remuneration","method":"rapidfuzz","score":89.9,"ai":""},{"id":"d013","group":"BCIPL","raw":"Rent","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent generally maps to row 68. GT has 71 (Others Admin). | DISPUTE: Golden rule says row 68 but GT has row 71."},{"id":"d014","group":"BCIPL","raw":"Machinery Maintenance","section":"Other Expenses","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":72,"gt_name":"Repairs & Maintenance","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d016","group":"BCIPL","raw":"Interest of Income Tax","section":"Finance Costs","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":83,"gt_name":"Interest on Fixed Loans / Term loans","gr_row":84,"gr_name":"Interest on Working capital loans","method":"agent_reasoning","score":null,"ai":"Interest on Income Tax delay maps to row 84 per CA rules | DISPUTE: Golden rule says row 84 but GT has row 83."},{"id":"d017","group":"BCIPL","raw":"Deferred Tax","section":"Tax Expense","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d018","group":"BCIPL","raw":"Deferred Tax","section":"Tax Expense","company":"BCIPL","industry":"manufacturing","ctx":"pl","gt_row":101,"gt_name":"Deferred Tax Asset","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d019","group":"bs","raw":"Prepaid Expenses","section":"Short-term Loans and Advances","company":"BCIPL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d020","group":"bs","raw":"Leave Encashment","section":"Short-term Provisions","company":"BCIPL","industry":"manufacturing","ctx":"bs","gt_row":244,"gt_name":"Provision for Taxation","gr_row":249,"gr_name":"Creditors for Expenses","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d021","group":"bs","raw":"Creditors for Expenses","section":"Other Current Liabilities","company":"BCIPL","industry":"manufacturing","ctx":"bs","gt_row":249,"gt_name":"Creditors for Expenses","gr_row":250,"gr_name":"Other current liabilities","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d022","group":"Dynamic_Air","raw":"Carriage Inwards","section":"Cost of Materials Consumed","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":47,"gt_name":"Freight and Transportation Charges","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":81.2,"ai":""},{"id":"d023","group":"industry","raw":"(a) Salaries and incentives","section":"Employee Benefits Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"agent_reasoning","score":null,"ai":"Salaries and incentives for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."},{"id":"d025","group":"Dynamic_Air","raw":"(d) Contribution to EPF and ESI","section":"Employee Benefits Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"rapidfuzz","score":82.6,"ai":""},{"id":"d026","group":"Dynamic_Air","raw":"Rates and taxes","section":"Other Expenses","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":90.7,"ai":""},{"id":"d027","group":"Dynamic_Air","raw":"Interest on Delay in payment of taxes","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":83,"gt_name":"Interest on Fixed Loans / Term loans","gr_row":84,"gr_name":"Interest on Working capital loans","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d028","group":"Dynamic_Air","raw":"Liquidty Damages","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":83,"gt_name":"Interest on Fixed Loans / Term loans","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":88.2,"ai":""},{"id":"d029","group":"Dynamic_Air","raw":"(a) Loan/Overdraft Processing Fee","section":"Finance Costs","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":84,"gt_name":"Interest on Working capital loans","gr_row":85,"gr_name":"Bank Charges","method":"rapidfuzz","score":93.3,"ai":""},{"id":"d030","group":"Dynamic_Air","raw":"(3) Deferred tax Liability / (Asset)","section":"Tax Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":101,"gt_name":"Deferred Tax Asset","gr_row":159,"gr_name":"Deferred tax liability","method":"rapidfuzz","score":95.7,"ai":""},{"id":"d031","group":"Dynamic_Air","raw":"(e) Gratuity","section":"Employee Benefits Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d032","group":"Dynamic_Air","raw":"Rent - Factory","section":"Cost of Materials Consumed","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d033","group":"Dynamic_Air","raw":"Rates and taxes","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":90.7,"ai":""},{"id":"d034","group":"Dynamic_Air","raw":"Brokerage & Commission","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d035","group":"Dynamic_Air","raw":"Interest on Delay in payment of taxes","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":84,"gr_name":"Interest on Working capital loans","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d036","group":"Dynamic_Air","raw":"(a) Loan/Overdraft Processing Fee","section":"Finance Costs","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":83,"gt_name":"Interest on Fixed Loans / Term loans","gr_row":85,"gr_name":"Bank Charges","method":"rapidfuzz","score":93.3,"ai":""},{"id":"d037","group":"Dynamic_Air","raw":"(3) Deferred tax Liability / (Asset)","section":"Tax Expense","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":159,"gr_name":"Deferred tax liability","method":"rapidfuzz","score":95.7,"ai":""},{"id":"d038","group":"Dynamic_Air","raw":"Security Service Charges","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":51,"gt_name":"Security Service Charges","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d040","group":"Dynamic_Air","raw":"Interest due to Delay in payment of taxes","section":"Other Expenses - Admin","company":"Dynamic_Air","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":84,"gr_name":"Interest on Working capital loans","method":"rapidfuzz","score":87.2,"ai":""},{"id":"d041","group":"bs","raw":"Advances recoverable in cash or in kind","section":"Other Current Assets","company":"Dynamic_Air","industry":"manufacturing","ctx":"bs","gt_row":219,"gt_name":"Advances recoverable in cash or in kind","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":91.0,"ai":""},{"id":"d042","group":"bs","raw":"Vehicle HP Loans - current maturities","section":"Short-term Borrowings","company":"Dynamic_Air","industry":"manufacturing","ctx":"bs","gt_row":140,"gt_name":"Repayable in next one year","gr_row":148,"gr_name":"Debts Repayable in Next One year","method":"rapidfuzz","score":95.6,"ai":""},{"id":"d043","group":"bs","raw":"Vehicle HP Loans - non-current","section":"Long-term Borrowings","company":"Dynamic_Air","industry":"manufacturing","ctx":"bs","gt_row":141,"gt_name":"Balance Repayable after one year","gr_row":148,"gr_name":"Debts Repayable in Next One year","method":"agent_reasoning","score":null,"ai":"Vehicle HP Loans non-current maps to row 148 (Other Debts). GT has 141 (Debentures). | DISPUTE: Golden rule says row 148 but GT has row 141."},{"id":"d044","group":"bs","raw":"Outstanding expenses (Salary + Other)","section":"Other Current Liabilities","company":"Dynamic_Air","industry":"manufacturing","ctx":"bs","gt_row":249,"gt_name":"Creditors for Expenses","gr_row":250,"gr_name":"Other current liabilities","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d045","group":"INPL","raw":"Discount received","section":"Other Income","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":42,"gr_name":"Raw Materials Consumed ( Indigenous)","method":"rapidfuzz","score":90.0,"ai":""},{"id":"d046","group":"INPL","raw":"Changes in work-in-progress and stock-in-trade","section":"Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":42,"gt_name":"Raw Materials Consumed ( Indigenous)","gr_row":null,"gr_name":null,"method":"agent_reasoning","score":null,"ai":"Changes in WIP/stock-in-trade is a NET change, not raw materials. Should be split into Opening/Closing rows (53/54). GT maps to 42 which seems incorrect."},{"id":"d047","group":"INPL","raw":"Security Service Charges","section":"Other Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":51,"gt_name":"Security Service Charges","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d048","group":"INPL","raw":"Work in Progress","section":"Inventories","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":54,"gt_name":"Stock in process Closing Balance","gr_row":165,"gr_name":"Add : Capital Work in Progress","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d049","group":"INPL","raw":"Work in Progress (Opening)","section":"Changes in Inventories","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":53,"gt_name":"Stock in process Opening Balance","gr_row":165,"gr_name":"Add : Capital Work in Progress","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d052","group":"industry","raw":"Contribution to Provident Fund and ESI","section":"Employee Benefits Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"agent_reasoning","score":null,"ai":"EPF/ESI contribution for manufacturing maps to row 45 per CA rules | DISPUTE: Golden rule says row 45 but GT has row 67."},{"id":"d053","group":"INPL","raw":"Gratutity to employees","section":"Employee Benefits Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"rapidfuzz","score":81.5,"ai":""},{"id":"d054","group":"INPL","raw":"Rates & Taxes","section":"Other Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d055","group":"INPL","raw":"Licence And Subscription","section":"Other Expenses","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":82.4,"ai":""},{"id":"d056","group":"INPL","raw":"Deferred Tax","section":"Tax Expense","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d057","group":"INPL","raw":"Deferred Tax (Asset)","section":"Tax Expense","company":"INPL","industry":"manufacturing","ctx":"pl","gt_row":101,"gt_name":"Deferred Tax Asset","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d058","group":"bs","raw":"Work in Progress","section":"Inventories","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":200,"gt_name":"Stocks-in-process","gr_row":165,"gr_name":"Add : Capital Work in Progress","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d059","group":"bs","raw":"Finished Goods + Stock in Trade","section":"Inventories","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":201,"gt_name":"Finished Goods","gr_row":58,"gr_name":"Finished Goods Opening Balance","method":"rapidfuzz","score":80.7,"ai":""},{"id":"d060","group":"bs","raw":"Prepaid expenses","section":"Other Current Asset","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d061","group":"bs","raw":"Prepaid Expenses","section":"Other Current Asset","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d062","group":"bs","raw":"Prepaid Expenses","section":"Other Current Assets","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d063","group":"bs","raw":"Creditors for Expenses","section":"Other Current Liabilities","company":"INPL","industry":"manufacturing","ctx":"bs","gt_row":249,"gt_name":"Creditors for Expenses","gr_row":250,"gr_name":"Other current liabilities","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d064","group":"Kurunji_Retail","raw":"Packing Expenses","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":44,"gt_name":"Stores and spares consumed ( Indigenous)","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":87.4,"ai":""},{"id":"d066","group":"Kurunji_Retail","raw":"Electric Charges","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":48,"gt_name":"Power, Coal, Fuel and Water","gr_row":71,"gr_name":"Others","method":"agent_reasoning","score":null,"ai":"Trading rule: Electric->71 not 48 [DISPUTE golden=71 vs GT=48]"},{"id":"d067","group":"Kurunji_Retail","raw":"Rent","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent->68 [DISPUTE golden=68 vs GT=49]"},{"id":"d068","group":"Kurunji_Retail","raw":"Tds on Rent","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"TDS on Rent is rent compliance->68 [DISPUTE golden=68 vs GT=49]"},{"id":"d069","group":"Kurunji_Retail","raw":"Rent - Parking","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent Parking->68 [DISPUTE golden=68 vs GT=49]"},{"id":"d070","group":"Kurunji_Retail","raw":"Generator Expenses","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d071","group":"Kurunji_Retail","raw":"Delivery Charges","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":22,"gr_name":"Domestic","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d072","group":"Kurunji_Retail","raw":"Salary to Partners","section":"P&L Account — Debit Side","company":"Kurunji_Retail","industry":"trading","ctx":"pl","gt_row":73,"gt_name":"Audit Fees & Directors Remuneration","gr_row":67,"gr_name":"Salary and staff expenses","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d073","group":"bs","raw":"Partners Current Account","section":"Schedule of Loans","company":"Kurunji_Retail","industry":"trading","ctx":"bs","gt_row":152,"gt_name":"As Quasi Equity","gr_row":116,"gr_name":"Issued, Subscribed and Paid up","method":"rapidfuzz","score":89.4,"ai":""},{"id":"d075","group":"Mehta_Computer","raw":"Interest on PPF","section":"Other Income","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":30,"gr_name":"Interest Received","method":"agent_reasoning","score":null,"ai":"Interest on deposits/PPF->30 [DISPUTE golden=30 vs GT=34]"},{"id":"d076","group":"Mehta_Computer","raw":"Electricty Charges","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":48,"gt_name":"Power, Coal, Fuel and Water","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":87.4,"ai":""},{"id":"d077","group":"Mehta_Computer","raw":"Courier Charges","section":"Direct Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d078","group":"Mehta_Computer","raw":"Transport Charges","section":"Direct Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":47,"gr_name":"Freight and Transportation Charges","method":"agent_reasoning","score":null,"ai":"Transport/Freight in direct expenses->47 [DISPUTE golden=47 vs GT=49]"},{"id":"d079","group":"Mehta_Computer","raw":"To Opening Stock","section":"Cost of Goods Sold","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":53,"gt_name":"Stock in process Opening Balance","gr_row":58,"gr_name":"Finished Goods Opening Balance","method":"agent_reasoning","score":null,"ai":"Opening Stock P&L->58 (standard CMA: FG Opening; GT may use 53 SIP for trading cos) [DISPUTE golden=58 vs GT=53]"},{"id":"d080","group":"Mehta_Computer","raw":"By Closing Stock","section":"Revenue / Cost of Goods Sold","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":54,"gt_name":"Stock in process Closing Balance","gr_row":59,"gr_name":"Finished Goods Closing Balance","method":"agent_reasoning","score":null,"ai":"Closing Stock P&L->59 (standard CMA: FG Closing; GT may use 54 SIP for trading cos) [DISPUTE golden=59 vs GT=54]"},{"id":"d081","group":"Mehta_Computer","raw":"Carriage Outward","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d082","group":"Mehta_Computer","raw":"Commission on sales","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"agent_reasoning","score":null,"ai":"CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]"},{"id":"d083","group":"Mehta_Computer","raw":"Sundry Balance W/off","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":90,"gr_name":"Sundry Balances Written off","method":"agent_reasoning","score":null,"ai":"Sundry Balance W/off->90 [DISPUTE golden=90 vs GT=71]"},{"id":"d084","group":"Mehta_Computer","raw":"Freight Charges","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":47,"gr_name":"Freight and Transportation Charges","method":"agent_reasoning","score":null,"ai":"Freight in admin (trading): CA default Freight->47; could be 70 if outward or 71 if admin misc [DISPUTE golden=47 vs GT=71]"},{"id":"d085","group":"Mehta_Computer","raw":"Bill Discount Charges","section":"Administrative Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":85,"gt_name":"Bank Charges","gr_row":84,"gr_name":"Interest on Working capital loans","method":"rapidfuzz","score":93.3,"ai":""},{"id":"d086","group":"bs","raw":"Stock-in-Trade ( Valued at Cost Or Market price Whichever Is Lower)","section":"Current Assets & Advances","company":"Mehta_Computer","industry":"trading","ctx":"bs","gt_row":200,"gt_name":"Stocks-in-process","gr_row":201,"gr_name":"Finished Goods","method":"agent_reasoning","score":null,"ai":"Stock-in-Trade (BS)->201 [DISPUTE golden=201 vs GT=200]"},{"id":"d087","group":"bs","raw":"Gst Receivable","section":"Current Assets & Advances","company":"Mehta_Computer","industry":"trading","ctx":"bs","gt_row":219,"gt_name":"Advances recoverable in cash or in kind","gr_row":206,"gr_name":"Domestic Receivables ( including bills purchased and discounted)","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d088","group":"bs","raw":"FD Accrued Interest (reclassified from Investments to Kotak FD)","section":"Investments","company":"Mehta_Computer","industry":"trading","ctx":"bs","gt_row":182,"gt_name":"Investment in Govt. Securities ( Current )","gr_row":215,"gr_name":"Other Fixed Deposits","method":"agent_reasoning","score":null,"ai":"FD Accrued Interest->215 (reclassified) [DISPUTE golden=215 vs GT=182]"},{"id":"d089","group":"MSL","raw":"(d) Insurance Claim Received","section":"Other Income","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":92.0,"ai":""},{"id":"d090","group":"MSL","raw":"Raw Material Import Purchases","section":"Purchases","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":41,"gt_name":"Raw Materials Consumed ( Imported)","gr_row":42,"gr_name":"Raw Materials Consumed ( Indigenous)","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d091","group":"MSL","raw":"(iii) Job Work Charges","section":"Other Expenses","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":46,"gt_name":"Processing / Job Work Charges","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":91.5,"ai":""},{"id":"d092","group":"MSL","raw":"(b) Carriage Inwards","section":"Purchase of Stock in Trade","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":47,"gt_name":"Freight and Transportation Charges","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":81.2,"ai":""},{"id":"d093","group":"MSL","raw":"Security Charges","section":"Other Expenses","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":45,"gt_name":"Wages","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d094","group":"MSL","raw":"Rent","section":"Other Expenses","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent->68 [DISPUTE golden=68 vs GT=49]"},{"id":"d095","group":"MSL","raw":"Stores and spares consumed ( Indigenous)","section":"manufacturing_expenses","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":44,"gt_name":"Stores and spares consumed ( Indigenous)","gr_row":198,"gr_name":"Indigenous","method":"rapidfuzz","score":81.5,"ai":""},{"id":"d096","group":"MSL","raw":"Rates and taxes (excluding, taxes on income)","section":"Other Expenses","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":90.7,"ai":""},{"id":"d097","group":"MSL","raw":"(iv) Discount Allowed","section":"Other Expenses - Selling","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":70,"gt_name":"Advertisements and Sales Promotions","gr_row":22,"gr_name":"Domestic","method":"rapidfuzz","score":91.5,"ai":""},{"id":"d098","group":"MSL","raw":"(iii) Freight Outwards","section":"Other Expenses - Selling","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":70,"gt_name":"Advertisements and Sales Promotions","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":91.8,"ai":""},{"id":"d099","group":"MSL","raw":"(ii) Tour & Travel Expenses","section":"Other Expenses - Selling","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"agent_reasoning","score":null,"ai":"Tour & Travel under selling->70 [DISPUTE golden=70 vs GT=71]"},{"id":"d100","group":"MSL","raw":"(b) Bank Interest","section":"Finance Costs","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":84,"gt_name":"Interest on Working capital loans","gr_row":83,"gr_name":"Interest on Fixed Loans / Term loans","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d101","group":"MSL","raw":"(c) Other Charges","section":"Finance Costs","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":84,"gt_name":"Interest on Working capital loans","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":89.6,"ai":""},{"id":"d102","group":"MSL","raw":"(2) Deferred tax","section":"Tax Expense","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d103","group":"MSL","raw":"(i) Commission","section":"Other Expenses - Selling","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"agent_reasoning","score":null,"ai":"CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]"},{"id":"d104","group":"MSL","raw":"(iv) Discount Allowed","section":"Other Expenses - Selling","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":22,"gr_name":"Domestic","method":"rapidfuzz","score":91.5,"ai":""},{"id":"d105","group":"MSL","raw":"(c) Other Charges","section":"Finance Costs","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":83,"gt_name":"Interest on Fixed Loans / Term loans","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":89.6,"ai":""},{"id":"d106","group":"MSL","raw":"Deferred Tax Liability","section":"tax","company":"MSL","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":159,"gr_name":"Deferred tax liability","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d107","group":"bs","raw":"Prepaid Expenses","section":"Other Current Assets","company":"MSL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d108","group":"bs","raw":"Provision for Gratuity (short-term)","section":"Short-term Provisions","company":"MSL","industry":"manufacturing","ctx":"bs","gt_row":250,"gt_name":"Other current liabilities","gr_row":67,"gr_name":"Salary and staff expenses","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d109","group":"bs","raw":"Advances recoverable in cash or in kind","section":"loans_advances","company":"MSL","industry":"manufacturing","ctx":"bs","gt_row":219,"gt_name":"Advances recoverable in cash or in kind","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":91.0,"ai":""},{"id":"d110","group":"bs","raw":"Prepaid Expenses","section":"loans_advances","company":"MSL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d111","group":"bs","raw":"Creditors for Expenses","section":"current_liabilities","company":"MSL","industry":"manufacturing","ctx":"bs","gt_row":249,"gt_name":"Creditors for Expenses","gr_row":250,"gr_name":"Other current liabilities","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d112","group":"SLIPL","raw":"Duty drawback / IGST received","section":"Other Income","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":23,"gt_name":"Exports","gr_row":34,"gr_name":"Others","method":"agent_reasoning","score":null,"ai":"Duty drawback/IGST is in Other Income section. Not actual export revenue. Should be 34 not 23."},{"id":"d113","group":"SLIPL","raw":"Consultancy Charges","section":"Other Income","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d114","group":"SLIPL","raw":"Packing Expenses","section":"Other Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"rapidfuzz","score":87.4,"ai":""},{"id":"d115","group":"industry","raw":"Rent","section":"Other Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"agent_reasoning","score":null,"ai":"Rent should be 68 per CA rules. GT says 49 (factory rent). Without factory designation, standard is 68."},{"id":"d116","group":"SLIPL","raw":"Rates and taxes (excluding taxes on income)","section":"Other Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":90.7,"ai":""},{"id":"d117","group":"SLIPL","raw":"Sundries","section":"Other Expenses - Administration & Other Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":69,"gt_name":"Bad Debts","gr_row":71,"gr_name":"Others","method":"agent_reasoning","score":null,"ai":"Sundries is generic admin expense -> 71. GT says 69 Bad Debts which is wrong for sundries."},{"id":"d118","group":"SLIPL","raw":"Repairs to Plant & Machinery","section":"Other Expenses - Repairs","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":72,"gt_name":"Repairs & Maintenance","gr_row":50,"gr_name":"Repairs & Maintenance","method":"agent_reasoning","score":null,"ai":"Repairs to Plant and Machinery -> row 50 per CA rules. GT says 72 which is admin repairs."},{"id":"d119","group":"SLIPL","raw":"Interest expense","section":"Finance Costs","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":84,"gt_name":"Interest on Working capital loans","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":95.9,"ai":""},{"id":"d120","group":"SLIPL","raw":"Other Charges (Finance Costs)","section":"Finance Costs","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":85,"gt_name":"Bank Charges","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":89.6,"ai":""},{"id":"d121","group":"SLIPL","raw":"Bad Debts Written off","section":"Other Expenses - Administration & Other Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":90,"gt_name":"Sundry Balances Written off","gr_row":69,"gr_name":"Bad Debts","method":"rapidfuzz","score":100.0,"ai":""},{"id":"d122","group":"SLIPL","raw":"Deferred tax","section":"Tax expense","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d123","group":"SLIPL","raw":"Deferred tax (credit)","section":"Tax expense","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":101,"gt_name":"Deferred Tax Asset","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d124","group":"bs","raw":"Margin money deposits","section":"Cash and Cash Equivalents","company":"SLIPL","industry":"manufacturing","ctx":"bs","gt_row":215,"gt_name":"Other Fixed Deposits","gr_row":237,"gr_name":"Security deposits with government departments","method":"rapidfuzz","score":86.0,"ai":""},{"id":"d125","group":"bs","raw":"Prepaid Expenses","section":"Other Current Assets","company":"SLIPL","industry":"manufacturing","ctx":"bs","gt_row":222,"gt_name":"Prepaid Expenses","gr_row":223,"gr_name":"Other Advances / current asset","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d126","group":"bs","raw":"Security Deposits - Others","section":"Other Non-Current Assets","company":"SLIPL","industry":"manufacturing","ctx":"bs","gt_row":238,"gt_name":"Other non current assets","gr_row":237,"gr_name":"Security deposits with government departments","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d127","group":"SLIPL","raw":"Freight Outward","section":"Other Expenses - Selling Expenses","company":"SLIPL","industry":"manufacturing","ctx":"pl","gt_row":47,"gt_name":"Freight and Transportation Charges","gr_row":71,"gr_name":"Others","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d128","group":"SR_Papers","raw":"Unloading Charges - Mathadi","section":"Other Expenses","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":47,"gt_name":"Freight and Transportation Charges","gr_row":45,"gr_name":"Wages","method":"rapidfuzz","score":85.8,"ai":""},{"id":"d129","group":"SR_Papers","raw":"Labour Charges","section":"Other Expenses","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":45,"gr_name":"Wages","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d130","group":"SR_Papers","raw":"Admin Exp for PF","section":"Other Expenses","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"agent_reasoning","score":null,"ai":"Admin Exp for PF is EPFO admin charge. Per CA rules EPF -> 45. GT says 67."},{"id":"d131","group":"industry","raw":"Tea & Food Expenses","section":"Other Expenses","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":67,"gt_name":"Salary and staff expenses","gr_row":45,"gr_name":"Wages","method":"agent_reasoning","score":null,"ai":"Tea and Food in manufacturing: staff welfare -> 45 per industry rules. GT says 67."},{"id":"d132","group":"SR_Papers","raw":"Rates and taxes","section":"Other Expenses","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":68,"gt_name":"Rent , Rates and Taxes","gr_row":49,"gr_name":"Others","method":"rapidfuzz","score":90.7,"ai":""},{"id":"d133","group":"SR_Papers","raw":"Discount Recieved","section":"Other Income","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":29,"gt_name":"Dividends received from Mutual Funds","gr_row":42,"gr_name":"Raw Materials Consumed ( Indigenous)","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d134","group":"SR_Papers","raw":"Discount Recieved","section":"Other Income","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":42,"gr_name":"Raw Materials Consumed ( Indigenous)","method":"rapidfuzz","score":85.0,"ai":""},{"id":"d135","group":"SR_Papers","raw":"Rate Difference","section":"Other Income","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":34,"gt_name":"Others","gr_row":22,"gr_name":"Domestic","method":"rapidfuzz","score":95.0,"ai":""},{"id":"d136","group":"SR_Papers","raw":"Deferred tax","section":"Provision for taxation","company":"SR_Papers","industry":"manufacturing","ctx":"pl","gt_row":100,"gt_name":"Deferred Tax Liability","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d137","group":"bs","raw":"Expenses Payable","section":"Other Current Liabilities","company":"SR_Papers","industry":"manufacturing","ctx":"bs","gt_row":250,"gt_name":"Other current liabilities","gr_row":249,"gr_name":"Creditors for Expenses","method":"agent_reasoning","score":null,"ai":"Expenses Payable should be 249. GT says 250 Other CL."},{"id":"d138","group":"bs","raw":"Short Term Borrowings - Debentures portion","section":"Short Term Borrowings","company":"SR_Papers","industry":"manufacturing","ctx":"bs","gt_row":141,"gt_name":"Balance Repayable after one year","gr_row":140,"gr_name":"Repayable in next one year","method":"agent_reasoning","score":null,"ai":"ST debentures should be 140 (within 1yr). GT says 141 (after 1yr)."},{"id":"d139","group":"bs","raw":"Term Loans from banks","section":"Long-term Borrowings / Short Term Borrowings","company":"SR_Papers","industry":"manufacturing","ctx":"bs","gt_row":137,"gt_name":"Balance Repayable after one year","gr_row":131,"gr_name":"From Indian Bank","method":"rapidfuzz","score":92.5,"ai":""},{"id":"d140","group":"bs","raw":"Security deposits - Unsecured, considered good","section":"Short-term Loans and Advances","company":"SR_Papers","industry":"manufacturing","ctx":"bs","gt_row":237,"gt_name":"Security deposits with government departments","gr_row":238,"gr_name":"Other non current assets","method":"agent_reasoning","score":null,"ai":"General security deposits should be 238 per CA rules. GT says 237 (govt depts only)."},{"id":"d141","group":"industry","raw":"(i) Power And Fuel","section":"Other Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":71,"gr_name":"Others","method":"agent_reasoning","score":null,"ai":"Power/Fuel in TRADING -> 71 per industry rules. GT says 49 (manufacturing only)."},{"id":"d142","group":"industry","raw":"(a). Employee Benefit Expense","section":"Employee Benefits Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":67,"gr_name":"Salary and staff expenses","method":"agent_reasoning","score":null,"ai":"Employee Benefits in TRADING -> 67 per industry rules. GT says 71."},{"id":"d143","group":"SSSS","raw":"(a) Auditor's Remuneration","section":"Other Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":73,"gr_name":"Audit Fees & Directors Remuneration","method":"rapidfuzz","score":93.4,"ai":""},{"id":"d144","group":"SSSS","raw":"(b) Advertisement and Sales Promotion Expenses","section":"Other Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":70,"gr_name":"Advertisements and Sales Promotions","method":"agent_reasoning","score":null,"ai":"Advertisement -> 70 per CA rules. GT says 71."},{"id":"d145","group":"SSSS","raw":"(j) Rent, Rates and Taxes","section":"Other Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":68,"gr_name":"Rent , Rates and Taxes","method":"rapidfuzz","score":92.2,"ai":""},{"id":"d146","group":"SSSS","raw":"(k) Repairs and Maintenance","section":"Other Expenses","company":"SSSS","industry":"trading","ctx":"pl","gt_row":71,"gt_name":"Others","gr_row":72,"gr_name":"Repairs & Maintenance","method":"agent_reasoning","score":null,"ai":"Repairs in trading -> 72 Repairs(Admin). GT says 71."},{"id":"d147","group":"SSSS","raw":"Loss on disposal of fixed assets (estimated)","section":"Depreciation Schedule / Fixed Assets","company":"SSSS","industry":"trading","ctx":"pl","gt_row":93,"gt_name":"Others","gr_row":89,"gr_name":"Loss on sale of fixed assets / Investments","method":"agent_reasoning","score":null,"ai":"Loss on disposal of fixed assets -> 89. GT says 93 Others Non-Op."},{"id":"d148","group":"SSSS","raw":"(d) Deferred tax","section":"Tax expense","company":"SSSS","industry":"trading","ctx":"pl","gt_row":101,"gt_name":"Deferred Tax Asset","gr_row":171,"gr_name":"Deferred Tax Asset","method":"rapidfuzz","score":80.0,"ai":""},{"id":"d149","group":"bs","raw":"HSBC OD A/C","section":"Short-term Borrowings","company":"SSSS","industry":"trading","ctx":"bs","gt_row":131,"gt_name":"From Indian Bank","gr_row":132,"gr_name":"From Indian Overseas Bank","method":"agent_reasoning","score":null,"ai":"HSBC OD should be 132 (second bank). GT says 131 combining both."},{"id":"d150","group":"bs","raw":"Current Maturities of Long-term Debt (CMLTD)","section":"Long-term Borrowings reclassified","company":"SSSS","industry":"trading","ctx":"bs","gt_row":131,"gt_name":"From Indian Bank","gr_row":136,"gr_name":"Term Loan Repayable in next one year","method":"rapidfuzz","score":87.3,"ai":""},{"id":"d151","group":"bs","raw":"(B) Sundry Creditors for expenses","section":"Trade Payables","company":"SSSS","industry":"trading","ctx":"bs","gt_row":249,"gt_name":"Creditors for Expenses","gr_row":250,"gr_name":"Other current liabilities","method":"rapidfuzz","score":91.3,"ai":""},{"id":"d152","group":"bs","raw":"Share Investments","section":"Non-Current Investments","company":"SSSS","industry":"trading","ctx":"bs","gt_row":188,"gt_name":"Investment in group companies / subsidiaries","gr_row":233,"gr_name":"Investments","method":"rapidfuzz","score":87.1,"ai":""},{"id":"d153","group":"INPL","raw":"Consultancy Charges","section":"","company":"INPL","industry":"","ctx":"","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 71, Location B says row 49 for FY 2023"},{"id":"d154","group":"INPL","raw":"Packing and Forwarding Charges","section":"","company":"INPL","industry":"","ctx":"","gt_row":49,"gt_name":"Others","gr_row":47,"gr_name":"Freight and Transportation Charges","method":"cross_check","score":null,"ai":"Location A (GT) says row 49, Location B says row 47 for FY 2023"},{"id":"d155","group":"INPL","raw":"Project Cost","section":"","company":"INPL","industry":"","ctx":"","gt_row":71,"gt_name":"Others","gr_row":93,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 71, Location B says row 93 for FY 2023"},{"id":"d156","group":"INPL","raw":"Research and Development","section":"","company":"INPL","industry":"","ctx":"","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 71, Location B says row 49 for FY 2023"},{"id":"d157","group":"INPL","raw":"Staff Welfare Expenses","section":"","company":"INPL","industry":"","ctx":"","gt_row":45,"gt_name":"Wages","gr_row":67,"gr_name":"Salary and staff expenses","method":"cross_check","score":null,"ai":"Location A (GT) says row 45, Location B says row 67 for FY 2024"},{"id":"d158","group":"INPL","raw":"Gratuity to Employees","section":"","company":"INPL","industry":"","ctx":"","gt_row":45,"gt_name":"Wages","gr_row":67,"gr_name":"Salary and staff expenses","method":"cross_check","score":null,"ai":"Location A (GT) says row 45, Location B says row 67 for FY 2024"},{"id":"d159","group":"INPL","raw":"Consultancy Charges","section":"","company":"INPL","industry":"","ctx":"","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 71, Location B says row 49 for FY 2024"},{"id":"d160","group":"INPL","raw":"Material Handling Charges","section":"","company":"INPL","industry":"","ctx":"","gt_row":46,"gt_name":"Processing / Job Work Charges","gr_row":49,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 46, Location B says row 49 for FY 2024"},{"id":"d161","group":"INPL","raw":"Staff Welfare Expenses","section":"","company":"INPL","industry":"","ctx":"","gt_row":45,"gt_name":"Wages","gr_row":67,"gr_name":"Salary and staff expenses","method":"cross_check","score":null,"ai":"Location A (GT) says row 45, Location B says row 67 for FY 2025"},{"id":"d162","group":"INPL","raw":"Gratuity to Employees","section":"","company":"INPL","industry":"","ctx":"","gt_row":45,"gt_name":"Wages","gr_row":67,"gr_name":"Salary and staff expenses","method":"cross_check","score":null,"ai":"Location A (GT) says row 45, Location B says row 67 for FY 2025"},{"id":"d163","group":"INPL","raw":"Consultancy Charges","section":"","company":"INPL","industry":"","ctx":"","gt_row":71,"gt_name":"Others","gr_row":49,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 71, Location B says row 49 for FY 2025"},{"id":"d164","group":"INPL","raw":"Finished Goods","section":"","company":"INPL","industry":"","ctx":"","gt_row":59,"gt_name":"Finished Goods Closing Balance","gr_row":201,"gr_name":"Finished Goods","method":"cross_check","score":null,"ai":"Location A (GT) says row 59, Location B says row 201 for FY 2025"},{"id":"d165","group":"Kurunji_Retail","raw":"Closing Stock","section":"","company":"Kurunji_Retail","industry":"","ctx":"","gt_row":59,"gt_name":"Finished Goods Closing Balance","gr_row":201,"gr_name":"Finished Goods","method":"cross_check","score":null,"ai":"Location A (GT) says row 59, Location B says row 201 for FY 2025"},{"id":"d166","group":"Kurunji_Retail","raw":"Depreciation","section":"","company":"Kurunji_Retail","industry":"","ctx":"","gt_row":56,"gt_name":"Depreciation","gr_row":63,"gr_name":"Depreciation","method":"cross_check","score":null,"ai":"Location A (GT) says row 56, Location B says row 63 for FY 2025"},{"id":"d167","group":"SR_Papers","raw":"Computer Maintanance","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":72,"gt_name":"Repairs & Maintenance","gr_row":71,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 72, Location B says row 71 for FY 2023"},{"id":"d168","group":"SR_Papers","raw":"Manpower Charges","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":49,"gt_name":"Others","gr_row":45,"gr_name":"Wages","method":"cross_check","score":null,"ai":"Location A (GT) says row 49, Location B says row 45 for FY 2023"},{"id":"d169","group":"SR_Papers","raw":"TDS Receivable","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":219,"gt_name":"Advances recoverable in cash or in kind","gr_row":221,"gr_name":"Advance Income Tax","method":"cross_check","score":null,"ai":"Location A (GT) says row 219, Location B says row 221 for FY 2023"},{"id":"d170","group":"SR_Papers","raw":"TCS Receivable","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":219,"gt_name":"Advances recoverable in cash or in kind","gr_row":221,"gr_name":"Advance Income Tax","method":"cross_check","score":null,"ai":"Location A (GT) says row 219, Location B says row 221 for FY 2023"},{"id":"d171","group":"SR_Papers","raw":"Manpower Charges","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":49,"gt_name":"Others","gr_row":45,"gr_name":"Wages","method":"cross_check","score":null,"ai":"Location A (GT) says row 49, Location B says row 45 for FY 2024"},{"id":"d172","group":"SR_Papers","raw":"Computer Maintanance","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":72,"gt_name":"Repairs & Maintenance","gr_row":71,"gr_name":"Others","method":"cross_check","score":null,"ai":"Location A (GT) says row 72, Location B says row 71 for FY 2025"},{"id":"d173","group":"SR_Papers","raw":"Manpower Charges","section":"","company":"SR_Papers","industry":"","ctx":"","gt_row":49,"gt_name":"Others","gr_row":45,"gr_name":"Wages","method":"cross_check","score":null,"ai":"Location A (GT) says row 49, Location B says row 45 for FY 2025"},{"id":"d174","group":"SSSS","raw":"Current tax expense","section":"","company":"SSSS","industry":"","ctx":"","gt_row":244,"gt_name":"Provision for Taxation","gr_row":99,"gr_name":"Income Tax  provision","method":"cross_check","score":null,"ai":"Location A (GT) says row 244, Location B says row 99 for FY 2024"},{"id":"d175","group":"Mehta_Computer","raw":"Packing Forwarding ","section":"Direct Expenses","company":"Mehta_Computer","industry":"trading","ctx":"pl","gt_row":49,"gt_name":"Others","gr_row":47,"gr_name":"Freight and Transportation Charges","method":"agent_reasoning","score":null,"ai":"Packing/forwarding = freight row 47, GT has 49"}];
+const SECTIONS  = [{"key":"industry","label":"Industry-Dependent Disputes","ids":["d003","d023","d052","d115","d131","d141","d142"]},{"key":"bs","label":"Balance Sheet / Context-Dependent Disputes","ids":["d019","d020","d021","d041","d042","d043","d044","d058","d059","d060","d061","d062","d063","d073","d086","d087","d088","d107","d108","d109","d110","d111","d124","d125","d126","d137","d138","d139","d140","d149","d150","d151","d152"]},{"key":"BCIPL","label":"BCIPL (Manufacturing)","ids":["d001","d002","d004","d005","d006","d008","d009","d010","d011","d012","d013","d014","d016","d017","d018"]},{"key":"Dynamic_Air","label":"Dynamic Air (Manufacturing)","ids":["d022","d025","d026","d027","d028","d029","d030","d031","d032","d033","d034","d035","d036","d037","d038","d040"]},{"key":"INPL","label":"INPL (Manufacturing)","ids":["d045","d046","d047","d048","d049","d053","d054","d055","d056","d057","d153","d154","d155","d156","d157","d158","d159","d160","d161","d162","d163","d164"]},{"key":"Kurunji_Retail","label":"Kurunji Retail (Trading)","ids":["d064","d066","d067","d068","d069","d070","d071","d072","d165","d166"]},{"key":"MSL","label":"MSL (Manufacturing)","ids":["d089","d090","d091","d092","d093","d094","d095","d096","d097","d098","d099","d100","d101","d102","d103","d104","d105","d106"]},{"key":"Mehta_Computer","label":"Mehta Computer (Trading)","ids":["d075","d076","d077","d078","d079","d080","d081","d082","d083","d084","d085","d175"]},{"key":"SLIPL","label":"SLIPL (Manufacturing)","ids":["d112","d113","d114","d116","d117","d118","d119","d120","d121","d122","d123","d127"]},{"key":"SR_Papers","label":"SR Papers (Manufacturing)","ids":["d128","d129","d130","d132","d133","d134","d135","d136","d167","d168","d169","d170","d171","d172","d173"]},{"key":"SSSS","label":"SSSS (Trading)","ids":["d143","d144","d145","d146","d147","d148","d174"]}];
+const TOTAL_REMAINING = 167;
+const STORAGE_KEY = 'cma_gt_disputes_v2';
+
+
+function rowName(row){return ROW_NAMES[row]||''}
+function saveResponse(key,id,data){
+  var saved=JSON.parse(localStorage.getItem(key)||'{"responses":{}}');
+  saved.responses[id]=data;saved.lastSaved=new Date().toISOString();
+  var ca=document.getElementById('ca-name');if(ca)saved.reviewer=ca.value;
+  localStorage.setItem(key,JSON.stringify(saved));
+}
+function exportJSON(key,fn){
+  var saved=JSON.parse(localStorage.getItem(key)||'{"responses":{}}');
+  var blob=new Blob([JSON.stringify(saved,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fn;a.click();
+}
+function setupSectionToggles(){
+  document.querySelectorAll('.sec-hdr').forEach(function(hdr){
+    hdr.addEventListener('click',function(){
+      var qs=this.parentElement.querySelector('.sec-qs');
+      var chev=this.querySelector('.chevron');
+      if(qs){qs.classList.toggle('hidden');hdr.classList.toggle('closed',qs.classList.contains('hidden'));
+        if(chev)chev.classList.toggle('rot',!qs.classList.contains('hidden'));}
+    });
+  });
+}
+function checkRestore(key,banner){
+  var saved=JSON.parse(localStorage.getItem(key)||'{}');
+  if(saved.lastSaved&&Object.keys(saved.responses||{}).length>0){
+    if(banner){var c=Object.keys(saved.responses).length;
+      banner.querySelector('.restore-msg').textContent='Restored '+c+' saved responses from '+new Date(saved.lastSaved).toLocaleString();
+      banner.classList.remove('hidden');}
+    restoreAllResponses(key);
+  }
+}
+
+
+const IND_CLS = {manufacturing:'pill-mfg',trading:'pill-trading',services:'pill-services',construction:'pill-construction',all:'pill-all'};
+function indPill(i){return i?'<span class="pill '+(IND_CLS[i]||'pill-all')+'">'+i.charAt(0).toUpperCase()+i.slice(1)+'</span>':''}
+function ctxPill(c){return c==='pl'?'<span class="pill pill-pl">P&amp;L</span>':c==='bs'?'<span class="pill pill-bs">B/S</span>':''}
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// ── Pre-resolved card builder ─────────────────────────────────────────────────
+function buildPrCard(d, num) {
+  const iid = d.id;
+  const decLabel = d.decision==='gt' ? 'GT is correct' : d.decision==='rule' ? 'Golden Rule is correct' : 'Other row';
+  const badge = d.decision==='gt' ? 'GT CORRECT' : d.decision==='rule' ? 'RULE CORRECT' : 'OTHER ROW';
+  const badgeCls = d.decision==='gt' ? 'badge-gt' : 'badge-rule';
+  return `<div class="pr-card" id="card-${iid}">
+  <div class="pr-top">
+    <span class="pr-badge">#${num} ${badge}</span>
+    <span class="pr-raw">${esc(d.raw)}</span>
+    ${indPill(d.industry)} ${ctxPill(d.ctx)}
+  </div>
+  <div style="font-size:11px;color:#718096;margin-bottom:6px">Section: ${esc(d.section)} | Company: <strong>${d.company}</strong></div>
+  <div class="pr-resolution">
+    <strong>&#x2713; Resolved:</strong> ${esc(d.win_lbl)}
+    <span style="margin-left:8px;font-size:11px;color:#718096">via ${esc(d.rule_id)} (${esc(d.rule_text)}) &mdash; match ${d.score}%</span>
+  </div>
+  <table class="cmp-table" style="margin-bottom:6px">
+    <tr><th>GT (Current)</th><th>Golden Rule (Expected)</th><th>&#x2713; Resolved Row</th></tr>
+    <tr>
+      <td class="cmp-gt"><span class="row-num">Row ${d.gt_row}</span> &mdash; ${esc(d.gt_name)}</td>
+      <td class="cmp-rule"><span class="row-num">Row ${d.gr_row}</span> &mdash; ${esc(d.gr_name)}</td>
+      <td style="background:#f0fff4;font-weight:700;color:#276749"><span class="row-num">Row ${d.win_row}</span> &mdash; ${esc(d.win_name)}</td>
+    </tr>
+  </table>
+  <div class="pr-override">
+    <button class="pr-override-toggle" onclick="togglePrOverride('${iid}',this)">&#9998; Override this decision</button>
+    <div class="pr-override-body" id="pr-ov-${iid}">
+      <div class="decision-block" style="margin-top:8px">
+        <div class="decision-lbl">Override Decision</div>
+        <div class="opt-row" onclick="selOpt('${iid}','gt',this)">
+          <input type="radio" name="dec-${iid}" value="gt" id="gt-${iid}">
+          <label for="gt-${iid}">GT is correct &mdash; Row ${d.gt_row}: ${esc(d.gt_name)}</label>
+        </div>
+        <div class="opt-row" onclick="selOpt('${iid}','rule',this)">
+          <input type="radio" name="dec-${iid}" value="rule" id="rule-${iid}">
+          <label for="rule-${iid}">Golden Rule is correct &mdash; Row ${d.gr_row}: ${esc(d.gr_name)}</label>
+        </div>
+        <div class="opt-row" onclick="selOpt('${iid}','other',this)">
+          <input type="radio" name="dec-${iid}" value="other" id="other-${iid}">
+          <label for="other-${iid}">Other:</label>
+        </div>
+        <div class="other-inputs" id="oi-${iid}" style="display:none">
+          <span>Row</span>
+          <input type="number" class="other-num" id="on-${iid}" placeholder="e.g. 49" oninput="afName('${iid}')">
+          <input type="text" class="other-name" id="oname-${iid}" placeholder="Field name">
+        </div>
+      </div>
+      <div class="notes-row">
+        <label>Notes</label>
+        <textarea id="notes-${iid}" rows="2" placeholder="Override reason..." oninput="saveCard('${iid}')"></textarea>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+// ── Normal card builder ───────────────────────────────────────────────────────
+function buildCard(d, num) {
+  const iid = d.id;
+  const gtLabel = 'Row '+d.gt_row+': '+esc(d.gt_name);
+  const grLabel = 'Row '+d.gr_row+': '+esc(d.gr_name);
+  const methodBadge = d.method ? '<span style="font-size:10px;background:#e2e8f0;padding:1px 5px;border-radius:3px;color:#4a5568">'+d.method+(d.score?' '+Math.round(d.score)+'%':'')+'</span>' : '';
+  const aiBox = d.ai ? '<div class="ai-box"><strong>AI:</strong> '+esc(d.ai)+'</div>' : '';
+  return `<div class="d-card" id="card-${iid}">
+  <div class="d-top">
+    <span class="d-num">#${num}</span>
+    <span class="d-raw">${esc(d.raw)}</span>
+    ${indPill(d.industry)} ${ctxPill(d.ctx)} ${methodBadge}
+  </div>
+  <div class="d-section">Section: ${esc(d.section)} &nbsp;|&nbsp; Company: <strong>${d.company}</strong></div>
+  ${aiBox}
+  <table class="cmp-table">
+    <tr><th>GT (Current)</th><th>Golden Rule (Expected)</th></tr>
+    <tr>
+      <td class="cmp-gt"><span class="row-num">Row ${d.gt_row}</span> &mdash; ${esc(d.gt_name)}</td>
+      <td class="cmp-rule"><span class="row-num">Row ${d.gr_row}</span> &mdash; ${esc(d.gr_name)}</td>
+    </tr>
+  </table>
+  <div class="decision-block">
+    <div class="decision-lbl">A. Your Decision</div>
+    <div class="opt-row" onclick="selOpt('${iid}','gt',this)">
+      <input type="radio" name="dec-${iid}" value="gt" id="gt-${iid}">
+      <label for="gt-${iid}">GT is correct &mdash; ${gtLabel}</label>
+    </div>
+    <div class="opt-row" onclick="selOpt('${iid}','rule',this)">
+      <input type="radio" name="dec-${iid}" value="rule" id="rule-${iid}">
+      <label for="rule-${iid}">Golden Rule is correct &mdash; ${grLabel}</label>
+    </div>
+    <div class="opt-row" onclick="selOpt('${iid}','other',this)">
+      <input type="radio" name="dec-${iid}" value="other" id="other-${iid}">
+      <label for="other-${iid}">Other:</label>
+    </div>
+    <div class="other-inputs" id="oi-${iid}" style="display:none">
+      <span>Row</span>
+      <input type="number" class="other-num" id="on-${iid}" placeholder="e.g. 49" oninput="afName('${iid}')">
+      <input type="text" class="other-name" id="oname-${iid}" placeholder="Field name">
+    </div>
+  </div>
+  <button class="extra-toggle" onclick="toggleExtra('ind-${iid}',this)">
+    <span>B. Industry-specific mapping?</span> <span class="arrow">&#9660;</span>
+  </button>
+  <div class="extra-body" id="ind-${iid}">
+    <div style="font-size:12px;color:#4a5568;margin-bottom:6px">Different row per industry?</div>
+    <div style="display:flex;gap:12px;margin-bottom:8px">
+      <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer">
+        <input type="radio" name="it-${iid}" value="no" checked onchange="toggleGrid('ig-${iid}',false);saveCard('${iid}')"> No
+      </label>
+      <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer">
+        <input type="radio" name="it-${iid}" value="yes" onchange="toggleGrid('ig-${iid}',true);saveCard('${iid}')"> Yes
+      </label>
+    </div>
+    <div id="ig-${iid}" style="display:none">
+      <table class="ind-grid">
+        <tr><th>Industry</th><th>Row #</th><th>Field Name</th></tr>
+        ${['Manufacturing:mfg','Trading:trd','Services:svc','Construction:con'].map(p=>{const a=p.split(':');const lbl=a[0];const k=a[1];return '<tr><td>'+lbl+'</td><td><input type="number" id="ir-'+iid+'-'+k+'" oninput="afInd(&apos;'+iid+'&apos;,&apos;'+k+'&apos;);saveCard(&apos;'+iid+'&apos;)">'+'</td><td><input type="text" id="in-'+iid+'-'+k+'" oninput="saveCard(&apos;'+iid+'&apos;)">'+'</td></tr>';}).join('')}
+      </table>
+    </div>
+  </div>
+  <button class="extra-toggle" onclick="toggleExtra('ctx-${iid}',this)">
+    <span>C. P&amp;L vs Balance Sheet?</span> <span class="arrow">&#9660;</span>
+  </button>
+  <div class="extra-body" id="ctx-${iid}">
+    <div style="font-size:12px;color:#4a5568;margin-bottom:6px">Different row in P&amp;L vs B/S?</div>
+    <div style="display:flex;gap:12px;margin-bottom:8px">
+      <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer">
+        <input type="radio" name="ct-${iid}" value="no" checked onchange="toggleGrid('cg-${iid}',false);saveCard('${iid}')"> No
+      </label>
+      <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer">
+        <input type="radio" name="ct-${iid}" value="yes" onchange="toggleGrid('cg-${iid}',true);saveCard('${iid}')"> Yes
+      </label>
+    </div>
+    <div id="cg-${iid}" style="display:none">
+      <table class="ind-grid">
+        <tr><th>Context</th><th>Row #</th><th>Field Name</th></tr>
+        <tr><td>P&amp;L</td><td><input type="number" id="cr-${iid}-pl" oninput="afCtx('${iid}','pl');saveCard('${iid}')"></td><td><input type="text" id="cn-${iid}-pl" oninput="saveCard('${iid}')"></td></tr>
+        <tr><td>B/S</td><td><input type="number" id="cr-${iid}-bs" oninput="afCtx('${iid}','bs');saveCard('${iid}')"></td><td><input type="text" id="cn-${iid}-bs" oninput="saveCard('${iid}')"></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="notes-row">
+    <label>D. Notes / Special Conditions</label>
+    <textarea id="notes-${iid}" rows="2" placeholder="Notes, reasoning, edge cases..." oninput="saveCard('${iid}')"></textarea>
+  </div>
+  <div class="conf-row">
+    <div class="conf-lbl">E. Confidence</div>
+    <div class="conf-opts">
+      <label class="conf-opt"><input type="radio" name="conf-${iid}" value="certain" onchange="saveCard('${iid}')"> Certain</label>
+      <label class="conf-opt"><input type="radio" name="conf-${iid}" value="likely" onchange="saveCard('${iid}')"> Likely</label>
+      <label class="conf-opt"><input type="radio" name="conf-${iid}" value="discuss" onchange="saveCard('${iid}')"> Needs Discussion</label>
+    </div>
+  </div>
+</div>`;
+}
+
+function toggleGrid(id,show){var g=document.getElementById(id);if(g)g.style.display=show?'block':'none';}
+function toggleExtra(id,btn){var el=document.getElementById(id);if(!el)return;el.classList.toggle('open');var a=btn.querySelector('.arrow');if(a)a.textContent=el.classList.contains('open')?'\u25b2':'\u25bc';}
+function togglePrOverride(iid,btn){var b=document.getElementById('pr-ov-'+iid);if(b)b.classList.toggle('open');}
+function afName(iid){var n=parseInt((document.getElementById('on-'+iid)||{}).value);if(n&&ROW_NAMES[n]){var e=document.getElementById('oname-'+iid);if(e)e.value=ROW_NAMES[n];}saveCard(iid);}
+function afInd(iid,k){var n=parseInt((document.getElementById('ir-'+iid+'-'+k)||{}).value);if(n&&ROW_NAMES[n]){var e=document.getElementById('in-'+iid+'-'+k);if(e)e.value=ROW_NAMES[n];}}
+function afCtx(iid,k){var n=parseInt((document.getElementById('cr-'+iid+'-'+k)||{}).value);if(n&&ROW_NAMES[n]){var e=document.getElementById('cn-'+iid+'-'+k);if(e)e.value=ROW_NAMES[n];}}
+
+function selOpt(iid,val,row){
+  document.querySelectorAll('[name="dec-'+iid+'"]').forEach(function(r){r.closest('.opt-row').classList.remove('sel');});
+  var radio=document.getElementById(val+'-'+iid);
+  if(radio){radio.checked=true;if(row)row.classList.add('sel');}
+  var oi=document.getElementById('oi-'+iid);if(oi)oi.style.display=(val==='other')?'flex':'none';
+  saveCard(iid);
+}
+
+function getCardData(iid){
+  var dec=document.querySelector('[name="dec-'+iid+'"]:checked');
+  var conf=document.querySelector('[name="conf-'+iid+'"]:checked');
+  var itYes=document.querySelector('[name="it-'+iid+'"][value="yes"]:checked');
+  var ctYes=document.querySelector('[name="ct-'+iid+'"][value="yes"]:checked');
+  var data={item_id:iid,decision:dec?dec.value:null,confidence:conf?conf.value:null,
+    notes:(document.getElementById('notes-'+iid)||{}).value||'',industry_specific:null,context_specific:null};
+  if(data.decision==='other'){
+    data.selected_row=parseInt((document.getElementById('on-'+iid)||{}).value)||null;
+    data.selected_name=(document.getElementById('oname-'+iid)||{}).value||'';
+  }
+  if(itYes){
+    data.industry_specific={};
+    [['manufacturing','mfg'],['trading','trd'],['services','svc'],['construction','con']].forEach(function(p){
+      data.industry_specific[p[0]]={row:parseInt((document.getElementById('ir-'+iid+'-'+p[1])||{}).value)||null,name:(document.getElementById('in-'+iid+'-'+p[1])||{}).value||''};
+    });
+  }
+  if(ctYes){
+    data.context_specific={
+      pnl:{row:parseInt((document.getElementById('cr-'+iid+'-pl')||{}).value)||null,name:(document.getElementById('cn-'+iid+'-pl')||{}).value||''},
+      bs: {row:parseInt((document.getElementById('cr-'+iid+'-bs')||{}).value)||null,name:(document.getElementById('cn-'+iid+'-bs')||{}).value||''}
+    };
+  }
+  return data;
+}
+
+function saveCard(iid){
+  var data=getCardData(iid);
+  saveResponse(STORAGE_KEY,iid,data);
+  var card=document.getElementById('card-'+iid);if(card&&data.decision)card.classList.add('done');
+  refreshProgress();
+}
+
+function refreshProgress(){
+  var saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"responses":{}}');
+  // Count only unresolved items (pre-resolved don't count toward progress unless overridden)
+  var PR_IDS = new Set(PR_DATA.map(function(d){return d.id;}));
+  var reviewed=Object.keys(saved.responses||{}).filter(function(id){return !PR_IDS.has(id);}).length;
+  var pct=Math.round((reviewed/TOTAL_REMAINING)*100);
+  document.getElementById('prog-counter').textContent=reviewed+' of '+TOTAL_REMAINING+' reviewed';
+  document.getElementById('prog-pct').textContent=pct+'%';
+  document.getElementById('prog-bar').style.width=pct+'%';
+}
+
+function saveMeta(){
+  var saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"responses":{}}');
+  saved.reviewer=document.getElementById('ca-name').value;
+  saved.date=document.getElementById('review-date').value;
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
+}
+
+function restoreAllResponses(key){
+  var saved=JSON.parse(localStorage.getItem(key)||'{"responses":{}}');
+  if(saved.reviewer){var el=document.getElementById('ca-name');if(el)el.value=saved.reviewer;}
+  Object.entries(saved.responses||{}).forEach(function([iid,data]){
+    if(!data.decision)return;
+    var card=document.getElementById('card-'+iid);if(!card)return;
+    var radio=document.getElementById(data.decision+'-'+iid);
+    if(radio){radio.checked=true;var row=radio.closest('.opt-row');if(row)row.classList.add('sel');}
+    if(data.decision==='other'){
+      var oi=document.getElementById('oi-'+iid);if(oi)oi.style.display='flex';
+      if(data.selected_row){var n=document.getElementById('on-'+iid);if(n)n.value=data.selected_row;}
+      if(data.selected_name){var nm=document.getElementById('oname-'+iid);if(nm)nm.value=data.selected_name;}
+    }
+    if(data.notes){var el=document.getElementById('notes-'+iid);if(el)el.value=data.notes;}
+    if(data.confidence){var el=document.querySelector('[name="conf-'+iid+'"][value="'+data.confidence+'"]');if(el)el.checked=true;}
+    if(card&&data.decision)card.classList.add('done');
+  });
+  refreshProgress();
+}
+
+// ── Render on load ─────────────────────────────────────────────────────────────
+function renderAll(){
+  // Pre-resolved section
+  var prContainer=document.getElementById('qs-pre-resolved');
+  if(prContainer){
+    var html='';
+    PR_DATA.forEach(function(d,i){html+=buildPrCard(d,i+1);});
+    prContainer.innerHTML=html;
+  }
+  // Inject pre-resolved decisions into localStorage so they appear in export
+  var saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{"responses":{}}');
+  PR_DATA.forEach(function(d){
+    if(!saved.responses[d.id]){
+      saved.responses[d.id]={item_id:d.id,decision:d.decision,
+        selected_row:d.decision==='other'?d.win_row:null,
+        selected_name:d.decision==='other'?d.win_name:null,
+        notes:'[AUTO] via '+d.rule_id+': '+d.rule_text,
+        pre_resolved:true,win_row:d.win_row,win_name:d.win_name};
+    }
+  });
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));
+
+  // Unresolved sections
+  var byId={};UNRES_DATA.forEach(function(d){byId[d.id]=d;});
+  var globalNum=1;
+  SECTIONS.forEach(function(sec){
+    var container=document.getElementById('qs-'+sec.key.replace(/ /g,'_'));
+    if(!container)return;
+    var html='';
+    sec.ids.forEach(function(id){var d=byId[id];if(d)html+=buildCard(d,globalNum++);});
+    container.innerHTML=html;
+  });
+
+  setupSectionToggles();
+  checkRestore(STORAGE_KEY,document.getElementById('restore-banner'));
+  refreshProgress();
+}
+document.addEventListener('DOMContentLoaded',renderAll);
+</script>
+</body>
+</html>

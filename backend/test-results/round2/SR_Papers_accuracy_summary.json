@@ -1,0 +1,15 @@
+{
+  "company": "SR_Papers",
+  "industry": "manufacturing",
+  "round": 2,
+  "total_items": 216,
+  "correct": 69,
+  "wrong": 144,
+  "doubts": 3,
+  "accuracy_pct": 31.94,
+  "round1_accuracy_pct": 31.48,
+  "delta_pp": 0.46,
+  "elapsed_seconds": 469.21,
+  "tokens_used": 332457,
+  "date": "2026-03-27 02:47"
+}

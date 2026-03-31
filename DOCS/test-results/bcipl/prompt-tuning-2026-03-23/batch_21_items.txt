@@ -1,0 +1,90 @@
+Item 1:
+  Description: Ronak.S. Bagadia - Remuneration
+  Amount: Rs 1,826,903.00
+  Section: subnotes to BS - director remuneration payable
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 2:
+  Description: POSCO INDIA PUNE PROCESSING CENTER PVT. LTD
+  Amount: Rs 88,305,813.55
+  Section: subnotes to BS - sundry creditors-purchases
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 3:
+  Description: WINAYAKA INDUSTRIAL NEED
+  Amount: Rs 9,620,762.90
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 4:
+  Description: Outstanding Expenditure
+  Amount: Rs 5,220,269.40
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 5:
+  Description: Total Trade Payables
+  Amount: Rs 103,146,845.85
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 6:
+  Description: - Other than MSME
+  Amount: Rs 103,146,845.85
+  Section: subnotes to BS - sundry creditors - purchases others
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 7:
+  Description: TDS 2021-22
+  Amount: Rs 2,423,470.76
+  Section: subnotes to BS - tax deducted @ source
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 8:
+  Description: Advance Income Tax 21-22
+  Amount: Rs 23,750,000.00
+  Section: subnotes to BS - advance income tax - 17-18
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 9:
+  Description: Kotak Mahindra Bank a/c -6312767686(Cr.)
+  Amount: Rs 112,825,617.21
+  Section: subnotes to BS - bank balances(cr.)
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 10:
+  Description: S.B.I-06891-Devanahalli Branch (Dr)
+  Amount: Rs 165,566.78
+  Section: subnotes to BS - bank balances(dr.)
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 11:
+  Description: Ikalnos Co. Ltd
+  Amount: Rs 1,691,035.44
+  Section: subnotes to BS - capital advances
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 12:
+  Description: Employee Contribution to EPF A/c
+  Amount: Rs 2,909,477.85
+  Section: subnotes to BS - other advances/ receivables
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 13:
+  Description: NMTG Mechtrans Techiques Pvt Ltd
+  Amount: Rs 12,372,897.40
+  Section: subnotes to BS - advance to suppliers - others
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 14:
+  Description: SK ENTERPRISES
+  Amount: Rs 13,699,218.01
+  Section: subnotes to BS - advance from customers
+  Sheet: Subnotes to BS
+  Financial Year: 2022
+Item 15:
+  Description: ELGI ULTRA LIMITED
+  Amount: Rs 363,221,722.22
+  Section: subnotes to BS - trade receivables
+  Sheet: Subnotes to BS
+  Financial Year: 2022

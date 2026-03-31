@@ -1,0 +1,2966 @@
+{
+  "overview": {
+    "total_entries": 1326,
+    "companies": 9,
+    "financial_years": [
+      "2020-21",
+      "2021-22",
+      "2022-23",
+      "2023-24",
+      "2024-25"
+    ],
+    "cma_rows_covered": 98,
+    "cma_rows_missing": 33,
+    "industry_types": {
+      "manufacturing": 976,
+      "trading": 350
+    },
+    "entity_types": {
+      "private_limited": 1203,
+      "partnership": 49,
+      "proprietorship": 74
+    }
+  },
+  "per_class_distribution": {
+    "21": {
+      "code": "II_A1",
+      "name": "Domestic",
+      "count": 38,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 10,
+        "composite_component": 26,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_pl": 33,
+        "profit_and_loss": 4,
+        "cma_form": 1
+      },
+      "sections": {
+        "revenue": 38
+      }
+    },
+    "22": {
+      "code": "II_A2",
+      "name": "Exports",
+      "count": 14,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 4,
+        "composite_component": 10
+      },
+      "source_forms": {
+        "notes_pl": 13,
+        "cma_form": 1
+      },
+      "sections": {
+        "revenue": 9,
+        "other_income": 5
+      }
+    },
+    "28": {
+      "code": "II_B1",
+      "name": "Dividends received from Mutual Funds",
+      "count": 1,
+      "companies": [
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_pl": 1
+      },
+      "sections": {
+        "other_income": 1
+      }
+    },
+    "29": {
+      "code": "II_B2",
+      "name": "Interest Received",
+      "count": 26,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 14,
+        "composite_component": 12
+      },
+      "source_forms": {
+        "notes_pl": 24,
+        "profit_and_loss": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_income": 26
+      }
+    },
+    "30": {
+      "code": "II_B3",
+      "name": "Profit on sale of fixed assets / Investments",
+      "count": 3,
+      "companies": [
+        "BCIPL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "composite_component": 1,
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_pl": 3
+      },
+      "sections": {
+        "other_income": 3
+      }
+    },
+    "31": {
+      "code": "II_B4",
+      "name": "Gain on Exchange Fluctuations",
+      "count": 5,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 5
+      },
+      "source_forms": {
+        "notes_pl": 4,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_income": 5
+      }
+    },
+    "33": {
+      "code": "II_B6a",
+      "name": "Others",
+      "count": 27,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 14,
+        "composite_component": 11,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_pl": 22,
+        "profit_and_loss": 2,
+        "notes_general": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_income": 27
+      }
+    },
+    "40": {
+      "code": "II_C1",
+      "name": "Raw Materials Consumed ( Imported)",
+      "count": 7,
+      "companies": [
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "split": 3,
+        "direct": 4
+      },
+      "source_forms": {
+        "notes_pl": 6,
+        "notes_general": 1
+      },
+      "sections": {
+        "raw_materials": 4,
+        "admin_expense": 3
+      }
+    },
+    "41": {
+      "code": "II_C2",
+      "name": "Raw Materials Consumed ( Indigenous)",
+      "count": 27,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 10,
+        "composite_component": 14,
+        "split": 3
+      },
+      "source_forms": {
+        "notes_pl": 15,
+        "profit_and_loss": 10,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "raw_materials": 25,
+        "other_income": 1,
+        "manufacturing_expense": 1
+      }
+    },
+    "43": {
+      "code": "II_C4",
+      "name": "Stores and spares consumed ( Indigenous)",
+      "count": 11,
+      "companies": [
+        "BCIPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "composite_component": 5,
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_pl": 6,
+        "profit_and_loss": 4,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 8,
+        "raw_materials": 1,
+        "other_income": 1,
+        "manufacturing_expense": 1
+      }
+    },
+    "44": {
+      "code": "II_C5",
+      "name": "Wages",
+      "count": 45,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "split": 3,
+        "composite_component": 37,
+        "direct": 5
+      },
+      "source_forms": {
+        "notes_pl": 39,
+        "profit_and_loss": 5,
+        "cma_form": 1
+      },
+      "sections": {
+        "employee_cost": 34,
+        "admin_expense": 7,
+        "manufacturing_expense": 1,
+        "raw_materials": 3
+      }
+    },
+    "45": {
+      "code": "II_C6",
+      "name": "Processing / Job Work Charges",
+      "count": 7,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 7
+      },
+      "source_forms": {
+        "notes_pl": 7
+      },
+      "sections": {
+        "admin_expense": 7
+      }
+    },
+    "46": {
+      "code": "II_C7",
+      "name": "Freight and Transportation Charges",
+      "count": 16,
+      "companies": [
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 10,
+        "composite_component": 6
+      },
+      "source_forms": {
+        "notes_pl": 15,
+        "cma_form": 1
+      },
+      "sections": {
+        "selling_expense": 1,
+        "admin_expense": 9,
+        "raw_materials": 4,
+        "manufacturing_expense": 2
+      }
+    },
+    "47": {
+      "code": "II_C8",
+      "name": "Power, Coal, Fuel and Water",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 18
+      },
+      "source_forms": {
+        "notes_pl": 16,
+        "profit_and_loss": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 14,
+        "manufacturing_expense": 1,
+        "raw_materials": 3
+      }
+    },
+    "48": {
+      "code": "II_C9",
+      "name": "Others",
+      "count": 35,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 5,
+        "composite_component": 29,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_pl": 30,
+        "profit_and_loss": 3,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 28,
+        "manufacturing_expense": 4,
+        "raw_materials": 3
+      }
+    },
+    "49": {
+      "code": "II_C10",
+      "name": "Repairs & Maintenance",
+      "count": 20,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 8,
+        "composite_component": 12
+      },
+      "source_forms": {
+        "notes_pl": 19,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 19,
+        "manufacturing_expense": 1
+      }
+    },
+    "50": {
+      "code": "II_C10a",
+      "name": "Security Service Charges",
+      "count": 2,
+      "companies": [
+        "Dynamic Air",
+        "INPL"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_pl": 2
+      },
+      "sections": {
+        "admin_expense": 2
+      }
+    },
+    "52": {
+      "code": "II_C12",
+      "name": "Stock in process Opening Balance",
+      "count": 6,
+      "companies": [
+        "Dynamic Air",
+        "INPL",
+        "Mehta Computer",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_pl": 5,
+        "profit_and_loss": 1
+      },
+      "sections": {
+        "raw_materials": 6
+      }
+    },
+    "53": {
+      "code": "II_C13a",
+      "name": "Stock in process Closing Balance",
+      "count": 6,
+      "companies": [
+        "Dynamic Air",
+        "INPL",
+        "Mehta Computer",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_pl": 4,
+        "notes_bs": 1,
+        "profit_and_loss": 1
+      },
+      "sections": {
+        "raw_materials": 4,
+        "inventories": 1,
+        "revenue": 1
+      }
+    },
+    "55": {
+      "code": "II_C14",
+      "name": "Depreciation",
+      "count": 19,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 18,
+        "split": 1
+      },
+      "source_forms": {
+        "profit_and_loss": 18,
+        "cma_form": 1
+      },
+      "sections": {
+        "raw_materials": 16,
+        "admin_expense": 1,
+        "manufacturing_expense": 1,
+        "depreciation": 1
+      }
+    },
+    "57": {
+      "code": "II_C17",
+      "name": "Finished Goods Opening Balance",
+      "count": 14,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "composite_component": 3,
+        "direct": 11
+      },
+      "source_forms": {
+        "notes_pl": 11,
+        "profit_and_loss": 1,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "raw_materials": 12,
+        "inventories": 1,
+        "manufacturing_expense": 1
+      }
+    },
+    "58": {
+      "code": "II_C18a",
+      "name": "Finished Goods Closing Balance",
+      "count": 15,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 13,
+        "composite_component": 2
+      },
+      "source_forms": {
+        "notes_pl": 10,
+        "profit_and_loss": 1,
+        "notes_general": 1,
+        "notes_bs": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "raw_materials": 10,
+        "revenue": 1,
+        "inventories": 3,
+        "manufacturing_expense": 1
+      }
+    },
+    "62": {
+      "code": "II_C20",
+      "name": "Depreciation",
+      "count": 3,
+      "companies": [
+        "BCIPL"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "profit_and_loss": 3
+      },
+      "sections": {
+        "raw_materials": 3
+      }
+    },
+    "63": {
+      "code": "II_C21",
+      "name": "Other Manufacturing Exp",
+      "count": 3,
+      "companies": [
+        "BCIPL"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "cma_form": 3
+      },
+      "sections": {
+        "manufacturing_expense": 3
+      }
+    },
+    "66": {
+      "code": "II_D1",
+      "name": "Salary and staff expenses",
+      "count": 25,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Mehta Computer",
+        "SR Papers"
+      ],
+      "match_types": {
+        "split": 3,
+        "composite_component": 22
+      },
+      "source_forms": {
+        "notes_pl": 25
+      },
+      "sections": {
+        "employee_cost": 17,
+        "admin_expense": 8
+      }
+    },
+    "67": {
+      "code": "II_D2",
+      "name": "Rent , Rates and Taxes",
+      "count": 25,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 9,
+        "composite_component": 16
+      },
+      "source_forms": {
+        "notes_pl": 24,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 24,
+        "raw_materials": 1
+      }
+    },
+    "68": {
+      "code": "II_D3",
+      "name": "Bad Debts",
+      "count": 7,
+      "companies": [
+        "BCIPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 7
+      },
+      "source_forms": {
+        "notes_pl": 7
+      },
+      "sections": {
+        "admin_expense": 5,
+        "selling_expense": 2
+      }
+    },
+    "69": {
+      "code": "II_D4",
+      "name": "Advertisements and Sales Promotions",
+      "count": 29,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 6,
+        "composite_component": 23
+      },
+      "source_forms": {
+        "notes_pl": 27,
+        "profit_and_loss": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 18,
+        "selling_expense": 11
+      }
+    },
+    "70": {
+      "code": "II_D5",
+      "name": "Others",
+      "count": 125,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "composite_component": 124,
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_pl": 107,
+        "profit_and_loss": 6,
+        "notes_general": 11,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 117,
+        "selling_expense": 7,
+        "employee_cost": 1
+      }
+    },
+    "71": {
+      "code": "II_D6",
+      "name": "Repairs & Maintenance",
+      "count": 17,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 5,
+        "composite_component": 12
+      },
+      "source_forms": {
+        "notes_pl": 15,
+        "profit_and_loss": 2
+      },
+      "sections": {
+        "admin_expense": 17
+      }
+    },
+    "72": {
+      "code": "II_D7a",
+      "name": "Audit Fees & Directors Remuneration",
+      "count": 28,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "composite_component": 23,
+        "direct": 5
+      },
+      "source_forms": {
+        "notes_pl": 26,
+        "profit_and_loss": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 19,
+        "employee_cost": 9
+      }
+    },
+    "74": {
+      "code": "II_E1",
+      "name": "Miscellaneous Expenses written off",
+      "count": 1,
+      "companies": [
+        "BCIPL"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_pl": 1
+      },
+      "sections": {
+        "admin_expense": 1
+      }
+    },
+    "82": {
+      "code": "II_F1",
+      "name": "Interest on Fixed Loans / Term loans",
+      "count": 30,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "composite_component": 16,
+        "direct": 9,
+        "split": 5
+      },
+      "source_forms": {
+        "notes_pl": 27,
+        "profit_and_loss": 1,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "finance_cost": 26,
+        "admin_expense": 4
+      }
+    },
+    "83": {
+      "code": "II_F2",
+      "name": "Interest on Working capital loans",
+      "count": 21,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 6,
+        "composite_component": 10,
+        "split": 5
+      },
+      "source_forms": {
+        "notes_pl": 18,
+        "profit_and_loss": 1,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "finance_cost": 20,
+        "admin_expense": 1
+      }
+    },
+    "84": {
+      "code": "II_F3",
+      "name": "Bank Charges",
+      "count": 21,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 13,
+        "composite_component": 8
+      },
+      "source_forms": {
+        "notes_pl": 20,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 12,
+        "finance_cost": 9
+      }
+    },
+    "88": {
+      "code": "II_G1",
+      "name": "Loss on sale of fixed assets / Investments",
+      "count": 3,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "notes_pl": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 2,
+        "exceptional": 1
+      }
+    },
+    "89": {
+      "code": "II_G2",
+      "name": "Sundry Balances Written off",
+      "count": 2,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_pl": 2
+      },
+      "sections": {
+        "admin_expense": 2
+      }
+    },
+    "90": {
+      "code": "II_G3",
+      "name": "Loss on Exchange Fluctuations",
+      "count": 3,
+      "companies": [
+        "BCIPL",
+        "MSL"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "notes_pl": 3
+      },
+      "sections": {
+        "admin_expense": 1,
+        "selling_expense": 2
+      }
+    },
+    "92": {
+      "code": "II_G5",
+      "name": "Others",
+      "count": 4,
+      "companies": [
+        "INPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 3,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "notes_pl": 3,
+        "cma_form": 1
+      },
+      "sections": {
+        "admin_expense": 3,
+        "depreciation": 1
+      }
+    },
+    "98": {
+      "code": "II_H1",
+      "name": "Income Tax  provision",
+      "count": 20,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "composite_component": 8,
+        "direct": 12
+      },
+      "source_forms": {
+        "profit_and_loss": 19,
+        "notes_pl": 1
+      },
+      "sections": {
+        "tax": 20
+      }
+    },
+    "99": {
+      "code": "II_H2",
+      "name": "Deferred Tax Liability",
+      "count": 14,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 13,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "profit_and_loss": 13,
+        "cma_form": 1
+      },
+      "sections": {
+        "tax": 14
+      }
+    },
+    "100": {
+      "code": "II_H3",
+      "name": "Deferred Tax Asset",
+      "count": 6,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "profit_and_loss": 6
+      },
+      "sections": {
+        "tax": 6
+      }
+    },
+    "105": {
+      "code": "II_I1",
+      "name": "Brought forward from previous year",
+      "count": 9,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL"
+      ],
+      "match_types": {
+        "direct": 9
+      },
+      "source_forms": {
+        "notes_bs": 9
+      },
+      "sections": {
+        "reserves": 9
+      }
+    },
+    "107": {
+      "code": "II_I3",
+      "name": "Other Appropriation of profit",
+      "count": 2,
+      "companies": [
+        "INPL",
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_bs": 1,
+        "profit_and_loss": 1
+      },
+      "sections": {
+        "reserves": 1,
+        "appropriation": 1
+      }
+    },
+    "115": {
+      "code": "III_L1",
+      "name": "Issued, Subscribed and Paid up",
+      "count": 19,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 19
+      },
+      "source_forms": {
+        "balance_sheet": 13,
+        "notes_bs": 5,
+        "cma_form": 1
+      },
+      "sections": {
+        "share_capital": 18,
+        "current_liabilities": 1
+      }
+    },
+    "120": {
+      "code": "III_L2a",
+      "name": "General Reserve",
+      "count": 7,
+      "companies": [
+        "MSL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 7
+      },
+      "source_forms": {
+        "notes_bs": 6,
+        "cma_form": 1
+      },
+      "sections": {
+        "reserves": 7
+      }
+    },
+    "121": {
+      "code": "III_L2b",
+      "name": "Balance transferred from profit and loss a/c",
+      "count": 19,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 18,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_bs": 13,
+        "notes_general": 1,
+        "balance_sheet": 4,
+        "cma_form": 1
+      },
+      "sections": {
+        "reserves": 18,
+        "share_capital": 1
+      }
+    },
+    "122": {
+      "code": "III_L2c",
+      "name": "Share Premium A/c",
+      "count": 16,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 16
+      },
+      "source_forms": {
+        "notes_bs": 14,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "reserves": 16
+      }
+    },
+    "124": {
+      "code": "III_L2e",
+      "name": "Other Reserve",
+      "count": 4,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 4
+      },
+      "source_forms": {
+        "notes_bs": 3,
+        "cma_form": 1
+      },
+      "sections": {
+        "reserves": 4
+      }
+    },
+    "130": {
+      "code": "III_L3a",
+      "name": "From Indian Bank",
+      "count": 20,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "composite_component": 11,
+        "direct": 6,
+        "split": 3
+      },
+      "source_forms": {
+        "balance_sheet": 3,
+        "notes_bs": 13,
+        "notes_general": 3,
+        "cma_form": 1
+      },
+      "sections": {
+        "current_liabilities": 3,
+        "borrowings_short": 15,
+        "borrowings_long": 2
+      }
+    },
+    "131": {
+      "code": "III_L3b",
+      "name": "From Indian Overseas Bank",
+      "count": 4,
+      "companies": [
+        "BCIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 2,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_bs": 4
+      },
+      "sections": {
+        "borrowings_short": 4
+      }
+    },
+    "135": {
+      "code": "III_L4a",
+      "name": "Term Loan Repayable in next one year",
+      "count": 12,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 12
+      },
+      "source_forms": {
+        "notes_bs": 9,
+        "balance_sheet": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "current_liabilities": 3,
+        "borrowings_short": 8,
+        "borrowings_long": 1
+      }
+    },
+    "136": {
+      "code": "III_L4b",
+      "name": "Balance Repayable after one year",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 13,
+        "composite_component": 3,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_bs": 10,
+        "balance_sheet": 6,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "borrowings_long": 18
+      }
+    },
+    "139": {
+      "code": "III_L5a",
+      "name": "Repayable in next one year",
+      "count": 2,
+      "companies": [
+        "Dynamic Air"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_bs": 2
+      },
+      "sections": {
+        "borrowings_short": 2
+      }
+    },
+    "140": {
+      "code": "III_L5b",
+      "name": "Balance Repayable after one year",
+      "count": 3,
+      "companies": [
+        "Dynamic Air",
+        "SR Papers"
+      ],
+      "match_types": {
+        "split": 1,
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_bs": 3
+      },
+      "sections": {
+        "borrowings_short": 1,
+        "borrowings_long": 2
+      }
+    },
+    "148": {
+      "code": "III_L7b",
+      "name": "Balance Other Debts",
+      "count": 3,
+      "companies": [
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "balance_sheet": 3
+      },
+      "sections": {
+        "borrowings_long": 3
+      }
+    },
+    "151": {
+      "code": "III_L8a",
+      "name": "As Quasi Equity",
+      "count": 14,
+      "companies": [
+        "BCIPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 7,
+        "composite_component": 3,
+        "split": 4
+      },
+      "source_forms": {
+        "notes_bs": 9,
+        "balance_sheet": 3,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "borrowings_long": 9,
+        "borrowings_short": 5
+      }
+    },
+    "152": {
+      "code": "III_L8b",
+      "name": "As Long Term Debt",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 8,
+        "composite_component": 9,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_bs": 11,
+        "balance_sheet": 5,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "borrowings_long": 16,
+        "current_liabilities": 1,
+        "borrowings_short": 1
+      }
+    },
+    "158": {
+      "code": "III_L9",
+      "name": "Deferred tax liability",
+      "count": 13,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 13
+      },
+      "source_forms": {
+        "balance_sheet": 10,
+        "notes_bs": 3
+      },
+      "sections": {
+        "borrowings_long": 10,
+        "tax": 3
+      }
+    },
+    "161": {
+      "code": "III_A1",
+      "name": "Gross Block",
+      "count": 21,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 18,
+        "split": 2,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "cma_form": 6,
+        "balance_sheet": 5,
+        "notes_bs": 10
+      },
+      "sections": {
+        "depreciation": 3,
+        "other_assets": 2,
+        "fixed_assets": 14,
+        "investments": 2
+      }
+    },
+    "162": {
+      "code": "III_A2",
+      "name": "Less Accumulated Depreciation",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 18
+      },
+      "source_forms": {
+        "cma_form": 6,
+        "notes_bs": 8,
+        "balance_sheet": 3,
+        "profit_and_loss": 1
+      },
+      "sections": {
+        "depreciation": 5,
+        "fixed_assets": 13
+      }
+    },
+    "164": {
+      "code": "III_A3a",
+      "name": "Add : Capital Work in Progress",
+      "count": 7,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 7
+      },
+      "source_forms": {
+        "balance_sheet": 7
+      },
+      "sections": {
+        "fixed_assets": 7
+      }
+    },
+    "168": {
+      "code": "III_A5a",
+      "name": "Patents / goodwill / copyrights etc",
+      "count": 2,
+      "companies": [
+        "INPL"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "balance_sheet": 2
+      },
+      "sections": {
+        "fixed_assets": 2
+      }
+    },
+    "170": {
+      "code": "III_A5c",
+      "name": "Deferred Tax Asset",
+      "count": 4,
+      "companies": [
+        "MSL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 4
+      },
+      "source_forms": {
+        "balance_sheet": 3,
+        "cma_form": 1
+      },
+      "sections": {
+        "fixed_assets": 3,
+        "other_assets": 1
+      }
+    },
+    "171": {
+      "code": "III_A5d",
+      "name": "Other Intangible assets",
+      "count": 6,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "cma_form": 3,
+        "balance_sheet": 2,
+        "notes_bs": 1
+      },
+      "sections": {
+        "depreciation": 3,
+        "fixed_assets": 3
+      }
+    },
+    "174": {
+      "code": "III_A6",
+      "name": "Additions to Fixed Assets",
+      "count": 3,
+      "companies": [
+        "Dynamic Air",
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 3
+      },
+      "source_forms": {
+        "notes_bs": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "fixed_assets": 3
+      }
+    },
+    "181": {
+      "code": "III_A10a",
+      "name": "Investment in Govt. Securities ( Current )",
+      "count": 2,
+      "companies": [
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 1,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "notes_bs": 2
+      },
+      "sections": {
+        "investments": 2
+      }
+    },
+    "184": {
+      "code": "III_A10c",
+      "name": "Other current investments",
+      "count": 1,
+      "companies": [
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_bs": 1
+      },
+      "sections": {
+        "investments": 1
+      }
+    },
+    "185": {
+      "code": "III_A10d",
+      "name": "Other non current investments",
+      "count": 1,
+      "companies": [
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_bs": 1
+      },
+      "sections": {
+        "investments": 1
+      }
+    },
+    "187": {
+      "code": "III_A10e",
+      "name": "Investment in group companies / subsidiaries",
+      "count": 1,
+      "companies": [
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_general": 1
+      },
+      "sections": {
+        "investments": 1
+      }
+    },
+    "193": {
+      "code": "III_A11b",
+      "name": "Indigenous",
+      "count": 13,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 13
+      },
+      "source_forms": {
+        "notes_bs": 10,
+        "balance_sheet": 3
+      },
+      "sections": {
+        "inventories": 10,
+        "other_assets": 3
+      }
+    },
+    "197": {
+      "code": "III_A12b",
+      "name": "Indigenous",
+      "count": 5,
+      "companies": [
+        "BCIPL",
+        "Kurunji Retail",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 5
+      },
+      "source_forms": {
+        "notes_bs": 4,
+        "balance_sheet": 1
+      },
+      "sections": {
+        "inventories": 4,
+        "other_assets": 1
+      }
+    },
+    "199": {
+      "code": "III_A13",
+      "name": "Stocks-in-process",
+      "count": 6,
+      "companies": [
+        "Dynamic Air",
+        "INPL",
+        "Mehta Computer",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_bs": 5,
+        "balance_sheet": 1
+      },
+      "sections": {
+        "inventories": 5,
+        "other_assets": 1
+      }
+    },
+    "200": {
+      "code": "III_A14",
+      "name": "Finished Goods",
+      "count": 15,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 13,
+        "composite_component": 2
+      },
+      "source_forms": {
+        "notes_bs": 12,
+        "balance_sheet": 1,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "inventories": 14,
+        "other_assets": 1
+      }
+    },
+    "205": {
+      "code": "III_A15a",
+      "name": "Domestic Receivables ( including bills purchased and discounted)",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 17,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_bs": 12,
+        "notes_general": 1,
+        "balance_sheet": 4,
+        "cma_form": 1
+      },
+      "sections": {
+        "receivables": 14,
+        "other_assets": 4
+      }
+    },
+    "206": {
+      "code": "III_A15b",
+      "name": "Export Receivables ( including bills purchased and discounted)",
+      "count": 4,
+      "companies": [
+        "BCIPL",
+        "MSL"
+      ],
+      "match_types": {
+        "direct": 4
+      },
+      "source_forms": {
+        "notes_bs": 4
+      },
+      "sections": {
+        "receivables": 4
+      }
+    },
+    "207": {
+      "code": "III_A15c",
+      "name": "Debtors more than 6 months",
+      "count": 15,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 7,
+        "composite_component": 8
+      },
+      "source_forms": {
+        "notes_bs": 14,
+        "cma_form": 1
+      },
+      "sections": {
+        "receivables": 15
+      }
+    },
+    "211": {
+      "code": "III_A16a",
+      "name": "Cash on Hand",
+      "count": 19,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 16,
+        "split": 3
+      },
+      "source_forms": {
+        "notes_bs": 15,
+        "balance_sheet": 2,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "cash": 19
+      }
+    },
+    "212": {
+      "code": "III_A16b",
+      "name": "Bank Balances",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 15,
+        "composite_component": 1,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_bs": 14,
+        "balance_sheet": 2,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "cash": 18
+      }
+    },
+    "213": {
+      "code": "III_A16c",
+      "name": "Fixed Deposit under lien",
+      "count": 2,
+      "companies": [
+        "INPL",
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 2
+      },
+      "source_forms": {
+        "notes_bs": 2
+      },
+      "sections": {
+        "cash": 2
+      }
+    },
+    "214": {
+      "code": "III_A16d",
+      "name": "Other Fixed Deposits",
+      "count": 9,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Mehta Computer",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 8,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "notes_bs": 8,
+        "notes_general": 1
+      },
+      "sections": {
+        "cash": 8,
+        "investments": 1
+      }
+    },
+    "218": {
+      "code": "III_A17a",
+      "name": "Advances recoverable in cash or in kind",
+      "count": 16,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 11,
+        "composite_component": 5
+      },
+      "source_forms": {
+        "notes_bs": 12,
+        "cma_form": 1,
+        "balance_sheet": 3
+      },
+      "sections": {
+        "other_assets": 16
+      }
+    },
+    "219": {
+      "code": "III_A17b",
+      "name": "Advances to suppliers of raw materials",
+      "count": 10,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 10
+      },
+      "source_forms": {
+        "notes_bs": 9,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_assets": 10
+      }
+    },
+    "220": {
+      "code": "III_A17c",
+      "name": "Advance Income Tax",
+      "count": 13,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 11,
+        "split": 2
+      },
+      "source_forms": {
+        "notes_bs": 11,
+        "cma_form": 1,
+        "balance_sheet": 1
+      },
+      "sections": {
+        "other_assets": 13
+      }
+    },
+    "221": {
+      "code": "III_A17d",
+      "name": "Prepaid Expenses",
+      "count": 11,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 10,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_bs": 9,
+        "balance_sheet": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_assets": 11
+      }
+    },
+    "222": {
+      "code": "III_A17e",
+      "name": "Other Advances / current asset",
+      "count": 18,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 10,
+        "split": 3,
+        "composite_component": 5
+      },
+      "source_forms": {
+        "notes_bs": 11,
+        "balance_sheet": 3,
+        "notes_general": 3,
+        "cma_form": 1
+      },
+      "sections": {
+        "other_assets": 18
+      }
+    },
+    "231": {
+      "code": "III_A19",
+      "name": "Debtors more than six months",
+      "count": 10,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 9,
+        "split": 1
+      },
+      "source_forms": {
+        "notes_bs": 8,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "receivables": 6,
+        "other_assets": 4
+      }
+    },
+    "234": {
+      "code": "III_A22a",
+      "name": "Dues from directors / partners / promoters",
+      "count": 2,
+      "companies": [
+        "Kurunji Retail",
+        "Mehta Computer"
+      ],
+      "match_types": {
+        "direct": 1,
+        "composite_component": 1
+      },
+      "source_forms": {
+        "balance_sheet": 1,
+        "notes_bs": 1
+      },
+      "sections": {
+        "other_assets": 2
+      }
+    },
+    "235": {
+      "code": "III_A22b",
+      "name": "Advances to suppliers of capital goods",
+      "count": 6,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_bs": 6
+      },
+      "sections": {
+        "other_assets": 6
+      }
+    },
+    "236": {
+      "code": "III_A22c",
+      "name": "Security deposits with government departments",
+      "count": 13,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "MSL",
+        "Mehta Computer",
+        "SR Papers"
+      ],
+      "match_types": {
+        "direct": 10,
+        "split": 3
+      },
+      "source_forms": {
+        "notes_bs": 12,
+        "cma_form": 1
+      },
+      "sections": {
+        "fixed_assets": 3,
+        "other_assets": 10
+      }
+    },
+    "237": {
+      "code": "III_A22d",
+      "name": "Other non current assets",
+      "count": 7,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 5,
+        "composite_component": 2
+      },
+      "source_forms": {
+        "balance_sheet": 2,
+        "notes_bs": 5
+      },
+      "sections": {
+        "fixed_assets": 2,
+        "other_assets": 5
+      }
+    },
+    "241": {
+      "code": "III_L10a",
+      "name": "Sundry Creditors for goods",
+      "count": 19,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "Kurunji Retail",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 19
+      },
+      "source_forms": {
+        "balance_sheet": 9,
+        "notes_bs": 8,
+        "notes_general": 1,
+        "cma_form": 1
+      },
+      "sections": {
+        "current_liabilities": 19
+      }
+    },
+    "242": {
+      "code": "III_L10b",
+      "name": "Advance received from customers",
+      "count": 6,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 6
+      },
+      "source_forms": {
+        "notes_bs": 6
+      },
+      "sections": {
+        "current_liabilities": 6
+      }
+    },
+    "243": {
+      "code": "III_L10c",
+      "name": "Provision for Taxation",
+      "count": 12,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 12
+      },
+      "source_forms": {
+        "notes_bs": 9,
+        "profit_and_loss": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "current_liabilities": 10,
+        "tax": 2
+      }
+    },
+    "245": {
+      "code": "III_L10e",
+      "name": "Other statutory liabilities (due within 1 year)",
+      "count": 22,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 15,
+        "composite_component": 7
+      },
+      "source_forms": {
+        "notes_bs": 18,
+        "notes_general": 1,
+        "cma_form": 1,
+        "balance_sheet": 2
+      },
+      "sections": {
+        "current_liabilities": 22
+      }
+    },
+    "247": {
+      "code": "III_L10g",
+      "name": "Interest Accrued and due",
+      "count": 1,
+      "companies": [
+        "SLIPL"
+      ],
+      "match_types": {
+        "direct": 1
+      },
+      "source_forms": {
+        "notes_bs": 1
+      },
+      "sections": {
+        "current_liabilities": 1
+      }
+    },
+    "248": {
+      "code": "III_L10h",
+      "name": "Creditors for Expenses",
+      "count": 14,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "Mehta Computer",
+        "SLIPL",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 8,
+        "composite_component": 6
+      },
+      "source_forms": {
+        "notes_bs": 11,
+        "notes_general": 1,
+        "cma_form": 1,
+        "balance_sheet": 1
+      },
+      "sections": {
+        "current_liabilities": 14
+      }
+    },
+    "249": {
+      "code": "III_L10i",
+      "name": "Other current liabilities",
+      "count": 24,
+      "companies": [
+        "BCIPL",
+        "Dynamic Air",
+        "INPL",
+        "MSL",
+        "SR Papers",
+        "SSSS"
+      ],
+      "match_types": {
+        "direct": 10,
+        "composite_component": 14
+      },
+      "source_forms": {
+        "notes_bs": 21,
+        "notes_general": 2,
+        "cma_form": 1
+      },
+      "sections": {
+        "current_liabilities": 24
+      }
+    }
+  },
+  "missing_classes": [
+    {
+      "cma_row": 24,
+      "code": "II_A4",
+      "name": "Less Excise Duty and Cess",
+      "fillable": false,
+      "reason": "Excise Duty row is obsolete — GST replaced excise duty in July 2017. No Indian company filing after FY2017-18 would have excise duty as a separate line item. This row is structurally obsolete for any post-GST financial statement."
+    },
+    {
+      "cma_row": 32,
+      "code": "II_B5",
+      "name": "Extraordinary income",
+      "fillable": true,
+      "reason": "Extraordinary income items do exist but are rare by definition. None of the 9 sampled companies had qualifying extraordinary income. Export-oriented or listed companies dealing with one-time government grants or windfalls could fill this row."
+    },
+    {
+      "cma_row": 42,
+      "code": "II_C3",
+      "name": "Stores and spares consumed ( Imported)",
+      "fillable": true,
+      "reason": "Imported stores/spares consumed — all 9 companies use indigenous stores/spares only. Export-oriented manufacturers or companies with specialized imported machinery (e.g., pharmaceutical, auto components) would have imported stores spares on B/S and P&L."
+    },
+    {
+      "cma_row": 75,
+      "code": "II_E2",
+      "name": "Deferred Revenue Expenditures",
+      "fillable": false,
+      "reason": "Deferred Revenue Expenditures is largely obsolete under Ind AS (AS-26 / Ind AS 38 replaced DRE treatment). Private limited companies under current accounting standards would not have this line. Only very old pre-Ind AS entities might still carry this."
+    },
+    {
+      "cma_row": 76,
+      "code": "II_E3a",
+      "name": "Other Amortisations",
+      "fillable": true,
+      "reason": "Other Amortisations could appear in companies with significant intangible assets (software, patents, brand). IT/pharma companies or companies with acquired intangibles would fill this row."
+    },
+    {
+      "cma_row": 91,
+      "code": "II_G4",
+      "name": "Extraordinary losses",
+      "fillable": true,
+      "reason": "Extraordinary losses are rare by accounting standards definition but can appear in companies facing write-offs from floods, fire, or one-time restructuring. A larger sample would likely surface this."
+    },
+    {
+      "cma_row": 106,
+      "code": "II_I2",
+      "name": "Dividend ( Final + Interim , Including Dividend Tax )",
+      "fillable": false,
+      "reason": "Dividend appropriation does not apply to most private limited companies — they rarely declare dividends. Partnership firms and proprietorships also do not declare dividends. Only public limited companies or dividend-paying private companies would use this."
+    },
+    {
+      "cma_row": 116,
+      "code": "III_L1a",
+      "name": "Share Application Money",
+      "fillable": false,
+      "reason": "Share Application Money — rarely applicable for established private limited companies. It would appear only in companies actively raising equity but share allotment not yet completed. None of the 9 sampled companies were in that stage."
+    },
+    {
+      "cma_row": 123,
+      "code": "III_L2d",
+      "name": "Revaluation Reserve",
+      "fillable": false,
+      "reason": "Revaluation Reserve requires a formal asset revaluation exercise. Extremely rare in small/mid private limited companies. None of the 9 sampled companies performed revaluations. Could appear in large asset-heavy companies undergoing valuation for merger/acquisition."
+    },
+    {
+      "cma_row": 132,
+      "code": "III_L3c",
+      "name": "(o/s bill discounting balance to be included)",
+      "fillable": true,
+      "reason": "Bill discounting balance — the parenthetical note row for working capital bank finance. Companies actively using bill discounting facilities (common in trading companies) could fill this. The trading companies sampled may not have used this specific facility."
+    },
+    {
+      "cma_row": 143,
+      "code": "III_L6a",
+      "name": "Repayable in next one year",
+      "fillable": false,
+      "reason": "Preference Shares (repayable in next 1 year) — private limited manufacturing/trading companies virtually never issue preference shares. This row applies to public listed companies or NBFCs with structured capital. Not expected from the current sample profile."
+    },
+    {
+      "cma_row": 144,
+      "code": "III_L6b",
+      "name": "Balance Repayable after one year",
+      "fillable": false,
+      "reason": "Preference Shares (balance repayable after 1 year) — same as above. Private limited manufacturing/trading companies do not issue preference shares. Public listed or NBFC companies would fill this."
+    },
+    {
+      "cma_row": 147,
+      "code": "III_L7a",
+      "name": "Debts Repayable in Next One year",
+      "fillable": true,
+      "reason": "Other Debts repayable in next 1 year — can appear in companies with inter-corporate deposits or structured borrowings outside standard term loans. Larger companies or those with group lending arrangements could fill this."
+    },
+    {
+      "cma_row": 153,
+      "code": "III_L8c",
+      "name": "As Short Term Debt",
+      "fillable": true,
+      "reason": "Unsecured Loans as Short Term Debt — all sampled companies classified unsecured loans as quasi-equity or long-term. Companies with short-term inter-corporate loans or director loans classified as short-term would fill this."
+    },
+    {
+      "cma_row": 169,
+      "code": "III_A5b",
+      "name": "Misc Expenditure ( to the extent not w/o)",
+      "fillable": false,
+      "reason": "Misc Expenditure (to the extent not written off) is largely obsolete under Ind AS. Pre-AS companies or old entities might carry this, but modern accounting standards require expensing or capitalizing. Not expected for current post-Ind AS companies."
+    },
+    {
+      "cma_row": 175,
+      "code": "III_A7",
+      "name": "Sale of  Fixed assets WDV of asset sold",
+      "fillable": true,
+      "reason": "Sale of Fixed Assets (WDV) appears in the Fixed Asset Movement section. Only companies that sold fixed assets during the review period would have this. None of the 9 sampled companies reported fixed asset disposals in CMA. Capital-intensive companies undergoing asset rationalization would fill this."
+    },
+    {
+      "cma_row": 176,
+      "code": "III_A8",
+      "name": "Profit on sale of Fixed assets / Investments",
+      "fillable": true,
+      "reason": "Profit on Sale of Fixed Assets / Investments (Fixed Asset Movement row) is distinct from the P&L income row (row 30). Requires a company that sold assets at a profit during the CMA period. A larger sample or a company undergoing asset monetization would fill this."
+    },
+    {
+      "cma_row": 177,
+      "code": "III_A9",
+      "name": "Loss on sale of Fixed assets / Investments",
+      "fillable": true,
+      "reason": "Loss on Sale of Fixed Assets / Investments (Fixed Asset Movement row) — same reasoning as row 176. Companies disposing of aging assets at book losses would fill this."
+    },
+    {
+      "cma_row": 182,
+      "code": "III_A10b",
+      "name": "Investment in Govt. Securities ( Non Current )",
+      "fillable": true,
+      "reason": "Investment in Govt. Securities (Non-Current) — companies with non-current government security holdings (e.g., treasury bonds held to maturity). NBFCs, financial companies, or large corporates with SLR requirements would fill this."
+    },
+    {
+      "cma_row": 192,
+      "code": "III_A11a",
+      "name": "Imported",
+      "fillable": true,
+      "reason": "Imported Raw Materials on Balance Sheet — all 9 companies use only indigenous raw materials. Export-oriented manufacturers or companies with specialized imported inputs (chemicals, pharma API, electronics) would have imported raw material inventory."
+    },
+    {
+      "cma_row": 196,
+      "code": "III_A12a",
+      "name": "Imported",
+      "fillable": false,
+      "reason": "Imported Stores & Spares on Balance Sheet — same as row 192 reasoning but for stores/spares. Given that even imported raw materials are absent from 9 companies, this is even less likely for domestic manufacturing/trading companies. Requires highly specialized importing manufacturers."
+    },
+    {
+      "cma_row": 223,
+      "code": "III_A17f",
+      "name": "Advances to group / subsidiaries companies",
+      "fillable": true,
+      "reason": "Advances to group/subsidiary companies — none of the 9 companies had group/subsidiary relationships captured in CMA advances. Holding companies or companies with subsidiaries or inter-group lending would fill this."
+    },
+    {
+      "cma_row": 228,
+      "code": "III_A18a",
+      "name": "Investments",
+      "fillable": true,
+      "reason": "Group Exposure — Investments in group companies (Non-Current Asset section) — requires a holding company structure. None of the 9 sampled companies had significant group investment exposure in CMA. Conglomerates or holding companies would fill this."
+    },
+    {
+      "cma_row": 229,
+      "code": "III_A18b",
+      "name": "Advances",
+      "fillable": true,
+      "reason": "Group Exposure — Advances to group companies (Non-Current Asset section) — same reasoning as row 228. Inter-group lending structures would fill this."
+    },
+    {
+      "cma_row": 232,
+      "code": "III_A20",
+      "name": "Investments",
+      "fillable": true,
+      "reason": "Non-Current Investments (separate from group exposure) — companies with long-term strategic investments in listed or unlisted securities would fill this. None of the 9 sampled companies had significant non-current investment portfolios."
+    },
+    {
+      "cma_row": 233,
+      "code": "III_A21",
+      "name": "Fixed Deposits ( Non Current )",
+      "fillable": true,
+      "reason": "Fixed Deposits (Non-Current) — FDs pledged or held for more than 12 months. Companies with long-term FD collateral arrangements or mandatory FD requirements (e.g., court orders, specific contracts) would fill this."
+    },
+    {
+      "cma_row": 244,
+      "code": "III_L10d",
+      "name": "Dividend payable",
+      "fillable": false,
+      "reason": "Dividend payable as current liability requires declared but unpaid dividends. Private limited companies rarely declare dividends. Not applicable for 7 of 9 sampled entities structurally. Only public companies or dividend-paying private companies would use this."
+    },
+    {
+      "cma_row": 246,
+      "code": "III_L10f",
+      "name": "Interest Accrued but not due",
+      "fillable": true,
+      "reason": "Interest Accrued but not due — companies accruing interest on term loans between payment dates. Common but appears to have been consolidated into other current liabilities in the sampled companies CMA forms. A larger sample would likely fill this."
+    },
+    {
+      "cma_row": 253,
+      "code": "III_CL1",
+      "name": "Arrears of cumulative dividends",
+      "fillable": false,
+      "reason": "Arrears of cumulative dividends requires preference shares to exist first. Completely inapplicable for private limited and partnership/proprietorship entities in the current sample. Only public companies with preference capital would have this."
+    },
+    {
+      "cma_row": 254,
+      "code": "III_CL2",
+      "name": "Gratuity liability not provided for",
+      "fillable": true,
+      "reason": "Gratuity liability not provided for — contingent liability for unfunded gratuity. All sampled companies appear to have funded gratuity or zero liability. Larger companies with gratuity shortfalls disclosed as contingent would fill this."
+    },
+    {
+      "cma_row": 255,
+      "code": "III_CL3",
+      "name": "Disputed excise / customs / tax liabilities",
+      "fillable": true,
+      "reason": "Disputed excise/customs/tax liabilities — contingent from ongoing tax disputes. Common in larger or older companies with tax litigation. The 9 sampled companies are relatively small/recent. Older, larger companies would fill this."
+    },
+    {
+      "cma_row": 256,
+      "code": "III_CL4",
+      "name": "Bank guarantee / Letter of credit outstanding",
+      "fillable": true,
+      "reason": "Bank guarantee/LC outstanding — contingent liability for issued guarantees or letters of credit. Import-oriented companies or project-based companies commonly have LC/BG contingents. None of the 9 sampled trading companies reported these in CMA."
+    },
+    {
+      "cma_row": 257,
+      "code": "III_CL5",
+      "name": "Other contingent liabilities",
+      "fillable": true,
+      "reason": "Other contingent liabilities — catch-all contingent liability row. A larger sample would likely surface this from various litigation or warranty claims."
+    }
+  ],
+  "sparse_classes": [
+    {
+      "cma_row": 28,
+      "code": "II_B1",
+      "name": "Dividends received from Mutual Funds",
+      "count": 1,
+      "companies": [
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 30,
+      "code": "II_B3",
+      "name": "Profit on sale of fixed assets / Investments",
+      "count": 3,
+      "companies": [
+        "BCIPL",
+        "SLIPL",
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 31,
+      "code": "II_B4",
+      "name": "Gain on Exchange Fluctuations",
+      "count": 5,
+      "companies": [
+        "BCIPL",
+        "INPL",
+        "MSL",
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 50,
+      "code": "II_C10a",
+      "name": "Security Service Charges",
+      "count": 2,
+      "companies": [
+        "Dynamic Air",
+        "INPL"
+      ]
+    },
+    {
+      "cma_row": 62,
+      "code": "II_C20",
+      "name": "Depreciation",
+      "count": 3,
+      "companies": [
+        "BCIPL"
+      ]
+    },
+    {
+      "cma_row": 63,
+      "code": "II_C21",
+      "name": "Other Manufacturing Exp",
+      "count": 3,
+      "companies": [
+        "BCIPL"
+      ]
+    },
+    {
+      "cma_row": 74,
+      "code": "II_E1",
+      "name": "Miscellaneous Expenses written off",
+      "count": 1,
+      "companies": [
+        "BCIPL"
+      ]
+    },
+    {
+      "cma_row": 88,
+      "code": "II_G1",
+      "name": "Loss on sale of fixed assets / Investments",
+      "count": 3,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ]
+    },
+    {
+      "cma_row": 89,
+      "code": "II_G2",
+      "name": "Sundry Balances Written off",
+      "count": 2,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ]
+    },
+    {
+      "cma_row": 90,
+      "code": "II_G3",
+      "name": "Loss on Exchange Fluctuations",
+      "count": 3,
+      "companies": [
+        "BCIPL",
+        "MSL"
+      ]
+    },
+    {
+      "cma_row": 92,
+      "code": "II_G5",
+      "name": "Others",
+      "count": 4,
+      "companies": [
+        "INPL",
+        "SR Papers",
+        "SSSS"
+      ]
+    },
+    {
+      "cma_row": 107,
+      "code": "II_I3",
+      "name": "Other Appropriation of profit",
+      "count": 2,
+      "companies": [
+        "INPL",
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 124,
+      "code": "III_L2e",
+      "name": "Other Reserve",
+      "count": 4,
+      "companies": [
+        "MSL",
+        "SLIPL"
+      ]
+    },
+    {
+      "cma_row": 131,
+      "code": "III_L3b",
+      "name": "From Indian Overseas Bank",
+      "count": 4,
+      "companies": [
+        "BCIPL",
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 139,
+      "code": "III_L5a",
+      "name": "Repayable in next one year",
+      "count": 2,
+      "companies": [
+        "Dynamic Air"
+      ]
+    },
+    {
+      "cma_row": 140,
+      "code": "III_L5b",
+      "name": "Balance Repayable after one year",
+      "count": 3,
+      "companies": [
+        "Dynamic Air",
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 148,
+      "code": "III_L7b",
+      "name": "Balance Other Debts",
+      "count": 3,
+      "companies": [
+        "SR Papers"
+      ]
+    },
+    {
+      "cma_row": 168,
+      "code": "III_A5a",
+      "name": "Patents / goodwill / copyrights etc",
+      "count": 2,
+      "companies": [
+        "INPL"
+      ]
+    },
+    {
+      "cma_row": 170,
+      "code": "III_A5c",
+      "name": "Deferred Tax Asset",
+      "count": 4,
+      "companies": [
+        "MSL",
+        "SSSS"
+      ]
+    },
+    {
+      "cma_row": 174,
+      "code": "III_A6",
+      "name": "Additions to Fixed Assets",
+      "count": 3,
+      "companies": [
+        "Dynamic Air",
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 181,
+      "code": "III_A10a",
+      "name": "Investment in Govt. Securities ( Current )",
+      "count": 2,
+      "companies": [
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 184,
+      "code": "III_A10c",
+      "name": "Other current investments",
+      "count": 1,
+      "companies": [
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 185,
+      "code": "III_A10d",
+      "name": "Other non current investments",
+      "count": 1,
+      "companies": [
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 187,
+      "code": "III_A10e",
+      "name": "Investment in group companies / subsidiaries",
+      "count": 1,
+      "companies": [
+        "SSSS"
+      ]
+    },
+    {
+      "cma_row": 197,
+      "code": "III_A12b",
+      "name": "Indigenous",
+      "count": 5,
+      "companies": [
+        "BCIPL",
+        "Kurunji Retail",
+        "SLIPL"
+      ]
+    },
+    {
+      "cma_row": 206,
+      "code": "III_A15b",
+      "name": "Export Receivables ( including bills purchased and discounted)",
+      "count": 4,
+      "companies": [
+        "BCIPL",
+        "MSL"
+      ]
+    },
+    {
+      "cma_row": 213,
+      "code": "III_A16c",
+      "name": "Fixed Deposit under lien",
+      "count": 2,
+      "companies": [
+        "INPL",
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 234,
+      "code": "III_A22a",
+      "name": "Dues from directors / partners / promoters",
+      "count": 2,
+      "companies": [
+        "Kurunji Retail",
+        "Mehta Computer"
+      ]
+    },
+    {
+      "cma_row": 247,
+      "code": "III_L10g",
+      "name": "Interest Accrued and due",
+      "count": 1,
+      "companies": [
+        "SLIPL"
+      ]
+    }
+  ],
+  "class_distribution_buckets": {
+    "zero_examples": 33,
+    "1_to_3": 22,
+    "4_to_10": 24,
+    "11_to_50": 51,
+    "50_plus": 1
+  },
+  "feature_distributions": {
+    "source_form": {
+      "notes_pl": 593,
+      "notes_bs": 401,
+      "profit_and_loss": 109,
+      "balance_sheet": 108,
+      "cma_form": 72,
+      "notes_general": 43
+    },
+    "section_normalized": {
+      "admin_expense": 332,
+      "other_assets": 108,
+      "current_liabilities": 104,
+      "raw_materials": 95,
+      "other_income": 69,
+      "employee_cost": 61,
+      "borrowings_long": 61,
+      "finance_cost": 55,
+      "reserves": 55,
+      "fixed_assets": 50,
+      "revenue": 49,
+      "cash": 47,
+      "tax": 45,
+      "receivables": 39,
+      "inventories": 38,
+      "borrowings_short": 36,
+      "selling_expense": 23,
+      "share_capital": 19,
+      "manufacturing_expense": 17,
+      "depreciation": 13,
+      "investments": 8,
+      "exceptional": 1,
+      "appropriation": 1
+    },
+    "match_type": {
+      "direct": 754,
+      "composite_component": 512,
+      "split": 60
+    },
+    "industry_type": {
+      "manufacturing": 976,
+      "trading": 350
+    },
+    "entity_type": {
+      "private_limited": 1203,
+      "partnership": 49,
+      "proprietorship": 74
+    }
+  },
+  "data_quality": {
+    "certain": 1264,
+    "likely": 56,
+    "uncertain": 6,
+    "validation_issues_count": 140,
+    "fixes_applied": [
+      "BCIPL row 22->30 (1 entry)",
+      "SSSS row 98 collision resolved (2 entries)",
+      "3 unmatched->typed (3 entries)"
+    ]
+  },
+  "recommendations": {
+    "companies_needed": "The current 9 companies (5 manufacturing + 4 trading, all domestic, all private/partnership/proprietorship) have systematic gaps in: (1) Services sector — IT/consulting/healthcare companies would bring different P&L patterns (no raw materials, heavy salary/admin expenses, software amortisation) and fill rows like II_E3a and II_C21 with different contexts; (2) Export-oriented manufacturers — would fill Export Sales (row 22 more densely), Imported Raw Materials (rows 40, 192), Imported Stores (rows 42, 196), Export Receivables (row 206), Gain/Loss on Exchange Fluctuations (rows 31, 90), and Bill Discounting (row 132); (3) NBFCs and financial companies — would fill Preference Shares (rows 143, 144), Debentures (rows 139, 140), Group Exposure investments and advances (rows 228, 229), Non-Current Investments (rows 182, 232), bringing structured liability patterns absent from the current dataset; (4) Public listed companies — would fill Dividend rows (106, 244), Share Premium (row 122 more densely), Revaluation Reserve (row 123), and detailed contingent liability disclosures (rows 253-257); (5) Older or larger companies with tax disputes — would fill Disputed tax contingents (row 255) and Gratuity shortfalls (row 254); (6) Project and infrastructure companies — would fill Bank Guarantee/LC contingents (row 256), Capital Work in Progress more densely (row 164), and WDV of assets sold (row 175).",
+    "synthetic_data_candidates": [
+      32,
+      42,
+      76,
+      91,
+      132,
+      147,
+      153,
+      175,
+      176,
+      177,
+      182,
+      192,
+      223,
+      228,
+      229,
+      232,
+      233,
+      246,
+      254,
+      255,
+      256,
+      257
+    ],
+    "estimated_entries_for_production": "Current database has 1,326 entries across 9 companies (average 147 per company). For a production-ready classifier covering all 131 CMA rows with minimum 10 examples each, approximately 1,500-2,500 additional entries are needed. The 33 missing rows (20 fillable, 13 structurally obsolete or inapplicable) need ~200 entries for coverage of fillable rows alone. The 22 sparse rows (1-5 examples each) need ~130 more entries for adequate density. Recommended total database size: 2,500-3,500 entries from 20-25 companies spanning manufacturing, trading, services, and NBFC sectors. Priority: Add 3-5 export-oriented manufacturers and 2-3 service companies first — these fill the most systematically absent rows with minimal overlap to existing data."
+  }
+}

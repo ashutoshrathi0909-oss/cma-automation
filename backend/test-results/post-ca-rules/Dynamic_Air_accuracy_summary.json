@@ -1,0 +1,10 @@
+{
+  "company": "Dynamic_Air",
+  "industry": "manufacturing",
+  "total_items": 230,
+  "correct": 184,
+  "wrong": 40,
+  "doubts": 6,
+  "accuracy_pct": 80.0,
+  "elapsed_seconds": 459.48
+}

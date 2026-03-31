@@ -1,0 +1,90 @@
+Item 1:
+  Description: Sale of Manufactured Goods (FY23)
+  Amount: Rs 2,627,049,320.76
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 2:
+  Description: Sales of Trading Goods (FY23)
+  Amount: Rs 29,466,070.30
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 3:
+  Description: Other Advances (FY22)
+  Amount: Rs 2,909,477.85
+  Section: unsecured considered good
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 4:
+  Description: Dues to MSME (FY22)
+  Amount: Rs 2,379,094.00
+  Section: note 6 - trade payables
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 5:
+  Description: Dues to Other than MSME (FY22)
+  Amount: Rs 125,486,827.19
+  Section: note 6 - trade payables
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 6:
+  Description: Bonus payable (FY22)
+  Amount: Rs 3,248,269.83
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 7:
+  Description: ESI payable (FY22)
+  Amount: Rs 159,326.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 8:
+  Description: Accumulated Depreciation - Weighing Machines (At 31st March)
+  Amount: Rs 1,177,587.66
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 9:
+  Description: Accumulated Depreciation - Generators &Transformer (At 31st March)
+  Amount: Rs 2,797,721.05
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 10:
+  Description: Job Work Charges - Interstate (FY23)
+  Amount: Rs 239,283.30
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 11:
+  Description: Job Work Charges - Local (FY23)
+  Amount: Rs 1,169,190.42
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 12:
+  Description: Export Sales (FY23)
+  Amount: Rs 71,143,592.40
+  Section: sale of manufactured goods gross stamping tools returns
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 13:
+  Description: Interest Income (FY23)
+  Amount: Rs 642,620.56
+  Section: other income
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 14:
+  Description: Forex Rate Fluctuation Gain (FY23)
+  Amount: Rs 297,392.13
+  Section: note 26 - other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 15:
+  Description: PF payable (FY22)
+  Amount: Rs 517,077.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2022

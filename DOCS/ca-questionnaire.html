@@ -1,0 +1,1502 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA Classification â€” Round 2 CA Verification</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;color:#2d3748;font-size:14px;line-height:1.6}
+.container{max-width:920px;margin:0 auto;padding:16px}
+.page-header{background:#1a365d;color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:14px}
+.page-header h1{font-size:20px;font-weight:700;margin-bottom:4px}
+.page-header .sub{opacity:.75;font-size:13px}
+.progress-box{background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.progress-lbl{font-size:13px;color:#4a5568;margin-bottom:5px;display:flex;justify-content:space-between}
+.pbar{background:#e2e8f0;border-radius:99px;height:10px;overflow:hidden}
+.pbar-fill{background:#27ae60;height:100%;border-radius:99px;transition:width .3s}
+.top-actions{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.ca-field{flex:1;min-width:220px}
+.ca-field label{font-size:12px;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.ca-field input{width:100%;padding:8px 12px;border:1px solid #cbd5e0;border-radius:6px;font-size:14px}
+.ca-field input:focus{outline:none;border-color:#1a365d;box-shadow:0 0 0 2px #bee3f8}
+.btn{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;white-space:nowrap}
+.btn-navy{background:#1a365d;color:#fff}.btn-navy:hover{background:#2c5282}
+.btn-orange{background:#e67e22;color:#fff}.btn-orange:hover{background:#d35400}
+.btn-green{background:#27ae60;color:#fff}.btn-green:hover{background:#229954}
+.btn-outline{background:#fff;color:#4a5568;border:1px solid #cbd5e0}.btn-outline:hover{border-color:#1a365d;color:#1a365d}
+.restore-banner{background:#ebf8ff;border:1px solid #90cdf4;padding:10px 14px;border-radius:6px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:13px}
+.restore-banner.hidden{display:none}
+/* Reference */
+.ref-block{background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:14px;overflow:hidden}
+.ref-hdr{padding:11px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;color:#1a365d;background:#fff;border:none;width:100%;text-align:left;font-size:14px}
+.ref-hdr:hover{background:#f7fafc}
+.ref-body{display:none;padding:14px 16px;border-top:1px solid #e2e8f0;font-size:12px}
+.ref-body.open{display:block}
+.ref-sec-title{font-weight:700;color:#1a365d;margin:10px 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e2e8f0;padding-bottom:3px}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px 12px}
+.ref-row{padding:2px 0;color:#4a5568}
+.ref-row b{color:#1a365d}
+/* Section */
+.sec-block{margin-bottom:14px}
+.sec-hdr{background:#1a365d;color:#fff;padding:11px 16px;border-radius:8px 8px 0 0;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none}
+.sec-hdr.closed{border-radius:8px;margin-bottom:0}
+.sec-letter{background:#e67e22;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.sec-title-text{font-weight:600;flex:1;font-size:15px}
+.sec-count{font-size:12px;opacity:.8;white-space:nowrap}
+.chevron{transition:transform .2s;font-size:12px}
+.chevron.rot{transform:rotate(180deg)}
+.sec-ctx{background:#fffbf5;border-left:3px solid #e67e22;padding:10px 14px;font-size:13px;color:#2d3748;border-right:1px solid #e2e8f0}
+.sec-qs{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.sec-qs.hidden{display:none}
+/* Question Card */
+.q-card{padding:16px;border-bottom:1px solid #f0f4f8;transition:background .15s}
+.q-card:last-child{border-bottom:none}
+.q-card.highlight{background:#fff5f5}
+.q-hdr{display:flex;align-items:flex-start;gap:9px;margin-bottom:8px}
+.q-badge{background:#1a365d;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.q-text{font-size:15px;font-weight:600;color:#1a365d}
+.ai-pill{display:inline-block;background:#fef3e2;border:1px solid #f6ad55;color:#c05621;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:700;margin-bottom:10px}
+/* Options */
+.opts{list-style:none;margin-bottom:10px}
+.opt{padding:6px 10px;border-radius:6px;margin-bottom:3px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:background .1s;border:1px solid transparent}
+.opt:hover{background:#f7fafc}
+.opt.sel{background:#f0fff4;border-color:#9ae6b4}
+.opt input[type=radio]{accent-color:#27ae60;cursor:pointer;flex-shrink:0}
+.opt-rnum{font-weight:700;color:#1a365d;font-size:12px;min-width:55px}
+.opt-name{color:#2d3748;flex:1}
+.opt-tag{font-size:11px;color:#718096;margin-left:4px}
+.ai-star{color:#e67e22;font-size:11px;font-weight:700;margin-left:6px;white-space:nowrap}
+.other-row{display:flex;align-items:center;gap:8px;padding:6px 10px;flex-wrap:wrap}
+.other-row input[type=radio]{accent-color:#27ae60}
+.other-num{padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;width:75px;font-size:13px}
+.other-num:focus{outline:none;border-color:#1a365d}
+.other-name-input{padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px;flex:1;min-width:160px;color:#2d3748}
+.other-name-input:focus{outline:none;border-color:#27ae60;box-shadow:0 0 0 2px #c6f6d5}
+.other-name-input::placeholder{color:#a0aec0;font-style:italic}
+.other-name-hint{font-size:11px;color:#718096;font-style:italic}
+/* Confidence */
+.conf-row{margin-bottom:10px}
+.conf-lbl{font-size:12px;font-weight:600;color:#4a5568;margin-bottom:4px}
+.conf-opts{display:flex;gap:16px;flex-wrap:wrap}
+.conf-opt{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:13px}
+.conf-opt input{accent-color:#1a365d}
+/* Notes */
+.notes-row{margin-bottom:10px}
+.notes-row label{font-size:12px;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.notes-row textarea{width:100%;padding:6px 10px;border:1px solid #e2e8f0;border-radius:5px;font-size:13px;resize:vertical;min-height:36px;font-family:inherit;transition:border-color .1s}
+.notes-row textarea:focus{outline:none;border-color:#1a365d}
+/* Open question */
+.open-note{background:#f7fafc;border:1px dashed #cbd5e0;padding:9px 12px;border-radius:6px;font-size:13px;color:#718096;margin-bottom:10px}
+.ai-suggestion-open{background:#fef3e2;border-left:3px solid #e67e22;padding:8px 12px;font-size:13px;margin-bottom:10px;border-radius:0 4px 4px 0}
+.ai-suggestion-open span{font-weight:600;color:#e67e22}
+/* Examples */
+.ex-toggle{background:none;border:1px solid #e2e8f0;padding:4px 11px;border-radius:4px;font-size:12px;cursor:pointer;color:#4a5568;transition:all .1s}
+.ex-toggle:hover{background:#f7fafc;border-color:#1a365d;color:#1a365d}
+.ex-body{display:none;margin-top:10px;background:#f7fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px}
+.ex-body.open{display:block}
+.ex-item{margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed #e2e8f0}
+.ex-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ex-co{font-weight:600;color:#1a365d;font-size:13px}
+.ex-detail{font-size:12px;color:#4a5568;margin-top:2px}
+.ex-amt{font-weight:600}
+.ex-reasoning{background:#fff3cd;border-left:3px solid #e67e22;padding:7px 10px;font-size:12px;border-radius:0 4px 4px 0;margin-top:8px}
+.ex-reasoning strong{color:#c05621}
+/* Export */
+.export-sec{background:#fff;padding:20px;border-radius:8px;margin-top:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.export-sec h3{color:#1a365d;margin-bottom:12px;font-size:16px}
+.export-actions{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.export-out{width:100%;min-height:180px;padding:10px;border:1px solid #e2e8f0;border-radius:6px;font-family:monospace;font-size:12px;resize:vertical;display:none}
+.export-out.visible{display:block}
+@media(max-width:600px){.top-actions{flex-direction:column}.ca-field{min-width:100%}.conf-opts{gap:10px}}
+/* â”€â”€ Variation blocks â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.var-btns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px}
+.var-btn{background:none;border:1px dashed #a0aec0;padding:5px 12px;border-radius:4px;font-size:12px;cursor:pointer;color:#718096;transition:all .15s}
+.var-btn:hover{border-color:#1a365d;color:#1a365d;background:#ebf4ff}
+.var-btn.on{border-style:solid;border-color:#e67e22;color:#c05621;background:#fef3e2;font-weight:600}
+.var-block{margin-top:10px;border:1px solid #e2e8f0;border-radius:7px;overflow:hidden}
+.var-block-hdr{background:#f0f4f8;padding:7px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e2e8f0}
+.var-block-title{font-size:12px;font-weight:700;color:#1a365d}
+.var-remove-btn{background:none;border:none;cursor:pointer;color:#e53e3e;font-size:12px;padding:2px 8px;border-radius:3px;font-weight:600}
+.var-remove-btn:hover{background:#fff5f5}
+.var-tabs-bar{display:flex;background:#f7fafc;border-bottom:1px solid #e2e8f0;overflow-x:auto}
+.var-tab-btn{padding:7px 13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;font-size:12px;font-weight:500;color:#718096;white-space:nowrap;transition:all .1s}
+.var-tab-btn:hover{color:#1a365d;background:#fff}
+.var-tab-btn.act{color:#1a365d;border-bottom-color:#e67e22;background:#fff}
+.var-tab-body{padding:12px 14px;display:none}
+.var-tab-body.act{display:block}
+.var-mini-opts{list-style:none;margin-bottom:8px}
+.var-mini-opt{padding:5px 8px;border-radius:5px;margin-bottom:2px;display:flex;align-items:center;gap:7px;cursor:pointer;border:1px solid transparent;transition:background .1s}
+.var-mini-opt:hover{background:#f7fafc}
+.var-mini-opt.sel{background:#f0fff4;border-color:#9ae6b4}
+.var-mini-opt input[type=radio]{accent-color:#27ae60;flex-shrink:0}
+.var-mini-rnum{font-weight:700;color:#1a365d;font-size:12px;min-width:50px}
+.var-mini-name{color:#2d3748;flex:1;font-size:13px}
+.var-mini-aistar{color:#e67e22;font-size:10px;font-weight:700;margin-left:4px;white-space:nowrap}
+.var-other-row{display:flex;align-items:center;gap:6px;padding:5px 8px;flex-wrap:wrap}
+.var-other-row input[type=radio]{accent-color:#27ae60}
+.var-other-num{padding:3px 7px;border:1px solid #cbd5e0;border-radius:4px;width:65px;font-size:12px}
+.var-other-num:focus{outline:none;border-color:#1a365d}
+.var-other-name{padding:3px 7px;border:1px solid #cbd5e0;border-radius:4px;font-size:12px;flex:1;min-width:130px}
+.var-other-name:focus{outline:none;border-color:#27ae60;box-shadow:0 0 0 2px #c6f6d5}
+.var-other-name::placeholder{color:#a0aec0;font-style:italic}
+.var-conf-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:6px 0 4px}
+.var-conf-lbl{font-size:11px;font-weight:600;color:#4a5568;margin-right:4px}
+.var-conf-opt{display:flex;align-items:center;gap:4px;cursor:pointer;font-size:12px}
+.var-conf-opt input{accent-color:#1a365d}
+.var-notes-row{margin-top:6px}
+.var-notes-lbl{font-size:11px;font-weight:600;color:#4a5568;margin-bottom:2px}
+.var-notes-ta{width:100%;padding:5px 8px;border:1px solid #e2e8f0;border-radius:4px;font-size:12px;resize:vertical;font-family:inherit;min-height:30px}
+.var-notes-ta:focus{outline:none;border-color:#1a365d}
+/* â”€â”€ Round 2 card styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.r2-compare{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.r2-row{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;border:1px solid #e2e8f0;background:#f7fafc}
+.r2-row.r2-selected{border-width:2px}
+.r2-gt{border-left:3px solid #c05621}
+.r2-ai{border-left:3px solid #1a365d}
+.r2-badge{padding:2px 7px;border-radius:3px;font-size:11px;font-weight:700;flex-shrink:0}
+.r2-gt-badge{background:#fef3e2;color:#c05621;border:1px solid #f6ad55}
+.r2-ai-badge{background:#ebf4ff;color:#1a365d;border:1px solid #90cdf4}
+.r2-badge-inline{padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700}
+.r2-row-ref{font-weight:700;color:#1a365d;font-size:12px;min-width:55px}
+.r2-row-name{color:#2d3748;font-size:13px;flex:1}
+.r2-doubt-tag{color:#718096;font-style:italic;font-size:12px}
+.r2-which{font-size:12px;font-weight:700;color:#4a5568;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.r2-note{background:#fffbf5;border-left:3px solid #e67e22;padding:8px 12px;font-size:12px;color:#2d3748;border-radius:0 4px 4px 0;margin-top:8px}
+.r2-skip-card{background:#f7fafc;padding:12px 16px;border-bottom:1px solid #e2e8f0}
+.r2-skip-msg{font-size:12px;color:#718096;background:#f0f4f8;padding:7px 10px;border-radius:5px;display:flex;align-items:center;gap:6px}
+.r2-co-tag{font-size:11px;color:#718096;font-weight:400;margin-left:4px}
+.q-badge-r2{background:#6b46c1}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header">
+    <h1>CMA Classification â€” Round 2 Verification</h1>
+    <div class="sub">48 questions Â· Post-accuracy-test Â· GT vs AI disagreements from 3 companies Â· Please confirm which row is correct for each item</div>
+  </div>
+
+  <div id="restoreBanner" class="restore-banner hidden">
+    ðŸ’¾ Previous answers found from your last session.
+    <button class="btn btn-navy" onclick="restoreAnswers()">Restore</button>
+    <button class="btn btn-outline" onclick="dismissRestore()">Start Fresh</button>
+  </div>
+
+  <div class="progress-box">
+    <div class="progress-lbl">
+      <span id="progressText">0 of 0 questions answered</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="pbar"><div class="pbar-fill" id="pbarFill" style="width:0%"></div></div>
+  </div>
+
+  <div class="top-actions">
+    <div class="ca-field">
+      <label for="caName">CA Name (required for export)</label>
+      <input type="text" id="caName" placeholder="e.g. CA Rajesh Kumar" oninput="autoSave()">
+    </div>
+    <button class="btn btn-orange" onclick="selectAllAI()">â˜… Accept All AI Answers</button>
+    <button class="btn btn-green" onclick="exportAnswers()">â¬‡ Export Answers (JSON)</button>
+  </div>
+
+  <!-- CMA Row Reference -->
+  <div class="ref-block">
+    <button class="ref-hdr" onclick="toggleRef()">
+      ðŸ“‹ CMA Row Reference Table <span id="refChev" class="chevron">â–¼</span>
+    </button>
+    <div class="ref-body" id="refBody"></div>
+  </div>
+
+  <!-- Sections rendered here -->
+  <div id="sectionsContainer"></div>
+
+  <!-- Export -->
+  <div class="export-sec">
+    <h3>Export Answers</h3>
+    <div class="export-actions">
+      <button class="btn btn-green" onclick="exportAnswers()">â¬‡ Download JSON</button>
+      <button class="btn btn-outline" onclick="toggleExportView()">ðŸ‘ View JSON</button>
+      <button class="btn btn-outline" onclick="clearAll()">ðŸ—‘ Clear All Answers</button>
+    </div>
+    <textarea class="export-out" id="exportOut" readonly></textarea>
+  </div>
+</div>
+
+<script>
+// â”€â”€â”€ ROW REFERENCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const ROW_NAMES = {
+  22:"Domestic (Sales)",23:"Exports",25:"Less Excise Duty and Cess",
+  29:"Dividends received",30:"Interest Received",31:"Profit on sale of fixed assets",
+  32:"Gain on Exchange Fluctuations",33:"Extraordinary income",34:"Others (Non-Op Income)",
+  41:"Raw Materials Consumed (Imported)",42:"Raw Materials Consumed (Indigenous)",
+  43:"Stores & spares consumed (Imported)",44:"Stores & spares consumed (Indigenous)",
+  45:"Wages",46:"Processing / Job Work Charges",47:"Freight and Transportation Charges",
+  48:"Power, Coal, Fuel and Water",49:"Others (Manufacturing)",
+  50:"Repairs & Maintenance (Mfg)",51:"Security Service Charges",
+  53:"Stock in process Opening Balance",54:"Stock in process Closing Balance",
+  55:"Raw Materials Opening Balance",
+  56:"Depreciation",57:"Finished Goods Opening Balance (approx)",
+  58:"Finished Goods Opening Balance",59:"Finished Goods Closing Balance",
+  67:"Salary and staff expenses",68:"Rent, Rates and Taxes",
+  69:"Bad Debts",70:"Advertisements and Sales Promotions",
+  71:"Others (Admin & Selling)",72:"Repairs & Maintenance (Admin)",
+  73:"Audit Fees & Directors Remuneration",74:"Advances Written Off",
+  75:"Miscellaneous Expenses Written off",
+  83:"Interest on Fixed Loans / Term loans",84:"Interest on Working capital loans",
+  85:"Bank Charges",
+  89:"Loss on sale of fixed assets",90:"Sundry Balances Written off",
+  91:"Loss on Exchange Fluctuations",93:"Others (Non-Op Exp)",
+  99:"Income Tax provision",100:"Deferred Tax Liability",101:"Deferred Tax Asset",
+  105:"Surplus/Reserves link",106:"Brought forward from previous year",108:"Other Appropriation of profit",
+  116:"Issued, Subscribed and Paid up",117:"Share Application Money",
+  121:"General Reserve",122:"Balance transferred from P&L",
+  123:"Share Premium A/c",125:"Other Reserves",
+  130:"Bank liabilities",131:"From Indian Bank",132:"From Other Banks",
+  133:"O/S Bill Discounting, LC",
+  135:"Current maturities (approx)",136:"Term Loan Repayable in next one year",
+  137:"Balance Repayable after one year",
+  140:"Repayable in next one year (Debentures/Vehicle HP)",141:"Balance Repayable after one year (Deb)",
+  148:"Repayable in next one year (Other Debts)",149:"Balance Other Debts",
+  151:"Directors' Loans (Quasi Equity)",152:"As Quasi Equity",
+  153:"As Long Term Debt",154:"As Short Term Debt",
+  159:"Deferred tax liability",
+  162:"Gross Block",163:"Less Accumulated Depreciation",165:"Capital Work in Progress",
+  169:"Patents / goodwill",171:"Deferred Tax Asset (BS)",172:"Other Intangible assets",
+  182:"Investment in Govt. Securities",
+  193:"Raw Materials (Imported)",194:"Raw Materials (Indigenous)",
+  195:"WIP â€” Imported (BS)",196:"WIP â€” Indigenous (BS)",
+  197:"Stores & Spares (Imported)",198:"Stores & Spares (Indigenous)",
+  200:"Stocks-in-process (BS â€” FORMULA CELL)",201:"Finished Goods (BS â€” FORMULA CELL)",
+  206:"Domestic Receivables",208:"Debtors more than 6 months",
+  218:"GST/tax related",219:"Advances recoverable",221:"Advance Income Tax",
+  222:"Prepaid Expenses (alt row)",223:"Other Advances",224:"Prepaid Expenses",
+  229:"Investments (current assets)",
+  231:"Trade receivables > 6 months",235:"Dues from directors/partners",
+  236:"Advances to suppliers of capital goods",237:"Security deposits with govt",238:"Other non-current assets",
+  242:"Sundry Creditors",243:"Advance received from customers",
+  246:"Statutory Liabilities",248:"Interest Accrued and due",
+  249:"Creditors for Expenses",250:"Other current liabilities"
+};
+
+const INDUSTRIES = [
+  {key:'manufacturing', label:'Manufacturing'},
+  {key:'trading',       label:'Trading'},
+  {key:'services',      label:'Services'},
+  {key:'construction',  label:'Construction'}
+];
+const CONTEXTS = [
+  {key:'pl', label:'In P&L (Expense)'},
+  {key:'bs', label:'In Balance Sheet'}
+];
+
+const REF_SECTIONS = [
+  { title:"Operating Statement â€” Income", rows:[22,23,25] },
+  { title:"Operating Statement â€” Non-Operating Income", rows:[29,30,31,32,33,34] },
+  { title:"Operating Statement â€” Manufacturing Expenses", rows:[41,42,43,44,45,46,47,48,49,50,51,53,54,56,57,58,59] },
+  { title:"Operating Statement â€” Admin & Selling Expenses", rows:[67,68,69,70,71,72,73,74,75] },
+  { title:"Operating Statement â€” Finance Charges", rows:[83,84,85] },
+  { title:"Operating Statement â€” Non-Operating Expenses", rows:[89,90,91,93] },
+  { title:"Operating Statement â€” Tax", rows:[99,100,101] },
+  { title:"Operating Statement â€” Profit Appropriation", rows:[105,106,108] },
+  { title:"Balance Sheet â€” Share Capital & Reserves", rows:[116,117,121,122,123,125] },
+  { title:"Balance Sheet â€” Bank Finance (WC)", rows:[130,131,132,133] },
+  { title:"Balance Sheet â€” Term Loans & Debentures", rows:[135,136,137,140,141,148,149] },
+  { title:"Balance Sheet â€” Unsecured Loans", rows:[151,152,153,154] },
+  { title:"Balance Sheet â€” Fixed Assets", rows:[162,163,165,169,171,172] },
+  { title:"Balance Sheet â€” Inventories", rows:[193,194,197,198,200,201] },
+  { title:"Balance Sheet â€” Receivables & Cash", rows:[206,208] },
+  { title:"Balance Sheet â€” Loans, Advances & Other Assets", rows:[218,219,221,223,224,231,235,236,237,238] },
+  { title:"Balance Sheet â€” Current Liabilities & Provisions", rows:[242,243,246,248,249,250] }
+];
+
+// â”€â”€â”€ QUESTION DATA (Round 2 â€” GT vs AI verification) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const SECTIONS_DEF = [
+  {
+    id:"A", title:"Admin Expense Bucket R68â€“R75",
+    subtitle:"12 items â€” which admin row is correct?",
+    context:"AI and Ground Truth disagree on which admin row these items belong to. Important note: Company A's ground truth data may have a âˆ’1 row offset (GT row may be 1 less than the correct row). Please confirm the right row for each."
+  },
+  {
+    id:"B", title:"Employee Cost â€” Industry Classification",
+    subtitle:"R45 (Wages/Mfg) vs R67 (Salary/Admin) for Company E",
+    context:"Company E is a manufacturing company (Engineering). Our rules route manufacturing company employee items to R45, but the GT says R67 for these items. Also: 2 items are Balance Sheet provisions â€” not P&L expenses at all."
+  },
+  {
+    id:"C", title:"Bill Discounting â€” Interest vs Borrowing",
+    subtitle:"R83/R84/R85 (P&L expense) vs R133 (BS liability)",
+    context:"AI classifies bill discounting items as R133 (outstanding balance â€” a borrowing) even when the item appears in P&L finance costs. Confirm whether the P&L charge is R83, R84, or R85."
+  },
+  {
+    id:"D", title:"Loan Processing Fee",
+    subtitle:"R84/R83 (Interest) vs R85 (Bank Charges)",
+    context:"Round 1 CA confirmed Loan Processing Fee â†’ R85 (Bank Charges). But Company E's GT says R84 or R83. Does the answer change based on loan type?"
+  },
+  {
+    id:"E", title:"Inventory / Stock Items",
+    subtitle:"P&L rows (R53â€“R59) vs BS rows (R193â€“R201)",
+    context:"Key issue: R200 and R201 are FORMULA CELLS in the CMA Excel â€” they calculate automatically and should NOT be classified into directly. What is the correct BS row for WIP and Finished Goods?"
+  },
+  {
+    id:"F", title:"Other Items",
+    subtitle:"19 miscellaneous GT vs AI disagreements",
+    context:"Various items where AI and GT disagree. Some may be GT offset bugs; others need CA clarification. Item R2-F4 is greyed out (no action needed â€” comparison bug, both AI and GT agree)."
+  }
+];
+
+const QUESTIONS = [
+// â”€â”€â”€ SECTION A: Admin Expense Bucket (12 questions) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-A1",sec:"A",type:"r2",item:"Selling & Distribution Expenses",company:"Company A",
+   gt_row:69,ai_row:71,opts:[69,70,71],
+   note:"Round 1 CA confirmed Selling & Distribution â†’ R70. GT says R69 (Bad Debts) â€” possible GT offset bug."},
+  {id:"R2-A2",sec:"A",type:"r2",item:"Administrative & General Expenses",company:"Company A",
+   gt_row:69,ai_row:71,opts:[69,71],
+   note:"GT says R69 (Bad Debts). AI says R71 (Others Admin). Which is correct for a generic admin expense header?"},
+  {id:"R2-A3",sec:"A",type:"r2",item:"Rates & Taxes",company:"Company A",
+   gt_row:70,ai_row:68,opts:[68,70,71],
+   note:"GT says R70 (Advt & Sales). AI says R68 (Rent, Rates and Taxes). Rates & Taxes seems naturally â†’ R68. Possible GT offset bug?"},
+  {id:"R2-A4",sec:"A",type:"r2",item:"Bad Debts Written Off",company:"Company A",
+   gt_row:70,ai_row:69,opts:[69,70],
+   note:"GT says R70 (Advt & Sales). AI says R69 (Bad Debts). Bad Debts â†’ R69 seems clearly correct. Possible GT offset bug?"},
+  {id:"R2-A5",sec:"A",type:"r2",item:"Auditor's Remuneration â€” Statutory Audit",company:"Company A",
+   gt_row:70,ai_row:73,opts:[70,73],
+   note:"GT says R70 (Advt & Sales). AI says R73 (Audit Fees). Round 1 CA confirmed Directors Remuneration â†’ R73. Does Auditor's Remuneration also go to R73?"},
+  {id:"R2-A6",sec:"A",type:"r2",item:"Auditor's Remuneration â€” Tax Audit",company:"Company A",
+   gt_row:70,ai_row:73,opts:[70,73],
+   note:"Same as R2-A5 but for Tax Audit. GT says R70. AI says R73. Which row for Tax Audit fee?"},
+  {id:"R2-A7",sec:"A",type:"r2",item:"Advances Written Off",company:"Company A",
+   gt_row:70,ai_row:69,opts:[69,70,75],
+   note:"Is this a write-off (non-cash â†’ R75 Misc Expenses Written Off) or a bad debt â†’ R69? Or selling expense â†’ R70?"},
+  {id:"R2-A8",sec:"A",type:"r2",item:"Selling & Distribution Expenses (different year)",company:"Company A",
+   gt_row:72,ai_row:70,opts:[70,72],
+   note:"Same item text, different year, different GT row (R72 Repairs & Maintenance). AI correctly says R70. Clear GT offset bug?"},
+  {id:"R2-A9",sec:"A",type:"r2",item:"Brokerage & Commission",company:"Company E",
+   gt_row:70,ai_row:71,opts:[70,71],
+   note:"Round 1 CA confirmed Brokerage & Commission â†’ R70. GT agrees. AI incorrectly said R71. Confirm R70?"},
+  {id:"R2-A10",sec:"A",type:"r2",item:"Carriage Outward",company:"Company H",
+   gt_row:71,ai_row:70,opts:[70,71],
+   note:"Round 1 CA confirmed Carriage Outward â†’ R70 (selling expense). But GT says R71. Which is correct?"},
+  {id:"R2-A11",sec:"A",type:"r2",item:"Sundry Balance W/off",company:"Company H",
+   gt_row:71,ai_row:75,opts:[71,75,69],
+   note:"Is 'Sundry Balance Written Off' a non-cash write-off (â†’ R75), a bad debt (â†’ R69), or just misc admin (â†’ R71)?"},
+  {id:"R2-A12",sec:"A",type:"r2",item:"Professional Tax",company:"Company H",
+   gt_row:71,ai_row:68,opts:[68,71],
+   note:"Professional Tax is a statutory levy. Does it go under R68 (Rent, Rates and Taxes) or R71 (Others Admin)?"},
+
+// â”€â”€â”€ SECTION B: Employee Cost â€” Industry Classification (7 questions) â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-B1",sec:"B",type:"r2",item:"(d) Contribution to EPF and ESI",company:"Company E (Manufacturing)",
+   gt_row:67,ai_row:45,opts:[45,67],
+   note:"Round 1 CA said EPF/ESI â†’ R45 (Wages). But Company E's GT says R67. For a manufacturing company, confirm the correct row."},
+  {id:"R2-B2",sec:"B",type:"r2",item:"(a) Salaries and Incentives",company:"Company E (Manufacturing)",
+   gt_row:67,ai_row:45,opts:[45,67],
+   note:"'Salaries and incentives' â€” is this always R67 (Salary) even for a manufacturing company? Or R45 (Wages)?"},
+  {id:"R2-B3",sec:"B",type:"r2",item:"(c) Staff Welfare",company:"Company E (Manufacturing)",
+   gt_row:67,ai_row:45,opts:[45,67],
+   note:"Staff Welfare for a manufacturing company. GT says R67, AI says R45."},
+  {id:"R2-B4",sec:"B",type:"r2",item:"(e) Gratuity",company:"Company E (Manufacturing)",
+   gt_row:67,ai_row:45,opts:[45,67],
+   note:"Round 1 CA said Gratuity â†’ R45. But Company E's GT says R67. Confirm correct row for manufacturing company."},
+  {id:"R2-B5",sec:"B",type:"r2",item:"(c) Staff Welfare Expenses",company:"Company E (Manufacturing)",
+   gt_row:67,ai_row:45,opts:[45,67],
+   note:"Same as R2-B3 but appears in a different year/note. GT says R67, AI says R45."},
+  {id:"R2-B6",sec:"B",type:"r2",item:"Provision for Employee Benefits (Gratuity)",company:"Company E",
+   gt_row:153,ai_row:45,opts:[153,45,249],
+   note:"This is a BALANCE SHEET provision (long-term), not a P&L expense. AI incorrectly classified as P&L Wages (R45). Should it be R153 (Long Term Debt) or R249 (Creditors)?"},
+  {id:"R2-B7",sec:"B",type:"r2",item:"(c) Statutory Dues â€” ESI & PF Payable",company:"Company E",
+   gt_row:246,ai_row:45,opts:[246,45,249],
+   note:"This is a BALANCE SHEET current liability (payable), not a P&L expense. AI classified as Wages (R45). Should it be R246 (Statutory Liabilities)?"},
+
+// â”€â”€â”€ SECTION C: Bill Discounting (3 questions) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-C1",sec:"C",type:"r2",item:"Bill Discounting Charges",company:"Company A (P&L â€” Finance Costs)",
+   gt_row:83,ai_row:133,opts:[83,84,85,133],
+   note:"The CHARGE for bill discounting is an interest cost (P&L). The outstanding BALANCE is a borrowing (R133 BS). AI confused P&L charge with BS balance. Which row for the P&L charge?"},
+  {id:"R2-C2",sec:"C",type:"r2",item:"Inland LC Discounting",company:"Company A (Balance Sheet â€” ST Borrowings)",
+   gt_row:131,ai_row:133,opts:[131,133],
+   note:"This IS a BS item (borrowing). Is 'Inland LC Discounting' under general bank borrowings (R131) or specific bill discounting liability (R133)?"},
+  {id:"R2-C3",sec:"C",type:"r2",item:"(b) Interest on Bill Discounting & Charges",company:"Company E (P&L â€” Finance Costs)",
+   gt_row:84,ai_row:133,opts:[84,83,85,133],
+   note:"P&L finance cost. AI confused with BS borrowing (R133). GT says R84 (WC interest). Is interest on bill discounting a WC interest cost?"},
+
+// â”€â”€â”€ SECTION D: Loan Processing Fee (2 questions) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-D1",sec:"D",type:"r2",item:"(a) Loan/Overdraft Processing Fee",company:"Company E (P&L)",
+   gt_row:84,ai_row:85,opts:[84,85],
+   note:"Round 1 CA said Loan Processing Fee â†’ R85 (Bank Charges). GT says R84 (WC Interest). Does it change for WC loan processing fees?"},
+  {id:"R2-D2",sec:"D",type:"r2",item:"(a) Loan/Overdraft Processing Fee (different year)",company:"Company E (P&L)",
+   gt_row:83,ai_row:85,opts:[83,85],
+   note:"Same item, different year. GT says R83 (Term Loan interest). AI says R85. R85 still correct per Round 1 CA rule, or does TL processing fee â†’ R83?"},
+
+// â”€â”€â”€ SECTION E: Inventory / Stock Items (5 questions) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-E1",sec:"E",type:"r2",item:"Raw Materials (Balance Sheet â€” Inventories)",company:"Company A",
+   gt_row:193,ai_row:42,opts:[193,194,42],
+   note:"BS inventory item (not P&L consumption). AI incorrectly used P&L row R42. Which BS row: R193 (Imported) or R194 (Indigenous)?"},
+  {id:"R2-E2",sec:"E",type:"r2",item:"Scraps (Balance Sheet â€” Inventories)",company:"Company A",
+   gt_row:197,ai_row:null,ai_doubt:true,opts:[197,198],
+   note:"AI returned DOUBT. GT says R197 (Stores & Spares Imported). Where does scrap inventory go on the Balance Sheet?"},
+  {id:"R2-E3",sec:"E",type:"r2",item:"Finished Goods (Balance Sheet â€” Current Assets)",company:"Company A",
+   gt_row:200,ai_row:null,ai_doubt:true,opts:[195,196,200,201],
+   note:"R200 is a FORMULA CELL (auto-calculates). AI returned DOUBT. GT maps to R200. Is the GT wrong? What is the correct BS row for Finished Goods?"},
+  {id:"R2-E4",sec:"E",type:"r2",item:"Work-in-Progress (Balance Sheet â€” Current Assets)",company:"Company E",
+   gt_row:200,ai_row:null,ai_doubt:true,opts:[195,196,200],
+   note:"Same R200 formula cell issue. AI returned DOUBT. What is the correct BS row for WIP inventory?"},
+  {id:"R2-E5",sec:"E",type:"r2",item:"To Opening Stock (P&L â€” Changes in Inventories)",company:"Company H",
+   gt_row:53,ai_row:58,opts:[53,55,58],
+   note:"'Opening Stock' without qualifier. GT says R53 (WIP Opening). AI says R58 (FG Opening). Which is correct when the item name has no qualifier?"},
+
+// â”€â”€â”€ SECTION F: Other Items (20 questions, 1 skip) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {id:"R2-F1",sec:"F",type:"r2",item:"Other Materials Consumed",company:"Company A (P&L â€” Manufacturing)",
+   gt_row:41,ai_row:49,opts:[41,44,49],
+   note:"Is 'Other Materials' Raw Material (R41) or Stores & Spares (R44) or Manufacturing Other (R49)?"},
+  {id:"R2-F2",sec:"F",type:"r2",item:"Other Materials Consumed (different context)",company:"Company A",
+   gt_row:43,ai_row:49,opts:[43,44,49],
+   note:"Same item text, different GT row (R43 â€” Stores & Spares Imported). AI says R49. Which is correct?"},
+  {id:"R2-F3",sec:"F",type:"r2",item:"Employee Benefits Expense",company:"Company A (Manufacturing)",
+   gt_row:44,ai_row:67,opts:[44,45,67],
+   note:"GT says R44 (Stores & Spares). AI says R67 (Salary). This looks like a GT bug â€” Employee Benefits should be R45 or R67, not Stores & Spares. Confirm?"},
+  {id:"R2-F4",sec:"F",type:"r2",item:"Deferred Tax",company:"Company A",
+   gt_row:100,ai_row:100,opts:[],skip:true,
+   note:"No action needed â€” AI and GT both say R100. Comparison bug in our test harness."},
+  {id:"R2-F5",sec:"F",type:"r2",item:"Long-term Borrowings (Secured)",company:"Company A (Balance Sheet)",
+   gt_row:136,ai_row:153,opts:[136,153,140],
+   note:"GT says R136 (Term Loan repayable next year â€” current maturity). AI says R153 (Full LT debt). Which row for the full secured LT borrowing balance?"},
+  {id:"R2-F6",sec:"F",type:"r2",item:"Capital Advances",company:"Company A (Balance Sheet)",
+   gt_row:235,ai_row:223,opts:[235,236,223],
+   note:"GT says R235 (Dues from directors). AI says R223 (Other advances). Capital Advances are advances for capital goods purchase â€” R236 seems logical. Confirm."},
+  {id:"R2-F7",sec:"F",type:"r2",item:"Other Non-Current Assets",company:"Company A (Balance Sheet)",
+   gt_row:236,ai_row:238,opts:[236,238],
+   note:"GT says R236 (Advances to suppliers of capital goods). AI says R238 (Other non-current assets). Which is correct?"},
+  {id:"R2-F8",sec:"F",type:"r2",item:"Leave Encashment (Balance Sheet â€” Current Liabilities)",company:"Company A",
+   gt_row:243,ai_row:249,opts:[243,249,250],
+   note:"Round 1 CA said Leave Encashment (BS) â†’ R249 (Creditors for Expenses). GT says R243 (Advance from customers) â€” this looks like a GT bug. Confirm R249?"},
+  {id:"R2-F9",sec:"F",type:"r2",item:"Short-term Provisions",company:"Company A (Balance Sheet)",
+   gt_row:248,ai_row:250,opts:[248,249,250],
+   note:"GT says R248 (Interest Accrued & Due). AI says R250 (Other current liabilities). Which row for a generic 'Short-term Provisions' item?"},
+  {id:"R2-F10",sec:"F",type:"r2",item:"Carriage Inwards",company:"Company E (P&L â€” Manufacturing)",
+   gt_row:47,ai_row:41,opts:[47,41],
+   note:"Carriage Inwards = cost of bringing raw materials in. R47 (Freight) seems correct. AI says R41 (Raw Materials). Confirm R47?"},
+  {id:"R2-F11",sec:"F",type:"r2",item:"(3) Deferred Tax Liability / (Asset)",company:"Company E (Balance Sheet)",
+   gt_row:101,ai_row:159,opts:[101,100,159],
+   note:"Item says 'Liability / (Asset)' â€” depends on sign/year. GT says R101 (DT Asset). AI says R159 (DT Liability long-term). Which row is correct?"},
+  {id:"R2-F12",sec:"F",type:"r2",item:"Interest on PPF",company:"Company H (P&L â€” Other Income)",
+   gt_row:34,ai_row:30,opts:[30,34],
+   note:"PPF interest is interest income. R30 (Interest Received) seems specific. GT says R34 (Others Non-Op Income). Which is correct?"},
+  {id:"R2-F13",sec:"F",type:"r2",item:"Packing Forwarding",company:"Company H (P&L)",
+   gt_row:49,ai_row:47,opts:[47,49,70],
+   note:"Packing & forwarding â€” is this freight/transport (R47), manufacturing other (R49), or selling expense (R70)?"},
+  {id:"R2-F14",sec:"F",type:"r2",item:"Transport Charges",company:"Company H (P&L)",
+   gt_row:49,ai_row:47,opts:[47,49],
+   note:"GT says R49 (Others Manufacturing). AI says R47 (Freight & Transport). R47 has a dedicated transport row â€” is GT wrong?"},
+  {id:"R2-F15",sec:"F",type:"r2",item:"To Depreciation (Balance Sheet)",company:"Company H",
+   gt_row:163,ai_row:56,opts:[163,56],
+   note:"BS 'Depreciation' = accumulated depreciation (R163). P&L depreciation = R56. AI confused BS/P&L context. Confirm R163 for BS?"},
+  {id:"R2-F16",sec:"F",type:"r2",item:"TDS Receivable",company:"Company H (Balance Sheet)",
+   gt_row:219,ai_row:206,opts:[219,221,206],
+   note:"TDS Receivable = tax deducted at source to be recovered. R219 (Advances recoverable) or R221 (Advance Income Tax)?"},
+  {id:"R2-F17",sec:"F",type:"r2",item:"GST Receivable",company:"Company H (Balance Sheet)",
+   gt_row:219,ai_row:223,opts:[219,223],
+   note:"GST input credit receivable. GT says R219 (Advances recoverable). AI says R223 (Other advances). Which is correct?"},
+  {id:"R2-F18",sec:"F",type:"r2",item:"Telephone Deposits",company:"Company H (Balance Sheet)",
+   gt_row:237,ai_row:222,opts:[237,238,222],
+   note:"Deposit paid to telecom company (typically a govt/PSU). R237 (Security deposits with govt bodies) or R238 (Other non-current assets)?"},
+  {id:"R2-F19",sec:"F",type:"r2",item:"IT Refund Due 2021",company:"Company H (Balance Sheet)",
+   gt_row:219,ai_row:221,opts:[219,221],
+   note:"Income Tax refund receivable. R221 (Advance Income Tax) seems more specific. Or R219 (General advance receivable)?"},
+  {id:"R2-F20",sec:"F",type:"r2",item:"FD Accrued Interest (reclassified from Investments)",company:"Company H (Balance Sheet)",
+   gt_row:182,ai_row:229,opts:[182,229,30],
+   note:"Accrued interest on Fixed Deposit. Is this an investment asset (R182 Govt Securities / R229 Current investments) or does it belong under income receivable?"}
+];
+
+// â”€â”€â”€ STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const state = {
+  answers: {},         // qId â†’ { selected_row, confidence, notes, other_row, other_row_name, var_industry_on, var_context_on, industries:{}, contexts:{} }
+  openExamples: {},    // qId â†’ bool
+  openSections: {},    // secId â†’ bool (default all open)
+  varActiveTab: {}     // qId â†’ { industry: key, context: key }
+};
+
+// â”€â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+document.addEventListener('DOMContentLoaded', () => {
+  SECTIONS_DEF.forEach(s => state.openSections[s.id] = true);
+  renderRef();
+  renderSections();
+  checkRestore();
+  updateProgress();
+});
+
+// â”€â”€â”€ REFERENCE TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function toggleRef() {
+  const body = document.getElementById('refBody');
+  const ch = document.getElementById('refChev');
+  body.classList.toggle('open');
+  ch.classList.toggle('rot');
+}
+
+function renderRef() {
+  const body = document.getElementById('refBody');
+  let html = '<div class="ref-grid">';
+  // Build col-spanning sections
+  body.innerHTML = '';
+  REF_SECTIONS.forEach(sec => {
+    const el = document.createElement('div');
+    el.style.gridColumn = '1 / -1';
+    el.className = 'ref-sec-title';
+    el.textContent = sec.title;
+    body.appendChild(el);
+    const grid = document.createElement('div');
+    grid.className = 'ref-grid';
+    sec.rows.forEach(r => {
+      const item = document.createElement('div');
+      item.className = 'ref-row';
+      item.innerHTML = `<b>R${r}</b> â€” ${ROW_NAMES[r] || '?'}`;
+      grid.appendChild(item);
+    });
+    body.appendChild(grid);
+  });
+}
+
+// â”€â”€â”€ RENDER SECTIONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function renderSections() {
+  const container = document.getElementById('sectionsContainer');
+  container.innerHTML = '';
+  SECTIONS_DEF.forEach(sec => {
+    const qs = QUESTIONS.filter(q => q.sec === sec.id);
+    if (!qs.length) return;
+    const answered = qs.filter(q => isAnswered(q)).length;
+    const isOpen = state.openSections[sec.id];
+
+    const block = document.createElement('div');
+    block.className = 'sec-block';
+    block.id = 'sec_' + sec.id;
+
+    let html = `
+      <div class="sec-hdr${isOpen ? '' : ' closed'}" onclick="toggleSection('${sec.id}')">
+        <div class="sec-letter">${sec.id}</div>
+        <div>
+          <div class="sec-title-text">${sec.title}</div>
+          <div style="font-size:12px;opacity:.75">${sec.subtitle}</div>
+        </div>
+        <div class="sec-count">${answered}/${qs.length} answered</div>
+        <div class="chevron${isOpen ? ' rot' : ''}">â–¼</div>
+      </div>
+    `;
+
+    if (isOpen) {
+      html += `<div class="sec-qs" id="secqs_${sec.id}">`;
+      if (sec.context) {
+        html += `<div class="sec-ctx">ðŸ’¡ <strong>Context for CA:</strong> ${sec.context}</div>`;
+      }
+      qs.forEach(q => {
+        html += renderQuestion(q);
+      });
+      html += '</div>';
+    } else {
+      html += `<div class="sec-qs hidden" id="secqs_${sec.id}">`;
+      if (sec.context) {
+        html += `<div class="sec-ctx">ðŸ’¡ <strong>Context for CA:</strong> ${sec.context}</div>`;
+      }
+      qs.forEach(q => {
+        html += renderQuestion(q);
+      });
+      html += '</div>';
+    }
+
+    block.innerHTML = html;
+    container.appendChild(block);
+  });
+}
+
+function toggleSection(secId) {
+  state.openSections[secId] = !state.openSections[secId];
+  const qsEl = document.getElementById('secqs_' + secId);
+  const secEl = document.getElementById('sec_' + secId);
+  const hdr = secEl.querySelector('.sec-hdr');
+  const ch = secEl.querySelector('.chevron');
+  if (state.openSections[secId]) {
+    qsEl.classList.remove('hidden');
+    hdr.classList.remove('closed');
+    ch.classList.add('rot');
+  } else {
+    qsEl.classList.add('hidden');
+    hdr.classList.add('closed');
+    ch.classList.remove('rot');
+  }
+}
+
+function renderQuestion(q) {
+  const ans = state.answers[q.id] || {};
+  if (q.type === 'r2') return renderR2Question(q, ans);
+  if (q.type === 'open') return renderOpenQuestion(q, ans);
+  return renderChoiceQuestion(q, ans);
+}
+
+function renderChoiceQuestion(q, ans) {
+  const aiName = ROW_NAMES[q.ai] || '';
+  let optHtml = '<ul class="opts">';
+  q.opts.forEach(opt => {
+    const name = ROW_NAMES[opt.r] || ('Row ' + opt.r);
+    const isAI = opt.r === q.ai;
+    const isSel = ans.selected_row === opt.r;
+    optHtml += `
+      <li class="opt${isSel ? ' sel' : ''}" onclick="selectOpt('${q.id}', ${opt.r})">
+        <input type="radio" name="opt_${q.id}" value="${opt.r}" ${isSel ? 'checked' : ''} onchange="selectOpt('${q.id}', ${opt.r})">
+        <span class="opt-rnum">Row ${opt.r}</span>
+        <span class="opt-name">${name}</span>
+        ${isAI ? '<span class="ai-star">â˜… AI suggests</span>' : ''}
+      </li>`;
+  });
+  // Other option
+  const otherSel = ans.selected_row && !q.opts.find(o => o.r === ans.selected_row);
+  const otherRow = ans.other_row || '';
+  const otherName = ans.other_row_name || (otherRow ? (ROW_NAMES[parseInt(otherRow)] || '') : '');
+  optHtml += `
+    <li class="opt${otherSel ? ' sel' : ''}">
+      <div class="other-row">
+        <input type="radio" name="opt_${q.id}" value="other" ${otherSel ? 'checked' : ''} onchange="selectOther('${q.id}')">
+        <span style="font-size:13px;color:#4a5568;flex-shrink:0">Other:</span>
+        <input class="other-num" type="number" id="otherNum_${q.id}" value="${otherRow}"
+          placeholder="Row #" oninput="otherRowInput('${q.id}')" onfocus="selectOther('${q.id}')">
+        <input class="other-name-input" type="text" id="otherName_${q.id}" value="${otherName}"
+          placeholder="Column name (auto-fills, or type custom)"
+          oninput="otherNameInput('${q.id}')" onfocus="selectOther('${q.id}')">
+      </div>
+    </li>`;
+  optHtml += '</ul>';
+
+  const aiPill = `<div class="ai-pill">â˜… AI suggests: Row ${q.ai} â€” ${aiName}</div>`;
+  const confHtml = renderConfidence(q.id, ans.confidence);
+  const notesHtml = renderNotes(q.id, ans.notes);
+  const varHtml = renderVariations(q, ans);
+  const exHtml = renderExamples(q.id, q.examples, q.reasoning);
+
+  return `
+    <div class="q-card" id="qcard_${q.id}">
+      <div class="q-hdr">
+        <div class="q-badge">${q.id}</div>
+        <div class="q-text">${q.text}</div>
+      </div>
+      ${aiPill}
+      ${optHtml}
+      ${confHtml}
+      ${notesHtml}
+      ${varHtml}
+      ${exHtml}
+    </div>`;
+}
+
+function renderOpenQuestion(q, ans) {
+  const confHtml = renderConfidence(q.id, ans.confidence);
+  const notesHtml = renderNotes(q.id, ans.notes, "Your answer / rule:");
+  return `
+    <div class="q-card" id="qcard_${q.id}">
+      <div class="q-hdr">
+        <div class="q-badge">${q.id}</div>
+        <div class="q-text">${q.text}</div>
+      </div>
+      ${q.ai_text ? `<div class="ai-suggestion-open"><span>â˜… AI suggests:</span> ${q.ai_text}</div>` : ''}
+      ${q.context_note ? `<div class="open-note">ðŸ’¬ ${q.context_note}</div>` : ''}
+      ${confHtml}
+      ${notesHtml}
+    </div>`;
+}
+
+function renderConfidence(qId, val) {
+  return `
+    <div class="conf-row">
+      <div class="conf-lbl">Confidence:</div>
+      <div class="conf-opts">
+        ${['certain','usually','depends'].map(c =>
+          `<label class="conf-opt">
+            <input type="radio" name="conf_${qId}" value="${c}" ${val === c ? 'checked' : ''} onchange="setConf('${qId}','${c}')">
+            ${c.charAt(0).toUpperCase()+c.slice(1)}
+          </label>`
+        ).join('')}
+      </div>
+    </div>`;
+}
+
+function renderNotes(qId, val, label) {
+  return `
+    <div class="notes-row">
+      <label for="notes_${qId}">${label || 'Notes (optional):'}</label>
+      <textarea id="notes_${qId}" placeholder="E.g. 'only for manufacturing companies' or 'if section header is Employee Benefits thenâ€¦'"
+        oninput="setNotes('${qId}', this.value)">${val || ''}</textarea>
+    </div>`;
+}
+
+function renderExamples(qId, examples, reasoning) {
+  if (!examples || !examples.length) return '';
+  const isOpen = state.openExamples[qId];
+  const hasRealExamples = examples.some(e => e.co !== 'Example data not available');
+  if (!hasRealExamples && !reasoning) return '';
+
+  let exHtml = '';
+  examples.forEach(ex => {
+    if (ex.co === 'Example data not available') {
+      exHtml += `<div class="ex-item"><span style="color:#a0aec0;font-style:italic">ðŸ“„ Example data not available â€” please use your professional judgment.</span></div>`;
+    } else {
+      exHtml += `
+        <div class="ex-item">
+          <div class="ex-co">ðŸ“„ ${ex.co} <span style="font-weight:400;color:#718096">(${ex.type}, ${ex.yr})</span></div>
+          <div class="ex-detail">"${ex.text}" â€” <span class="ex-amt">${ex.amt}</span></div>
+          <div class="ex-detail">Section: ${ex.hdr}</div>
+        </div>`;
+    }
+  });
+  if (reasoning) {
+    exHtml += `<div class="ex-reasoning"><strong>ðŸ’¡ Why AI chose this:</strong> ${reasoning}</div>`;
+  }
+
+  return `
+    <button class="ex-toggle" onclick="toggleExamples('${qId}')">
+      ${isOpen ? 'â–²' : 'â–¶'} ${isOpen ? 'Hide' : 'Show'} Examples & Reasoning
+    </button>
+    <div class="ex-body${isOpen ? ' open' : ''}" id="ex_${qId}">${exHtml}</div>`;
+}
+
+function toggleExamples(qId) {
+  state.openExamples[qId] = !state.openExamples[qId];
+  const body = document.getElementById('ex_' + qId);
+  const btn = body.previousElementSibling;
+  if (state.openExamples[qId]) {
+    body.classList.add('open');
+    btn.innerHTML = 'â–² Hide Examples & Reasoning';
+  } else {
+    body.classList.remove('open');
+    btn.innerHTML = 'â–¶ Show Examples & Reasoning';
+  }
+}
+
+// â”€â”€â”€ ANSWER HANDLERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function selectOpt(qId, row) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  state.answers[qId].selected_row = row;
+  state.answers[qId].other_row = null;
+  // Update UI
+  const card = document.getElementById('qcard_' + qId);
+  card.querySelectorAll('.opt').forEach(el => {
+    const radio = el.querySelector('input[type=radio]');
+    if (radio && radio.value != 'other') {
+      const isMatch = parseInt(radio.value) === row;
+      el.classList.toggle('sel', isMatch);
+      radio.checked = isMatch;
+    } else if (radio && radio.value === 'other') {
+      el.classList.remove('sel');
+      radio.checked = false;
+    }
+  });
+  updateProgress();
+  updateSectionCount(qId);
+  autoSave();
+}
+
+function selectOther(qId) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const numEl = document.getElementById('otherNum_' + qId);
+  const nameEl = document.getElementById('otherName_' + qId);
+  const row = numEl ? parseInt(numEl.value) : null;
+  if (row) {
+    state.answers[qId].selected_row = row;
+    state.answers[qId].other_row = row;
+    // Only auto-fill name if user hasn't typed a custom value
+    const customName = nameEl ? nameEl.value.trim() : '';
+    state.answers[qId].other_row_name = customName || ROW_NAMES[row] || '';
+  }
+  const card = document.getElementById('qcard_' + qId);
+  card.querySelectorAll('.opt').forEach(el => {
+    const radio = el.querySelector('input[type=radio]');
+    if (radio && radio.value !== 'other') {
+      el.classList.remove('sel');
+      radio.checked = false;
+    } else if (radio && radio.value === 'other') {
+      el.classList.add('sel');
+      radio.checked = true;
+    }
+  });
+  updateProgress();
+  updateSectionCount(qId);
+  autoSave();
+}
+
+function otherRowInput(qId) {
+  const numEl = document.getElementById('otherNum_' + qId);
+  const nameEl = document.getElementById('otherName_' + qId);
+  const row = parseInt(numEl.value);
+  if (nameEl) {
+    // Auto-fill name only if the name field is currently empty or was previously auto-filled
+    const currentName = nameEl.value.trim();
+    const wasAutoFilled = currentName === '' || Object.values(ROW_NAMES).includes(currentName);
+    if (wasAutoFilled) {
+      if (row && ROW_NAMES[row]) {
+        nameEl.value = ROW_NAMES[row];
+        nameEl.style.color = '#2d3748';
+      } else if (row) {
+        nameEl.value = '';
+        nameEl.placeholder = 'Row ' + row + ' â€” type column name here';
+      } else {
+        nameEl.value = '';
+        nameEl.placeholder = 'Column name (auto-fills, or type custom)';
+      }
+    }
+  }
+  selectOther(qId);
+}
+
+function otherNameInput(qId) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const nameEl = document.getElementById('otherName_' + qId);
+  state.answers[qId].other_row_name = nameEl ? nameEl.value : '';
+  autoSave();
+}
+
+function setConf(qId, val) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  state.answers[qId].confidence = val;
+  updateProgress();
+  updateSectionCount(qId);
+  autoSave();
+}
+
+function setNotes(qId, val) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  state.answers[qId].notes = val;
+  autoSave();
+}
+
+// â”€â”€â”€ PROGRESS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function isAnswered(q) {
+  const ans = state.answers[q.id];
+  if (q.type === 'r2') return q.skip || !!(ans && ans.ca_answer);
+  if (!ans) return false;
+  if (q.type === 'open') return !!(ans.notes && ans.notes.trim()) || !!(ans.confidence);
+  return ans.selected_row != null;
+}
+
+function updateProgress() {
+  const total = QUESTIONS.length;
+  const answered = QUESTIONS.filter(isAnswered).length;
+  document.getElementById('progressText').textContent = `${answered} of ${total} questions answered`;
+  document.getElementById('progressPct').textContent = `${Math.round(answered/total*100)}%`;
+  document.getElementById('pbarFill').style.width = `${answered/total*100}%`;
+}
+
+function updateSectionCount(qId) {
+  const q = QUESTIONS.find(x => x.id === qId);
+  if (!q) return;
+  const secId = q.sec;
+  const qs = QUESTIONS.filter(x => x.sec === secId);
+  const answered = qs.filter(isAnswered).length;
+  const secEl = document.getElementById('sec_' + secId);
+  if (secEl) {
+    const countEl = secEl.querySelector('.sec-count');
+    if (countEl) countEl.textContent = `${answered}/${qs.length} answered`;
+  }
+}
+
+// â”€â”€â”€ SELECT ALL AI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function selectAllAI() {
+  QUESTIONS.forEach(q => {
+    if (q.type === 'r2' && !q.skip && q.ai_row != null) {
+      if (!state.answers[q.id]) state.answers[q.id] = {};
+      state.answers[q.id].ca_answer = 'ai';
+      state.answers[q.id].correct_row = q.ai_row;
+    }
+    if (q.type === 'choice' && q.ai) {
+      if (!state.answers[q.id]) state.answers[q.id] = {};
+      state.answers[q.id].selected_row = q.ai;
+      state.answers[q.id].other_row = null;
+    }
+  });
+  renderSections();
+  updateProgress();
+  autoSave();
+}
+
+// â”€â”€â”€ EXPORT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function exportAnswers() {
+  const caName = document.getElementById('caName').value.trim();
+  // Highlight unanswered
+  let hasUnanswered = false;
+  QUESTIONS.forEach(q => {
+    const card = document.getElementById('qcard_' + q.id);
+    if (card) {
+      if (!isAnswered(q)) {
+        card.classList.add('highlight');
+        hasUnanswered = true;
+      } else {
+        card.classList.remove('highlight');
+      }
+    }
+  });
+
+  const actionable = QUESTIONS.filter(q => !q.skip);
+  const answered = actionable.filter(isAnswered).length;
+  const unanswered = actionable.length - answered;
+
+  const answers = {};
+  let gt_correct = 0, ai_correct = 0, both_wrong = 0, gt_bugs = 0;
+
+  QUESTIONS.forEach(q => {
+    const ans = state.answers[q.id] || {};
+    if (q.type === 'r2') {
+      if (q.skip) {
+        answers[q.id] = { item: q.item, company: q.company, skip: true,
+          note: "Comparison bug — both AI and GT agree. No action needed." };
+        return;
+      }
+      const ca = ans.ca_answer || null;
+      let correct_row = null, correct_name = null;
+      if (ca === 'gt') { correct_row = q.gt_row; gt_correct++; }
+      else if (ca === 'ai') { correct_row = q.ai_row; ai_correct++; }
+      else if (ca === 'other') { correct_row = ans.other_row || null; both_wrong++; }
+      if (ca && ca !== 'gt') gt_bugs++;
+      correct_name = correct_row ? (ans.other_row_name || ROW_NAMES[correct_row] || ('Row ' + correct_row)) : null;
+      answers[q.id] = {
+        item: q.item, company: q.company,
+        gt_row: q.gt_row, gt_name: ROW_NAMES[q.gt_row] || ('Row ' + q.gt_row),
+        ai_row: q.ai_row, ai_name: q.ai_row ? (ROW_NAMES[q.ai_row] || ('Row ' + q.ai_row)) : 'DOUBT',
+        ca_answer: ca,
+        correct_row, correct_name,
+        is_gt_bug: ca != null ? ca !== 'gt' : null,
+        confidence: ans.confidence || null,
+        notes: ans.notes || ''
+      };
+    }
+  });
+
+  const json = {
+    round: 2,
+    ca_name: caName || '(not specified)',
+    date: new Date().toISOString().split('T')[0],
+    summary: {
+      total_questions: actionable.length,
+      answered,
+      unanswered,
+      gt_was_correct: gt_correct,
+      ai_was_correct: ai_correct,
+      both_wrong,
+      confirmed_gt_bugs: gt_bugs
+    },
+    answers
+  };
+
+  const jsonStr = JSON.stringify(json, null, 2);
+
+  // Show in textarea
+  const out = document.getElementById('exportOut');
+  out.value = jsonStr;
+  out.classList.add('visible');
+
+  // Download
+  const blob = new Blob([jsonStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const dateStr = new Date().toISOString().split('T')[0];
+  a.download = `ca_answers_${dateStr}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  if (hasUnanswered) {
+    setTimeout(() => {
+      alert(`Export complete!\n\nNote: ${skipped} questions were not answered (highlighted in red). You can continue answering and re-export.`);
+    }, 500);
+  }
+}
+
+function toggleExportView() {
+  const out = document.getElementById('exportOut');
+  out.classList.toggle('visible');
+  if (out.classList.contains('visible') && !out.value) {
+    out.value = '(click "Export Answers" first to generate JSON)';
+  }
+}
+
+// â”€â”€â”€ AUTOSAVE / RESTORE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function autoSave() {
+  try {
+    const data = {
+      caName: document.getElementById('caName').value,
+      answers: state.answers,
+      savedAt: new Date().toISOString()
+    };
+    localStorage.setItem('cma_ca_questionnaire', JSON.stringify(data));
+  } catch(e) {}
+}
+
+function checkRestore() {
+  try {
+    const raw = localStorage.getItem('cma_ca_questionnaire');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (data.answers && Object.keys(data.answers).length > 0) {
+      const banner = document.getElementById('restoreBanner');
+      banner.classList.remove('hidden');
+      const d = new Date(data.savedAt);
+      banner.querySelector('span') && (banner.querySelector('span').textContent = `Previous session found (saved ${d.toLocaleString()})`);
+      banner.firstChild.textContent = `ðŸ’¾ Previous answers found (saved ${d.toLocaleString()}). `;
+    }
+  } catch(e) {}
+}
+
+function restoreAnswers() {
+  try {
+    const raw = localStorage.getItem('cma_ca_questionnaire');
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    state.answers = data.answers || {};
+    document.getElementById('caName').value = data.caName || '';
+    document.getElementById('restoreBanner').classList.add('hidden');
+    renderSections();
+    updateProgress();
+  } catch(e) { alert('Could not restore: ' + e.message); }
+}
+
+function dismissRestore() {
+  localStorage.removeItem('cma_ca_questionnaire');
+  document.getElementById('restoreBanner').classList.add('hidden');
+}
+
+function clearAll() {
+  if (!confirm('Clear all answers? This cannot be undone.')) return;
+  state.answers = {};
+  localStorage.removeItem('cma_ca_questionnaire');
+  document.getElementById('caName').value = '';
+  renderSections();
+  updateProgress();
+}
+
+// â”€â”€â”€ VARIATION BLOCKS (Industry / P&L vs BS) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// ─── ROUND 2 CARD RENDERER ────────────────────────────────────────────────────
+function renderR2Question(q, ans) {
+  if (q.skip) {
+    return `<div class="r2-skip-card" id="qcard_${q.id}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <div class="q-badge" style="background:#a0aec0">${q.id}</div>
+        <div style="font-weight:600;color:#718096">${q.item} <span class="r2-co-tag">${q.company||''}</span></div>
+      </div>
+      <div class="r2-skip-msg">✅ No action needed — both AI and GT say Row ${q.gt_row} (${ROW_NAMES[q.gt_row]||(q.gt_row)}). Comparison bug in test harness.</div>
+    </div>`;
+  }
+  const gtName = ROW_NAMES[q.gt_row] || ('Row '+q.gt_row);
+  const aiName = q.ai_row ? (ROW_NAMES[q.ai_row] || ('Row '+q.ai_row)) : null;
+  const ca = ans.ca_answer;
+  const isGT=ca==='gt', isAI=ca==='ai', isOther=ca==='other';
+  const otherRow = ans.other_row || '';
+  const otherName = ans.other_row_name || (otherRow ? (ROW_NAMES[parseInt(otherRow)]||'') : '');
+  const confHtml = renderConfidence(q.id, ans.confidence);
+  const notesHtml = renderNotes(q.id, ans.notes);
+  const extraOpts = (q.opts||[]).filter(r => r!==q.gt_row && r!==q.ai_row).map(r => {
+    const rn = ROW_NAMES[r] || ('Row '+r);
+    const isSel = ca==='other' && ans.correct_row===r && !ans.other_row;
+    return `<li class="opt${isSel?' sel':''}" onclick="r2PickRow('${q.id}',${r})">
+      <input type="radio" name="r2_${q.id}" value="row_${r}" ${isSel?'checked':''}>
+      <span style="font-weight:600;color:#6b46c1">Neither →</span>
+      <span style="color:#1a365d;font-weight:700;font-size:12px;min-width:55px;display:inline-block">Row ${r}</span>
+      <span style="color:#2d3748">${rn}</span>
+    </li>`;
+  }).join('');
+  return `<div class="q-card${!ca?' highlight':''}" id="qcard_${q.id}">
+    <div class="q-hdr">
+      <div class="q-badge q-badge-r2">${q.id}</div>
+      <div class="q-text">${q.item}<span class="r2-co-tag">${q.company||''}</span></div>
+    </div>
+    <div class="r2-compare">
+      <div class="r2-row r2-gt${isGT?' r2-selected':''}">
+        <span class="r2-badge r2-gt-badge">GT</span>
+        <span class="r2-row-ref">Row ${q.gt_row}</span>
+        <span class="r2-row-name">${gtName}</span>
+      </div>
+      <div class="r2-row r2-ai${isAI?' r2-selected':''}">
+        <span class="r2-badge r2-ai-badge">AI</span>
+        ${q.ai_doubt
+          ? '<span class="r2-doubt-tag">AI returned DOUBT — could not classify</span>'
+          : `<span class="r2-row-ref">Row ${q.ai_row}</span><span class="r2-row-name">${aiName}</span>`
+        }
+      </div>
+    </div>
+    <div class="r2-which">Which is correct?</div>
+    <ul class="opts">
+      <li class="opt${isGT?' sel':''}" onclick="r2Pick('${q.id}','gt')">
+        <input type="radio" name="r2_${q.id}" value="gt" ${isGT?'checked':''}>
+        <span class="r2-badge-inline r2-gt-badge">GT</span>
+        <span style="font-weight:600">GT is correct</span>
+        <span style="color:#718096;font-size:12px;margin-left:6px">→ Row ${q.gt_row} — ${gtName}</span>
+      </li>
+      ${!q.ai_doubt && q.ai_row!=null ? `<li class="opt${isAI?' sel':''}" onclick="r2Pick('${q.id}','ai')">
+        <input type="radio" name="r2_${q.id}" value="ai" ${isAI?'checked':''}>
+        <span class="r2-badge-inline r2-ai-badge">AI</span>
+        <span style="font-weight:600">AI is correct</span>
+        <span style="color:#718096;font-size:12px;margin-left:6px">→ Row ${q.ai_row} — ${aiName}</span>
+      </li>` : ''}
+      ${extraOpts}
+      <li class="opt${isOther&&otherRow?' sel':''}">
+        <div class="other-row">
+          <input type="radio" name="r2_${q.id}" value="other" ${isOther?'checked':''} onchange="r2PickOther('${q.id}')">
+          <span style="font-size:13px;color:#e67e22;font-weight:600;flex-shrink:0">Both wrong →</span>
+          <input class="other-num" type="number" id="r2Num_${q.id}" value="${otherRow}"
+            placeholder="Row #" oninput="r2OtherNum('${q.id}')" onfocus="r2PickOther('${q.id}')">
+          <input class="other-name-input" type="text" id="r2Name_${q.id}" value="${otherName}"
+            placeholder="Column name (auto-fills or type)" oninput="r2OtherName('${q.id}')" onfocus="r2PickOther('${q.id}')">
+        </div>
+      </li>
+    </ul>
+    ${confHtml}${notesHtml}
+    ${renderVariations(q, ans)}
+    ${q.note ? `<div class="r2-note">💬 ${q.note}</div>` : ''}
+  </div>`;
+}
+
+function r2Pick(qId, val) {
+  const q = QUESTIONS.find(x => x.id === qId);
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const ans = state.answers[qId];
+  ans.ca_answer = val;
+  ans.correct_row = val === 'gt' ? q.gt_row : q.ai_row;
+  ans.other_row = null; ans.other_row_name = '';
+  const card = document.getElementById('qcard_' + qId);
+  if (card) {
+    card.classList.remove('highlight');
+    card.querySelectorAll('.opt').forEach(el => {
+      const r = el.querySelector('input[type=radio]');
+      if (r) { const m = r.value === val; el.classList.toggle('sel', m); r.checked = m; }
+    });
+  }
+  updateProgress(); updateSectionCount(qId); autoSave();
+}
+
+function r2PickRow(qId, row) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const ans = state.answers[qId];
+  ans.ca_answer = 'other'; ans.correct_row = row;
+  ans.other_row = null; ans.other_row_name = ROW_NAMES[row] || ('Row '+row);
+  const card = document.getElementById('qcard_' + qId);
+  if (card) {
+    card.classList.remove('highlight');
+    card.querySelectorAll('.opt').forEach(el => {
+      const r = el.querySelector('input[type=radio]');
+      if (r) { const m = r.value === ('row_'+row); el.classList.toggle('sel', m); r.checked = m; }
+    });
+  }
+  updateProgress(); updateSectionCount(qId); autoSave();
+}
+
+function r2PickOther(qId) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const ans = state.answers[qId];
+  const numEl = document.getElementById('r2Num_' + qId);
+  const nameEl = document.getElementById('r2Name_' + qId);
+  const row = numEl ? parseInt(numEl.value) : null;
+  ans.ca_answer = 'other';
+  if (row) {
+    ans.correct_row = row; ans.other_row = row;
+    ans.other_row_name = (nameEl && nameEl.value.trim()) || ROW_NAMES[row] || '';
+    if (nameEl && !nameEl.value.trim() && ROW_NAMES[row]) nameEl.value = ROW_NAMES[row];
+  }
+  const card = document.getElementById('qcard_' + qId);
+  if (card) {
+    card.classList.remove('highlight');
+    card.querySelectorAll('.opt').forEach(el => {
+      const r = el.querySelector('input[type=radio]');
+      if (r) { const m = r.value === 'other'; el.classList.toggle('sel', m); r.checked = m; }
+    });
+  }
+  updateProgress(); updateSectionCount(qId); autoSave();
+}
+
+function r2OtherNum(qId) {
+  const numEl = document.getElementById('r2Num_' + qId);
+  const nameEl = document.getElementById('r2Name_' + qId);
+  const row = parseInt(numEl.value);
+  if (nameEl) {
+    const cur = nameEl.value.trim();
+    const wasAuto = cur === '' || Object.values(ROW_NAMES).includes(cur);
+    if (wasAuto) {
+      nameEl.value = (row && ROW_NAMES[row]) ? ROW_NAMES[row] : '';
+      if (row && !ROW_NAMES[row]) nameEl.placeholder = 'Row '+row+' — type column name';
+    }
+  }
+  r2PickOther(qId);
+}
+
+function r2OtherName(qId) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const nameEl = document.getElementById('r2Name_' + qId);
+  state.answers[qId].other_row_name = nameEl ? nameEl.value : '';
+  autoSave();
+}
+
+// ─── VARIATION BLOCKS (Industry / P&L vs BS) ──────────────────────────────────
+function ensureVarState(qId) {
+  if (!state.answers[qId]) state.answers[qId] = {};
+  const ans = state.answers[qId];
+  if (!ans.industries) {
+    ans.industries = {};
+    INDUSTRIES.forEach(i => {
+      ans.industries[i.key] = {selected_row:null,other_row:null,other_row_name:'',confidence:null,notes:''};
+    });
+  }
+  if (!ans.contexts) {
+    ans.contexts = {};
+    CONTEXTS.forEach(c => {
+      ans.contexts[c.key] = {selected_row:null,other_row:null,other_row_name:'',confidence:null,notes:''};
+    });
+  }
+  if (ans.var_industry_on === undefined) ans.var_industry_on = false;
+  if (ans.var_context_on === undefined) ans.var_context_on = false;
+  if (!state.varActiveTab[qId]) state.varActiveTab[qId] = {industry:'manufacturing', context:'pl'};
+}
+
+function toggleVarMode(qId, mode) {
+  ensureVarState(qId);
+  const ans = state.answers[qId];
+  if (mode === 'industry') ans.var_industry_on = !ans.var_industry_on;
+  else ans.var_context_on = !ans.var_context_on;
+  reRenderVar(qId);
+  autoSave();
+}
+
+function reRenderVar(qId) {
+  const varEl = document.getElementById('var_' + qId);
+  if (!varEl) return;
+  const q = QUESTIONS.find(x => x.id === qId);
+  const ans = state.answers[qId] || {};
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderVariations(q, ans);
+  varEl.replaceWith(tmp.firstChild);
+}
+
+function renderVariations(q, ans) {
+  if (q.skip) return ''; // No variations for skip cards
+  ensureVarState(q.id);
+  const indOn = ans.var_industry_on;
+  const ctxOn = ans.var_context_on;
+  let html = `<div id="var_${q.id}">
+    <div class="var-btns">
+      <button class="var-btn${indOn?' on':''}" onclick="toggleVarMode('${q.id}','industry')">
+        ${indOn ? 'âœ• Remove' : '+'} ðŸ“Š Varies by Industry
+      </button>
+      <button class="var-btn${ctxOn?' on':''}" onclick="toggleVarMode('${q.id}','context')">
+        ${ctxOn ? 'âœ• Remove' : '+'} ðŸ“‹ Varies by P&L / BS context
+      </button>
+    </div>`;
+  if (indOn) html += renderVarBlock(q, ans, 'industry');
+  if (ctxOn) html += renderVarBlock(q, ans, 'context');
+  html += '</div>';
+  return html;
+}
+
+function renderVarBlock(q, ans, mode) {
+  const items = mode === 'industry' ? INDUSTRIES : CONTEXTS;
+  const stateKey = mode === 'industry' ? 'industries' : 'contexts';
+  const title = mode === 'industry' ? 'ðŸ“Š Industry-specific Answers' : 'ðŸ“‹ P&L vs Balance Sheet Answers';
+  const activeTab = state.varActiveTab[q.id][mode] || items[0].key;
+
+  let html = `<div class="var-block">
+    <div class="var-block-hdr">
+      <span class="var-block-title">${title}</span>
+      <button class="var-remove-btn" onclick="toggleVarMode('${q.id}','${mode}')">âœ• Remove</button>
+    </div>
+    <div class="var-tabs-bar">`;
+
+  items.forEach(item => {
+    const iv = (ans[stateKey] || {})[item.key];
+    const hasAns = iv && iv.selected_row != null;
+    const isAct = item.key === activeTab;
+    html += `<button class="var-tab-btn${isAct?' act':''}"
+      onclick="switchVarTab('${q.id}','${mode}','${item.key}')">${item.label}${hasAns?' âœ“':''}</button>`;
+  });
+
+  html += `</div>`;
+
+  items.forEach(item => {
+    const isAct = item.key === activeTab;
+    const itemAns = (ans[stateKey] || {})[item.key] || {};
+    html += `<div class="var-tab-body${isAct?' act':''}" id="vartab_${q.id}_${mode}_${item.key}">`;
+    html += renderVarMiniOpts(q, mode, item.key, itemAns);
+    html += renderVarConf(q.id, mode, item.key, itemAns.confidence);
+    html += renderVarNotes(q.id, mode, item.key, itemAns.notes);
+    html += `</div>`;
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function renderVarMiniOpts(q, mode, tabKey, itemAns) {
+  // Normalise opts: R2 uses plain numbers, choice uses {r:N} objects
+  let normOpts;
+  if (q.type === 'r2') {
+    const allRows = [q.gt_row, ...(q.ai_row && !q.ai_doubt ? [q.ai_row] : []), ...(q.opts||[])];
+    const seen = new Set();
+    normOpts = allRows.filter(r => r && !seen.has(r) && seen.add(r)).map(r => ({r}));
+  } else {
+    normOpts = q.opts || [];
+  }
+  const aiRow = q.type === 'r2' ? q.ai_row  : q.ai;
+  const gtRow = q.type === 'r2' ? q.gt_row  : null;
+  let html = '<ul class="var-mini-opts">';
+  normOpts.forEach(opt => {
+    const name  = ROW_NAMES[opt.r] || ('Row ' + opt.r);
+    const isAI  = opt.r === aiRow;
+    const isGT  = opt.r === gtRow;
+    const isSel = itemAns.selected_row === opt.r;
+    html += `<li class="var-mini-opt${isSel?' sel':''}" onclick="setVarOpt('${q.id}','${mode}','${tabKey}',${opt.r})">`;
+    html += `<input type="radio" name="v_${q.id}_${mode}_${tabKey}" value="${opt.r}" ${isSel?'checked':''}>`;
+    html += `<span class="var-mini-rnum">R${opt.r}</span><span class="var-mini-name">${name}</span>`;
+    html += isAI ? '<span class="var-mini-aistar">★ AI</span>' : '';
+    html += isGT ? '<span style="font-size:10px;color:#c05621;font-weight:700;margin-left:4px">(GT)</span>' : '';
+    html += '</li>';
+  });
+    // Other option
+  const otherSel = itemAns.selected_row && !normOpts.find(o => o.r === itemAns.selected_row);
+  const otherRow = itemAns.other_row || '';
+  const otherName = itemAns.other_row_name || (otherRow ? (ROW_NAMES[parseInt(otherRow)] || '') : '');
+  html += `<li class="var-mini-opt${otherSel?' sel':''}">
+    <div class="var-other-row">
+      <input type="radio" name="v_${q.id}_${mode}_${tabKey}" value="other" ${otherSel?'checked':''}
+        onchange="setVarOtherSelect('${q.id}','${mode}','${tabKey}')">
+      <span style="font-size:12px;color:#4a5568;flex-shrink:0">Other:</span>
+      <input class="var-other-num" type="number" id="vONum_${q.id}_${mode}_${tabKey}" value="${otherRow}"
+        placeholder="Row #" oninput="varOtherRowInput('${q.id}','${mode}','${tabKey}')"
+        onfocus="setVarOtherSelect('${q.id}','${mode}','${tabKey}')">
+      <input class="var-other-name" type="text" id="vOName_${q.id}_${mode}_${tabKey}" value="${otherName}"
+        placeholder="Column name (auto-fills or type custom)"
+        oninput="varOtherNameInput('${q.id}','${mode}','${tabKey}')"
+        onfocus="setVarOtherSelect('${q.id}','${mode}','${tabKey}')">
+    </div>
+  </li>`;
+  html += '</ul>';
+  return html;
+}
+
+function renderVarConf(qId, mode, tabKey, val) {
+  return `<div class="var-conf-row">
+    <span class="var-conf-lbl">Confidence:</span>
+    ${['certain','usually','depends'].map(c =>
+      `<label class="var-conf-opt">
+        <input type="radio" name="vc_${qId}_${mode}_${tabKey}" value="${c}" ${val===c?'checked':''}
+          onchange="setVarConf('${qId}','${mode}','${tabKey}','${c}')">
+        ${c.charAt(0).toUpperCase()+c.slice(1)}
+      </label>`
+    ).join('')}
+  </div>`;
+}
+
+function renderVarNotes(qId, mode, tabKey, val) {
+  return `<div class="var-notes-row">
+    <div class="var-notes-lbl">Notes / conditions:</div>
+    <textarea class="var-notes-ta" placeholder="E.g. 'only applies when listed under Direct Expenses section'"
+      oninput="setVarNotes('${qId}','${mode}','${tabKey}',this.value)">${val||''}</textarea>
+  </div>`;
+}
+
+function switchVarTab(qId, mode, tabKey) {
+  state.varActiveTab[qId][mode] = tabKey;
+  reRenderVar(qId);
+}
+
+function getVarItem(qId, mode, tabKey) {
+  ensureVarState(qId);
+  const stateKey = mode === 'industry' ? 'industries' : 'contexts';
+  return state.answers[qId][stateKey][tabKey];
+}
+
+function setVarOpt(qId, mode, tabKey, row) {
+  const item = getVarItem(qId, mode, tabKey);
+  item.selected_row = row;
+  item.other_row = null;
+  // Update UI directly without full re-render
+  const body = document.getElementById(`vartab_${qId}_${mode}_${tabKey}`);
+  if (body) {
+    body.querySelectorAll('.var-mini-opt').forEach(el => {
+      const radio = el.querySelector('input[type=radio]');
+      if (!radio) return;
+      if (radio.value === 'other') {
+        el.classList.remove('sel'); radio.checked = false;
+      } else {
+        const match = parseInt(radio.value) === row;
+        el.classList.toggle('sel', match); radio.checked = match;
+      }
+    });
+  }
+  updateVarTabCheckmark(qId, mode, tabKey);
+  autoSave();
+}
+
+function setVarOtherSelect(qId, mode, tabKey) {
+  const numEl = document.getElementById(`vONum_${qId}_${mode}_${tabKey}`);
+  const nameEl = document.getElementById(`vOName_${qId}_${mode}_${tabKey}`);
+  const row = numEl ? parseInt(numEl.value) : null;
+  const item = getVarItem(qId, mode, tabKey);
+  if (row) {
+    item.selected_row = row;
+    item.other_row = row;
+    item.other_row_name = (nameEl && nameEl.value.trim()) || ROW_NAMES[row] || '';
+  }
+  const body = document.getElementById(`vartab_${qId}_${mode}_${tabKey}`);
+  if (body) {
+    body.querySelectorAll('.var-mini-opt').forEach(el => {
+      const radio = el.querySelector('input[type=radio]');
+      if (!radio) return;
+      if (radio.value === 'other') {
+        el.classList.add('sel'); radio.checked = true;
+      } else {
+        el.classList.remove('sel'); radio.checked = false;
+      }
+    });
+  }
+  updateVarTabCheckmark(qId, mode, tabKey);
+  autoSave();
+}
+
+function varOtherRowInput(qId, mode, tabKey) {
+  const numEl = document.getElementById(`vONum_${qId}_${mode}_${tabKey}`);
+  const nameEl = document.getElementById(`vOName_${qId}_${mode}_${tabKey}`);
+  const row = parseInt(numEl.value);
+  if (nameEl) {
+    const cur = nameEl.value.trim();
+    const wasAuto = cur === '' || Object.values(ROW_NAMES).includes(cur);
+    if (wasAuto) {
+      nameEl.value = (row && ROW_NAMES[row]) ? ROW_NAMES[row] : '';
+      if (row && !ROW_NAMES[row]) nameEl.placeholder = `Row ${row} â€” type column name here`;
+    }
+  }
+  setVarOtherSelect(qId, mode, tabKey);
+}
+
+function varOtherNameInput(qId, mode, tabKey) {
+  const nameEl = document.getElementById(`vOName_${qId}_${mode}_${tabKey}`);
+  getVarItem(qId, mode, tabKey).other_row_name = nameEl ? nameEl.value : '';
+  autoSave();
+}
+
+function setVarConf(qId, mode, tabKey, val) {
+  getVarItem(qId, mode, tabKey).confidence = val;
+  autoSave();
+}
+
+function setVarNotes(qId, mode, tabKey, val) {
+  getVarItem(qId, mode, tabKey).notes = val;
+  autoSave();
+}
+
+function updateVarTabCheckmark(qId, mode, tabKey) {
+  const items = mode === 'industry' ? INDUSTRIES : CONTEXTS;
+  const item = items.find(i => i.key === tabKey);
+  if (!item) return;
+  const varEl = document.getElementById('var_' + qId);
+  if (!varEl) return;
+  // Find the tab button for this tabKey and update its text
+  varEl.querySelectorAll('.var-tab-btn').forEach(btn => {
+    const oc = btn.getAttribute('onclick') || '';
+    if (oc.includes(`'${tabKey}'`) && oc.includes(`'${mode}'`)) {
+      const hasAns = getVarItem(qId, mode, tabKey).selected_row != null;
+      btn.textContent = item.label + (hasAns ? ' âœ“' : '');
+    }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 25: Less Excise Duty and Cess
+  Row 29: Dividends received from Mutual Funds
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 33: Extraordinary income
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Stores and spares consumed (Imported)
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation Charges
+  Row 48: Power, Coal, Fuel and Water
+  Row 49: Others (Manufacturing)
+  Row 50: Repairs & Maintenance (Manufacturing)
+  Row 51: Security Service Charges
+  Row 53: Stock in process Opening Balance
+  Row 54: Stock in process Closing Balance
+  Row 56: Depreciation (Manufacturing)
+  Row 58: Finished Goods Opening Balance
+  Row 59: Finished Goods Closing Balance
+  Row 63: Depreciation (CMA)
+  Row 64: Other Manufacturing Exp (CMA)
+  Row 67: Salary and staff expenses
+  Row 68: Rent, Rates and Taxes
+  Row 69: Bad Debts
+  Row 70: Advertisements and Sales Promotions
+  Row 71: Others (Admin)
+  Row 72: Repairs & Maintenance (Admin)
+  Row 73: Audit Fees & Directors Remuneration
+  Row 75: Miscellaneous Expenses written off
+  Row 76: Deferred Revenue Expenditures
+  Row 77: Other Amortisations
+  Row 83: Interest on Fixed Loans / Term loans
+  Row 84: Interest on Working capital loans
+  Row 85: Bank Charges
+  Row 89: Loss on sale of fixed assets / Investments
+  Row 90: Sundry Balances Written off
+  Row 91: Loss on Exchange Fluctuations
+  Row 92: Extraordinary losses
+  Row 93: Others (Non-Operating Expenses)
+  Row 99: Income Tax provision
+  Row 100: Deferred Tax Liability (P&L)
+  Row 101: Deferred Tax Asset (P&L)
+  Row 106: Brought forward from previous year
+  Row 107: Dividend
+  Row 108: Other Appropriation of profit
+  Row 116: Issued, Subscribed and Paid up
+  Row 117: Share Application Money
+  Row 121: General Reserve
+  Row 122: Balance transferred from profit and loss a/c
+  Row 123: Share Premium A/c
+  Row 124: Revaluation Reserve
+  Row 125: Other Reserve
+  Row 131: Working Capital Bank Finance - Bank 1
+  Row 132: Working Capital Bank Finance - Bank 2
+  Row 136: Term Loan Repayable in next one year
+  Row 137: Term Loan Balance Repayable after one year
+  Row 140: Debentures Repayable in next one year
+  Row 141: Debentures Balance Repayable after one year
+  Row 144: Preference Shares Repayable in next one year
+  Row 145: Preference Shares Balance Repayable after one year
+  Row 148: Other Debts Repayable in Next One year
+  Row 149: Balance Other Debts
+  Row 152: Unsecured Loans - Quasi Equity
+  Row 153: Unsecured Loans - Long Term Debt
+  Row 154: Unsecured Loans - Short Term Debt
+  Row 159: Deferred tax liability (BS)
+  Row 162: Gross Block
+  Row 163: Less Accumulated Depreciation
+  Row 165: Capital Work in Progress
+  Row 169: Patents / goodwill / copyrights etc
+  Row 170: Misc Expenditure (to the extent not w/o)
+  Row 171: Deferred Tax Asset (BS)
+  Row 172: Other Intangible assets
+  Row 175: Additions to Fixed Assets
+  Row 176: Sale of Fixed assets WDV
+  Row 177: Profit on sale of Fixed assets (BS)
+  Row 178: Loss on sale of Fixed assets (BS)
+  Row 182: Investment in Govt. Securities (Current)
+  Row 183: Investment in Govt. Securities (Non Current)
+  Row 185: Other current investments
+  Row 186: Other non current investments
+  Row 188: Investment in group companies / subsidiaries
+  Row 193: Raw Material Imported
+  Row 194: Raw Material Indigenous
+  Row 197: Stores and Spares Imported
+  Row 198: Stores and Spares Indigenous
+  Row 200: Stocks-in-process
+  Row 201: Finished Goods
+  Row 206: Domestic Receivables
+  Row 207: Export Receivables
+  Row 208: Debtors more than 6 months
+  Row 212: Cash on Hand
+  Row 213: Bank Balances
+  Row 214: Fixed Deposit under lien
+  Row 215: Other Fixed Deposits
+  Row 219: Advances recoverable in cash or in kind
+  Row 220: Advances to suppliers of raw materials
+  Row 221: Advance Income Tax
+  Row 222: Prepaid Expenses
+  Row 223: Other Advances / current asset
+  Row 224: Advances to group / subsidiaries companies
+  Row 229: Exposure in group companies - Investments
+  Row 230: Exposure in group companies - Advances
+  Row 232: Debtors more than six months (Non-Current)
+  Row 233: Investments (Non-Current)
+  Row 234: Fixed Deposits (Non Current)
+  Row 235: Dues from directors / partners / promoters
+  Row 236: Advances to suppliers of capital goods
+  Row 237: Security deposits with government departments
+  Row 238: Other non current assets
+  Row 242: Sundry Creditors for goods
+  Row 243: Advance received from customers
+  Row 244: Provision for Taxation
+  Row 245: Dividend payable
+  Row 246: Other statutory liabilities (due within 1 year)
+  Row 247: Interest Accrued but not due
+  Row 248: Interest Accrued and due
+  Row 249: Creditors for Expenses
+  Row 250: Other current liabilities
+  Row 254: Arrears of cumulative dividends
+  Row 255: Gratuity liability not provided for
+  Row 256: Disputed excise / customs / tax liabilities
+  Row 257: Bank guarantee / Letter of credit outstanding
+  Row 258: Other contingent liabilities

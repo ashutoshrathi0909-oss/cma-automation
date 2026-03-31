@@ -1,0 +1,13 @@
+{
+  "company": "MSL",
+  "round": 2,
+  "industry": "manufacturing",
+  "total_items": 108,
+  "excluded_items": 2,
+  "correct": 36,
+  "wrong": 72,
+  "doubts": 0,
+  "accuracy_pct": 33.33,
+  "elapsed_seconds": 252.27,
+  "date": "2026-03-27 02:45"
+}

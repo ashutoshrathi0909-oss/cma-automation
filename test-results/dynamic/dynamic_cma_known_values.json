@@ -1,0 +1,1881 @@
+{
+  "company": "Dynamic Air Engineering India Private Limited",
+  "cma_file": "CMA Dynamic 23082025.xls",
+  "sheet": "INPUT SHEET",
+  "scale": "lakhs",
+  "note": "Values are in lakhs (1 = Rs 1 lakh = Rs 100,000)",
+  "financial_years": {
+    "col1": "FY22 (2022)",
+    "col2": "FY23 (2023)",
+    "col3": "FY24 (2024)",
+    "col4": "FY25 (2025)"
+  },
+  "all_rows": [
+    {
+      "row": 11,
+      "label": "Financial Year ending",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 12,
+      "label": "Currency",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 13,
+      "label": "Units",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 14,
+      "label": "Auditors",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 15,
+      "label": "Auditors Opinion",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 17,
+      "label": "Profit and Loss",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 19,
+      "label": "Income",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 21,
+      "label": "Sales",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 22,
+      "label": "Domestic",
+      "FY22": 46.07932,
+      "FY23": 69.43727,
+      "FY24": 67.1497,
+      "FY25": 77.57925
+    },
+    {
+      "row": 23,
+      "label": "Exports",
+      "FY22": null,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 24,
+      "label": "Sub Total",
+      "FY22": 46.07932,
+      "FY23": 69.43727,
+      "FY24": 67.1497,
+      "FY25": 77.57925
+    },
+    {
+      "row": 25,
+      "label": "Less Excise Duty and Cess",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 26,
+      "label": "Net Sales",
+      "FY22": 46.07932,
+      "FY23": 69.43727,
+      "FY24": 67.1497,
+      "FY25": 77.57925
+    },
+    {
+      "row": 28,
+      "label": "Non Operating Income",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 29,
+      "label": "Dividends received from Mutual Funds",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 30,
+      "label": "Interest Received",
+      "FY22": 0.03913,
+      "FY23": 0.06136,
+      "FY24": 0.0589,
+      "FY25": 0.06705
+    },
+    {
+      "row": 31,
+      "label": "Profit on sale of fixed assets / Investments",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 32,
+      "label": "Gain on Exchange Fluctuations",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 33,
+      "label": "Extraordinary income",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 34,
+      "label": "Others",
+      "FY22": 0.03373,
+      "FY23": 0.00241,
+      "FY24": 0.00131,
+      "FY25": 0.00867
+    },
+    {
+      "row": 35,
+      "label": "Total",
+      "FY22": 0.07286,
+      "FY23": 0.06377,
+      "FY24": 0.06021,
+      "FY25": 0.07571
+    },
+    {
+      "row": 38,
+      "label": "Expenditure",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 40,
+      "label": "Manufacturing Expenses",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 41,
+      "label": "Raw Materials Consumed ( Imported)",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.2685
+    },
+    {
+      "row": 42,
+      "label": "Raw Materials Consumed ( Indigenous)",
+      "FY22": 29.89969,
+      "FY23": 56.48902,
+      "FY24": 48.45491,
+      "FY25": 52.24508
+    },
+    {
+      "row": 43,
+      "label": "Stores and spares consumed ( Imported)",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 44,
+      "label": "Stores and spares consumed ( Indigenous)",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 45,
+      "label": "Wages",
+      "FY22": 3.45188,
+      "FY23": 5.83643,
+      "FY24": 6.53669,
+      "FY25": 7.16548
+    },
+    {
+      "row": 46,
+      "label": "Processing / Job Work Charges",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 3.84879
+    },
+    {
+      "row": 47,
+      "label": "Freight and Transportation Charges",
+      "FY22": 0.18089,
+      "FY23": 0.33013,
+      "FY24": 0.0,
+      "FY25": 1.27679
+    },
+    {
+      "row": 48,
+      "label": "Power, Coal, Fuel and Water",
+      "FY22": 0.67228,
+      "FY23": 0.95733,
+      "FY24": 0.81823,
+      "FY25": 1.1968
+    },
+    {
+      "row": 49,
+      "label": "Others",
+      "FY22": 0.14985,
+      "FY23": 0.0,
+      "FY24": 4.13869,
+      "FY25": 0.90596
+    },
+    {
+      "row": 50,
+      "label": "Repairs & Maintenance",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.34821,
+      "FY25": 0.7574
+    },
+    {
+      "row": 51,
+      "label": "Security Service Charges",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.08733,
+      "FY25": 0.08348
+    },
+    {
+      "row": 52,
+      "label": "Sub Total",
+      "FY22": 34.35459,
+      "FY23": 63.61291,
+      "FY24": 60.38405,
+      "FY25": 67.74829
+    },
+    {
+      "row": 53,
+      "label": "Stock in process Opening Balance",
+      "FY22": 0.98821,
+      "FY23": 2.50141,
+      "FY24": 5.3582,
+      "FY25": 10.09932
+    },
+    {
+      "row": 54,
+      "label": "Stock in process Closing Balance",
+      "FY22": 2.50141,
+      "FY23": 5.3582,
+      "FY24": 10.09932,
+      "FY25": 9.95385
+    },
+    {
+      "row": 55,
+      "label": "Sub total  -- WIP change in stock",
+      "FY22": -1.51321,
+      "FY23": -2.85679,
+      "FY24": -4.74111,
+      "FY25": 0.14547
+    },
+    {
+      "row": 56,
+      "label": "Depreciation",
+      "FY22": 3.22216,
+      "FY23": 3.22485,
+      "FY24": 3.08565,
+      "FY25": 1.98121
+    },
+    {
+      "row": 57,
+      "label": "Cost Of Production",
+      "FY22": 36.06354,
+      "FY23": 63.98097,
+      "FY24": 58.72859,
+      "FY25": 69.87497
+    },
+    {
+      "row": 58,
+      "label": "Finished Goods Opening Balance",
+      "FY22": 3.5225,
+      "FY23": 1.13131,
+      "FY24": 2.32981,
+      "FY25": 1.51445
+    },
+    {
+      "row": 59,
+      "label": "Finished Goods Closing Balance",
+      "FY22": 1.13131,
+      "FY23": 2.32981,
+      "FY24": 1.51445,
+      "FY25": 1.627
+    },
+    {
+      "row": 60,
+      "label": "Sub total  -- Finished goods change in stock",
+      "FY22": 2.3912,
+      "FY23": -1.1985,
+      "FY24": 0.81536,
+      "FY25": -0.11255
+    },
+    {
+      "row": 61,
+      "label": "Cost Of Sales",
+      "FY22": 38.45474,
+      "FY23": 62.78246,
+      "FY24": 59.54395,
+      "FY25": 69.76242
+    },
+    {
+      "row": 62,
+      "label": "Manufacturing Expenses ( for CMA purpose)",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 63,
+      "label": "Depreciation",
+      "FY22": 3.22216,
+      "FY23": 3.22485,
+      "FY24": 3.08565,
+      "FY25": 1.98121
+    },
+    {
+      "row": 64,
+      "label": "Other Manufacturing Exp",
+      "FY22": 4.4549,
+      "FY23": 7.12389,
+      "FY24": 11.92915,
+      "FY25": 15.23471
+    },
+    {
+      "row": 66,
+      "label": "Administrative and Selling Expenses",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 67,
+      "label": "Salary and staff expenses",
+      "FY22": 0.28007,
+      "FY23": 0.51987,
+      "FY24": 0.54747,
+      "FY25": 1.18767
+    },
+    {
+      "row": 68,
+      "label": "Rent , Rates and Taxes",
+      "FY22": 0.00625,
+      "FY23": 0.15393,
+      "FY24": 0.01913,
+      "FY25": 0.19225
+    },
+    {
+      "row": 69,
+      "label": "Bad Debts",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 70,
+      "label": "Advertisements and Sales Promotions",
+      "FY22": 0.55949,
+      "FY23": 0.36997,
+      "FY24": 0.78978,
+      "FY25": null
+    },
+    {
+      "row": 71,
+      "label": "Others",
+      "FY22": 0.52697,
+      "FY23": 0.80391,
+      "FY24": 0.41179,
+      "FY25": 1.50914
+    },
+    {
+      "row": 72,
+      "label": "Repairs & Maintenance",
+      "FY22": 0.48662,
+      "FY23": 0.64244,
+      "FY24": 0.52642,
+      "FY25": 0.0133
+    },
+    {
+      "row": 73,
+      "label": "Audit Fees & Directors Remuneration",
+      "FY22": 1.8175,
+      "FY23": 0.3775,
+      "FY24": 0.5575,
+      "FY25": 0.4975
+    },
+    {
+      "row": 74,
+      "label": "Sub Total",
+      "FY22": 3.6769,
+      "FY23": 2.8676,
+      "FY24": 2.8521,
+      "FY25": 3.39986
+    },
+    {
+      "row": 75,
+      "label": "Miscellaneous Expenses written off",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 76,
+      "label": "Deferred Revenue Expenditures",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 77,
+      "label": "Other Amortisations",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 78,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 80,
+      "label": "Total",
+      "FY22": 3.6769,
+      "FY23": 2.8676,
+      "FY24": 2.8521,
+      "FY25": 3.39986
+    },
+    {
+      "row": 82,
+      "label": "Finance Charges",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 83,
+      "label": "Interest on Fixed Loans / Term loans",
+      "FY22": 1.9899,
+      "FY23": 2.29192,
+      "FY24": 3.08365,
+      "FY25": 0.93977
+    },
+    {
+      "row": 84,
+      "label": "Interest on Working capital loans",
+      "FY22": 0.6071,
+      "FY23": 0.31705,
+      "FY24": 0.91012,
+      "FY25": 2.08723
+    },
+    {
+      "row": 85,
+      "label": "Bank Charges",
+      "FY22": 0.3015,
+      "FY23": 0.23094,
+      "FY24": 0.13574,
+      "FY25": 0.17764
+    },
+    {
+      "row": 86,
+      "label": "Total",
+      "FY22": 2.89849,
+      "FY23": 2.83992,
+      "FY24": 4.12951,
+      "FY25": 3.20465
+    },
+    {
+      "row": 88,
+      "label": "Non Operating Expenses",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 89,
+      "label": "Loss on sale of fixed assets / Investments",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 90,
+      "label": "Sundry Balances Written off",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 91,
+      "label": "Loss on Exchange Fluctuations",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 92,
+      "label": "Extraordinary losses",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 93,
+      "label": "Others",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 94,
+      "label": "Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 96,
+      "label": "Profit Before Tax",
+      "FY22": 1.12205,
+      "FY23": 1.01105,
+      "FY24": 0.68435,
+      "FY25": 1.28802
+    },
+    {
+      "row": 98,
+      "label": "Tax",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 99,
+      "label": "Income Tax  provision",
+      "FY22": 0.51132,
+      "FY23": 0.28763,
+      "FY24": 0.34577,
+      "FY25": 0.32201
+    },
+    {
+      "row": 100,
+      "label": "Deferred Tax Liability",
+      "FY22": null,
+      "FY23": 0.03065,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 101,
+      "label": "Deferred Tax Asset",
+      "FY22": 0.17848,
+      "FY23": null,
+      "FY24": 0.05183,
+      "FY25": null
+    },
+    {
+      "row": 102,
+      "label": "Total",
+      "FY22": 0.33284,
+      "FY23": 0.31828,
+      "FY24": 0.29394,
+      "FY25": 0.32201
+    },
+    {
+      "row": 104,
+      "label": "Net Profit for the year ( PAT)",
+      "FY22": 0.78921,
+      "FY23": 0.69277,
+      "FY24": 0.39041,
+      "FY25": 0.96602
+    },
+    {
+      "row": 106,
+      "label": "Brought forward from previous year",
+      "FY22": 3.92575,
+      "FY23": 4.71496,
+      "FY24": 5.40774,
+      "FY25": 5.79815
+    },
+    {
+      "row": 107,
+      "label": "Dividend ( Final + Interim , Including Dividend Tax )",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 108,
+      "label": "Other Appropriation of profit",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 109,
+      "label": "Balance carried to Balance Sheet",
+      "FY22": 4.71496,
+      "FY23": 5.40774,
+      "FY24": 5.79815,
+      "FY25": 6.76416
+    },
+    {
+      "row": 111,
+      "label": "Balance Sheet",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 113,
+      "label": "Year",
+      "FY22": 2022.0,
+      "FY23": 2023.0,
+      "FY24": 2024.0,
+      "FY25": 2025.0
+    },
+    {
+      "row": 114,
+      "label": "Nature of Financials",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 115,
+      "label": "Share Capital",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 116,
+      "label": "Issued, Subscribed and Paid up",
+      "FY22": 2.85,
+      "FY23": 2.85,
+      "FY24": 2.85,
+      "FY25": 2.85
+    },
+    {
+      "row": 117,
+      "label": "Share Application Money",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 118,
+      "label": "Total",
+      "FY22": 2.85,
+      "FY23": 2.85,
+      "FY24": 2.85,
+      "FY25": 2.85
+    },
+    {
+      "row": 120,
+      "label": "Reserves and Surplus",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 121,
+      "label": "General Reserve",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 122,
+      "label": "Balance transferred from profit and loss a/c",
+      "FY22": 4.71496,
+      "FY23": 5.40774,
+      "FY24": 5.79815,
+      "FY25": 6.76416
+    },
+    {
+      "row": 123,
+      "label": "Share Premium A/c",
+      "FY22": 1.62,
+      "FY23": 1.62,
+      "FY24": 1.62,
+      "FY25": 1.62
+    },
+    {
+      "row": 124,
+      "label": "Revaluation Reserve",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 125,
+      "label": "Other Reserve",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 126,
+      "label": "Total",
+      "FY22": 6.33496,
+      "FY23": 7.02774,
+      "FY24": 7.41815,
+      "FY25": 8.38416
+    },
+    {
+      "row": 128,
+      "label": "Secured and Unsecured Loans",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 130,
+      "label": "Working Capital Bank Finance",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 133,
+      "label": "(o/s bill discounting balance to be included)",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 134,
+      "label": "Sub Total",
+      "FY22": 6.71937,
+      "FY23": 14.15719,
+      "FY24": 16.76733,
+      "FY25": 17.39634
+    },
+    {
+      "row": 135,
+      "label": "Term Loans",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 136,
+      "label": "Term Loan Repayable in next one year",
+      "FY22": 4.0104,
+      "FY23": 5.65396,
+      "FY24": 5.58104,
+      "FY25": 0.0
+    },
+    {
+      "row": 137,
+      "label": "Balance Repayable after one year",
+      "FY22": 13.59124,
+      "FY23": 14.22002,
+      "FY24": 7.05131,
+      "FY25": 7.69516
+    },
+    {
+      "row": 138,
+      "label": "Sub Total",
+      "FY22": 17.60164,
+      "FY23": 19.87398,
+      "FY24": 12.63235,
+      "FY25": 7.69516
+    },
+    {
+      "row": 139,
+      "label": "Debentures",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 140,
+      "label": "Repayable in next one year",
+      "FY22": 0.04061,
+      "FY23": 0.04546,
+      "FY24": null,
+      "FY25": 0.0
+    },
+    {
+      "row": 141,
+      "label": "Balance Repayable after one year",
+      "FY22": 0.04866,
+      "FY23": 0.0004,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 142,
+      "label": "Sub Total",
+      "FY22": 0.08927,
+      "FY23": 0.04586,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 143,
+      "label": "Preference Shares",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 144,
+      "label": "Repayable in next one year",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 145,
+      "label": "Balance Repayable after one year",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 146,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 147,
+      "label": "Other Debts",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 148,
+      "label": "Debts Repayable in Next One year",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 149,
+      "label": "Balance Other Debts",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 150,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 151,
+      "label": "Unsecured Loans",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 152,
+      "label": "As Quasi Equity",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 153,
+      "label": "As Long Term Debt",
+      "FY22": 0.0743,
+      "FY23": 0.04709,
+      "FY24": 2.18759,
+      "FY25": 0.0
+    },
+    {
+      "row": 154,
+      "label": "As Short Term Debt",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 155,
+      "label": "Sub Total",
+      "FY22": 0.0743,
+      "FY23": 0.04709,
+      "FY24": 2.18759,
+      "FY25": 0.0
+    },
+    {
+      "row": 157,
+      "label": "Total",
+      "FY22": 24.48457,
+      "FY23": 34.12413,
+      "FY24": 31.58728,
+      "FY25": 25.0915
+    },
+    {
+      "row": 159,
+      "label": "Deferred tax liability",
+      "FY22": 0.28815,
+      "FY23": 0.3188,
+      "FY24": 0.28007,
+      "FY25": 0.26697
+    },
+    {
+      "row": 161,
+      "label": "Fixed Assets",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 162,
+      "label": "Gross Block",
+      "FY22": 35.34602,
+      "FY23": 39.2659,
+      "FY24": 40.25927,
+      "FY25": 41.96028
+    },
+    {
+      "row": 163,
+      "label": "Less Accumulated Depreciation",
+      "FY22": 15.29356,
+      "FY23": 18.51841,
+      "FY24": 21.60406,
+      "FY25": 23.58527
+    },
+    {
+      "row": 164,
+      "label": "Net Block",
+      "FY22": 20.05246,
+      "FY23": 20.74748,
+      "FY24": 18.65521,
+      "FY25": 18.37501
+    },
+    {
+      "row": 165,
+      "label": "Add : Capital Work in Progress",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 166,
+      "label": "Total",
+      "FY22": 20.05246,
+      "FY23": 20.74748,
+      "FY24": 18.65521,
+      "FY25": 18.37501
+    },
+    {
+      "row": 168,
+      "label": "Intangibles",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 169,
+      "label": "Patents / goodwill / copyrights etc",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 170,
+      "label": "Misc Expenditure ( to the extent not w/o)",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 171,
+      "label": "Deferred Tax Asset",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": 0.0
+    },
+    {
+      "row": 172,
+      "label": "Other Intangible assets",
+      "FY22": null,
+      "FY23": null,
+      "FY24": 0.03546,
+      "FY25": null
+    },
+    {
+      "row": 173,
+      "label": "Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.03546,
+      "FY25": 0.0
+    },
+    {
+      "row": 175,
+      "label": "Additions to Fixed Assets",
+      "FY22": 0.0,
+      "FY23": 3.91988,
+      "FY24": 0.99337,
+      "FY25": 1.70102
+    },
+    {
+      "row": 176,
+      "label": "Sale of  Fixed assets WDV of asset sold",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 177,
+      "label": "Profit on sale of Fixed assets / Investments",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 178,
+      "label": "Loss on sale of Fixed assets / Investments",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 179,
+      "label": "Total",
+      "FY22": 0.0,
+      "FY23": -3.91988,
+      "FY24": -0.99337,
+      "FY25": -1.70102
+    },
+    {
+      "row": 181,
+      "label": "Investments",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 182,
+      "label": "Investment in Govt. Securities ( Current )",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 183,
+      "label": "Investment in Govt. Securities ( Non Current )",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 184,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 185,
+      "label": "Other current investments",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 186,
+      "label": "Other non current investments",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 187,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 188,
+      "label": "Investment in group companies / subsidiaries",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 189,
+      "label": "Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 191,
+      "label": "Inventories",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 192,
+      "label": "Raw Material",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 193,
+      "label": "Imported",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 194,
+      "label": "Indigenous",
+      "FY22": 5.81742,
+      "FY23": 7.28449,
+      "FY24": 3.63023,
+      "FY25": 4.69315
+    },
+    {
+      "row": 195,
+      "label": "Sub Total",
+      "FY22": 5.81742,
+      "FY23": 7.28449,
+      "FY24": 3.63023,
+      "FY25": 4.69315
+    },
+    {
+      "row": 196,
+      "label": "Stores and Spares",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 197,
+      "label": "Imported",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 198,
+      "label": "Indigenous",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": 0.0
+    },
+    {
+      "row": 199,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 200,
+      "label": "Stocks-in-process",
+      "FY22": 2.50141,
+      "FY23": 5.3582,
+      "FY24": 10.09932,
+      "FY25": 9.95385
+    },
+    {
+      "row": 201,
+      "label": "Finished Goods",
+      "FY22": 1.13131,
+      "FY23": 2.32981,
+      "FY24": 1.51445,
+      "FY25": 1.627
+    },
+    {
+      "row": 203,
+      "label": "Total",
+      "FY22": 9.45014,
+      "FY23": 14.9725,
+      "FY24": 15.244,
+      "FY25": 16.274
+    },
+    {
+      "row": 205,
+      "label": "Sundry Debtors",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 206,
+      "label": "Domestic Receivables ( including bills purchased and discounted)",
+      "FY22": 9.1113,
+      "FY23": 14.0274,
+      "FY24": 13.50939,
+      "FY25": 17.65394
+    },
+    {
+      "row": 207,
+      "label": "Export Receivables ( including bills purchased and discounted)",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 208,
+      "label": "Debtors more than 6 months",
+      "FY22": 0.35837,
+      "FY23": 0.52521,
+      "FY24": 0.2334,
+      "FY25": 0.26897
+    },
+    {
+      "row": 209,
+      "label": "Total",
+      "FY22": 9.46967,
+      "FY23": 14.55261,
+      "FY24": 13.74279,
+      "FY25": 17.92291
+    },
+    {
+      "row": 211,
+      "label": "Cash and Bank Balances",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 212,
+      "label": "Cash on Hand",
+      "FY22": 0.00193,
+      "FY23": 0.0029,
+      "FY24": 0.00116,
+      "FY25": 0.00149
+    },
+    {
+      "row": 213,
+      "label": "Bank Balances",
+      "FY22": 0.05094,
+      "FY23": 0.0096,
+      "FY24": 0.87052,
+      "FY25": null
+    },
+    {
+      "row": 214,
+      "label": "Fixed Deposit under lien",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 215,
+      "label": "Other Fixed Deposits",
+      "FY22": 0.8145,
+      "FY23": 0.813,
+      "FY24": 0.0,
+      "FY25": 1.91291
+    },
+    {
+      "row": 216,
+      "label": "Total",
+      "FY22": 0.86736,
+      "FY23": 0.8255,
+      "FY24": 0.87169,
+      "FY25": 1.91441
+    },
+    {
+      "row": 218,
+      "label": "Loans and Advances",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 219,
+      "label": "Advances recoverable in cash or in kind",
+      "FY22": 0.0766,
+      "FY23": 0.0661,
+      "FY24": 0.0756,
+      "FY25": 1.32916
+    },
+    {
+      "row": 220,
+      "label": "Advances to suppliers of raw materials",
+      "FY22": null,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.25577
+    },
+    {
+      "row": 221,
+      "label": "Advance Income Tax",
+      "FY22": 1.65939,
+      "FY23": 0.88448,
+      "FY24": 0.31105,
+      "FY25": 0.25627
+    },
+    {
+      "row": 222,
+      "label": "Prepaid Expenses",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 223,
+      "label": "Other Advances / current asset",
+      "FY22": 1.04125,
+      "FY23": 2.58676,
+      "FY24": 2.11669,
+      "FY25": 0.18337
+    },
+    {
+      "row": 224,
+      "label": "Advances to group / subsidiaries companies",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 225,
+      "label": "Total",
+      "FY22": 2.77725,
+      "FY23": 3.53735,
+      "FY24": 2.50334,
+      "FY25": 2.02457
+    },
+    {
+      "row": 227,
+      "label": "Non Current Assets",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 228,
+      "label": "Exposure in group companies",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 229,
+      "label": "Investments",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 230,
+      "label": "Advances",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 231,
+      "label": "Sub Total",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 232,
+      "label": "Debtors more than six months",
+      "FY22": 0.35837,
+      "FY23": 0.52521,
+      "FY24": 0.2334,
+      "FY25": 0.26897
+    },
+    {
+      "row": 233,
+      "label": "Investments",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 234,
+      "label": "Fixed Deposits ( Non Current )",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.0
+    },
+    {
+      "row": 235,
+      "label": "Dues from directors / partners / promoters",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 236,
+      "label": "Advances to suppliers of capital goods",
+      "FY22": 0.06,
+      "FY23": 0.12,
+      "FY24": 0.42057,
+      "FY25": 0.0
+    },
+    {
+      "row": 237,
+      "label": "Security deposits with government departments",
+      "FY22": 0.97179,
+      "FY23": 1.0018,
+      "FY24": 1.03178,
+      "FY25": 0.18204
+    },
+    {
+      "row": 238,
+      "label": "Other non current assets",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 1.34369
+    },
+    {
+      "row": 239,
+      "label": "Total Non Current Assets",
+      "FY22": 1.39016,
+      "FY23": 1.647,
+      "FY24": 1.68575,
+      "FY25": 1.7947
+    },
+    {
+      "row": 241,
+      "label": "Current Liabilities",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 242,
+      "label": "Sundry Creditors for goods",
+      "FY22": 8.17561,
+      "FY23": 10.376,
+      "FY24": 8.45129,
+      "FY25": 15.85105
+    },
+    {
+      "row": 243,
+      "label": "Advance received from customers",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 244,
+      "label": "Provision for Taxation",
+      "FY22": 0.51132,
+      "FY23": 0.28763,
+      "FY24": 0.34577,
+      "FY25": 0.32201
+    },
+    {
+      "row": 245,
+      "label": "Dividend payable",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 246,
+      "label": "Other statutory liabilities (due within 1 year)",
+      "FY22": 0.55125,
+      "FY23": 0.26814,
+      "FY24": 1.08276,
+      "FY25": 1.88176
+    },
+    {
+      "row": 247,
+      "label": "Interest Accrued but not due",
+      "FY22": null,
+      "FY23": null,
+      "FY24": 0.0,
+      "FY25": null
+    },
+    {
+      "row": 248,
+      "label": "Interest Accrued and due",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 249,
+      "label": "Creditors for Expenses",
+      "FY22": 0.34281,
+      "FY23": 0.46404,
+      "FY24": 0.24188,
+      "FY25": 2.98491
+    },
+    {
+      "row": 250,
+      "label": "Other current liabilities",
+      "FY22": 0.14575,
+      "FY23": 0.04077,
+      "FY24": 0.22528,
+      "FY25": 0.40427
+    },
+    {
+      "row": 251,
+      "label": "Total",
+      "FY22": 9.72675,
+      "FY23": 11.43657,
+      "FY24": 10.34698,
+      "FY25": 21.44399
+    },
+    {
+      "row": 253,
+      "label": "Contingent Liabilities:",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 254,
+      "label": "Arrears of cumulative dividends",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 255,
+      "label": "Gratuity liability not provided for",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 256,
+      "label": "Disputed excise / customs / tax liabilities",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 257,
+      "label": "Bank guarantee / Letter of credit outstanding",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 258,
+      "label": "Other contingent liabilities",
+      "FY22": null,
+      "FY23": null,
+      "FY24": null,
+      "FY25": null
+    },
+    {
+      "row": 260,
+      "label": "Total Assets",
+      "FY22": 43.64867,
+      "FY23": 55.75723,
+      "FY24": 52.50483,
+      "FY25": 58.03662
+    },
+    {
+      "row": 261,
+      "label": "Total Liabilities",
+      "FY22": 43.68443,
+      "FY23": 55.75723,
+      "FY24": 52.48247,
+      "FY25": 58.03662
+    },
+    {
+      "row": 262,
+      "label": "Check",
+      "FY22": -0.03576,
+      "FY23": -0.0,
+      "FY24": 0.02236,
+      "FY25": 0.0
+    }
+  ],
+  "key_validation_rows": {
+    "domestic_sales": {
+      "row": 22,
+      "label": "Domestic",
+      "FY22": 46.07932,
+      "FY23": 69.43727,
+      "FY24": 67.1497,
+      "FY25": 77.57925
+    },
+    "net_sales": {
+      "row": 26,
+      "label": "Net Sales",
+      "FY22": 46.07932,
+      "FY23": 69.43727,
+      "FY24": 67.1497,
+      "FY25": 77.57925
+    },
+    "raw_materials_indigenous": {
+      "row": 42,
+      "label": "Raw Materials Consumed ( Indigenous)",
+      "FY22": 29.89969,
+      "FY23": 56.48902,
+      "FY24": 48.45491,
+      "FY25": 52.24508
+    },
+    "raw_materials_imported": {
+      "row": 41,
+      "label": "Raw Materials Consumed ( Imported)",
+      "FY22": 0.0,
+      "FY23": 0.0,
+      "FY24": 0.0,
+      "FY25": 0.2685
+    },
+    "wages": {
+      "row": 45,
+      "label": "Wages",
+      "FY22": 3.45188,
+      "FY23": 5.83643,
+      "FY24": 6.53669,
+      "FY25": 7.16548
+    },
+    "power_fuel": {
+      "row": 48,
+      "label": "Power, Coal, Fuel and Water",
+      "FY22": 0.67228,
+      "FY23": 0.95733,
+      "FY24": 0.81823,
+      "FY25": 1.1968
+    },
+    "depreciation_mfg": {
+      "row": 56,
+      "label": "Depreciation",
+      "FY22": 3.22216,
+      "FY23": 3.22485,
+      "FY24": 3.08565,
+      "FY25": 1.98121
+    },
+    "salary_staff": {
+      "row": 67,
+      "label": "Salary and staff expenses",
+      "FY22": 0.28007,
+      "FY23": 0.51987,
+      "FY24": 0.54747,
+      "FY25": 1.18767
+    },
+    "rent_rates": {
+      "row": 68,
+      "label": "Rent , Rates and Taxes",
+      "FY22": 0.00625,
+      "FY23": 0.15393,
+      "FY24": 0.01913,
+      "FY25": 0.19225
+    },
+    "cost_of_production": {
+      "row": 57,
+      "label": "Cost Of Production",
+      "FY22": 36.06354,
+      "FY23": 63.98097,
+      "FY24": 58.72859,
+      "FY25": 69.87497
+    },
+    "cost_of_sales": {
+      "row": 61,
+      "label": "Cost Of Sales",
+      "FY22": 38.45474,
+      "FY23": 62.78246,
+      "FY24": 59.54395,
+      "FY25": 69.76242
+    },
+    "interest_term_loans": {
+      "row": 83,
+      "FY22": 1.9899,
+      "FY23": 2.29192,
+      "FY24": 3.08365,
+      "FY25": 0.93977
+    },
+    "interest_working_capital": {
+      "row": 84,
+      "FY22": 0.6071,
+      "FY23": 0.31705,
+      "FY24": 0.91012,
+      "FY25": 2.08723
+    },
+    "bank_charges": {
+      "row": 85,
+      "FY22": 0.3015,
+      "FY23": 0.23094,
+      "FY24": 0.13574,
+      "FY25": 0.17764
+    },
+    "net_profit_pat": {
+      "row": 104,
+      "FY22": 0.78921,
+      "FY23": 0.69277,
+      "FY24": 0.39041,
+      "FY25": 0.96602
+    },
+    "sundry_creditors": {
+      "row": 242,
+      "FY22": 8.17561,
+      "FY23": 10.376,
+      "FY24": 8.45129,
+      "FY25": 15.85105
+    },
+    "total_assets": {
+      "row": 260,
+      "FY22": 43.64867,
+      "FY23": 55.75723,
+      "FY24": 52.50483,
+      "FY25": 58.03662
+    },
+    "term_loan_next_year": {
+      "row": 136,
+      "FY22": 4.0104,
+      "FY23": 5.65396,
+      "FY24": 5.58104,
+      "FY25": 0.0
+    },
+    "advertisements": {
+      "row": 70,
+      "FY22": 0.55949,
+      "FY23": 0.36997,
+      "FY24": 0.78978,
+      "FY25": null
+    }
+  }
+}

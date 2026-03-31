@@ -1,0 +1,90 @@
+Item 1:
+  Description: MSME Interest Sub-vention Scheme
+  Amount: Rs 100,274.00
+  Section: interest income
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 2:
+  Description: Profit on Sale of Fixed Asset
+  Amount: Rs 726,082.00
+  Section: other income
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 3:
+  Description: Axis Bank Channel Financing
+  Amount: Rs 51,498,578.29
+  Section: secured
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 4:
+  Description: Inland LC Discounting
+  Amount: Rs 8,975,441.00
+  Section: secured
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 5:
+  Description: Current Maturities of Long-Term Debts
+  Amount: Rs 30,046,985.68
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 6:
+  Description: Axis Bank Sellers Credit Fongei - I
+  Amount: Rs 5,019,755.72
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 7:
+  Description: Axis Bank Sellers Credit - Ming Xu - II
+  Amount: Rs 19,089,904.72
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 8:
+  Description: Depreciation - Tools & Dies (For the Year)
+  Amount: Rs 4,345,092.90
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 9:
+  Description: Depreciation - Cranes (For the Year)
+  Amount: Rs 1,486,582.36
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 10:
+  Description: Bad Debts Written Back
+  Amount: Rs 101,926.25
+  Section: other income
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 11:
+  Description: Total Raw Materials - Indigenous
+  Amount: Rs 843,487,361.23
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 12:
+  Description: CRCA Sheets & Coils consumed
+  Amount: Rs 842,115,903.23
+  Section: details of cost of materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 13:
+  Description: Aluminium consumed
+  Amount: Rs 1,371,458.00
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 14:
+  Description: Consumption of Stores & Spares
+  Amount: Rs 17,740,031.36
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 15:
+  Description: Axis Bank Sellers Credit - Ming Xu - III
+  Amount: Rs 11,854,939.12
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2021

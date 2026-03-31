@@ -1,0 +1,90 @@
+Item 1:
+  Description: Forex Rate Fluctuation Gain/(Loss)
+  Amount: Rs 1,470,654.10
+  Section: other income
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 2:
+  Description: Total Raw Materials - Indigenous (FY22)
+  Amount: Rs 1,964,200,915.36
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 3:
+  Description: CRCA Sheets & Coils consumed (FY22)
+  Amount: Rs 1,962,982,191.59
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 4:
+  Description: Aluminium consumed (FY22)
+  Amount: Rs 1,218,723.76
+  Section: note 20 - cost of raw materials consumed
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 5:
+  Description: Consumption of Stores & Spares (FY22)
+  Amount: Rs 34,897,277.71
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 6:
+  Description: TDS Payable - Others
+  Amount: Rs 760,179.98
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 7:
+  Description: Creditors for Capital Goods
+  Amount: Rs 1,555,591.00
+  Section: (ii) other dues
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 8:
+  Description: Salary & Wages payable
+  Amount: Rs 7,956,568.00
+  Section: (ii) other dues
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 9:
+  Description: Issued, Subscribed & Paid-up (FY22 BS)
+  Amount: Rs 30,942,000.00
+  Section: note 1 - share capital
+  Sheet: Notes BS (1)
+  Financial Year: 2022
+Item 10:
+  Description: Share Premium / Capital Reserve (FY22 BS)
+  Amount: Rs 9,558,000.00
+  Section: note 2 - reserves and surplus
+  Sheet: Notes BS (1)
+  Financial Year: 2022
+Item 11:
+  Description: Gross Block - Generators &Transformer (At 31st March)
+  Amount: Rs 3,765,365.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 12:
+  Description: Gross Block - Electrical Fittings (At 31st March)
+  Amount: Rs 7,895,675.19
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 13:
+  Description: Other Materials Comsumed - Scrap (FY22)
+  Amount: Rs 809,905.50
+  Section: note 22 - changes in inventories
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 14:
+  Description: Salaries & Wages (FY22)
+  Amount: Rs 102,379,262.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 15:
+  Description: Contribution to PF & Other Funds (FY22)
+  Amount: Rs 8,196,207.00
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2022

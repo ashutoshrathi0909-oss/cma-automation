@@ -1,0 +1,146 @@
+{
+  "responses": {
+    "cross_001": {
+      "item_id": "cross_001",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_002": {
+      "item_id": "cross_002",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_003": {
+      "item_id": "cross_003",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_004": {
+      "item_id": "cross_004",
+      "decision": "s1",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_005": {
+      "item_id": "cross_005",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_006": {
+      "item_id": "cross_006",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_007": {
+      "item_id": "cross_007",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_008": {
+      "item_id": "cross_008",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "cross_014": {
+      "item_id": "cross_014",
+      "decision": "s2",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_015": {
+      "item_id": "int_015",
+      "decision": null,
+      "confidence": "certain",
+      "notes": "If debit balance :-  R172\nis credit balance :-  R250"
+    },
+    "int_016": {
+      "item_id": "int_016",
+      "decision": null,
+      "confidence": "certain",
+      "notes": "If debit balance :-  R172\nis credit balance :-  R250"
+    },
+    "int_017": {
+      "item_id": "int_017",
+      "decision": null,
+      "confidence": null,
+      "notes": "Debit :- R83\nCredit Row 30"
+    },
+    "int_020": {
+      "item_id": "int_020",
+      "decision": "r2",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_021": {
+      "item_id": "int_021",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_022": {
+      "item_id": "int_022",
+      "decision": "r2",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_023": {
+      "item_id": "int_023",
+      "decision": "other",
+      "confidence": null,
+      "notes": "",
+      "selected_row": 152,
+      "selected_name": "As Quasi Equity"
+    },
+    "int_024": {
+      "item_id": "int_024",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_025": {
+      "item_id": "int_025",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_026": {
+      "item_id": "int_026",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_029": {
+      "item_id": "int_029",
+      "decision": "r2",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_030": {
+      "item_id": "int_030",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_031": {
+      "item_id": "int_031",
+      "decision": "r1",
+      "confidence": null,
+      "notes": ""
+    },
+    "int_032": {
+      "item_id": "int_032",
+      "decision": "r2",
+      "confidence": null,
+      "notes": ""
+    }
+  },
+  "lastSaved": "2026-03-27T05:12:50.454Z",
+  "reviewer": ""
+}

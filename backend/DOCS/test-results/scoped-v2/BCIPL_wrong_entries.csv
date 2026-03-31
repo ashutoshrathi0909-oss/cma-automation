@@ -1,0 +1,168 @@
+raw_text,section,correct_cma_row,correct_cma_field,predicted_cma_row,predicted_cma_field,error_type
+Consumption of Stores & Spares,other expenses,44,Stores and spares consumed (Indigenous),71,Others,wrong_classification
+Other Materials Comsumed - Scrap,note 21 - other materials consumed,44,Stores and spares consumed (Indigenous),71,Others,wrong_classification
+Labour Welfare Expenses,employee benefits expense,45,Wages,,,doubt
+Directors Remuneration,salaries & wages,67,Salary and staff expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+Job Work Charges & Contract Labour,other expenses,46,Processing / Job Work Charges,71,Others,wrong_classification
+Power & Fuel,other expenses,48,"Power, Coal, Fuel and Water",71,Others,wrong_classification
+Manufacturing Expenses,auditor's remuneration:,49,Others (Manufacturing),71,Others,wrong_classification
+Machinery Maintenance,other expenses,49,Others (Manufacturing),72,Repairs & Maintenance,wrong_classification
+Depreciation,depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Amortization Expenses,depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Selling & Distribution Expenses,auditor's remuneration:,70,Advertisements and Sales Promotions,,,doubt
+Carriage Outwards,selling & distribution expenses,70,Advertisements and Sales Promotions,,,doubt
+Packing Materials - GST @ 12%,selling and distribution expenses - subnotes,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Packing Materials - GST @ 18%,selling and distribution expenses - subnotes,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Consultation Fees,auditor's remuneration:,71,Others (Admin),,,doubt
+Administrative & General Expenses,auditor's remuneration:,71,Others (Admin),73,Audit Fees & Directors Remuneration,wrong_classification
+Rates & Taxes,other expenses,71,Others (Admin),68,"Rent , Rates and Taxes",wrong_classification
+Interest on C.C. A/c,interest expenses:,83,Interest on Fixed Loans / Term loans,84,Interest on Working capital loans,wrong_classification
+Bill Discounting Charges,other borrowing costs:,84,Interest on Working capital loans,71,Others,wrong_classification
+Bank Charges,other expenses,85,Bank Charges,71,Others,wrong_classification
+Forex Rate Fluctuation Loss (Net),other expenses,91,Loss on Exchange Fluctuations,71,Others,wrong_classification
+DTL for the year (P&L effect),note 4 - deferred tax,100,Deferred Tax Liability (P&L),,,doubt
+Brought forward P&L (opening balance),note 2 - reserves and surplus,106,Brought forward from previous year,122,Balance transferred from profit and loss a/c,wrong_classification
+Axis Bank Channel Financing,secured,131,Working Capital Bank Finance - Bank 1,71,Others,wrong_classification
+Inland LC Discounting,secured,132,Working Capital Bank Finance - Bank 2,71,Others,wrong_classification
+Current Maturities of Long-Term Debts,note 7 - other current liabilities,136,Term Loan Repayable in next one year,250,Other current liabilities,wrong_classification
+Mr. Chaitra Sunderesh (Director Loan),(i) due to directors,152,Unsecured Loans - Quasi Equity,,,doubt
+Mr. Nishanth Sunderesh (Director Loan),(i) due to directors,152,Unsecured Loans - Quasi Equity,,,doubt
+Capital Work-In-Progress,note 10 - non-current investments,165,Capital Work in Progress,186,Other non current investments,wrong_classification
+Capital Advances (MING XU + FAIR OAKES),note 17 - other current assets,236,Advances to suppliers of capital goods,223,Other Advances / current asset,wrong_classification
+"Security Deposits (BESCOM, KIADB etc)",note 11 - long-term loans and advances,237,Security deposits with government departments,,,doubt
+MAT Credit Entitlement (opening),others:,238,Other non current assets,71,Others,wrong_classification
+Unsecured Considered Good (non-current receivable),long-term trade  receivables,238,Other non current assets,206,Domestic Receivables ( including bills purchased and discounted),wrong_classification
+Scraps (inventory at year end),note 13 - inventories,198,Stores and Spares Indigenous,,,doubt
+GST Input Recoverable,other current assets,219,Advances recoverable in cash or in kind,223,Other Advances / current asset,wrong_classification
+Advance to Suppliers / Contractors,unsecured considered good,220,Advances to suppliers of raw materials,71,Others,wrong_classification
+TDS Recoverable,note 16 - short-term loans and advances,221,Advance Income Tax,0,,wrong_classification
+Prepaid Expenses,unsecured considered good,222,Prepaid Expenses,,,doubt
+Other Advances,unsecured considered good,223,Other Advances / current asset,71,Others,wrong_classification
+Advance From Customers,(ii) other dues,243,Advance received from customers,71,Others,wrong_classification
+Leave Encashment (Short-term Provision),provision  for employee benefits,244,Provision for Taxation,67,Salary and staff expenses,wrong_classification
+Bonus payable,note 7 - other current liabilities,246,Other statutory liabilities (due within 1 year),250,Other current liabilities,wrong_classification
+Creditors for Capital Goods,(ii) other dues,250,Other current liabilities,71,Others,wrong_classification
+Salary & Wages payable,(ii) other dues,250,Other current liabilities,67,Salary and staff expenses,wrong_classification
+Consumption of Stores & Spares (FY22),other expenses,44,Stores and spares consumed (Indigenous),,,doubt
+Other Materials Comsumed - Scrap (FY22),note 22 - changes in inventories,44,Stores and spares consumed (Indigenous),49,Others,wrong_classification
+Directors Remuneration (FY22),salaries & wages,67,Salary and staff expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+Job Work Charges & Contract Labour (FY22),other expenses,46,Processing / Job Work Charges,71,Others,wrong_classification
+Power & Fuel (FY22),other expenses,48,"Power, Coal, Fuel and Water",71,Others,wrong_classification
+Manufacturing Expenses (FY22),tax audit,49,Others (Manufacturing),71,Others,wrong_classification
+Machinery Maintenance (FY22),other expenses,50,Repairs & Maintenance (Manufacturing),72,Repairs & Maintenance,wrong_classification
+Less: Closing Finished Goods (FY22),finished goods,59,Finished Goods Closing Balance,201,Finished Goods,wrong_classification
+Depreciation (FY22),depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Amortization Expenses (FY22),depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Selling & Distribution Expenses (FY22),tax audit,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Interest - Term Loan & Others (FY22),note 25 - depreciation and amortisation,83,Interest on Fixed Loans / Term loans,49,Others,wrong_classification
+Bill Discounting Charges (FY22),other borrowing costs:,84,Interest on Working capital loans,71,Others,wrong_classification
+Bank Charges (FY22),other expenses,85,Bank Charges,71,Others,wrong_classification
+Yes Bank Channel Finance (FY22),secured,131,Working Capital Bank Finance - Bank 1,71,Others,wrong_classification
+TATA Capital Financial Services Ltd (FY22),secured,132,Working Capital Bank Finance - Bank 2,71,Others,wrong_classification
+Current Maturities of LT Debts (FY22),note 7 - other current liabilities,136,Term Loan Repayable in next one year,250,Other current liabilities,wrong_classification
+Axis Bank ECGS/ECLGC (FY22),note 5 - short-term borrowings,137,Term Loan Balance Repayable after one year,131,From Indian Bank,wrong_classification
+Scraps (FY22 inventory),inventories,198,Stores and Spares Indigenous,201,Finished Goods,wrong_classification
+Capital Advances (FY22),other current assets,236,Advances to suppliers of capital goods,223,Other Advances / current asset,wrong_classification
+Security Deposits (FY22),long-term trade  receivables,237,Security deposits with government departments,0,,wrong_classification
+GST Input Recoverable (FY22),other current assets,219,Advances recoverable in cash or in kind,223,Other Advances / current asset,wrong_classification
+Advance to Suppliers (FY22),note 16 - short-term loans and advances,220,Advances to suppliers of raw materials,154,As Short Term Debt,wrong_classification
+Prepaid Expenses (FY22),unsecured considered good,222,Prepaid Expenses,,,doubt
+Other Advances (FY22),unsecured considered good,223,Other Advances / current asset,71,Others,wrong_classification
+Dues to MSME (FY22),note 6 - trade payables,242,Sundry Creditors for goods,246,Other statutory liabilities (due within 1 year),wrong_classification
+Dues to Other than MSME (FY22),note 6 - trade payables,242,Sundry Creditors for goods,250,Other current liabilities,wrong_classification
+Bonus payable (FY22),note 7 - other current liabilities,246,Other statutory liabilities (due within 1 year),250,Other current liabilities,wrong_classification
+Creditors for Expenses (FY22),(ii) other dues,249,Creditors for Expenses,71,Others,wrong_classification
+Creditors for Capital Goods (FY22),(ii) other dues,250,Other current liabilities,71,Others,wrong_classification
+Advance From Customers (FY22),(ii) other dues,243,Advance received from customers,71,Others,wrong_classification
+Forex Rate Fluctuation Gain (FY23),note 26 - other expenses,32,Gain on Exchange Fluctuations,71,Others,wrong_classification
+Total Raw Materials - Indigenous (FY23),note 21 - other materials consumed,42,Raw Materials Consumed (Indigenous),71,Others,wrong_classification
+Consumption of Stores & Spares (FY23),other expenses,44,Stores and spares consumed (Indigenous),71,Others,wrong_classification
+Other Materials Comsumed - Scrap (FY23),note 22 - changes in inventories,44,Stores and spares consumed (Indigenous),49,Others,wrong_classification
+Salaries & Wages (FY23),employee benefits expense,45,Wages,,,doubt
+Directors Remuneration (FY23),salaries & wages,67,Salary and staff expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+Job Work Charges & Contract Labour (FY23),other expenses,46,Processing / Job Work Charges,71,Others,wrong_classification
+Power & Fuel (FY23),other expenses,48,"Power, Coal, Fuel and Water",71,Others,wrong_classification
+Manufacturing Expenses (FY23),auditor's remuneration:,49,Others (Manufacturing),,,doubt
+Machinery Maintenance (FY23),other expenses,50,Repairs & Maintenance (Manufacturing),72,Repairs & Maintenance,wrong_classification
+Less: Closing Finished Goods (FY23),finished goods,59,Finished Goods Closing Balance,201,Finished Goods,wrong_classification
+Depreciation (FY23),depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Amortization Expenses (FY23),depreciation & amortisation expense,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Selling & Distribution Expenses (FY23),auditor's remuneration:,70,Advertisements and Sales Promotions,,,doubt
+Packing Materials @ 12% (FY23),selling and distribution expenses - subnotes,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Packing Materials @ 18% (FY23),selling and distribution expenses - subnotes,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Scrap Loading & Unloading Charges (FY23),selling & distribution expenses,70,Advertisements and Sales Promotions,71,Others,wrong_classification
+Consultation Fees (FY23),auditor's remuneration:,71,Others (Admin),,,doubt
+Rent (in Admin row) (FY23),note 27,71,Others (Admin),68,"Rent , Rates and Taxes",wrong_classification
+Administrative & General Expenses (FY23),auditor's remuneration:,70,Advertisements and Sales Promotions,,,doubt
+Interest - Term Loan & Others (FY23),note 25 - depreciation and amortisation,83,Interest on Fixed Loans / Term loans,49,Others,wrong_classification
+Bill Discounting Charges (FY23),other finance costs:,84,Interest on Working capital loans,85,Bank Charges,wrong_classification
+Yes Bank Channel Finance (FY23),secured,131,Working Capital Bank Finance - Bank 1,71,Others,wrong_classification
+Current Maturities of LT Debts (FY23),note 7 - other current liabilities,136,Term Loan Repayable in next one year,250,Other current liabilities,wrong_classification
+Axis Bank TL-V Business Empower (FY23),note 5 - short-term borrowings,137,Term Loan Balance Repayable after one year,131,From Indian Bank,wrong_classification
+Axis Term Loan No. 879974 (FY23),note 5 - short-term borrowings,137,Term Loan Balance Repayable after one year,131,From Indian Bank,wrong_classification
+Mr. Chaitra Sundaresh (FY23 Director Loan),(i) due to directors,152,Unsecured Loans - Quasi Equity,,,doubt
+DPT-3 Unsecured Loans (LT portion FY23),note 3 - long-term borrowings,153,Unsecured Loans - Long Term Debt,,,doubt
+Scraps (FY23 inventory),inventories,198,Stores and Spares Indigenous,200,Stocks-in-process,wrong_classification
+Capital Advances (FY23),other current assets,236,Advances to suppliers of capital goods,223,Other Advances / current asset,wrong_classification
+Security Deposits (FY23),long-term trade  receivables,237,Security deposits with government departments,0,,wrong_classification
+GST Input Recoverable (FY23),other current assets,219,Advances recoverable in cash or in kind,223,Other Advances / current asset,wrong_classification
+Advance to Suppliers / Contractors (FY23),unsecured considered good,220,Advances to suppliers of raw materials,71,Others,wrong_classification
+Net Advance Tax (FY23),note 16 - short-term loans and advances,221,Advance Income Tax,154,As Short Term Debt,wrong_classification
+Prepaid Expenses (FY23),unsecured considered good,222,Prepaid Expenses,,,doubt
+Other Advances (FY23),unsecured considered good,223,Other Advances / current asset,71,Others,wrong_classification
+Dues to MSME (FY23),note 6 - trade payables,242,Sundry Creditors for goods,,,doubt
+Dues to Other than MSME (FY23),note 6 - trade payables,242,Sundry Creditors for goods,250,Other current liabilities,wrong_classification
+Advance From Customers (FY23),(ii) other dues,243,Advance received from customers,71,Others,wrong_classification
+Bonus payable (FY23),note 7 - other current liabilities,246,Other statutory liabilities (due within 1 year),250,Other current liabilities,wrong_classification
+Creditors for Expenses (FY23),(ii) other dues,249,Creditors for Expenses,71,Others,wrong_classification
+Creditors for Capital Goods (FY23),(ii) other dues,250,Other current liabilities,71,Others,wrong_classification
+Salary & Wages payable (FY23),(ii) other dues,250,Other current liabilities,67,Salary and staff expenses,wrong_classification
+Depreciation - Building (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Office Equipment & CC Cameras (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Vehicles (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Computers (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Furniture & Fixtures (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Building (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Office Equipment & CC Cameras (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Vehicles (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Computers (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Furniture & Fixtures (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Building (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Office Equipment & CC Cameras (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Vehicles (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Computers (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+Depreciation - Furniture & Fixtures (For the Year),depreciation schedule - for the year,63,Depreciation (CMA),56,Depreciation,wrong_classification
+TDS 2020-21,subnotes to BS - tax deducted @ source,221,Advance Income Tax,71,Others,wrong_classification
+Advance Income Tax 20-21,subnotes to BS - advance income tax 18-19,221,Advance Income Tax,99,Income Tax  provision,wrong_classification
+Provision for IT 2021-22,subnotes to BS - provision for income tax,244,Provision for Taxation,99,Income Tax  provision,wrong_classification
+MINGXU STAMPING SOLUTION PVT LTD,subnotes to BS - capital advances,236,Advances to suppliers of capital goods,71,Others,wrong_classification
+Mediclaim Amount Receivable,subnotes to BS - other advances/ receivables,223,Other Advances / current asset,206,Domestic Receivables ( including bills purchased and discounted),wrong_classification
+YELLOW  SPECTRUM TECHNOLOGIES,subnotes to BS - advance to suppliers - others,223,Other Advances / current asset,71,Others,wrong_classification
+More than 365 days,subnotes to BS - trade receivables,206,Domestic Receivables,208,Debtors more than 6 months,wrong_classification
+TDS-Rent-94I,subnotes to BS - tds & tcs payable,221,Advance Income Tax,68,"Rent , Rates and Taxes",wrong_classification
+Unpaid Trainee Stipend,subnotes to BS - unpaid salary & wages,246,Other statutory liabilities (due within 1 year),45,Wages,wrong_classification
+IMPACT MACHINES,subnotes to BS - creditors for fixed assets purchased,250,Other current liabilities,175,Additions to Fixed Assets,wrong_classification
+Ronak.S. Bagadia - Remuneration,subnotes to BS - director remuneration payable,249,Creditors for Expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+Outstanding Expenditure,subnotes to BS - sundry creditors - purchases others,249,Creditors for Expenses,250,Other current liabilities,wrong_classification
+TDS 2021-22,subnotes to BS - tax deducted @ source,221,Advance Income Tax,71,Others,wrong_classification
+Advance Income Tax 21-22,subnotes to BS - advance income tax - 17-18,221,Advance Income Tax,99,Income Tax  provision,wrong_classification
+Provision for IT 2021-22,subnotes to BS - provision for income tax,244,Provision for Taxation,99,Income Tax  provision,wrong_classification
+Ikalnos Co. Ltd,subnotes to BS - capital advances,236,Advances to suppliers of capital goods,,,doubt
+Employee Contribution to EPF A/c,subnotes to BS - other advances/ receivables,223,Other Advances / current asset,,,doubt
+NMTG Mechtrans Techiques Pvt Ltd,subnotes to BS - advance to suppliers - others,223,Other Advances / current asset,71,Others,wrong_classification
+TDS-Rent-94I,subnotes to BS - tds & tcs payable,221,Advance Income Tax,68,"Rent , Rates and Taxes",wrong_classification
+Kone Cranes and Demag Pvt Ltd,subnotes to BS - creditors for fixed assets purchased,250,Other current liabilities,175,Additions to Fixed Assets,wrong_classification
+ASHWINI M CHAITRA REMUNERATION,subnotes to BS - director remuneration payable,249,Creditors for Expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+TRIVENI ENTERPRISES,subnotes to BS - sundry creditors-raw materials,242,Sundry Creditors for goods,42,Raw Materials Consumed ( Indigenous),wrong_classification
+Outstanding Expenditure,subnotes to BS - sundry creditors - purchases others,249,Creditors for Expenses,250,Other current liabilities,wrong_classification
+Bisineer Sales & Marketing,subnotes to BS - sundry creditors - purchases others,242,Sundry Creditors for goods,,,doubt
+TDS 2022-23,subnotes to BS - tax deducted @ source,221,Advance Income Tax,71,Others,wrong_classification
+Advance Income Tax 22-23,subnotes to BS - advance income tax 21-22,221,Advance Income Tax,99,Income Tax  provision,wrong_classification
+Provision for IT 2022-23,subnotes to BS - provision for income tax,244,Provision for Taxation,99,Income Tax  provision,wrong_classification
+CREAZIONE TOOLS,subnotes to BS - capital advances,236,Advances to suppliers of capital goods,71,Others,wrong_classification
+Y Chakradhar Rental Advance ( Staff),subnotes to BS - other advances/ receivables,223,Other Advances / current asset,206,Domestic Receivables ( including bills purchased and discounted),wrong_classification
+TAX COLLECTED AT SOURCE 1%,subnotes to BS - tds & tcs payable,221,Advance Income Tax,71,Others,wrong_classification
+ELRKE INDUSTRIAL ENTERPRIESES,subnotes to BS - creditors for fixed assets purchased,250,Other current liabilities,175,Additions to Fixed Assets,wrong_classification
+ASHWINI M CHAITRA REMUNERATION,subnotes to BS - director remuneration payable,249,Creditors for Expenses,73,Audit Fees & Directors Remuneration,wrong_classification
+BAGADIA BROTHERS-MFG,subnotes to BS - sundry creditors-raw materials,242,Sundry Creditors for goods,42,Raw Materials Consumed ( Indigenous),wrong_classification
+Outstanding Expenditure,subnotes to BS - sundry creditors - purchases others,249,Creditors for Expenses,250,Other current liabilities,wrong_classification

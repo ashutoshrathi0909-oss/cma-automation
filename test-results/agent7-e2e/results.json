@@ -1,0 +1,92 @@
+[
+  {
+    "step": 1,
+    "desc": "Open app",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/login title=CMA Assist"
+  },
+  {
+    "step": 2,
+    "desc": "Dashboard/login loads",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/login"
+  },
+  {
+    "step": 3,
+    "desc": "Clients page",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients"
+  },
+  {
+    "step": 4,
+    "desc": "New client button clicked",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients/new"
+  },
+  {
+    "step": 5,
+    "desc": "Form filled",
+    "result": "PASS",
+    "notes": "Name and industry set"
+  },
+  {
+    "step": 6,
+    "desc": "Client created",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients/new"
+  },
+  {
+    "step": 7,
+    "desc": "Upload page",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients/ecf8b788-837b-4713-b58a-d113d4b074cd"
+  },
+  {
+    "step": 8,
+    "desc": "File selected",
+    "result": "FAIL",
+    "notes": "No file input found"
+  },
+  {
+    "step": 9,
+    "desc": "Upload submitted",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients/ecf8b788-837b-4713-b58a-d113d4b074cd/upload"
+  },
+  {
+    "step": 10,
+    "desc": "Extraction progress visible",
+    "result": "PARTIAL",
+    "notes": "No progress indicator found"
+  },
+  {
+    "step": 11,
+    "desc": "Verification screen",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/clients/ecf8b788-837b-4713-b58a-d113d4b074cd/upload"
+  },
+  {
+    "step": 12,
+    "desc": "Verification confirmed",
+    "result": "PARTIAL",
+    "notes": "No confirm button found"
+  },
+  {
+    "step": 13,
+    "desc": "Classification review",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/reports"
+  },
+  {
+    "step": 14,
+    "desc": "Excel generate button",
+    "result": "FAIL",
+    "notes": "Generate button not found on page"
+  },
+  {
+    "step": 15,
+    "desc": "Final state",
+    "result": "PASS",
+    "notes": "URL=http://localhost:3002/reports"
+  }
+]

@@ -1,0 +1,90 @@
+Item 1:
+  Description: Carriage Outwards
+  Amount: Rs 13,194,942.00
+  Section: selling & distribution expenses
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 2:
+  Description: Packing Materials - GST @ 12%
+  Amount: Rs 4,797,468.18
+  Section: selling and distribution expenses - subnotes
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 3:
+  Description: Cash on Hand
+  Amount: Rs 137,016.00
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 4:
+  Description: Balance With Bank (current accounts)
+  Amount: Rs 6,445,702.96
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 5:
+  Description: Fixed Deposits (3-12 months)
+  Amount: Rs 10,919,991.00
+  Section: note 15 - cash and bank
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 6:
+  Description: GST Input Recoverable
+  Amount: Rs 425,099.28
+  Section: other current assets
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 7:
+  Description: Advance to Suppliers / Contractors
+  Amount: Rs 7,549,061.93
+  Section: unsecured considered good
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 8:
+  Description: Depreciation - Software (Intangible) (For the Year)
+  Amount: Rs 75,701.56
+  Section: depreciation schedule - intangible assets
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 9:
+  Description: Total Depreciation for the Year (All Assets - Tangible + Intangible)
+  Amount: Rs 40,745,669.00
+  Section: depreciation schedule - grand total
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 10:
+  Description: Packing Materials - GST @ 18%
+  Amount: Rs 1,377,178.00
+  Section: selling and distribution expenses - subnotes
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 11:
+  Description: Discount Allowed
+  Amount: Rs 258,090.81
+  Section: selling & distribution expenses
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 12:
+  Description: Insurance
+  Amount: Rs 681,422.15
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 13:
+  Description: Consultation Fees
+  Amount: Rs 7,691,986.44
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 14:
+  Description: Administrative & General Expenses
+  Amount: Rs 14,737,733.49
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 15:
+  Description: TDS Recoverable
+  Amount: Rs 1,183,749.71
+  Section: note 16 - short-term loans and advances
+  Sheet: Notes BS (2)
+  Financial Year: 2021

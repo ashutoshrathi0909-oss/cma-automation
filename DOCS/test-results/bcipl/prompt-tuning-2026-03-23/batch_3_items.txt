@@ -1,0 +1,90 @@
+Item 1:
+  Description: Capital Advances (MING XU + FAIR OAKES)
+  Amount: Rs 11,702,349.27
+  Section: note 17 - other current assets
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 2:
+  Description: Depreciation - Generators &Transformer (For the Year)
+  Amount: Rs 205,067.31
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 3:
+  Description: Depreciation - Electrical Fittings (For the Year)
+  Amount: Rs 564,682.72
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 4:
+  Description: Job Work Charges & Contract Labour
+  Amount: Rs 12,169,219.64
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 5:
+  Description: Power & Fuel
+  Amount: Rs 8,037,363.90
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 6:
+  Description: Power Charges
+  Amount: Rs 6,989,409.90
+  Section: power & fuel
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 7:
+  Description: Fuel Charges
+  Amount: Rs 1,047,954.00
+  Section: power & fuel
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 8:
+  Description: Manufacturing Expenses
+  Amount: Rs 268,635.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 9:
+  Description: Security Deposits (BESCOM, KIADB etc)
+  Amount: Rs 2,460,627.00
+  Section: note 11 - long-term loans and advances
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 10:
+  Description: Electronic Cash Ledger (GST)
+  Amount: Rs 172,928.00
+  Section: security deposits:
+  Sheet: Subnotes to BS
+  Financial Year: 2021
+Item 11:
+  Description: MAT Credit Entitlement (opening)
+  Amount: Rs 266,591.00
+  Section: others:
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 12:
+  Description: MAT Credit Availed during year
+  Amount: Rs 2,929,119.00
+  Section: note 12 - other non-current assets
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 13:
+  Description: Unsecured Considered Good (non-current receivable)
+  Amount: Rs 188,590.98
+  Section: long-term trade  receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 14:
+  Description: Depreciation - Office Equipment & CC Cameras (For the Year)
+  Amount: Rs 713,300.95
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 15:
+  Description: Depreciation - Vehicles (For the Year)
+  Amount: Rs 739,528.36
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021

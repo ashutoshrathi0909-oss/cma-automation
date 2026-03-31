@@ -1,0 +1,50 @@
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+CANDIDATE CMA FIELDS (you MUST pick from ONLY these rows):
+- Row 22: Domestic Sales
+- Row 30: Interest Received
+- Row 34: Others (Non-Operating Income)
+- Row 49: Others (Manufacturing)
+- Row 50: Repairs & Maintenance (Manufacturing)
+- Row 68: Rent, Rates and Taxes
+- Row 70: Advertisements and Sales Promotions
+- Row 71: Others (Admin)
+- Row 73: Audit Fees & Directors Remuneration
+- Row 93: Others (Non-Operating Expenses)
+- Row 131: Working Capital Bank Finance - Bank 1
+- Row 152: Unsecured Loans - Quasi Equity
+- Row 162: Gross Block
+- Row 206: Domestic Receivables
+- Row 223: Other Advances / current asset
+
+SIMILAR ITEMS ALREADY CLASSIFIED (use as reference examples):
+1. "Interest Income" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+2. "Interest from FD" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+3. "Audit Fees" (Note 18-24 | note 17 : other expenses) -> Row 73: Audit Fees & Directors Remuneration
+4. "Business promotion" (Note 18-24 | note 17 : other expenses) -> Row 70: Advertisements and Sales Promotions
+5. "Repairs and maintenance" (Note 18-24 | note 17 : other expenses) -> Row 50: Repairs & Maintenance (Manufacturing)
+6. "Factory Expences" (Note 18-24 | note 17 : other expenses) -> Row 49: Others (Manufacturing)
+7. "Packing & Forwarding" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+8. "Printing and stationery" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+9. "Consultancy Fee" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+10. "Rates and taxes" (Note 18-24 | note 17 : other expenses) -> Row 68: Rent, Rates and Taxes
+
+CLASSIFY THESE 10 ITEMS:
+1. "Bad Debts Written Back" | Notes to P & L | other income
+2. "Manufacturing Expenses" | Notes to P & L | auditor's remuneration:
+3. "Machinery Maintenance" | Notes to P & L | other expenses
+4. "Selling & Distribution Expenses" | Notes to P & L | auditor's remuneration:
+5. "Carriage Outwards" | Subnotes to PL | selling & distribution expenses
+6. "Consultation Fees" | Notes to P & L | auditor's remuneration:
+7. "Rates & Taxes" | Notes to P & L | other expenses
+8. "Mr. Chaitra Sunderesh (Director Loan)" | Notes BS (2) | (i) due to directors
+9. "Mr. Nishanth Sunderesh (Director Loan)" | Notes BS (2) | (i) due to directors
+10. "Other Advances" | Notes BS (2) | unsecured considered good
+
+Return a JSON array with exactly 10 objects. Each object must have:
+- "item_index": integer 1-10 (matching the item number above)
+- "classified_cma_row": integer (the row number from CANDIDATE CMA FIELDS)
+- "classified_cma_field": string (the field name)
+- "confidence": float 0.0-1.0
+
+Return ONLY valid JSON array, no other text.

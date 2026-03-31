@@ -1,0 +1,10 @@
+{
+  "company": "BCIPL",
+  "industry": "manufacturing",
+  "total_items": 224,
+  "correct": 143,
+  "wrong": 72,
+  "doubts": 9,
+  "accuracy_pct": 63.84,
+  "elapsed_seconds": 500.96
+}

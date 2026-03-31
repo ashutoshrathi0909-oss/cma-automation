@@ -1,0 +1,17 @@
+{
+  "overall": "PASS",
+  "checks": {
+    "docker_backend": "PASS",
+    "docker_frontend": "PASS",
+    "docker_redis": "PASS",
+    "backend_health": "PASS — {\"status\":\"ok\",\"db\":\"ok\"}",
+    "backend_openapi": "PASS — 34 routes",
+    "frontend_loads": "PASS — 307 redirect",
+    "supabase_reference_data": "PASS — count: 385",
+    "redis_ping": "PASS — PONG",
+    "arq_worker": "PASS — no Redis connection errors in logs; DISABLE_AUTH bypass active (dev mode)",
+    "anthropic_key_set": "PASS — key is set (sk-ant-api03-...)"
+  },
+  "failures": [],
+  "notes": "All 10 checks green. Backend has 34 OpenAPI routes (well above 15+ threshold). Supabase reference mappings: 385 rows (within expected 384-387). Frontend returns 307 redirect (normal for Next.js auth redirect). ARQ worker logs show clean startup with no Redis errors. DISABLE_AUTH=true is active as expected for dev mode. /api/clients returns 307 then empty list [] — backend-Supabase link is live."
+}

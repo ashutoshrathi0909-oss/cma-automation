@@ -1,0 +1,1544 @@
+{
+  "summary": {
+    "total_wrong_all_companies": 1163,
+    "gt_offset_bug": 864,
+    "genuinely_wrong": 299,
+    "unique_genuinely_wrong": 201,
+    "interviewed": 100,
+    "correct_not_in_options": 45,
+    "correct_in_options_but_wrong": 55,
+    "api_calls": 100
+  },
+  "interviews": [
+    {
+      "index": 0,
+      "company": "BCIPL",
+      "raw_text": "Profit on Sale of Fixed Asset",
+      "section": "Other Income",
+      "correct_row_adjusted": 22,
+      "correct_name": "Domestic",
+      "predicted_row": 31,
+      "predicted_name": "Profit on sale of fixed assets / Investments",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "other_income"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No**, Row 22 (Domestic) was **NOT** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 22 wasn’t an option).  \n3. Keywords like \"Domestic Sales\" or \"Domestic Income\" should trigger Row 22, but the item text (\"Profit on Sale of Fixed Asset\") lacks these.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - *Add Row 22 (Domestic) to the POSSIBLE CMA ROWS list* **AND**  \n   - *Add a rule: \"Domestic income → Row 22 (Domestic)\"*.  \n\n5. **Python regex pattern** to route to Row 22:  \n   ```python  \n   r\"(domestic\\b|local\\b|home\\b.*sale|revenue.*india)\"\n   ```  \n\n**Key Fix**: The prompt must explicitly include Row 22 as an option *and* define routing logic for domestic-related income. The current rules prioritize profit-from-sale logic (Row 31) when domestic context is missing."
+    },
+    {
+      "index": 1,
+      "company": "BCIPL",
+      "raw_text": "Sale of Duty Credit Scrips",
+      "section": "Other Income",
+      "correct_row_adjusted": 22,
+      "correct_name": "Domestic",
+      "predicted_row": 34,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "other_income"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No** – Row 22 (Domestic) was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 22 unavailable).  \n3. Keywords like **\"Duty Credit Scrips\"** should trigger routing to **Row 22 (Domestic)** (typically tied to export incentives/domestic trade schemes).  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**:  \n   - *\"Add Row 22 | II_B7 | Export Incentives / Duty Credit Scrips\" to POSSIBLE CMA ROWS list\"*  \n   - *\"Add rule: 'Sale of Duty Credit Scrips' → Row 22 (Domestic)'\"*  \n\n5. **Python regex pattern**:  \n   ```python  \n   r\"(?i)(duty\\s*credit\\s*scrip|export\\s*incentive)\"  # Matches \"Duty Credit Scrips\" case-insensitively  \n   ```  \n\n**Reasoning**: The item was forced into \"Others\" due to missing options. Explicit rules or row additions would fix this.  \n\n---"
+    },
+    {
+      "index": 2,
+      "company": "BCIPL",
+      "raw_text": "Other Materials Consumed",
+      "section": "Expenditure",
+      "correct_row_adjusted": 41,
+      "correct_name": "Raw Materials Consumed ( Imported)",
+      "predicted_row": 49,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 41 (Raw Materials Consumed ( Imported)) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 49 because \"Other Materials Consumed\" lacked explicit keywords like \"Imported\" or \"Indigenous,\" making it seem generic.  \n3. Keywords like \"Materials Consumed\" should have triggered consideration of Row 41 or Row 42, as they are specific to raw materials.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Materials Consumed' → Row 41 (Raw Materials Consumed ( Imported)) or Row 42 (Raw Materials Consumed ( Indigenous))\".  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(materials\\s*consumed|raw\\s*materials)\"  \n```  \nThis pattern would ensure \"Materials Consumed\" is routed to Row 41 or Row 42, avoiding Row 49."
+    },
+    {
+      "index": 3,
+      "company": "BCIPL",
+      "raw_text": "Other Materials Consumed",
+      "section": "Expenditure",
+      "correct_row_adjusted": 43,
+      "correct_name": "Stores and spares consumed ( Imported)",
+      "predicted_row": 49,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 43 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 49 because \"Other Materials Consumed\" lacked explicit keywords like \"stores\" or \"spares,\" making it ambiguous. The absence of clear indicators led me to default to \"Others\" as a last resort.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Materials Consumed' → Row 43 (Stores and spares consumed ( Imported))\" or add an example: \"'Other Materials Consumed' → Row 43 (Stores and spares consumed ( Imported))\".  \n5. Routing regex pattern: `r\"(?i)\\b(materials\\s*consumed|stores|spares)\\b\"`.  \n\nThis change would explicitly link \"Materials Consumed\" to Row 43, ensuring correct classification."
+    },
+    {
+      "index": 4,
+      "company": "BCIPL",
+      "raw_text": "Employee Benefits Expense",
+      "section": "Employee Benefits Expense",
+      "correct_row_adjusted": 44,
+      "correct_name": "Stores and spares consumed ( Indigenous)",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 44 (Stores and spares consumed ( Indigenous)) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 67 because \"Employee Benefits Expense\" directly aligns with \"Salary and staff expenses\" (Row 67), which is a more specific match based on the item text and section.  \n3. N/A (Row 44 was in the list, but the item text did not contain keywords like \"stores\" or \"spares\" to trigger routing to Row 44.)  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Employee Benefits Expense → Row 44 (Stores and spares consumed ( Indigenous))\" to explicitly override the default routing to Row 67.  \n5. Routing regex pattern:  \n```python  \nr\"Employee Benefits Expense\"  \n```  \nThis pattern would directly route the item to Row 44 if explicitly defined in the rules.  \n\n**Summary:** The error occurred because Row 67 was a more specific match for \"Employee Benefits Expense.\" Adding a rule or regex pattern to explicitly route this item to Row 44 would resolve the issue."
+    },
+    {
+      "index": 5,
+      "company": "BCIPL",
+      "raw_text": "Manufacturing Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 48,
+      "correct_name": "Power, Coal, Fuel and Water",
+      "predicted_row": 64,
+      "predicted_name": "Other Manufacturing Exp",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "manufacturing_expense",
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 48 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 64 because \"Manufacturing Expenses\" is a broad term, and without specific keywords like \"power,\" \"coal,\" or \"fuel,\" I defaulted to \"Other Manufacturing Exp\" as a last resort.  \n3. N/A (Row 48 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Manufacturing Expenses related to power, coal, fuel, or water → Row 48 (Power, Coal, Fuel and Water).\"  \n5. Routing regex pattern:  \n```python  \nr\"(manufacturing.*(power|coal|fuel|water))\"  \n```  \nThis would ensure items with \"Manufacturing Expenses\" and related keywords are routed to Row 48."
+    },
+    {
+      "index": 6,
+      "company": "BCIPL",
+      "raw_text": "Rent",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 48,
+      "correct_name": "Power, Coal, Fuel and Water",
+      "predicted_row": 68,
+      "predicted_name": "Rent , Rates and Taxes",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 48 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 48 was not an option).  \n3. The keyword \"Rent\" correctly triggered Row 68 (Rent, Rates and Taxes) based on the rules and examples provided.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 48 (Power, Coal, Fuel and Water) to the POSSIBLE CMA ROWS list.  \n5. Regex pattern: `r\"(electric|power|coal|fuel|water)\"`  \n\n**Reasoning:**  \nThe correct row (Row 48) was not in the options, so adding it to the list is essential. The regex pattern ensures items related to power, coal, fuel, or water are routed correctly."
+    },
+    {
+      "index": 7,
+      "company": "BCIPL",
+      "raw_text": "Finished Goods (Opening)",
+      "section": "Changes in Inventories",
+      "correct_row_adjusted": 57,
+      "correct_name": "Row 57",
+      "predicted_row": 201,
+      "predicted_name": "Finished Goods",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "inventories",
+        "raw_materials"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No** – Row 57 was not in the provided POSSIBLE CMA ROWS list.  \n2. N/A (Row 57 wasn’t an option).  \n3. The keyword **\"(Opening)\"** should have triggered routing to **Row 58 (Finished Goods Opening Balance)** (since \"Opening\" is explicitly linked to opening balances in examples like \"Work in progress - Opening\" → Row 53).  \n\n### PART B — What would make you get it RIGHT:  \n4. **\"Add an example: 'Finished Goods (Opening)' → Row 58 (Finished Goods Opening Balance)'\"**  \n   - *Reason*: The current examples exclude \"(Opening)\" logic for finished goods, though similar patterns exist for other categories (e.g., work-in-progress).  \n\n5. **Regex pattern**:  \n   ```python  \n   r'(?i)(finished\\s*goods).*opening'  # Routes to Row 58 if \"Finished Goods\" + \"Opening\" appears  \n   ```  \n\n**Key Fix**: The prompt’s examples inconsistently handle \"Opening\" labels (prioritizing Row 201 over Row 58)."
+    },
+    {
+      "index": 8,
+      "company": "BCIPL",
+      "raw_text": "Finished Goods (Closing)",
+      "section": "Changes in Inventories",
+      "correct_row_adjusted": 58,
+      "correct_name": "Finished Goods Opening Balance",
+      "predicted_row": 201,
+      "predicted_name": "Finished Goods",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "inventories",
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 58 (Finished Goods Opening Balance) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 201 because the item text \"Finished Goods (Closing)\" matched the keyword \"Finished Goods\" in Row 201, and I overlooked the \"(Closing)\" suffix, which should have routed it to Row 58 (Finished Goods Opening Balance).  \n3. N/A (Row 58 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Finished Goods (Closing)' → Row 58 (Finished Goods Opening Balance)\".  \n5. Routing regex pattern:  \n```python  \nr\"Finished Goods\\s*\\(Closing\\)\"  \n```  \n\nThis change would explicitly map \"Finished Goods (Closing)\" to Row 58, ensuring correct classification."
+    },
+    {
+      "index": 9,
+      "company": "BCIPL",
+      "raw_text": "Directors Remuneration",
+      "section": "Salaries & Wages",
+      "correct_row_adjusted": 66,
+      "correct_name": "Row 66",
+      "predicted_row": 73,
+      "predicted_name": "Audit Fees & Directors Remuneration",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Was Row 66 (Row 66) in the POSSIBLE CMA ROWS list?** No.  \n2. **If no: what keywords in the item text should have triggered routing to the correct section?** \"Directors Remuneration\" should have triggered a specific row for directors' payments, but Row 66 was not available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Write the EXACT minimum change to the prompt that would make you confidently pick Row 66:**  \n   - \"Add Row 66 (Row 66) to the POSSIBLE CMA ROWS list.\"  \n   - Alternatively, \"Add a rule: 'Directors Remuneration → Row 66 (Row 66)'.\"  \n\n5. **If you had to write ONE routing regex pattern that would correctly route this item, what would it be?**  \n   ```python  \n   r\"(?i)directors\\s*remuneration\"  \n   ```  \n   This pattern would match \"Directors Remuneration\" case-insensitively and route it to Row 66."
+    },
+    {
+      "index": 10,
+      "company": "BCIPL",
+      "raw_text": "Selling & Distribution Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 69,
+      "correct_name": "Bad Debts",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "selling_expense",
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 69 (Bad Debts) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 71 (Others) because \"Selling & Distribution Expenses\" did not explicitly match any specific row keywords or rules provided in the prompt. There was no direct rule or example linking \"Selling & Distribution Expenses\" to Row 69 (Bad Debts).  \n3. N/A (Row 69 was in the list, but the item text lacked keywords like \"bad debts\" or \"write-offs\" to trigger routing to Row 69).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Selling & Distribution Expenses → Row 69 (Bad Debts)\" or add an example: \"Selling & Distribution Expenses\" → Row 69 (Bad Debts).  \n5. The routing regex pattern in Python:  \n```python  \nr\"(?i)(selling\\s*&\\s*distribution\\s*expenses)\"  \n```  \nThis pattern would match \"Selling & Distribution Expenses\" case-insensitively and route it to Row 69."
+    },
+    {
+      "index": 11,
+      "company": "BCIPL",
+      "raw_text": "Administrative & General Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 69,
+      "correct_name": "Bad Debts",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 69 (Bad Debts) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 71 (Others) because \"Administrative & General Expenses\" did not explicitly match any specific row keywords or rules, and the CA Expert Rules explicitly state that \"General expenses\" → Row 71 (Others).  \n3. N/A (Row 69 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Administrative & General Expenses → Row 69 (Bad Debts)\".  \n5. Routing regex pattern:  \n```python  \nr\"(?i)\\b(administrative\\s*&\\s*general\\s*expenses)\\b\"  \n```  \n\nThis change would explicitly map \"Administrative & General Expenses\" to Row 69 (Bad Debts), overriding the default \"Others\" routing for general expenses."
+    },
+    {
+      "index": 12,
+      "company": "BCIPL",
+      "raw_text": "Rates & Taxes",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 68,
+      "predicted_name": "Rent , Rates and Taxes",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 70 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 68 because \"Rates & Taxes\" directly matched the keywords in Row 68 (Rent, Rates and Taxes).  \n3. N/A (Row 70 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Rates & Taxes' → Row 70 (Advertisements and Sales Promotions)\" to explicitly override the default keyword match.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(rates\\s*&\\s*taxes)\"  \n```  \nThis pattern would ensure \"Rates & Taxes\" is routed to Row 70, overriding the default match to Row 68."
+    },
+    {
+      "index": 13,
+      "company": "BCIPL",
+      "raw_text": "Bad debts written off",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 69,
+      "predicted_name": "Bad Debts",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 70 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 69 because \"Bad debts written off\" directly matched the keyword \"Bad Debts\" in Row 69, which seemed more specific and relevant.  \n3. N/A (Row 70 was in the list.)  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Bad debts written off → Row 70 (Advertisements and Sales Promotions)\" to explicitly override the keyword match for \"Bad Debts.\"  \n5. Routing regex pattern:  \n```python  \nr\"Bad debts written off\" → Row 70  \n```  \nThis would ensure the item is routed correctly despite the keyword overlap."
+    },
+    {
+      "index": 14,
+      "company": "BCIPL",
+      "raw_text": "Auditor's Remuneration - Statutory Audit",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 73,
+      "predicted_name": "Audit Fees & Directors Remuneration",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes**, Row 70 was in the POSSIBLE CMA ROWS list.  \n2. **Incorrect pick reason:** The item text (\"Auditor's Remuneration\") explicitly matches the keyword \"Audit\" in Row 73 (\"Audit Fees & Directors Remuneration\"), which overrides the section hint (\"Other Expenses\"). The CA Expert Rules also mandate \"Audit Fees\" → Row 73.  \n3. N/A (Row 70 was present).  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed:**  \n   - *Add an exception rule:* `\"Auditor's Remuneration - Statutory Audit\" → Row 70 (Advertisements and Sales Promotions)` to override the default \"Audit Fees\" routing.  \n\n5. **Python regex pattern:**  \n   ```python  \n   r'(?i)(advertis|sales|promo|remuneration.*statutory\\s*audit)'  \n   ```  \n   *(Matches \"Advertisements/Sales Promotions\" OR \"Remuneration - Statutory Audit\" case-insensitively.)*  \n\n**Key fix"
+    },
+    {
+      "index": 15,
+      "company": "BCIPL",
+      "raw_text": "Auditor's Remuneration - Tax Audit",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 73,
+      "predicted_name": "Audit Fees & Directors Remuneration",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 70 (Advertisements and Sales Promotions) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 73 because the item text \"Auditor's Remuneration - Tax Audit\" contains \"Audit,\" which directly matches the CA Expert Rule: \"Audit Fees -> Row 73 (Audit Fees & Directors Remuneration).\"  \n3. N/A (Row 70 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Auditor's Remuneration - Tax Audit -> Row 70 (Advertisements and Sales Promotions).\"  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(auditor.*remuneration.*tax.*audit)\"  \n```  \nThis pattern would explicitly route \"Auditor's Remuneration - Tax Audit\" to Row 70."
+    },
+    {
+      "index": 16,
+      "company": "BCIPL",
+      "raw_text": "Advances Written off",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 69,
+      "predicted_name": "Bad Debts",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 70 (Advertisements and Sales Promotions) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 69 (Bad Debts) because \"Advances Written off\" aligns with the concept of bad debts, which are unrecoverable amounts. I did not consider Row 70 as it seemed unrelated to advertisements or sales promotions.  \n3. N/A (Row 70 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Advances Written off → Row 70 (Advertisements and Sales Promotions)\" to explicitly clarify the routing for this specific item.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)\\b(advances\\s*written\\s*off)\\b\"  \n```  \nThis pattern would match \"Advances Written off\" case-insensitively and route it to Row 70."
+    },
+    {
+      "index": 17,
+      "company": "BCIPL",
+      "raw_text": "Selling & Distribution Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 72,
+      "correct_name": "Repairs & Maintenance",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "selling_expense",
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **Yes**, Row 72 (Repairs & Maintenance) was in the POSSIBLE CMA ROWS list.  \n2. Picked Row 71 (Others) because \"Selling & Distribution Expenses\" didn’t explicitly match keywords like \"repairs\" or \"maintenance\" to trigger Row 72, and no expert rule directly mapped it. Defaulted to \"Others\" as a last resort.  \n3. Keywords like \"Distribution Expenses\" could imply logistical/maintenance costs, but the prompt lacked a rule linking such terms to Row 72.\n\n### PART B — What would make you get it RIGHT:\n4. **Add an expert rule**: `\"Selling & Distribution Expenses\" → Row 72 (Repairs & Maintenance)`  \n   **OR**  \n   **Add an example**: `\"Distribution Expenses\" → Row 72 (Repairs & Maintenance)`  \n\n5. **Python regex pattern**:  \n   ```python\n   r\"(?i)(distribution.*expenses|repairs|maintenance)\"\n   ```\n   This would route items containing \"distribution expenses\" (case-insensitive) or repair-related terms to Row 72.  \n\n**Key Fix**:"
+    },
+    {
+      "index": 18,
+      "company": "BCIPL",
+      "raw_text": "Advances Written off",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 74,
+      "correct_name": "Row 74",
+      "predicted_row": 69,
+      "predicted_name": "Bad Debts",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Was Row 74 in the POSSIBLE CMA ROWS list?**  \n   **No** — Row 74 was not listed as an option.  \n\n2. **Why pick Row 69 (Bad Debts)?**  \n   \"Advances Written off\" implies unrecoverable loans/debts, which aligns closest with **Bad Debts** (Row 69) from the given options.  \n\n3. **Keyword triggering correct section?**  \n   The phrase **\"Written off\"** should ideally route to a dedicated \"Advances Written off\" row (Row 74), but this row was missing.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed:**  \n   **\"Add Row 74 | II_E3b | Advances Written off\"** to the POSSIBLE CMA ROWS list.  \n\n5. **Routing regex pattern (Python):**  \n   ```python\n   r\".*\\b(advances\\s*written\\s*off|bad\\s*debts)\\b.*\"  \n   ```  \n   **Reason:** This catches both explicit \"Advances Written off\" and synonyms"
+    },
+    {
+      "index": 19,
+      "company": "BCIPL",
+      "raw_text": "Interest of Income Tax",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 82,
+      "correct_name": "Row 82",
+      "predicted_row": 99,
+      "predicted_name": "Income Tax  provision",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "tax",
+        "finance_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 82 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 82 was not an option).  \n3. Keywords like \"Interest\" and \"Income Tax\" should have triggered routing to a row combining both concepts, but no such row was available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 82 (Row 82) to the POSSIBLE CMA ROWS list with a rule: \"Interest of Income Tax → Row 82 (Row 82)\".  \n5. Routing regex pattern: `r\"(?i)interest\\s+of\\s+income\\s+tax\"`  \n\nThis ensures the item is correctly classified when Row 82 is available."
+    },
+    {
+      "index": 20,
+      "company": "BCIPL",
+      "raw_text": "Bill Discounting Charges",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 83,
+      "correct_name": "Interest on Fixed Loans / Term loans",
+      "predicted_row": 133,
+      "predicted_name": "(o/s bill discounting balance to be included)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_short",
+        "finance_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes  \n2. Picked Row 133 due to \"Bill Discounting\" matching CA rule (\"Bills discounted\" → Row 133), misinterpreting \"charges\" as balance inclusion. Ignored that \"Finance Costs\" suggests interest.  \n3. N/A  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: `\"Bill Discounting Charges\" → Row 83 (Interest on Fixed Loans / Term loans)`  \n   OR clarify in CA rules: \"For *interest* on discounted bills, use Row 83, not Row 133\".  \n\n5. Regex pattern:  \n   ```python  \n   r\"(Bill Discounting Charges|Interest on .*bills? discounted)\" → Row 83  \n   ```  \n   (Matches *charges* explicitly as interest, not contingent liability.)  \n\n**Key fix:** Disambiguate \"charges\" (interest) vs. \"balance\" (liability) in rules."
+    },
+    {
+      "index": 21,
+      "company": "BCIPL",
+      "raw_text": "Interest on CC A/c",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 83,
+      "correct_name": "Interest on Fixed Loans / Term loans",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "finance_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**, Row 83 was in the POSSIBLE CMA ROWS list.  \n2. I picked \"Row None\" because \"CC A/c\" (Cash Credit Account) implied a working capital loan, but the **CA Expert Rules** and **examples** prioritize assigning *all* interest terms (even ambiguous ones) to Row 83 unless explicitly labeled \"Working Capital\". Lacked clarity on this hierarchy.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** Add a rule:  \n   `\"Interest on CC A/c\" → Row 83 (Interest on Fixed Loans / Term loans)`  \n   OR clarify in rules:  \n   *\"Default all interest items to Row 83 unless explicitly labeled 'Working Capital'.\"*  \n\n5. **Regex pattern:**  \n   ```python\n   r\"(?i)(interest\\s(on|expense).*(loan|term|a\\/c|debenture|partner|unsecured|bank))\"\n   ```  \n   *(Matches \"Interest on [anything] A/c\" as Row 83, aligning with CA rules.)*  \n\n**Key Fix:** Explicit"
+    },
+    {
+      "index": 22,
+      "company": "BCIPL",
+      "raw_text": "Bank Charges",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 84,
+      "correct_name": "Interest on Working capital loans",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 84 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 84 was not an option).  \n3. Keywords like \"Bank Charges\" should have been routed to a section related to financial expenses or interest, but no such row was available in the options.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 84 (Interest on Working capital loans) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)(bank\\s*charges|interest\\s*on\\s*working\\s*capital\\s*loans)\"  \n   ```  \nThis pattern would match \"Bank Charges\" and route it to the correct section."
+    },
+    {
+      "index": 23,
+      "company": "BCIPL",
+      "raw_text": "Forex Rate Fluctuation Loss",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 90,
+      "correct_name": "Sundry Balances Written off",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 90 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 90 was not an option).  \n3. Keywords like \"Forex Rate Fluctuation Loss\" should have triggered routing to a section handling financial adjustments or write-offs, but no such row was available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. \"Add Row 90 (Sundry Balances Written off) to the POSSIBLE CMA ROWS list.\"  \n5. Regex pattern: `r\"(?i)(forex.*loss|fluctuation.*loss)\"`  \n\nThis would ensure \"Forex Rate Fluctuation Loss\" is correctly routed to Row 90 if it were an option."
+    },
+    {
+      "index": 24,
+      "company": "BCIPL",
+      "raw_text": "Deferred Tax",
+      "section": "Tax Expense",
+      "correct_row_adjusted": 100,
+      "correct_name": "Deferred Tax Liability",
+      "predicted_row": 100,
+      "predicted_name": "Deferred Tax Liability",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "tax"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes**, Row 100 was in the POSSIBLE CMA ROWS list.  \n2. The rules explicitly state:  \n   - *\"Deferred tax\" → Row 100 (Deferred Tax Liability)* (CA EXPERT RULES).  \n   - The examples reinforce this (e.g., *\"Deferred tax\" -> Row 100*).  \n3. **Keyword trigger**: The text \"Deferred Tax\" directly matches the rule and examples for Row 100.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - *None*. The prompt already correctly lists Row 100 and includes rules/examples routing \"Deferred Tax\" to it. The error was likely a misclassification due to oversight.  \n\n5. **Regex pattern** (`Python`):  \n   ```python  \n   r'(?i)\\bdeferred\\s*tax\\b(?!\\s*asset|\\s*\\(asset\\))'  \n   ```  \n   - **Explanation**: Matches \"Deferred Tax\" (case-insensitive) unless followed by \"Asset\" or \"(Asset)\".  \n\n**Root"
+    },
+    {
+      "index": 25,
+      "company": "BCIPL",
+      "raw_text": "Surplus at the beginning of the year",
+      "section": "Reserves & Surplus",
+      "correct_row_adjusted": 105,
+      "correct_name": "Row 105",
+      "predicted_row": 122,
+      "predicted_name": "Balance transferred from profit and loss a/c",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "reserves"
+      ],
+      "model_response": "### **PART A — Why it went wrong:**  \n1. **No** – Row 105 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 105 wasn’t an option, so Row 122 was the closest match for \"Surplus\" related to P&L).  \n3. Keyword **\"beginning of the year\"** should trigger **Row 106 (Brought forward from previous year)** or **Row 105** if listed (common for surplus carried forward).  \n\n### **PART B — What would make you get it RIGHT:**  \n4. **\"Add Row 105 (Row 105) to the POSSIBLE CMA ROWS list\"** OR  \n   **\"Add a rule: 'Surplus at the beginning of the year → Row 105 (Row 105)'\"**.  \n\n5. **Python regex pattern:**  \n   ```python\n   r\"(?i)(surplus|balance).*(beginning|brought forward|previous year)\"\n   ```  \n   This would route items like \"Surplus at the beginning of the year\" to **Row 105** or **Row 106**.  \n\n**Key Fix:** Include Row"
+    },
+    {
+      "index": 26,
+      "company": "BCIPL",
+      "raw_text": "Other Bank Balances (Cr.)",
+      "section": "Other Current Liabilities",
+      "correct_row_adjusted": 130,
+      "correct_name": "Row 130",
+      "predicted_row": 213,
+      "predicted_name": "Bank Balances",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "cash",
+        "current_liabilities"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No** (Row 130 was not in the POSSIBLE CMA ROWS list).  \n2. N/A (Row 130 was not an option).  \n3. The item text \"Other Bank Balances (Cr.)\" with \"(Cr.)\" (credit balance) and section \"Other Current Liabilities\" should have triggered routing to a liabilities-specific row like Row 250 (Other current liabilities), but **Row 130 was missing**.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change**: *\"Add Row 130 | III_L10j | Other Bank Liabilities to POSSIBLE CMA ROWS list\"*  \n5. **Routing regex pattern**:  \n   ```python  \n   r\"(?i)(other\\s+bank\\s+balances\\s*\\(cr\\.\\)|bank\\s+liabilities)\"  \n   ```  \n   **Actionable fix**: Explicitly add Row 130 for bank-related liabilities or clarify in rules: *\"Bank credit balances in liabilities → Row 130 (if present), else Row 250\"*.  \n\n(Word count: 128)"
+    },
+    {
+      "index": 27,
+      "company": "BCIPL",
+      "raw_text": "Inland LC Discounting",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 131,
+      "correct_name": "From Indian Bank",
+      "predicted_row": 133,
+      "predicted_name": "(o/s bill discounting balance to be included)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "fixed_assets",
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes  \n2. \"Inland LC Discounting\" lacks explicit bank name, and \"discounting\" loosely matched \"o/s bill discounting\" (Row 133). No CA rule explicitly routed LC discounting to Row 131.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: `\"Inland LC Discounting\" → Row 131 (From Indian Bank)` or include LC discounting under CA Expert Rules: `\"LC Discounting\" → Row 131`.  \n\n5. Regex pattern:  \n```python \nr\"(inland\\s*lc\\s*discounting|lc\\s*discounting|factoring|packing\\s*credit)\" \n```  \nThis would catch \"LC Discounting\" variants and route to Row 131 (like other bank-related short-term borrowings).  \n\n---  \n**Key Issue:** Ambiguity in \"discounting\" led to partial match with Row 133. Explicit rules/examples for LC transactions would override this."
+    },
+    {
+      "index": 28,
+      "company": "BCIPL",
+      "raw_text": "TATA Capital",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 131,
+      "correct_name": "From Indian Bank",
+      "predicted_row": 131,
+      "predicted_name": "From Indian Bank",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 131 (From Indian Bank) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 131 because \"TATA Capital\" aligns with \"Short-term Borrowings\" and matches the pattern of bank-related borrowings (e.g., \"Cash Credit from IDBI\" → Row 131).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"TATA Capital → Row 131 (From Indian Bank)\" or add an example: \"Short Term Borrowings - TATA Capital\" → Row 131 (From Indian Bank).  \n5. Routing regex pattern: `r\"(TATA Capital|Indian Bank|Cash Credit|Short Term Borrowings)\"`  \n\nThis ensures \"TATA Capital\" is explicitly linked to Row 131, eliminating ambiguity."
+    },
+    {
+      "index": 29,
+      "company": "BCIPL",
+      "raw_text": "Current Maturities of Long-term Debt",
+      "section": "Other Current Liabilities",
+      "correct_row_adjusted": 135,
+      "correct_name": "Row 135",
+      "predicted_row": 250,
+      "predicted_name": "Other current liabilities",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "current_liabilities"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No**, Row 135 was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 135 unavailable).  \n3. Keywords like **\"Current Maturities\"** and **\"Long-term Debt\"** imply debt reclassification, which should ideally map to a dedicated row (e.g., \"Current portion of long-term debt\").  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**:  \n   - *\"Add Row 135 | III_CL6 | Current maturities of long-term debt\"* to the POSSIBLE CMA ROWS list.  \n   - *\"Add a rule: 'Current Maturities of Long-term Debt' → Row 135 (Current maturities of long-term debt)'\"*.  \n\n5. **Python regex pattern**:  \n   ```python  \n   r\"(current\\s+maturities|portion\\s+of\\s+long[\\s-]term\\s+debt)\"  \n   ```  \n\n**Key Fix**: The options lacked a specific row for debt reclassification. Adding Row 135 or a regex to catch \"current"
+    },
+    {
+      "index": 30,
+      "company": "BCIPL",
+      "raw_text": "Current Maturities of Long-term Debt",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 135,
+      "correct_name": "Row 135",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 135 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 135 was not an option).  \n3. Keywords like \"Current Maturities of Long-term Debt\" should have triggered routing to a section for term loans repayable within one year, but Row 135 was not available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. \"Add Row 135 (Row 135) to the POSSIBLE CMA ROWS list.\"  \n5. Routing regex pattern:  \n```python  \nr\"(current maturities of long-term debt|term loan repayable in next one year)\"  \n```  \n\nThis change ensures the item is correctly classified by adding the missing row and using a regex pattern to match relevant keywords."
+    },
+    {
+      "index": 31,
+      "company": "BCIPL",
+      "raw_text": "Unsecured Loans from Directors",
+      "section": "Long-term Borrowings",
+      "correct_row_adjusted": 151,
+      "correct_name": "Row 151",
+      "predicted_row": 153,
+      "predicted_name": "As Long Term Debt",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "borrowings_long"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **No** — Row 151 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (since Row 151 wasn’t an option).  \n3. Keywords like \"Loans from Directors\" should trigger **Row 151** (typically \"Directors' Loans\" or \"Quasi Equity\"), but this row was missing. The closest available option was Row 153 (As Long Term Debt), which is incorrect for loans from directors.  \n\n### PART B — What would make you get it RIGHT:\n4. **Exact change needed**:  \n   - *\"Add Row 151 | III_L8d | Directors' Loans (Quasi Equity)\" to the POSSIBLE CMA ROWS list\"*  \n   - *\"Add a rule: 'Loans from Directors → Row 151 (Quasi Equity)'\"*  \n\n5. **Routing regex pattern**:  \n   ```python\n   r\"(?i)(directors?[']?\\s*(loan|advance))|(unsecured\\s*loan\\s*from\\s*directors?)\"\n   ```  \n\n**Reasoning**:  \n- Row 153"
+    },
+    {
+      "index": 32,
+      "company": "BCIPL",
+      "raw_text": "Unsecured Loans (additional)",
+      "section": "Long-term Borrowings",
+      "correct_row_adjusted": 152,
+      "correct_name": "As Quasi Equity",
+      "predicted_row": 137,
+      "predicted_name": "Balance Repayable after one year",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_long"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 152 (As Quasi Equity) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 137 because the item was under \"Long-term Borrowings,\" which aligns with \"Balance Repayable after one year.\" I overlooked the example \"Unsecured loan → Row 152 (As Quasi Equity)\" and did not prioritize it over the section context.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add an explicit rule: \"Unsecured Loans → Row 152 (As Quasi Equity).\" This would override the section context and ensure correct classification.  \n5. Routing regex pattern:  \n```python  \nr\"Unsecured\\s*Loans?.*\"  \n```  \nThis pattern would match \"Unsecured Loans\" and route it to Row 152 (As Quasi Equity)."
+    },
+    {
+      "index": 33,
+      "company": "BCIPL",
+      "raw_text": "Gross Block (Tangible)",
+      "section": "Depreciation Schedule",
+      "correct_row_adjusted": 161,
+      "correct_name": "Row 161",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "fixed_assets",
+        "depreciation"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No** – Row 161 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 161 wasn’t an option).  \n3. Keywords like \"Gross Block (Tangible)\" should match \"Gross Block\" (Row 162), but **Row 161 was missing** entirely.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change needed**:  \n   - *\"Add Row 161 | III_A | Gross Block (Tangible) to the POSSIBLE CMA ROWS list.\"*  \n\n5. **Routing regex pattern** (Python):  \n   ```python\n   r\"Gross Block.*(Tangible|Plant|Equipment)|Tangible.*Gross Block\"\n   ```  \n\n**Key Fix**: Ensure Row 161 is explicitly listed as an option, or clarify if \"Gross Block (Tangible)\" should default to Row 162 (existing logic). The regex ensures \"Tangible\" is recognized as part of gross block terms."
+    },
+    {
+      "index": 34,
+      "company": "BCIPL",
+      "raw_text": "Intangible Assets (Net Block)",
+      "section": "Depreciation Schedule",
+      "correct_row_adjusted": 171,
+      "correct_name": "Deferred Tax Asset",
+      "predicted_row": 169,
+      "predicted_name": "Patents / goodwill / copyrights etc",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "fixed_assets",
+        "depreciation"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes**, Row 171 (Deferred Tax Asset) was in the POSSIBLE CMA ROWS list.  \n2. **Misclassification**: The item \"Intangible Assets (Net Block)\" was interpreted as related to patents/goodwill (Row 169) due to the \"Intangible\" keyword, while the correct classification (Deferred Tax Asset) was overlooked because the prompt lacked a specific rule linking \"Net Block\" to deferred tax.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Minimum change**: Add a rule:  \n   - `\"Intangible Assets (Net Block)\" → Row 171 (Deferred Tax Asset)`  \n   *(This explicitly maps the item text to the correct row.)*  \n\n5. **Routing regex**:  \n   ```python  \n   r\"(?i)(net\\s*block|deferred\\s*tax\\s*asset)\"  # Matches \"Net Block\" or \"Deferred Tax Asset\"  \n   ```  \n\n**Key Fix**: Explicitly tie \"Net Block\" to deferred tax assets in rules/examples, as the term is context-specific in financial reporting."
+    },
+    {
+      "index": 35,
+      "company": "BCIPL",
+      "raw_text": "Raw Materials",
+      "section": "Inventories",
+      "correct_row_adjusted": 193,
+      "correct_name": "Imported",
+      "predicted_row": 42,
+      "predicted_name": "Raw Materials Consumed ( Indigenous)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials",
+        "inventories"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes** (Row 193 was in the list).  \n2. Picked Row 42 because:  \n   - \"Raw Materials\" defaulted to Indigenous (Row 42) per CA rules (\"Purchases\" → Row 42).  \n   - Missed that \"Imported\" (Row 193) is under **Section: Inventories**, not \"Consumed\".  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change**:  \n   - Add a rule: `\"Raw Materials (Inventories section)\" → Check Rows 193/194 (Imported/Indigenous) first`.  \n   - Or clarify section hierarchy: Prioritize *III_A11a/A11b* over *II_C1/C2* for \"Inventories\" section.  \n\n5. **Regex pattern**:  \n   ```python  \n   r\"(?i)(raw materials).*inventories.*imported\" → Row 193  \n   ```  \n   (Or use section-aware logic: If \"Inventories\" → Rows 193-194; else → Rows 41-42.)  \n\n**Key Fix**:"
+    },
+    {
+      "index": 36,
+      "company": "BCIPL",
+      "raw_text": "Scraps",
+      "section": "Inventories",
+      "correct_row_adjusted": 197,
+      "correct_name": "Imported",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "inventories"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes** (Row 197 was in the POSSIBLE CMA ROWS list).  \n2. **Misclassification**: The classifier picked \"None\" (DOUBT) due to low confidence from ambiguous item text (\"Scraps\") and lack of explicit rules/examples for scrap materials in inventories.  \n3. **Missing trigger**: Keywords like \"scraps\" or \"waste\" should have routed to Row 197 (Imported) if defined as raw material leftovers.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**:  \n   - Add a rule: `\"Scraps\" (Inventories) → Row 197 (Imported)`  \n   - Or add an example: `\"Scrap materials\" → Row 197 (Imported)`  \n\n5. **Regex pattern**:  \n   ```python  \n   r'(?i)\\b(scrap|waste|residual|leftover)\\b.*inventor'  \n   ```  \n   *(Case-insensitive match for scrap-related terms in inventory context.)*  \n\n**Key Fix**: Explicitly map \"scraps\" to imported"
+    },
+    {
+      "index": 37,
+      "company": "BCIPL",
+      "raw_text": "GST Input Recoverable",
+      "section": "Other Current Assets",
+      "correct_row_adjusted": 218,
+      "correct_name": "Row 218",
+      "predicted_row": 223,
+      "predicted_name": "Other Advances / current asset",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "other_assets"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Was Row 218 (Row 218) in the POSSIBLE CMA ROWS list?** No.  \n2. **If no: what keywords in the item text should have triggered routing to the correct section?** \"GST Input Recoverable\" should have triggered a specific row for GST-related recoverables, but Row 218 was not available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Write the EXACT minimum change to the prompt that would make you confidently pick Row 218.**  \n   - \"Add Row 218 (Row 218) to the POSSIBLE CMA ROWS list.\"  \n   - \"Add a rule: 'GST Input Recoverable' → Row 218 (Row 218).\"  \n   - \"Add an example: 'GST Input Recoverable' → Row 218 (Row 218).\"  \n\n5. **If you had to write ONE routing regex pattern that would correctly route this item, what would it be?**  \n   ```python  \n   r\"GST Input Recoverable\"  \n   ```  \n\nThis change ensures the item is correctly routed"
+    },
+    {
+      "index": 38,
+      "company": "BCIPL",
+      "raw_text": "Exceeding 6 months",
+      "section": "Trade Receivables",
+      "correct_row_adjusted": 231,
+      "correct_name": "Row 231",
+      "predicted_row": 208,
+      "predicted_name": "Debtors more than 6 months",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "receivables"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No**, Row 231 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 208 was the closest match among available options for \"Exceeding 6 months\").  \n3. Keywords like \"Row 231\" or \"Trade Receivables >6 months\" should have triggered routing to Row 231, but it wasn’t an option.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   *\"Add Row 231 (Row 231) to the POSSIBLE CMA ROWS list as:  \n   Row 231 | III_A15d | Trade Receivables >6 months\"*  \n\n5. **Regex pattern for routing**:  \n   ```python  \n   r\"(?i)(exceeding|more|above|>\\s?)?\\s?6\\s?months.*trade\\s?receivables\"  \n   ```  \n\n**Why**: Row 231 was the correct answer *but missing from the options*. The regex captures keyword variations (e.g., \">6 months\") to route to Row 231.  \n\n---  \n**Word count"
+    },
+    {
+      "index": 39,
+      "company": "BCIPL",
+      "raw_text": "Capital Advances",
+      "section": "Other Current Assets",
+      "correct_row_adjusted": 235,
+      "correct_name": "Dues from directors / partners / promoters",
+      "predicted_row": 223,
+      "predicted_name": "Other Advances / current asset",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "other_assets"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 235 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 223 because \"Capital Advances\" lacked explicit keywords like \"directors,\" \"partners,\" or \"promoters,\" which are specific to Row 235.  \n3. Keywords like \"directors,\" \"partners,\" or \"promoters\" should have triggered routing to Row 235.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Capital Advances' → Row 235 (Dues from directors / partners / promoters).\"  \n5. Routing regex pattern: `r\"(?i)(capital\\s*advances|loan\\/advance\\s*to\\s*directors)\"`  \n\nThis change ensures \"Capital Advances\" is explicitly mapped to Row 235, avoiding ambiguity."
+    },
+    {
+      "index": 40,
+      "company": "BCIPL",
+      "raw_text": "Capital Advances",
+      "section": "Other Current Assets",
+      "correct_row_adjusted": 235,
+      "correct_name": "Dues from directors / partners / promoters",
+      "predicted_row": 219,
+      "predicted_name": "Advances recoverable in cash or in kind",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "other_assets"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes  \n2. \"Capital Advances\" lacked clear context (e.g., \"to directors\"). Row 219 was a broader match for \"advances,\" while Row 235 requires explicit director/partner linkage.  \n3. N/A (Row 235 was present)  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: `\"Capital Advances\" → Row 235 (Dues from directors / partners / promoters) if context implies internal stakeholders`.  \n5. Regex: `r\"(?i)(capital\\s*advances.*(director|partner|promoter))\"`  \n\n**Actionable fix:** Explicitly tie \"Capital Advances\" to Row 235 via rule or example, as the term alone is ambiguous. The regex ensures routing only when stakeholder context exists.  \n\nWord count: 98"
+    },
+    {
+      "index": 41,
+      "company": "BCIPL",
+      "raw_text": "Long-term Loans and Advances",
+      "section": "Non-Current Assets",
+      "correct_row_adjusted": 236,
+      "correct_name": "Advances to suppliers of capital goods",
+      "predicted_row": 153,
+      "predicted_name": "As Long Term Debt",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "borrowings_long",
+        "fixed_assets"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 236 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 236 was not an option).  \n3. Keywords like \"Advances\" and \"suppliers of capital goods\" should have triggered routing to the correct section, but Row 236 was not available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 236 (Advances to suppliers of capital goods) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(long-term\\s*loans\\s*and\\s*advances|advances\\s*to\\s*suppliers\\s*of\\s*capital\\s*goods)\"  \n```  \n\nThis change ensures the correct row is available and identifiable based on the item text."
+    },
+    {
+      "index": 42,
+      "company": "BCIPL",
+      "raw_text": "Other Non-Current Assets",
+      "section": "Non-Current Assets",
+      "correct_row_adjusted": 236,
+      "correct_name": "Advances to suppliers of capital goods",
+      "predicted_row": 238,
+      "predicted_name": "Other non current assets",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "other_assets",
+        "fixed_assets"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 236 was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 238 because \"Other Non-Current Assets\" directly matched its description, and I did not infer that it could relate to \"Advances to suppliers of capital goods\" without explicit keywords.  \n3. N/A (Row 236 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Other Non-Current Assets → Row 236 (Advances to suppliers of capital goods)\" or add an example: \"Other Non-Current Assets\" → Row 236 (Advances to suppliers of capital goods).  \n5. Routing regex pattern: `r\"(?i)(other\\s*non\\s*current\\s*assets|advances\\s*to\\s*suppliers\\s*of\\s*capital\\s*goods)\"`  \n\nThis change would explicitly link \"Other Non-Current Assets\" to Row 236, ensuring correct classification."
+    },
+    {
+      "index": 43,
+      "company": "BCIPL",
+      "raw_text": "Other Non- Current Assets",
+      "section": "Non-Current Assets",
+      "correct_row_adjusted": 237,
+      "correct_name": "Security deposits with government departments",
+      "predicted_row": 172,
+      "predicted_name": "Other Intangible assets",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "fixed_assets"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No**, Row 237 was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 237 was not an option).  \n3. The item text (\"Other Non-Current Assets\") and section (\"Non-Current Assets\") lacked keywords like \"security deposits\" or \"government\" to trigger Row 237.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - Add `Row 237 | III_A10 | Security deposits with government departments` to the POSSIBLE CMA ROWS list.  \n   - Add a rule: `\"Security deposits\" → Row 237 (Security deposits with government departments)`  \n\n5. **Regex pattern** (Python) to route this item correctly:  \n   ```python\n   r\"(?i)security\\s*deposits|government\\s*deposits)\"\n   ```  \n\n**Key Fix**: The correct row **must be in the allowed options**. Your error was unavoidable because Row 237 wasn’t listed. Add it explicitly.  \n\n(Words: 120)"
+    },
+    {
+      "index": 44,
+      "company": "BCIPL",
+      "raw_text": "Leave Encashment",
+      "section": "Short-term Provisions",
+      "correct_row_adjusted": 243,
+      "correct_name": "Advance received from customers",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "current_liabilities"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**, Row 243 (Advance received from customers) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row None because \"Leave Encashment\" did not match any keywords or rules explicitly tied to Row 243 or other specific rows.  \n3. N/A (Row 243 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add a rule:** \"Leave Encashment → Row 243 (Advance received from customers)\" or **Add an example:** \"Leave Encashment\" → Row 243 (Advance received from customers).  \n5. **Routing regex pattern:**  \n```python  \nr\"(?i)(leave\\s*encashment)\"  \n```  \nThis pattern would explicitly route \"Leave Encashment\" to Row 243."
+    },
+    {
+      "index": 45,
+      "company": "BCIPL",
+      "raw_text": "Short-term Provisions",
+      "section": "Short-term Provisions",
+      "correct_row_adjusted": 248,
+      "correct_name": "Interest Accrued and due",
+      "predicted_row": 250,
+      "predicted_name": "Other current liabilities",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "current_liabilities"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 248 (Interest Accrued and due) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 250 because \"Short-term Provisions\" did not explicitly match any specific row, and I defaulted to \"Other current liabilities\" as a last resort.  \n3. N/A (Row 248 was available, but the item text lacked keywords like \"interest\" or \"accrued\" to trigger routing to Row 248).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Short-term Provisions → Row 248 (Interest Accrued and due)\" or add an example: \"Short-term Provisions\" → Row 248 (Interest Accrued and due).  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(short-term\\s*provisions|interest\\s*accrued\\s*and\\s*due)\"  \n```  \nThis pattern would match \"Short-term Provisions\" and route it to Row 248."
+    },
+    {
+      "index": 46,
+      "company": "Dynamic_Air",
+      "raw_text": "Carriage Inwards",
+      "section": "Cost of Materials Consumed",
+      "correct_row_adjusted": 47,
+      "correct_name": "Freight and Transportation Charges",
+      "predicted_row": 41,
+      "predicted_name": "Raw Materials Consumed ( Imported)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 47 (Freight and Transportation Charges) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 41 because the CA Expert Rule explicitly states: \"Freight inward / carriage inward\" -> Row 41 (Raw Materials Consumed ( Imported)). This rule overrode the general logic that \"Carriage Inwards\" should align with Freight and Transportation Charges.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** Modify the CA Expert Rule to: \"Freight inward / carriage inward\" -> Row 47 (Freight and Transportation Charges). This would ensure alignment with the general logic and correct classification.  \n5. **Routing regex pattern:**  \n```python  \nr\"(?i)(carriage\\s*inwards|freight\\s*inward)\"  \n```  \nThis pattern would correctly route \"Carriage Inwards\" to Row 47 (Freight and Transportation Charges)."
+    },
+    {
+      "index": 47,
+      "company": "Dynamic_Air",
+      "raw_text": "Closing Stock - Work-in-Progress",
+      "section": "Changes in Inventories",
+      "correct_row_adjusted": 54,
+      "correct_name": "Stock in process Closing Balance",
+      "predicted_row": 200,
+      "predicted_name": "Stocks-in-process",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "inventories",
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 54 (Stock in process Closing Balance) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 200 because the CA Expert Rules explicitly state: \"Inventories of work-in-progress\" → Row 200 (Stocks-in-process), which seemed to match the item text \"Closing Stock - Work-in-Progress.\"  \n3. N/A (Row 54 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Closing Stock - Work-in-Progress\" → Row 54 (Stock in process Closing Balance).  \n5. Routing regex pattern: `r\"(?i)closing\\s*stock\\s*-\\s*work\\s*-\\s*in\\s*-\\s*progress\"`  \n\nThis change ensures the specific keyword \"Closing Stock\" is explicitly routed to Row 54, overriding the general CA Expert Rule for \"Inventories of work-in-progress.\""
+    },
+    {
+      "index": 48,
+      "company": "Dynamic_Air",
+      "raw_text": "Closing Stock - Finished Goods",
+      "section": "Changes in Inventories",
+      "correct_row_adjusted": 59,
+      "correct_name": "Finished Goods Closing Balance",
+      "predicted_row": 201,
+      "predicted_name": "Finished Goods",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "inventories",
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 59 (Finished Goods Closing Balance) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 201 because the item text \"Closing Stock - Finished Goods\" matched the keyword \"Finished Goods\" in Row 201, and I overlooked the specific \"Closing Balance\" context that should have routed it to Row 59.  \n3. N/A (Row 59 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"'Closing Stock - Finished Goods' → Row 59 (Finished Goods Closing Balance)\" to explicitly map the item text to the correct row.  \n5. Routing regex pattern:  \n```python  \nr\"Closing\\s*Stock\\s*-\\s*Finished\\s*Goods\"  \n```  \nThis pattern would ensure the item is correctly routed to Row 59 based on the exact text match."
+    },
+    {
+      "index": 49,
+      "company": "Dynamic_Air",
+      "raw_text": "(d) Contribution to EPF and ESI",
+      "section": "Employee Benefits Expense",
+      "correct_row_adjusted": 67,
+      "correct_name": "Salary and staff expenses",
+      "predicted_row": 45,
+      "predicted_name": "Wages",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 67 (Salary and staff expenses) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 45 because the CA EXPERT RULES and EXAMPLES FROM OTHER COMPANIES explicitly linked \"Contribution to EPF and ESI\" and similar items to Row 45 (Wages). This created a strong bias toward Row 45 despite Row 67 being a better fit.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Contribution to EPF and ESI → Row 67 (Salary and staff expenses)\" or add an example: \"Contribution to EPF and ESI\" → Row 67 (Salary and staff expenses). This would override the existing bias toward Row 45.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(contribution\\s*to\\s*(epf|esi)|salary\\s*and\\s*staff\\s*expenses)\"  \n```  \nThis pattern would correctly route items containing \"Contribution to EPF and ESI\" or \"Salary and staff expenses\" to Row 67."
+    },
+    {
+      "index": 50,
+      "company": "Dynamic_Air",
+      "raw_text": "Carriage Outward",
+      "section": "Other Expenses - Selling",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "selling_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 70 (Advertisements and Sales Promotions) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 71 (Others) because \"Carriage Outward\" did not explicitly match any keywords or rules in the prompt, and I defaulted to \"Others\" as a last resort.  \n3. N/A (Row 70 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add an example: \"'Carriage Outward' → Row 70 (Advertisements and Sales Promotions)\" to the prompt. This would explicitly link the item to the correct row.  \n5. The routing regex pattern in Python would be:  \n```python  \nr\"(?i)(carriage\\s*outward|freight\\s*outward|delivery\\s*expenses)\"  \n```  \nThis pattern would match \"Carriage Outward\" and similar terms, routing them to Row 70."
+    },
+    {
+      "index": 51,
+      "company": "Dynamic_Air",
+      "raw_text": "Brokerage & Commission",
+      "section": "Other Expenses - Admin",
+      "correct_row_adjusted": 70,
+      "correct_name": "Advertisements and Sales Promotions",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes  \n2. \"Brokerage & Commission\" lacked explicit keywords matching Row 70, and no CA rule/explicitly linked it to \"Advertisements and Sales Promotions.\" Defaulted to \"Others\" as a catch-all.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule:  \n   - `\"Brokerage & Commission\" → Row 70 (Advertisements and Sales Promotions)`  \n   OR an example:  \n   - `\"Brokerage & Commission\" → Row 70 (Advertisements and Sales Promotions)`  \n\n5. Regex pattern:  \n   ```python  \n   r\"(brokerage|commission|advertising|publicity)\"  # Case-insensitive, broad match  \n   ```  \n\n**Key Fix:** Explicitly link \"Brokerage & Commission\" to Row 70 via rule/example. Current ambiguity defaults to \"Others.\"  \n\n(Words: 100)"
+    },
+    {
+      "index": 52,
+      "company": "Dynamic_Air",
+      "raw_text": "Interest on Delay in payment of taxes",
+      "section": "Other Expenses - Admin",
+      "correct_row_adjusted": 83,
+      "correct_name": "Interest on Fixed Loans / Term loans",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 83 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 83 was not an option).  \n3. Keywords like \"Interest\" and \"taxes\" should have triggered routing to an interest-related row, but Row 83 was unavailable.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** \"Add Row 83 (Interest on Fixed Loans / Term loans) to the POSSIBLE CMA ROWS list.\"  \n5. **Routing regex pattern:**  \n```python  \nr\"(interest|delay\\s*payment\\s*tax)\"  \n```  \nThis pattern would match \"Interest on Delay in payment of taxes\" and route it to Row 83 if available."
+    },
+    {
+      "index": 53,
+      "company": "Dynamic_Air",
+      "raw_text": "Liquidty Damages",
+      "section": "Other Expenses - Admin",
+      "correct_row_adjusted": 83,
+      "correct_name": "Interest on Fixed Loans / Term loans",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 83 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 83 was not an option).  \n3. Keywords like \"Liquidty Damages\" should have been associated with interest or loan-related expenses, but this connection was not explicitly defined in the rules or examples.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 83 (Interest on Fixed Loans / Term loans) to the POSSIBLE CMA ROWS list and include a rule: \"Liquidty Damages → Row 83 (Interest on Fixed Loans / Term loans).\"  \n5. Routing regex pattern:  \n```python  \nr\"(?i)\\b(liquidty\\s*damages|interest\\s*on\\s*loans)\\b\"  \n```  \nThis pattern would match \"Liquidty Damages\" and route it to Row 83."
+    },
+    {
+      "index": 54,
+      "company": "Dynamic_Air",
+      "raw_text": "(b) Interest on Bill discounting & charges",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 84,
+      "correct_name": "Interest on Working capital loans",
+      "predicted_row": 133,
+      "predicted_name": "(o/s bill discounting balance to be included)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_short",
+        "finance_cost"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **No**, Row 84 (Interest on Working capital loans) was not in the POSSIBLE CMA ROWS list provided.  \n2. N/A (Row 84 wasn’t an option)  \n3. Keywords like \"Bill discounting\" triggered the CA rule: `\"Bills discounted / Bills Purchased\" -> Row 133`, overriding the correct logic for working capital interest.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**: Add Row 84 to the POSSIBLE CMA ROWS list and add a CA rule:  \n   `- \"Interest on Bill discounting\" -> Row 84 (Interest on Working capital loans)`  \n\n5. **Regex pattern**:  \n   ```python\n   r\"(?i)(interest\\s*on\\s*(bill\\s*discounting|working\\s*capital))\"\n   ```  \n\n**Why**: Bill discounting is a working capital tool, so its interest belongs to Row 84. The current rules misroute it to Row 133 (bill discounting balance) instead of interest expense.  \n\n*(Words: 98)*"
+    },
+    {
+      "index": 55,
+      "company": "Dynamic_Air",
+      "raw_text": "(a) Loan/Overdraft Processing Fee",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 84,
+      "correct_name": "Interest on Working capital loans",
+      "predicted_row": 85,
+      "predicted_name": "Bank Charges",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_short",
+        "finance_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 84 (Interest on Working capital loans) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 85 (Bank Charges) because the item text \"Loan/Overdraft Processing Fee\" explicitly mentions a \"fee,\" which aligns with \"Bank Charges\" rather than \"Interest on Working capital loans.\"  \n3. N/A (Row 84 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Loan/Overdraft Processing Fee → Row 84 (Interest on Working capital loans).\"  \n5. Routing regex pattern: `r\"(Loan|Overdraft).*(Processing Fee)\"` → Row 84.  \n\nThis change would explicitly link the item text to the correct row, overriding the default \"fee\" → \"Bank Charges\" association."
+    },
+    {
+      "index": 56,
+      "company": "Dynamic_Air",
+      "raw_text": "Surplus - Opening balance",
+      "section": "Reserves and Surplus",
+      "correct_row_adjusted": 106,
+      "correct_name": "Brought forward from previous year",
+      "predicted_row": 122,
+      "predicted_name": "Balance transferred from profit and loss a/c",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "reserves"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 106 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 106 was not an option).  \n3. Keywords like \"Opening balance\" or \"Brought forward\" should have triggered routing to Row 106, but it was not available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 106 (Brought forward from previous year) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(opening\\s*balance|brought\\s*forward|surplus\\s*at\\s*beginning)\"  \n```  \n\nThis change ensures the item is correctly classified based on its keywords."
+    },
+    {
+      "index": 57,
+      "company": "Dynamic_Air",
+      "raw_text": "Rent - Factory",
+      "section": "Cost of Materials Consumed",
+      "correct_row_adjusted": 68,
+      "correct_name": "Rent , Rates and Taxes",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "manufacturing_expense",
+        "raw_materials"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No** - Row 68 was **not** in the provided POSSIBLE CMA ROWS list.  \n2. N/A (since Row 68 was not an option).  \n3. Keywords like \"Rent\" should trigger a rule like:  \n   - `\"Rent - Factory\" → Row 68 (Rent, Rates and Taxes)`  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - *\"Add Row 68 (Rent, Rates and Taxes) to the POSSIBLE CMA ROWS list.\"*  \n   - *\"Add a rule: 'Rent - Factory' → Row 68 (Rent, Rates and Taxes).\"*  \n\n5. **Regex pattern** (Python) to route \"Rent\" items correctly:  \n   ```python  \n   r'(?i)\\brent\\b.*(factory|plant|manufacturing)'  \n   ```  \n   *(Matches \"Rent\" followed by factory/plant context, case-insensitive.)*  \n\n### Key Fix:  \nThe root issue was **missing Row 68 in the options**."
+    },
+    {
+      "index": 58,
+      "company": "Dynamic_Air",
+      "raw_text": "(a) Loan/Overdraft Processing Fee",
+      "section": "Finance Costs",
+      "correct_row_adjusted": 83,
+      "correct_name": "Interest on Fixed Loans / Term loans",
+      "predicted_row": 85,
+      "predicted_name": "Bank Charges",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_short",
+        "finance_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 83 (Interest on Fixed Loans / Term loans) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 85 (Bank Charges) because the item text \"Loan/Overdraft Processing Fee\" contains \"Processing Fee,\" which aligns with bank charges. I did not associate it with interest, as \"Processing Fee\" is not explicitly linked to interest in the rules or examples.  \n3. N/A (Row 83 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Loan/Overdraft Processing Fee → Row 83 (Interest on Fixed Loans / Term loans)\" or clarify in the CA EXPERT RULES that processing fees related to loans should be classified under interest.  \n5. Routing regex pattern:  \n```python  \nr\"(Loan|Overdraft).*(Processing Fee|Interest)\"  \n```  \nThis pattern would ensure that items containing \"Loan\" or \"Overdraft\" combined with \"Processing Fee\" or \"Interest\" are routed to Row 83."
+    },
+    {
+      "index": 59,
+      "company": "Dynamic_Air",
+      "raw_text": "Security Service Charges",
+      "section": "Other Expenses - Admin",
+      "correct_row_adjusted": 51,
+      "correct_name": "Security Service Charges",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **No**, Row 51 (Security Service Charges) was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 51 wasn’t an option, forcing a fallback to Row 71).  \n3. The keywords **\"Security Service\"** should have triggered a dedicated row, but none existed in the given options.  \n\n### PART B — What would make you get it RIGHT:\n4. **Exact change needed**:  \n   - *\"Add Row 51 | II_D8 | Security Service Charges to the POSSIBLE CMA ROWS list\"*  \n\n5. **Python regex pattern** to route correctly:  \n   ```python\n   r\"(?i)security\\s*service|guard|patrol\"\n   ```\n\n### Key Fixes:  \n- **Add Row 51 explicitly** to avoid \"Others\" default.  \n- **Regex** ensures future \"Security\"-related items route correctly.  \n- **Confidence**: 1.0 (if Row 51 exists), else 0.2 (forced to \"Others\").  \n\n**Actionable Summary**: Expand the row list or regex rules to"
+    },
+    {
+      "index": 60,
+      "company": "Dynamic_Air",
+      "raw_text": "(c) Staff Welfare Expenses",
+      "section": "Employee Benefits Expense",
+      "correct_row_adjusted": 67,
+      "correct_name": "Salary and staff expenses",
+      "predicted_row": 45,
+      "predicted_name": "Wages",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 67 (Salary and staff expenses) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 45 because the examples from other companies consistently routed \"Staff welfare expenses\" to Row 45 (Wages), overriding the specific context of \"Employee Benefits Expense\" and the existence of Row 67.  \n3. N/A (Row 67 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add an example: \"Staff welfare expenses\" → Row 67 (Salary and staff expenses). This would override the existing pattern of routing \"Staff welfare expenses\" to Row 45.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)(staff welfare|employee benefit)\"  \n   ```  \nThis pattern would ensure items containing \"staff welfare\" or \"employee benefit\" are routed to Row 67."
+    },
+    {
+      "index": 61,
+      "company": "Dynamic_Air",
+      "raw_text": "(3) Deferred tax Liability / (Asset)",
+      "section": "Tax Expense",
+      "correct_row_adjusted": 101,
+      "correct_name": "Deferred Tax Asset",
+      "predicted_row": 159,
+      "predicted_name": "Deferred tax liability",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "tax"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 101 (Deferred Tax Asset) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 159 because the item text included \"Deferred tax Liability,\" which matched the CA EXPERT RULE: \"Deferred tax liability\" -> Row 159. I overlooked the \"/ (Asset)\" part, which should have triggered Row 101.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Deferred tax Liability / (Asset)\" -> Row 101 (Deferred Tax Asset).  \n5. Routing regex pattern:  \n```python  \nr\"Deferred tax Liability\\s*\\/\\s*\\(Asset\\)\"  \n```  \nThis pattern ensures items with \"/ (Asset)\" are routed to Row 101."
+    },
+    {
+      "index": 62,
+      "company": "Dynamic_Air",
+      "raw_text": "Loan from Banks - current maturities",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 136,
+      "correct_name": "Term Loan Repayable in next one year",
+      "predicted_row": 131,
+      "predicted_name": "From Indian Bank",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 136 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 136 was not an option).  \n3. Keywords like \"current maturities\" and \"Loan from Banks\" should have triggered routing to the correct section (Term Loan Repayable in next one year).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 136 (Term Loan Repayable in next one year) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern: `r\"(current maturities|loan from banks|term loan repayable)\"`  \n\nThis ensures the item is correctly classified based on its keywords."
+    },
+    {
+      "index": 63,
+      "company": "Dynamic_Air",
+      "raw_text": "Vehicle HP Loans - current maturities",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 140,
+      "correct_name": "Repayable in next one year",
+      "predicted_row": 131,
+      "predicted_name": "From Indian Bank",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense",
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 140 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 140 was not an option).  \n3. Keywords like \"current maturities\" and \"Short-term Borrowings\" should have triggered routing to a section for short-term liabilities or repayments within one year.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 140 (Repayable in next one year) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(current maturities|repayable in next one year|short-term borrowings)\"  \n```  \n\nThis pattern would correctly route items with these keywords to the appropriate section for short-term liabilities or repayments."
+    },
+    {
+      "index": 64,
+      "company": "Dynamic_Air",
+      "raw_text": "Vehicle HP Loans - non-current",
+      "section": "Long-term Borrowings",
+      "correct_row_adjusted": 141,
+      "correct_name": "Balance Repayable after one year",
+      "predicted_row": 149,
+      "predicted_name": "Balance Other Debts",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense",
+        "borrowings_long"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes**, Row 141 (\"Balance Repayable after one year\") was in the POSSIBLE CMA ROWS list.  \n2. **Reason for picking Row 149**: The item text \"Vehicle HP Loans - non-current\" lacks explicit keywords (e.g., \"repayable after one year\") to trigger Row 141, and \"Loans\" defaults to \"Balance Other Debts\" (Row 149) as a catch-all for non-specified debt.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - *\"Add a rule: 'Vehicle HP Loans - non-current' → Row 141 (Balance Repayable after one year)\"*  \n   - OR clarify in the prompt: \"Non-current loans under 'Long-term Borrowings' → Row 141.\"  \n\n5. **Regex pattern** (Python) to route correctly:  \n   ```python  \n   r'(?i)(vehicle\\s*hp\\s*loans.*non[- ]current|long[- ]term\\s*borrowings.*repayable\\s*after\\s*one"
+    },
+    {
+      "index": 65,
+      "company": "Dynamic_Air",
+      "raw_text": "Vehicle HP Loans - current maturities",
+      "section": "Short-term Borrowings",
+      "correct_row_adjusted": 140,
+      "correct_name": "Repayable in next one year",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense",
+        "borrowings_short"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No**, Row 140 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 140 was not an option).  \n3. Keywords like \"current maturities\" and \"Short-term Borrowings\" should have triggered routing to a section for repayable liabilities or short-term borrowings, but no such row was available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add Row 140 (Repayable in next one year) to the POSSIBLE CMA ROWS list.** This would allow the item to be correctly classified based on its context as a short-term liability.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(current maturities|short-term borrowings|repayable in next one year)\"  \n   ```  \nThis pattern would match the item's keywords and route it to the correct section."
+    },
+    {
+      "index": 66,
+      "company": "Dynamic_Air",
+      "raw_text": "Provision for employee benefits (Gratuity)",
+      "section": "Long-term Provisions",
+      "correct_row_adjusted": 153,
+      "correct_name": "As Long Term Debt",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost",
+        "borrowings_long"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 153 (As Long Term Debt) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 67 because \"Provision for employee benefits (Gratuity)\" contains keywords like \"employee\" and \"benefits,\" which are commonly associated with salary and staff expenses. The examples provided also routed similar items (e.g., \"Gratuity to Employees\") to Row 45 or Row 67, reinforcing this choice.  \n3. N/A (Row 153 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Provision for employee benefits (Gratuity) → Row 153 (As Long Term Debt)\" or add an example: \"Provision for employee benefits (Gratuity)\" → Row 153 (As Long Term Debt).  \n5. Routing regex pattern:  \n```python  \nr\"Provision for employee benefits \\(Gratuity\\)\"  \n```  \nThis pattern would explicitly route the item to Row 153."
+    },
+    {
+      "index": 67,
+      "company": "Dynamic_Air",
+      "raw_text": "(b) Outstanding expenses - (i) Salary and wages Payable",
+      "section": "Other Current Liabilities",
+      "correct_row_adjusted": 249,
+      "correct_name": "Creditors for Expenses",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost",
+        "current_liabilities"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 249 (Creditors for Expenses) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 67 because the item text contained \"Salary and wages,\" which matched the keyword \"Salary\" in Row 67 (Salary and staff expenses). I overlooked the broader context of \"Outstanding expenses\" and \"Other Current Liabilities,\" which should have routed it to Row 249.  \n3. N/A (Row 249 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Outstanding expenses → Row 249 (Creditors for Expenses).\"  \n5. Routing regex pattern:  \n   ```python  \n   r\"(Outstanding expenses|Salary and wages Payable)\"  \n   ```  \nThis pattern would ensure items with \"Outstanding expenses\" or \"Salary and wages Payable\" are routed to Row 249."
+    },
+    {
+      "index": 68,
+      "company": "INPL",
+      "raw_text": "Changes in work-in-progress and stock-in-trade",
+      "section": "Expenses",
+      "correct_row_adjusted": 42,
+      "correct_name": "Raw Materials Consumed ( Indigenous)",
+      "predicted_row": 200,
+      "predicted_name": "Stocks-in-process",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "inventories",
+        "raw_materials"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**, Row 42 was in the list.  \n2. Picked Row 200 because \"work-in-progress\" explicitly matched \"Stocks-in-process\" (Row 200) per **CA Expert Rules**, and the example \"Work-in-progress → Row 200\" reinforced this. Missed that \"Raw Materials Consumed\" could apply to changes in stock-in-trade (purchases/consumption).  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add a rule**: *\"Changes in stock-in-trade → Row 42 (Raw Materials Consumed)\"* or **add an example**: *\"Changes in work-in-progress and stock-in-trade → Row 42\"*.  \n5. **Regex pattern**:  \n   ```python\n   r\"(?i)(changes\\s*in\\s*(stock|work)[-\\s]*(in|of)[-\\s]*(trade|progress))|(raw\\s*material\\s*consumed)\"\n   ```  \n   Matches both the item text and links it to raw materials context.  \n\n**Key Fix**: Prioritize \"stock"
+    },
+    {
+      "index": 69,
+      "company": "INPL",
+      "raw_text": "Purchase at Stock in Trade",
+      "section": "Expenses",
+      "correct_row_adjusted": 42,
+      "correct_name": "Raw Materials Consumed ( Indigenous)",
+      "predicted_row": 49,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes** (Row 42 was in the POSSIBLE CMA ROWS list).  \n2. **Root Cause**: The classifier misinterpreted \"Purchase at Stock in Trade\" as a generic expense (Row 49) instead of recognizing it as a raw material purchase (Row 42). The prompt lacked explicit rules/examples linking \"Stock in Trade\" to raw materials.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact Change**: Add a rule:  \n   *`\"Purchase at Stock in Trade\" → Row 42 (Raw Materials Consumed ( Indigenous))`*  \n   **OR**  \n   Add an example: *`\"Stock in Trade purchases\" → Row 42`*.  \n\n5. **Regex Pattern** (Python):  \n   ```python\n   r'(purchase.*stock.*trade|raw\\s+materials?.*consumed|indigenous\\s+materials?)'\n   ```  \n   **Why**: Matches keywords like \"purchase,\" \"stock,\" \"trade,\" and \"indigenous\" to route to Row 42.  \n\n---  \n**Key Fix**: Explicitly tie \""
+    },
+    {
+      "index": 70,
+      "company": "INPL",
+      "raw_text": "Labour charges Paid",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No** (Row 45 was not in the POSSIBLE CMA ROWS list).  \n2. N/A (since Row 45 wasn’t an option).  \n3. Keywords like *\"Labour\"* or *\"Paid\"* should trigger **Wages** (Row 45) if available. The closest match in the given options was Row 67 (*Salary and staff expenses*), as both relate to employee compensation.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **\"Add Row 45 (Wages) to the POSSIBLE CMA ROWS list\"** (required for correct routing).  \n   Alternatively, a rule like:  \n   **\"Add a rule: 'Labour charges → Row 45 (Wages)'\"**.  \n5. Regex pattern for routing:  \n   ```python  \n   r\"(labour|wages|staff\\scharges|salaries|paid\\s(to|for)\\sworkers?)\"  \n   ```  \n   This would match terms like *\"Labour charges Paid\"* to **Wages**.  \n\n**Key Fix:** Add Row 45 or clarify"
+    },
+    {
+      "index": 71,
+      "company": "INPL",
+      "raw_text": "Staff Welfare Expenses",
+      "section": "Employee Benefits Expenses",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**, Row 45 (Wages) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 67 (Salary and staff expenses) because \"Staff Welfare Expenses\" seemed more aligned with general staff-related costs rather than direct wages.  \n3. Keywords like \"Welfare\" and \"Staff\" could have been interpreted as broader employee benefits, leading to Row 67.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add an example:** \"'Staff welfare expenses' → Row 45 (Wages)\" to clarify the routing.  \n5. **Routing regex pattern:**  \n```python  \nr\"(?i)(wages|salary|staff welfare|provident fund|esi|gratuity)\"  \n```  \nThis pattern would correctly route items containing keywords like \"wages,\" \"salary,\" or \"staff welfare\" to Row 45 (Wages)."
+    },
+    {
+      "index": 72,
+      "company": "INPL",
+      "raw_text": "Gratuity to Employees",
+      "section": "Employee Benefits Expenses",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**  \n2. Misinterpreted \"Gratuity\" as a generic staff expense (Row 67) despite CA rules/examples clearly routing gratuity to Row 45 (Wages) alongside PF/ESI. Overlooked precedence of expert rules over text ambiguity.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** Add/modify the CA expert rule:  \n   `- \"Gratuity to Employees\" -> Row 45 (Wages)`  \n   (Currently, only examples mention gratuity, but explicit rules override example ambiguity.)  \n\n5. **Regex pattern for routing:**  \n   ```python  \n   r\"(?i)(gratuity|salary|wages|pf|esi|labour|provident\\sfund|bonus)\"  \n   ```  \n   (Would catch \"Gratuity\" and align with existing wage-related keywords in rules.)  \n\n**Key fix:** Rules > examples. Ensure gratuity is explicitly tied to Row 45 like PF/ESI. Current examples conflict (one routes to Row 67), causing inconsistency.  \n\n---  \n**Word count"
+    },
+    {
+      "index": 73,
+      "company": "INPL",
+      "raw_text": "Material Handling Charges",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 46,
+      "correct_name": "Processing / Job Work Charges",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No**, Row 46 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 46 wasn’t an option).  \n3. **Keywords triggering Row 46**: \"Material Handling\" aligns with processing/job work (e.g., loading/unloading raw materials). Rule missing: *\"Material Handling → Row 46 (Processing / Job Work Charges)\"*.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**:  \n   - Add rule: `\"Material Handling Charges\" → Row 46 (Processing / Job Work Charges)`.  \n   - Or add Row 46 to the POSSIBLE CMA ROWS list.  \n\n5. **Regex pattern**:  \n   ```python   \n   r\"(?i)(material\\s*handling|loading|unloading|job\\s*work)\"  \n   ```  \n   This would route similar terms to Row 46.  \n\n**Key Issue**: Row 46 wasn’t an option, and the default fallback was Row 71 (\"Others\"). Fix by adding the missing row or rule.  \n\n---  \n**Word count**:"
+    },
+    {
+      "index": 74,
+      "company": "INPL",
+      "raw_text": "Material Handling Charges (estimated)",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 46,
+      "correct_name": "Processing / Job Work Charges",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No**, Row 46 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 46 was not an option).  \n3. Keywords like \"Material Handling\" or \"Charges\" should have triggered routing to a manufacturing or processing-related section, but Row 46 was unavailable.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add Row 46 (Processing / Job Work Charges) to the POSSIBLE CMA ROWS list.**  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)\\b(material\\s*handling|processing|job\\s*work)\\b\"  \n   ```  \nThis pattern would match \"Material Handling\" and route it to Row 46 if available."
+    },
+    {
+      "index": 75,
+      "company": "INPL",
+      "raw_text": "Transportation charges",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 47,
+      "correct_name": "Freight and Transportation Charges",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 47 was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 47 was not an option).  \n3. Keywords like \"Transportation\" or \"Freight\" should have triggered routing to Row 47, but it wasn’t available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** \"Add Row 47 (Freight and Transportation Charges) to the POSSIBLE CMA ROWS list.\"  \n5. **Routing regex pattern:**  \n```python  \nr\"(transportation|freight|cartage|shipping|carriage)\"  \n```  \nThis pattern would match keywords related to transportation and route the item to Row 47."
+    },
+    {
+      "index": 76,
+      "company": "INPL",
+      "raw_text": "Transportation Charges (estimated)",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 47,
+      "correct_name": "Freight and Transportation Charges",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No** – Row 47 (Freight and Transportation Charges) was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 47 wasn’t an option).  \n3. Keywords like **\"Transportation\"** or **\"Freight\"** should trigger routing to a dedicated freight/transport row (Row 47), but this row was missing.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed**:  \n   - *\"Add Row 47 (Freight and Transportation Charges) to the POSSIBLE CMA ROWS list.\"*  \n\n5. **Regex pattern** (Python) to auto-route similar items:  \n   ```python  \n   r\"(transport|freight|cartage|carriage|logistics)\\b.*charges\"  \n   ```  \n\n**Key Fix**: The root issue was the absence of Row 47 in the options. With it added, the classifier would route \"Transportation Charges\" correctly. The regex above would generalize for future cases.  \n\n---  \n**Word count**: 120 | **Specificity**: Actionable ("
+    },
+    {
+      "index": 77,
+      "company": "INPL",
+      "raw_text": "Work in Progress",
+      "section": "Inventories",
+      "correct_row_adjusted": 54,
+      "correct_name": "Stock in process Closing Balance",
+      "predicted_row": 200,
+      "predicted_name": "Stocks-in-process",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "inventories"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 54 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 54 was not an option).  \n3. Keywords like \"Work in Progress\" matched Row 200 (Stocks-in-process) based on the CA Expert Rules and examples provided.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 54 (Stock in process Closing Balance) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(work\\s*in\\s*progress|stock\\s*in\\s*process\\s*closing\\s*balance)\"  \n```  \nThis pattern would correctly route \"Work in Progress\" to Row 54 if it were an option."
+    },
+    {
+      "index": 78,
+      "company": "INPL",
+      "raw_text": "Finished Goods",
+      "section": "Inventories",
+      "correct_row_adjusted": 59,
+      "correct_name": "Finished Goods Closing Balance",
+      "predicted_row": 201,
+      "predicted_name": "Finished Goods",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "inventories"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 59 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 59 was not in the list).  \n3. Keywords like \"Closing Balance\" or \"Opening Balance\" should have triggered routing to the correct section, but they were absent in the item text.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 59 (Finished Goods Closing Balance) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)(finished\\s*goods.*(closing|opening)\\s*balance)\"  \n   ```  \nThis pattern would match \"Finished Goods Closing Balance\" or \"Finished Goods Opening Balance\" and route it correctly."
+    },
+    {
+      "index": 79,
+      "company": "INPL",
+      "raw_text": "Salary, Wages and Bonus",
+      "section": "Employee Benefits Expenses",
+      "correct_row_adjusted": 67,
+      "correct_name": "Salary and staff expenses",
+      "predicted_row": 45,
+      "predicted_name": "Wages",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **Yes**  \n2. Your CA expert rules and examples overwhelmingly associate \"Salary, Wages and Bonus\" with **Row 45 (Wages)**, despite **Row 67** being a better semantic match. The expert rules explicitly state *\"Wages & Salary → Row 45\"*, and multiple examples (e.g., *\"Salary, Wages and Bonus\" → Row 45\"*) reinforced this misleading pattern. **Row 67 was ignored due to conflicting rules/examples.**  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Add/prioritize a rule**: *\"Staff-related expenses (salary, bonuses, gratuity) → Row 67 (Salary and staff expenses)\"*  \n   **AND** **Revise examples**: Remove contradictory examples like *\"Salary, Wages and Bonus\" → Row 45\"*.  \n\n5. **Regex pattern** (Python):  \n   ```python\n   r\"(?i)(salary|staff|bonus|gratuity)(?!.*(factory|plant|wages))\"\n   ```  \n   *(Matches salary-related terms ONLY if not factory/plant"
+    },
+    {
+      "index": 80,
+      "company": "INPL",
+      "raw_text": "Contribution to Provident Fund and ESI",
+      "section": "Employee Benefits Expenses",
+      "correct_row_adjusted": 67,
+      "correct_name": "Salary and staff expenses",
+      "predicted_row": 45,
+      "predicted_name": "Wages",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 67 (Salary and staff expenses) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 45 because the CA EXPERT RULES and EXAMPLES FROM OTHER COMPANIES explicitly linked \"Provident Fund\" and \"ESI\" to Row 45 (Wages). For example, \"Provident Fund - factory workers\" -> Row 45 (Wages) and \"ESI Fund\" -> Row 45 (Wages). These rules and examples overrode the broader context of \"Employee Benefits Expenses.\"  \n3. N/A (Row 67 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Contribution to Provident Fund and ESI (non-factory) → Row 67 (Salary and staff expenses)\" or modify the existing rule: \"Provident Fund - factory workers\" -> Row 45 (Wages), \"Provident Fund - non-factory workers\" -> Row 67 (Salary and staff expenses).  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(contribution.*(provident|esi).*("
+    },
+    {
+      "index": 81,
+      "company": "INPL",
+      "raw_text": "Licence And Subscription",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 68,
+      "correct_name": "Rent , Rates and Taxes",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n\n1. **Yes**, Row 68 (Rent, Rates and Taxes) was in the POSSIBLE CMA ROWS list.  \n2. **Reason for picking Row 71 (Others) instead**:  \n   - The item text **\"Licence And Subscription\"** did not explicitly match any keyword rules for Row 68 (e.g., \"Rent\", \"Taxes\").  \n   - No explicit rule linked \"Licence\" or \"Subscription\" to Row 68.  \n\n3. **Keywords that should have triggered Row 68 routing**:  \n   - If the item text included \"Taxes\" or \"Rent\" (e.g., \"Licence Tax\"), it would trigger Row 68.  \n\n### PART B — What would make you get it RIGHT:  \n\n4. **Minimum change to prompt**:  \n   - **Add a rule**: `\"Licence Fees\" → Row 68 (Rent, Rates and Taxes)` (assuming licence fees are treated as a tax-like statutory payment).  \n\n5. **Routing regex pattern**:  \n   ```python  \n   r\"\\b(licen[cs]e|subscription|tax|rates?)\\"
+    },
+    {
+      "index": 82,
+      "company": "INPL",
+      "raw_text": "Miscellenious Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 71,
+      "correct_name": "Others",
+      "predicted_row": 75,
+      "predicted_name": "Miscellaneous Expenses written off",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 71 (Others) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 75 because \"Miscellenious Expenses\" partially matched \"Miscellaneous Expenses written off\" (Row 75), and I overlooked the rule that \"Others\" rows should be used as a last resort when no specific row matches.  \n3. N/A (Row 71 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Miscellenious Expenses → Row 71 (Others)\" to explicitly route such items to the \"Others\" row.  \n5. Routing regex pattern:  \n```python  \nr\"(?i)miscell(aneous|enious)\\s+expenses\"  \n```  \nThis pattern would match variations of \"Miscellaneous Expenses\" and route them to Row 71 (Others)."
+    },
+    {
+      "index": 83,
+      "company": "INPL",
+      "raw_text": "Miscellaneous Expenses",
+      "section": "Other Expenses",
+      "correct_row_adjusted": 71,
+      "correct_name": "Others",
+      "predicted_row": 75,
+      "predicted_name": "Miscellaneous Expenses written off",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 71 (Others) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 75 because \"Miscellaneous Expenses\" matched the keyword \"Miscellaneous\" in Row 75 (Miscellaneous Expenses written off), even though Row 71 (Others) was a better fit.  \n3. N/A (Row 71 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Miscellaneous Expenses → Row 71 (Others)\" to explicitly prioritize Row 71 over Row 75 for such cases.  \n5. Routing regex pattern:  \n```python  \nr\"Miscellaneous\\sExpenses\"  \n```  \nThis pattern would directly route \"Miscellaneous Expenses\" to Row 71 (Others)."
+    },
+    {
+      "index": 84,
+      "company": "INPL",
+      "raw_text": "Surplus in profit and loss account: Balance at beginning",
+      "section": "Reserves and Surplus",
+      "correct_row_adjusted": 106,
+      "correct_name": "Brought forward from previous year",
+      "predicted_row": 122,
+      "predicted_name": "Balance transferred from profit and loss a/c",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "reserves"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No** (Row 106 was not in the POSSIBLE CMA ROWS list).  \n2. N/A (not applicable, since Row 106 wasn’t an option).  \n3. Keywords like *\"Balance at beginning\"* or *\"Brought forward\"* should trigger routing to Row 106 (Brought forward from previous year), but this row wasn’t available.  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** Add Row 106 (Brought forward from previous year) to the POSSIBLE CMA ROWS list.  \n   - **OR** add a rule: *\"Balance at beginning\" or \"Brought forward\" → Row 106*.  \n   - **OR** add an example: *\"Surplus in profit and loss account: Balance at beginning\" → Row 106*.  \n\n5. **Regex pattern:**  \n   ```python\n   r\"(?i)(balance\\s*at\\s*beginning|brought\\s*forward)\"\n   ```  \n\n**Actionable fix:** The error occurred because Row 106 was missing. Either include Row"
+    },
+    {
+      "index": 85,
+      "company": "INPL",
+      "raw_text": "Surplus in P&L: Balance at beginning",
+      "section": "Reserves and Surplus",
+      "correct_row_adjusted": 106,
+      "correct_name": "Brought forward from previous year",
+      "predicted_row": 122,
+      "predicted_name": "Balance transferred from profit and loss a/c",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "reserves"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 106 was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 106 was not an option).  \n3. Keywords like \"Balance at beginning\" or \"Brought forward\" should have triggered routing to Row 106.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 106 (Brought forward from previous year) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)(balance\\s*at\\s*beginning|brought\\s*forward)\"  \n   ```  \n\nThis change ensures the correct row is available and identifiable based on the item's keywords."
+    },
+    {
+      "index": 86,
+      "company": "INPL",
+      "raw_text": "Issue of Bonus Share (P&L surplus capitalised)",
+      "section": "Reserves and Surplus",
+      "correct_row_adjusted": 108,
+      "correct_name": "Other Appropriation of profit",
+      "predicted_row": 122,
+      "predicted_name": "Balance transferred from profit and loss a/c",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "employee_cost",
+        "reserves"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. **No** (Row 108 was not in the POSSIBLE CMA ROWS list).  \n2. N/A (Row 108 was not an option).  \n3. Keywords like **\"Bonus Share\"** and **\"P&L surplus capitalised\"** imply profit appropriation, but the available rows lacked this category (e.g., \"Other Appropriation of profit\").  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** *\"Add Row 108 (Other Appropriation of profit) to the POSSIBLE CMA ROWS list\"* + *\"Add a rule: 'Bonus shares from P&L surplus → Row 108 (Other Appropriation of profit)'\"*.  \n\n5. **Routing regex pattern (Python):**  \n   ```python\n   r\"(issue of bonus shares|p&l surplus capitalised|appropriation of profit)\"\n   ```  \n\n**Root cause:** Missing row and rules for profit appropriation items. Fix by adding the row and explicit keyword mapping. (Words: 120)"
+    },
+    {
+      "index": 87,
+      "company": "INPL",
+      "raw_text": "Other Long Term Liability",
+      "section": "Non-Current Liabilities",
+      "correct_row_adjusted": 153,
+      "correct_name": "As Long Term Debt",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "borrowings_long"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **Yes**, Row 153 (As Long Term Debt) was in the POSSIBLE CMA ROWS list.\n2. You picked \"Row None (DOUBT)\" because the item text \"Other Long Term Liability\" lacked specific keywords triggering the CA EXPERT RULES (e.g., \"Refundable\", \"Term Loan\", \"Debentures\"). The generic \"Other\" label defaults to \"DOUBT\" unless explicitly mapped.\n3. Keywords like \"Long Term Liability\" **should** have triggered Row 153 per the **CA EXPERT RULES** (e.g., \"Special Capital Incentive (refundable)\" → Row 153).\n\n### PART B — What would make you get it RIGHT:\n4. **Exact change needed**:  \n   Add a rule: `\"Other Long Term Liability\" → Row 153 (As Long Term Debt)`.  \n   *Alternatively*, add an example: `\"Other Long Term Liability\" → Row 153 (As Long Term Debt)` to the EXAMPLES section.\n   \n5. **Python regex pattern**:  \n   ```python\n   r\"(?i)\\b(other\\s*long\\s*"
+    },
+    {
+      "index": 88,
+      "company": "INPL",
+      "raw_text": "Raw materials + Packing + Consumables",
+      "section": "Inventories",
+      "correct_row_adjusted": 194,
+      "correct_name": "Indigenous",
+      "predicted_row": 42,
+      "predicted_name": "Raw Materials Consumed ( Indigenous)",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "raw_materials",
+        "inventories"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 194 (Indigenous) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 42 because the item text \"Raw materials + Packing + Consumables\" matched the CA Expert Rule: \"Purchases of raw materials\" -> Row 42 (Raw Materials Consumed ( Indigenous)).  \n3. N/A (Row 194 was in the list).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a rule: \"Raw materials + Packing + Consumables\" -> Row 194 (Indigenous).  \n5. Routing regex pattern:  \n```python  \nr\"(?i)(raw\\s*materials\\s*\\+\\s*packing\\s*\\+\\s*consumables)\"  \n```  \n\nThis pattern would explicitly route the item to Row 194 based on the exact text match."
+    },
+    {
+      "index": 89,
+      "company": "INPL",
+      "raw_text": "Other Liabilities (Directors + Related + Others)",
+      "section": "Other Current Liabilities",
+      "correct_row_adjusted": 249,
+      "correct_name": "Creditors for Expenses",
+      "predicted_row": 250,
+      "predicted_name": "Other current liabilities",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "current_liabilities"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **Yes**, Row 249 (Creditors for Expenses) was in the POSSIBLE CMA ROWS list.  \n2. **Reason for picking Row 250 instead**: The item text \"Other Liabilities (Directors + Related + Others)\" lacked explicit keywords like \"expenses\" or direct matches to rules for Row 249. The \"Others\" label defaulted to Row 250 (Other current liabilities) as a last resort.  \n\n3. **Missing trigger keywords**: The text should have included \"expenses\" (e.g., \"Creditors for Expenses\") to clearly route to Row 249 per the CA EXPERT RULES (\"Creditors for expenses -> Row 249\").  \n\n### PART B — What would make you get it RIGHT:\n4. **Exact change to prompt**:  \n   - Add a rule: `\"Directors + Related liabilities\" → Row 249 (Creditors for Expenses)\"`  \n   - OR add an example: `\"Other Liabilities (Directors)\" → Row 249 (Creditors for Expenses)\"`.  \n\n5. **Routing regex pattern**:  \n   ```python\n   r\"(?i)(directors|"
+    },
+    {
+      "index": 90,
+      "company": "Kurunji_Retail",
+      "raw_text": "Display amount/Discount",
+      "section": "P&L Account — Credit Side",
+      "correct_row_adjusted": 42,
+      "correct_name": "Raw Materials Consumed ( Indigenous)",
+      "predicted_row": null,
+      "predicted_name": "DOUBT",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "other_income"
+      ],
+      "model_response": "### PART A — Why it went wrong:\n1. **No** (Row 42 was not in the POSSIBLE CMA ROWS list).  \n2. N/A (since Row 42 wasn't an option).  \n3. Keywords like \"Display amount/Discount\" should have triggered a rule like:  \n   - `\"Discount\" → Row 42 (Raw Materials Consumed)`  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change needed:**  \n   - *\"Add Row 42 (Raw Materials Consumed (Indigenous)) to the POSSIBLE CMA ROWS list\"*  \n   - *\"Add a rule: 'Display amount/Discount' → Row 42 (Raw Materials Consumed)\"*  \n\n5. **Python regex pattern for routing:**  \n   ```python\n   r\"(?i)(display.*amount|discount)\"\n   ```  \n\n**Reasoning:** The item was miscategorized because Row 42 wasn’t an available option, and no rule linked \"Display amount/Discount\" to raw materials. Adding the row or a keyword rule would fix this. The regex captures case-insensitive variants of the key terms.  \n\n(Words: ~"
+    },
+    {
+      "index": 91,
+      "company": "Kurunji_Retail",
+      "raw_text": "Opening Stock of Packing",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 44,
+      "correct_name": "Stores and spares consumed ( Indigenous)",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **No** – Row 44 was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 44 wasn’t an option).  \n3. Keywords like **\"Stock of Packing\"** should trigger stores/spares (Row 44), but **only if listed**.  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**: Add `Row 44 | II_D8 | Stores and spares consumed (Indigenous)` to the POSSIBLE CMA ROWS list.  \n   - **Reason**: \"Opening Stock of Packing\" is a stores/spares item by CA rules (see examples).  \n\n5. **Python regex pattern**:  \n   ```python\n   r\"(opening|closing)\\s*(stock|inventory)\\s*of\\s*(packing|stores|spares)\"\n   ```  \n   Matches variations like \"Opening Stock of Packing\" → Row 44.  \n\n---  \n**Key Fix**: Row 44 must *exist* in the dropdown. Rules/examples alone won’t help if the row is missing."
+    },
+    {
+      "index": 92,
+      "company": "Kurunji_Retail",
+      "raw_text": "Packing Expenses",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 44,
+      "correct_name": "Stores and spares consumed ( Indigenous)",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "### Part A — Why it went wrong:  \n1. **No**, Row 44 was **not** in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 44 wasn’t an option).  \n3. Keywords like **\"Packing\"** should trigger routing to **stores/spares** (Row 44) per CA expert rules (e.g., \"Packing charges\" → Row 44).  \n\n### Part B — What would make you get it RIGHT:  \n4. **Exact change**:  \n   - *\"Add Row 44 (Stores and spares consumed ( Indigenous)) to the POSSIBLE CMA ROWS list\"*  \n   - *\"Add a rule: 'Packing Expenses → Row 44 (Stores and spares consumed ( Indigenous))'\"*  \n\n5. **Regex pattern** (Python):  \n   ```python\n   r'(packing|packages?|stores|spares)', re.IGNORECASE  # Matches \"Packing Expenses\" to Row 44\n   ```  \n\n**Key Fix**: Include Row 44 in options or explicitly map \"Packing\" to stores/spares. Rules precedence failed due to"
+    },
+    {
+      "index": 93,
+      "company": "Kurunji_Retail",
+      "raw_text": "Stock of Packing Materials",
+      "section": "P&L Account — Credit Side",
+      "correct_row_adjusted": 44,
+      "correct_name": "Stores and spares consumed ( Indigenous)",
+      "predicted_row": 34,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "other_income"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 44 was not in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 44 was not an option).  \n3. Keywords like \"Stock of Packing Materials\" should have triggered routing to a section related to stores or materials consumed, but Row 44 was unavailable.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 44 (Stores and spares consumed ( Indigenous)) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(stock|packing|materials)\"  \n```  \nThis pattern would match keywords like \"Stock of Packing Materials\" and route it to Row 44."
+    },
+    {
+      "index": 94,
+      "company": "Kurunji_Retail",
+      "raw_text": "Esi",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 45 (Wages) was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 45 was not an option).  \n3. The keyword \"Esi\" should have triggered routing to the Wages section, as per CA-verified examples.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 45 (Wages) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n   ```python  \n   r\"(?i)\\b(esi|salary|provident fund|staff welfare)\\b\"  \n   ```  \nThis pattern would match \"Esi\" and similar keywords, routing them to the Wages section."
+    },
+    {
+      "index": 95,
+      "company": "Kurunji_Retail",
+      "raw_text": "Staff Welfare",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost",
+        "admin_expense"
+      ],
+      "model_response": "### PART A — Why it went wrong:  \n1. **Yes**, Row 45 (Wages) was in the POSSIBLE CMA ROWS list.  \n2. **You picked Row 67** because \"Staff Welfare\" lacks explicit keywords like \"salary\" or \"wages.\" The prompt lacked a rule/explicit example mapping \"Staff Welfare\" → Row 45 (Wages), despite CA Expert Rules linking similar terms (e.g., \"Provident Fund\") to wages.  \n3. **Keywords triggering Row 45**: \"welfare,\" \"staff,\" \"ESI,\" \"provident\" (per CA rules).  \n\n### PART B — What would make you get it RIGHT:  \n4. **Exact change**: Add a rule under **CA EXPERT RULES**:  \n   `\"Staff welfare expenses\" -> Row 45 (Wages)`  \n   (Mirroring the verified example from \"EXAMPLES FROM OTHER COMPANIES\").  \n\n5. **Python regex pattern**:  \n   ```python  \n   r\"(?i)(staff\\s*welfare|esi|provident\\s*fund|wages?|salar(y|ies))\"  \n   ```  \n   This catches variations"
+    },
+    {
+      "index": 96,
+      "company": "Kurunji_Retail",
+      "raw_text": "Staff Mess Expenses",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 45,
+      "correct_name": "Wages",
+      "predicted_row": 67,
+      "predicted_name": "Salary and staff expenses",
+      "correct_row_in_options": true,
+      "routed_to": [
+        "employee_cost",
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. Yes, Row 45 (Wages) was in the POSSIBLE CMA ROWS list.  \n2. I picked Row 67 because \"Staff Mess Expenses\" was interpreted as a general staff-related expense, aligning with \"Salary and staff expenses\" (Row 67). I overlooked the CA Expert Rule and examples that classify staff-related expenses under \"Wages\" (Row 45).  \n3. N/A (Row 45 was available).  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add a CA Expert Rule: \"Staff Mess Expenses → Row 45 (Wages)\" or add an example: \"Staff Mess Expenses → Row 45 (Wages)\". This would explicitly link the item to the correct row.  \n\n5. Routing regex pattern:  \n```python  \nimport re  \npattern = re.compile(r\"(staff|wages|salary|mess|provident|esi|gratuity|labour|bonus)\", re.IGNORECASE)  \nif pattern.search(\"Staff Mess Expenses\"):  \n    return \"Row 45 (Wages)\"  \n```  \nThis pattern captures keywords related to staff and wages,"
+    },
+    {
+      "index": 97,
+      "company": "Kurunji_Retail",
+      "raw_text": "Electric Charges",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 48,
+      "correct_name": "Power, Coal, Fuel and Water",
+      "predicted_row": 71,
+      "predicted_name": "Others",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 48 (Power, Coal, Fuel and Water) was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 48 was not an option).  \n3. Keywords like \"Electric Charges\" should have triggered routing to a section like \"Power, Coal, Fuel and Water\" based on CA expert rules and examples.  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 48 (Power, Coal, Fuel and Water) to the POSSIBLE CMA ROWS list.  \n5. Routing regex pattern:  \n```python  \nr\"(electric|power|coal|fuel|water|charges)\", re.IGNORECASE  \n```  \n\nThis change ensures \"Electric Charges\" is correctly classified under Row 48."
+    },
+    {
+      "index": 98,
+      "company": "Kurunji_Retail",
+      "raw_text": "Tds on Rent",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 49,
+      "correct_name": "Others",
+      "predicted_row": 68,
+      "predicted_name": "Rent , Rates and Taxes",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No, Row 49 (Others) was NOT in the POSSIBLE CMA ROWS list.  \n2. N/A (Row 49 was not an option).  \n3. The keyword \"Tds on Rent\" should have triggered routing to \"Others\" (Row 71) since \"Tds\" (Tax Deducted at Source) is a generic term not explicitly tied to \"Rent, Rates and Taxes.\"  \n\n**PART B — What would make you get it RIGHT:**  \n4. Add Row 71 (Others) to the POSSIBLE CMA ROWS list and include an example: \"Tds on Rent\" → Row 71 (Others).  \n5. Routing regex pattern:  \n```python  \nr\"(Tds|Tax Deducted at Source).*(Rent|Payment)\"  \n```  \nThis pattern would correctly route items containing \"Tds\" or \"Tax Deducted at Source\" related to \"Rent\" or \"Payment\" to Row 71 (Others)."
+    },
+    {
+      "index": 99,
+      "company": "Kurunji_Retail",
+      "raw_text": "Rent - Parking",
+      "section": "P&L Account — Debit Side",
+      "correct_row_adjusted": 49,
+      "correct_name": "Others",
+      "predicted_row": 68,
+      "predicted_name": "Rent , Rates and Taxes",
+      "correct_row_in_options": false,
+      "routed_to": [
+        "admin_expense"
+      ],
+      "model_response": "**PART A — Why it went wrong:**  \n1. No  \n2. N/A (Row 49 wasn’t an option)  \n3. The keyword \"Rent - Parking\" should trigger routing to \"Others\" based on CA expert rules (similar to \"Rent\" examples).  \n\n**PART B — What would make you get it RIGHT:**  \n4. **Exact change:** Add an example: `\"Rent - Parking\" → Row 71 (Others)` to the prompt’s \"EXAMPLES FROM OTHER COMPANIES\" section.  \n5. **Regex pattern:**  \n   ```python  \n   r\"(?i)(rent.*parking|rent(?!.*office))\" → Row 71  \n   ```  \n   *Rationale:* Captures \"Parking\" rent variants while excluding \"Office Rent\" (Row 68).  \n\n(Word count: 98)"
+    }
+  ]
+}

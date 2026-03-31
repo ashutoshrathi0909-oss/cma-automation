@@ -1,0 +1,90 @@
+Item 1:
+  Description: Mr. Chaitra Sunderesh (FY22 Director Loan)
+  Amount: Rs 12,400,000.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 2:
+  Description: Mrs. Ronak S. Bagadia (FY22 Director Loan)
+  Amount: Rs 19,347,458.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 3:
+  Description: Mr. Nishanth Sunderesh (FY22 Director Loan)
+  Amount: Rs 9,565,354.00
+  Section: (i) due to directors
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 4:
+  Description: Capital WIP - Machinery (FY22)
+  Amount: Rs 3,955,771.00
+  Section: note 9 - fixed assets
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 5:
+  Description: Gross Block - Computers (At 31st March)
+  Amount: Rs 1,560,833.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 6:
+  Description: Gross Block - Furniture & Fixtures (At 31st March)
+  Amount: Rs 6,986,246.64
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 7:
+  Description: Less: Closing Finished Goods (FY22)
+  Amount: Rs 33,894,242.38
+  Section: finished goods
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 8:
+  Description: Depreciation (FY22)
+  Amount: Rs 39,126,290.09
+  Section: depreciation & amortisation expense
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 9:
+  Description: Amortization Expenses (FY22)
+  Amount: Rs 51,183.61
+  Section: depreciation & amortisation expense
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 10:
+  Description: Rent (FY22)
+  Amount: Rs 1,234,863.00
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 11:
+  Description: Rates & Taxes (FY22)
+  Amount: Rs 933,667.83
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 12:
+  Description: Intangible Assets (ERP Software FY22)
+  Amount: Rs 1,923,089.96
+  Section: note 9 - fixed assets
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 13:
+  Description: Raw Materials (FY22 inventory)
+  Amount: Rs 80,476,471.00
+  Section: inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 14:
+  Description: Scraps (FY22 inventory)
+  Amount: Rs 85,800.00
+  Section: inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 15:
+  Description: Finished Goods (FY22 inventory)
+  Amount: Rs 34,024,242.38
+  Section: inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2022

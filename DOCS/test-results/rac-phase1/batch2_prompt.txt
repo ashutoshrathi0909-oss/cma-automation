@@ -1,0 +1,56 @@
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+CANDIDATE CMA FIELDS (you MUST pick from ONLY these rows):
+- Row 22: Domestic Sales
+- Row 23: Export Sales
+- Row 30: Interest Received
+- Row 31: Profit on sale of fixed assets / Investments
+- Row 34: Others (Non-Operating Income)
+- Row 41: Raw Materials Consumed (Imported)
+- Row 42: Raw Materials Consumed (Indigenous)
+- Row 44: Stores and spares consumed (Indigenous)
+- Row 45: Wages
+- Row 49: Others (Manufacturing)
+- Row 67: Salary and staff expenses
+- Row 68: Rent, Rates and Taxes
+- Row 70: Advertisements and Sales Promotions
+- Row 71: Others (Admin)
+- Row 73: Audit Fees & Directors Remuneration
+- Row 93: Others (Non-Operating Expenses)
+- Row 116: Issued, Subscribed and Paid up
+- Row 152: Unsecured Loans - Quasi Equity
+- Row 162: Gross Block
+- Row 242: Sundry Creditors for goods
+- Row 250: Other current liabilities
+
+SIMILAR ITEMS ALREADY CLASSIFIED (use as reference examples):
+1. "Royality Paid" (Note 18-24 | note 17 : other expenses) -> Row 49: Others (Manufacturing)
+2. "Expenses Payable" (Note 3-17 | note 6 : other current liabili) -> Row 250: Other current liabilities
+3. "Salary and Wages" (Note 18-24 | note 15 : employee benefits ex) -> Row 45: Wages
+4. "Interest Income" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+5. "Interest from FD" (Note 18-24 | note 13 : other income) -> Row 30: Interest Received
+6. "Audit Fees" (Note 18-24 | note 17 : other expenses) -> Row 73: Audit Fees & Directors Remuneration
+7. "P&L on Sale of Car" (Note 18-24 | note 17 : other expenses) -> Row 93: Others (Non-Operating Expenses)
+8. "Admin Exp for PF" (Note 18-24 | note 17 : other expenses) -> Row 67: Salary and staff expenses
+9. "Consultancy Fee" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+10. "Shop Expences" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+
+CLASSIFY THESE 10 ITEMS:
+1. "Creditors for Capital Goods" | Notes BS (2) | (ii) other dues
+2. "Salary & Wages payable" | Notes BS (2) | (ii) other dues
+3. "Bad Debts Written Back" | Notes to P & L | other income
+4. "Selling & Distribution Expenses (FY22)" | Notes to P & L | tax audit
+5. "Consultation Fees (FY22)" | Notes to P & L | tax audit
+6. "Job Work Charges - Interstate" | Notes to P & L | sale of products:
+7. "Job Work Charges - Local" | Notes to P & L | note 18 - revenue from operations
+8. "Export Sales" | Subnotes to PL | sale of manufactured goods
+9. "Consumption of Stores & Spares" | Notes to P & L | other expenses
+10. "Other Materials Comsumed - Scrap" | Notes to P & L | note 21 - other materials consumed
+
+Return a JSON array with exactly 10 objects. Each object must have:
+- "item_index": integer 1-10 (matching the item number above)
+- "classified_cma_row": integer (the row number from CANDIDATE CMA FIELDS)
+- "classified_cma_field": string (the field name)
+- "confidence": float 0.0-1.0
+
+Return ONLY valid JSON array, no other text.

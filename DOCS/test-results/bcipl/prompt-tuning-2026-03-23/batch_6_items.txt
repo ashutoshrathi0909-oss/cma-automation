@@ -1,0 +1,90 @@
+Item 1:
+  Description: Advance Tax paid
+  Amount: Rs 10,707,600.00
+  Section: net prepaid tax / tds
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 2:
+  Description: Prepaid Expenses
+  Amount: Rs 1,190,591.22
+  Section: unsecured considered good
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 3:
+  Description: Other Advances
+  Amount: Rs 2,451,413.00
+  Section: unsecured considered good
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 4:
+  Description: Dues to MSME (trade payables)
+  Amount: Rs 2,932,131.00
+  Section: note 6 - trade payables
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 5:
+  Description: Gross Block - Building (At 31st March)
+  Amount: Rs 111,394,926.77
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 6:
+  Description: Gross Block - Plant & Machinery (At 31st March)
+  Amount: Rs 241,615,928.36
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 7:
+  Description: Rates & Taxes
+  Amount: Rs 372,907.90
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 8:
+  Description: Statutory Audit
+  Amount: Rs 225,000.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 9:
+  Description: Tax Audit
+  Amount: Rs 75,000.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 10:
+  Description: Interest on C.C. A/c
+  Amount: Rs 21,049.00
+  Section: interest expenses:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 11:
+  Description: Interest - Term Loan & Others
+  Amount: Rs 11,516,847.00
+  Section: note 24 - finance costs
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 12:
+  Description: Dues to Other than MSME (trade payables)
+  Amount: Rs 100,214,714.85
+  Section: note 6 - trade payables
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 13:
+  Description: Advance From Customers
+  Amount: Rs 12,698,082.45
+  Section: (ii) other dues
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 14:
+  Description: Leave Encashment (Short-term Provision)
+  Amount: Rs 3,206,985.00
+  Section: provision  for employee benefits
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 15:
+  Description: Bonus payable
+  Amount: Rs 2,279,233.83
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021

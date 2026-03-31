@@ -1,0 +1,10 @@
+{
+  "company": "MSL",
+  "industry": "manufacturing",
+  "total_items": 222,
+  "correct": 5,
+  "wrong": 217,
+  "doubts": 0,
+  "accuracy_pct": 2.25,
+  "elapsed_seconds": 495.3
+}

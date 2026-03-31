@@ -1,0 +1,90 @@
+Item 1:
+  Description: Machinery Maintenance
+  Amount: Rs 535,861.71
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 2:
+  Description: Opening - Finished Goods
+  Amount: Rs 11,323,475.00
+  Section: note 22 - changes in inventories
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 3:
+  Description: Less: Closing - Finished Goods
+  Amount: Rs 30,139,462.68
+  Section: note 22 - changes in inventories
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 4:
+  Description: Depreciation
+  Amount: Rs 40,669,967.44
+  Section: depreciation & amortisation expense
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 5:
+  Description: Amortization Expenses
+  Amount: Rs 75,701.56
+  Section: depreciation & amortisation expense
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 6:
+  Description: Raw Materials (inventory at year end)
+  Amount: Rs 69,540,015.88
+  Section: note 13 - inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 7:
+  Description: Scraps (inventory at year end)
+  Amount: Rs 183,335.00
+  Section: note 13 - inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 8:
+  Description: Finished Goods (inventory at year end)
+  Amount: Rs 30,139,462.68
+  Section: note 13 - inventories
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 9:
+  Description: Trade Receivables < 6 months (domestic)
+  Amount: Rs 185,143,688.51
+  Section: note 14 - trade receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 10:
+  Description: Trade Receivables > 6 months overdue
+  Amount: Rs 77,514.00
+  Section: note 14 - trade receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 11:
+  Description: Depreciation - Computers (For the Year)
+  Amount: Rs 215,454.04
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 12:
+  Description: Depreciation - Furniture & Fixtures (For the Year)
+  Amount: Rs 1,100,721.89
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 13:
+  Description: Rent
+  Amount: Rs 980,050.00
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 14:
+  Description: Bad debts written off
+  Amount: Rs 67,230.48
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 15:
+  Description: Selling & Distribution Expenses
+  Amount: Rs 19,627,678.99
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2021

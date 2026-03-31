@@ -1,0 +1,1917 @@
+[
+  {
+    "bcipl_index": 10,
+    "raw_text": "Bad Debts Written Back",
+    "sheet_name": "Notes to P & L",
+    "section": "other income",
+    "true_cma_row": 34,
+    "true_cma_field": "Others (Non-Operating Income)",
+    "candidates": {
+      "30": "Interest Received",
+      "34": "Others (Non-Operating Income)",
+      "152": "Unsecured Loans - Quasi Equity"
+    },
+    "examples": [
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.555
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.55
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 24,
+    "raw_text": "Manufacturing Expenses",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 49,
+    "true_cma_field": "Others (Manufacturing)",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "70": "Advertisements and Sales Promotions",
+      "71": "Others (Admin)",
+      "49": "Others (Manufacturing)"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.647
+      },
+      {
+        "text": "Business promotion",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 70,
+        "cma_field": "Advertisements and Sales Promotions",
+        "sim": 0.587
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 25,
+    "raw_text": "Machinery Maintenance",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 49,
+    "true_cma_field": "Others (Manufacturing)",
+    "candidates": {
+      "50": "Repairs & Maintenance (Manufacturing)",
+      "49": "Others (Manufacturing)",
+      "71": "Others (Admin)",
+      "162": "Gross Block"
+    },
+    "examples": [
+      {
+        "text": "Repairs and maintenance",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 50,
+        "cma_field": "Repairs & Maintenance (Manufacturing)",
+        "sim": 0.682
+      },
+      {
+        "text": "Factory Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.645
+      }
+    ],
+    "embedding_prediction": 50,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 32,
+    "raw_text": "Selling & Distribution Expenses",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "70": "Advertisements and Sales Promotions",
+      "93": "Others (Non-Operating Expenses)",
+      "49": "Others (Manufacturing)",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.641
+      },
+      {
+        "text": "Business promotion",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 70,
+        "cma_field": "Advertisements and Sales Promotions",
+        "sim": 0.6
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 33,
+    "raw_text": "Carriage Outwards",
+    "sheet_name": "Subnotes to PL",
+    "section": "selling & distribution expenses",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "71": "Others (Admin)",
+      "70": "Advertisements and Sales Promotions"
+    },
+    "examples": [
+      {
+        "text": "Packing & Forwarding",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.619
+      },
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.605
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 38,
+    "raw_text": "Consultation Fees",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 71,
+    "true_cma_field": "Others (Admin)",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "71": "Others (Admin)",
+      "49": "Others (Manufacturing)"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.659
+      },
+      {
+        "text": "Consultancy Fee",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.594
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 40,
+    "raw_text": "Rates & Taxes",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 71,
+    "true_cma_field": "Others (Admin)",
+    "candidates": {
+      "68": "Rent, Rates and Taxes",
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)",
+      "73": "Audit Fees & Directors Remuneration"
+    },
+    "examples": [
+      {
+        "text": "Rates and taxes",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 68,
+        "cma_field": "Rent, Rates and Taxes",
+        "sim": 0.742
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.684
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.673
+      }
+    ],
+    "embedding_prediction": 68,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 64,
+    "raw_text": "Mr. Chaitra Sunderesh (Director Loan)",
+    "sheet_name": "Notes BS (2)",
+    "section": "(i) due to directors",
+    "true_cma_row": 152,
+    "true_cma_field": "Unsecured Loans - Quasi Equity",
+    "candidates": {
+      "71": "Others (Admin)",
+      "49": "Others (Manufacturing)",
+      "152": "Unsecured Loans - Quasi Equity",
+      "223": "Other Advances / current asset"
+    },
+    "examples": [
+      {
+        "text": "Consultancy Fee",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.479
+      },
+      {
+        "text": "Royality Paid",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.459
+      },
+      {
+        "text": "Unsecured",
+        "sheet": "Note 3-17",
+        "section": "note 4 : short term borrowings",
+        "cma_row": 152,
+        "cma_field": "Unsecured Loans - Quasi Equity",
+        "sim": 0.443
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 66,
+    "raw_text": "Mr. Nishanth Sunderesh (Director Loan)",
+    "sheet_name": "Notes BS (2)",
+    "section": "(i) due to directors",
+    "true_cma_row": 152,
+    "true_cma_field": "Unsecured Loans - Quasi Equity",
+    "candidates": {
+      "71": "Others (Admin)",
+      "152": "Unsecured Loans - Quasi Equity",
+      "223": "Other Advances / current asset",
+      "131": "Working Capital Bank Finance - Bank 1"
+    },
+    "examples": [
+      {
+        "text": "Consultancy Fee",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.475
+      },
+      {
+        "text": "Unsecured",
+        "sheet": "Note 3-17",
+        "section": "note 4 : short term borrowings",
+        "cma_row": 152,
+        "cma_field": "Unsecured Loans - Quasi Equity",
+        "sim": 0.46
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 88,
+    "raw_text": "Other Advances",
+    "sheet_name": "Notes BS (2)",
+    "section": "unsecured considered good",
+    "true_cma_row": 223,
+    "true_cma_field": "Other Advances / current asset",
+    "candidates": {
+      "206": "Domestic Receivables",
+      "223": "Other Advances / current asset"
+    },
+    "examples": [
+      {
+        "text": "Unsecured, considered good",
+        "sheet": "Note 3-17",
+        "section": "note 8 : trade receivables",
+        "cma_row": 206,
+        "cma_field": "Domestic Receivables",
+        "sim": 0.633
+      }
+    ],
+    "embedding_prediction": 206,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 101,
+    "raw_text": "Creditors for Capital Goods",
+    "sheet_name": "Notes BS (2)",
+    "section": "(ii) other dues",
+    "true_cma_row": 250,
+    "true_cma_field": "Other current liabilities",
+    "candidates": {
+      "49": "Others (Manufacturing)",
+      "250": "Other current liabilities",
+      "116": "Issued, Subscribed and Paid up",
+      "71": "Others (Admin)",
+      "152": "Unsecured Loans - Quasi Equity"
+    },
+    "examples": [
+      {
+        "text": "Royality Paid",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.594
+      },
+      {
+        "text": "Expenses Payable",
+        "sheet": "Note 3-17",
+        "section": "note 6 : other current liabili",
+        "cma_row": 250,
+        "cma_field": "Other current liabilities",
+        "sim": 0.582
+      }
+    ],
+    "embedding_prediction": 49,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 102,
+    "raw_text": "Salary & Wages payable",
+    "sheet_name": "Notes BS (2)",
+    "section": "(ii) other dues",
+    "true_cma_row": 250,
+    "true_cma_field": "Other current liabilities",
+    "candidates": {
+      "45": "Wages",
+      "250": "Other current liabilities",
+      "49": "Others (Manufacturing)",
+      "242": "Sundry Creditors for goods"
+    },
+    "examples": [
+      {
+        "text": "Salary and Wages",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.616
+      },
+      {
+        "text": "Expenses Payable",
+        "sheet": "Note 3-17",
+        "section": "note 6 : other current liabili",
+        "cma_row": 250,
+        "cma_field": "Other current liabilities",
+        "sim": 0.579
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 108,
+    "raw_text": "Bad Debts Written Back",
+    "sheet_name": "Notes to P & L",
+    "section": "other income",
+    "true_cma_row": 34,
+    "true_cma_field": "Others (Non-Operating Income)",
+    "candidates": {
+      "30": "Interest Received",
+      "34": "Others (Non-Operating Income)",
+      "152": "Unsecured Loans - Quasi Equity"
+    },
+    "examples": [
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.555
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.55
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 130,
+    "raw_text": "Selling & Distribution Expenses (FY22)",
+    "sheet_name": "Notes to P & L",
+    "section": "tax audit",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "93": "Others (Non-Operating Expenses)",
+      "67": "Salary and staff expenses",
+      "70": "Advertisements and Sales Promotions"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.65
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.647
+      },
+      {
+        "text": "Admin Exp for PF",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 67,
+        "cma_field": "Salary and staff expenses",
+        "sim": 0.644
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 132,
+    "raw_text": "Consultation Fees (FY22)",
+    "sheet_name": "Notes to P & L",
+    "section": "tax audit",
+    "true_cma_row": 71,
+    "true_cma_field": "Others (Admin)",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "71": "Others (Admin)",
+      "67": "Salary and staff expenses"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.715
+      },
+      {
+        "text": "Consultancy Fee",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.685
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 2,
+    "raw_text": "Job Work Charges - Interstate",
+    "sheet_name": "Notes to P & L",
+    "section": "sale of products:",
+    "true_cma_row": 22,
+    "true_cma_field": "Domestic Sales",
+    "candidates": {
+      "71": "Others (Admin)",
+      "49": "Others (Manufacturing)",
+      "93": "Others (Non-Operating Expenses)",
+      "70": "Advertisements and Sales Promotions",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Shop Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.599
+      },
+      {
+        "text": "Factory Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.596
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 3,
+    "raw_text": "Job Work Charges - Local",
+    "sheet_name": "Notes to P & L",
+    "section": "note 18 - revenue from operations",
+    "true_cma_row": 22,
+    "true_cma_field": "Domestic Sales",
+    "candidates": {
+      "45": "Wages",
+      "70": "Advertisements and Sales Promotions",
+      "68": "Rent, Rates and Taxes",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Manpower Charges",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.682
+      },
+      {
+        "text": "Business promotion",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 70,
+        "cma_field": "Advertisements and Sales Promotions",
+        "sim": 0.68
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 4,
+    "raw_text": "Export Sales",
+    "sheet_name": "Subnotes to PL",
+    "section": "sale of manufactured goods",
+    "true_cma_row": 23,
+    "true_cma_field": "Export Sales",
+    "candidates": {
+      "22": "Domestic Sales",
+      "31": "Profit on sale of fixed assets / Investments",
+      "49": "Others (Manufacturing)",
+      "41": "Raw Materials Consumed (Imported)",
+      "71": "Others (Admin)",
+      "23": "Export Sales"
+    },
+    "examples": [
+      {
+        "text": "Paper & Paper Products",
+        "sheet": "Note 18-24",
+        "section": "note 12 : revenue from operati",
+        "cma_row": 22,
+        "cma_field": "Domestic Sales",
+        "sim": 0.508
+      },
+      {
+        "text": "Profit on Sale of Assests",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 31,
+        "cma_field": "Profit on sale of fixed assets / Investments",
+        "sim": 0.491
+      },
+      {
+        "text": "Factory Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.47
+      }
+    ],
+    "embedding_prediction": 22,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 14,
+    "raw_text": "Consumption of Stores & Spares",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 44,
+    "true_cma_field": "Stores and spares consumed (Indigenous)",
+    "candidates": {
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)",
+      "49": "Others (Manufacturing)",
+      "44": "Stores and spares consumed (Indigenous)"
+    },
+    "examples": [
+      {
+        "text": "Shop Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.709
+      },
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.658
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 15,
+    "raw_text": "Other Materials Comsumed - Scrap",
+    "sheet_name": "Notes to P & L",
+    "section": "note 21 - other materials consumed",
+    "true_cma_row": 44,
+    "true_cma_field": "Stores and spares consumed (Indigenous)",
+    "candidates": {
+      "42": "Raw Materials Consumed (Indigenous)",
+      "71": "Others (Admin)",
+      "162": "Gross Block",
+      "44": "Stores and spares consumed (Indigenous)"
+    },
+    "examples": [
+      {
+        "text": "Cost of Material Consumed",
+        "sheet": "Note 18-24",
+        "section": "note 14 : cost of material con",
+        "cma_row": 42,
+        "cma_field": "Raw Materials Consumed (Indigenous)",
+        "sim": 0.566
+      },
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.516
+      }
+    ],
+    "embedding_prediction": 42,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 19,
+    "raw_text": "Directors Remuneration",
+    "sheet_name": "Subnotes to PL",
+    "section": "salaries & wages",
+    "true_cma_row": 67,
+    "true_cma_field": "Salary and staff expenses",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "45": "Wages",
+      "49": "Others (Manufacturing)",
+      "67": "Salary and staff expenses"
+    },
+    "examples": [
+      {
+        "text": "Directors Remuneration",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.679
+      },
+      {
+        "text": "Salary and Wages",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.498
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 20,
+    "raw_text": "Job Work Charges & Contract Labour",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 46,
+    "true_cma_field": "Processing / Job Work Charges",
+    "candidates": {
+      "45": "Wages",
+      "250": "Other current liabilities",
+      "64": "Other Manufacturing Exp (CMA)",
+      "71": "Others (Admin)",
+      "46": "Processing / Job Work Charges"
+    },
+    "examples": [
+      {
+        "text": "Labour Charges",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.749
+      },
+      {
+        "text": "Expenses Payable",
+        "sheet": "Note 3-17",
+        "section": "note 6 : other current liabili",
+        "cma_row": 250,
+        "cma_field": "Other current liabilities",
+        "sim": 0.648
+      },
+      {
+        "text": "Contractor Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.647
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 26,
+    "raw_text": "Opening - Finished Goods",
+    "sheet_name": "Notes to P & L",
+    "section": "note 22 - changes in inventories",
+    "true_cma_row": 58,
+    "true_cma_field": "Finished Goods Opening Balance",
+    "candidates": {
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)",
+      "22": "Domestic Sales",
+      "58": "Finished Goods Opening Balance"
+    },
+    "examples": [
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.571
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.554
+      },
+      {
+        "text": "Paper & Paper Products",
+        "sheet": "Note 18-24",
+        "section": "note 12 : revenue from operati",
+        "cma_row": 22,
+        "cma_field": "Domestic Sales",
+        "sim": 0.549
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 27,
+    "raw_text": "Less: Closing - Finished Goods",
+    "sheet_name": "Notes to P & L",
+    "section": "note 22 - changes in inventories",
+    "true_cma_row": 59,
+    "true_cma_field": "Finished Goods Closing Balance",
+    "candidates": {
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)",
+      "22": "Domestic Sales",
+      "59": "Finished Goods Closing Balance"
+    },
+    "examples": [
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.574
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.549
+      },
+      {
+        "text": "Shop Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.54
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 28,
+    "raw_text": "Depreciation",
+    "sheet_name": "Notes to P & L",
+    "section": "depreciation & amortisation expense",
+    "true_cma_row": 63,
+    "true_cma_field": "Depreciation (CMA)",
+    "candidates": {
+      "93": "Others (Non-Operating Expenses)",
+      "71": "Others (Admin)",
+      "67": "Salary and staff expenses",
+      "70": "Advertisements and Sales Promotions",
+      "63": "Depreciation (CMA)"
+    },
+    "examples": [
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.64
+      },
+      {
+        "text": "Shop Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.601
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.599
+      }
+    ],
+    "embedding_prediction": 93,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 29,
+    "raw_text": "Amortization Expenses",
+    "sheet_name": "Notes to P & L",
+    "section": "depreciation & amortisation expense",
+    "true_cma_row": 63,
+    "true_cma_field": "Depreciation (CMA)",
+    "candidates": {
+      "93": "Others (Non-Operating Expenses)",
+      "71": "Others (Admin)",
+      "250": "Other current liabilities",
+      "67": "Salary and staff expenses",
+      "63": "Depreciation (CMA)"
+    },
+    "examples": [
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.627
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.607
+      },
+      {
+        "text": "Shop Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.586
+      }
+    ],
+    "embedding_prediction": 93,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 31,
+    "raw_text": "Bad debts written off",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 69,
+    "true_cma_field": "Bad Debts",
+    "candidates": {
+      "49": "Others (Manufacturing)",
+      "73": "Audit Fees & Directors Remuneration",
+      "93": "Others (Non-Operating Expenses)",
+      "250": "Other current liabilities",
+      "45": "Wages",
+      "69": "Bad Debts"
+    },
+    "examples": [
+      {
+        "text": "Royality Paid",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.597
+      },
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.589
+      }
+    ],
+    "embedding_prediction": 49,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 34,
+    "raw_text": "Packing Materials - GST @ 12%",
+    "sheet_name": "Subnotes to PL",
+    "section": "selling and distribution expenses - subnotes",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "71": "Others (Admin)",
+      "70": "Advertisements and Sales Promotions"
+    },
+    "examples": [
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.601
+      },
+      {
+        "text": "Packing & Forwarding",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.58
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 35,
+    "raw_text": "Packing Materials - GST @ 18%",
+    "sheet_name": "Subnotes to PL",
+    "section": "selling and distribution expenses - subnotes",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "71": "Others (Admin)",
+      "70": "Advertisements and Sales Promotions"
+    },
+    "examples": [
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.616
+      },
+      {
+        "text": "Packing & Forwarding",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.594
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 39,
+    "raw_text": "Administrative & General Expenses",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 71,
+    "true_cma_field": "Others (Admin)",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "49": "Others (Manufacturing)",
+      "67": "Salary and staff expenses",
+      "70": "Advertisements and Sales Promotions",
+      "71": "Others (Admin)"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.654
+      },
+      {
+        "text": "Royality Paid",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.603
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": false,
+    "true_in_candidates": true,
+    "group": "A"
+  },
+  {
+    "bcipl_index": 0,
+    "raw_text": "Sales of Manufactured Products",
+    "sheet_name": "Notes to P & L",
+    "section": "sale of products:",
+    "true_cma_row": 22,
+    "true_cma_field": "Domestic Sales",
+    "candidates": {
+      "22": "Domestic Sales",
+      "93": "Others (Non-Operating Expenses)",
+      "31": "Profit on sale of fixed assets / Investments",
+      "42": "Raw Materials Consumed (Indigenous)",
+      "49": "Others (Manufacturing)"
+    },
+    "examples": [
+      {
+        "text": "Paper & Paper Products",
+        "sheet": "Note 18-24",
+        "section": "note 12 : revenue from operati",
+        "cma_row": 22,
+        "cma_field": "Domestic Sales",
+        "sim": 0.572
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.503
+      },
+      {
+        "text": "Profit on Sale of Assests",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 31,
+        "cma_field": "Profit on sale of fixed assets / Investments",
+        "sim": 0.464
+      }
+    ],
+    "embedding_prediction": 22,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 1,
+    "raw_text": "Sales of Trading Goods",
+    "sheet_name": "Notes to P & L",
+    "section": "sale of products:",
+    "true_cma_row": 22,
+    "true_cma_field": "Domestic Sales",
+    "candidates": {
+      "22": "Domestic Sales",
+      "93": "Others (Non-Operating Expenses)",
+      "31": "Profit on sale of fixed assets / Investments",
+      "71": "Others (Admin)",
+      "32": "Gain on Exchange Fluctuations",
+      "70": "Advertisements and Sales Promotions"
+    },
+    "examples": [
+      {
+        "text": "Paper & Paper Products",
+        "sheet": "Note 18-24",
+        "section": "note 12 : revenue from operati",
+        "cma_row": 22,
+        "cma_field": "Domestic Sales",
+        "sim": 0.585
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.533
+      },
+      {
+        "text": "Profit on Sale of Assests",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 31,
+        "cma_field": "Profit on sale of fixed assets / Investments",
+        "sim": 0.515
+      }
+    ],
+    "embedding_prediction": 22,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 5,
+    "raw_text": "Interest Income",
+    "sheet_name": "Notes to P & L",
+    "section": "other income",
+    "true_cma_row": 30,
+    "true_cma_field": "Interest Received",
+    "candidates": {
+      "30": "Interest Received",
+      "34": "Others (Non-Operating Income)",
+      "31": "Profit on sale of fixed assets / Investments"
+    },
+    "examples": [
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.752
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.7
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 6,
+    "raw_text": "Interest Received - Fixed Deposits",
+    "sheet_name": "Subnotes to PL",
+    "section": "interest income",
+    "true_cma_row": 30,
+    "true_cma_field": "Interest Received",
+    "candidates": {
+      "30": "Interest Received",
+      "34": "Others (Non-Operating Income)",
+      "212": "Cash on Hand"
+    },
+    "examples": [
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.678
+      },
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.669
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 7,
+    "raw_text": "Interest Received - Others",
+    "sheet_name": "Subnotes to PL",
+    "section": "interest income",
+    "true_cma_row": 30,
+    "true_cma_field": "Interest Received",
+    "candidates": {
+      "30": "Interest Received",
+      "34": "Others (Non-Operating Income)",
+      "31": "Profit on sale of fixed assets / Investments"
+    },
+    "examples": [
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.699
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.688
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 8,
+    "raw_text": "MSME Interest Sub-vention Scheme",
+    "sheet_name": "Subnotes to PL",
+    "section": "interest income",
+    "true_cma_row": 30,
+    "true_cma_field": "Interest Received",
+    "candidates": {
+      "30": "Interest Received",
+      "31": "Profit on sale of fixed assets / Investments",
+      "34": "Others (Non-Operating Income)"
+    },
+    "examples": [
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.636
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.627
+      }
+    ],
+    "embedding_prediction": 30,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 9,
+    "raw_text": "Profit on Sale of Fixed Asset",
+    "sheet_name": "Notes to P & L",
+    "section": "other income",
+    "true_cma_row": 31,
+    "true_cma_field": "Profit on sale of fixed assets / Investments",
+    "candidates": {
+      "31": "Profit on sale of fixed assets / Investments",
+      "30": "Interest Received",
+      "93": "Others (Non-Operating Expenses)",
+      "32": "Gain on Exchange Fluctuations",
+      "34": "Others (Non-Operating Income)"
+    },
+    "examples": [
+      {
+        "text": "Profit on Sale of Assests",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 31,
+        "cma_field": "Profit on sale of fixed assets / Investments",
+        "sim": 0.662
+      },
+      {
+        "text": "Interest from FD",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.576
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.574
+      },
+      {
+        "text": "Interest Income",
+        "sheet": "Note 18-24",
+        "section": "note 13 : other income",
+        "cma_row": 30,
+        "cma_field": "Interest Received",
+        "sim": 0.568
+      }
+    ],
+    "embedding_prediction": 31,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 11,
+    "raw_text": "Total Raw Materials - Indigenous",
+    "sheet_name": "Notes to P & L",
+    "section": "note 20 - cost of raw materials consumed",
+    "true_cma_row": 42,
+    "true_cma_field": "Raw Materials Consumed (Indigenous)",
+    "candidates": {
+      "42": "Raw Materials Consumed (Indigenous)",
+      "67": "Salary and staff expenses",
+      "41": "Raw Materials Consumed (Imported)",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Cost of Material Consumed",
+        "sheet": "Note 18-24",
+        "section": "note 14 : cost of material con",
+        "cma_row": 42,
+        "cma_field": "Raw Materials Consumed (Indigenous)",
+        "sim": 0.663
+      },
+      {
+        "text": "Tea & Food Expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 67,
+        "cma_field": "Salary and staff expenses",
+        "sim": 0.501
+      }
+    ],
+    "embedding_prediction": 42,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 12,
+    "raw_text": "CRCA Sheets & Coils consumed",
+    "sheet_name": "Notes to P & L",
+    "section": "details of cost of materials consumed",
+    "true_cma_row": 42,
+    "true_cma_field": "Raw Materials Consumed (Indigenous)",
+    "candidates": {
+      "42": "Raw Materials Consumed (Indigenous)",
+      "49": "Others (Manufacturing)",
+      "71": "Others (Admin)",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Cost of Material Consumed",
+        "sheet": "Note 18-24",
+        "section": "note 14 : cost of material con",
+        "cma_row": 42,
+        "cma_field": "Raw Materials Consumed (Indigenous)",
+        "sim": 0.646
+      },
+      {
+        "text": "Factory Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.417
+      }
+    ],
+    "embedding_prediction": 42,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 13,
+    "raw_text": "Aluminium consumed",
+    "sheet_name": "Notes to P & L",
+    "section": "note 20 - cost of raw materials consumed",
+    "true_cma_row": 42,
+    "true_cma_field": "Raw Materials Consumed (Indigenous)",
+    "candidates": {
+      "42": "Raw Materials Consumed (Indigenous)",
+      "49": "Others (Manufacturing)",
+      "83": "Interest on Fixed Loans / Term loans",
+      "71": "Others (Admin)"
+    },
+    "examples": [
+      {
+        "text": "Cost of Material Consumed",
+        "sheet": "Note 18-24",
+        "section": "note 14 : cost of material con",
+        "cma_row": 42,
+        "cma_field": "Raw Materials Consumed (Indigenous)",
+        "sim": 0.745
+      },
+      {
+        "text": "Factory Expences",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 49,
+        "cma_field": "Others (Manufacturing)",
+        "sim": 0.558
+      }
+    ],
+    "embedding_prediction": 42,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 16,
+    "raw_text": "Salaries & Wages",
+    "sheet_name": "Notes to P & L",
+    "section": "employee benefits expense",
+    "true_cma_row": 45,
+    "true_cma_field": "Wages",
+    "candidates": {
+      "45": "Wages"
+    },
+    "examples": [
+      {
+        "text": "Salary and Wages",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.71
+      },
+      {
+        "text": "Staff welfare expenses",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.648
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 17,
+    "raw_text": "Contribution to PF & Other Funds",
+    "sheet_name": "Notes to P & L",
+    "section": "employee benefits expense",
+    "true_cma_row": 45,
+    "true_cma_field": "Wages",
+    "candidates": {
+      "45": "Wages",
+      "67": "Salary and staff expenses"
+    },
+    "examples": [
+      {
+        "text": "Contributions to provident and other funds",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.695
+      },
+      {
+        "text": "Admin Exp for PF",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 67,
+        "cma_field": "Salary and staff expenses",
+        "sim": 0.657
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 18,
+    "raw_text": "Labour Welfare Expenses",
+    "sheet_name": "Notes to P & L",
+    "section": "employee benefits expense",
+    "true_cma_row": 45,
+    "true_cma_field": "Wages",
+    "candidates": {
+      "45": "Wages"
+    },
+    "examples": [
+      {
+        "text": "Staff welfare expenses",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.746
+      },
+      {
+        "text": "Labour Charges",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.64
+      },
+      {
+        "text": "Salary and Wages",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 45,
+        "cma_field": "Wages",
+        "sim": 0.583
+      }
+    ],
+    "embedding_prediction": 45,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 21,
+    "raw_text": "Power & Fuel",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 48,
+    "true_cma_field": "Power, Coal, Fuel and Water",
+    "candidates": {
+      "48": "Power, Coal, Fuel and Water",
+      "93": "Others (Non-Operating Expenses)",
+      "71": "Others (Admin)",
+      "49": "Others (Manufacturing)"
+    },
+    "examples": [
+      {
+        "text": "Power and fuel",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 48,
+        "cma_field": "Power, Coal, Fuel and Water",
+        "sim": 0.768
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.638
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.625
+      }
+    ],
+    "embedding_prediction": 48,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 22,
+    "raw_text": "Power Charges",
+    "sheet_name": "Subnotes to PL",
+    "section": "power & fuel",
+    "true_cma_row": 48,
+    "true_cma_field": "Power, Coal, Fuel and Water",
+    "candidates": {
+      "48": "Power, Coal, Fuel and Water",
+      "162": "Gross Block",
+      "47": "Freight and Transportation Charges",
+      "71": "Others (Admin)"
+    },
+    "examples": [
+      {
+        "text": "Power and fuel",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 48,
+        "cma_field": "Power, Coal, Fuel and Water",
+        "sim": 0.603
+      },
+      {
+        "text": "Electrical Equipments",
+        "sheet": "Note 3-17",
+        "section": "fixed assets detail",
+        "cma_row": 162,
+        "cma_field": "Gross Block",
+        "sim": 0.457
+      }
+    ],
+    "embedding_prediction": 48,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 23,
+    "raw_text": "Fuel Charges",
+    "sheet_name": "Subnotes to PL",
+    "section": "power & fuel",
+    "true_cma_row": 48,
+    "true_cma_field": "Power, Coal, Fuel and Water",
+    "candidates": {
+      "48": "Power, Coal, Fuel and Water",
+      "162": "Gross Block",
+      "68": "Rent, Rates and Taxes",
+      "47": "Freight and Transportation Charges"
+    },
+    "examples": [
+      {
+        "text": "Power and fuel",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 48,
+        "cma_field": "Power, Coal, Fuel and Water",
+        "sim": 0.629
+      },
+      {
+        "text": "Electrical Equipments",
+        "sheet": "Note 3-17",
+        "section": "fixed assets detail",
+        "cma_row": 162,
+        "cma_field": "Gross Block",
+        "sim": 0.436
+      }
+    ],
+    "embedding_prediction": 48,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 30,
+    "raw_text": "Rent",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 68,
+    "true_cma_field": "Rent, Rates and Taxes",
+    "candidates": {
+      "68": "Rent, Rates and Taxes",
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)"
+    },
+    "examples": [
+      {
+        "text": "Rent including lease rentals",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 68,
+        "cma_field": "Rent, Rates and Taxes",
+        "sim": 0.692
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.653
+      },
+      {
+        "text": "Printing and stationery",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.64
+      }
+    ],
+    "embedding_prediction": 68,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 36,
+    "raw_text": "Discount Allowed",
+    "sheet_name": "Subnotes to PL",
+    "section": "selling & distribution expenses",
+    "true_cma_row": 70,
+    "true_cma_field": "Advertisements and Sales Promotions",
+    "candidates": {
+      "70": "Advertisements and Sales Promotions",
+      "71": "Others (Admin)"
+    },
+    "examples": [
+      {
+        "text": "Discount Allowed",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 70,
+        "cma_field": "Advertisements and Sales Promotions",
+        "sim": 0.698
+      },
+      {
+        "text": "Discount Reversal",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 70,
+        "cma_field": "Advertisements and Sales Promotions",
+        "sim": 0.642
+      }
+    ],
+    "embedding_prediction": 70,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 37,
+    "raw_text": "Insurance",
+    "sheet_name": "Notes to P & L",
+    "section": "other expenses",
+    "true_cma_row": 71,
+    "true_cma_field": "Others (Admin)",
+    "candidates": {
+      "71": "Others (Admin)",
+      "93": "Others (Non-Operating Expenses)",
+      "250": "Other current liabilities",
+      "67": "Salary and staff expenses"
+    },
+    "examples": [
+      {
+        "text": "Insurance",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.738
+      },
+      {
+        "text": "P&L on Sale of Car",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 93,
+        "cma_field": "Others (Non-Operating Expenses)",
+        "sim": 0.667
+      },
+      {
+        "text": "Miscellaneous expenses",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 71,
+        "cma_field": "Others (Admin)",
+        "sim": 0.659
+      }
+    ],
+    "embedding_prediction": 71,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  },
+  {
+    "bcipl_index": 41,
+    "raw_text": "Statutory Audit",
+    "sheet_name": "Notes to P & L",
+    "section": "auditor's remuneration:",
+    "true_cma_row": 73,
+    "true_cma_field": "Audit Fees & Directors Remuneration",
+    "candidates": {
+      "73": "Audit Fees & Directors Remuneration",
+      "49": "Others (Manufacturing)",
+      "22": "Domestic Sales"
+    },
+    "examples": [
+      {
+        "text": "Audit Fees",
+        "sheet": "Note 18-24",
+        "section": "note 17 : other expenses",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.579
+      },
+      {
+        "text": "Directors Remuneration",
+        "sheet": "Note 18-24",
+        "section": "note 15 : employee benefits ex",
+        "cma_row": 73,
+        "cma_field": "Audit Fees & Directors Remuneration",
+        "sim": 0.559
+      }
+    ],
+    "embedding_prediction": 73,
+    "embedding_correct": true,
+    "true_in_candidates": true,
+    "group": "B"
+  }
+]

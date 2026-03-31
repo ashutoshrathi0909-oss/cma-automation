@@ -1,0 +1,90 @@
+Item 1:
+  Description: ESI payable
+  Amount: Rs 197,405.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 2:
+  Description: Gross Block - Tools & Dies (At 31st March)
+  Amount: Rs 55,335,817.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 3:
+  Description: Gross Block - Cranes (At 31st March)
+  Amount: Rs 16,712,084.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 4:
+  Description: Interest Paid on Unsecured Loan
+  Amount: Rs 1,475,862.00
+  Section: interest expenses:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 5:
+  Description: Bill Discounting Charges
+  Amount: Rs 6,504,465.39
+  Section: other borrowing costs:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 6:
+  Description: Bank Charges
+  Amount: Rs 876,770.24
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 7:
+  Description: Forex Rate Fluctuation Loss (Net)
+  Amount: Rs 1,644,770.25
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 8:
+  Description: Brought forward P&L (opening balance)
+  Amount: Rs 42,645,593.00
+  Section: note 2 - reserves and surplus
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 9:
+  Description: PF payable
+  Amount: Rs 762,538.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 10:
+  Description: EPS & Other Charges payable
+  Amount: Rs 425,324.00
+  Section: (i) statutory dues =534165+2680+2527
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 11:
+  Description: GST payable
+  Amount: Rs 629.57
+  Section: (i) statutory dues =534165+2680+2527
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 12:
+  Description: Profession Tax payable
+  Amount: Rs 51,400.00
+  Section: (i) statutory dues =534165+2680+2527
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 13:
+  Description: TDS Payable - Salary
+  Amount: Rs 372,953.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 14:
+  Description: Gross Block - Air Compressor (At 31st March)
+  Amount: Rs 1,303,752.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 15:
+  Description: Gross Block - Weighing Machines (At 31st March)
+  Amount: Rs 3,315,020.56
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021

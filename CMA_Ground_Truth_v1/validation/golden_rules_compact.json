@@ -1,0 +1,1079 @@
+{
+  "canonical_rows": {
+    "22": "Domestic",
+    "23": "Exports",
+    "25": "Less Excise Duty and Cess",
+    "29": "Dividends received from Mutual Funds",
+    "30": "Interest Received",
+    "31": "Profit on sale of fixed assets / Investments",
+    "32": "Gain on Exchange Fluctuations",
+    "33": "Extraordinary income",
+    "34": "Others",
+    "41": "Raw Materials Consumed ( Imported)",
+    "42": "Raw Materials Consumed ( Indigenous)",
+    "43": "Stores and spares consumed ( Imported)",
+    "44": "Stores and spares consumed ( Indigenous)",
+    "45": "Wages",
+    "46": "Processing / Job Work Charges",
+    "47": "Freight and Transportation Charges",
+    "48": "Power, Coal, Fuel and Water",
+    "49": "Others",
+    "50": "Repairs & Maintenance",
+    "51": "Security Service Charges",
+    "53": "Stock in process Opening Balance",
+    "54": "Stock in process Closing Balance",
+    "56": "Depreciation",
+    "58": "Finished Goods Opening Balance",
+    "59": "Finished Goods Closing Balance",
+    "63": "Depreciation",
+    "64": "Other Manufacturing Exp",
+    "67": "Salary and staff expenses",
+    "68": "Rent , Rates and Taxes",
+    "69": "Bad Debts",
+    "70": "Advertisements and Sales Promotions",
+    "71": "Others",
+    "72": "Repairs & Maintenance",
+    "73": "Audit Fees & Directors Remuneration",
+    "75": "Miscellaneous Expenses written off",
+    "76": "Deferred Revenue Expenditures",
+    "77": "Other Amortisations",
+    "83": "Interest on Fixed Loans / Term loans",
+    "84": "Interest on Working capital loans",
+    "85": "Bank Charges",
+    "89": "Loss on sale of fixed assets / Investments",
+    "90": "Sundry Balances Written off",
+    "91": "Loss on Exchange Fluctuations",
+    "92": "Extraordinary losses",
+    "93": "Others",
+    "99": "Income Tax  provision",
+    "100": "Deferred Tax Liability",
+    "101": "Deferred Tax Asset",
+    "106": "Brought forward from previous year",
+    "107": "Dividend ( Final + Interim , Including Dividend Tax )",
+    "108": "Other Appropriation of profit",
+    "116": "Issued, Subscribed and Paid up",
+    "117": "Share Application Money",
+    "121": "General Reserve",
+    "122": "Balance transferred from profit and loss a/c",
+    "123": "Share Premium A/c",
+    "124": "Revaluation Reserve",
+    "125": "Other Reserve",
+    "131": "From Indian Bank",
+    "132": "From Indian Overseas Bank",
+    "133": "(o/s bill discounting balance to be included)",
+    "136": "Term Loan Repayable in next one year",
+    "137": "Balance Repayable after one year",
+    "140": "Repayable in next one year",
+    "141": "Balance Repayable after one year",
+    "144": "Repayable in next one year",
+    "145": "Balance Repayable after one year",
+    "148": "Debts Repayable in Next One year",
+    "149": "Balance Other Debts",
+    "152": "As Quasi Equity",
+    "153": "As Long Term Debt",
+    "154": "As Short Term Debt",
+    "159": "Deferred tax liability",
+    "162": "Gross Block",
+    "163": "Less Accumulated Depreciation",
+    "165": "Add : Capital Work in Progress",
+    "169": "Patents / goodwill / copyrights etc",
+    "170": "Misc Expenditure ( to the extent not w/o)",
+    "171": "Deferred Tax Asset",
+    "172": "Other Intangible assets",
+    "175": "Additions to Fixed Assets",
+    "176": "Sale of  Fixed assets WDV of asset sold",
+    "177": "Profit on sale of Fixed assets / Investments",
+    "178": "Loss on sale of Fixed assets / Investments",
+    "182": "Investment in Govt. Securities ( Current )",
+    "183": "Investment in Govt. Securities ( Non Current )",
+    "185": "Other current investments",
+    "186": "Other non current investments",
+    "188": "Investment in group companies / subsidiaries",
+    "193": "Imported",
+    "194": "Indigenous",
+    "197": "Imported",
+    "198": "Indigenous",
+    "200": "Stocks-in-process",
+    "201": "Finished Goods",
+    "206": "Domestic Receivables ( including bills purchased and discounted)",
+    "207": "Export Receivables ( including bills purchased and discounted)",
+    "208": "Debtors more than 6 months",
+    "212": "Cash on Hand",
+    "213": "Bank Balances",
+    "214": "Fixed Deposit under lien",
+    "215": "Other Fixed Deposits",
+    "219": "Advances recoverable in cash or in kind",
+    "220": "Advances to suppliers of raw materials",
+    "221": "Advance Income Tax",
+    "222": "Prepaid Expenses",
+    "223": "Other Advances / current asset",
+    "224": "Advances to group / subsidiaries companies",
+    "229": "Investments",
+    "230": "Advances",
+    "232": "Debtors more than six months",
+    "233": "Investments",
+    "234": "Fixed Deposits ( Non Current )",
+    "235": "Dues from directors / partners / promoters",
+    "236": "Advances to suppliers of capital goods",
+    "237": "Security deposits with government departments",
+    "238": "Other non current assets",
+    "242": "Sundry Creditors for goods",
+    "243": "Advance received from customers",
+    "244": "Provision for Taxation",
+    "245": "Dividend payable",
+    "246": "Other statutory liabilities (due within 1 year)",
+    "247": "Interest Accrued but not due",
+    "248": "Interest Accrued and due",
+    "249": "Creditors for Expenses",
+    "250": "Other current liabilities",
+    "254": "Arrears of cumulative dividends",
+    "255": "Gratuity liability not provided for",
+    "256": "Disputed excise / customs / tax liabilities",
+    "257": "Bank guarantee / Letter of credit outstanding",
+    "258": "Other contingent liabilities"
+  },
+  "rules_by_row": {
+    "22": [
+      "Job Work Charges Received",
+      "Rate Difference",
+      "Trade Discount allowed",
+      "Cash Discount allowed",
+      "Sales return",
+      "Sales",
+      "Consignment Sales",
+      "Duty Drawback",
+      "Commission / Brokerage Received (Recurring)",
+      "Delivery Charges",
+      "Rate Difference",
+      "Royalty Fees (Recurring and Related to business)",
+      "Kasar account",
+      "Vatav account",
+      "Hire Income (Recurring and Related to business)",
+      "Rent Income (Recurring and Related to business)",
+      "PUC Receipts"
+    ],
+    "23": [
+      "Sale of import license",
+      "Sale of DEPB license",
+      "Export Sales"
+    ],
+    "25": [
+      "Turnover Tax"
+    ],
+    "30": [
+      "Interest received",
+      "Bank Interest",
+      "Interest on FD",
+      "Interest on IT Refund"
+    ],
+    "31": [
+      "Profit on sale of Asset",
+      "Profit on sale of Investment"
+    ],
+    "32": [
+      "Foreign Exchange earning"
+    ],
+    "33": [
+      "Subsidy / Government Grant"
+    ],
+    "34": [
+      "Refund of income tax",
+      "Refund of sales tax",
+      "Dividend Received",
+      "Bad debts recovered",
+      "Commission / Brokerage Received (One time)",
+      "Scrap Sale",
+      "Insurance Receipts",
+      "Speculation Profit",
+      "Royalty Fees (One time)",
+      "Miscellaneous Income",
+      "Other Income",
+      "Hire Income (One time)",
+      "Chit Fund Income",
+      "Rent Income (One time)",
+      "Transport Income",
+      "PCO Income",
+      "Subsidies (One time)"
+    ],
+    "41": [
+      "Freight inward / carriage inward",
+      "Imports of raw material",
+      "Customs duty on purchases",
+      "Clearing & Forwarding – For Imports"
+    ],
+    "42": [
+      "Purchases of raw materials",
+      "Octroi on purchases",
+      "Excise duty on purchases",
+      "Purchase Tax",
+      "Trade Discounts Received",
+      "Cash Discounts Received",
+      "Quantity Discount Receivable / Received",
+      "Purchase return"
+    ],
+    "43": [
+      "Stores & Spares (Imported)"
+    ],
+    "44": [
+      "Purchase of stores",
+      "Purchase of spares"
+    ],
+    "45": [
+      "Wages & Salary",
+      "Provident Fund - factory workers",
+      "Labour charges",
+      "Loading & unloading charges",
+      "ESI Fund",
+      "Salary of supervisors",
+      "Salary of plant manager",
+      "Workers uniform",
+      "Laundry Expenses",
+      "Staff Welfare Expenses",
+      "Gratuity"
+    ],
+    "48": [
+      "Electricity expenses - Factory",
+      "Fuel Expenses - factory",
+      "Power"
+    ],
+    "49": [
+      "Water Charges",
+      "Machinery Maintenance",
+      "Building Maintenance (Factory Building)",
+      "Factory Rent",
+      "Rates & Taxes",
+      "Hire Charges",
+      "Job Work Charges paid",
+      "Generator Expenses",
+      "Inspection Charges",
+      "Loss on evaporation",
+      "Know how expenditure incurred",
+      "AMC Charges (For Machiery)",
+      "Uniform expenses",
+      "Tanker Rent",
+      "Impairment of fixed Assets (Machinery / Factory Land & Building)"
+    ],
+    "56": [
+      "Depreciation on factory building",
+      "Depreciation on machinery",
+      "Depreciation on office building",
+      "Depreciation on office equipments",
+      "Depreciation on furniture"
+    ],
+    "58": [
+      "Opening Stock Finished Goods"
+    ],
+    "67": [
+      "Staff welfare expenses",
+      "Provision for gratuity",
+      "Provision for retirement benefits",
+      "Salary to partners",
+      "Bonus",
+      "Gratuity expenses",
+      "Mediclaim",
+      "Ex – Gratia expenses",
+      "Canteen Expenses",
+      "Medical Expenses"
+    ],
+    "68": [
+      "Office Rent",
+      "Rent, Rates & Taxes",
+      "Lease Rent",
+      "Municipal Expenses"
+    ],
+    "69": [
+      "Bad debts",
+      "Provision for bad debts"
+    ],
+    "70": [
+      "Advertising & Publicity",
+      "Sales Promotion Expenses",
+      "Free Sample distribution expenses",
+      "Business Promotion",
+      "Marketing Expenses",
+      "Incentives to Client"
+    ],
+    "71": [
+      "General expenses",
+      "Conveyance",
+      "Packing charges",
+      "Cartage",
+      "Clearing & Forwarding – For Exports",
+      "Office Expenses",
+      "Car Expenses",
+      "Postage & Telegram",
+      "Courier Charges",
+      "Sales Tax",
+      "Insurance",
+      "Consultancy Charges",
+      "Freight outward",
+      "Traveling Expenses",
+      "Legal expenses",
+      "Printing & Stationery",
+      "Trade license fees",
+      "Road Tax",
+      "Vehicle insurance",
+      "Telephone expenses",
+      "Mobile expenses",
+      "Profession tax",
+      "Fire insurance",
+      "Theft insurance",
+      "Court fees",
+      "Diwali Expenses",
+      "Internet Expenses",
+      "Transportation",
+      "Newapaper & Periodicals",
+      "Miscellaneous expenses",
+      "Sundry expenses",
+      "Insurance Premium",
+      "Security Charges",
+      "Service Tax",
+      "Gift",
+      "Royalty Fees",
+      "License fees paid",
+      "Professional Fees",
+      "Accounting Charges",
+      "Kasar account",
+      "Vatav account",
+      "Penalty Charges",
+      "Pooja expenses",
+      "Festival expenses",
+      "Warehouse expenses",
+      "Brokerage expenses",
+      "Hel Majuri/  Hamali",
+      "ROC Filing Fees",
+      "Motor Car expenses",
+      "Xerox Charges",
+      "Books & Periodicals",
+      "Membership & Subscription",
+      "Conference expenses",
+      "Seminar Expenses",
+      "Petrol Expenses",
+      "Vakil Fees",
+      "Selling & Distribution expenses",
+      "Gardening Expenses",
+      "Shop expenses",
+      "Pump Expenses",
+      "Goods lost in transit",
+      "Franking Charges",
+      "Research & Development expenses",
+      "Entertainment expenses",
+      "Hotel Expenses",
+      "Stamping Charges",
+      "Name Board and Fittings",
+      "Club Expenses",
+      "Quantity Discount payable",
+      "Impairment of fixed Assets (Office Assets)",
+      "Deferred Revenue Expenditure w/off",
+      "Branch Loss",
+      "IT Penalties",
+      "Other Penalies",
+      "Professional Tax",
+      "Liquidated Damages",
+      "Licence & Subscription Fees",
+      "Insurance Premium"
+    ],
+    "72": [
+      "Building Maintenance (Others)",
+      "Repairs & Renewals",
+      "Vehicle Maintenance",
+      "Computer maintenance",
+      "AMC Charges (For Office Equipments)"
+    ],
+    "73": [
+      "Audit Fees",
+      "Directors Fees",
+      "Directors Remuneration",
+      "Commission to Directors",
+      "Directors Remuneration"
+    ],
+    "75": [
+      "Row 75 Usage"
+    ],
+    "83": [
+      "Interest on unsecured loans from friends and relatives",
+      "Bank Interest",
+      "Interest on long term loans",
+      "Interest on Partners' Loan",
+      "Debenture Interest"
+    ],
+    "85": [
+      "Bank Charges",
+      "Loan Processing Fee"
+    ],
+    "89": [
+      "Loss on sale of Asset",
+      "Loss on sale of Investment"
+    ],
+    "90": [
+      "Preliminary expenses Write off",
+      "Pre Operative expenses write off",
+      "Suspense account w/off",
+      "Trial Balance Difference w/off",
+      "Goodwill written off"
+    ],
+    "93": [
+      "Loss by fire",
+      "Loss by theft",
+      "Donation",
+      "Prior period expenses",
+      "Speculation Loss",
+      "Foreign Exchange expenditure",
+      "Cash Theft",
+      "Formation Expenses",
+      "Devaluation Loss",
+      "Premium on redemtion of securities"
+    ],
+    "99": [
+      "Income Tax",
+      "Provision for tax",
+      "Deferred tax expenses",
+      "Self Assessment tax"
+    ],
+    "107": [
+      "Dividend Tax",
+      "Interest on Partners' Capital",
+      "Dividend Paid"
+    ],
+    "116": [
+      "Share Capital",
+      "Equity Share Capital",
+      "Share Application Money (Undertaking for converting it into Share Capital is obtained)",
+      "Proprietor's Capital A/c",
+      "Proprietor's Current A/c",
+      "Partners' Capital A/c",
+      "Partners' Current A/c",
+      "Partners' Capital A/c (Debit Balance)",
+      "Partners' Current A/c (Debit Balance)"
+    ],
+    "117": [
+      "Share Application Money (without any undertaking)"
+    ],
+    "121": [
+      "General Reserve"
+    ],
+    "122": [
+      "Profit & Loss A/c (Credit Balance)",
+      "Profit & Loss A/c (Debit Balance)"
+    ],
+    "123": [
+      "Share Premium"
+    ],
+    "124": [
+      "Revaluation Reserve"
+    ],
+    "125": [
+      "Investment Allowance Reserve",
+      "Capital Reserve",
+      "Capital Redemption Reserve",
+      "Debenture Redemption Reserve",
+      "Special Capital Incentive (non-refundable)",
+      "Capital Subsidy from Government (non-refundable)",
+      "Aid From Government (non-refundable)",
+      "Unsecured Loans from associate concerns (with shortfall undertaking)",
+      "Unsecured Loans from director (with shortfall undertaking)",
+      "Unsecured Loans from relatives (with shortfall undertaking)",
+      "Unsecured Loans from friends (with shortfall undertaking)"
+    ],
+    "131": [
+      "Factoring",
+      "Packing Credit",
+      "Pre-shipment Finance",
+      "Post-shipment Finance",
+      "Short Term Loans from banks",
+      "Bank overdraft (unsecured)",
+      "Bank Overdraft",
+      "Cash Credit",
+      "Working Capital Demand Loan"
+    ],
+    "133": [
+      "Bills discounted / Bills Purchased",
+      "Bills Discounted (appearing as contingent liability)"
+    ],
+    "136": [
+      "Redeemable Preference Share Capital (redeemable within 1 year)",
+      "Term Loan from Bank (repayable within 1 year)",
+      "Rupee Term Loan (repayable within 1 year)",
+      "Foreign Currency Term Loan (repayable within 1 year)",
+      "Deferred Sales Tax Loan (instalment payable within 1 year)",
+      "Debentures (redeemable within 1 year)",
+      "Intercorporate deposits (repayable within 1 year)",
+      "Company Deposits (repayable within 1 year)"
+    ],
+    "137": [
+      "Term Loan from Bank (excluding repayment within 1 year)",
+      "Rupee Term Loan (excluding repayment within 1 year)",
+      "Foreign Currency Term Loan (excluding repayments within 1 year)",
+      "External Commercial Borrowings (for long term use)",
+      "Hire Purchase Loan (excluding repayable within 1 year)",
+      "Machinery Loan (excluding repayable within 1 year)",
+      "In case of Proprietory Concern – Housing Loan (excluding repayable within 1 year)",
+      "Car Loan (excluding repayable within 1 year)",
+      "Vehicle Loan (excluding repayable within 1 year)",
+      "In case of Proprietory Concern –Personal Loan (excluding repayable within 1 year)"
+    ],
+    "141": [
+      "Debentures (not redeemable within 1 year)"
+    ],
+    "145": [
+      "Redeemable Preference Share Capital (redeemable after 1 year)"
+    ],
+    "148": [
+      "Vehicle HP Current Maturities"
+    ],
+    "149": [
+      "Deferred Sales Tax Loan (excluding instalment payable within 1 year)",
+      "Intercorporate deposits (not repayable within 1 year)",
+      "Company Deposits (not repayable within 1 year)",
+      "Creditors for capital expenditure (Excluding repayable within 1 year)",
+      "Mobilisation Advance (adjustment period more than 1year)"
+    ],
+    "153": [
+      "Special Capital Incentive (refundable)",
+      "Capital Subsidy from Government (Refundable)",
+      "Aid From Government (Refundable)",
+      "Unsecured Loans from associate concerns (without shortfall undertaking)",
+      "Unsecured Loans from director (without shortfall undertaking)",
+      "Unsecured Loans from relatives (without shortfall undertaking)",
+      "Unsecured Loans from friends (without shortfall undertaking)"
+    ],
+    "159": [
+      "Deferred tax liability"
+    ],
+    "162": [
+      "Fixed Assets (Gross block)"
+    ],
+    "163": [
+      "Depreciation Reserve",
+      "Accumulated depreciation"
+    ],
+    "165": [
+      "Capital Work in progress"
+    ],
+    "169": [
+      "Goodwill"
+    ],
+    "170": [
+      "Preliminary expenses",
+      "Miscellaneous Expenditure"
+    ],
+    "171": [
+      "Deferred Tax Asset"
+    ],
+    "172": [
+      "Suspense Account",
+      "Trial Balance Difference"
+    ],
+    "182": [
+      "NSC"
+    ],
+    "188": [
+      "Advances to subsidiaries or group companies"
+    ],
+    "193": [
+      "Inventories of raw materials"
+    ],
+    "198": [
+      "Stores & Spares (consumable)"
+    ],
+    "200": [
+      "Inventories of work-in-progress"
+    ],
+    "201": [
+      "Inventories of finished goods"
+    ],
+    "206": [
+      "Debtors outstanding for less than 6 months (considered good)",
+      "Bills Receivable"
+    ],
+    "212": [
+      "Cash on hand"
+    ],
+    "213": [
+      "Cash at bank",
+      "Bank current account"
+    ],
+    "215": [
+      "Fixed Deposits with banks & accrued interest (without lien)"
+    ],
+    "219": [
+      "Staff Advances"
+    ],
+    "220": [
+      "Advances to suppliers",
+      "Advances to Suppliers"
+    ],
+    "221": [
+      "Advance Service Tax",
+      "PLA Balance with excise",
+      "Advance Tax",
+      "Advance Sales Tax",
+      "Tax Deducted at Source"
+    ],
+    "223": [
+      "Insurance Claim Receivable",
+      "Octroi Receivable",
+      "Prepaid Expenses",
+      "Advance to employees",
+      "Advances recoverable in cash or kind"
+    ],
+    "232": [
+      "Debtors outstanding for more than 6 months",
+      "Debtors outstanding for less than 6 months (considered doubtful)"
+    ],
+    "233": [
+      "Long Term Investments",
+      "Short Term Investments"
+    ],
+    "234": [
+      "Fixed Deposits with banks & accrued interest (under lien)",
+      "Fixed Deposits with banks & accrued interest (as margin money)"
+    ],
+    "235": [
+      "Loan / advance to directors",
+      "Loan / advance to partners",
+      "Loan / advance to proprietor",
+      "Loan / advance to relatives of directors / partners / proprietor"
+    ],
+    "236": [
+      "Advance to supplier of capital goods and contractors"
+    ],
+    "237": [
+      "Security Deposit",
+      "Earnest Money Deposit",
+      "License Deposit",
+      "Water Connection Deposit",
+      "Deposit with excise",
+      "Telephone Deposit",
+      "Deposit with electricity board"
+    ],
+    "238": [
+      "Miscellaneous Advances",
+      "Deposits to suppliers",
+      "Stores & Spares (non-consumable)"
+    ],
+    "242": [
+      "Creditors for goods",
+      "Cheques Issued but not presented"
+    ],
+    "243": [
+      "Deposits from customers",
+      "Advances from customers",
+      "Mobilisation Advance (adjustment period less than 1year)"
+    ],
+    "244": [
+      "Provision for tax"
+    ],
+    "245": [
+      "Interim dividend",
+      "Proposed Dividend"
+    ],
+    "246": [
+      "Outstanding provident fund contribution",
+      "Sales Tax Payable",
+      "Service Tax Payable",
+      "Profession Tax Payable",
+      "Turnover Tax Payable"
+    ],
+    "250": [
+      "Unclaimed dividend",
+      "Short Term Loans from others",
+      "Creditors for expenses",
+      "Creditors for capital expenditure (Repayable within 1 year)",
+      "Outstanding Expenses",
+      "Bills Payable",
+      "Electricity Expenses Payable",
+      "Audit Fees Payable",
+      "Telephone Expenses Payable",
+      "Salaries Payable",
+      "Trial Balance Difference",
+      "Suspense Account"
+    ],
+    "254": [
+      "Dividend on Cumulative Preference Shares"
+    ],
+    "255": [
+      "Gratuity Liability not provided for"
+    ],
+    "256": [
+      "Disputed Excise / Customs / Tax liabilities"
+    ],
+    "258": [
+      "Arrears of Depreciation",
+      "Other Liabilities not provided for"
+    ]
+  },
+  "ca_answers_compact": [
+    {
+      "qid": "Q1a",
+      "text": "Staff Welfare Expenses",
+      "industry": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      }
+    },
+    {
+      "qid": "Q1b",
+      "text": "Gratuity / Gratuity to Employees",
+      "row": 45
+    },
+    {
+      "qid": "Q1c",
+      "text": "Contribution to EPF",
+      "row": 45
+    },
+    {
+      "qid": "Q1d",
+      "text": "Contribution to ESI",
+      "row": 45
+    },
+    {
+      "qid": "Q1e",
+      "text": "Staff Mess Expenses",
+      "row": 45
+    },
+    {
+      "qid": "Q1f",
+      "text": "Leave Encashment",
+      "context": {
+        "pl": 45,
+        "bs": 249
+      }
+    },
+    {
+      "qid": "Q1g",
+      "text": "Bonus",
+      "industry": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      }
+    },
+    {
+      "qid": "Q1h",
+      "text": "\"Salary, Wages and Bonus\" (combined line)",
+      "row": 45
+    },
+    {
+      "qid": "Q1i",
+      "text": "\"Employee Benefits Expense\" (combined line)",
+      "industry": {
+        "manufacturing": 45,
+        "trading": 67,
+        "services": 67,
+        "construction": 45
+      }
+    },
+    {
+      "qid": "Q1j",
+      "text": "Labour Charges Paid",
+      "row": 45
+    },
+    {
+      "qid": "Q3a",
+      "text": "Miscellaneous Expenses",
+      "row": 71
+    },
+    {
+      "qid": "Q3b",
+      "text": "Selling & Distribution Expenses",
+      "row": 70
+    },
+    {
+      "qid": "Q3c",
+      "text": "Administrative & General Expenses",
+      "row": 71
+    },
+    {
+      "qid": "Q3d",
+      "text": "Carriage Outward",
+      "row": 70
+    },
+    {
+      "qid": "Q3e",
+      "text": "Brokerage & Commission",
+      "row": 70
+    },
+    {
+      "qid": "Q3f",
+      "text": "Licence & Subscription Fees",
+      "row": 71
+    },
+    {
+      "qid": "Q5",
+      "text": "Carriage Inward / Freight Inward",
+      "row": 47
+    },
+    {
+      "qid": "Q6",
+      "text": "Carriage Outward (freight classification check)",
+      "row": 70
+    },
+    {
+      "qid": "Q7a",
+      "text": "Closing Stock WIP — when in P&L context (Changes in Inventories)",
+      "row": 54
+    },
+    {
+      "qid": "Q7b",
+      "text": "Opening Stock WIP — when in P&L context",
+      "row": 53
+    },
+    {
+      "qid": "Q7c",
+      "text": "Closing Stock Finished Goods — when in P&L context",
+      "row": 59
+    },
+    {
+      "qid": "Q7d",
+      "text": "Opening Stock Finished Goods — when in P&L context",
+      "row": 58
+    },
+    {
+      "qid": "Q8a",
+      "text": "WIP — when in Balance Sheet (Inventories section)",
+      "row": 54
+    },
+    {
+      "qid": "Q8b",
+      "text": "Finished Goods — when in Balance Sheet (Inventories section)",
+      "row": 201
+    },
+    {
+      "qid": "Q10a",
+      "text": "Bank Charges",
+      "row": 85
+    },
+    {
+      "qid": "Q10b",
+      "text": "Interest on Delay in Payment of Taxes",
+      "row": 84
+    },
+    {
+      "qid": "Q10c",
+      "text": "Forex Rate Fluctuation Loss",
+      "row": 91
+    },
+    {
+      "qid": "Q10d",
+      "text": "Liquidated Damages",
+      "row": 71
+    },
+    {
+      "qid": "Q10e",
+      "text": "Bill Discounting Charges",
+      "row": 84
+    },
+    {
+      "qid": "Q10f",
+      "text": "Interest on Bill Discounting",
+      "row": 84
+    },
+    {
+      "qid": "Q10g",
+      "text": "Loan / Overdraft Processing Fee",
+      "row": 85
+    },
+    {
+      "qid": "Q10h",
+      "text": "Interest on CC A/c (Cash Credit / Overdraft)",
+      "row": 84
+    },
+    {
+      "qid": "Q12a",
+      "text": "Power Charges / Electricity (when found under Admin Expenses section in source)",
+      "industry": {
+        "manufacturing": 48,
+        "trading": 71,
+        "services": 71,
+        "construction": 48
+      }
+    },
+    {
+      "qid": "Q12b",
+      "text": "Repairs to Plant & Machinery (when found under Other/Admin Expenses)",
+      "row": 50
+    },
+    {
+      "qid": "Q12c",
+      "text": "Security Service Charges / Watchman Charges",
+      "row": 51
+    },
+    {
+      "qid": "Q12d",
+      "text": "Job Work / Processing Charges (paid out)",
+      "row": 46
+    },
+    {
+      "qid": "Q12e",
+      "text": "Water Charges",
+      "row": 48
+    },
+    {
+      "qid": "Q12f",
+      "text": "Coal / Fuel / LPG / Gas (manufacturing)",
+      "row": 48
+    },
+    {
+      "qid": "Q12g",
+      "text": "Stores, Spares & Consumables (manufacturing)",
+      "row": 44
+    },
+    {
+      "qid": "Q14",
+      "text": "Surplus Opening Balance (Brought Forward from Previous Year)",
+      "row": 106
+    },
+    {
+      "qid": "Q15",
+      "text": "Issue of Bonus Shares (from Reserves)",
+      "row": 108
+    },
+    {
+      "qid": "Q16",
+      "text": "Current Maturities of Long Term Debt",
+      "row": 136
+    },
+    {
+      "qid": "Q17",
+      "text": "Vehicle HP / Hire Purchase Current Maturities",
+      "row": 148
+    },
+    {
+      "qid": "Q18",
+      "text": "Bank Term Loan — Current Maturity Portion",
+      "row": 136
+    },
+    {
+      "qid": "Q19",
+      "text": "Unsecured Loans from Directors / Partners",
+      "row": 152
+    },
+    {
+      "qid": "Q20",
+      "text": "Other Long Term Liabilities (non-bank, non-loan)",
+      "row": 149
+    },
+    {
+      "qid": "Q21a",
+      "text": "Directors Remuneration",
+      "row": 73
+    },
+    {
+      "qid": "Q21b",
+      "text": "Auditor's Remuneration — Statutory Audit Fee",
+      "row": 73
+    },
+    {
+      "qid": "Q21c",
+      "text": "Auditor's Remuneration — Tax Audit Fee",
+      "row": 73
+    },
+    {
+      "qid": "Q22",
+      "text": "Insurance Premium (on plant, stock, building)",
+      "row": 71
+    },
+    {
+      "qid": "Q23",
+      "text": "Professional Fees / Legal & Professional Charges",
+      "row": 71
+    },
+    {
+      "qid": "Q24",
+      "text": "Printing & Stationery Expenses",
+      "row": 71
+    },
+    {
+      "qid": "Q25",
+      "text": "Telephone / Mobile / Internet Expenses",
+      "row": 71
+    },
+    {
+      "qid": "Q26",
+      "text": "Travelling & Conveyance Expenses",
+      "row": 71
+    },
+    {
+      "qid": "Q27",
+      "text": "Bad Debts Written Off",
+      "row": 69
+    },
+    {
+      "qid": "Q28",
+      "text": "Provision for Bad and Doubtful Debts",
+      "row": 69
+    },
+    {
+      "qid": "Q29",
+      "text": "Depreciation on Vehicles / Office Equipment",
+      "row": 56
+    },
+    {
+      "qid": "Q30",
+      "text": "Advertisement / Marketing / Publicity Expenses",
+      "row": 70
+    },
+    {
+      "qid": "Q31",
+      "text": "GST / Tax Penalties / Late Fees on Taxes",
+      "row": 68
+    },
+    {
+      "qid": "Q32",
+      "text": "Preliminary Expenses / Pre-operative Expenses (amortisation)",
+      "row": 75
+    },
+    {
+      "qid": "Q33",
+      "text": "Advances to Suppliers (Balance Sheet)",
+      "row": 220
+    },
+    {
+      "qid": "Q34",
+      "text": "Statutory Liabilities (GST Payable, TDS Payable)",
+      "row": 246
+    },
+    {
+      "qid": "Q35",
+      "text": "Security Deposits Paid (to landlord, utility companies)",
+      "row": 238
+    },
+    {
+      "qid": "Q36",
+      "text": "Prepaid Expenses (BS current asset)",
+      "row": 224
+    },
+    {
+      "qid": "Q37",
+      "text": "Capital Work in Progress (CWIP)",
+      "row": 165
+    },
+    {
+      "qid": "Q38",
+      "text": "Subsidy Income / Government Grant",
+      "context": {
+        "pl": 33,
+        "bs": 125
+      }
+    },
+    {
+      "qid": "Q39",
+      "text": "Deferred Tax Liability movement (P&L charge)",
+      "row": 100
+    },
+    {
+      "qid": "Q40",
+      "text": "Prior Period Items / Previous Year Adjustments",
+      "row": 93
+    },
+    {
+      "qid": "Q43",
+      "text": "Loan Processing Fee (at the time of loan sanction)",
+      "row": 85
+    }
+  ]
+}

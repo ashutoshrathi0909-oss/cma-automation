@@ -1,0 +1,332 @@
+{
+  "timestamp": "2026-03-23",
+  "patterns_interviewed": 7,
+  "total_failures_covered": 70,
+  "interviews": [
+    {
+      "pattern": "Adjacent field (within 5 rows)",
+      "prompt_weakness": "The prompt likely treated similar-sounding categories as interchangeable without enforcing strict hierarchical boundaries. For example, 'Others (Manufacturing)' vs 'Stores and spares consumed' were both plausible for scrap materials, leading to selection of the numerically closer or more generic option. The prompt also failed to distinguish between primary classification (what the item IS) vs secondary classification (where it appears). Additionally, the prompt may have over-weighted the sheet/section metadata without validating it against the item's true nature.",
+      "missing_knowledge": "Add these specific rules to the prompt: (1) Scrap and waste materials ALWAYS map to 'Stores and spares consumed' regardless of context, never to 'Others'. (2) Machinery maintenance is a subcategory of 'Others (Manufacturing)' not 'Repairs & Maintenance' in CMA structure. (3) Packing materials and discount allowed are selling/distribution items that belong to 'Advertisements and Sales Promotions' row 70, NOT 'Others (Admin)' row 71. (4) 'Rates & Taxes' in other expenses context maps to 'Others (Admin)' row 71, NOT 'Rent, Rates and Taxes' row 68 (which is for rent-specific items). (5) Interest on Current Account/Working Capital is 'Interest on Fixed Loans/Term loans' row 83, not row 84. (6) When a bank name appears (Axis Bank), cross-reference the loan type descriptor (Channel Financing = Working Capital Bank 1, Sellers Credit = Term Loan after one year) to determine correct row, not just the bank name alone.",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains ('Scrap' OR 'Waste' OR 'Scrap Materials') AND section contains 'materials consumed'",
+          "cma_field": "Stores and spares consumed (Indigenous)",
+          "cma_row": 44,
+          "covers_items": [
+            1
+          ]
+        },
+        {
+          "condition": "IF description contains 'Machinery Maintenance' AND section contains 'other expenses'",
+          "cma_field": "Others (Manufacturing)",
+          "cma_row": 49,
+          "covers_items": [
+            2
+          ]
+        },
+        {
+          "condition": "IF description contains ('Packing Materials' OR 'Discount Allowed' OR 'Sales Promotion') AND section contains ('selling and distribution' OR 'selling & distribution')",
+          "cma_field": "Advertisements and Sales Promotions",
+          "cma_row": 70,
+          "covers_items": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "condition": "IF description contains 'Rates & Taxes' AND section contains 'other expenses' AND NOT contains 'rent'",
+          "cma_field": "Others (Admin)",
+          "cma_row": 71,
+          "covers_items": [
+            7
+          ]
+        },
+        {
+          "condition": "IF description contains ('Interest on C.C.' OR 'Interest on Current Account' OR 'Interest on Working Capital') AND section contains 'interest expenses'",
+          "cma_field": "Interest on Fixed Loans / Term loans",
+          "cma_row": 83,
+          "covers_items": [
+            8
+          ]
+        },
+        {
+          "condition": "IF description contains 'Channel Financing' AND bank_name contains 'Axis' AND section contains 'secured'",
+          "cma_field": "Working Capital Bank Finance - Bank 1",
+          "cma_row": 131,
+          "covers_items": [
+            9
+          ]
+        },
+        {
+          "condition": "IF description contains ('Sellers Credit' OR 'Fongei') AND section contains 'term loans' AND NOT contains 'next one year'",
+          "cma_field": "Term Loan Balance Repayable after one year",
+          "cma_row": 137,
+          "covers_items": [
+            10
+          ]
+        }
+      ],
+      "section_signal_feedback": "Section metadata was CONFUSING rather than helpful. The prompt relied too heavily on section names without validating them against CMA classification rules. For example, item 7 'Rates & Taxes' appeared in 'other expenses' section but should map to row 71 (Others Admin), not row 68 (Rent, Rates and Taxes). The section name suggested row 68, but the actual CMA structure requires row 71. Similarly, items 4-6 appeared in 'selling and distribution' sections but were incorrectly classified to row 71 instead of row 70. RECOMMENDATION: Use section as a FILTER (to narrow scope) not as a DETERMINANT. Always validate the item description against the CMA field definition, not the section name.",
+      "field_grouping_feedback": "YES, field grouping would significantly help. The current flat 1-139 list creates cognitive overload and increases adjacent-field errors. Grouping by category (P&L Income, P&L COGS, P&L Manufacturing Expenses, P&L Admin Expenses, P&L Finance Costs, BS Current Assets, BS Fixed Assets, BS Current Liabilities, BS Long-term Liabilities) would: (1) Reduce search space per item, (2) Make hierarchical relationships explicit, (3) Prevent cross-category misclassification, (4) Make adjacent-field errors less likely because wrong fields would be in different groups. For example, rows 49-50-71 would be clearly separated into 'Manufacturing' vs 'Admin' groups, preventing confusion.",
+      "suggested_prompt_additions": [
+        "Scrap, waste, and byproducts ALWAYS classify to 'Stores and spares consumed' (Row 44), never to 'Others' categories.",
+        "Machinery maintenance is a subcategory of 'Others (Manufacturing)' (Row 49), distinct from 'Repairs & Maintenance' (Row 50).",
+        "Selling and distribution items including packing materials, discounts, and sales promotions map to 'Advertisements and Sales Promotions' (Row 70), not 'Others (Admin)' (Row 71).",
+        "Interest on Current Account/Working Capital loans maps to 'Interest on Fixed Loans/Term loans' (Row 83), not 'Interest on Working capital loans' (Row 84).",
+        "When classifying balance sheet items, prioritize the loan TYPE descriptor (Channel Financing, Sellers Credit, Term Loan) over the bank name to determine correct row.",
+        "Use section/sheet metadata as a FILTER to narrow scope, not as the primary determinant. Always validate item description against CMA field definition.",
+        "For ambiguous items within 5 rows of each other, apply the most specific rule first (e.g., 'Scrap' → Row 44) before defaulting to generic 'Others' categories."
+      ]
+    },
+    {
+      "pattern": "Depreciation / Fixed asset routing",
+      "prompt_weakness": "The prompt likely lacked clear distinction between TOTAL depreciation (which goes to CMA Row 63) vs. COMPONENT depreciation (which may be allocated to Manufacturing Row 56 or other categories). The prompt probably treated all depreciation items identically without considering whether they represent: (a) consolidated/total depreciation figures, (b) depreciation of manufacturing-specific assets, or (c) depreciation of corporate/general assets. Additionally, amortization was being routed to 'Other Amortisations' (Row 77) instead of recognizing that amortization of intangibles should follow the same logic as depreciation.",
+      "missing_knowledge": "Add this rule: 'Depreciation and Amortization items from the Notes to P&L section (depreciation & amortisation expense) ALWAYS route to Depreciation (CMA) Row 63, regardless of asset type. This is the consolidated P&L disclosure. However, depreciation items from the depreciation schedule sheets (Co., Deprn) should be evaluated by asset type: (1) If the description indicates TOTAL depreciation across all assets (tangible + intangible combined), route to Depreciation (Manufacturing) Row 56. (2) If the description is for a SPECIFIC asset category (Building, Software, Equipment, etc.) that is manufacturing-related, route to Row 56. (3) If the description is for a SPECIFIC asset category that is corporate/general (Software, Intangibles used company-wide), route to Row 63. (4) Amortization of intangible assets should NEVER go to Other Amortisations Row 77 unless explicitly labeled as 'other' or non-standard amortization.'",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains ('Depreciation' OR 'Amortization' OR 'Amortisation') AND sheet_name contains 'Notes to P & L' AND section contains 'depreciation & amortisation expense'",
+          "cma_field": "Depreciation (CMA)",
+          "cma_row": 63,
+          "covers_items": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "condition": "IF description contains 'Total Depreciation for the Year' AND description contains 'All Assets' AND sheet_name contains 'Co., Deprn'",
+          "cma_field": "Depreciation (Manufacturing)",
+          "cma_row": 56,
+          "covers_items": [
+            8
+          ]
+        },
+        {
+          "condition": "IF description contains 'Depreciation - Building' AND sheet_name contains 'Co., Deprn' AND section contains 'depreciation schedule - for the year'",
+          "cma_field": "Depreciation (CMA)",
+          "cma_row": 63,
+          "covers_items": [
+            6
+          ]
+        },
+        {
+          "condition": "IF description contains 'Software' AND description contains 'Intangible' AND sheet_name contains 'Co., Deprn'",
+          "cma_field": "Depreciation (Manufacturing)",
+          "cma_row": 56,
+          "covers_items": [
+            7
+          ]
+        }
+      ],
+      "section_signal_feedback": "The 'section' field was NOT used effectively. The section field is highly informative: 'Notes to P & L' sections represent consolidated P&L disclosures and should route to CMA Row 63 (consolidated). Whereas 'depreciation schedule' sections represent detailed asset-level breakdowns and require asset-type evaluation. The sheet_name field ('Notes to P & L' vs 'Co., Deprn') is the PRIMARY signal for routing logic. Items from 'Notes to P & L' should almost always go to Row 63 unless explicitly marked as manufacturing-specific. The current prompt likely weighted sheet_name and section equally or ignored the hierarchical importance of sheet_name.",
+      "field_grouping_feedback": "YES, field grouping would significantly help. The current flat list of 139 rows makes it difficult to reason about routing. Grouping by category (P&L Manufacturing Expenses, P&L Admin/Corporate Expenses, P&L Other, BS Fixed Assets, BS Intangibles, etc.) would make the logic clearer. For example, if the prompt knew that Row 56 is in 'P&L Manufacturing Expenses' and Row 63 is in 'P&L Corporate/CMA Expenses', it could apply category-level rules. Additionally, knowing that Row 77 'Other Amortisations' is a residual/catch-all category would prevent amortization items from being routed there by default.",
+      "suggested_prompt_additions": [
+        "ROUTING HIERARCHY: Items from 'Notes to P & L' sheets represent consolidated P&L line items and should route to CMA Row 63 (Depreciation CMA) UNLESS the note explicitly breaks down manufacturing vs. non-manufacturing components.",
+        "SHEET-LEVEL SIGNAL: If sheet_name is 'Notes to P & L', default to CMA Row 63 for depreciation/amortization. If sheet_name is 'Co., Deprn' (depreciation schedule), evaluate the specific asset type and whether it is manufacturing-related.",
+        "AMORTIZATION RULE: Amortization of intangible assets (Software, Patents, Goodwill, etc.) should route to Depreciation (CMA) Row 63 by default. Route to Other Amortisations Row 77 ONLY if the description explicitly indicates 'other' or non-standard amortization not related to standard intangible assets.",
+        "TOTAL vs. COMPONENT: If the description contains 'Total Depreciation' or 'All Assets' or 'Tangible + Intangible', treat it as a consolidated figure. If it names a specific asset (Building, Software, Equipment), treat it as a component and evaluate asset type.",
+        "MANUFACTURING ASSET INDICATOR: Depreciation of manufacturing-specific assets (Plant & Machinery, Factory Equipment, Manufacturing Facilities) routes to Row 56. Depreciation of corporate assets (Office Building, Corporate Software, General IT Equipment) routes to Row 63."
+      ]
+    },
+    {
+      "pattern": "Loan classification",
+      "prompt_weakness": "The prompt likely treated 'Director Loan' items found in the 'due to directors' section as a straightforward match to 'Dues from directors/partners/promoters' without recognizing that loans FROM directors can be structured as quasi-equity instruments. The section name ('due to directors') created a false anchor that overrode the need to examine the NATURE of the loan (unsecured, quasi-equity characteristics) rather than just the SOURCE (director). Additionally, the prompt did not distinguish between operational dues/payables to directors versus formal loan instruments with specific terms.",
+      "missing_knowledge": "Add this rule: 'Director Loans that are explicitly labeled as \"Director Loan\" or \"Loan from Director\" and are unsecured should be classified as Unsecured Loans - Quasi Equity (Row 152), NOT as Dues from directors (Row 235). Dues from directors typically refers to operational payables, expense reimbursements, or salary-related amounts, whereas Director Loans are formal borrowing instruments.' Additionally: 'ECGS/ECLGC guarantees indicate government-backed term lending, not working capital facilities. These should be classified based on repayment tenure: if repayable after one year, classify as Term Loan Balance Repayable after one year (Row 137).'",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains 'Director Loan' OR description contains 'Loan from Director' AND section contains 'due to directors'",
+          "cma_field": "Unsecured Loans - Quasi Equity",
+          "cma_row": 152,
+          "covers_items": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "condition": "IF description contains 'ECGS' OR description contains 'ECLGC' AND section contains 'short-term borrowings' AND description contains 'FY22' (indicating prior year balance)",
+          "cma_field": "Term Loan Balance Repayable after one year",
+          "cma_row": 137,
+          "covers_items": [
+            4
+          ]
+        }
+      ],
+      "section_signal_feedback": "The section field was MISLEADING rather than helpful. 'due to directors' section created a cognitive anchor that caused misclassification. The section should NOT be the primary determinant for loan classification. Instead, the DESCRIPTION (containing 'Director Loan') should take precedence over section placement. Recommendation: Use section as a secondary validation signal only, not as the primary classifier. The presence of 'short-term borrowings' section for item 4 was also misleading—ECGS/ECLGC loans are term loans regardless of which balance sheet section they appear in; the section may reflect current year presentation but the underlying instrument nature determines correct classification.",
+      "field_grouping_feedback": "YES, field grouping would significantly help. Currently, Row 152 (Unsecured Loans - Quasi Equity) and Row 235 (Dues from directors) are both in the 'Liabilities' category but are semantically different (one is a formal loan instrument, one is operational payables). If fields were grouped as: BS Liabilities > Borrowings > [Term Loans, Working Capital Loans, Unsecured Loans - Quasi Equity] vs. BS Liabilities > Payables > [Dues from directors], the hierarchical structure would make the distinction clearer and reduce misclassification. Similarly, Row 131 (Working Capital) vs. Row 137 (Term Loan) would be visually separated, preventing confusion.",
+      "suggested_prompt_additions": [
+        "Director Loans explicitly labeled as such are formal borrowing instruments and should be classified as Unsecured Loans - Quasi Equity (Row 152), regardless of the balance sheet section they appear in. Do not confuse them with operational dues to directors (Row 235).",
+        "Loans backed by government guarantee schemes (ECGS, ECLGC) are term loans. Classify based on repayment tenure: if repayable after one year, use Row 137 (Term Loan Balance Repayable after one year); if current year repayment, use Row 136 (Term Loan - Current Portion). Do not classify as working capital facilities.",
+        "Distinguish between LOAN INSTRUMENTS (formal borrowing with defined terms) and OPERATIONAL PAYABLES (reimbursements, salary dues, expense payables). The former goes to loan rows; the latter goes to dues/payables rows.",
+        "When an item appears in a section labeled 'due to directors', examine the description carefully. If it contains 'Loan' or 'Borrowing', it is a loan instrument, not an operational due. Prioritize description content over section name for loan classification."
+      ]
+    },
+    {
+      "pattern": "Other",
+      "prompt_weakness": "The prompt likely relied on surface-level keyword matching ('Carriage', 'Loading', 'Unloading', 'Charges') without understanding the semantic context of selling & distribution expenses. 'Carriage Outwards' and 'Scrap Loading & Unloading Charges' were incorrectly mapped to 'Freight and Transportation Charges' based on transportation keywords, but in Indian CMA accounting, these are actually distribution/sales promotion costs. The prompt also failed to distinguish between current vs. non-current receivables based on explicit temporal markers ('more than six months' vs. generic 'unsecured considered good'). For advances written off, the prompt conflated 'written off' with 'miscellaneous expenses' rather than recognizing this as a credit loss (Bad Debts).",
+      "missing_knowledge": "Add these rules to the prompt: (1) In selling & distribution expenses, 'Carriage Outwards', 'Loading', 'Unloading', and 'Scrap' handling charges are classified as Advertisements and Sales Promotions (Row 70), NOT Freight and Transportation Charges (Row 47). Freight/Transportation applies to inbound/manufacturing logistics only. (2) 'Advances Written off' in P&L notes is always Bad Debts (Row 69), not Miscellaneous Expenses written off (Row 75). (3) Trade receivables explicitly stated as '>6 months' or 'more than six months' in current assets section map to Row 208 (Current), while those in non-current sections without explicit aging map to Row 238 (Other non-current assets). (4) 'Unsecured Considered Good' without explicit aging context in non-current receivables is a classification category, not an aging bucket, and belongs in Row 238.",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains ('Carriage Outwards' OR 'Loading' OR 'Unloading' OR 'Scrap') AND section contains 'selling & distribution expenses'",
+          "cma_field": "Advertisements and Sales Promotions",
+          "cma_row": 70,
+          "covers_items": [
+            1,
+            5,
+            6
+          ]
+        },
+        {
+          "condition": "IF description contains 'Advances Written off' AND sheet contains 'Notes to P&L'",
+          "cma_field": "Bad Debts",
+          "cma_row": 69,
+          "covers_items": [
+            3
+          ]
+        },
+        {
+          "condition": "IF description contains ('Trade Receivables' OR 'Debtors') AND description contains ('> 6 months' OR 'more than six months' OR 'more than 6 months') AND section contains 'current' (not 'non-current')",
+          "cma_field": "Debtors more than 6 months",
+          "cma_row": 208,
+          "covers_items": [
+            4
+          ]
+        },
+        {
+          "condition": "IF description contains 'Unsecured Considered Good' AND sheet contains 'Notes BS' AND section contains 'non-current'",
+          "cma_field": "Other non current assets",
+          "cma_row": 238,
+          "covers_items": [
+            2
+          ]
+        }
+      ],
+      "section_signal_feedback": "The 'section' field was underutilized. It should be a PRIMARY classifier, not secondary. The section 'selling & distribution expenses' should have triggered a different mapping logic than manufacturing or admin expenses. Similarly, 'non-current' vs 'current' in the section is a critical signal that was not weighted heavily enough. The prompt should use section as a gating filter BEFORE applying keyword matching. Sheet name ('Subnotes to PL' vs 'Notes BS') should also gate the logic—P&L notes have different semantics than Balance Sheet notes.",
+      "field_grouping_feedback": "YES, field grouping by category would significantly help. The flat 139-row list obscures the logical structure. Grouping into (1) P&L Operating Expenses (Manufacturing, Admin, Selling), (2) P&L Non-Operating, (3) BS Current Assets, (4) BS Non-Current Assets, (5) BS Liabilities would allow context-aware routing. For example, once routed to 'P&L Selling & Distribution', the classifier would only consider Rows 60-75, not Row 47 (Manufacturing). This reduces false positives from keyword collision.",
+      "suggested_prompt_additions": [
+        "In Indian CMA accounting, 'Carriage Outwards', 'Loading Charges', 'Unloading Charges', and 'Scrap Handling' in the selling & distribution section are classified as Advertisements and Sales Promotions (Row 70), NOT Freight and Transportation Charges (Row 47). Freight/Transportation Charges (Row 47) applies only to inbound materials and manufacturing logistics.",
+        "Advances Written off in P&L notes always maps to Bad Debts (Row 69). Do not confuse with Miscellaneous Expenses written off (Row 75).",
+        "For trade receivables aging: If the description explicitly states '>6 months' or 'more than six months' AND appears in a current assets section, use Row 208 (Debtors more than 6 months - Current). If in a non-current section without explicit aging, use Row 238 (Other non-current assets).",
+        "Use the 'section' field as a PRIMARY routing gate before keyword matching. Section values like 'selling & distribution expenses', 'manufacturing expenses', 'current assets', 'non-current assets' should determine which subset of CMA rows are eligible candidates.",
+        "Distinguish between classification categories ('Unsecured Considered Good') and aging buckets ('>6 months'). Classification categories in non-current receivables typically map to Row 238 unless explicitly aged."
+      ]
+    },
+    {
+      "pattern": "Employee expense routing",
+      "prompt_weakness": "The prompt likely treated 'Audit Fees & Directors Remuneration' (Row 73) as a catch-all for director-related expenses without distinguishing between director compensation (which is salary) vs. audit fees (which are professional services). Additionally, the prompt may have conflated 'employee benefits expense' section header with 'Salary and staff expenses' row, when benefits like PF contributions and labour welfare should route to 'Wages' instead. The prompt lacked clear hierarchy rules for where different employee-related costs belong.",
+      "missing_knowledge": "Add this rule: 'Directors Remuneration, when found in salaries & wages subnotes or sections, ALWAYS routes to Salary and staff expenses (Row 67), NOT to Audit Fees & Directors Remuneration (Row 73). Row 73 is reserved for AUDIT FEES only.' Also add: 'Contribution to PF & Other Funds and Labour Welfare Expenses are statutory/mandatory employee benefits that are part of WAGES (Row 45), not discretionary salary expenses (Row 67). Wages include all mandatory contributions and welfare costs. Salary and staff expenses (Row 67) includes only direct compensation to employees and directors.'",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains 'Directors Remuneration' AND (sheet contains 'Subnotes to PL' OR section contains 'salaries & wages')",
+          "cma_field": "Salary and staff expenses",
+          "cma_row": 67,
+          "covers_items": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "condition": "IF description contains ('Contribution to PF' OR 'Labour Welfare Expenses' OR 'Provident Fund' OR 'Employee Welfare') AND section contains 'employee benefits expense'",
+          "cma_field": "Wages",
+          "cma_row": 45,
+          "covers_items": [
+            1,
+            2
+          ]
+        },
+        {
+          "condition": "IF description contains 'Audit Fees' AND NOT description contains 'Remuneration'",
+          "cma_field": "Audit Fees & Directors Remuneration",
+          "cma_row": 73,
+          "covers_items": []
+        }
+      ],
+      "section_signal_feedback": "The 'section' field was underutilized. 'Section: salaries & wages' is a strong signal that the item should route to salary-related rows (45 or 67), not to Row 73. The section field should be weighted heavily in routing logic. When section explicitly says 'salaries & wages', it should override generic item descriptions. The 'Sheet: Subnotes to PL' combined with 'Section: salaries & wages' is a definitive signal that Directors Remuneration belongs in Row 67, not Row 73.",
+      "field_grouping_feedback": "Yes, grouping the 139 CMA fields by category would significantly help. Currently, the flat numbered list makes it unclear that Rows 45, 67, and 73 are all in the 'P&L Employee/Admin Expenses' category but serve different purposes. A hierarchical structure like 'P&L > Operating Expenses > Employee Costs > [Wages (45), Salary and staff expenses (67)]' and 'P&L > Operating Expenses > Professional Services > [Audit Fees & Directors Remuneration (73)]' would make the routing logic clearer and reduce confusion about which row is appropriate for director compensation vs. audit services.",
+      "suggested_prompt_additions": [
+        "Directors Remuneration found in 'salaries & wages' sections or subnotes MUST route to Row 67 (Salary and staff expenses), never to Row 73. Row 73 is for audit fees only.",
+        "Wages (Row 45) includes all mandatory employee benefits, statutory contributions (PF, ESI, gratuity), and labour welfare expenses. These are distinct from discretionary salary expenses.",
+        "Salary and staff expenses (Row 67) includes direct compensation to employees and directors. When Directors Remuneration appears in salary subnotes, it is direct compensation and belongs in Row 67.",
+        "Use the 'section' field as a primary routing signal. If section explicitly states 'salaries & wages', prioritize routing to salary-related rows (45 or 67) over other possibilities.",
+        "Audit Fees & Directors Remuneration (Row 73) should only receive items explicitly about audit fees or audit-related professional services. Director compensation is NOT audit-related and should not route here."
+      ]
+    },
+    {
+      "pattern": "Statutory dues / provisions",
+      "prompt_weakness": "The prompt likely treated TDS and TCS as generic 'statutory liabilities' without distinguishing that TDS/TCS paid by the company (deducted from payments made) are advance tax payments, not payables. The prompt conflated 'tax deducted at source' (a tax mechanism) with 'tax payable' (a liability). The section name 'tds & tcs payable' was misleading—these are advance taxes paid, not amounts owed.",
+      "missing_knowledge": "Add this rule: 'TDS (Tax Deducted at Source) and TCS (Tax Collected at Source) paid by the company are classified as Advance Income Tax (Row 221), not as statutory payables. TDS/TCS represents tax already paid in advance on behalf of the company and is recoverable against final tax liability. Only TDS/TCS that the company owes to the government (collected from third parties but not yet remitted) should be classified as Other statutory liabilities (Row 246).'",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains ('TDS' OR 'Tax Deducted at Source' OR 'TCS' OR 'Tax Collected at Source') AND (section contains 'tax deducted @ source' OR section contains 'tds & tcs payable') AND (description does NOT contain 'payable to government' OR description does NOT contain 'liability to remit')",
+          "cma_field": "Advance Income Tax",
+          "cma_row": 221,
+          "covers_items": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "condition": "IF description contains ('TDS' OR 'TCS') AND section contains 'statutory' AND (description contains 'payable to government' OR description contains 'liability to remit' OR description contains 'outstanding')",
+          "cma_field": "Other statutory liabilities (due within 1 year)",
+          "cma_row": 246,
+          "covers_items": []
+        }
+      ],
+      "section_signal_feedback": "The section field was confusing and counterintuitive. 'tds & tcs payable' suggests a liability owed, but the items are actually advance taxes paid. The section name should have signaled 'advance tax' or 'tax paid in advance' rather than 'payable'. Section names should reflect the accounting nature (advance vs. liability) not just the tax mechanism. The section signal was UNHELPFUL and led to misclassification.",
+      "field_grouping_feedback": "Yes, grouping the 139 CMA fields by category would help significantly. A hierarchical structure like 'BS Liabilities > Current Liabilities > Tax Liabilities > [Advance Income Tax vs. Statutory Payables]' would make it clearer that TDS belongs in 'Advance Tax' (an asset-like recovery item) rather than 'Statutory Payables' (a true liability). Flat numbering obscures the semantic relationship between related fields.",
+      "suggested_prompt_additions": [
+        "TDS (Tax Deducted at Source) and TCS (Tax Collected at Source) paid or deducted by the company are classified as Advance Income Tax (Row 221), representing tax paid in advance that is recoverable against the company's final tax liability.",
+        "Distinguish between: (1) TDS/TCS paid by the company = Advance Income Tax (Row 221), and (2) TDS/TCS collected by the company but not yet remitted to government = Other statutory liabilities (Row 246).",
+        "When the section name contains 'tax deducted @ source' or 'tds & tcs payable', check the item description for context: if it represents tax already paid/deducted, classify as Advance Income Tax; if it represents an outstanding liability to remit, classify as Other statutory liabilities.",
+        "Advance taxes (including TDS, TCS, advance income tax payments) are classified separately from statutory payables because they represent amounts already paid and recoverable, not amounts owed to the government."
+      ]
+    },
+    {
+      "pattern": "Others overflow",
+      "prompt_weakness": "The prompt likely lacked specific guidance on distinguishing between 'Others' categories and more specific line items. When uncertain, the classifier defaulted to 'Others' as a catch-all, rather than applying contextual reasoning about what the item actually represents. For Item 1, 'Leave Encashment' was misclassified because the prompt didn't clarify that employee benefit provisions belong under Provision for Taxation (a broader provision category) rather than Other current liabilities. For Items 2-3, 'Packing Materials' was misclassified because the prompt didn't establish that packing materials used in selling/distribution are part of promotional/sales activities, not manufacturing.",
+      "missing_knowledge": "Add these specific rules: (1) 'Leave Encashment and other employee benefit provisions, even when labeled as short-term, should be classified under Provision for Taxation (Row 244) as they are provisions for employee-related obligations.' (2) 'Packing Materials in the selling and distribution expenses section are part of product presentation and customer delivery, therefore classify under Advertisements and Sales Promotions (Row 70), not manufacturing or others.' (3) 'When an item appears in a subnotes section under a specific expense category, prioritize matching it to a specific CMA row within that category rather than defaulting to Others.'",
+      "deterministic_rules": [
+        {
+          "condition": "IF description contains 'Leave Encashment' OR 'Employee Benefits' OR 'Gratuity' OR 'Leave Provision' AND sheet_name contains 'Notes BS' AND section contains 'provision for employee benefits'",
+          "cma_field": "Provision for Taxation",
+          "cma_row": 244,
+          "covers_items": [
+            1
+          ]
+        },
+        {
+          "condition": "IF description contains 'Packing Materials' AND sheet_name contains 'Subnotes to PL' AND section contains 'selling and distribution expenses'",
+          "cma_field": "Advertisements and Sales Promotions",
+          "cma_row": 70,
+          "covers_items": [
+            2,
+            3
+          ]
+        }
+      ],
+      "section_signal_feedback": "The section and sheet_name fields were underutilized. They should be PRIMARY signals, not secondary. The prompt should establish a hierarchy: (1) If section explicitly names a category (e.g., 'selling and distribution expenses'), items in that section should map to specific rows within that P&L section, not to 'Others'. (2) Sheet_name ('Notes BS' vs 'Subnotes to PL') is a critical signal for determining whether an item is a balance sheet provision or a P&L expense detail. The prompt should use sheet_name to narrow the field set BEFORE matching descriptions.",
+      "field_grouping_feedback": "Yes, grouping the 139 CMA fields by category would significantly improve accuracy. The current flat numbered list (Row 1-250) makes it easy to default to 'Others' when uncertain. A hierarchical structure like 'P&L > Selling & Distribution Expenses > [Row 70: Advertisements and Sales Promotions, Row 71: Freight & Logistics, Row 72: Others]' would force the classifier to reason within the correct category first, then select the specific row. This would eliminate the 'Others overflow' pattern by making 'Others' a last resort within a bounded category, not a global catch-all.",
+      "suggested_prompt_additions": [
+        "When an item appears in a subnotes section under a specific P&L expense category (e.g., 'selling and distribution expenses'), ALWAYS attempt to map it to a specific CMA row within that category before using 'Others'. Use the section name as a primary filter.",
+        "Packing Materials, packaging, and product presentation costs in the selling and distribution section are classified as Advertisements and Sales Promotions (Row 70), as they are part of customer-facing delivery and brand presentation, not manufacturing.",
+        "Employee benefit provisions (Leave Encashment, Gratuity, Bonus Provisions) are classified under Provision for Taxation (Row 244) regardless of whether they are labeled as short-term or long-term, as they represent provisions for employee-related obligations.",
+        "Use the sheet_name field as a primary routing signal: 'Notes BS' items route to Balance Sheet rows (typically 200+), 'Subnotes to PL' items route to P&L rows (typically 1-150). This prevents cross-category misclassification.",
+        "The 'Others' category should only be used when an item cannot be reasonably mapped to any specific category within its section. If an item's section is known, 'Others' should be the last resort within that section, not a global default."
+      ]
+    }
+  ],
+  "token_usage": {
+    "total_input": 6380,
+    "total_output": 8912
+  }
+}

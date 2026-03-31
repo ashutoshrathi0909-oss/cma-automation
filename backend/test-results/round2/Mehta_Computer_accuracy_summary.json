@@ -1,0 +1,12 @@
+{
+  "company": "Mehta_Computer",
+  "industry": "trading",
+  "total_items": 74,
+  "correct": 53,
+  "wrong": 20,
+  "doubts": 1,
+  "accuracy_pct": 71.62,
+  "elapsed_seconds": 171.26,
+  "total_tokens": 112057,
+  "run_date": "2026-03-27 02:39"
+}

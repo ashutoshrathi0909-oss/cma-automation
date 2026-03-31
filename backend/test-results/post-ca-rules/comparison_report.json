@@ -1,0 +1,195 @@
+{
+  "comparison": [
+    {
+      "company": "BCIPL",
+      "before_accuracy": 63.84,
+      "after_accuracy": 67.86,
+      "delta": 4.019999999999996,
+      "before_correct": 143,
+      "after_correct": 152,
+      "before_wrong": 72,
+      "after_wrong": 69,
+      "total": 224
+    },
+    {
+      "company": "Dynamic_Air",
+      "before_accuracy": 0,
+      "after_accuracy": 80.0,
+      "delta": 80.0,
+      "before_correct": 0,
+      "after_correct": 184,
+      "before_wrong": 229,
+      "after_wrong": 40,
+      "total": 230
+    },
+    {
+      "company": "Mehta_Computer",
+      "before_accuracy": 1.35,
+      "after_accuracy": 74.32,
+      "delta": 72.97,
+      "before_correct": 1,
+      "after_correct": 55,
+      "before_wrong": 70,
+      "after_wrong": 19,
+      "total": 74
+    },
+    {
+      "company": "INPL",
+      "before_accuracy": 1.61,
+      "after_accuracy": 20.97,
+      "delta": 19.36,
+      "before_correct": 3,
+      "after_correct": 39,
+      "before_wrong": 182,
+      "after_wrong": 139,
+      "total": 186
+    },
+    {
+      "company": "Kurunji_Retail",
+      "before_accuracy": 0,
+      "after_accuracy": 26.47,
+      "delta": 26.47,
+      "before_correct": 0,
+      "after_correct": 36,
+      "before_wrong": 46,
+      "after_wrong": 61,
+      "total": 136
+    },
+    {
+      "company": "MSL",
+      "before_accuracy": 2.25,
+      "after_accuracy": 33.64,
+      "delta": 31.39,
+      "before_correct": 5,
+      "after_correct": 37,
+      "before_wrong": 217,
+      "after_wrong": 73,
+      "total": 110
+    },
+    {
+      "company": "SLIPL",
+      "before_accuracy": 0,
+      "after_accuracy": 30.77,
+      "delta": 30.77,
+      "before_correct": 0,
+      "after_correct": 20,
+      "before_wrong": 113,
+      "after_wrong": 43,
+      "total": 65
+    },
+    {
+      "company": "SR_Papers",
+      "before_accuracy": 3.05,
+      "after_accuracy": 31.48,
+      "delta": 28.43,
+      "before_correct": 5,
+      "after_correct": 68,
+      "before_wrong": 157,
+      "after_wrong": 145,
+      "total": 216
+    },
+    {
+      "company": "SSSS",
+      "before_accuracy": 9.52,
+      "after_accuracy": 21.77,
+      "delta": 12.25,
+      "before_correct": 6,
+      "after_correct": 64,
+      "before_wrong": 56,
+      "after_wrong": 217,
+      "total": 294
+    }
+  ],
+  "all_summaries": [
+    {
+      "company": "BCIPL",
+      "industry": "manufacturing",
+      "total_items": 224,
+      "correct": 152,
+      "wrong": 69,
+      "doubts": 3,
+      "accuracy_pct": 67.86,
+      "elapsed_seconds": 506.34
+    },
+    {
+      "company": "Dynamic_Air",
+      "industry": "manufacturing",
+      "total_items": 230,
+      "correct": 184,
+      "wrong": 40,
+      "doubts": 6,
+      "accuracy_pct": 80.0,
+      "elapsed_seconds": 459.48
+    },
+    {
+      "company": "Mehta_Computer",
+      "industry": "trading",
+      "total_items": 74,
+      "correct": 55,
+      "wrong": 19,
+      "doubts": 0,
+      "accuracy_pct": 74.32,
+      "elapsed_seconds": 197.16
+    },
+    {
+      "company": "INPL",
+      "industry": "manufacturing",
+      "total_items": 186,
+      "correct": 39,
+      "wrong": 139,
+      "doubts": 8,
+      "accuracy_pct": 20.97,
+      "elapsed_seconds": 419.01
+    },
+    {
+      "company": "Kurunji_Retail",
+      "industry": "trading",
+      "total_items": 136,
+      "correct": 36,
+      "wrong": 61,
+      "doubts": 39,
+      "accuracy_pct": 26.47,
+      "elapsed_seconds": 276.33
+    },
+    {
+      "company": "MSL",
+      "industry": "manufacturing",
+      "total_items": 110,
+      "correct": 37,
+      "wrong": 73,
+      "doubts": 0,
+      "accuracy_pct": 33.64,
+      "elapsed_seconds": 224.84
+    },
+    {
+      "company": "SLIPL",
+      "industry": "manufacturing",
+      "total_items": 65,
+      "correct": 20,
+      "wrong": 43,
+      "doubts": 2,
+      "accuracy_pct": 30.77,
+      "elapsed_seconds": 169.79
+    },
+    {
+      "company": "SR_Papers",
+      "industry": "manufacturing",
+      "total_items": 216,
+      "correct": 68,
+      "wrong": 145,
+      "doubts": 3,
+      "accuracy_pct": 31.48,
+      "elapsed_seconds": 449.31
+    },
+    {
+      "company": "SSSS",
+      "industry": "manufacturing",
+      "total_items": 294,
+      "correct": 64,
+      "wrong": 217,
+      "doubts": 13,
+      "accuracy_pct": 21.77,
+      "elapsed_seconds": 668.03
+    }
+  ]
+}

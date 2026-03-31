@@ -1,0 +1,283 @@
+# EXCEL DOCUMENTATION FOR AI
+File Name: MyData.xlsm
+GOAL: Explain the logic, data flow, and schema of this workbook.
+
+## MACROS / VBA
+⚠️ This workbook contains Macros (VBA). The Python script cannot read VBA code text directly.
+USER INSTRUCTION: Please copy the VBA code manually from the Developer tab and paste it after this report.
+
+--- SHEET: Details ---
+### Columns:
+Col A: '='INPUT SHEET'!B7'
+
+### Formulas & Logic:
+- Column B uses logic: =Form_IV!E8
+- Column C uses logic: =Form_IV!F8
+- Column D uses logic: =Form_IV!G8
+- Column E uses logic: =Form_IV!H8
+- Column F uses logic: =Form_IV!I8
+- Column G uses logic: =Form_IV!J8
+- Column H uses logic: =Form_IV!K8
+- Column I uses logic: =Form_IV!L8
+- Column J uses logic: =Form_IV!M8
+- Column K uses logic: =Form_IV!N8
+- Column L uses logic: =Form_IV!O8
+- Column M uses logic: =Form_IV!P8
+
+--- SHEET: TL ---
+### Columns:
+Col A: '='INPUT SHEET'!B7'
+
+### Formulas & Logic:
+- Column D uses logic: =0
+- Column H uses logic: =0
+- Column B uses logic: =D5
+- Column C uses logic: =$C$4-E[ROW]
+- Column E uses logic: =0
+- Column F uses logic: =H5
+- Column G uses logic: =0
+- Column I uses logic: =H[ROW]*$I$4/12
+
+--- SHEET: INPUT SHEET ---
+### Columns:
+Col A: 'Audited'
+
+### Formulas & Logic:
+- Column C uses logic: =B[ROW]+1
+- Column D uses logic: =C[ROW]+1
+- Column E uses logic: =D[ROW]+1
+- Column F uses logic: =E[ROW]+1
+- Column G uses logic: =F[ROW]+1
+- Column H uses logic: =G[ROW]+1
+- Column I uses logic: =H[ROW]+1
+- Column J uses logic: =I[ROW]+1
+- Column K uses logic: =J[ROW]+1
+- Column L uses logic: =K[ROW]+1
+- Column M uses logic: =L[ROW]+1
+
+--- SHEET: Summary spread ---
+### Columns:
+Col A: 'Name of the customer :', Col B: '='INPUT SHEET'!B7'
+
+### Formulas & Logic:
+- Column B uses logic: ='INPUT SHEET'!B11
+- Column C uses logic: ='INPUT SHEET'!C8
+- Column D uses logic: ='INPUT SHEET'!D8
+- Column E uses logic: ='INPUT SHEET'!E8
+- Column F uses logic: ='INPUT SHEET'!F8
+- Column G uses logic: ='INPUT SHEET'!G8
+- Column H uses logic: ='INPUT SHEET'!H8
+- Column I uses logic: ='INPUT SHEET'!I8
+- Column J uses logic: ='INPUT SHEET'!J8
+- Column K uses logic: ='INPUT SHEET'!K8
+- Column L uses logic: ='INPUT SHEET'!L8
+- Column M uses logic: ='INPUT SHEET'!M8
+- Column O uses logic: =B[ROW]
+- Column P uses logic: =C[ROW]
+- Column Q uses logic: =D[ROW]
+- Column R uses logic: =E[ROW]
+- Column S uses logic: =F[ROW]
+- Column T uses logic: =G[ROW]
+- Column U uses logic: =H[ROW]
+- Column V uses logic: =I[ROW]
+- Column W uses logic: =J[ROW]
+- Column X uses logic: =K[ROW]
+- Column Y uses logic: =L[ROW]
+- Column Z uses logic: =M[ROW]
+
+--- SHEET: Cash flows ---
+### Columns:
+Col C: 'CASH FLOW STATEMENT'
+
+### Formulas & Logic:
+- Column C uses logic: ='INPUT SHEET'!B7
+- Column B uses logic: ='INPUT SHEET'!A8
+- Column D uses logic: ='INPUT SHEET'!D8
+- Column E uses logic: ='INPUT SHEET'!E8
+- Column F uses logic: ='INPUT SHEET'!F8
+- Column G uses logic: ='INPUT SHEET'!G8
+- Column H uses logic: ='INPUT SHEET'!H8
+- Column I uses logic: ='INPUT SHEET'!I8
+- Column J uses logic: ='INPUT SHEET'!J8
+- Column K uses logic: ='INPUT SHEET'!K8
+- Column L uses logic: ='INPUT SHEET'!L8
+- Column M uses logic: ='INPUT SHEET'!M8
+
+--- SHEET: Key Financials ---
+### Columns:
+Col A: 'KEY FINANCIAL INDICATORS'
+
+### Formulas & Logic:
+- Column A uses logic: =Form_II!C4
+- Column B uses logic: ='INPUT SHEET'!B7
+- Column C uses logic: ='INPUT SHEET'!B10
+- Column D uses logic: ='INPUT SHEET'!C10
+- Column E uses logic: ='INPUT SHEET'!D10
+- Column F uses logic: ='INPUT SHEET'!E10
+- Column G uses logic: ='INPUT SHEET'!F10
+- Column H uses logic: ='INPUT SHEET'!G10
+- Column I uses logic: ='INPUT SHEET'!H10
+- Column J uses logic: ='INPUT SHEET'!I10
+- Column K uses logic: ='INPUT SHEET'!J10
+- Column L uses logic: ='INPUT SHEET'!K10
+- Column M uses logic: ='INPUT SHEET'!L10
+- Column N uses logic: ='INPUT SHEET'!M10
+
+--- SHEET: Form_IV ---
+### Columns:
+Col A: 'FORM IV'
+
+### Formulas & Logic:
+- Column C uses logic: =Form_II!C[ROW]
+- Column D uses logic: ='INPUT SHEET'!B7
+- Column E uses logic: ='INPUT SHEET'!B10
+- Column F uses logic: ='INPUT SHEET'!C10
+- Column G uses logic: ='INPUT SHEET'!D10
+- Column H uses logic: ='INPUT SHEET'!E10
+- Column I uses logic: ='INPUT SHEET'!F10
+- Column J uses logic: ='INPUT SHEET'!G10
+- Column K uses logic: ='INPUT SHEET'!H10
+- Column L uses logic: ='INPUT SHEET'!I10
+- Column M uses logic: ='INPUT SHEET'!J10
+- Column N uses logic: ='INPUT SHEET'!K10
+- Column O uses logic: ='INPUT SHEET'!L10
+- Column P uses logic: ='INPUT SHEET'!M10
+- Column B uses logic: =Form_III!C69
+
+--- SHEET: Trend Analysis ---
+### Columns:
+Col A: 'Trend Analysis of Components of Cost '
+
+### Formulas & Logic:
+- Column A uses logic: ='INPUT SHEET'!A10
+- Column B uses logic: ='INPUT SHEET'!B10
+- Column C uses logic: ='INPUT SHEET'!C10
+- Column D uses logic: ='INPUT SHEET'!D10
+- Column E uses logic: ='INPUT SHEET'!E10
+- Column F uses logic: ='INPUT SHEET'!F10
+- Column G uses logic: ='INPUT SHEET'!G10
+- Column H uses logic: ='INPUT SHEET'!H10
+- Column I uses logic: ='INPUT SHEET'!I10
+- Column J uses logic: ='INPUT SHEET'!J10
+- Column K uses logic: ='INPUT SHEET'!K10
+- Column L uses logic: ='INPUT SHEET'!L10
+- Column M uses logic: ='INPUT SHEET'!M10
+
+--- SHEET: Form_II ---
+### Columns:
+Col B: 'ASSESSMENT OF WORKING CAPITAL REQUIREMENTS'
+
+### Formulas & Logic:
+- Column D uses logic: ='INPUT SHEET'!B7
+- Column E uses logic: ='INPUT SHEET'!B10
+- Column F uses logic: ='INPUT SHEET'!C10
+- Column G uses logic: ='INPUT SHEET'!D10
+- Column H uses logic: ='INPUT SHEET'!E10
+- Column I uses logic: ='INPUT SHEET'!F10
+- Column J uses logic: ='INPUT SHEET'!G10
+- Column K uses logic: ='INPUT SHEET'!H10
+- Column L uses logic: ='INPUT SHEET'!I10
+- Column M uses logic: ='INPUT SHEET'!J10
+- Column N uses logic: ='INPUT SHEET'!K10
+- Column O uses logic: ='INPUT SHEET'!L10
+- Column P uses logic: ='INPUT SHEET'!M10
+
+--- SHEET: Form_III ---
+### Columns:
+Col A: 'FORM III - ANALYSIS OF BALANCE SHEET'
+
+### Formulas & Logic:
+- Column C uses logic: =Form_II!C4
+- Column D uses logic: ='INPUT SHEET'!B7
+- Column G uses logic: =Form_II!G[ROW]
+- Column E uses logic: ='INPUT SHEET'!B10
+- Column F uses logic: ='INPUT SHEET'!C10
+- Column H uses logic: ='INPUT SHEET'!E10
+- Column I uses logic: ='INPUT SHEET'!F10
+- Column J uses logic: ='INPUT SHEET'!G10
+- Column K uses logic: ='INPUT SHEET'!H10
+- Column L uses logic: ='INPUT SHEET'!I10
+- Column M uses logic: ='INPUT SHEET'!J10
+- Column N uses logic: ='INPUT SHEET'!K10
+- Column O uses logic: ='INPUT SHEET'!L10
+- Column P uses logic: ='INPUT SHEET'!M10
+- Column B uses logic: ='INPUT SHEET'!A242
+
+--- SHEET: Form_V ---
+### Columns:
+Col A: 'FORM V'
+
+### Formulas & Logic:
+- Column C uses logic: =Form_II!C[ROW]
+- Column D uses logic: ='INPUT SHEET'!B7
+- Column E uses logic: ='INPUT SHEET'!B10
+- Column F uses logic: ='INPUT SHEET'!C10
+- Column G uses logic: ='INPUT SHEET'!D10
+- Column H uses logic: ='INPUT SHEET'!E10
+- Column I uses logic: ='INPUT SHEET'!F10
+- Column J uses logic: ='INPUT SHEET'!G10
+- Column K uses logic: ='INPUT SHEET'!H10
+- Column L uses logic: ='INPUT SHEET'!I10
+- Column M uses logic: ='INPUT SHEET'!J10
+- Column N uses logic: ='INPUT SHEET'!K10
+- Column O uses logic: ='INPUT SHEET'!L10
+- Column P uses logic: ='INPUT SHEET'!M10
+
+--- SHEET: Form_VI ---
+### Columns:
+Col A: 'FORM VI'
+
+### Formulas & Logic:
+- Column C uses logic: =Form_II!C[ROW]
+- Column D uses logic: ='INPUT SHEET'!B7
+- Column E uses logic: ='INPUT SHEET'!C10
+- Column F uses logic: ='INPUT SHEET'!D10
+- Column G uses logic: ='INPUT SHEET'!E10
+- Column H uses logic: ='INPUT SHEET'!F10
+- Column I uses logic: ='INPUT SHEET'!G10
+- Column J uses logic: ='INPUT SHEET'!H10
+- Column K uses logic: ='INPUT SHEET'!I10
+- Column L uses logic: ='INPUT SHEET'!J10
+- Column M uses logic: ='INPUT SHEET'!K10
+- Column N uses logic: ='INPUT SHEET'!L10
+- Column O uses logic: ='INPUT SHEET'!M10
+
+--- SHEET: Financials improper ---
+### Columns:
+
+
+### Formulas & Logic:
+- Column C uses logic: =Form_II!E15
+- Column D uses logic: =Form_II!F15
+- Column E uses logic: =Form_II!H15
+- Column F uses logic: =#N/A
+- Column I uses logic: ='Financials improper'!E6
+- Column J uses logic: ="$#REF!.S44"
+- Column K uses logic: ="$#REF!.Z44"
+- Column H uses logic: =(1.0002)^365
+
+--- SHEET: CMAcode ---
+### Columns:
+
+
+### Formulas & Logic:
+- No formulas found in top 20 rows (Raw Data).
+
+--- SHEET: assumptions ---
+### Columns:
+Col A: '='INPUT SHEET'!B7'
+
+### Formulas & Logic:
+- Column B uses logic: =Form_IV!E8
+- Column C uses logic: =Form_IV!F8
+- Column D uses logic: =Form_IV!G8
+- Column E uses logic: =Form_IV!H8
+- Column F uses logic: =Form_IV!I8
+- Column G uses logic: =Form_IV!J8
+- Column H uses logic: =Form_IV!K8
+- Column I uses logic: =Form_IV!L8
+- Column J uses logic: =Form_IV!M8
+- Column K uses logic: =Form_IV!N8
+- Column L uses logic: =Form_IV!O8
+- Column M uses logic: =Form_IV!P8
+

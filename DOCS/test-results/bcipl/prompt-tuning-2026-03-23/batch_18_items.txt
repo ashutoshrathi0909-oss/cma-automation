@@ -1,0 +1,90 @@
+Item 1:
+  Description: Carriage Outwards (FY23)
+  Amount: Rs 29,988,329.33
+  Section: selling & distribution expenses
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 2:
+  Description: Packing Materials @ 12% (FY23)
+  Amount: Rs 7,103,358.35
+  Section: selling and distribution expenses - subnotes
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 3:
+  Description: Packing Materials @ 18% (FY23)
+  Amount: Rs 4,275,087.00
+  Section: selling and distribution expenses - subnotes
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 4:
+  Description: Scrap Loading & Unloading Charges (FY23)
+  Amount: Rs 3,997,979.00
+  Section: selling & distribution expenses
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 5:
+  Description: Discount Allowed (FY23)
+  Amount: Rs 51,192.00
+  Section: selling & distribution expenses
+  Sheet: Subnotes to PL
+  Financial Year: 2023
+Item 6:
+  Description: Trade Receivables 6 months to 1 year (FY23)
+  Amount: Rs 448,688.00
+  Section: note 14 - trade receivables
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 7:
+  Description: Cash on Hand (FY23)
+  Amount: Rs 132,336.00
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 8:
+  Description: Balance With Bank (FY23)
+  Amount: Rs 24,885.40
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 9:
+  Description: Fixed Deposits (FY23)
+  Amount: Rs 11,400,874.00
+  Section: note 15 - cash and bank
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 10:
+  Description: Dues to MSME (FY23)
+  Amount: Rs 5,460,797.38
+  Section: note 6 - trade payables
+  Sheet: Notes BS (2)
+  Financial Year: 2023
+Item 11:
+  Description: Insurance (FY23)
+  Amount: Rs 1,441,749.08
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 12:
+  Description: Consultation Fees (FY23)
+  Amount: Rs 13,412,187.24
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 13:
+  Description: Rent (in Admin row) (FY23)
+  Amount: Rs 1,296,708.00
+  Section: note 27
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 14:
+  Description: Administrative & General Expenses (FY23)
+  Amount: Rs 22,340,441.76
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2023
+Item 15:
+  Description: Statutory Audit (FY23)
+  Amount: Rs 400,000.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2023

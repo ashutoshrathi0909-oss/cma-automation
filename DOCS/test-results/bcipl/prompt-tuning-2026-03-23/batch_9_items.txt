@@ -1,0 +1,90 @@
+Item 1:
+  Description: Labour Welfare Expenses (FY22)
+  Amount: Rs 9,222,204.12
+  Section: employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 2:
+  Description: Directors Remuneration (FY22)
+  Amount: Rs 16,643,548.00
+  Section: salaries & wages
+  Sheet: Subnotes to PL
+  Financial Year: 2022
+Item 3:
+  Description: Deferred Tax Liability (BS FY22)
+  Amount: Rs 8,160,624.33
+  Section: note 4 - deferred tax
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 4:
+  Description: Yes Bank Channel Finance (FY22)
+  Amount: Rs 83,262,597.35
+  Section: secured
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 5:
+  Description: TATA Capital Financial Services Ltd (FY22)
+  Amount: Rs 14,719,364.54
+  Section: secured
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 6:
+  Description: Current Maturities of LT Debts (FY22)
+  Amount: Rs 41,153,739.00
+  Section: note 7 - other current liabilities
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 7:
+  Description: Axis Bank ECGS/ECLGC (FY22)
+  Amount: Rs 11,875,014.00
+  Section: note 5 - short-term borrowings
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 8:
+  Description: Gross Block - Office Equipment & CC Cameras (At 31st March)
+  Amount: Rs 3,623,395.50
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 9:
+  Description: Gross Block - Vehicles (At 31st March)
+  Amount: Rs 5,459,484.00
+  Section: depreciation schedule - gross block
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 10:
+  Description: Job Work Charges & Contract Labour (FY22)
+  Amount: Rs 20,516,540.23
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 11:
+  Description: Power & Fuel (FY22)
+  Amount: Rs 9,832,594.44
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 12:
+  Description: Manufacturing Expenses (FY22)
+  Amount: Rs 356,340.00
+  Section: tax audit
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 13:
+  Description: Machinery Maintenance (FY22)
+  Amount: Rs 2,209,556.77
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 14:
+  Description: Opening Finished Goods (FY22)
+  Amount: Rs 30,139,462.68
+  Section: note 23 - employee benefits expense
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 15:
+  Description: Axis Term Loan No. 312175 (FY22)
+  Amount: Rs 16,437,029.00
+  Section: term loans from banks  - secured: non current current non current current
+  Sheet: Notes BS (2)
+  Financial Year: 2022

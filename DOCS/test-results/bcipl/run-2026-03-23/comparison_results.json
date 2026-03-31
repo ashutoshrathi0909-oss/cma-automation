@@ -1,0 +1,2587 @@
+{
+  "summary": {
+    "total": 738,
+    "blanks": 405,
+    "matches": 11,
+    "mismatches": 322,
+    "match_pct": 3.3
+  },
+  "mismatches": [
+    {
+      "row": 21,
+      "col": "D",
+      "gen": null,
+      "gt": 0.05953832,
+      "match": false,
+      "reason": "gen=blank, gt=0.05953832"
+    },
+    {
+      "row": 22,
+      "col": "B",
+      "gen": 546.33,
+      "gt": 96.5766559,
+      "match": false,
+      "reason": "gen=546.3300, gt=96.5767, diff=465.70%"
+    },
+    {
+      "row": 22,
+      "col": "C",
+      "gen": 1692.83,
+      "gt": 234.6388,
+      "match": false,
+      "reason": "gen=1692.8300, gt=234.6388, diff=621.46%"
+    },
+    {
+      "row": 22,
+      "col": "D",
+      "gen": 1104.33,
+      "gt": 256.95320000000004,
+      "match": false,
+      "reason": "gen=1104.3300, gt=256.9532, diff=329.78%"
+    },
+    {
+      "row": 23,
+      "col": "B",
+      "gen": null,
+      "gt": 8.8566,
+      "match": false,
+      "reason": "gen=blank, gt=8.8566"
+    },
+    {
+      "row": 23,
+      "col": "C",
+      "gen": null,
+      "gt": 2.4389,
+      "match": false,
+      "reason": "gen=blank, gt=2.4389"
+    },
+    {
+      "row": 23,
+      "col": "D",
+      "gen": 0.77,
+      "gt": 7.44229,
+      "match": false,
+      "reason": "gen=0.7700, gt=7.4423, diff=89.65%"
+    },
+    {
+      "row": 24,
+      "col": "B",
+      "gen": null,
+      "gt": 105.4332559,
+      "match": false,
+      "reason": "gen=blank, gt=105.4332559"
+    },
+    {
+      "row": 24,
+      "col": "C",
+      "gen": null,
+      "gt": 237.0777,
+      "match": false,
+      "reason": "gen=blank, gt=237.0777"
+    },
+    {
+      "row": 24,
+      "col": "D",
+      "gen": null,
+      "gt": 264.39549000000005,
+      "match": false,
+      "reason": "gen=blank, gt=264.39549000000005"
+    },
+    {
+      "row": 25,
+      "col": "B",
+      "gen": 0.06,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.06, gt=blank"
+    },
+    {
+      "row": 26,
+      "col": "B",
+      "gen": null,
+      "gt": 105.4332559,
+      "match": false,
+      "reason": "gen=blank, gt=105.4332559"
+    },
+    {
+      "row": 26,
+      "col": "C",
+      "gen": null,
+      "gt": 237.0777,
+      "match": false,
+      "reason": "gen=blank, gt=237.0777"
+    },
+    {
+      "row": 26,
+      "col": "D",
+      "gen": null,
+      "gt": 264.39549000000005,
+      "match": false,
+      "reason": "gen=blank, gt=264.39549000000005"
+    },
+    {
+      "row": 30,
+      "col": "B",
+      "gen": 1.38,
+      "gt": 0.0812858,
+      "match": false,
+      "reason": "gen=1.3800, gt=0.0813, diff=1597.71%"
+    },
+    {
+      "row": 30,
+      "col": "C",
+      "gen": 8.559999999999999,
+      "gt": 0.0579,
+      "match": false,
+      "reason": "gen=8.5600, gt=0.0579, diff=14684.11%"
+    },
+    {
+      "row": 30,
+      "col": "D",
+      "gen": 0.08,
+      "gt": 0.0643,
+      "match": false,
+      "reason": "gen=0.0800, gt=0.0643, diff=24.42%"
+    },
+    {
+      "row": 31,
+      "col": "B",
+      "gen": 0.56,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.56, gt=blank"
+    },
+    {
+      "row": 31,
+      "col": "D",
+      "gen": 1.74,
+      "gt": null,
+      "match": false,
+      "reason": "gen=1.74, gt=blank"
+    },
+    {
+      "row": 32,
+      "col": "C",
+      "gen": null,
+      "gt": 0.1471,
+      "match": false,
+      "reason": "gen=blank, gt=0.1471"
+    },
+    {
+      "row": 34,
+      "col": "B",
+      "gen": 12.77,
+      "gt": 0.0101926,
+      "match": false,
+      "reason": "gen=12.7700, gt=0.0102, diff=125186.97%"
+    },
+    {
+      "row": 34,
+      "col": "C",
+      "gen": 120.18,
+      "gt": 0.0187,
+      "match": false,
+      "reason": "gen=120.1800, gt=0.0187, diff=642573.80%"
+    },
+    {
+      "row": 34,
+      "col": "D",
+      "gen": 301.3699999999999,
+      "gt": 0.1479,
+      "match": false,
+      "reason": "gen=301.3700, gt=0.1479, diff=203666.06%"
+    },
+    {
+      "row": 35,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0914784,
+      "match": false,
+      "reason": "gen=blank, gt=0.0914784"
+    },
+    {
+      "row": 35,
+      "col": "C",
+      "gen": null,
+      "gt": 0.2237,
+      "match": false,
+      "reason": "gen=blank, gt=0.2237"
+    },
+    {
+      "row": 35,
+      "col": "D",
+      "gen": null,
+      "gt": 0.2419,
+      "match": false,
+      "reason": "gen=blank, gt=0.2419"
+    },
+    {
+      "row": 41,
+      "col": "C",
+      "gen": 2.12,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=2.1200, gt=0"
+    },
+    {
+      "row": 42,
+      "col": "B",
+      "gen": 256.86,
+      "gt": 84.3487361,
+      "match": false,
+      "reason": "gen=256.8600, gt=84.3487, diff=204.52%"
+    },
+    {
+      "row": 42,
+      "col": "C",
+      "gen": 1474.54,
+      "gt": 196.50109999999998,
+      "match": false,
+      "reason": "gen=1474.5400, gt=196.5011, diff=650.40%"
+    },
+    {
+      "row": 42,
+      "col": "D",
+      "gen": 896.4399999999999,
+      "gt": 217.7362,
+      "match": false,
+      "reason": "gen=896.4400, gt=217.7362, diff=311.71%"
+    },
+    {
+      "row": 44,
+      "col": "C",
+      "gen": 10.56,
+      "gt": 3.4897,
+      "match": false,
+      "reason": "gen=10.5600, gt=3.4897, diff=202.60%"
+    },
+    {
+      "row": 45,
+      "col": "B",
+      "gen": 6.649999999999999,
+      "gt": 6.376117744,
+      "match": false,
+      "reason": "gen=6.6500, gt=6.3761, diff=4.30%"
+    },
+    {
+      "row": 45,
+      "col": "C",
+      "gen": 23.75,
+      "gt": 10.315299999999999,
+      "match": false,
+      "reason": "gen=23.7500, gt=10.3153, diff=130.24%"
+    },
+    {
+      "row": 46,
+      "col": "B",
+      "gen": null,
+      "gt": 1.216922,
+      "match": false,
+      "reason": "gen=blank, gt=1.216922"
+    },
+    {
+      "row": 46,
+      "col": "C",
+      "gen": 461.93,
+      "gt": 2.0517,
+      "match": false,
+      "reason": "gen=461.9300, gt=2.0517, diff=22414.50%"
+    },
+    {
+      "row": 46,
+      "col": "D",
+      "gen": 0,
+      "gt": 2.263867022,
+      "match": false,
+      "reason": "gen=0.0000, gt=2.2639, diff=100.00%"
+    },
+    {
+      "row": 47,
+      "col": "C",
+      "gen": 2.06,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=2.0600, gt=0"
+    },
+    {
+      "row": 48,
+      "col": "C",
+      "gen": 1.62,
+      "gt": 0.9833,
+      "match": false,
+      "reason": "gen=1.6200, gt=0.9833, diff=64.75%"
+    },
+    {
+      "row": 49,
+      "col": "B",
+      "gen": -0.81,
+      "gt": 0.0825133,
+      "match": false,
+      "reason": "gen=-0.8100, gt=0.0825, diff=1081.66%"
+    },
+    {
+      "row": 49,
+      "col": "C",
+      "gen": 22.58,
+      "gt": 0.1591,
+      "match": false,
+      "reason": "gen=22.5800, gt=0.1591, diff=14092.33%"
+    },
+    {
+      "row": 49,
+      "col": "D",
+      "gen": 12.16,
+      "gt": 0.033101,
+      "match": false,
+      "reason": "gen=12.1600, gt=0.0331, diff=36636.05%"
+    },
+    {
+      "row": 50,
+      "col": "C",
+      "gen": 3.21,
+      "gt": 0.221,
+      "match": false,
+      "reason": "gen=3.2100, gt=0.2210, diff=1352.49%"
+    },
+    {
+      "row": 50,
+      "col": "D",
+      "gen": 1.02,
+      "gt": 0.417737848,
+      "match": false,
+      "reason": "gen=1.0200, gt=0.4177, diff=144.17%"
+    },
+    {
+      "row": 52,
+      "col": "B",
+      "gen": null,
+      "gt": 94.590905644,
+      "match": false,
+      "reason": "gen=blank, gt=94.590905644"
+    },
+    {
+      "row": 52,
+      "col": "C",
+      "gen": null,
+      "gt": 213.7212,
+      "match": false,
+      "reason": "gen=blank, gt=213.7212"
+    },
+    {
+      "row": 52,
+      "col": "D",
+      "gen": null,
+      "gt": 238.590617276,
+      "match": false,
+      "reason": "gen=blank, gt=238.590617276"
+    },
+    {
+      "row": 53,
+      "col": "B",
+      "gen": 5.449999999999999,
+      "gt": null,
+      "match": false,
+      "reason": "gen=5.449999999999999, gt=blank"
+    },
+    {
+      "row": 56,
+      "col": "B",
+      "gen": 10.28,
+      "gt": 4.0745669,
+      "match": false,
+      "reason": "gen=10.2800, gt=4.0746, diff=152.30%"
+    },
+    {
+      "row": 56,
+      "col": "C",
+      "gen": 85.64,
+      "gt": 3.9177,
+      "match": false,
+      "reason": "gen=85.6400, gt=3.9177, diff=2085.98%"
+    },
+    {
+      "row": 56,
+      "col": "D",
+      "gen": 61.97999999999999,
+      "gt": 4.2997,
+      "match": false,
+      "reason": "gen=61.9800, gt=4.2997, diff=1341.50%"
+    },
+    {
+      "row": 57,
+      "col": "B",
+      "gen": null,
+      "gt": 98.665472544,
+      "match": false,
+      "reason": "gen=blank, gt=98.665472544"
+    },
+    {
+      "row": 57,
+      "col": "C",
+      "gen": null,
+      "gt": 217.6389,
+      "match": false,
+      "reason": "gen=blank, gt=217.6389"
+    },
+    {
+      "row": 57,
+      "col": "D",
+      "gen": null,
+      "gt": 242.890317276,
+      "match": false,
+      "reason": "gen=blank, gt=242.890317276"
+    },
+    {
+      "row": 58,
+      "col": "B",
+      "gen": 0,
+      "gt": 1.1889489,
+      "match": false,
+      "reason": "gen=0.0000, gt=1.1889, diff=100.00%"
+    },
+    {
+      "row": 58,
+      "col": "C",
+      "gen": null,
+      "gt": 3.0139463,
+      "match": false,
+      "reason": "gen=blank, gt=3.0139463"
+    },
+    {
+      "row": 58,
+      "col": "D",
+      "gen": null,
+      "gt": 3.4024,
+      "match": false,
+      "reason": "gen=blank, gt=3.4024"
+    },
+    {
+      "row": 59,
+      "col": "B",
+      "gen": 94.19,
+      "gt": 3.0139463,
+      "match": false,
+      "reason": "gen=94.1900, gt=3.0139, diff=3025.14%"
+    },
+    {
+      "row": 59,
+      "col": "C",
+      "gen": 11.44,
+      "gt": 3.4024,
+      "match": false,
+      "reason": "gen=11.4400, gt=3.4024, diff=236.23%"
+    },
+    {
+      "row": 59,
+      "col": "D",
+      "gen": 18.64,
+      "gt": 1.8112,
+      "match": false,
+      "reason": "gen=18.6400, gt=1.8112, diff=929.15%"
+    },
+    {
+      "row": 60,
+      "col": "B",
+      "gen": null,
+      "gt": -1.8249974000000002,
+      "match": false,
+      "reason": "gen=blank, gt=-1.8249974000000002"
+    },
+    {
+      "row": 60,
+      "col": "C",
+      "gen": null,
+      "gt": -0.3884536999999999,
+      "match": false,
+      "reason": "gen=blank, gt=-0.3884536999999999"
+    },
+    {
+      "row": 60,
+      "col": "D",
+      "gen": null,
+      "gt": 1.5912000000000002,
+      "match": false,
+      "reason": "gen=blank, gt=1.5912000000000002"
+    },
+    {
+      "row": 61,
+      "col": "B",
+      "gen": null,
+      "gt": 96.840475144,
+      "match": false,
+      "reason": "gen=blank, gt=96.840475144"
+    },
+    {
+      "row": 61,
+      "col": "C",
+      "gen": null,
+      "gt": 217.2504463,
+      "match": false,
+      "reason": "gen=blank, gt=217.2504463"
+    },
+    {
+      "row": 61,
+      "col": "D",
+      "gen": null,
+      "gt": 244.48151727599998,
+      "match": false,
+      "reason": "gen=blank, gt=244.48151727599998"
+    },
+    {
+      "row": 63,
+      "col": "B",
+      "gen": null,
+      "gt": 4.0745669,
+      "match": false,
+      "reason": "gen=blank, gt=4.0745669"
+    },
+    {
+      "row": 63,
+      "col": "C",
+      "gen": null,
+      "gt": 3.9177,
+      "match": false,
+      "reason": "gen=blank, gt=3.9177"
+    },
+    {
+      "row": 63,
+      "col": "D",
+      "gen": null,
+      "gt": 4.2997,
+      "match": false,
+      "reason": "gen=blank, gt=4.2997"
+    },
+    {
+      "row": 64,
+      "col": "B",
+      "gen": null,
+      "gt": 8.479289444000006,
+      "match": false,
+      "reason": "gen=blank, gt=8.479289444000006"
+    },
+    {
+      "row": 64,
+      "col": "C",
+      "gen": null,
+      "gt": 13.730400000000031,
+      "match": false,
+      "reason": "gen=blank, gt=13.730400000000031"
+    },
+    {
+      "row": 64,
+      "col": "D",
+      "gen": null,
+      "gt": 16.46161709399999,
+      "match": false,
+      "reason": "gen=blank, gt=16.46161709399999"
+    },
+    {
+      "row": 67,
+      "col": "B",
+      "gen": 0.35,
+      "gt": 0.3,
+      "match": false,
+      "reason": "gen=0.3500, gt=0.3000, diff=16.67%"
+    },
+    {
+      "row": 67,
+      "col": "C",
+      "gen": 13.58,
+      "gt": 1.6644,
+      "match": false,
+      "reason": "gen=13.5800, gt=1.6644, diff=715.91%"
+    },
+    {
+      "row": 67,
+      "col": "D",
+      "gen": 14.51,
+      "gt": 1.255,
+      "match": false,
+      "reason": "gen=14.5100, gt=1.2550, diff=1056.18%"
+    },
+    {
+      "row": 68,
+      "col": "B",
+      "gen": 0.1,
+      "gt": 0.098005,
+      "match": false,
+      "reason": "gen=0.1000, gt=0.0980, diff=2.04%"
+    },
+    {
+      "row": 68,
+      "col": "C",
+      "gen": null,
+      "gt": 0.0934,
+      "match": false,
+      "reason": "gen=blank, gt=0.0934"
+    },
+    {
+      "row": 68,
+      "col": "D",
+      "gen": 0.25,
+      "gt": 0.066498461,
+      "match": false,
+      "reason": "gen=0.2500, gt=0.0665, diff=275.95%"
+    },
+    {
+      "row": 69,
+      "col": "B",
+      "gen": 0.03,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.03, gt=blank"
+    },
+    {
+      "row": 69,
+      "col": "C",
+      "gen": null,
+      "gt": 0.0934,
+      "match": false,
+      "reason": "gen=blank, gt=0.0934"
+    },
+    {
+      "row": 69,
+      "col": "D",
+      "gen": 0,
+      "gt": 0.00134,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.0013, diff=100.00%"
+    },
+    {
+      "row": 70,
+      "col": "C",
+      "gen": null,
+      "gt": 3.2085,
+      "match": false,
+      "reason": "gen=blank, gt=3.2085"
+    },
+    {
+      "row": 70,
+      "col": "D",
+      "gen": null,
+      "gt": 6.775638744,
+      "match": false,
+      "reason": "gen=blank, gt=6.775638744"
+    },
+    {
+      "row": 71,
+      "col": "B",
+      "gen": 143.61,
+      "gt": 2.3111141,
+      "match": false,
+      "reason": "gen=143.6100, gt=2.3111, diff=6113.89%"
+    },
+    {
+      "row": 71,
+      "col": "C",
+      "gen": 610.9700000000001,
+      "gt": 3.3785,
+      "match": false,
+      "reason": "gen=610.9700, gt=3.3785, diff=17984.06%"
+    },
+    {
+      "row": 71,
+      "col": "D",
+      "gen": 283.3499999999999,
+      "gt": 1.6750644319999999,
+      "match": false,
+      "reason": "gen=283.3500, gt=1.6751, diff=16815.77%"
+    },
+    {
+      "row": 72,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0535862,
+      "match": false,
+      "reason": "gen=blank, gt=0.0535862"
+    },
+    {
+      "row": 73,
+      "col": "B",
+      "gen": 0.06,
+      "gt": 1.9927679,
+      "match": false,
+      "reason": "gen=0.0600, gt=1.9928, diff=96.99%"
+    },
+    {
+      "row": 73,
+      "col": "C",
+      "gen": 1.31,
+      "gt": null,
+      "match": false,
+      "reason": "gen=1.31, gt=blank"
+    },
+    {
+      "row": 73,
+      "col": "D",
+      "gen": 0.11,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.11, gt=blank"
+    },
+    {
+      "row": 74,
+      "col": "B",
+      "gen": null,
+      "gt": 4.7554732,
+      "match": false,
+      "reason": "gen=blank, gt=4.7554732"
+    },
+    {
+      "row": 74,
+      "col": "C",
+      "gen": null,
+      "gt": 8.438199999999998,
+      "match": false,
+      "reason": "gen=blank, gt=8.438199999999998"
+    },
+    {
+      "row": 74,
+      "col": "D",
+      "gen": null,
+      "gt": 9.773541637,
+      "match": false,
+      "reason": "gen=blank, gt=9.773541637"
+    },
+    {
+      "row": 75,
+      "col": "C",
+      "gen": null,
+      "gt": 0.006723,
+      "match": false,
+      "reason": "gen=blank, gt=0.006723"
+    },
+    {
+      "row": 77,
+      "col": "B",
+      "gen": 0.01,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.01, gt=blank"
+    },
+    {
+      "row": 77,
+      "col": "C",
+      "gen": 3.92,
+      "gt": null,
+      "match": false,
+      "reason": "gen=3.92, gt=blank"
+    },
+    {
+      "row": 77,
+      "col": "D",
+      "gen": 0.14,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.14, gt=blank"
+    },
+    {
+      "row": 78,
+      "col": "C",
+      "gen": null,
+      "gt": 0.006723,
+      "match": false,
+      "reason": "gen=blank, gt=0.006723"
+    },
+    {
+      "row": 80,
+      "col": "B",
+      "gen": null,
+      "gt": 4.7554732,
+      "match": false,
+      "reason": "gen=blank, gt=4.7554732"
+    },
+    {
+      "row": 80,
+      "col": "C",
+      "gen": null,
+      "gt": 8.444922999999998,
+      "match": false,
+      "reason": "gen=blank, gt=8.444922999999998"
+    },
+    {
+      "row": 80,
+      "col": "D",
+      "gen": null,
+      "gt": 9.773541637,
+      "match": false,
+      "reason": "gen=blank, gt=9.773541637"
+    },
+    {
+      "row": 83,
+      "col": "C",
+      "gen": 4.06,
+      "gt": 1.4739,
+      "match": false,
+      "reason": "gen=4.0600, gt=1.4739, diff=175.46%"
+    },
+    {
+      "row": 83,
+      "col": "D",
+      "gen": 5.59,
+      "gt": 1.4261,
+      "match": false,
+      "reason": "gen=5.5900, gt=1.4261, diff=291.98%"
+    },
+    {
+      "row": 84,
+      "col": "B",
+      "gen": 2.85,
+      "gt": 0.6504465,
+      "match": false,
+      "reason": "gen=2.8500, gt=0.6504, diff=338.16%"
+    },
+    {
+      "row": 84,
+      "col": "C",
+      "gen": 1.12,
+      "gt": 1.2744,
+      "match": false,
+      "reason": "gen=1.1200, gt=1.2744, diff=12.12%"
+    },
+    {
+      "row": 84,
+      "col": "D",
+      "gen": 0.7,
+      "gt": 2.5874,
+      "match": false,
+      "reason": "gen=0.7000, gt=2.5874, diff=72.95%"
+    },
+    {
+      "row": 85,
+      "col": "B",
+      "gen": 6.15,
+      "gt": 0.087677,
+      "match": false,
+      "reason": "gen=6.1500, gt=0.0877, diff=6914.38%"
+    },
+    {
+      "row": 85,
+      "col": "C",
+      "gen": 32.32,
+      "gt": 0.1455,
+      "match": false,
+      "reason": "gen=32.3200, gt=0.1455, diff=22113.06%"
+    },
+    {
+      "row": 85,
+      "col": "D",
+      "gen": 2.64,
+      "gt": 0.1743,
+      "match": false,
+      "reason": "gen=2.6400, gt=0.1743, diff=1414.63%"
+    },
+    {
+      "row": 86,
+      "col": "B",
+      "gen": null,
+      "gt": 2.0394993,
+      "match": false,
+      "reason": "gen=blank, gt=2.0394993"
+    },
+    {
+      "row": 86,
+      "col": "C",
+      "gen": null,
+      "gt": 2.8938,
+      "match": false,
+      "reason": "gen=blank, gt=2.8938"
+    },
+    {
+      "row": 86,
+      "col": "D",
+      "gen": null,
+      "gt": 4.1878,
+      "match": false,
+      "reason": "gen=blank, gt=4.1878"
+    },
+    {
+      "row": 89,
+      "col": "C",
+      "gen": -4.15,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=-4.1500, gt=0"
+    },
+    {
+      "row": 90,
+      "col": "B",
+      "gen": -0.01,
+      "gt": null,
+      "match": false,
+      "reason": "gen=-0.01, gt=blank"
+    },
+    {
+      "row": 90,
+      "col": "D",
+      "gen": -0.09999999999999999,
+      "gt": null,
+      "match": false,
+      "reason": "gen=-0.09999999999999999, gt=blank"
+    },
+    {
+      "row": 91,
+      "col": "B",
+      "gen": 0.32,
+      "gt": 0.164477,
+      "match": false,
+      "reason": "gen=0.3200, gt=0.1645, diff=94.56%"
+    },
+    {
+      "row": 91,
+      "col": "D",
+      "gen": -0.03,
+      "gt": null,
+      "match": false,
+      "reason": "gen=-0.03, gt=blank"
+    },
+    {
+      "row": 93,
+      "col": "B",
+      "gen": -3.510000000000001,
+      "gt": null,
+      "match": false,
+      "reason": "gen=-3.510000000000001, gt=blank"
+    },
+    {
+      "row": 93,
+      "col": "C",
+      "gen": 10.29,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=10.2900, gt=0"
+    },
+    {
+      "row": 93,
+      "col": "D",
+      "gen": 14.66,
+      "gt": null,
+      "match": false,
+      "reason": "gen=14.66, gt=blank"
+    },
+    {
+      "row": 94,
+      "col": "B",
+      "gen": null,
+      "gt": 0.164477,
+      "match": false,
+      "reason": "gen=blank, gt=0.164477"
+    },
+    {
+      "row": 96,
+      "col": "B",
+      "gen": null,
+      "gt": 1.7248096560000101,
+      "match": false,
+      "reason": "gen=blank, gt=1.7248096560000101"
+    },
+    {
+      "row": 96,
+      "col": "C",
+      "gen": null,
+      "gt": 8.71223070000001,
+      "match": false,
+      "reason": "gen=blank, gt=8.71223070000001"
+    },
+    {
+      "row": 96,
+      "col": "D",
+      "gen": null,
+      "gt": 6.194531087000063,
+      "match": false,
+      "reason": "gen=blank, gt=6.194531087000063"
+    },
+    {
+      "row": 99,
+      "col": "B",
+      "gen": null,
+      "gt": 0.018166,
+      "match": false,
+      "reason": "gen=blank, gt=0.018166"
+    },
+    {
+      "row": 99,
+      "col": "D",
+      "gen": 1.64,
+      "gt": 1.7590999999999999,
+      "match": false,
+      "reason": "gen=1.6400, gt=1.7591, diff=6.77%"
+    },
+    {
+      "row": 100,
+      "col": "B",
+      "gen": -0.16,
+      "gt": -0.0768561,
+      "match": false,
+      "reason": "gen=-0.1600, gt=-0.0769, diff=108.18%"
+    },
+    {
+      "row": 100,
+      "col": "D",
+      "gen": 0.52,
+      "gt": 0.2604,
+      "match": false,
+      "reason": "gen=0.5200, gt=0.2604, diff=99.69%"
+    },
+    {
+      "row": 101,
+      "col": "C",
+      "gen": null,
+      "gt": 0.34,
+      "match": false,
+      "reason": "gen=blank, gt=0.34"
+    },
+    {
+      "row": 102,
+      "col": "B",
+      "gen": null,
+      "gt": -0.058690099999999995,
+      "match": false,
+      "reason": "gen=blank, gt=-0.058690099999999995"
+    },
+    {
+      "row": 102,
+      "col": "C",
+      "gen": null,
+      "gt": 1.8599999999999997,
+      "match": false,
+      "reason": "gen=blank, gt=1.8599999999999997"
+    },
+    {
+      "row": 102,
+      "col": "D",
+      "gen": null,
+      "gt": 2.0195,
+      "match": false,
+      "reason": "gen=blank, gt=2.0195"
+    },
+    {
+      "row": 104,
+      "col": "B",
+      "gen": null,
+      "gt": 1.78349975600001,
+      "match": false,
+      "reason": "gen=blank, gt=1.78349975600001"
+    },
+    {
+      "row": 104,
+      "col": "C",
+      "gen": null,
+      "gt": 6.85223070000001,
+      "match": false,
+      "reason": "gen=blank, gt=6.85223070000001"
+    },
+    {
+      "row": 104,
+      "col": "D",
+      "gen": null,
+      "gt": 4.175031087000063,
+      "match": false,
+      "reason": "gen=blank, gt=4.175031087000063"
+    },
+    {
+      "row": 106,
+      "col": "B",
+      "gen": 1.83,
+      "gt": 4.2645593999999925,
+      "match": false,
+      "reason": "gen=1.8300, gt=4.2646, diff=57.09%"
+    },
+    {
+      "row": 106,
+      "col": "C",
+      "gen": null,
+      "gt": 6.0480591560000025,
+      "match": false,
+      "reason": "gen=blank, gt=6.0480591560000025"
+    },
+    {
+      "row": 106,
+      "col": "D",
+      "gen": null,
+      "gt": 12.900289856000013,
+      "match": false,
+      "reason": "gen=blank, gt=12.900289856000013"
+    },
+    {
+      "row": 108,
+      "col": "B",
+      "gen": 2.71,
+      "gt": null,
+      "match": false,
+      "reason": "gen=2.71, gt=blank"
+    },
+    {
+      "row": 108,
+      "col": "D",
+      "gen": 4.18,
+      "gt": null,
+      "match": false,
+      "reason": "gen=4.18, gt=blank"
+    },
+    {
+      "row": 109,
+      "col": "B",
+      "gen": null,
+      "gt": 6.0480591560000025,
+      "match": false,
+      "reason": "gen=blank, gt=6.0480591560000025"
+    },
+    {
+      "row": 109,
+      "col": "C",
+      "gen": null,
+      "gt": 12.900289856000013,
+      "match": false,
+      "reason": "gen=blank, gt=12.900289856000013"
+    },
+    {
+      "row": 109,
+      "col": "D",
+      "gen": null,
+      "gt": 17.075320943000076,
+      "match": false,
+      "reason": "gen=blank, gt=17.075320943000076"
+    },
+    {
+      "row": 113,
+      "col": "B",
+      "gen": null,
+      "gt": 2021.0,
+      "match": false,
+      "reason": "gen=blank, gt=2021.0"
+    },
+    {
+      "row": 113,
+      "col": "C",
+      "gen": null,
+      "gt": 2022.0,
+      "match": false,
+      "reason": "gen=blank, gt=2022.0"
+    },
+    {
+      "row": 113,
+      "col": "D",
+      "gen": null,
+      "gt": 2023.0,
+      "match": false,
+      "reason": "gen=blank, gt=2023.0"
+    },
+    {
+      "row": 116,
+      "col": "B",
+      "gen": 3.9,
+      "gt": 3.0942,
+      "match": false,
+      "reason": "gen=3.9000, gt=3.0942, diff=26.04%"
+    },
+    {
+      "row": 116,
+      "col": "C",
+      "gen": 23.01,
+      "gt": 3.0942,
+      "match": false,
+      "reason": "gen=23.0100, gt=3.0942, diff=643.65%"
+    },
+    {
+      "row": 116,
+      "col": "D",
+      "gen": 3.9,
+      "gt": 3.09,
+      "match": false,
+      "reason": "gen=3.9000, gt=3.0900, diff=26.21%"
+    },
+    {
+      "row": 118,
+      "col": "B",
+      "gen": null,
+      "gt": 3.0942,
+      "match": false,
+      "reason": "gen=blank, gt=3.0942"
+    },
+    {
+      "row": 118,
+      "col": "C",
+      "gen": null,
+      "gt": 3.0942,
+      "match": false,
+      "reason": "gen=blank, gt=3.0942"
+    },
+    {
+      "row": 118,
+      "col": "D",
+      "gen": null,
+      "gt": 3.09,
+      "match": false,
+      "reason": "gen=blank, gt=3.09"
+    },
+    {
+      "row": 121,
+      "col": "B",
+      "gen": 7.05,
+      "gt": null,
+      "match": false,
+      "reason": "gen=7.05, gt=blank"
+    },
+    {
+      "row": 122,
+      "col": "B",
+      "gen": null,
+      "gt": 6.0480591560000025,
+      "match": false,
+      "reason": "gen=blank, gt=6.0480591560000025"
+    },
+    {
+      "row": 122,
+      "col": "C",
+      "gen": null,
+      "gt": 12.900289856000013,
+      "match": false,
+      "reason": "gen=blank, gt=12.900289856000013"
+    },
+    {
+      "row": 122,
+      "col": "D",
+      "gen": null,
+      "gt": 17.075320943000076,
+      "match": false,
+      "reason": "gen=blank, gt=17.075320943000076"
+    },
+    {
+      "row": 123,
+      "col": "B",
+      "gen": 0,
+      "gt": 0.9558,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.9558, diff=100.00%"
+    },
+    {
+      "row": 123,
+      "col": "C",
+      "gen": 0,
+      "gt": 0.9558,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.9558, diff=100.00%"
+    },
+    {
+      "row": 123,
+      "col": "D",
+      "gen": 0,
+      "gt": 0.9558,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.9558, diff=100.00%"
+    },
+    {
+      "row": 125,
+      "col": "C",
+      "gen": 19.98,
+      "gt": null,
+      "match": false,
+      "reason": "gen=19.98, gt=blank"
+    },
+    {
+      "row": 125,
+      "col": "D",
+      "gen": 18.07,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=18.0700, gt=0"
+    },
+    {
+      "row": 126,
+      "col": "B",
+      "gen": null,
+      "gt": 7.0038591560000025,
+      "match": false,
+      "reason": "gen=blank, gt=7.0038591560000025"
+    },
+    {
+      "row": 126,
+      "col": "C",
+      "gen": null,
+      "gt": 13.856089856000013,
+      "match": false,
+      "reason": "gen=blank, gt=13.856089856000013"
+    },
+    {
+      "row": 126,
+      "col": "D",
+      "gen": null,
+      "gt": 18.031120943000076,
+      "match": false,
+      "reason": "gen=blank, gt=18.031120943000076"
+    },
+    {
+      "row": 131,
+      "col": "B",
+      "gen": 18.29,
+      "gt": 11.1297613,
+      "match": false,
+      "reason": "gen=18.2900, gt=11.1298, diff=64.33%"
+    },
+    {
+      "row": 131,
+      "col": "C",
+      "gen": 898.71,
+      "gt": 19.6089,
+      "match": false,
+      "reason": "gen=898.7100, gt=19.6089, diff=4483.17%"
+    },
+    {
+      "row": 131,
+      "col": "D",
+      "gen": 6.51,
+      "gt": 12.1533166,
+      "match": false,
+      "reason": "gen=6.5100, gt=12.1533, diff=46.43%"
+    },
+    {
+      "row": 132,
+      "col": "B",
+      "gen": null,
+      "gt": 0.8975441,
+      "match": false,
+      "reason": "gen=blank, gt=0.8975441"
+    },
+    {
+      "row": 132,
+      "col": "C",
+      "gen": null,
+      "gt": 1.4719,
+      "match": false,
+      "reason": "gen=blank, gt=1.4719"
+    },
+    {
+      "row": 134,
+      "col": "B",
+      "gen": null,
+      "gt": 12.0273054,
+      "match": false,
+      "reason": "gen=blank, gt=12.0273054"
+    },
+    {
+      "row": 134,
+      "col": "C",
+      "gen": null,
+      "gt": 21.0808,
+      "match": false,
+      "reason": "gen=blank, gt=21.0808"
+    },
+    {
+      "row": 134,
+      "col": "D",
+      "gen": null,
+      "gt": 12.1533166,
+      "match": false,
+      "reason": "gen=blank, gt=12.1533166"
+    },
+    {
+      "row": 136,
+      "col": "B",
+      "gen": 18.43,
+      "gt": 3.0046986,
+      "match": false,
+      "reason": "gen=18.4300, gt=3.0047, diff=513.37%"
+    },
+    {
+      "row": 136,
+      "col": "C",
+      "gen": 524.4499999999999,
+      "gt": 4.1154,
+      "match": false,
+      "reason": "gen=524.4500, gt=4.1154, diff=12643.60%"
+    },
+    {
+      "row": 136,
+      "col": "D",
+      "gen": 18.56,
+      "gt": 5.05186,
+      "match": false,
+      "reason": "gen=18.5600, gt=5.0519, diff=267.39%"
+    },
+    {
+      "row": 137,
+      "col": "B",
+      "gen": 25.08,
+      "gt": 16.6752957,
+      "match": false,
+      "reason": "gen=25.0800, gt=16.6753, diff=50.40%"
+    },
+    {
+      "row": 137,
+      "col": "C",
+      "gen": 459.18,
+      "gt": 12.7628,
+      "match": false,
+      "reason": "gen=459.1800, gt=12.7628, diff=3497.80%"
+    },
+    {
+      "row": 137,
+      "col": "D",
+      "gen": 6.760000000000001,
+      "gt": 6.324398,
+      "match": false,
+      "reason": "gen=6.7600, gt=6.3244, diff=6.89%"
+    },
+    {
+      "row": 138,
+      "col": "B",
+      "gen": null,
+      "gt": 19.6799943,
+      "match": false,
+      "reason": "gen=blank, gt=19.6799943"
+    },
+    {
+      "row": 138,
+      "col": "C",
+      "gen": null,
+      "gt": 16.8782,
+      "match": false,
+      "reason": "gen=blank, gt=16.8782"
+    },
+    {
+      "row": 138,
+      "col": "D",
+      "gen": null,
+      "gt": 11.376258,
+      "match": false,
+      "reason": "gen=blank, gt=11.376258"
+    },
+    {
+      "row": 152,
+      "col": "B",
+      "gen": 0.02,
+      "gt": 4.1312812,
+      "match": false,
+      "reason": "gen=0.0200, gt=4.1313, diff=99.52%"
+    },
+    {
+      "row": 152,
+      "col": "C",
+      "gen": 32.28,
+      "gt": 4.1312812,
+      "match": false,
+      "reason": "gen=32.2800, gt=4.1313, diff=681.36%"
+    },
+    {
+      "row": 152,
+      "col": "D",
+      "gen": 0.98,
+      "gt": 4.1312812,
+      "match": false,
+      "reason": "gen=0.9800, gt=4.1313, diff=76.28%"
+    },
+    {
+      "row": 153,
+      "col": "C",
+      "gen": 32.28,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=32.2800, gt=0"
+    },
+    {
+      "row": 153,
+      "col": "D",
+      "gen": 1.47,
+      "gt": 3.2394,
+      "match": false,
+      "reason": "gen=1.4700, gt=3.2394, diff=54.62%"
+    },
+    {
+      "row": 154,
+      "col": "C",
+      "gen": 13.91,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=13.9100, gt=0"
+    },
+    {
+      "row": 155,
+      "col": "B",
+      "gen": null,
+      "gt": 4.1312812,
+      "match": false,
+      "reason": "gen=blank, gt=4.1312812"
+    },
+    {
+      "row": 155,
+      "col": "C",
+      "gen": null,
+      "gt": 4.1312812,
+      "match": false,
+      "reason": "gen=blank, gt=4.1312812"
+    },
+    {
+      "row": 155,
+      "col": "D",
+      "gen": null,
+      "gt": 7.3706812,
+      "match": false,
+      "reason": "gen=blank, gt=7.3706812"
+    },
+    {
+      "row": 157,
+      "col": "B",
+      "gen": null,
+      "gt": 35.8385809,
+      "match": false,
+      "reason": "gen=blank, gt=35.8385809"
+    },
+    {
+      "row": 157,
+      "col": "C",
+      "gen": null,
+      "gt": 42.09028120000001,
+      "match": false,
+      "reason": "gen=blank, gt=42.09028120000001"
+    },
+    {
+      "row": 157,
+      "col": "D",
+      "gen": null,
+      "gt": 30.9002558,
+      "match": false,
+      "reason": "gen=blank, gt=30.9002558"
+    },
+    {
+      "row": 159,
+      "col": "B",
+      "gen": 4.71,
+      "gt": 1.1560242,
+      "match": false,
+      "reason": "gen=4.7100, gt=1.1560, diff=307.43%"
+    },
+    {
+      "row": 159,
+      "col": "C",
+      "gen": 4.64,
+      "gt": 0.8161,
+      "match": false,
+      "reason": "gen=4.6400, gt=0.8161, diff=468.56%"
+    },
+    {
+      "row": 159,
+      "col": "D",
+      "gen": 4.06,
+      "gt": 1.0759261,
+      "match": false,
+      "reason": "gen=4.0600, gt=1.0759, diff=277.35%"
+    },
+    {
+      "row": 162,
+      "col": "B",
+      "gen": 96.57,
+      "gt": 45.8968528,
+      "match": false,
+      "reason": "gen=96.5700, gt=45.8969, diff=110.41%"
+    },
+    {
+      "row": 162,
+      "col": "C",
+      "gen": 104.65,
+      "gt": 49.8568,
+      "match": false,
+      "reason": "gen=104.6500, gt=49.8568, diff=109.90%"
+    },
+    {
+      "row": 162,
+      "col": "D",
+      "gen": 60.96,
+      "gt": 53.193990889,
+      "match": false,
+      "reason": "gen=60.9600, gt=53.1940, diff=14.60%"
+    },
+    {
+      "row": 163,
+      "col": "B",
+      "gen": 0,
+      "gt": 18.6286504,
+      "match": false,
+      "reason": "gen=0.0000, gt=18.6287, diff=100.00%"
+    },
+    {
+      "row": 163,
+      "col": "C",
+      "gen": 0,
+      "gt": 22.5413,
+      "match": false,
+      "reason": "gen=0.0000, gt=22.5413, diff=100.00%"
+    },
+    {
+      "row": 163,
+      "col": "D",
+      "gen": 11.14,
+      "gt": 22.7493617850745,
+      "match": false,
+      "reason": "gen=11.1400, gt=22.7494, diff=51.03%"
+    },
+    {
+      "row": 164,
+      "col": "B",
+      "gen": null,
+      "gt": 27.268202399999996,
+      "match": false,
+      "reason": "gen=blank, gt=27.268202399999996"
+    },
+    {
+      "row": 164,
+      "col": "C",
+      "gen": null,
+      "gt": 27.3155,
+      "match": false,
+      "reason": "gen=blank, gt=27.3155"
+    },
+    {
+      "row": 164,
+      "col": "D",
+      "gen": null,
+      "gt": 30.4446291039255,
+      "match": false,
+      "reason": "gen=blank, gt=30.4446291039255"
+    },
+    {
+      "row": 165,
+      "col": "B",
+      "gen": 0.34,
+      "gt": 0.1700714,
+      "match": false,
+      "reason": "gen=0.3400, gt=0.1701, diff=99.92%"
+    },
+    {
+      "row": 165,
+      "col": "C",
+      "gen": null,
+      "gt": 0.3956,
+      "match": false,
+      "reason": "gen=blank, gt=0.3956"
+    },
+    {
+      "row": 165,
+      "col": "D",
+      "gen": 0.62,
+      "gt": 0.3113082,
+      "match": false,
+      "reason": "gen=0.6200, gt=0.3113, diff=99.16%"
+    },
+    {
+      "row": 166,
+      "col": "B",
+      "gen": null,
+      "gt": 27.438273799999997,
+      "match": false,
+      "reason": "gen=blank, gt=27.438273799999997"
+    },
+    {
+      "row": 166,
+      "col": "C",
+      "gen": null,
+      "gt": 27.711100000000002,
+      "match": false,
+      "reason": "gen=blank, gt=27.711100000000002"
+    },
+    {
+      "row": 166,
+      "col": "D",
+      "gen": null,
+      "gt": 30.7559373039255,
+      "match": false,
+      "reason": "gen=blank, gt=30.7559373039255"
+    },
+    {
+      "row": 171,
+      "col": "B",
+      "gen": 0.03,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.03, gt=blank"
+    },
+    {
+      "row": 171,
+      "col": "C",
+      "gen": 2.32,
+      "gt": null,
+      "match": false,
+      "reason": "gen=2.32, gt=blank"
+    },
+    {
+      "row": 172,
+      "col": "B",
+      "gen": 0.02,
+      "gt": 0.0069279,
+      "match": false,
+      "reason": "gen=0.0200, gt=0.0069, diff=188.69%"
+    },
+    {
+      "row": 172,
+      "col": "C",
+      "gen": 27.51,
+      "gt": 0.1923,
+      "match": false,
+      "reason": "gen=27.5100, gt=0.1923, diff=14205.77%"
+    },
+    {
+      "row": 172,
+      "col": "D",
+      "gen": 0.16,
+      "gt": 0.0803978,
+      "match": false,
+      "reason": "gen=0.1600, gt=0.0804, diff=99.01%"
+    },
+    {
+      "row": 173,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0069279,
+      "match": false,
+      "reason": "gen=blank, gt=0.0069279"
+    },
+    {
+      "row": 173,
+      "col": "C",
+      "gen": null,
+      "gt": 0.1923,
+      "match": false,
+      "reason": "gen=blank, gt=0.1923"
+    },
+    {
+      "row": 173,
+      "col": "D",
+      "gen": null,
+      "gt": 0.0803978,
+      "match": false,
+      "reason": "gen=blank, gt=0.0803978"
+    },
+    {
+      "row": 175,
+      "col": "B",
+      "gen": 0.79,
+      "gt": null,
+      "match": false,
+      "reason": "gen=0.79, gt=blank"
+    },
+    {
+      "row": 175,
+      "col": "D",
+      "gen": 4.77,
+      "gt": null,
+      "match": false,
+      "reason": "gen=4.77, gt=blank"
+    },
+    {
+      "row": 176,
+      "col": "D",
+      "gen": -7.19,
+      "gt": null,
+      "match": false,
+      "reason": "gen=-7.19, gt=blank"
+    },
+    {
+      "row": 194,
+      "col": "B",
+      "gen": 32.79,
+      "gt": 6.9540016,
+      "match": false,
+      "reason": "gen=32.7900, gt=6.9540, diff=371.53%"
+    },
+    {
+      "row": 194,
+      "col": "C",
+      "gen": 127.79,
+      "gt": 8.0476,
+      "match": false,
+      "reason": "gen=127.7900, gt=8.0476, diff=1487.93%"
+    },
+    {
+      "row": 194,
+      "col": "D",
+      "gen": 8.05,
+      "gt": 16.825403987999998,
+      "match": false,
+      "reason": "gen=8.0500, gt=16.8254, diff=52.16%"
+    },
+    {
+      "row": 195,
+      "col": "B",
+      "gen": null,
+      "gt": 6.9540016,
+      "match": false,
+      "reason": "gen=blank, gt=6.9540016"
+    },
+    {
+      "row": 195,
+      "col": "C",
+      "gen": null,
+      "gt": 8.0476,
+      "match": false,
+      "reason": "gen=blank, gt=8.0476"
+    },
+    {
+      "row": 195,
+      "col": "D",
+      "gen": null,
+      "gt": 16.825403987999998,
+      "match": false,
+      "reason": "gen=blank, gt=16.825403987999998"
+    },
+    {
+      "row": 198,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0183335,
+      "match": false,
+      "reason": "gen=blank, gt=0.0183335"
+    },
+    {
+      "row": 198,
+      "col": "C",
+      "gen": null,
+      "gt": 0.0086,
+      "match": false,
+      "reason": "gen=blank, gt=0.0086"
+    },
+    {
+      "row": 198,
+      "col": "D",
+      "gen": null,
+      "gt": 0.0059969,
+      "match": false,
+      "reason": "gen=blank, gt=0.0059969"
+    },
+    {
+      "row": 199,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0183335,
+      "match": false,
+      "reason": "gen=blank, gt=0.0183335"
+    },
+    {
+      "row": 199,
+      "col": "C",
+      "gen": null,
+      "gt": 0.0086,
+      "match": false,
+      "reason": "gen=blank, gt=0.0086"
+    },
+    {
+      "row": 199,
+      "col": "D",
+      "gen": null,
+      "gt": 0.0059969,
+      "match": false,
+      "reason": "gen=blank, gt=0.0059969"
+    },
+    {
+      "row": 201,
+      "col": "B",
+      "gen": null,
+      "gt": 3.0139463,
+      "match": false,
+      "reason": "gen=blank, gt=3.0139463"
+    },
+    {
+      "row": 201,
+      "col": "C",
+      "gen": null,
+      "gt": 3.4024,
+      "match": false,
+      "reason": "gen=blank, gt=3.4024"
+    },
+    {
+      "row": 201,
+      "col": "D",
+      "gen": null,
+      "gt": 1.8112,
+      "match": false,
+      "reason": "gen=blank, gt=1.8112"
+    },
+    {
+      "row": 203,
+      "col": "B",
+      "gen": null,
+      "gt": 9.9862814,
+      "match": false,
+      "reason": "gen=blank, gt=9.9862814"
+    },
+    {
+      "row": 203,
+      "col": "C",
+      "gen": null,
+      "gt": 11.458599999999999,
+      "match": false,
+      "reason": "gen=blank, gt=11.458599999999999"
+    },
+    {
+      "row": 203,
+      "col": "D",
+      "gen": null,
+      "gt": 18.642600887999997,
+      "match": false,
+      "reason": "gen=blank, gt=18.642600887999997"
+    },
+    {
+      "row": 206,
+      "col": "B",
+      "gen": 15.21,
+      "gt": 17.920598596,
+      "match": false,
+      "reason": "gen=15.2100, gt=17.9206, diff=15.13%"
+    },
+    {
+      "row": 206,
+      "col": "C",
+      "gen": 101.4,
+      "gt": 34.7017,
+      "match": false,
+      "reason": "gen=101.4000, gt=34.7017, diff=192.20%"
+    },
+    {
+      "row": 206,
+      "col": "D",
+      "gen": 52.93,
+      "gt": 15.48420118,
+      "match": false,
+      "reason": "gen=52.9300, gt=15.4842, diff=241.83%"
+    },
+    {
+      "row": 207,
+      "col": "B",
+      "gen": null,
+      "gt": 0.593770304,
+      "match": false,
+      "reason": "gen=blank, gt=0.593770304"
+    },
+    {
+      "row": 207,
+      "col": "C",
+      "gen": null,
+      "gt": 1.6205,
+      "match": false,
+      "reason": "gen=blank, gt=1.6205"
+    },
+    {
+      "row": 207,
+      "col": "D",
+      "gen": 0,
+      "gt": 1.092081601,
+      "match": false,
+      "reason": "gen=0.0000, gt=1.0921, diff=100.00%"
+    },
+    {
+      "row": 208,
+      "col": "B",
+      "gen": 0,
+      "gt": 0.0077514,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.0078, diff=100.00%"
+    },
+    {
+      "row": 208,
+      "col": "D",
+      "gen": 0,
+      "gt": 0.0656847,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.0657, diff=100.00%"
+    },
+    {
+      "row": 209,
+      "col": "B",
+      "gen": null,
+      "gt": 18.5221203,
+      "match": false,
+      "reason": "gen=blank, gt=18.5221203"
+    },
+    {
+      "row": 209,
+      "col": "C",
+      "gen": null,
+      "gt": 36.3222,
+      "match": false,
+      "reason": "gen=blank, gt=36.3222"
+    },
+    {
+      "row": 209,
+      "col": "D",
+      "gen": null,
+      "gt": 16.641967481,
+      "match": false,
+      "reason": "gen=blank, gt=16.641967481"
+    },
+    {
+      "row": 212,
+      "col": "B",
+      "gen": 0,
+      "gt": 0.0137016,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.0137, diff=100.00%"
+    },
+    {
+      "row": 212,
+      "col": "C",
+      "gen": -1.09,
+      "gt": 0.0089,
+      "match": false,
+      "reason": "gen=-1.0900, gt=0.0089, diff=12347.19%"
+    },
+    {
+      "row": 212,
+      "col": "D",
+      "gen": 0,
+      "gt": 0.0132336,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.0132, diff=100.00%"
+    },
+    {
+      "row": 213,
+      "col": "B",
+      "gen": 5.899999999999999,
+      "gt": 0.6445703,
+      "match": false,
+      "reason": "gen=5.9000, gt=0.6446, diff=815.34%"
+    },
+    {
+      "row": 213,
+      "col": "C",
+      "gen": 26.06,
+      "gt": 0.0166,
+      "match": false,
+      "reason": "gen=26.0600, gt=0.0166, diff=156887.95%"
+    },
+    {
+      "row": 213,
+      "col": "D",
+      "gen": 11.63,
+      "gt": 0.00248854,
+      "match": false,
+      "reason": "gen=11.6300, gt=0.0025, diff=467242.30%"
+    },
+    {
+      "row": 215,
+      "col": "B",
+      "gen": null,
+      "gt": 1.0919991,
+      "match": false,
+      "reason": "gen=blank, gt=1.0919991"
+    },
+    {
+      "row": 215,
+      "col": "C",
+      "gen": 0,
+      "gt": 0.6316,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.6316, diff=100.00%"
+    },
+    {
+      "row": 215,
+      "col": "D",
+      "gen": 0,
+      "gt": 1.1400874,
+      "match": false,
+      "reason": "gen=0.0000, gt=1.1401, diff=100.00%"
+    },
+    {
+      "row": 216,
+      "col": "B",
+      "gen": null,
+      "gt": 1.7502710000000001,
+      "match": false,
+      "reason": "gen=blank, gt=1.7502710000000001"
+    },
+    {
+      "row": 216,
+      "col": "C",
+      "gen": null,
+      "gt": 0.6571,
+      "match": false,
+      "reason": "gen=blank, gt=0.6571"
+    },
+    {
+      "row": 216,
+      "col": "D",
+      "gen": null,
+      "gt": 1.1558095400000001,
+      "match": false,
+      "reason": "gen=blank, gt=1.1558095400000001"
+    },
+    {
+      "row": 219,
+      "col": "B",
+      "gen": 1.17,
+      "gt": 0.0425099,
+      "match": false,
+      "reason": "gen=1.1700, gt=0.0425, diff=2652.30%"
+    },
+    {
+      "row": 219,
+      "col": "C",
+      "gen": 0.1799999999999999,
+      "gt": 0.6746,
+      "match": false,
+      "reason": "gen=0.1800, gt=0.6746, diff=73.32%"
+    },
+    {
+      "row": 219,
+      "col": "D",
+      "gen": 1.91,
+      "gt": 2.203673809,
+      "match": false,
+      "reason": "gen=1.9100, gt=2.2037, diff=13.33%"
+    },
+    {
+      "row": 220,
+      "col": "B",
+      "gen": null,
+      "gt": 0.7549062,
+      "match": false,
+      "reason": "gen=blank, gt=0.7549062"
+    },
+    {
+      "row": 220,
+      "col": "C",
+      "gen": null,
+      "gt": 1.2373,
+      "match": false,
+      "reason": "gen=blank, gt=1.2373"
+    },
+    {
+      "row": 220,
+      "col": "D",
+      "gen": null,
+      "gt": 0.3528,
+      "match": false,
+      "reason": "gen=blank, gt=0.3528"
+    },
+    {
+      "row": 221,
+      "col": "B",
+      "gen": 1.18,
+      "gt": 0.1800876,
+      "match": false,
+      "reason": "gen=1.1800, gt=0.1801, diff=555.24%"
+    },
+    {
+      "row": 221,
+      "col": "C",
+      "gen": 3.24,
+      "gt": 0.4516,
+      "match": false,
+      "reason": "gen=3.2400, gt=0.4516, diff=617.45%"
+    },
+    {
+      "row": 221,
+      "col": "D",
+      "gen": 0.99,
+      "gt": -0.1137,
+      "match": false,
+      "reason": "gen=0.9900, gt=-0.1137, diff=970.71%"
+    },
+    {
+      "row": 222,
+      "col": "C",
+      "gen": 41.24,
+      "gt": 0.1317,
+      "match": false,
+      "reason": "gen=41.2400, gt=0.1317, diff=31213.59%"
+    },
+    {
+      "row": 223,
+      "col": "B",
+      "gen": 39.26,
+      "gt": 0.2451413,
+      "match": false,
+      "reason": "gen=39.2600, gt=0.2451, diff=15915.25%"
+    },
+    {
+      "row": 223,
+      "col": "C",
+      "gen": 38.74,
+      "gt": 0.2909,
+      "match": false,
+      "reason": "gen=38.7400, gt=0.2909, diff=13217.29%"
+    },
+    {
+      "row": 223,
+      "col": "D",
+      "gen": 19.94,
+      "gt": 0.3554,
+      "match": false,
+      "reason": "gen=19.9400, gt=0.3554, diff=5510.58%"
+    },
+    {
+      "row": 225,
+      "col": "B",
+      "gen": null,
+      "gt": 1.3417041,
+      "match": false,
+      "reason": "gen=blank, gt=1.3417041"
+    },
+    {
+      "row": 225,
+      "col": "C",
+      "gen": null,
+      "gt": 2.7861000000000002,
+      "match": false,
+      "reason": "gen=blank, gt=2.7861000000000002"
+    },
+    {
+      "row": 225,
+      "col": "D",
+      "gen": null,
+      "gt": 2.9409738089999995,
+      "match": false,
+      "reason": "gen=blank, gt=2.9409738089999995"
+    },
+    {
+      "row": 232,
+      "col": "B",
+      "gen": null,
+      "gt": 0.0077514,
+      "match": false,
+      "reason": "gen=blank, gt=0.0077514"
+    },
+    {
+      "row": 232,
+      "col": "D",
+      "gen": null,
+      "gt": 0.0656847,
+      "match": false,
+      "reason": "gen=blank, gt=0.0656847"
+    },
+    {
+      "row": 235,
+      "col": "B",
+      "gen": 2.09,
+      "gt": null,
+      "match": false,
+      "reason": "gen=2.09, gt=blank"
+    },
+    {
+      "row": 235,
+      "col": "C",
+      "gen": 46413,
+      "gt": null,
+      "match": false,
+      "reason": "gen=46413.0, gt=blank"
+    },
+    {
+      "row": 235,
+      "col": "D",
+      "gen": 2.23,
+      "gt": null,
+      "match": false,
+      "reason": "gen=2.23, gt=blank"
+    },
+    {
+      "row": 236,
+      "col": "B",
+      "gen": 1.92,
+      "gt": 1.1702349,
+      "match": false,
+      "reason": "gen=1.9200, gt=1.1702, diff=64.07%"
+    },
+    {
+      "row": 236,
+      "col": "C",
+      "gen": 2.41,
+      "gt": 0.1691,
+      "match": false,
+      "reason": "gen=2.4100, gt=0.1691, diff=1325.19%"
+    },
+    {
+      "row": 236,
+      "col": "D",
+      "gen": 0.77,
+      "gt": 0.419740721,
+      "match": false,
+      "reason": "gen=0.7700, gt=0.4197, diff=83.45%"
+    },
+    {
+      "row": 237,
+      "col": "B",
+      "gen": 0,
+      "gt": 0.2460627,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.2461, diff=100.00%"
+    },
+    {
+      "row": 237,
+      "col": "C",
+      "gen": 0,
+      "gt": 0.3221,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.3221, diff=100.00%"
+    },
+    {
+      "row": 237,
+      "col": "D",
+      "gen": 0.03,
+      "gt": 0.3563923,
+      "match": false,
+      "reason": "gen=0.0300, gt=0.3564, diff=91.58%"
+    },
+    {
+      "row": 238,
+      "col": "B",
+      "gen": -1.52,
+      "gt": 0.3384301,
+      "match": false,
+      "reason": "gen=-1.5200, gt=0.3384, diff=549.13%"
+    },
+    {
+      "row": 238,
+      "col": "D",
+      "gen": 0.34,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=0.3400, gt=0"
+    },
+    {
+      "row": 239,
+      "col": "B",
+      "gen": null,
+      "gt": 1.7624791000000002,
+      "match": false,
+      "reason": "gen=blank, gt=1.7624791000000002"
+    },
+    {
+      "row": 239,
+      "col": "C",
+      "gen": null,
+      "gt": 0.49119999999999997,
+      "match": false,
+      "reason": "gen=blank, gt=0.49119999999999997"
+    },
+    {
+      "row": 239,
+      "col": "D",
+      "gen": null,
+      "gt": 0.841817721,
+      "match": false,
+      "reason": "gen=blank, gt=0.841817721"
+    },
+    {
+      "row": 242,
+      "col": "B",
+      "gen": 18.12,
+      "gt": 10.3146846,
+      "match": false,
+      "reason": "gen=18.1200, gt=10.3147, diff=75.67%"
+    },
+    {
+      "row": 242,
+      "col": "C",
+      "gen": 15505.08,
+      "gt": 12.7866,
+      "match": false,
+      "reason": "gen=15505.0800, gt=12.7866, diff=121160.38%"
+    },
+    {
+      "row": 242,
+      "col": "D",
+      "gen": 31.62,
+      "gt": 14.2867881,
+      "match": false,
+      "reason": "gen=31.6200, gt=14.2868, diff=121.32%"
+    },
+    {
+      "row": 243,
+      "col": "B",
+      "gen": 1.27,
+      "gt": null,
+      "match": false,
+      "reason": "gen=1.27, gt=blank"
+    },
+    {
+      "row": 243,
+      "col": "C",
+      "gen": 1.37,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=1.3700, gt=0"
+    },
+    {
+      "row": 244,
+      "col": "B",
+      "gen": 1.38,
+      "gt": 0.3206985,
+      "match": false,
+      "reason": "gen=1.3800, gt=0.3207, diff=330.31%"
+    },
+    {
+      "row": 244,
+      "col": "C",
+      "gen": 5.05,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=5.0500, gt=0"
+    },
+    {
+      "row": 244,
+      "col": "D",
+      "gen": 1.68,
+      "gt": 0.0,
+      "match": false,
+      "reason": "gen=1.6800, gt=0"
+    },
+    {
+      "row": 246,
+      "col": "B",
+      "gen": 18.54,
+      "gt": 0.4849663,
+      "match": false,
+      "reason": "gen=18.5400, gt=0.4850, diff=3722.95%"
+    },
+    {
+      "row": 246,
+      "col": "C",
+      "gen": 44.67,
+      "gt": 1.3365,
+      "match": false,
+      "reason": "gen=44.6700, gt=1.3365, diff=3242.31%"
+    },
+    {
+      "row": 246,
+      "col": "D",
+      "gen": 46.51,
+      "gt": 0.8386,
+      "match": false,
+      "reason": "gen=46.5100, gt=0.8386, diff=5446.15%"
+    },
+    {
+      "row": 249,
+      "col": "C",
+      "gen": 0,
+      "gt": 0.9561,
+      "match": false,
+      "reason": "gen=0.0000, gt=0.9561, diff=100.00%"
+    },
+    {
+      "row": 249,
+      "col": "D",
+      "gen": 3.24,
+      "gt": 0.3802,
+      "match": false,
+      "reason": "gen=3.2400, gt=0.3802, diff=752.18%"
+    },
+    {
+      "row": 250,
+      "col": "B",
+      "gen": 7.989999999999999,
+      "gt": 2.5472587,
+      "match": false,
+      "reason": "gen=7.9900, gt=2.5473, diff=213.67%"
+    },
+    {
+      "row": 250,
+      "col": "C",
+      "gen": 31.31000000000001,
+      "gt": 4.6491,
+      "match": false,
+      "reason": "gen=31.3100, gt=4.6491, diff=573.46%"
+    },
+    {
+      "row": 250,
+      "col": "D",
+      "gen": 39.59999999999999,
+      "gt": 1.4527400000000001,
+      "match": false,
+      "reason": "gen=39.6000, gt=1.4527, diff=2625.88%"
+    },
+    {
+      "row": 251,
+      "col": "B",
+      "gen": null,
+      "gt": 13.6676081,
+      "match": false,
+      "reason": "gen=blank, gt=13.6676081"
+    },
+    {
+      "row": 251,
+      "col": "C",
+      "gen": null,
+      "gt": 19.7283,
+      "match": false,
+      "reason": "gen=blank, gt=19.7283"
+    },
+    {
+      "row": 251,
+      "col": "D",
+      "gen": null,
+      "gt": 17.8579281,
+      "match": false,
+      "reason": "gen=blank, gt=17.8579281"
+    },
+    {
+      "row": 260,
+      "col": "B",
+      "gen": null,
+      "gt": 60.80030619999999,
+      "match": false,
+      "reason": "gen=blank, gt=60.80030619999999"
+    },
+    {
+      "row": 260,
+      "col": "C",
+      "gen": null,
+      "gt": 79.61860000000001,
+      "match": false,
+      "reason": "gen=blank, gt=79.61860000000001"
+    },
+    {
+      "row": 260,
+      "col": "D",
+      "gen": null,
+      "gt": 70.99381984292549,
+      "match": false,
+      "reason": "gen=blank, gt=70.99381984292549"
+    },
+    {
+      "row": 261,
+      "col": "B",
+      "gen": null,
+      "gt": 60.760272356,
+      "match": false,
+      "reason": "gen=blank, gt=60.760272356"
+    },
+    {
+      "row": 261,
+      "col": "C",
+      "gen": null,
+      "gt": 79.58497105600001,
+      "match": false,
+      "reason": "gen=blank, gt=79.58497105600001"
+    },
+    {
+      "row": 261,
+      "col": "D",
+      "gen": null,
+      "gt": 70.95523094300007,
+      "match": false,
+      "reason": "gen=blank, gt=70.95523094300007"
+    },
+    {
+      "row": 262,
+      "col": "B",
+      "gen": null,
+      "gt": 0.04003384399998566,
+      "match": false,
+      "reason": "gen=blank, gt=0.04003384399998566"
+    },
+    {
+      "row": 262,
+      "col": "C",
+      "gen": null,
+      "gt": 0.03362894400000016,
+      "match": false,
+      "reason": "gen=blank, gt=0.03362894400000016"
+    },
+    {
+      "row": 262,
+      "col": "D",
+      "gen": null,
+      "gt": 0.03858889992541492,
+      "match": false,
+      "reason": "gen=blank, gt=0.03858889992541492"
+    }
+  ]
+}

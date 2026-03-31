@@ -1,0 +1,2276 @@
+{
+  "share capital": {
+    "item": "Share Capital",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "equity share capital": {
+    "item": "Equity Share Capital",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "redeemable preference share capital (redeemable within 1 year)": {
+    "item": "Redeemable Preference Share Capital (redeemable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "redeemable preference share capital (redeemable after 1 year)": {
+    "item": "Redeemable Preference Share Capital (redeemable after 1 year)",
+    "cma_field": "Item 12: Preference shares (redeemable after 1 year)",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "share application money (without any undertaking)": {
+    "item": "Share Application Money (without any undertaking)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "share application money (undertaking for converting it into share capital is obtained)": {
+    "item": "Share Application Money (Undertaking for converting it into Share Capital is obtained)",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "proprietor's capital a/c": {
+    "item": "Proprietor's Capital A/c",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "proprietor's current a/c": {
+    "item": "Proprietor's Current A/c",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "partners' capital a/c": {
+    "item": "Partners' Capital A/c",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "partners' current a/c": {
+    "item": "Partners' Current A/c",
+    "cma_field": "Item 19: Ordinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "profit & loss a/c (credit balance)": {
+    "item": "Profit & Loss A/c (Credit Balance)",
+    "cma_field": "Item 23: Surplus / Deficit in Profit & Loss A/c",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "general reserve": {
+    "item": "General Reserve",
+    "cma_field": "Item 20: General Reserve",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "share premium": {
+    "item": "Share Premium",
+    "cma_field": "Item 23: Share Premium",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "depreciation reserve": {
+    "item": "Depreciation Reserve",
+    "cma_field": "Item 36: Depreciation to date",
+    "broad": "Fixed Assets",
+    "section": "BS"
+  },
+  "investment allowance reserve": {
+    "item": "Investment Allowance Reserve",
+    "cma_field": "Item 22: Other Reserves",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "capital reserve": {
+    "item": "Capital Reserve",
+    "cma_field": "Item 22: Other Reserves",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "revaluation reserve": {
+    "item": "Revaluation Reserve",
+    "cma_field": "Item 21: Revaluation Reserve",
+    "broad": "Networth. Being a non-free reserve it should not be included in net worth, which is taken care by formula in CMA.",
+    "section": "BS"
+  },
+  "capital redemption reserve": {
+    "item": "Capital Redemption Reserve",
+    "cma_field": "Item 23: Capital Redemption Reserve",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "debenture redemption reserve": {
+    "item": "Debenture Redemption Reserve",
+    "cma_field": "Item 23: Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "special capital incentive (refundable)": {
+    "item": "Special Capital Incentive (refundable)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "special capital incentive (non-refundable)": {
+    "item": "Special Capital Incentive (non-refundable)",
+    "cma_field": "Item 23: Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "capital subsidy from government (non-refundable)": {
+    "item": "Capital Subsidy from Government (non-refundable)",
+    "cma_field": "Item 23: Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "capital subsidy from government (refundable)": {
+    "item": "Capital Subsidy from Government (Refundable)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "interim dividend": {
+    "item": "Interim dividend",
+    "cma_field": "Item 6: Dividend payable",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "unclaimed dividend": {
+    "item": "Unclaimed dividend",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "factoring": {
+    "item": "Factoring",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "term loan from bank (excluding repayment within 1 year)": {
+    "item": "Term Loan from Bank (excluding repayment within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "term loan from bank (repayable within 1 year)": {
+    "item": "Term Loan from Bank (repayable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "rupee term loan (repayable within 1 year)": {
+    "item": "Rupee Term Loan (repayable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "rupee term loan (excluding repayment within 1 year)": {
+    "item": "Rupee Term Loan (excluding repayment within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "foreign currency term loan (excluding repayments within 1 year)": {
+    "item": "Foreign Currency Term Loan (excluding repayments within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "foreign currency term loan (repayable within 1 year)": {
+    "item": "Foreign Currency Term Loan (repayable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "external commercial borrowings (for long term use)": {
+    "item": "External Commercial Borrowings (for long term use)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "deferred tax liability": {
+    "item": "Deferred tax liability",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "deferred sales tax loan (excluding instalment payable within 1 year)": {
+    "item": "Deferred Sales Tax Loan (excluding instalment payable within 1 year)",
+    "cma_field": "Item 14: Deferred payment credits",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "deferred sales tax loan (instalment payable within 1 year)": {
+    "item": "Deferred Sales Tax Loan (instalment payable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "packing credit": {
+    "item": "Packing Credit",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "pre-shipment finance": {
+    "item": "Pre-shipment Finance",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "post-shipment finance": {
+    "item": "Post-shipment Finance",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "bills discounted / bills purchased": {
+    "item": "Bills discounted / Bills Purchased",
+    "cma_field": "Item 1 (i) / (ii) : Short term borrowings from banks - of which BD / BP (Also to be included in (iii) )",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "short term loans from banks": {
+    "item": "Short Term Loans from banks",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "short term loans from others": {
+    "item": "Short Term Loans from others",
+    "cma_field": "Item 2: Short term borrowings from others",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "aid from government (refundable)": {
+    "item": "Aid From Government (Refundable)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "aid from government (non-refundable)": {
+    "item": "Aid From Government (non-refundable)",
+    "cma_field": "Item 23: Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "bank overdraft (unsecured)": {
+    "item": "Bank overdraft (unsecured)",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "bank overdraft": {
+    "item": "Bank Overdraft",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "cash credit": {
+    "item": "Cash Credit",
+    "cma_field": "Item 1: Short term borrowings from banks",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "debentures (not redeemable within 1 year)": {
+    "item": "Debentures (not redeemable within 1 year)",
+    "cma_field": "Item 11: Debentures",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "debentures (redeemable within 1 year)": {
+    "item": "Debentures (redeemable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "working capital demand loan": {
+    "item": "Working Capital Demand Loan",
+    "cma_field": "Item 1: Short term borrowings from banks (Being excess borrowings placed on repayment basis)",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "hire purchase loan (excluding repayable within 1 year)": {
+    "item": "Hire Purchase Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "machinery loan (excluding repayable within 1 year)": {
+    "item": "Machinery Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "in case of proprietory concern – housing loan (excluding repayable within 1 year)": {
+    "item": "In case of Proprietory Concern – Housing Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "car loan (excluding repayable within 1 year)": {
+    "item": "Car Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "vehicle loan (excluding repayable within 1 year)": {
+    "item": "Vehicle Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "in case of proprietory concern –personal loan (excluding repayable within 1 year)": {
+    "item": "In case of Proprietory Concern –Personal Loan (excluding repayable within 1 year)",
+    "cma_field": "Item 13: Term Loans",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "intercorporate deposits (not repayable within 1 year)": {
+    "item": "Intercorporate deposits (not repayable within 1 year)",
+    "cma_field": "Item 15: Term deposits",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "intercorporate deposits (repayable within 1 year)": {
+    "item": "Intercorporate deposits (repayable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "company deposits (not repayable within 1 year)": {
+    "item": "Company Deposits (not repayable within 1 year)",
+    "cma_field": "Item 15: Term deposits",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "company deposits (repayable within 1 year)": {
+    "item": "Company Deposits (repayable within 1 year)",
+    "cma_field": "Item 8: Deposits/ installments of term loans / DPGs / Debentures etc. repayable within 1 year",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "unsecured loans from associate concerns (without shortfall undertaking)": {
+    "item": "Unsecured Loans from associate concerns (without shortfall undertaking)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "unsecured loans from director (without shortfall undertaking)": {
+    "item": "Unsecured Loans from director (without shortfall undertaking)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "unsecured loans from relatives (without shortfall undertaking)": {
+    "item": "Unsecured Loans from relatives (without shortfall undertaking)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "unsecured loans from friends (without shortfall undertaking)": {
+    "item": "Unsecured Loans from friends (without shortfall undertaking)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "unsecured loans from associate concerns (with shortfall undertaking)": {
+    "item": "Unsecured Loans from associate concerns (with shortfall undertaking)",
+    "cma_field": "Item 23: Net worth - Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "unsecured loans from director (with shortfall undertaking)": {
+    "item": "Unsecured Loans from director (with shortfall undertaking)",
+    "cma_field": "Item 23: Net worth - Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "unsecured loans from relatives (with shortfall undertaking)": {
+    "item": "Unsecured Loans from relatives (with shortfall undertaking)",
+    "cma_field": "Item 23: Net worth - Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "unsecured loans from friends (with shortfall undertaking)": {
+    "item": "Unsecured Loans from friends (with shortfall undertaking)",
+    "cma_field": "Item 23: Networth – Others",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "creditors for goods": {
+    "item": "Creditors for goods",
+    "cma_field": "Item 3: Sundry creditors (Trade)",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "creditors for expenses": {
+    "item": "Creditors for expenses",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "creditors for capital expenditure (repayable within 1 year)": {
+    "item": "Creditors for capital expenditure (Repayable within 1 year)",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "creditors for capital expenditure (excluding repayable within 1 year)": {
+    "item": "Creditors for capital expenditure (Excluding repayable within 1 year)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "outstanding expenses": {
+    "item": "Outstanding Expenses",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "provision for tax": {
+    "item": "Provision for tax",
+    "cma_field": "Item 13 : Provision for Taxes",
+    "broad": "Tax",
+    "section": "PL"
+  },
+  "proposed dividend": {
+    "item": "Proposed Dividend",
+    "cma_field": "Item 6: Dividend payable",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "bills payable": {
+    "item": "Bills Payable",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "electricity expenses payable": {
+    "item": "Electricity Expenses Payable",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "audit fees payable": {
+    "item": "Audit Fees Payable",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "telephone expenses payable": {
+    "item": "Telephone Expenses Payable",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "salaries payable": {
+    "item": "Salaries Payable",
+    "cma_field": "Item 9: Other current liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "deposits from customers": {
+    "item": "Deposits from customers",
+    "cma_field": "Item 4: Advance payment from customers / deposits from dealers",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "advances from customers": {
+    "item": "Advances from customers",
+    "cma_field": "Item 4: Advance payment from customers / deposits from dealers",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "outstanding provident fund contribution": {
+    "item": "Outstanding provident fund contribution",
+    "cma_field": "Item 7: Other statutory liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "sales tax payable": {
+    "item": "Sales Tax Payable",
+    "cma_field": "Item 7: Other statutory liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "service tax payable": {
+    "item": "Service Tax Payable",
+    "cma_field": "Item 7: Other statutory liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "profession tax payable": {
+    "item": "Profession Tax Payable",
+    "cma_field": "Item 7: Other statutory liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "turnover tax payable": {
+    "item": "Turnover Tax Payable",
+    "cma_field": "Item 7: Other statutory liabilities",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "trial balance difference": {
+    "item": "Trial Balance Difference",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Fictitious Asset",
+    "section": "BS"
+  },
+  "suspense account": {
+    "item": "Suspense Account",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Fictitious Asset",
+    "section": "BS"
+  },
+  "fixed assets (gross block)": {
+    "item": "Fixed Assets (Gross block)",
+    "cma_field": "Item 35: Gross block under Fixed Assets",
+    "broad": "Fixed Assets",
+    "section": "BS"
+  },
+  "accumulated depreciation": {
+    "item": "Accumulated depreciation",
+    "cma_field": "Item 36: Depreciation to date",
+    "broad": "Depreciation",
+    "section": "BS"
+  },
+  "capital work in progress": {
+    "item": "Capital Work in progress",
+    "cma_field": "Item 35: Gross block under fixed assets",
+    "broad": "Fixed Assets",
+    "section": "BS"
+  },
+  "long term investments": {
+    "item": "Long Term Investments",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Investments",
+    "section": "BS"
+  },
+  "short term investments": {
+    "item": "Short Term Investments",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Investments",
+    "section": "BS"
+  },
+  "nsc": {
+    "item": "NSC",
+    "cma_field": "Item 27 (i) : Investments – Gvt. And other trustee securities",
+    "broad": "Investments",
+    "section": "BS"
+  },
+  "inventories of raw materials": {
+    "item": "Inventories of raw materials",
+    "cma_field": "Item 30 (i): Inventory - Raw Materials",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "inventories of work-in-progress": {
+    "item": "Inventories of work-in-progress",
+    "cma_field": "Item 30 (ii): Inventory - stocks-in-progress",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "inventories of finished goods": {
+    "item": "Inventories of finished goods",
+    "cma_field": "Item 30 (iii): Inventory - Finished goods",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "debtors outstanding for more than 6 months": {
+    "item": "Debtors outstanding for more than 6 months",
+    "cma_field": "Item 38 (iv) (c): Investments / book debts / advances / deposits which are non-current ",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "debtors outstanding for less than 6 months (considered good)": {
+    "item": "Debtors outstanding for less than 6 months (considered good)",
+    "cma_field": "Item 28: Receivables",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "debtors outstanding for less than 6 months (considered doubtful)": {
+    "item": "Debtors outstanding for less than 6 months (considered doubtful)",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "staff advances": {
+    "item": "Staff Advances",
+    "cma_field": "Item 33 (c): Other current assets - Loans & advances",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "miscellaneous advances": {
+    "item": "Miscellaneous Advances",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "loan / advance to directors": {
+    "item": "Loan / advance to directors",
+    "cma_field": "Item 40: Other non-current assets including dues from directors",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "cash on hand": {
+    "item": "Cash on hand",
+    "cma_field": "Item 26: Cash & bank balances",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "cash at bank": {
+    "item": "Cash at bank",
+    "cma_field": "Item 26: Cash & bank balances",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "insurance claim receivable": {
+    "item": "Insurance Claim Receivable",
+    "cma_field": "Item 33: Other current assets",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "bank current account": {
+    "item": "Bank current account",
+    "cma_field": "Item 26: Cash & bank balances",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "bills receivable": {
+    "item": "Bills Receivable",
+    "cma_field": "Item 28: Receivables",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "security deposit": {
+    "item": "Security Deposit",
+    "cma_field": "Item 38 (iv) (a) : Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "earnest money deposit": {
+    "item": "Earnest Money Deposit",
+    "cma_field": "Item 38 (iv) (a) : Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "advance service tax": {
+    "item": "Advance Service Tax",
+    "cma_field": "Item 32: Advance payment of taxes",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "license deposit": {
+    "item": "License Deposit",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "water connection deposit": {
+    "item": "Water Connection Deposit",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "deposit with excise": {
+    "item": "Deposit with excise",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "pla balance with excise": {
+    "item": "PLA Balance with excise",
+    "cma_field": "Item 32: Advance payment of taxes",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "telephone deposit": {
+    "item": "Telephone Deposit",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "deposit with electricity board": {
+    "item": "Deposit with electricity board",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "fixed deposits with banks & accrued interest (under lien)": {
+    "item": "Fixed Deposits with banks & accrued interest (under lien)",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "fixed deposits with banks & accrued interest (as margin money)": {
+    "item": "Fixed Deposits with banks & accrued interest (as margin money)",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "fixed deposits with banks & accrued interest (without lien)": {
+    "item": "Fixed Deposits with banks & accrued interest (without lien)",
+    "cma_field": "Item 27 (ii): Investments (other than long term) - Fixed Deposits with banks",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "deposits to suppliers": {
+    "item": "Deposits to suppliers",
+    "cma_field": "Item 38: Investments / book debts / advances / deposits which are non-current",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "advances to suppliers": {
+    "item": "Advances to suppliers",
+    "cma_field": "Item 31: Advance to supplier of raw material and stores / spares",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "advance tax": {
+    "item": "Advance Tax",
+    "cma_field": "Item 32: Advance payment of taxes",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "octroi receivable": {
+    "item": "Octroi Receivable",
+    "cma_field": "Item 33: Other current assets",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "advance sales tax": {
+    "item": "Advance Sales Tax",
+    "cma_field": "Item 32: Advance payment of taxes",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "prepaid expenses": {
+    "item": "Prepaid Expenses",
+    "cma_field": "Item 33: Other current assets",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "tax deducted at source": {
+    "item": "Tax Deducted at Source",
+    "cma_field": "Item 32: Advance payment of taxes",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "advance to employees": {
+    "item": "Advance to employees",
+    "cma_field": "Item 33: Other current assets",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "advances recoverable in cash or kind": {
+    "item": "Advances recoverable in cash or kind",
+    "cma_field": "Item 33: Other current assets",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "deferred tax asset": {
+    "item": "Deferred Tax Asset",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Fictitious Asset (To be excluded from Networth, which is taken care by Tangible net worth formula)",
+    "section": "BS"
+  },
+  "goodwill": {
+    "item": "Goodwill",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Intangible Asset",
+    "section": "BS"
+  },
+  "profit & loss a/c (debit balance)": {
+    "item": "Profit & Loss A/c (Debit Balance)",
+    "cma_field": "Item 23: Surplus / deficit in Profit & Loss A/c (Put figure with – ve sign)",
+    "broad": "Fictitious Asset",
+    "section": "BS"
+  },
+  "preliminary expenses": {
+    "item": "Preliminary expenses",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Fictitious Asset",
+    "section": "BS"
+  },
+  "miscellaneous expenditure": {
+    "item": "Miscellaneous Expenditure",
+    "cma_field": "Item 42: Intangible Assets",
+    "broad": "Fictitious Asset",
+    "section": "BS"
+  },
+  "partners' capital a/c (debit balance)": {
+    "item": "Partners' Capital A/c (Debit Balance)",
+    "cma_field": "Deduct from Item 19: Orinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "partners' current a/c (debit balance)": {
+    "item": "Partners' Current A/c (Debit Balance)",
+    "cma_field": "Deduct from Item 19: Orinary Share Capital",
+    "broad": "Networth",
+    "section": "BS"
+  },
+  "advances to subsidiaries or group companies": {
+    "item": "Advances to subsidiaries or group companies",
+    "cma_field": "Item 38 (i) (b) : Investments / book debts / advances / deposits which are non-current - Loans to subsidiaries",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "stores & spares (consumable)": {
+    "item": "Stores & Spares (consumable)",
+    "cma_field": "Item 30: Inventory",
+    "broad": "Current Assets",
+    "section": "BS"
+  },
+  "stores & spares (non-consumable)": {
+    "item": "Stores & Spares (non-consumable)",
+    "cma_field": "Item 39: Non-consumable stores and spares",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "advance to supplier of capital goods and contractors": {
+    "item": "Advance to supplier of capital goods and contractors",
+    "cma_field": "Item 38 (ii): Investments / book debts / advances / deposits which are non-current - Advance to supplier of capital goods / contractors",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "loan / advance to partners": {
+    "item": "Loan / advance to partners",
+    "cma_field": "Item 40: Other non-current assets including dues from directors",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "loan / advance to proprietor": {
+    "item": "Loan / advance to proprietor",
+    "cma_field": "Item 40: Other non-current assets including dues from directors",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "loan / advance to relatives of directors / partners / proprietor": {
+    "item": "Loan / advance to relatives of directors / partners / proprietor",
+    "cma_field": "Item 40: Other non-current assets including dues from directors",
+    "broad": "Non-Current Assets",
+    "section": "BS"
+  },
+  "arrears of depreciation": {
+    "item": "Arrears of Depreciation",
+    "cma_field": "A. Additional Information",
+    "broad": "Additional Info.",
+    "section": "BS"
+  },
+  "dividend on cumulative preference shares": {
+    "item": "Dividend on Cumulative Preference Shares",
+    "cma_field": "B. Additional Information",
+    "broad": "Contingent Liability",
+    "section": "BS"
+  },
+  "dividend on non-cumulative preference shares": {
+    "item": "Dividend on Non-Cumulative Preference Shares",
+    "cma_field": "Not appear in Balance Sheet until its declared.",
+    "broad": "--",
+    "section": "BS"
+  },
+  "gratuity liability not provided for": {
+    "item": "Gratuity Liability not provided for",
+    "cma_field": "B. Additional Information",
+    "broad": "Contingent Liability",
+    "section": "BS"
+  },
+  "disputed excise / customs / tax liabilities": {
+    "item": "Disputed Excise / Customs / Tax liabilities",
+    "cma_field": "B. Additional Information",
+    "broad": "Contingent Liability",
+    "section": "BS"
+  },
+  "other liabilities not provided for": {
+    "item": "Other Liabilities not provided for",
+    "cma_field": "B. Additional Information",
+    "broad": "Contingent Liability",
+    "section": "BS"
+  },
+  "mobilisation advance (adjustment period less than 1year)": {
+    "item": "Mobilisation Advance (adjustment period less than 1year)",
+    "cma_field": "Item 4: Advance payment from customers / deposits from dealers",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "mobilisation advance (adjustment period more than 1year)": {
+    "item": "Mobilisation Advance (adjustment period more than 1year)",
+    "cma_field": "Item 16: Other term liabilities",
+    "broad": "Term Liability",
+    "section": "BS"
+  },
+  "bills discounted (appearing as contingent liability)": {
+    "item": "Bills Discounted (appearing as contingent liability)",
+    "cma_field": "Item 1 (i) / (ii) : Short term borrowings from banks - of which BD / BP (Also to be included in (iii) )",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "cheques issued but not presented": {
+    "item": "Cheques Issued but not presented",
+    "cma_field": "Item 3: Sundry creditors (Trade)",
+    "broad": "Current Liability",
+    "section": "BS"
+  },
+  "purchases of raw materials": {
+    "item": "Purchases of raw materials",
+    "cma_field": "Item 5 (i) (b) : RM - Indigenous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "wages & salary": {
+    "item": "Wages & Salary",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "electricity expenses - factory": {
+    "item": "Electricity expenses - Factory",
+    "cma_field": "Item 5 (iii) : Power & Fuel",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "provident fund - factory workers": {
+    "item": "Provident Fund - factory workers",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "freight inward / carriage inward": {
+    "item": "Freight inward / carriage inward",
+    "cma_field": "Item 5 (i) (a) or (b) : RM – Indigenous / Imported",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "water charges": {
+    "item": "Water Charges",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "fuel expenses - factory": {
+    "item": "Fuel Expenses - factory",
+    "cma_field": "Item 5 (iii) : Power & Fuel",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "octroi on purchases": {
+    "item": "Octroi on purchases",
+    "cma_field": "Item 5 (i) (b) : RM – Indigenous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "excise duty on purchases": {
+    "item": "Excise duty on purchases",
+    "cma_field": "Item 5 (i) (b) : RM – Indigenous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "imports of raw material": {
+    "item": "Imports of raw material",
+    "cma_field": "Item 5 (i) (a) : RM - Imported",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "customs duty on purchases": {
+    "item": "Customs duty on purchases",
+    "cma_field": "Item 5 (i) (a) : RM - Imported",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "labour charges": {
+    "item": "Labour charges",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "loading & unloading charges": {
+    "item": "Loading & unloading charges",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "machinery maintenance": {
+    "item": "Machinery Maintenance",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "building maintenance (factory building)": {
+    "item": "Building Maintenance (Factory Building)",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "building maintenance (others)": {
+    "item": "Building Maintenance (Others)",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "esi fund": {
+    "item": "ESI Fund",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "purchase tax": {
+    "item": "Purchase Tax",
+    "cma_field": "Item 5 (i) (b) : RM – Indigenous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "salary of supervisors": {
+    "item": "Salary of supervisors",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "salary of plant manager": {
+    "item": "Salary of plant manager",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "general expenses": {
+    "item": "General expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "conveyance": {
+    "item": "Conveyance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "packing charges": {
+    "item": "Packing charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "cartage": {
+    "item": "Cartage",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "clearing & forwarding – for imports": {
+    "item": "Clearing & Forwarding – For Imports",
+    "cma_field": "Item 5 (i) (a) : RM - Imported",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "clearing & forwarding – for exports": {
+    "item": "Clearing & Forwarding – For Exports",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "office expenses": {
+    "item": "Office Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "car expenses": {
+    "item": "Car Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "postage & telegram": {
+    "item": "Postage & Telegram",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "courier charges": {
+    "item": "Courier Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "sales tax": {
+    "item": "Sales Tax",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "bank charges": {
+    "item": "Bank Charges",
+    "cma_field": "Item 9 : Interest",
+    "broad": "Interest",
+    "section": "PL"
+  },
+  "insurance": {
+    "item": "Insurance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "consultancy charges": {
+    "item": "Consultancy Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "audit fees": {
+    "item": "Audit Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "freight outward": {
+    "item": "Freight outward",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "factory rent": {
+    "item": "Factory Rent",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "office rent": {
+    "item": "Office Rent",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "rates & taxes": {
+    "item": "Rates & Taxes",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "rent, rates & taxes": {
+    "item": "Rent, Rates & Taxes",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "traveling expenses": {
+    "item": "Traveling Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "advertising & publicity": {
+    "item": "Advertising & Publicity",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "repairs & renewals": {
+    "item": "Repairs & Renewals",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "depreciation on factory building": {
+    "item": "Depreciation on factory building",
+    "cma_field": "Item 5 (vi) : Depreciation",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "depreciation on machinery": {
+    "item": "Depreciation on machinery",
+    "cma_field": "Item 5 (vi) : Depreciation",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "depreciation on office building": {
+    "item": "Depreciation on office building",
+    "cma_field": "Item 5 (vi) : Depreciation",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "depreciation on office equipments": {
+    "item": "Depreciation on office equipments",
+    "cma_field": "Item 5 (vi) : Depreciation",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "depreciation on furniture": {
+    "item": "Depreciation on furniture",
+    "cma_field": "Item 5 (vi) : Depreciation",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "legal expenses": {
+    "item": "Legal expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "printing & stationery": {
+    "item": "Printing & Stationery",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "vehicle maintenance": {
+    "item": "Vehicle Maintenance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "staff welfare expenses": {
+    "item": "Staff welfare expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "trade license fees": {
+    "item": "Trade license fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "road tax": {
+    "item": "Road Tax",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "vehicle insurance": {
+    "item": "Vehicle insurance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "telephone expenses": {
+    "item": "Telephone expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "mobile expenses": {
+    "item": "Mobile expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "profession tax": {
+    "item": "Profession tax",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "fire insurance": {
+    "item": "Fire insurance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "theft insurance": {
+    "item": "Theft insurance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "loss by fire": {
+    "item": "Loss by fire",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "loss by theft": {
+    "item": "Loss by theft",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "court fees": {
+    "item": "Court fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "income tax": {
+    "item": "Income Tax",
+    "cma_field": "Item 13 : Provision for Taxes",
+    "broad": "Tax",
+    "section": "PL"
+  },
+  "dividend tax": {
+    "item": "Dividend Tax",
+    "cma_field": "Item 15 (a) : Equity Dividend paid amount",
+    "broad": "Dividend",
+    "section": "PL"
+  },
+  "bad debts": {
+    "item": "Bad debts",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "provision for bad debts": {
+    "item": "Provision for bad debts",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "provision for gratuity": {
+    "item": "Provision for gratuity",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "provision for retirement benefits": {
+    "item": "Provision for retirement benefits",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "workers uniform": {
+    "item": "Workers uniform",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "laundry expenses": {
+    "item": "Laundry Expenses",
+    "cma_field": "Item 5 (iv) : Direct Labour (factory wages & Salaries)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "sales promotion expenses": {
+    "item": "Sales Promotion Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "directors fees": {
+    "item": "Directors Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "directors remuneration": {
+    "item": "Directors Remuneration",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "salary to partners": {
+    "item": "Salary to partners",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "interest on unsecured loans from friends and relatives": {
+    "item": "Interest on unsecured loans from friends and relatives",
+    "cma_field": "Item 9 : Interest",
+    "broad": "Interest",
+    "section": "PL"
+  },
+  "bank interest": {
+    "item": "Bank Interest",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "interest on long term loans": {
+    "item": "Interest on long term loans",
+    "cma_field": "Item 9 : Bank Interest",
+    "broad": "Interest",
+    "section": "PL"
+  },
+  "hire charges": {
+    "item": "Hire Charges",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "lease rent": {
+    "item": "Lease Rent",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "purchase of stores": {
+    "item": "Purchase of stores",
+    "cma_field": "Item 5 (ii) (b) : Other Spares - Indegineous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "purchase of spares": {
+    "item": "Purchase of spares",
+    "cma_field": "Item 5 (ii) (b) : Other Spares - Indegineous",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "loss on sale of asset": {
+    "item": "Loss on sale of Asset",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "loss on sale of investment": {
+    "item": "Loss on sale of Investment",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "job work charges paid": {
+    "item": "Job Work Charges paid",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "job work charges received": {
+    "item": "Job Work Charges Received",
+    "cma_field": "Item 1 : Gross Sales",
+    "broad": "Sales",
+    "section": "PL"
+  },
+  "generator expenses": {
+    "item": "Generator Expenses",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "bonus": {
+    "item": "Bonus",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "inspection charges": {
+    "item": "Inspection Charges",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "diwali expenses": {
+    "item": "Diwali Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "donation": {
+    "item": "Donation",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "internet expenses": {
+    "item": "Internet Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "loss on evaporation": {
+    "item": "Loss on evaporation",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "transportation": {
+    "item": "Transportation",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "computer maintenance": {
+    "item": "Computer maintenance",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "newapaper & periodicals": {
+    "item": "Newapaper & Periodicals",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "rate difference": {
+    "item": "Rate Difference",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "gratuity expenses": {
+    "item": "Gratuity expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "miscellaneous expenses": {
+    "item": "Miscellaneous expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "sundry expenses": {
+    "item": "Sundry expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "prior period expenses": {
+    "item": "Prior period expenses",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "mediclaim": {
+    "item": "Mediclaim",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "insurance premium": {
+    "item": "Insurance Premium",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "trade discount allowed": {
+    "item": "Trade Discount allowed",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Netted off against sales",
+    "section": "PL"
+  },
+  "cash discount allowed": {
+    "item": "Cash Discount allowed",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Netted off against sales",
+    "section": "PL"
+  },
+  "speculation loss": {
+    "item": "Speculation Loss",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "security charges": {
+    "item": "Security Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "service tax": {
+    "item": "Service Tax",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "free sample distribution expenses": {
+    "item": "Free Sample distribution expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "gift": {
+    "item": "Gift",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "business promotion": {
+    "item": "Business Promotion",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "royalty fees": {
+    "item": "Royalty Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "know how expenditure incurred": {
+    "item": "Know how expenditure incurred",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "license fees paid": {
+    "item": "License fees paid",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "professional fees": {
+    "item": "Professional Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "accounting charges": {
+    "item": "Accounting Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "deferred tax expenses": {
+    "item": "Deferred tax expenses",
+    "cma_field": "Item 13 : Provision for Taxes",
+    "broad": "Tax",
+    "section": "PL"
+  },
+  "foreign exchange expenditure": {
+    "item": "Foreign Exchange expenditure",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "kasar account": {
+    "item": "Kasar account",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "vatav account": {
+    "item": "Vatav account",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "penalty charges": {
+    "item": "Penalty Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "pooja expenses": {
+    "item": "Pooja expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "festival expenses": {
+    "item": "Festival expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "ex – gratia expenses": {
+    "item": "Ex – Gratia expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "warehouse expenses": {
+    "item": "Warehouse expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "brokerage expenses": {
+    "item": "Brokerage expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "hel majuri/  hamali": {
+    "item": "Hel Majuri/  Hamali",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "municipal expenses": {
+    "item": "Municipal Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "roc filing fees": {
+    "item": "ROC Filing Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "motor car expenses": {
+    "item": "Motor Car expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "xerox charges": {
+    "item": "Xerox Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "books & periodicals": {
+    "item": "Books & Periodicals",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "amc charges (for machiery)": {
+    "item": "AMC Charges (For Machiery)",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "amc charges (for office equipments)": {
+    "item": "AMC Charges (For Office Equipments)",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "membership & subscription": {
+    "item": "Membership & Subscription",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "conference expenses": {
+    "item": "Conference expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "seminar expenses": {
+    "item": "Seminar Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "petrol expenses": {
+    "item": "Petrol Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "uniform expenses": {
+    "item": "Uniform expenses",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "vakil fees": {
+    "item": "Vakil Fees",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "interest on partners' loan": {
+    "item": "Interest on Partners' Loan",
+    "cma_field": "Item 9 : Interest",
+    "broad": "Interest",
+    "section": "PL"
+  },
+  "interest on partners' capital": {
+    "item": "Interest on Partners' Capital",
+    "cma_field": "Item 15 (a) : Equity Dividend paid amount",
+    "broad": "Dividend",
+    "section": "PL"
+  },
+  "commission to directors": {
+    "item": "Commission to Directors",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "marketing expenses": {
+    "item": "Marketing Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "selling & distribution expenses": {
+    "item": "Selling & Distribution expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "preliminary expenses write off": {
+    "item": "Preliminary expenses Write off",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "pre operative expenses write off": {
+    "item": "Pre Operative expenses write off",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "gardening expenses": {
+    "item": "Gardening Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "shop expenses": {
+    "item": "Shop expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "suspense account w/off": {
+    "item": "Suspense account w/off",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "trial balance difference w/off": {
+    "item": "Trial Balance Difference w/off",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "cash theft": {
+    "item": "Cash Theft",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "pump expenses": {
+    "item": "Pump Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "goods lost in transit": {
+    "item": "Goods lost in transit",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "dividend paid": {
+    "item": "Dividend Paid",
+    "cma_field": "Item 15 (a) : Equity Dividend paid amount",
+    "broad": "Dividend",
+    "section": "PL"
+  },
+  "franking charges": {
+    "item": "Franking Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "research & development expenses": {
+    "item": "Research & Development expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "entertainment expenses": {
+    "item": "Entertainment expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "self assessment tax": {
+    "item": "Self Assessment tax",
+    "cma_field": "Item 13 : Provision for Taxes",
+    "broad": "Tax",
+    "section": "PL"
+  },
+  "canteen expenses": {
+    "item": "Canteen Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "hotel expenses": {
+    "item": "Hotel Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "medical expenses": {
+    "item": "Medical Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "tanker rent": {
+    "item": "Tanker Rent",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "incentives to client": {
+    "item": "Incentives to Client",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "stamping charges": {
+    "item": "Stamping Charges",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "name board and fittings": {
+    "item": "Name Board and Fittings",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "power": {
+    "item": "Power",
+    "cma_field": "Item 5 (iii) : Power & Fuel",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "club expenses": {
+    "item": "Club Expenses",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "quantity discount payable": {
+    "item": "Quantity Discount payable",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "sales return": {
+    "item": "Sales return",
+    "cma_field": "Item 1 : Less from Sales",
+    "broad": "Sales",
+    "section": "PL"
+  },
+  "formation expenses": {
+    "item": "Formation Expenses",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "devaluation loss": {
+    "item": "Devaluation Loss",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "impairment of fixed assets (machinery / factory land & building)": {
+    "item": "Impairment of fixed Assets (Machinery / Factory Land & Building)",
+    "cma_field": "Item 5 (v) : Other manufacturing expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "impairment of fixed assets (office assets)": {
+    "item": "Impairment of fixed Assets (Office Assets)",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "deferred revenue expenditure w/off": {
+    "item": "Deferred Revenue Expenditure w/off",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "increase / decrease in stock": {
+    "item": "Increase / Decrease in Stock",
+    "cma_field": "Same is to be bifurcated into Opening and Closing Stock and effect is to be given accordingly.",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "premium on redemtion of securities": {
+    "item": "Premium on redemtion of securities",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "debenture interest": {
+    "item": "Debenture Interest",
+    "cma_field": "Item 9 : Interest",
+    "broad": "Interest",
+    "section": "PL"
+  },
+  "branch loss": {
+    "item": "Branch Loss",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "it penalties": {
+    "item": "IT Penalties",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "other penalies": {
+    "item": "Other Penalies",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "turnover tax": {
+    "item": "Turnover Tax",
+    "cma_field": "Item 2 : Less Excise duty",
+    "broad": "Sales",
+    "section": "PL"
+  },
+  "professional tax": {
+    "item": "Professional Tax",
+    "cma_field": "Item 6 : Selling, General & Administrative Expenses",
+    "broad": "Selling, Gen. & Adm. Exp.",
+    "section": "PL"
+  },
+  "goodwill written off": {
+    "item": "Goodwill written off",
+    "cma_field": "Item 11 (ii) : Other non-operating expenses",
+    "broad": "non-operating expenses",
+    "section": "PL"
+  },
+  "incomes": {
+    "item": "Incomes",
+    "cma_field": "",
+    "broad": "",
+    "section": "PL"
+  },
+  "sales": {
+    "item": "Sales",
+    "cma_field": "Item 1 (i) : Domestic sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "sale of import license": {
+    "item": "Sale of import license",
+    "cma_field": "Item 1 (ii) : Export sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "sale of depb license": {
+    "item": "Sale of DEPB license",
+    "cma_field": "Item 1 (ii) : Export sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "consignment sales": {
+    "item": "Consignment Sales",
+    "cma_field": "Item 1 (i) : Domestic sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "duty drawback": {
+    "item": "Duty Drawback",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "export sales": {
+    "item": "Export Sales",
+    "cma_field": "Item 1 (ii) : Export sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "refund of income tax": {
+    "item": "Refund of income tax",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "refund of sales tax": {
+    "item": "Refund of sales tax",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "interest received": {
+    "item": "Interest received",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "dividend received": {
+    "item": "Dividend Received",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "bad debts recovered": {
+    "item": "Bad debts recovered",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "commission / brokerage received (recurring)": {
+    "item": "Commission / Brokerage Received (Recurring)",
+    "cma_field": "Item 1 (i) : Domestic sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "commission / brokerage received (one time)": {
+    "item": "Commission / Brokerage Received (One time)",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "profit on sale of asset": {
+    "item": "Profit on sale of Asset",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "profit on sale of investment": {
+    "item": "Profit on sale of Investment",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "scrap sale": {
+    "item": "Scrap Sale",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "delivery charges": {
+    "item": "Delivery Charges",
+    "cma_field": "Item 1 (i) : Domestic sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "insurance receipts": {
+    "item": "Insurance Receipts",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "trade discounts received": {
+    "item": "Trade Discounts Received",
+    "cma_field": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "cash discounts received": {
+    "item": "Cash Discounts Received",
+    "cma_field": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "speculation profit": {
+    "item": "Speculation Profit",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "royalty fees (recurring and related to business)": {
+    "item": "Royalty Fees (Recurring and Related to business)",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "royalty fees (one time)": {
+    "item": "Royalty Fees (One time)",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "foreign exchange earning": {
+    "item": "Foreign Exchange earning",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "interest on fd": {
+    "item": "Interest on FD",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "miscellaneous income": {
+    "item": "Miscellaneous Income",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "other income": {
+    "item": "Other Income",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "hire income (recurring and related to business)": {
+    "item": "Hire Income (Recurring and Related to business)",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "hire income (one time)": {
+    "item": "Hire Income (One time)",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "chit fund income": {
+    "item": "Chit Fund Income",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "rent income (recurring and related to business)": {
+    "item": "Rent Income (Recurring and Related to business)",
+    "cma_field": "Item 1 : Domestic / Export sales as applicable",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "rent income (one time)": {
+    "item": "Rent Income (One time)",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "transport income": {
+    "item": "Transport Income",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "puc receipts": {
+    "item": "PUC Receipts",
+    "cma_field": "Item 1 (i) : Domestic sales",
+    "broad": "Gross Sales",
+    "section": "PL"
+  },
+  "pco income": {
+    "item": "PCO Income",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "interest on it refund": {
+    "item": "Interest on IT Refund",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  },
+  "quantity discount receivable / received": {
+    "item": "Quantity Discount Receivable / Received",
+    "cma_field": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "purchase return": {
+    "item": "Purchase return",
+    "cma_field": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "subsidies (recurring for operative exp)": {
+    "item": "Subsidies (Recurring for Operative Exp)",
+    "cma_field": "Deduct from respective expenses",
+    "broad": "Cost of Sales",
+    "section": "PL"
+  },
+  "subsidies (one time)": {
+    "item": "Subsidies (One time)",
+    "cma_field": "Item 11 (i) : Other non-operating income",
+    "broad": "Non-operating Income",
+    "section": "PL"
+  }
+}

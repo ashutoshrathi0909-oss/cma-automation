@@ -1,0 +1,160 @@
+{
+  "company_name": "Mehta Computers",
+  "industry": "Trading",
+  "financial_years": ["FY2022", "FY2023", "FY2024", "FY2025"],
+  "documents_to_use": [
+    {
+      "file": "Mehta_Computers_financials_2022.xls",
+      "source": "2022/",
+      "year": "FY2022",
+      "type": "Excel",
+      "content": "P&L + Balance Sheet",
+      "format_note": "Genuine OLE2/BIFF8 .xls — readable via xlrd",
+      "sheets": ["stat", "BS", "PL", "FA", "Sch BS"]
+    },
+    {
+      "file": "Mehta Computers financials 2023.xls",
+      "source": "2023/",
+      "year": "FY2023",
+      "type": "Excel",
+      "content": "P&L + Balance Sheet",
+      "format_note": "Genuine OLE2/BIFF8 .xls — readable via xlrd",
+      "sheets": ["stat", "BS", "PL", "FA", "Sch BS"]
+    },
+    {
+      "file": "Mehta_Computers_financials_2024.xls",
+      "source": "2024/",
+      "year": "FY2024",
+      "type": "Excel",
+      "content": "P&L + Balance Sheet",
+      "format_note": "OOXML/xlsx disguised with .xls extension — must be opened with openpyxl after rename",
+      "sheets": ["stat", "BS", "PL", "FA", "Sch BS"],
+      "company_detected": "M/S MEHTA COMPUTERS (Prop. Jignesh Chandrakant Mehta)",
+      "fy_detected": "Y.E. 31st MARCH 2024"
+    },
+    {
+      "file": "BSheet.pdf",
+      "source": "2025/",
+      "year": "FY2025",
+      "type": "PDF",
+      "content": "Balance Sheet"
+    },
+    {
+      "file": "PandL.pdf",
+      "source": "2025/",
+      "year": "FY2025",
+      "type": "PDF",
+      "content": "P&L"
+    },
+    {
+      "file": "TrialBal.pdf",
+      "source": "2025/",
+      "year": "FY2025",
+      "type": "PDF",
+      "content": "Trial Balance"
+    },
+    {
+      "file": "EMI Schedule.pdf",
+      "source": "root",
+      "year": "multi",
+      "type": "PDF",
+      "content": "TL loan repayment"
+    }
+  ],
+  "documents_skipped": [
+    {
+      "file": "ITR one page 21-22.jpeg",
+      "source": "2022/",
+      "reason": "Tax form image, not financial statement"
+    },
+    {
+      "file": "ITR one page 22-23.jpeg",
+      "source": "2023/",
+      "reason": "Tax form image, not financial statement"
+    },
+    {
+      "file": "ITR one page 23-24.jpeg",
+      "source": "2024/",
+      "reason": "Tax form image, not financial statement"
+    },
+    {
+      "file": "ITR Acknowledgement FY 22-23.pdf",
+      "source": "2023/",
+      "reason": "Tax filing confirmation, not a financial statement"
+    },
+    {
+      "file": "ITR Intimation FY 2023-24.pdf",
+      "source": "2024/",
+      "reason": "Tax filing notice, not a financial statement"
+    },
+    {
+      "file": "Wankaner - Letter.pdf",
+      "source": "root",
+      "reason": "Business letter, not a financial statement"
+    }
+  ],
+  "mydata_assessment": "MyData.xls INPUT SHEET row 7 col B (0-based row 6, col 1) is blank — no company name entered. Row 7 (Name of the customer) shows empty string in col B. MyData.xls is a blank/template CMA workbook with no Mehta Computers data loaded. MyData.xlsm also exists (OOXML format, 169 KB) and similarly has no company name in INPUT SHEET row 7 col B.",
+  "ground_truth_cma": {
+    "file": "CMA 15092025.xls",
+    "sheet": "INPUT SHEET",
+    "format": "Genuine OLE2/BIFF8 .xls — readable via xlrd",
+    "company_name_row7_colB": "Mehta Computers",
+    "columns": {
+      "B (idx 1)": "FY2022 (Year=2022)",
+      "C (idx 2)": "FY2023 (Year=2023)",
+      "D (idx 3)": "FY2024 (Year=2024)",
+      "E (idx 4)": "FY2025 (Year=2025)"
+    },
+    "confirmed_populated": true,
+    "spot_check": {
+      "R22_Domestic_FY2022_colB": 182.5508,
+      "R22_Domestic_FY2023_colC": 327.00628,
+      "R22_Domestic_FY2024_colD": 230.61052,
+      "R22_Domestic_FY2025_colE": 519.5032827,
+      "R26_NetSales_FY2022_colB": 182.5508,
+      "R26_NetSales_FY2024_colD": 230.61052,
+      "note": "Task spec refers to Row 21 with value ~182.55 — actual 'Domestic' label is on Row 22 (1-based); Row 21 is the 'Sales' section header. Values match expected ~182.55 and ~230.61 exactly."
+    },
+    "populated_rows_with_data_in_rows21_to_108": "35 of 88 rows have non-zero values (many rows are structural labels/zero)"
+  },
+  "excel_2024_preview": {
+    "sheet_names": ["stat", "BS", "PL", "FA", "Sch BS"],
+    "company_name_detected": "M/S MEHTA COMPUTERS (Prop. Jignesh Chandrakant Mehta)",
+    "address": "KVM Hussain Center, 2nd Floor, Devraj Mudali St, Parktown, Chennai-600003",
+    "financial_year_detected": "Y.E. 31st March 2024 (AY 2024-2025)",
+    "sections_found": [
+      "Trading and P&L Account",
+      "Balance Sheet as at 31st March 2024",
+      "Schedule of Fixed Assets",
+      "Schedule forming part of Balance Sheet (Capital Account, Loans, Bank Balances, Deposits)"
+    ],
+    "key_pl_items": {
+      "sales_FY2024": 23460655.32,
+      "purchases_FY2024": 17412563.15,
+      "gross_profit_FY2024": 4208433.96,
+      "net_profit_FY2024": 1229351.90,
+      "closing_stock_FY2024": 1664651.10
+    },
+    "key_bs_items": {
+      "capital_FY2024": 5796670.56,
+      "total_FY2024": 11671920.60
+    }
+  },
+  "industry_classification": {
+    "industry": "Trading",
+    "evidence": [
+      "Sheet heading: 'TRADING AND PROFIT & LOSS ACCOUNT'",
+      "Line item: 'To Purchases' (stock purchases, not manufacturing)",
+      "Line item: 'Stock-in-Trade' on Balance Sheet",
+      "No factory wages, no raw material processing — pure buy-and-sell model",
+      "Business: Computer hardware/peripherals reseller (Mehta Computers)"
+    ]
+  },
+  "file_format_warnings": [
+    "Mehta_Computers_financials_2024.xls has .xls extension but is actually OOXML/xlsx format (PK header). Must be opened with openpyxl, not xlrd.",
+    "Mehta_Computers_financials_2022.xls and 2023.xls are genuine OLE2 .xls files — use xlrd.",
+    "CMA 15092025.xls is genuine OLE2 .xls — use xlrd."
+  ],
+  "pass": true,
+  "notes": "All 7 financial documents identified and confirmed. Ground truth CMA verified with company name 'Mehta Computers' and real numeric values (FY2022 domestic sales=182.55, FY2024=230.61). Industry confirmed as Trading based on 'Trading and P&L' heading and Purchases line item. MyData.xls/xlsm are blank templates with no company data — not usable as source. The 2024 Excel file has a format mismatch (xlsx inside .xls) that must be handled during extraction."
+}

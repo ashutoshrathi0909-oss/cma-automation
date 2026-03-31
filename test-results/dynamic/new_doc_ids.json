@@ -1,0 +1,61 @@
+{
+  "new_doc_ids": [
+    "286129f7-b0b8-44d6-803a-36a5e8422a11",
+    "72ebeadc-d4ed-47fa-8fc8-a2492657d976",
+    "19ba296d-5edf-4f37-ae4c-9e287b629a22",
+    "3c021d45-57a9-484f-ad37-8206c04b66e0",
+    "b173641a-c660-45af-915a-b45aeb523b4d"
+  ],
+  "results": [
+    {
+      "name": "ITR BS P&L.pdf",
+      "year": 2022,
+      "doc_id": "286129f7-b0b8-44d6-803a-36a5e8422a11",
+      "items": 166,
+      "status": "extracted",
+      "time": 144,
+      "target": 15,
+      "pass": true
+    },
+    {
+      "name": "ITR PL & BS.pdf",
+      "year": 2023,
+      "doc_id": "72ebeadc-d4ed-47fa-8fc8-a2492657d976",
+      "items": 109,
+      "status": "extracted",
+      "time": 103,
+      "target": 20,
+      "pass": true
+    },
+    {
+      "name": "Notes..pdf",
+      "year": 2023,
+      "doc_id": "19ba296d-5edf-4f37-ae4c-9e287b629a22",
+      "items": 185,
+      "status": "extracted",
+      "time": 143,
+      "target": 15,
+      "pass": true
+    },
+    {
+      "name": "Audited Financials FY-2024 (1).pdf",
+      "year": 2024,
+      "doc_id": "3c021d45-57a9-484f-ad37-8206c04b66e0",
+      "items": 290,
+      "status": "extracted",
+      "time": 267,
+      "target": 50,
+      "pass": true
+    },
+    {
+      "name": "Provisional financial 31.03.25 (3).xlsx",
+      "year": 2025,
+      "doc_id": "b173641a-c660-45af-915a-b45aeb523b4d",
+      "items": 139,
+      "status": "extracted",
+      "time": 20,
+      "target": 20,
+      "pass": true
+    }
+  ]
+}

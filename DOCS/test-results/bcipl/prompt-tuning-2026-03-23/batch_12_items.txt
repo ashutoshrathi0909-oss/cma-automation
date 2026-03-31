@@ -1,0 +1,90 @@
+Item 1:
+  Description: Administrative & General Expenses (FY22)
+  Amount: Rs 18,227,490.47
+  Section: tax audit
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 2:
+  Description: Statutory Audit (FY22)
+  Amount: Rs 225,000.00
+  Section: auditor's remuneration:
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 3:
+  Description: Tax Audit (FY22)
+  Amount: Rs 75,000.00
+  Section: note 27
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 4:
+  Description: Interest on C.C. A/c (FY22)
+  Amount: Rs 5,404,339.21
+  Section: interest expenses:
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 5:
+  Description: Interest - Term Loan & Others (FY22)
+  Amount: Rs 13,115,815.63
+  Section: note 25 - depreciation and amortisation
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 6:
+  Description: Cash on Hand (FY22)
+  Amount: Rs 89,123.00
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 7:
+  Description: Balance With Bank (FY22)
+  Amount: Rs 165,566.78
+  Section: cash & cash equivalents
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 8:
+  Description: Fixed Deposits (FY22)
+  Amount: Rs 6,315,953.00
+  Section: note 15 - cash and bank
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 9:
+  Description: Advance Tax net (FY22)
+  Amount: Rs 4,515,923.76
+  Section: net prepaid tax / tds
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 10:
+  Description: Prepaid Expenses (FY22)
+  Amount: Rs 1,317,287.97
+  Section: unsecured considered good
+  Sheet: Notes BS (2)
+  Financial Year: 2022
+Item 11:
+  Description: Accumulated Depreciation - Cranes (At 31st March)
+  Amount: Rs 7,790,657.31
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 12:
+  Description: Accumulated Depreciation - Air Compressor (At 31st March)
+  Amount: Rs 791,789.22
+  Section: depreciation schedule - accumulated depreciation
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 13:
+  Description: Interest Paid on Unsecured Loan (FY22)
+  Amount: Rs 1,475,862.00
+  Section: interest expenses:
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 14:
+  Description: Bill Discounting Charges (FY22)
+  Amount: Rs 7,340,074.16
+  Section: other borrowing costs:
+  Sheet: Notes to P & L
+  Financial Year: 2022
+Item 15:
+  Description: Bank Charges (FY22)
+  Amount: Rs 1,455,373.34
+  Section: other expenses
+  Sheet: Notes to P & L
+  Financial Year: 2022

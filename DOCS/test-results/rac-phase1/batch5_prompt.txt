@@ -1,0 +1,48 @@
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+CANDIDATE CMA FIELDS (you MUST pick from ONLY these rows):
+- Row 22: Domestic Sales
+- Row 45: Wages
+- Row 47: Freight and Transportation Charges
+- Row 48: Power, Coal, Fuel and Water
+- Row 49: Others (Manufacturing)
+- Row 67: Salary and staff expenses
+- Row 68: Rent, Rates and Taxes
+- Row 70: Advertisements and Sales Promotions
+- Row 71: Others (Admin)
+- Row 73: Audit Fees & Directors Remuneration
+- Row 93: Others (Non-Operating Expenses)
+- Row 162: Gross Block
+- Row 250: Other current liabilities
+
+SIMILAR ITEMS ALREADY CLASSIFIED (use as reference examples):
+1. "Salary and Wages" (Note 18-24 | note 15 : employee benefits ex) -> Row 45: Wages
+2. "Staff welfare expenses" (Note 18-24 | note 15 : employee benefits ex) -> Row 45: Wages
+3. "Contributions to provident and other funds" (Note 18-24 | note 15 : employee benefits ex) -> Row 45: Wages
+4. "Admin Exp for PF" (Note 18-24 | note 17 : other expenses) -> Row 67: Salary and staff expenses
+5. "Labour Charges" (Note 18-24 | note 17 : other expenses) -> Row 45: Wages
+6. "Power and fuel" (Note 18-24 | note 17 : other expenses) -> Row 48: Power, Coal, Fuel and Water
+7. "P&L on Sale of Car" (Note 18-24 | note 17 : other expenses) -> Row 93: Others (Non-Operating Expenses)
+8. "Miscellaneous expenses" (Note 18-24 | note 17 : other expenses) -> Row 71: Others (Admin)
+9. "Electrical Equipments" (Note 3-17 | fixed assets detail) -> Row 162: Gross Block
+10. "Rent including lease rentals" (Note 18-24 | note 17 : other expenses) -> Row 68: Rent, Rates and Taxes
+
+CLASSIFY THESE 10 ITEMS:
+1. "Salaries & Wages" | Notes to P & L | employee benefits expense
+2. "Contribution to PF & Other Funds" | Notes to P & L | employee benefits expense
+3. "Labour Welfare Expenses" | Notes to P & L | employee benefits expense
+4. "Power & Fuel" | Notes to P & L | other expenses
+5. "Power Charges" | Subnotes to PL | power & fuel
+6. "Fuel Charges" | Subnotes to PL | power & fuel
+7. "Rent" | Notes to P & L | other expenses
+8. "Discount Allowed" | Subnotes to PL | selling & distribution expenses
+9. "Insurance" | Notes to P & L | other expenses
+10. "Statutory Audit" | Notes to P & L | auditor's remuneration:
+
+Return a JSON array with exactly 10 objects. Each object must have:
+- "item_index": integer 1-10 (matching the item number above)
+- "classified_cma_row": integer (the row number from CANDIDATE CMA FIELDS)
+- "classified_cma_field": string (the field name)
+- "confidence": float 0.0-1.0
+
+Return ONLY valid JSON array, no other text.

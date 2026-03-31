@@ -1,0 +1,237 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: CMA Assist
+        - paragraph [ref=e5]: Automation Platform
+      - navigation [ref=e6]:
+        - link "Dashboard" [ref=e7] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e8]
+          - text: Dashboard
+        - link "Clients" [ref=e13] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e14]
+          - text: Clients
+        - link "Settings" [ref=e19] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e20]
+          - text: Settings
+    - generic [ref=e23]:
+      - banner [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - img [ref=e27]
+            - generic [ref=e30]: Dev Admin
+            - generic [ref=e31]: admin
+          - button "Logout" [ref=e32]:
+            - img
+            - text: Logout
+      - main [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - heading "Clients" [level=1] [ref=e37]
+              - paragraph [ref=e38]: Manage client accounts and CMA reports
+            - link "New Client" [ref=e39] [cursor=pointer]:
+              - /url: /clients/new
+              - button "New Client" [ref=e40]:
+                - img
+                - text: New Client
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - img
+              - textbox "Search clients…" [ref=e43]
+            - combobox "Filter by industry" [ref=e44]:
+              - option "All industries" [selected]
+              - option "Manufacturing"
+              - option "Service"
+              - option "Trading"
+              - option "Other"
+          - generic [ref=e45]:
+            - link "BCIPL manufacturing FY ends 31st March INR" [ref=e61] [cursor=pointer]:
+              - /url: /clients/19cf7c12-2f2a-4c98-b2b3-7011a999a310
+              - generic [ref=e62]:
+                - generic [ref=e64]:
+                  - generic [ref=e65]:
+                    - img [ref=e67]
+                    - generic [ref=e71]: BCIPL
+                  - generic [ref=e72]: manufacturing
+                - generic [ref=e74]:
+                  - generic [ref=e75]:
+                    - img [ref=e76]
+                    - text: FY ends 31st March
+                  - generic [ref=e78]:
+                    - img [ref=e79]
+                    - text: INR
+            - link "Matrix Stampi Ltd manufacturing FY ends March INR Metal Stamping / Dies. Kolkata. Test company." [ref=e82] [cursor=pointer]:
+              - /url: /clients/974e9fc2-6888-485d-ac03-b91762c64b25
+              - generic [ref=e83]:
+                - generic [ref=e85]:
+                  - generic [ref=e86]:
+                    - img [ref=e88]
+                    - generic [ref=e92]: Matrix Stampi Ltd
+                  - generic [ref=e93]: manufacturing
+                - generic [ref=e94]:
+                  - generic [ref=e95]:
+                    - generic [ref=e96]:
+                      - img [ref=e97]
+                      - text: FY ends March
+                    - generic [ref=e99]:
+                      - img [ref=e100]
+                      - text: INR
+                  - paragraph [ref=e103]: Metal Stamping / Dies. Kolkata. Test company.
+            - link "Dynamic Air Engineering manufacturing FY ends 31st March INR" [ref=e104] [cursor=pointer]:
+              - /url: /clients/2640855e-9676-4318-a274-8e911b7fac5e
+              - generic [ref=e105]:
+                - generic [ref=e107]:
+                  - generic [ref=e108]:
+                    - img [ref=e110]
+                    - generic [ref=e114]: Dynamic Air Engineering
+                  - generic [ref=e115]: manufacturing
+                - generic [ref=e117]:
+                  - generic [ref=e118]:
+                    - img [ref=e119]
+                    - text: FY ends 31st March
+                  - generic [ref=e121]:
+                    - img [ref=e122]
+                    - text: INR
+            - link "Test Co manufacturing FY ends 31st March INR" [ref=e125] [cursor=pointer]:
+              - /url: /clients/d978a2c9-1c99-490f-82eb-20b608f7dc49
+              - generic [ref=e126]:
+                - generic [ref=e128]:
+                  - generic [ref=e129]:
+                    - img [ref=e131]
+                    - generic [ref=e135]: Test Co
+                  - generic [ref=e136]: manufacturing
+                - generic [ref=e138]:
+                  - generic [ref=e139]:
+                    - img [ref=e140]
+                    - text: FY ends 31st March
+                  - generic [ref=e142]:
+                    - img [ref=e143]
+                    - text: INR
+            - link "Test'; DROP TABLE clients; -- trading FY ends 31st March INR" [ref=e146] [cursor=pointer]:
+              - /url: /clients/159a5325-8a79-4377-b188-2c35d370e6b1
+              - generic [ref=e147]:
+                - generic [ref=e149]:
+                  - generic [ref=e150]:
+                    - img [ref=e152]
+                    - generic [ref=e156]: Test'; DROP TABLE clients; --
+                  - generic [ref=e157]: trading
+                - generic [ref=e159]:
+                  - generic [ref=e160]:
+                    - img [ref=e161]
+                    - text: FY ends 31st March
+                  - generic [ref=e163]:
+                    - img [ref=e164]
+                    - text: INR
+            - link "Chaos Client Test5 trading FY ends 31st March INR" [ref=e167] [cursor=pointer]:
+              - /url: /clients/9ec90988-8037-40b9-a739-aa149c2bae50
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - img [ref=e173]
+                    - generic [ref=e177]: Chaos Client Test5
+                  - generic [ref=e178]: trading
+                - generic [ref=e180]:
+                  - generic [ref=e181]:
+                    - img [ref=e182]
+                    - text: FY ends 31st March
+                  - generic [ref=e184]:
+                    - img [ref=e185]
+                    - text: INR
+            - link "Sharma & Sons (Pvt.) Ltd. trading FY ends 31st March INR" [ref=e188] [cursor=pointer]:
+              - /url: /clients/bbfa64ce-8d2a-4b7b-990b-64b9bbd82052
+              - generic [ref=e189]:
+                - generic [ref=e191]:
+                  - generic [ref=e192]:
+                    - img [ref=e194]
+                    - generic [ref=e198]: Sharma & Sons (Pvt.) Ltd.
+                  - generic [ref=e199]: trading
+                - generic [ref=e201]:
+                  - generic [ref=e202]:
+                    - img [ref=e203]
+                    - text: FY ends 31st March
+                  - generic [ref=e205]:
+                    - img [ref=e206]
+                    - text: INR
+            - link "Chaos Test Client trading FY ends 31st March INR" [ref=e209] [cursor=pointer]:
+              - /url: /clients/f8b48717-5779-4750-9dc7-c534f371b56a
+              - generic [ref=e210]:
+                - generic [ref=e212]:
+                  - generic [ref=e213]:
+                    - img [ref=e215]
+                    - generic [ref=e219]: Chaos Test Client
+                  - generic [ref=e220]: trading
+                - generic [ref=e222]:
+                  - generic [ref=e223]:
+                    - img [ref=e224]
+                    - text: FY ends 31st March
+                  - generic [ref=e226]:
+                    - img [ref=e227]
+                    - text: INR
+            - link "E2E Test Client trading FY ends 31st March INR" [ref=e230] [cursor=pointer]:
+              - /url: /clients/ecf8b788-837b-4713-b58a-d113d4b074cd
+              - generic [ref=e231]:
+                - generic [ref=e233]:
+                  - generic [ref=e234]:
+                    - img [ref=e236]
+                    - generic [ref=e240]: E2E Test Client
+                  - generic [ref=e241]: trading
+                - generic [ref=e243]:
+                  - generic [ref=e244]:
+                    - img [ref=e245]
+                    - text: FY ends 31st March
+                  - generic [ref=e247]:
+                    - img [ref=e248]
+                    - text: INR
+            - link "Mehta Computers Test trading FY ends 31st March INR" [ref=e251] [cursor=pointer]:
+              - /url: /clients/206a2fe3-c65d-42d2-93e0-02226ed378e1
+              - generic [ref=e252]:
+                - generic [ref=e254]:
+                  - generic [ref=e255]:
+                    - img [ref=e257]
+                    - generic [ref=e261]: Mehta Computers Test
+                  - generic [ref=e262]: trading
+                - generic [ref=e264]:
+                  - generic [ref=e265]:
+                    - img [ref=e266]
+                    - text: FY ends 31st March
+                  - generic [ref=e268]:
+                    - img [ref=e269]
+                    - text: INR
+            - link "Fix Verify Client trading FY ends 31st March INR" [ref=e272] [cursor=pointer]:
+              - /url: /clients/111bcc07-f916-45b5-bcc0-6b1866eab57f
+              - generic [ref=e273]:
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - img [ref=e278]
+                    - generic [ref=e282]: Fix Verify Client
+                  - generic [ref=e283]: trading
+                - generic [ref=e285]:
+                  - generic [ref=e286]:
+                    - img [ref=e287]
+                    - text: FY ends 31st March
+                  - generic [ref=e289]:
+                    - img [ref=e290]
+                    - text: INR
+            - link "Test Client For Docs manufacturing FY ends 31st March INR" [ref=e293] [cursor=pointer]:
+              - /url: /clients/134ce2c6-f716-40b8-b044-9122e09ec5e7
+              - generic [ref=e294]:
+                - generic [ref=e296]:
+                  - generic [ref=e297]:
+                    - img [ref=e299]
+                    - generic [ref=e303]: Test Client For Docs
+                  - generic [ref=e304]: manufacturing
+                - generic [ref=e306]:
+                  - generic [ref=e307]:
+                    - img [ref=e308]
+                    - text: FY ends 31st March
+                  - generic [ref=e310]:
+                    - img [ref=e311]
+                    - text: INR
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e57] [cursor=pointer]:
+    - img [ref=e58]
+  - alert [ref=e314]

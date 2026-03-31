@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMA GT Disputes &mdash; Final Review v2</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;color:#2d3748;font-size:14px;line-height:1.6}
+.container{max-width:980px;margin:0 auto;padding:16px}
+.page-header{background:#1a365d;color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:14px}
+.page-header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.page-header .sub{opacity:.8;font-size:13px}
+.ca-bar{background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.ca-field{flex:1;min-width:180px}
+.ca-field label{font-size:12px;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.ca-field input{width:100%;padding:8px 12px;border:1px solid #cbd5e0;border-radius:6px;font-size:14px}
+.ca-field input:focus{outline:none;border-color:#1a365d;box-shadow:0 0 0 2px #bee3f8}
+.btn{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s;white-space:nowrap}
+.btn-navy{background:#1a365d;color:#fff}.btn-navy:hover{background:#2c5282}
+.btn-orange{background:#e07b39;color:#fff}.btn-orange:hover{background:#c96a2a}
+.btn-green{background:#276749;color:#fff}.btn-green:hover{background:#1e4f36}
+.btn-outline{background:#fff;color:#4a5568;border:1px solid #cbd5e0}.btn-outline:hover{border-color:#1a365d;color:#1a365d}
+.progress-box{background:#fff;padding:12px 16px;border-radius:8px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.progress-lbl{font-size:13px;color:#4a5568;margin-bottom:5px;display:flex;justify-content:space-between}
+.pbar{background:#e2e8f0;border-radius:99px;height:12px;overflow:hidden}
+.pbar-fill{background:#e07b39;height:100%;border-radius:99px;transition:width .3s}
+.stats-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.stat-card{background:#fff;border-radius:8px;padding:12px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08);flex:1;min-width:110px;text-align:center}
+.stat-card .val{font-size:26px;font-weight:700;color:#1a365d}
+.stat-card .val.orange{color:#e07b39}
+.stat-card .val.green{color:#276749}
+.stat-card .val.yellow{color:#92400e}
+.stat-card .lbl{font-size:11px;color:#718096;margin-top:2px}
+.special-box{background:#fef3c7;border:2px solid #f59e0b;border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.special-box h3{color:#92400e;font-size:15px;margin-bottom:8px}
+.sec-block{margin-bottom:14px}
+.sec-hdr{background:#1a365d;color:#fff;padding:11px 16px;border-radius:8px 8px 0 0;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none}
+.sec-hdr.open-state{border-radius:8px 8px 0 0}
+.sec-hdr.closed-state{border-radius:8px}
+.sec-hdr.green{background:#276749}
+.sec-letter{background:#e07b39;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.sec-letter.green{background:#48bb78}
+.sec-title-text{font-weight:600;flex:1;font-size:15px}
+.sec-count{font-size:12px;opacity:.8;white-space:nowrap}
+.chevron{transition:transform .2s;font-size:12px}
+.chevron.rot{transform:rotate(180deg)}
+.sec-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.sec-body.hidden{display:none}
+.d-card{padding:16px;border-bottom:1px solid #f0f4f8;transition:background .15s}
+.d-card:last-child{border-bottom:none}
+.d-card.done{background:#f0fff4}
+.d-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.d-num{background:#1a365d;color:#fff;padding:2px 9px;border-radius:4px;font-size:11px;font-weight:700;flex-shrink:0}
+.d-raw{font-size:16px;font-weight:700;color:#1a365d;flex:1}
+.pill{padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.pill-mfg{background:#bee3f8;color:#2b6cb0}
+.pill-trading{background:#feebc8;color:#c05621}
+.pill-services{background:#c6f6d5;color:#276749}
+.pill-construction{background:#fed7d7;color:#9b2c2c}
+.pill-pl{background:#e9d8fd;color:#553c9a}
+.pill-bs{background:#b2f5ea;color:#234e52}
+.cmp-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px}
+.cmp-table th{background:#f7fafc;padding:7px 10px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:#4a5568;letter-spacing:.05em;border:1px solid #e2e8f0}
+.cmp-table td{padding:8px 10px;border:1px solid #e2e8f0;vertical-align:top}
+.cmp-gt{background:#fff5f5}
+.cmp-rule{background:#f0fff4}
+.row-num{font-weight:700;color:#1a365d}
+.decision-block{margin-bottom:10px}
+.decision-lbl{font-size:12px;font-weight:700;color:#4a5568;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.opt-row{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:5px;margin-bottom:2px;cursor:pointer;border:1px solid transparent;transition:background .1s}
+.opt-row:hover{background:#f7fafc}
+.opt-row.sel{background:#f0fff4;border-color:#9ae6b4}
+.opt-row input[type=radio]{accent-color:#27ae60;cursor:pointer;flex-shrink:0}
+.opt-row label{cursor:pointer;flex:1;font-size:13px}
+.other-inputs{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:4px 8px 6px 28px}
+.other-inputs input{padding:4px 8px;border:1px solid #cbd5e0;border-radius:4px;font-size:13px}
+.other-num{width:70px}
+.other-name{flex:1;min-width:150px}
+.conf-row{margin-bottom:8px}
+.conf-lbl{font-size:12px;font-weight:700;color:#4a5568;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.conf-opts{display:flex;gap:16px;flex-wrap:wrap}
+.conf-opt{display:flex;align-items:center;gap:5px;cursor:pointer;font-size:13px}
+.conf-opt input{accent-color:#1a365d}
+.notes-row{margin-bottom:8px}
+.notes-row label{font-size:12px;font-weight:700;color:#4a5568;display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.notes-row textarea{width:100%;padding:6px 10px;border:1px solid #e2e8f0;border-radius:5px;font-size:13px;resize:vertical;min-height:34px;font-family:inherit}
+.notes-row textarea:focus{outline:none;border-color:#1a365d}
+.ai-toggle{background:none;border:1px solid #e2e8f0;padding:4px 10px;border-radius:4px;font-size:12px;cursor:pointer;color:#4a5568;display:flex;align-items:center;gap:5px;margin-bottom:6px}
+.ai-toggle:hover{border-color:#1a365d;color:#1a365d}
+.ai-box{background:#fef3e2;border-left:3px solid #e67e22;padding:8px 12px;font-size:12px;border-radius:0 4px 4px 0;color:#744210;margin-bottom:10px;display:none}
+.ai-box.open{display:block}
+.dedup-badge{background:#7c3aed;color:#fff;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:700}
+.resolved-section .d-card{background:#f0fff4}
+.resolved-row{padding:8px 12px;border-bottom:1px solid #c6f6d5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.resolved-row:last-child{border-bottom:none}
+.resolved-id{background:#276749;color:#fff;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:700;flex-shrink:0}
+.resolved-dec{font-weight:600;font-size:12px}
+.dec-gt{color:#276749}
+.dec-rule{color:#2b6cb0}
+.dec-other{color:#c05621}
+.d-section{font-size:11px;color:#718096;margin-bottom:6px}
+.raw-text-box{background:#f7fafc;border-left:3px solid #1a365d;padding:6px 10px;font-size:14px;font-weight:600;margin-bottom:10px;border-radius:0 4px 4px 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="page-header">
+  <h1>CMA GT Disputes &mdash; Final Review (v2)</h1>
+  <p class="sub">Resolved: 126 / 175 (72%) &nbsp;|&nbsp; Remaining: 52 unique questions</p>
+</div>
+
+<div class="ca-bar">
+  <div class="ca-field">
+    <label>CA Name</label>
+    <input type="text" id="ca-name" placeholder="Your name..." oninput="saveMeta()">
+  </div>
+  <div class="ca-field">
+    <label>Date</label>
+    <input type="date" id="ca-date" oninput="saveMeta()">
+  </div>
+  <button class="btn btn-navy" onclick="importData()">&#8593; Import</button>
+  <button class="btn btn-orange" onclick="exportData()">&#8595; Export JSON</button>
+</div>
+
+<div class="progress-box">
+  <div class="progress-lbl">
+    <span>Overall Progress</span>
+    <span id="prog-label">0 / 52 reviewed</span>
+  </div>
+  <div class="pbar"><div class="pbar-fill" id="prog-bar" style="width:0%"></div></div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="val orange" id="stat-remaining">52</div><div class="lbl">Remaining</div></div>
+  <div class="stat-card"><div class="val green">5</div><div class="lbl">Auto-Resolved</div></div>
+  <div class="stat-card"><div class="val" style="color:#7c3aed">3</div><div class="lbl">Pending-Dedup</div></div>
+  <div class="stat-card"><div class="val green">118</div><div class="lbl">Total Resolved</div></div>
+</div>
+
+<div id="special-section" style="display:none" class="special-box">
+  <h3>&#9888; Items needing clarification (notes exist, no decision selected)</h3>
+  <div id="special-cards"></div>
+</div>
+
+<div id="sections-container"></div>
+
+<div class="sec-block" id="resolved-block">
+  <div class="sec-hdr green closed-state" onclick="toggleSection('resolved-body','resolved-chev')">
+    <div class="sec-letter green">&#10003;</div>
+    <div class="sec-title-text">Already Resolved (118 items)</div>
+    <span class="chevron" id="resolved-chev">&#9660;</span>
+  </div>
+  <div class="sec-body hidden" id="resolved-body">
+    <div id="resolved-list"></div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+const ITEMS_DATA = [{"id": "d008", "company": "BCIPL", "raw_text": "Administrative & General Expenses", "section": "Other Expenses", "gt_row": 70, "gt_field": "Advertisements and Sales Promotions", "golden_rule_row": 71, "golden_rule_name": "Others (Admin & Selling)", "golden_rule_source": "CA_Q3c_CA_agreed", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 100.0, "dedup_dependents": []}, {"id": "d009", "company": "BCIPL", "raw_text": "Rates & Taxes", "section": "Other Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_195", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d010", "company": "BCIPL", "raw_text": "Bad debts written off", "section": "Other Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 69, "golden_rule_name": "Bad Debts", "golden_rule_source": "CA_Q27_CA_agreed", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 100.0, "dedup_dependents": []}, {"id": "d011", "company": "BCIPL", "raw_text": "Auditor's Remuneration - Statutory Audit", "section": "Other Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 73, "golden_rule_name": "Audit Fees & Directors Remuneration", "golden_rule_source": "CA_Q21b_CA_agreed", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 91.4, "dedup_dependents": []}, {"id": "d012", "company": "BCIPL", "raw_text": "Auditor's Remuneration - Tax Audit", "section": "Other Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 73, "golden_rule_name": "Audit Fees & Directors Remuneration", "golden_rule_source": "CA_Q21c_CA_agreed", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 89.9, "dedup_dependents": []}, {"id": "d013", "company": "BCIPL", "raw_text": "Rent", "section": "Other Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 68, "golden_rule_name": "Rent, Rates and Taxes", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Rent generally maps to row 68. GT has 71 (Others Admin). | DISPUTE: Golden rule says row 68 but GT has row 71.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d014", "company": "BCIPL", "raw_text": "Machinery Maintenance", "section": "Other Expenses", "gt_row": 72, "gt_field": "Repairs & Maintenance", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_170", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d016", "company": "BCIPL", "raw_text": "Interest of Income Tax", "section": "Finance Costs", "gt_row": 83, "gt_field": "Interest on Fixed Loans / Term loans", "golden_rule_row": 84, "golden_rule_name": "Interest on WC / Tax Delay", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Interest on Income Tax delay maps to row 84 per CA rules | DISPUTE: Golden rule says row 84 but GT has row 83.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d018", "company": "BCIPL", "raw_text": "Deferred Tax", "section": "Tax Expense", "gt_row": 101, "gt_field": "Deferred Tax Asset", "golden_rule_row": 171, "golden_rule_name": "Deferred Tax Asset", "golden_rule_source": "Source1_rule_131", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 80.0, "dedup_dependents": []}, {"id": "d058", "company": "INPL", "raw_text": "Work in Progress", "section": "Inventories", "gt_row": 200, "gt_field": "Stocks-in-process", "golden_rule_row": 165, "golden_rule_name": "Add : Capital Work in Progress", "golden_rule_source": "Source1_rule_92", "industry_type": "manufacturing", "document_context": "bs", "agent_reasoning": null, "fuzzy_score": 85.0, "dedup_dependents": []}, {"id": "d059", "company": "INPL", "raw_text": "Finished Goods + Stock in Trade", "section": "Inventories", "gt_row": 201, "gt_field": "Finished Goods", "golden_rule_row": 58, "golden_rule_name": "Finished Goods Opening Balance", "golden_rule_source": "Source1_rule_CA_R10", "industry_type": "manufacturing", "document_context": "bs", "agent_reasoning": null, "fuzzy_score": 80.7, "dedup_dependents": []}, {"id": "d075", "company": "Mehta_Computer", "raw_text": "Interest on PPF", "section": "Other Income", "gt_row": 34, "gt_field": "Others", "golden_rule_row": 30, "golden_rule_name": "Interest Received", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Interest on deposits/PPF->30 [DISPUTE golden=30 vs GT=34]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d076", "company": "Mehta_Computer", "raw_text": "Electricty Charges", "section": "Administrative Expenses", "gt_row": 48, "gt_field": "Power, Coal, Fuel and Water", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_264", "industry_type": "trading", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 87.4, "dedup_dependents": []}, {"id": "d077", "company": "Mehta_Computer", "raw_text": "Courier Charges", "section": "Direct Expenses", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_186", "industry_type": "trading", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d078", "company": "Mehta_Computer", "raw_text": "Transport Charges", "section": "Direct Expenses", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 47, "golden_rule_name": "Freight/Transport", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Transport/Freight in direct expenses->47 [DISPUTE golden=47 vs GT=49]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d079", "company": "Mehta_Computer", "raw_text": "To Opening Stock", "section": "Cost of Goods Sold", "gt_row": 53, "gt_field": "Stock in process Opening Balance", "golden_rule_row": 58, "golden_rule_name": "FG Opening", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Opening Stock P&L->58 (standard CMA: FG Opening; GT may use 53 SIP for trading cos) [DISPUTE golden=58 vs GT=53]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d080", "company": "Mehta_Computer", "raw_text": "By Closing Stock", "section": "Revenue / Cost of Goods Sold", "gt_row": 54, "gt_field": "Stock in process Closing Balance", "golden_rule_row": 59, "golden_rule_name": "FG Closing", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Closing Stock P&L->59 (standard CMA: FG Closing; GT may use 54 SIP for trading cos) [DISPUTE golden=59 vs GT=54]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d081", "company": "Mehta_Computer", "raw_text": "Carriage Outward", "section": "Administrative Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 70, "golden_rule_name": "Advertisements and Sales Promotions", "golden_rule_source": "CA_Q3d_CA_agreed", "industry_type": "trading", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 100.0, "dedup_dependents": []}, {"id": "d082", "company": "Mehta_Computer", "raw_text": "Commission on sales", "section": "Administrative Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 70, "golden_rule_name": "Ads/Sales(Commission)", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d083", "company": "Mehta_Computer", "raw_text": "Sundry Balance W/off", "section": "Administrative Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 90, "golden_rule_name": "Sundry Written off", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Sundry Balance W/off->90 [DISPUTE golden=90 vs GT=71]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d084", "company": "Mehta_Computer", "raw_text": "Freight Charges", "section": "Administrative Expenses", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 47, "golden_rule_name": "Freight/Transport", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Freight in admin (trading): CA default Freight->47; could be 70 if outward or 71 if admin misc [DISPUTE golden=47 vs GT=71]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d085", "company": "Mehta_Computer", "raw_text": "Bill Discount Charges", "section": "Administrative Expenses", "gt_row": 85, "gt_field": "Bank Charges", "golden_rule_row": 84, "golden_rule_name": "Interest on Working capital loans", "golden_rule_source": "CA_Q10e_CA_disagreed_use_default", "industry_type": "trading", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 93.3, "dedup_dependents": []}, {"id": "d086", "company": "Mehta_Computer", "raw_text": "Stock-in-Trade ( Valued at Cost Or Market price Whichever Is Lower)", "section": "Current Assets & Advances", "gt_row": 200, "gt_field": "Stocks-in-process", "golden_rule_row": 201, "golden_rule_name": "Finished Goods", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "bs", "agent_reasoning": "Stock-in-Trade (BS)->201 [DISPUTE golden=201 vs GT=200]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d101", "company": "MSL", "raw_text": "(c) Other Charges", "section": "Finance Costs", "gt_row": 84, "gt_field": "Interest on Working capital loans", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_162", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 89.6, "dedup_dependents": []}, {"id": "d102", "company": "MSL", "raw_text": "(2) Deferred tax", "section": "Tax Expense", "gt_row": 100, "gt_field": "Deferred Tax Liability", "golden_rule_row": 171, "golden_rule_name": "Deferred Tax Asset", "golden_rule_source": "Source1_rule_131", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 80.0, "dedup_dependents": []}, {"id": "d103", "company": "MSL", "raw_text": "(i) Commission", "section": "Other Expenses - Selling", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 70, "golden_rule_name": "Ads/Sales(Commission)", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "CA rule: Commission->70 [DISPUTE golden=70 vs GT=71]", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d104", "company": "MSL", "raw_text": "(iv) Discount Allowed", "section": "Other Expenses - Selling", "gt_row": 71, "gt_field": "Others", "golden_rule_row": 22, "golden_rule_name": "Domestic", "golden_rule_source": "Source1_rule_262", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 91.5, "dedup_dependents": []}, {"id": "d105", "company": "MSL", "raw_text": "(c) Other Charges", "section": "Finance Costs", "gt_row": 83, "gt_field": "Interest on Fixed Loans / Term loans", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_162", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 89.6, "dedup_dependents": []}, {"id": "d106", "company": "MSL", "raw_text": "Deferred Tax Liability", "section": "tax", "gt_row": 100, "gt_field": "Deferred Tax Liability", "golden_rule_row": 159, "golden_rule_name": "Deferred tax liability", "golden_rule_source": "Source1_rule_34", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 100.0, "dedup_dependents": []}, {"id": "d112", "company": "SLIPL", "raw_text": "Duty drawback / IGST received", "section": "Other Income", "gt_row": 23, "gt_field": "Exports", "golden_rule_row": 34, "golden_rule_name": "Others (Non-Op Income)", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Duty drawback/IGST is in Other Income section. Not actual export revenue. Should be 34 not 23.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d113", "company": "SLIPL", "raw_text": "Consultancy Charges", "section": "Other Income", "gt_row": 34, "gt_field": "Others", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_190", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d114", "company": "SLIPL", "raw_text": "Packing Expenses", "section": "Other Expenses", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 70, "golden_rule_name": "Advertisements and Sales Promotions", "golden_rule_source": "Source1_rule_301", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 87.4, "dedup_dependents": []}, {"id": "d116", "company": "SLIPL", "raw_text": "Rates and taxes (excluding taxes on income)", "section": "Other Expenses", "gt_row": 68, "gt_field": "Rent , Rates and Taxes", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_195", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 90.7, "dedup_dependents": []}, {"id": "d117", "company": "SLIPL", "raw_text": "Sundries", "section": "Other Expenses - Administration & Other Expenses", "gt_row": 69, "gt_field": "Bad Debts", "golden_rule_row": 71, "golden_rule_name": "Others (Admin)", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Sundries is generic admin expense -> 71. GT says 69 Bad Debts which is wrong for sundries.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d118", "company": "SLIPL", "raw_text": "Repairs to Plant & Machinery", "section": "Other Expenses - Repairs", "gt_row": 72, "gt_field": "Repairs & Maintenance", "golden_rule_row": 50, "golden_rule_name": "Repairs (Mfg)", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Repairs to Plant and Machinery -> row 50 per CA rules. GT says 72 which is admin repairs.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d119", "company": "SLIPL", "raw_text": "Interest expense", "section": "Finance Costs", "gt_row": 84, "gt_field": "Interest on Working capital loans", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_249", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.9, "dedup_dependents": []}, {"id": "d120", "company": "SLIPL", "raw_text": "Other Charges (Finance Costs)", "section": "Finance Costs", "gt_row": 85, "gt_field": "Bank Charges", "golden_rule_row": 49, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_162", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 89.6, "dedup_dependents": []}, {"id": "d121", "company": "SLIPL", "raw_text": "Bad Debts Written off", "section": "Other Expenses - Administration & Other Expenses", "gt_row": 90, "gt_field": "Sundry Balances Written off", "golden_rule_row": 69, "golden_rule_name": "Bad Debts", "golden_rule_source": "CA_Q27_CA_agreed", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 100.0, "dedup_dependents": []}, {"id": "d123", "company": "SLIPL", "raw_text": "Deferred tax (credit)", "section": "Tax expense", "gt_row": 101, "gt_field": "Deferred Tax Asset", "golden_rule_row": 171, "golden_rule_name": "Deferred Tax Asset", "golden_rule_source": "Source1_rule_131", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 80.0, "dedup_dependents": []}, {"id": "d127", "company": "SLIPL", "raw_text": "Freight Outward", "section": "Other Expenses - Selling Expenses", "gt_row": 47, "gt_field": "Freight and Transportation Charges", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "Source1_rule_192", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d128", "company": "SR_Papers", "raw_text": "Unloading Charges - Mathadi", "section": "Other Expenses", "gt_row": 47, "gt_field": "Freight and Transportation Charges", "golden_rule_row": 45, "golden_rule_name": "Wages", "golden_rule_source": "Source1_rule_169", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 85.8, "dedup_dependents": []}, {"id": "d129", "company": "SR_Papers", "raw_text": "Labour Charges", "section": "Other Expenses", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 45, "golden_rule_name": "Wages", "golden_rule_source": "Source1_rule_168", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d130", "company": "SR_Papers", "raw_text": "Admin Exp for PF", "section": "Other Expenses", "gt_row": 67, "gt_field": "Salary and staff expenses", "golden_rule_row": 45, "golden_rule_name": "Wages (EPF Admin)", "golden_rule_source": "agent_reasoning", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": "Admin Exp for PF is EPFO admin charge. Per CA rules EPF -> 45. GT says 67.", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d133", "company": "SR_Papers", "raw_text": "Discount Recieved", "section": "Other Income", "gt_row": 29, "gt_field": "Dividends received from Mutual Funds", "golden_rule_row": 42, "golden_rule_name": "Raw Materials Consumed ( Indigenous)", "golden_rule_source": "Source1_rule_363", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 85.0, "dedup_dependents": []}, {"id": "d134", "company": "SR_Papers", "raw_text": "Discount Recieved", "section": "Other Income", "gt_row": 34, "gt_field": "Others", "golden_rule_row": 42, "golden_rule_name": "Raw Materials Consumed ( Indigenous)", "golden_rule_source": "Source1_rule_363", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 85.0, "dedup_dependents": []}, {"id": "d135", "company": "SR_Papers", "raw_text": "Rate Difference", "section": "Other Income", "gt_row": 34, "gt_field": "Others", "golden_rule_row": 22, "golden_rule_name": "Domestic", "golden_rule_source": "Source1_rule_254", "industry_type": "manufacturing", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 95.0, "dedup_dependents": []}, {"id": "d148", "company": "SSSS", "raw_text": "(d) Deferred tax", "section": "Tax expense", "gt_row": 101, "gt_field": "Deferred Tax Asset", "golden_rule_row": 171, "golden_rule_name": "Deferred Tax Asset", "golden_rule_source": "Source1_rule_131", "industry_type": "trading", "document_context": "pl", "agent_reasoning": null, "fuzzy_score": 80.0, "dedup_dependents": []}, {"id": "d167", "company": "SR_Papers", "raw_text": "Computer Maintanance", "section": "", "gt_row": 72, "gt_field": "Repairs & Maintenance", "golden_rule_row": 71, "golden_rule_name": "Others", "golden_rule_source": "cross_check_step1", "industry_type": "", "document_context": "", "agent_reasoning": "Location A (GT) says row 72, Location B says row 71 for FY 2023", "fuzzy_score": null, "dedup_dependents": ["d172"]}, {"id": "d168", "company": "SR_Papers", "raw_text": "Manpower Charges", "section": "", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 45, "golden_rule_name": "Wages", "golden_rule_source": "cross_check_step1", "industry_type": "", "document_context": "", "agent_reasoning": "Location A (GT) says row 49, Location B says row 45 for FY 2023", "fuzzy_score": null, "dedup_dependents": ["d173", "d171"]}, {"id": "d169", "company": "SR_Papers", "raw_text": "TDS Receivable", "section": "", "gt_row": 219, "gt_field": "Advances recoverable in cash or in kind", "golden_rule_row": 221, "golden_rule_name": "Advance Income Tax", "golden_rule_source": "cross_check_step1", "industry_type": "", "document_context": "", "agent_reasoning": "Location A (GT) says row 219, Location B says row 221 for FY 2023", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d170", "company": "SR_Papers", "raw_text": "TCS Receivable", "section": "", "gt_row": 219, "gt_field": "Advances recoverable in cash or in kind", "golden_rule_row": 221, "golden_rule_name": "Advance Income Tax", "golden_rule_source": "cross_check_step1", "industry_type": "", "document_context": "", "agent_reasoning": "Location A (GT) says row 219, Location B says row 221 for FY 2023", "fuzzy_score": null, "dedup_dependents": []}, {"id": "d175", "company": "Mehta_Computer", "raw_text": "Packing Forwarding ", "section": "Direct Expenses", "gt_row": 49, "gt_field": "Others", "golden_rule_row": 47, "golden_rule_name": "Freight and Transportation Charges", "golden_rule_source": "agent_reasoning", "industry_type": "trading", "document_context": "pl", "agent_reasoning": "Packing/forwarding = freight row 47, GT has 49", "fuzzy_score": null, "dedup_dependents": []}];
+const RESOLVED_DATA = [{"id": "d001", "company": "BCIPL", "raw_text": "Profit on Sale of Fixed Asset", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d002", "company": "BCIPL", "raw_text": "Forex Rate Fluctuation Gain/(Loss)", "decision": "other", "notes": "If it is an income then 32 if it is an loss then 91", "pre_resolved": false}, {"id": "d003", "company": "BCIPL", "raw_text": "Rent", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d004", "company": "BCIPL", "raw_text": "Machinery Maintenance", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d005", "company": "BCIPL", "raw_text": "Directors Remuneration", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d006", "company": "BCIPL", "raw_text": "Rates & Taxes", "decision": "gt", "notes": "[AUTO-DEDUP] Same pattern as d054 (INPL, rates & taxes, gt=68 rule=49) -> gt", "pre_resolved": true}, {"id": "d007", "company": "BCIPL", "raw_text": "Selling & Distribution Expenses", "decision": "gt", "notes": "[AUTO] via cross_008: Selling & Distribution Expenses", "pre_resolved": true}, {"id": "d015", "company": "BCIPL", "raw_text": "Selling & Distribution Expenses", "decision": "other", "notes": "[AUTO] via cross_008: Selling & Distribution Expenses", "pre_resolved": true}, {"id": "d017", "company": "BCIPL", "raw_text": "Deferred Tax", "decision": "gt", "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt", "pre_resolved": true}, {"id": "d019", "company": "BCIPL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d020", "company": "BCIPL", "raw_text": "Leave Encashment", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d021", "company": "BCIPL", "raw_text": "Creditors for Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d022", "company": "Dynamic_Air", "raw_text": "Carriage Inwards", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d023", "company": "Dynamic_Air", "raw_text": "(a) Salaries and incentives", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d024", "company": "Dynamic_Air", "raw_text": "(c) Staff Welfare", "decision": "rule", "notes": "[AUTO] via cross_001: Staff Welfare Expenses", "pre_resolved": true}, {"id": "d025", "company": "Dynamic_Air", "raw_text": "(d) Contribution to EPF and ESI", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d026", "company": "Dynamic_Air", "raw_text": "Rates and taxes", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d027", "company": "Dynamic_Air", "raw_text": "Interest on Delay in payment of taxes", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d028", "company": "Dynamic_Air", "raw_text": "Liquidty Damages", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d029", "company": "Dynamic_Air", "raw_text": "(a) Loan/Overdraft Processing Fee", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d030", "company": "Dynamic_Air", "raw_text": "(3) Deferred tax Liability / (Asset)", "decision": "gt", "notes": "If liablity then 100 , if asset then 101", "pre_resolved": false}, {"id": "d031", "company": "Dynamic_Air", "raw_text": "(e) Gratuity", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d032", "company": "Dynamic_Air", "raw_text": "Rent - Factory", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d033", "company": "Dynamic_Air", "raw_text": "Rates and taxes", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d034", "company": "Dynamic_Air", "raw_text": "Brokerage & Commission", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d035", "company": "Dynamic_Air", "raw_text": "Interest on Delay in payment of taxes", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d036", "company": "Dynamic_Air", "raw_text": "(a) Loan/Overdraft Processing Fee", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d037", "company": "Dynamic_Air", "raw_text": "(3) Deferred tax Liability / (Asset)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d038", "company": "Dynamic_Air", "raw_text": "Security Service Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d039", "company": "Dynamic_Air", "raw_text": "(c) Staff Welfare Expenses", "decision": "rule", "notes": "[AUTO] via cross_001: Staff Welfare Expenses", "pre_resolved": true}, {"id": "d040", "company": "Dynamic_Air", "raw_text": "Interest due to Delay in payment of taxes", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d041", "company": "Dynamic_Air", "raw_text": "Advances recoverable in cash or in kind", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d042", "company": "Dynamic_Air", "raw_text": "Vehicle HP Loans - current maturities", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d043", "company": "Dynamic_Air", "raw_text": "Vehicle HP Loans - non-current", "decision": "other", "notes": "", "pre_resolved": false}, {"id": "d044", "company": "Dynamic_Air", "raw_text": "Outstanding expenses (Salary + Other)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d046", "company": "INPL", "raw_text": "Changes in work-in-progress and stock-in-trade", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d047", "company": "INPL", "raw_text": "Security Service Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d048", "company": "INPL", "raw_text": "Work in Progress", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d049", "company": "INPL", "raw_text": "Work in Progress (Opening)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d050", "company": "INPL", "raw_text": "Salary, Wages and Bonus", "decision": "gt", "notes": "[AUTO] via cross_004: Bonus", "pre_resolved": true}, {"id": "d051", "company": "INPL", "raw_text": "Staff welfare Expenses", "decision": "rule", "notes": "[AUTO] via cross_001: Staff Welfare Expenses", "pre_resolved": true}, {"id": "d052", "company": "INPL", "raw_text": "Contribution to Provident Fund and ESI", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d053", "company": "INPL", "raw_text": "Gratutity to employees", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d054", "company": "INPL", "raw_text": "Rates & Taxes", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d055", "company": "INPL", "raw_text": "Licence And Subscription", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d056", "company": "INPL", "raw_text": "Deferred Tax", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d057", "company": "INPL", "raw_text": "Deferred Tax (Asset)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d060", "company": "INPL", "raw_text": "Prepaid expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d061", "company": "INPL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d062", "company": "INPL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d063", "company": "INPL", "raw_text": "Creditors for Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d064", "company": "Kurunji_Retail", "raw_text": "Packing Expenses", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d065", "company": "Kurunji_Retail", "raw_text": "Staff Welfare", "decision": "rule", "notes": "[AUTO] via cross_002: Staff Welfare Expenses", "pre_resolved": true}, {"id": "d066", "company": "Kurunji_Retail", "raw_text": "Electric Charges", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d067", "company": "Kurunji_Retail", "raw_text": "Rent", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d068", "company": "Kurunji_Retail", "raw_text": "Tds on Rent", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d069", "company": "Kurunji_Retail", "raw_text": "Rent - Parking", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d070", "company": "Kurunji_Retail", "raw_text": "Generator Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d071", "company": "Kurunji_Retail", "raw_text": "Delivery Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d072", "company": "Kurunji_Retail", "raw_text": "Salary to Partners", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d073", "company": "Kurunji_Retail", "raw_text": "Partners Current Account", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d074", "company": "Mehta_Computer", "raw_text": "Bank Interest", "decision": "other", "notes": "[AUTO] via int_029: Fixed Deposits with banks & accrued interest (under lien)", "pre_resolved": true}, {"id": "d087", "company": "Mehta_Computer", "raw_text": "Gst Receivable", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d088", "company": "Mehta_Computer", "raw_text": "FD Accrued Interest (reclassified from Investments to Kotak FD)", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d089", "company": "MSL", "raw_text": "(d) Insurance Claim Received", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d090", "company": "MSL", "raw_text": "Raw Material Import Purchases", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d091", "company": "MSL", "raw_text": "(iii) Job Work Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d092", "company": "MSL", "raw_text": "(b) Carriage Inwards", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d093", "company": "MSL", "raw_text": "Security Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d094", "company": "MSL", "raw_text": "Rent", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d095", "company": "MSL", "raw_text": "Stores and spares consumed ( Indigenous)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d096", "company": "MSL", "raw_text": "Rates and taxes (excluding, taxes on income)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d097", "company": "MSL", "raw_text": "(iv) Discount Allowed", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d098", "company": "MSL", "raw_text": "(iii) Freight Outwards", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d099", "company": "MSL", "raw_text": "(ii) Tour & Travel Expenses", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d107", "company": "MSL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d108", "company": "MSL", "raw_text": "Provision for Gratuity (short-term)", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d109", "company": "MSL", "raw_text": "Advances recoverable in cash or in kind", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d110", "company": "MSL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d111", "company": "MSL", "raw_text": "Creditors for Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d115", "company": "SLIPL", "raw_text": "Rent", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d122", "company": "SLIPL", "raw_text": "Deferred tax", "decision": "gt", "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt", "pre_resolved": true}, {"id": "d124", "company": "SLIPL", "raw_text": "Margin money deposits", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d125", "company": "SLIPL", "raw_text": "Prepaid Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d126", "company": "SLIPL", "raw_text": "Security Deposits - Others", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d131", "company": "SR_Papers", "raw_text": "Tea & Food Expenses", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d132", "company": "SR_Papers", "raw_text": "Rates and taxes", "decision": "gt", "notes": "[AUTO-DEDUP] Same pattern as d026 (Dynamic_Air, rates and taxes, gt=68 rule=49) -> gt", "pre_resolved": true}, {"id": "d136", "company": "SR_Papers", "raw_text": "Deferred tax", "decision": "gt", "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt", "pre_resolved": true}, {"id": "d137", "company": "SR_Papers", "raw_text": "Expenses Payable", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d138", "company": "SR_Papers", "raw_text": "Short Term Borrowings - Debentures portion", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d139", "company": "SR_Papers", "raw_text": "Term Loans from banks", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d140", "company": "SR_Papers", "raw_text": "Security deposits - Unsecured, considered good", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d141", "company": "SSSS", "raw_text": "(i) Power And Fuel", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d142", "company": "SSSS", "raw_text": "(a). Employee Benefit Expense", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d143", "company": "SSSS", "raw_text": "(a) Auditor's Remuneration", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d144", "company": "SSSS", "raw_text": "(b) Advertisement and Sales Promotion Expenses", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d145", "company": "SSSS", "raw_text": "(j) Rent, Rates and Taxes", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d146", "company": "SSSS", "raw_text": "(k) Repairs and Maintenance", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d147", "company": "SSSS", "raw_text": "Loss on disposal of fixed assets (estimated)", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d149", "company": "SSSS", "raw_text": "HSBC OD A/C", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d150", "company": "SSSS", "raw_text": "Current Maturities of Long-term Debt (CMLTD)", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d151", "company": "SSSS", "raw_text": "(B) Sundry Creditors for expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d152", "company": "SSSS", "raw_text": "Share Investments", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d153", "company": "INPL", "raw_text": "Consultancy Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d154", "company": "INPL", "raw_text": "Packing and Forwarding Charges", "decision": "other", "notes": "", "pre_resolved": false}, {"id": "d155", "company": "INPL", "raw_text": "Project Cost", "decision": "other", "notes": "", "pre_resolved": false}, {"id": "d156", "company": "INPL", "raw_text": "Research and Development", "decision": "rule", "notes": "", "pre_resolved": false}, {"id": "d157", "company": "INPL", "raw_text": "Staff Welfare Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d158", "company": "INPL", "raw_text": "Gratuity to Employees", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d159", "company": "INPL", "raw_text": "Consultancy Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d160", "company": "INPL", "raw_text": "Material Handling Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d161", "company": "INPL", "raw_text": "Staff Welfare Expenses", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d162", "company": "INPL", "raw_text": "Gratuity to Employees", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d163", "company": "INPL", "raw_text": "Consultancy Charges", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d164", "company": "INPL", "raw_text": "Finished Goods", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d165", "company": "Kurunji_Retail", "raw_text": "Closing Stock", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d166", "company": "Kurunji_Retail", "raw_text": "Depreciation", "decision": "gt", "notes": "", "pre_resolved": false}, {"id": "d174", "company": "SSSS", "raw_text": "Current tax expense", "decision": "rule", "notes": "", "pre_resolved": false}];
+const SPECIAL_DATA = [{"id": "d045", "company": "INPL", "raw_text": "Discount received", "section": "Other Income", "gt_row": 34, "gt_field": "Others", "golden_rule_row": 42, "golden_rule_name": "Raw Materials Consumed ( Indigenous)", "notes": "should be subtracted in Row 42", "industry_type": "manufacturing", "document_context": "pl"}, {"id": "d100", "company": "MSL", "raw_text": "(b) Bank Interest", "section": "Finance Costs", "gt_row": 84, "gt_field": "Interest on Working capital loans", "golden_rule_row": 83, "golden_rule_name": "Interest on Fixed Loans / Term loans", "notes": "If working capital intrest in 84 \nif Fixed loan intrest loan 83 ", "industry_type": "manufacturing", "document_context": "pl"}];
+const ROW_NAMES = {"23": "Exports", "31": "Profit on sale of fixed assets / Investments", "32": "Gain on Exchange Fluctuations", "91": "Loss on Exchange Fluctuations", "49": "Others", "68": "Rent, Rates and Taxes", "50": "Repairs (Mfg)", "67": "Salary and staff expenses", "73": "Audit Fees & Directors Remuneration", "70": "Ads/Sales Promotions", "71": "Others", "69": "Bad Debts", "72": "Repairs & Maintenance", "83": "Interest on Fixed Loans / Term loans", "84": "Interest on Working capital loans", "100": "Deferred Tax Liability", "171": "Deferred Tax Asset", "101": "Deferred Tax Asset", "222": "Prepaid Expenses", "223": "Other Advances / current asset", "244": "Provision for Taxation", "249": "Creditors for Expenses", "250": "Other current liabilities", "47": "Freight and Transportation Charges", "45": "Wages", "85": "Bank Charges", "159": "Deferred tax liability", "51": "Security Service Charges", "219": "Advances recoverable in cash or in kind", "140": "Debentures in 1yr", "148": "Other Debts (Vehicle HP)", "141": "Balance Repayable after one year", "34": "Others", "42": "Raw Materials Consumed ( Indigenous)", "54": "Stock in process Closing Balance", "165": "Add : Capital Work in Progress", "53": "Stock in process Opening Balance", "200": "Stocks-in-process", "201": "Finished Goods", "58": "FG Opening", "44": "Stores and spares consumed ( Indigenous)", "48": "Power, Coal, Fuel and Water", "22": "Domestic", "152": "As Quasi Equity", "116": "Issued, Subscribed and Paid up", "30": "Interest Received", "59": "Finished Goods Closing Balance", "90": "Sundry Balances Written off", "206": "Domestic Receivables ( including bills purchased and discounted)", "182": "Investment in Govt. Securities ( Current )", "215": "Other Fixed Deposits", "41": "Raw Materials Consumed ( Imported)", "46": "Processing / Job Work Charges", "198": "Indigenous", "237": "Security deposits with government departments", "238": "Other NCA", "29": "Dividends received from Mutual Funds", "137": "Balance Repayable after one year", "131": "From Indian Bank", "93": "Others", "89": "Loss on Sale", "132": "WC Bank Finance (Bank 2)", "136": "Term Loan Repayable in next one year", "188": "Investment in group companies / subsidiaries", "233": "Investments", "56": "Depreciation", "63": "Depreciation", "221": "Advance Income Tax", "99": "Income Tax  provision"};
+const DEDUP_MAP = {"d168": ["d173", "d171"], "d167": ["d172"]};
+const LS_KEY = "gt_disputes_v2_responses";
+const TOTAL_REVIEW = 52;
+
+let saved = {};
+
+function loadSaved() {
+  try {
+    const s = localStorage.getItem(LS_KEY);
+    if (s) saved = JSON.parse(s);
+  } catch(e) {}
+  // restore meta
+  try {
+    const m = localStorage.getItem(LS_KEY + "_meta");
+    if (m) {
+      const meta = JSON.parse(m);
+      if (meta.name) document.getElementById("ca-name").value = meta.name;
+      if (meta.date) document.getElementById("ca-date").value = meta.date;
+    }
+  } catch(e) {}
+}
+
+function saveMeta() {
+  const meta = {
+    name: document.getElementById("ca-name").value,
+    date: document.getElementById("ca-date").value
+  };
+  localStorage.setItem(LS_KEY + "_meta", JSON.stringify(meta));
+}
+
+function saveCard(iid) {
+  const card = document.getElementById("card-" + iid);
+  if (!card) return;
+  const radios = card.querySelectorAll('input[type=radio][name="dec-' + iid + '"]');
+  let decision = null;
+  radios.forEach(function(r) { if (r.checked) decision = r.value; });
+  const confRadios = card.querySelectorAll('input[type=radio][name="conf-' + iid + '"]');
+  let confidence = null;
+  confRadios.forEach(function(r) { if (r.checked) confidence = r.value; });
+  const notesEl = document.getElementById("notes-" + iid);
+  const notes = notesEl ? notesEl.value : "";
+  const otherNumEl = document.getElementById("other-num-" + iid);
+  const otherNum = otherNumEl ? otherNumEl.value : "";
+  const entry = { decision: decision, confidence: confidence, notes: notes, other_row: otherNum };
+  saved[iid] = entry;
+  localStorage.setItem(LS_KEY, JSON.stringify(saved));
+  // Update card style
+  if (decision) {
+    card.classList.add("done");
+  } else {
+    card.classList.remove("done");
+  }
+  updateProgress();
+  if (decision) autoPropagate(iid, decision, confidence, notes);
+}
+
+function autoPropagate(iid, decision, confidence, notes) {
+  const deps = DEDUP_MAP[iid] || [];
+  deps.forEach(function(dep) {
+    saved[dep] = { decision: decision, confidence: confidence, notes: "[DEDUP-AUTO] Copied from " + iid + ": " + notes };
+    localStorage.setItem(LS_KEY, JSON.stringify(saved));
+  });
+  if (deps.length > 0) {
+    const msg = document.getElementById("dedup-msg-" + iid);
+    if (msg) msg.textContent = "&#10003; Auto-applied to " + deps.join(", ");
+  }
+}
+
+function updateProgress() {
+  let answered = 0;
+  ITEMS_DATA.forEach(function(d) {
+    if (saved[d.id] && saved[d.id].decision) answered++;
+  });
+  const pct = TOTAL_REVIEW > 0 ? Math.round(answered / TOTAL_REVIEW * 100) : 0;
+  document.getElementById("prog-bar").style.width = pct + "%";
+  document.getElementById("prog-label").textContent = answered + " / " + TOTAL_REVIEW + " reviewed";
+  document.getElementById("stat-remaining").textContent = (TOTAL_REVIEW - answered);
+}
+
+function toggleSection(bodyId, chevId) {
+  const body = document.getElementById(bodyId);
+  const chev = document.getElementById(chevId);
+  if (body.classList.contains("hidden")) {
+    body.classList.remove("hidden");
+    if (chev) chev.classList.add("rot");
+  } else {
+    body.classList.add("hidden");
+    if (chev) chev.classList.remove("rot");
+  }
+}
+
+function toggleAI(iid) {
+  const box = document.getElementById("ai-" + iid);
+  if (box) box.classList.toggle("open");
+}
+
+function pillClass(industry) {
+  if (!industry) return "pill";
+  const lc = industry.toLowerCase();
+  if (lc === "manufacturing") return "pill pill-mfg";
+  if (lc === "trading") return "pill pill-trading";
+  if (lc === "services") return "pill pill-services";
+  if (lc === "construction") return "pill pill-construction";
+  return "pill";
+}
+
+function ctxPill(ctx) {
+  if (!ctx) return "";
+  return ctx.toLowerCase() === "pl" ? '<span class="pill pill-pl">P&amp;L</span>' : '<span class="pill pill-bs">BS</span>';
+}
+
+function esc(s) {
+  if (!s) return "";
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function buildSpecialCard(d) {
+  return '<div class="d-card" id="card-' + d.id + '">' +
+    '<div class="d-top">' +
+      '<span class="d-num">' + d.id + '</span>' +
+      '<span class="d-raw">' + esc(d.raw_text) + '</span>' +
+      '<span class="' + pillClass(d.industry_type) + '">' + esc(d.industry_type) + '</span>' +
+      ctxPill(d.document_context) +
+    '</div>' +
+    '<div class="d-section">' + esc(d.company) + ' &bull; ' + esc(d.section) + '</div>' +
+    '<div style="background:#fef9c3;border-left:3px solid #f59e0b;padding:8px 12px;margin-bottom:10px;border-radius:0 4px 4px 0;font-size:13px;color:#92400e"><strong>Note:</strong> ' + esc(d.notes) + '</div>' +
+    '<table class="cmp-table"><thead><tr><th></th><th>Row</th><th>Field Name</th></tr></thead><tbody>' +
+      '<tr class="cmp-gt"><td style="font-weight:700;color:#c05621">GT says</td><td class="row-num">' + (d.gt_row || '') + '</td><td>' + esc(d.gt_field) + '</td></tr>' +
+      '<tr class="cmp-rule"><td style="font-weight:700;color:#276749">Rule says</td><td class="row-num">' + (d.golden_rule_row || '') + '</td><td>' + esc(d.golden_rule_name) + '</td></tr>' +
+    '</tbody></table>' +
+    '<div class="decision-block">' +
+      '<div class="decision-lbl">Your Decision</div>' +
+      '<div class="opt-row" id="opt-gt-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;gt&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="gt" id="radio-gt-' + d.id + '"> ' +
+        '<label for="radio-gt-' + d.id + '">GT Correct (row ' + (d.gt_row || '') + ')</label>' +
+      '</div>' +
+      '<div class="opt-row" id="opt-rule-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;rule&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="rule" id="radio-rule-' + d.id + '"> ' +
+        '<label for="radio-rule-' + d.id + '">Rule Correct (row ' + (d.golden_rule_row || '') + ')</label>' +
+      '</div>' +
+      '<div class="opt-row" id="opt-other-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;other&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="other" id="radio-other-' + d.id + '"> ' +
+        '<label for="radio-other-' + d.id + '">Other &rarr;</label>' +
+      '</div>' +
+      '<div class="other-inputs" id="other-inputs-' + d.id + '" style="display:none">' +
+        '<input type="number" class="other-num" id="other-num-' + d.id + '" placeholder="Row#" oninput="saveCard(&apos;' + d.id + '&apos;)">' +
+      '</div>' +
+    '</div>' +
+    '<div class="notes-row"><label>Notes</label><textarea id="notes-' + d.id + '" oninput="saveCard(&apos;' + d.id + '&apos;)" placeholder="Additional context..."></textarea></div>' +
+    '<div id="dedup-msg-' + d.id + '" style="font-size:12px;color:#276749;margin-top:4px"></div>' +
+  '</div>';
+}
+
+function buildCard(d) {
+  const sv = saved[d.id] || {};
+  const isDone = sv.decision ? true : false;
+  const doneClass = isDone ? " done" : "";
+  const dedupBadge = d.dedup_dependents && d.dedup_dependents.length > 0
+    ? '<span class="dedup-badge">&#9889; Your answer auto-applies to: ' + d.dedup_dependents.join(", ") + '</span>'
+    : "";
+  const aiSection = d.agent_reasoning
+    ? '<button class="ai-toggle" onclick="toggleAI(&apos;' + d.id + '&apos;)">&#129302; Agent reasoning &#9660;</button>' +
+      '<div class="ai-box" id="ai-' + d.id + '">' + esc(d.agent_reasoning) + '</div>'
+    : "";
+  return '<div class="d-card' + doneClass + '" id="card-' + d.id + '">' +
+    '<div class="d-top">' +
+      '<span class="d-num">' + d.id + '</span>' +
+      '<span class="d-raw">' + esc(d.raw_text) + '</span>' +
+      '<span class="' + pillClass(d.industry_type) + '">' + esc(d.industry_type) + '</span>' +
+      ctxPill(d.document_context) +
+      dedupBadge +
+    '</div>' +
+    '<div class="d-section">' + esc(d.section) + '</div>' +
+    '<div class="raw-text-box">' + esc(d.raw_text) + '</div>' +
+    '<table class="cmp-table"><thead><tr><th></th><th>Row</th><th>Field Name</th></tr></thead><tbody>' +
+      '<tr class="cmp-gt"><td style="font-weight:700;color:#c05621">GT says</td><td class="row-num">' + (d.gt_row || '') + '</td><td>' + esc(d.gt_field) + '</td></tr>' +
+      '<tr class="cmp-rule"><td style="font-weight:700;color:#276749">Rule says</td><td class="row-num">' + (d.golden_rule_row || '') + '</td><td>' + esc(d.golden_rule_name) + '</td></tr>' +
+    '</tbody></table>' +
+    aiSection +
+    '<div class="decision-block">' +
+      '<div class="decision-lbl">Your Decision</div>' +
+      '<div class="opt-row" id="opt-gt-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;gt&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="gt" id="radio-gt-' + d.id + '"' + (sv.decision === "gt" ? " checked" : "") + '> ' +
+        '<label for="radio-gt-' + d.id + '">&#10003; GT Correct &mdash; row ' + (d.gt_row || '') + ' (' + esc(d.gt_field) + ')</label>' +
+      '</div>' +
+      '<div class="opt-row" id="opt-rule-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;rule&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="rule" id="radio-rule-' + d.id + '"' + (sv.decision === "rule" ? " checked" : "") + '> ' +
+        '<label for="radio-rule-' + d.id + '">&#10006; Rule Correct &mdash; row ' + (d.golden_rule_row || '') + ' (' + esc(d.golden_rule_name) + ')</label>' +
+      '</div>' +
+      '<div class="opt-row" id="opt-other-' + d.id + '" onclick="selectOpt(&apos;' + d.id + '&apos;,&apos;other&apos;)">' +
+        '<input type="radio" name="dec-' + d.id + '" value="other" id="radio-other-' + d.id + '"' + (sv.decision === "other" ? " checked" : "") + '> ' +
+        '<label for="radio-other-' + d.id + '">Other row &rarr; enter row number</label>' +
+      '</div>' +
+      '<div class="other-inputs" id="other-inputs-' + d.id + '" style="' + (sv.decision === "other" ? "" : "display:none") + '">' +
+        '<input type="number" class="other-num" id="other-num-' + d.id + '" placeholder="Row#" value="' + (sv.other_row || '') + '" oninput="saveCard(&apos;' + d.id + '&apos;)">' +
+      '</div>' +
+    '</div>' +
+    '<div class="conf-row">' +
+      '<div class="conf-lbl">Confidence</div>' +
+      '<div class="conf-opts">' +
+        '<label class="conf-opt"><input type="radio" name="conf-' + d.id + '" value="certain" onchange="saveCard(&apos;' + d.id + '&apos;)"' + (sv.confidence === "certain" ? " checked" : "") + '> Certain</label>' +
+        '<label class="conf-opt"><input type="radio" name="conf-' + d.id + '" value="likely" onchange="saveCard(&apos;' + d.id + '&apos;)"' + (sv.confidence === "likely" ? " checked" : "") + '> Likely</label>' +
+        '<label class="conf-opt"><input type="radio" name="conf-' + d.id + '" value="unsure" onchange="saveCard(&apos;' + d.id + '&apos;)"' + (sv.confidence === "unsure" ? " checked" : "") + '> Unsure</label>' +
+      '</div>' +
+    '</div>' +
+    '<div class="notes-row">' +
+      '<label>Notes</label>' +
+      '<textarea id="notes-' + d.id + '" oninput="saveCard(&apos;' + d.id + '&apos;)" placeholder="Any context or rule clarification...">' + esc(sv.notes || '') + '</textarea>' +
+    '</div>' +
+    '<div id="dedup-msg-' + d.id + '" style="font-size:12px;color:#276749;margin-top:4px"></div>' +
+  '</div>';
+}
+
+function selectOpt(iid, val) {
+  document.getElementById("radio-" + val + "-" + iid).checked = true;
+  const otherInputs = document.getElementById("other-inputs-" + iid);
+  if (otherInputs) {
+    otherInputs.style.display = val === "other" ? "flex" : "none";
+  }
+  ["gt","rule","other"].forEach(function(v) {
+    const row = document.getElementById("opt-" + v + "-" + iid);
+    if (row) row.classList.toggle("sel", v === val);
+  });
+  saveCard(iid);
+}
+
+function renderSections() {
+  // Group items by company
+  const byCompany = {};
+  ITEMS_DATA.forEach(function(d) {
+    if (!byCompany[d.company]) byCompany[d.company] = [];
+    byCompany[d.company].push(d);
+  });
+  const container = document.getElementById("sections-container");
+  const companies = Object.keys(byCompany).sort();
+  companies.forEach(function(co, idx) {
+    const items = byCompany[co];
+    const bodyId = "sec-body-" + co;
+    const chevId = "sec-chev-" + co;
+    const letter = co.charAt(0).toUpperCase();
+    const block = document.createElement("div");
+    block.className = "sec-block";
+    const hdrHtml = '<div class="sec-hdr open-state" onclick="toggleSection(&apos;' + bodyId + '&apos;,&apos;' + chevId + '&apos;)">' +
+      '<div class="sec-letter">' + letter + '</div>' +
+      '<div class="sec-title-text">' + esc(co.replace(/_/g," ")) + '</div>' +
+      '<span class="sec-count" id="sec-count-' + co + '">' + items.length + ' remaining</span>' +
+      '<span class="chevron rot" id="' + chevId + '">&#9660;</span>' +
+    '</div>';
+    const bodyHtml = '<div class="sec-body" id="' + bodyId + '">' +
+      items.map(function(d) { return buildCard(d); }).join("") +
+    '</div>';
+    block.innerHTML = hdrHtml + bodyHtml;
+    container.appendChild(block);
+    // Restore sel state
+    items.forEach(function(d) {
+      const sv = saved[d.id] || {};
+      if (sv.decision) {
+        const row = document.getElementById("opt-" + sv.decision + "-" + d.id);
+        if (row) row.classList.add("sel");
+        const card = document.getElementById("card-" + d.id);
+        if (card) card.classList.add("done");
+      }
+    });
+  });
+}
+
+function renderSpecial() {
+  if (!SPECIAL_DATA || SPECIAL_DATA.length === 0) return;
+  const box = document.getElementById("special-section");
+  const container = document.getElementById("special-cards");
+  box.style.display = "block";
+  container.innerHTML = SPECIAL_DATA.map(function(d) { return buildSpecialCard(d); }).join("");
+  SPECIAL_DATA.forEach(function(d) {
+    const sv = saved[d.id] || {};
+    if (sv.decision) {
+      const row = document.getElementById("opt-" + sv.decision + "-" + d.id);
+      if (row) row.classList.add("sel");
+      const card = document.getElementById("card-" + d.id);
+      if (card) card.classList.add("done");
+    }
+  });
+}
+
+function renderResolved() {
+  const list = document.getElementById("resolved-list");
+  if (!list) return;
+  list.innerHTML = RESOLVED_DATA.map(function(r) {
+    const decClass = r.decision === "gt" ? "dec-gt" : r.decision === "rule" ? "dec-rule" : "dec-other";
+    const badge = r.pre_resolved ? '<span style="background:#bee3f8;color:#2b6cb0;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:700;margin-left:4px">AUTO</span>' : "";
+    return '<div class="resolved-row">' +
+      '<span class="resolved-id">' + r.id + '</span>' +
+      '<span style="font-size:12px;color:#4a5568;flex-shrink:0">' + esc(r.company) + '</span>' +
+      '<span style="flex:1;font-size:13px">' + esc(r.raw_text) + '</span>' +
+      '<span class="resolved-dec ' + decClass + '">' + (r.decision || '').toUpperCase() + badge + '</span>' +
+      (r.notes ? '<span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(r.notes) + '</span>' : '') +
+    '</div>';
+  }).join("");
+}
+
+function exportData() {
+  const name = document.getElementById("ca-name").value || "CA";
+  const date = document.getElementById("ca-date").value || new Date().toISOString().split("T")[0];
+  const out = { reviewer: name, date: date, responses: saved, exported_at: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "GT_disputes_v2_responses.json";
+  a.click();
+}
+
+function importData() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (data.responses) {
+          saved = data.responses;
+          localStorage.setItem(LS_KEY, JSON.stringify(saved));
+          alert("Imported " + Object.keys(saved).length + " responses. Refreshing...");
+          location.reload();
+        }
+      } catch(err) {
+        alert("Error parsing JSON: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+// Init
+loadSaved();
+renderSpecial();
+renderSections();
+renderResolved();
+updateProgress();
+</script>
+</body>
+</html>

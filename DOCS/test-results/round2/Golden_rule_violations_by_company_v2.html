@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Rule Violations &mdash; By Company v2</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f4f8;color:#2d3748;font-size:14px;line-height:1.6}
+.container{max-width:1060px;margin:0 auto;padding:16px}
+.page-header{background:#1a365d;color:#fff;padding:20px 24px;border-radius:8px;margin-bottom:14px}
+.page-header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.page-header .sub{opacity:.75;font-size:13px}
+.top-actions{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.ca-field{flex:1;min-width:200px}
+.ca-field label{font-size:12px;font-weight:600;color:#4a5568;display:block;margin-bottom:3px}
+.ca-field input{width:100%;padding:8px 12px;border:1px solid #cbd5e0;border-radius:6px;font-size:14px}
+.btn{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all .15s}
+.btn-orange{background:#e07b39;color:#fff}.btn-orange:hover{background:#c96a2a}
+.btn-navy{background:#1a365d;color:#fff}.btn-navy:hover{background:#2c5282}
+.btn-outline{background:#fff;color:#4a5568;border:1px solid #cbd5e0}.btn-outline:hover{border-color:#1a365d;color:#1a365d}
+.pbar{background:#e2e8f0;border-radius:99px;height:8px;overflow:hidden}
+.pbar-fill{background:#e07b39;height:100%;border-radius:99px;transition:width .3s}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.tab{padding:6px 12px;border-radius:6px 6px 0 0;font-size:13px;font-weight:500;cursor:pointer;border:1px solid #e2e8f0;background:#f7fafc;color:#4a5568;transition:all .15s;border-bottom:none}
+.tab.active{background:#1a365d;color:#fff;border-color:#1a365d}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.co-header{background:#fff;padding:14px 16px;border-radius:8px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.vtable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
+.vtable th{background:#1a365d;color:#fff;padding:8px 10px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.vtable td{padding:8px 10px;border-bottom:1px solid #e2e8f0;vertical-align:middle}
+.vtable tr:hover td{background:#f7fafc}
+.iradio{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.iradio input[type=radio]{accent-color:#1a365d}
+.iradio label{display:flex;align-items:center;gap:3px;font-size:12px;cursor:pointer}
+.other-num{padding:3px 6px;border:1px solid #cbd5e0;border-radius:3px;font-size:12px}
+.inline-note{padding:3px 6px;border:1px solid #cbd5e0;border-radius:3px;font-size:12px;width:120px}
+.pill{padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600}
+.pill-mfg{background:#bee3f8;color:#2b6cb0}
+.pill-trading{background:#feebc8;color:#c05621}
+.pill-svc{background:#c6f6d5;color:#276749}
+.pill-con{background:#fed7d7;color:#9b2c2c}
+.pill-pl{background:#e9d8fd;color:#553c9a}
+.pill-bs{background:#b2f5ea;color:#234e52}
+.sec-block{margin-bottom:12px}
+.sec-hdr{background:#1a365d;color:#fff;padding:10px 16px;border-radius:8px 8px 0 0;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none}
+.sec-hdr.closed-state{border-radius:8px}
+.sec-hdr.green{background:#276749}
+.sec-letter{background:#e07b39;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;flex-shrink:0}
+.sec-letter.green{background:#48bb78}
+.sec-title-text{font-weight:600;flex:1}
+.chevron{transition:transform .2s;font-size:12px}
+.chevron.rot{transform:rotate(180deg)}
+.sec-body{background:#fff;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+.sec-body.hidden{display:none}
+.resolved-row{padding:8px 12px;border-bottom:1px solid #c6f6d5;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.resolved-row:last-child{border-bottom:none}
+.resolved-id{background:#276749;color:#fff;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:700;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="page-header">
+  <h1>Golden Rule Violations &mdash; By Company (v2)</h1>
+  <div class="sub">Resolved: 118 / 175 &nbsp;|&nbsp; Remaining: 54</div>
+</div>
+<div class="top-actions">
+  <div class="ca-field">
+    <label>CA Name</label>
+    <input type="text" id="ca2-name" placeholder="Your name..." oninput="saveMeta2()">
+  </div>
+  <button class="btn btn-orange" onclick="exportV2()">&#8595; Export JSON</button>
+  <button class="btn btn-navy" onclick="importV2()">&#8593; Import</button>
+</div>
+<div class="tabs"><div class="tab active" data-tab="BCIPL" onclick="showTab2(&apos;BCIPL&apos;)">BCIPL <span style="font-size:11px;opacity:.8">(9&#9744;)</span></div><div class="tab" data-tab="Dynamic_Air" onclick="showTab2(&apos;Dynamic_Air&apos;)">Dynamic Air <span style="font-size:11px;opacity:.8">(0&#9744;)</span></div><div class="tab" data-tab="INPL" onclick="showTab2(&apos;INPL&apos;)">INPL <span style="font-size:11px;opacity:.8">(3&#9744;)</span></div><div class="tab" data-tab="Kurunji_Retail" onclick="showTab2(&apos;Kurunji_Retail&apos;)">Kurunji Retail <span style="font-size:11px;opacity:.8">(0&#9744;)</span></div><div class="tab" data-tab="Mehta_Computer" onclick="showTab2(&apos;Mehta_Computer&apos;)">Mehta Computer <span style="font-size:11px;opacity:.8">(13&#9744;)</span></div><div class="tab" data-tab="MSL" onclick="showTab2(&apos;MSL&apos;)">MSL <span style="font-size:11px;opacity:.8">(7&#9744;)</span></div><div class="tab" data-tab="SLIPL" onclick="showTab2(&apos;SLIPL&apos;)">SLIPL <span style="font-size:11px;opacity:.8">(11&#9744;)</span></div><div class="tab" data-tab="SR_Papers" onclick="showTab2(&apos;SR_Papers&apos;)">SR Papers <span style="font-size:11px;opacity:.8">(10&#9744;)</span></div><div class="tab" data-tab="SSSS" onclick="showTab2(&apos;SSSS&apos;)">SSSS <span style="font-size:11px;opacity:.8">(1&#9744;)</span></div></div>
+<div class="tab-content active" id="tab-BCIPL">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">BCIPL</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 21 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">12</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">9</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:57%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d008">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>Administrative & General Expenses</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 70</span><br><span style="font-size:11px;color:#4a5568">Advertisements and Sales Promotions</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others (Admin & Selling)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d008" value="gt" onchange="saveV2(&apos;d008&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d008" value="rule" onchange="saveV2(&apos;d008&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d008" value="other" onchange="saveV2(&apos;d008&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d008" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d008&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d008" value="" oninput="saveV2(&apos;d008&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d009">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>Rates & Taxes</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d009" value="gt" onchange="saveV2(&apos;d009&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d009" value="rule" onchange="saveV2(&apos;d009&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d009" value="other" onchange="saveV2(&apos;d009&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d009" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d009&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d009" value="" oninput="saveV2(&apos;d009&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d010">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>Bad debts written off</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 69</span><br><span style="font-size:11px;color:#4a5568">Bad Debts</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d010" value="gt" onchange="saveV2(&apos;d010&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d010" value="rule" onchange="saveV2(&apos;d010&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d010" value="other" onchange="saveV2(&apos;d010&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d010" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d010&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d010" value="" oninput="saveV2(&apos;d010&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d011">
+<td style="font-weight:700;color:#1a365d;width:30px">4</td>
+<td style="max-width:200px"><strong>Auditor's Remuneration - Statutory Audit</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 73</span><br><span style="font-size:11px;color:#4a5568">Audit Fees & Directors Remuneration</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d011" value="gt" onchange="saveV2(&apos;d011&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d011" value="rule" onchange="saveV2(&apos;d011&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d011" value="other" onchange="saveV2(&apos;d011&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d011" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d011&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d011" value="" oninput="saveV2(&apos;d011&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d012">
+<td style="font-weight:700;color:#1a365d;width:30px">5</td>
+<td style="max-width:200px"><strong>Auditor's Remuneration - Tax Audit</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 73</span><br><span style="font-size:11px;color:#4a5568">Audit Fees & Directors Remuneration</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d012" value="gt" onchange="saveV2(&apos;d012&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d012" value="rule" onchange="saveV2(&apos;d012&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d012" value="other" onchange="saveV2(&apos;d012&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d012" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d012&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d012" value="" oninput="saveV2(&apos;d012&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d013">
+<td style="font-weight:700;color:#1a365d;width:30px">6</td>
+<td style="max-width:200px"><strong>Rent</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 68</span><br><span style="font-size:11px;color:#4a5568">Rent, Rates and Taxes</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d013" value="gt" onchange="saveV2(&apos;d013&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d013" value="rule" onchange="saveV2(&apos;d013&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d013" value="other" onchange="saveV2(&apos;d013&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d013" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d013&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d013" value="" oninput="saveV2(&apos;d013&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d014">
+<td style="font-weight:700;color:#1a365d;width:30px">7</td>
+<td style="max-width:200px"><strong>Machinery Maintenance</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 72</span><br><span style="font-size:11px;color:#4a5568">Repairs & Maintenance</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d014" value="gt" onchange="saveV2(&apos;d014&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d014" value="rule" onchange="saveV2(&apos;d014&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d014" value="other" onchange="saveV2(&apos;d014&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d014" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d014&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d014" value="" oninput="saveV2(&apos;d014&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d016">
+<td style="font-weight:700;color:#1a365d;width:30px">8</td>
+<td style="max-width:200px"><strong>Interest of Income Tax</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 83</span><br><span style="font-size:11px;color:#4a5568">Interest on Fixed Loans / Term loans</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 84</span><br><span style="font-size:11px;color:#4a5568">Interest on WC / Tax Delay</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d016" value="gt" onchange="saveV2(&apos;d016&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d016" value="rule" onchange="saveV2(&apos;d016&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d016" value="other" onchange="saveV2(&apos;d016&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d016" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d016&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d016" value="" oninput="saveV2(&apos;d016&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d018">
+<td style="font-weight:700;color:#1a365d;width:30px">9</td>
+<td style="max-width:200px"><strong>Deferred Tax</strong><br><span style="font-size:11px;color:#718096">Tax Expense</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 101</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 171</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d018" value="gt" onchange="saveV2(&apos;d018&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d018" value="rule" onchange="saveV2(&apos;d018&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d018" value="other" onchange="saveV2(&apos;d018&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d018" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d018&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d018" value="" oninput="saveV2(&apos;d018&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-BCIPL&apos;,&apos;rchev2-BCIPL&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (12 items)</div>
+  <span class="chevron" id="rchev2-BCIPL">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-BCIPL">
+<div class="resolved-row">
+  <span class="resolved-id">d001</span>
+  <span style="flex:1;font-size:13px">Profit on Sale of Fixed Asset</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d002</span>
+  <span style="flex:1;font-size:13px">Forex Rate Fluctuation Gain/(Loss)</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER</span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="If it is an income then 32 if it is an loss then 91">If it is an income then 32 if it is an loss then 9</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d003</span>
+  <span style="flex:1;font-size:13px">Rent</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d004</span>
+  <span style="flex:1;font-size:13px">Machinery Maintenance</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d005</span>
+  <span style="flex:1;font-size:13px">Directors Remuneration</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d006</span>
+  <span style="flex:1;font-size:13px">Rates & Taxes</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO-DEDUP] Same pattern as d054 (INPL, rates & taxes, gt=68 rule=49) -> gt">[AUTO-DEDUP] Same pattern as d054 (INPL, rates & t</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d007</span>
+  <span style="flex:1;font-size:13px">Selling & Distribution Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_008: Selling & Distribution Expenses">[AUTO] via cross_008: Selling & Distribution Expen</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d015</span>
+  <span style="flex:1;font-size:13px">Selling & Distribution Expenses</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_008: Selling & Distribution Expenses">[AUTO] via cross_008: Selling & Distribution Expen</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d017</span>
+  <span style="flex:1;font-size:13px">Deferred Tax</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt">[AUTO-DEDUP] Same pattern as d056 (INPL, deferred </span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d019</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d020</span>
+  <span style="flex:1;font-size:13px">Leave Encashment</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d021</span>
+  <span style="flex:1;font-size:13px">Creditors for Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-Dynamic_Air">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">Dynamic Air</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 23 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">23</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">0</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:100%"></div></div>
+</div>
+<div style="padding:16px;color:#276749;font-weight:600">&#10003; All items resolved for this company!</div>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-Dynamic_Air&apos;,&apos;rchev2-Dynamic_Air&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (23 items)</div>
+  <span class="chevron" id="rchev2-Dynamic_Air">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-Dynamic_Air">
+<div class="resolved-row">
+  <span class="resolved-id">d022</span>
+  <span style="flex:1;font-size:13px">Carriage Inwards</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d023</span>
+  <span style="flex:1;font-size:13px">(a) Salaries and incentives</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d024</span>
+  <span style="flex:1;font-size:13px">(c) Staff Welfare</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_001: Staff Welfare Expenses">[AUTO] via cross_001: Staff Welfare Expenses</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d025</span>
+  <span style="flex:1;font-size:13px">(d) Contribution to EPF and ESI</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d026</span>
+  <span style="flex:1;font-size:13px">Rates and taxes</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d027</span>
+  <span style="flex:1;font-size:13px">Interest on Delay in payment of taxes</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d028</span>
+  <span style="flex:1;font-size:13px">Liquidty Damages</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d029</span>
+  <span style="flex:1;font-size:13px">(a) Loan/Overdraft Processing Fee</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d030</span>
+  <span style="flex:1;font-size:13px">(3) Deferred tax Liability / (Asset)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="If liablity then 100 , if asset then 101">If liablity then 100 , if asset then 101</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d031</span>
+  <span style="flex:1;font-size:13px">(e) Gratuity</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d032</span>
+  <span style="flex:1;font-size:13px">Rent - Factory</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d033</span>
+  <span style="flex:1;font-size:13px">Rates and taxes</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d034</span>
+  <span style="flex:1;font-size:13px">Brokerage & Commission</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d035</span>
+  <span style="flex:1;font-size:13px">Interest on Delay in payment of taxes</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d036</span>
+  <span style="flex:1;font-size:13px">(a) Loan/Overdraft Processing Fee</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d037</span>
+  <span style="flex:1;font-size:13px">(3) Deferred tax Liability / (Asset)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d038</span>
+  <span style="flex:1;font-size:13px">Security Service Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d039</span>
+  <span style="flex:1;font-size:13px">(c) Staff Welfare Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_001: Staff Welfare Expenses">[AUTO] via cross_001: Staff Welfare Expenses</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d040</span>
+  <span style="flex:1;font-size:13px">Interest due to Delay in payment of taxes</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d041</span>
+  <span style="flex:1;font-size:13px">Advances recoverable in cash or in kind</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d042</span>
+  <span style="flex:1;font-size:13px">Vehicle HP Loans - current maturities</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d043</span>
+  <span style="flex:1;font-size:13px">Vehicle HP Loans - non-current</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d044</span>
+  <span style="flex:1;font-size:13px">Outstanding expenses (Salary + Other)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-INPL">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">INPL</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 31 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">28</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">3</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:90%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d045">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>Discount received</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 42</span><br><span style="font-size:11px;color:#4a5568">Raw Materials Consumed ( Indigenous)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d045" value="gt" onchange="saveV2(&apos;d045&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d045" value="rule" onchange="saveV2(&apos;d045&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d045" value="other" onchange="saveV2(&apos;d045&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d045" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d045&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d045" value="should be subtracted in Row 42" oninput="saveV2(&apos;d045&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d058">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>Work in Progress</strong><br><span style="font-size:11px;color:#718096">Inventories</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-bs">BS</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 200</span><br><span style="font-size:11px;color:#4a5568">Stocks-in-process</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 165</span><br><span style="font-size:11px;color:#4a5568">Add : Capital Work in Progress</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d058" value="gt" onchange="saveV2(&apos;d058&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d058" value="rule" onchange="saveV2(&apos;d058&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d058" value="other" onchange="saveV2(&apos;d058&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d058" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d058&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d058" value="" oninput="saveV2(&apos;d058&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d059">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>Finished Goods + Stock in Trade</strong><br><span style="font-size:11px;color:#718096">Inventories</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-bs">BS</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 201</span><br><span style="font-size:11px;color:#4a5568">Finished Goods</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 58</span><br><span style="font-size:11px;color:#4a5568">Finished Goods Opening Balance</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d059" value="gt" onchange="saveV2(&apos;d059&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d059" value="rule" onchange="saveV2(&apos;d059&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d059" value="other" onchange="saveV2(&apos;d059&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d059" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d059&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d059" value="" oninput="saveV2(&apos;d059&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-INPL&apos;,&apos;rchev2-INPL&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (28 items)</div>
+  <span class="chevron" id="rchev2-INPL">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-INPL">
+<div class="resolved-row">
+  <span class="resolved-id">d046</span>
+  <span style="flex:1;font-size:13px">Changes in work-in-progress and stock-in-trade</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d047</span>
+  <span style="flex:1;font-size:13px">Security Service Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d048</span>
+  <span style="flex:1;font-size:13px">Work in Progress</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d049</span>
+  <span style="flex:1;font-size:13px">Work in Progress (Opening)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d050</span>
+  <span style="flex:1;font-size:13px">Salary, Wages and Bonus</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_004: Bonus">[AUTO] via cross_004: Bonus</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d051</span>
+  <span style="flex:1;font-size:13px">Staff welfare Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_001: Staff Welfare Expenses">[AUTO] via cross_001: Staff Welfare Expenses</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d052</span>
+  <span style="flex:1;font-size:13px">Contribution to Provident Fund and ESI</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d053</span>
+  <span style="flex:1;font-size:13px">Gratutity to employees</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d054</span>
+  <span style="flex:1;font-size:13px">Rates & Taxes</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d055</span>
+  <span style="flex:1;font-size:13px">Licence And Subscription</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d056</span>
+  <span style="flex:1;font-size:13px">Deferred Tax</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d057</span>
+  <span style="flex:1;font-size:13px">Deferred Tax (Asset)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d060</span>
+  <span style="flex:1;font-size:13px">Prepaid expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d061</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d062</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d063</span>
+  <span style="flex:1;font-size:13px">Creditors for Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d153</span>
+  <span style="flex:1;font-size:13px">Consultancy Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d154</span>
+  <span style="flex:1;font-size:13px">Packing and Forwarding Charges</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d155</span>
+  <span style="flex:1;font-size:13px">Project Cost</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d156</span>
+  <span style="flex:1;font-size:13px">Research and Development</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d157</span>
+  <span style="flex:1;font-size:13px">Staff Welfare Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d158</span>
+  <span style="flex:1;font-size:13px">Gratuity to Employees</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d159</span>
+  <span style="flex:1;font-size:13px">Consultancy Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d160</span>
+  <span style="flex:1;font-size:13px">Material Handling Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d161</span>
+  <span style="flex:1;font-size:13px">Staff Welfare Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d162</span>
+  <span style="flex:1;font-size:13px">Gratuity to Employees</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d163</span>
+  <span style="flex:1;font-size:13px">Consultancy Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d164</span>
+  <span style="flex:1;font-size:13px">Finished Goods</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-Kurunji_Retail">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">Kurunji Retail</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 12 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">12</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">0</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:100%"></div></div>
+</div>
+<div style="padding:16px;color:#276749;font-weight:600">&#10003; All items resolved for this company!</div>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-Kurunji_Retail&apos;,&apos;rchev2-Kurunji_Retail&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (12 items)</div>
+  <span class="chevron" id="rchev2-Kurunji_Retail">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-Kurunji_Retail">
+<div class="resolved-row">
+  <span class="resolved-id">d064</span>
+  <span style="flex:1;font-size:13px">Packing Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d065</span>
+  <span style="flex:1;font-size:13px">Staff Welfare</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via cross_002: Staff Welfare Expenses">[AUTO] via cross_002: Staff Welfare Expenses</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d066</span>
+  <span style="flex:1;font-size:13px">Electric Charges</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d067</span>
+  <span style="flex:1;font-size:13px">Rent</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d068</span>
+  <span style="flex:1;font-size:13px">Tds on Rent</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d069</span>
+  <span style="flex:1;font-size:13px">Rent - Parking</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d070</span>
+  <span style="flex:1;font-size:13px">Generator Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d071</span>
+  <span style="flex:1;font-size:13px">Delivery Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d072</span>
+  <span style="flex:1;font-size:13px">Salary to Partners</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d073</span>
+  <span style="flex:1;font-size:13px">Partners Current Account</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d165</span>
+  <span style="flex:1;font-size:13px">Closing Stock</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d166</span>
+  <span style="flex:1;font-size:13px">Depreciation</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-Mehta_Computer">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">Mehta Computer</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 16 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">3</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">13</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:19%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d075">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>Interest on PPF</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 30</span><br><span style="font-size:11px;color:#4a5568">Interest Received</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d075" value="gt" onchange="saveV2(&apos;d075&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d075" value="rule" onchange="saveV2(&apos;d075&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d075" value="other" onchange="saveV2(&apos;d075&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d075" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d075&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d075" value="" oninput="saveV2(&apos;d075&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d076">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>Electricty Charges</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 48</span><br><span style="font-size:11px;color:#4a5568">Power, Coal, Fuel and Water</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d076" value="gt" onchange="saveV2(&apos;d076&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d076" value="rule" onchange="saveV2(&apos;d076&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d076" value="other" onchange="saveV2(&apos;d076&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d076" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d076&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d076" value="" oninput="saveV2(&apos;d076&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d077">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>Courier Charges</strong><br><span style="font-size:11px;color:#718096">Direct Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d077" value="gt" onchange="saveV2(&apos;d077&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d077" value="rule" onchange="saveV2(&apos;d077&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d077" value="other" onchange="saveV2(&apos;d077&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d077" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d077&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d077" value="" oninput="saveV2(&apos;d077&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d078">
+<td style="font-weight:700;color:#1a365d;width:30px">4</td>
+<td style="max-width:200px"><strong>Transport Charges</strong><br><span style="font-size:11px;color:#718096">Direct Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 47</span><br><span style="font-size:11px;color:#4a5568">Freight/Transport</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d078" value="gt" onchange="saveV2(&apos;d078&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d078" value="rule" onchange="saveV2(&apos;d078&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d078" value="other" onchange="saveV2(&apos;d078&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d078" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d078&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d078" value="" oninput="saveV2(&apos;d078&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d079">
+<td style="font-weight:700;color:#1a365d;width:30px">5</td>
+<td style="max-width:200px"><strong>To Opening Stock</strong><br><span style="font-size:11px;color:#718096">Cost of Goods Sold</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 53</span><br><span style="font-size:11px;color:#4a5568">Stock in process Opening Balance</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 58</span><br><span style="font-size:11px;color:#4a5568">FG Opening</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d079" value="gt" onchange="saveV2(&apos;d079&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d079" value="rule" onchange="saveV2(&apos;d079&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d079" value="other" onchange="saveV2(&apos;d079&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d079" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d079&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d079" value="" oninput="saveV2(&apos;d079&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d080">
+<td style="font-weight:700;color:#1a365d;width:30px">6</td>
+<td style="max-width:200px"><strong>By Closing Stock</strong><br><span style="font-size:11px;color:#718096">Revenue / Cost of Goods Sold</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 54</span><br><span style="font-size:11px;color:#4a5568">Stock in process Closing Balance</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 59</span><br><span style="font-size:11px;color:#4a5568">FG Closing</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d080" value="gt" onchange="saveV2(&apos;d080&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d080" value="rule" onchange="saveV2(&apos;d080&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d080" value="other" onchange="saveV2(&apos;d080&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d080" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d080&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d080" value="" oninput="saveV2(&apos;d080&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d081">
+<td style="font-weight:700;color:#1a365d;width:30px">7</td>
+<td style="max-width:200px"><strong>Carriage Outward</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 70</span><br><span style="font-size:11px;color:#4a5568">Advertisements and Sales Promotions</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d081" value="gt" onchange="saveV2(&apos;d081&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d081" value="rule" onchange="saveV2(&apos;d081&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d081" value="other" onchange="saveV2(&apos;d081&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d081" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d081&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d081" value="" oninput="saveV2(&apos;d081&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d082">
+<td style="font-weight:700;color:#1a365d;width:30px">8</td>
+<td style="max-width:200px"><strong>Commission on sales</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 70</span><br><span style="font-size:11px;color:#4a5568">Ads/Sales(Commission)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d082" value="gt" onchange="saveV2(&apos;d082&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d082" value="rule" onchange="saveV2(&apos;d082&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d082" value="other" onchange="saveV2(&apos;d082&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d082" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d082&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d082" value="" oninput="saveV2(&apos;d082&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d083">
+<td style="font-weight:700;color:#1a365d;width:30px">9</td>
+<td style="max-width:200px"><strong>Sundry Balance W/off</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 90</span><br><span style="font-size:11px;color:#4a5568">Sundry Written off</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d083" value="gt" onchange="saveV2(&apos;d083&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d083" value="rule" onchange="saveV2(&apos;d083&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d083" value="other" onchange="saveV2(&apos;d083&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d083" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d083&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d083" value="" oninput="saveV2(&apos;d083&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d084">
+<td style="font-weight:700;color:#1a365d;width:30px">10</td>
+<td style="max-width:200px"><strong>Freight Charges</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 47</span><br><span style="font-size:11px;color:#4a5568">Freight/Transport</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d084" value="gt" onchange="saveV2(&apos;d084&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d084" value="rule" onchange="saveV2(&apos;d084&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d084" value="other" onchange="saveV2(&apos;d084&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d084" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d084&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d084" value="" oninput="saveV2(&apos;d084&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d085">
+<td style="font-weight:700;color:#1a365d;width:30px">11</td>
+<td style="max-width:200px"><strong>Bill Discount Charges</strong><br><span style="font-size:11px;color:#718096">Administrative Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 85</span><br><span style="font-size:11px;color:#4a5568">Bank Charges</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 84</span><br><span style="font-size:11px;color:#4a5568">Interest on Working capital loans</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d085" value="gt" onchange="saveV2(&apos;d085&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d085" value="rule" onchange="saveV2(&apos;d085&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d085" value="other" onchange="saveV2(&apos;d085&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d085" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d085&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d085" value="" oninput="saveV2(&apos;d085&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d086">
+<td style="font-weight:700;color:#1a365d;width:30px">12</td>
+<td style="max-width:200px"><strong>Stock-in-Trade ( Valued at Cost Or Market price Whichever Is Lower)</strong><br><span style="font-size:11px;color:#718096">Current Assets & Advances</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-bs">BS</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 200</span><br><span style="font-size:11px;color:#4a5568">Stocks-in-process</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 201</span><br><span style="font-size:11px;color:#4a5568">Finished Goods</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d086" value="gt" onchange="saveV2(&apos;d086&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d086" value="rule" onchange="saveV2(&apos;d086&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d086" value="other" onchange="saveV2(&apos;d086&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d086" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d086&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d086" value="" oninput="saveV2(&apos;d086&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d175">
+<td style="font-weight:700;color:#1a365d;width:30px">13</td>
+<td style="max-width:200px"><strong>Packing Forwarding </strong><br><span style="font-size:11px;color:#718096">Direct Expenses</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 47</span><br><span style="font-size:11px;color:#4a5568">Freight and Transportation Charges</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d175" value="gt" onchange="saveV2(&apos;d175&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d175" value="rule" onchange="saveV2(&apos;d175&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d175" value="other" onchange="saveV2(&apos;d175&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d175" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d175&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d175" value="" oninput="saveV2(&apos;d175&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-Mehta_Computer&apos;,&apos;rchev2-Mehta_Computer&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (3 items)</div>
+  <span class="chevron" id="rchev2-Mehta_Computer">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-Mehta_Computer">
+<div class="resolved-row">
+  <span class="resolved-id">d074</span>
+  <span style="flex:1;font-size:13px">Bank Interest</span>
+  <span style="font-weight:700;color:#c05621;font-size:12px">OTHER <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO] via int_029: Fixed Deposits with banks & accrued interest (under lien)">[AUTO] via int_029: Fixed Deposits with banks & ac</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d087</span>
+  <span style="flex:1;font-size:13px">Gst Receivable</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d088</span>
+  <span style="flex:1;font-size:13px">FD Accrued Interest (reclassified from Investments to Kotak FD)</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-MSL">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">MSL</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 23 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">16</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">7</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:70%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d100">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>(b) Bank Interest</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 84</span><br><span style="font-size:11px;color:#4a5568">Interest on Working capital loans</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 83</span><br><span style="font-size:11px;color:#4a5568">Interest on Fixed Loans / Term loans</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d100" value="gt" onchange="saveV2(&apos;d100&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d100" value="rule" onchange="saveV2(&apos;d100&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d100" value="other" onchange="saveV2(&apos;d100&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d100" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d100&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d100" value="If working capital intrest in 84 
+if Fix" oninput="saveV2(&apos;d100&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d101">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>(c) Other Charges</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 84</span><br><span style="font-size:11px;color:#4a5568">Interest on Working capital loans</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d101" value="gt" onchange="saveV2(&apos;d101&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d101" value="rule" onchange="saveV2(&apos;d101&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d101" value="other" onchange="saveV2(&apos;d101&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d101" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d101&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d101" value="" oninput="saveV2(&apos;d101&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d102">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>(2) Deferred tax</strong><br><span style="font-size:11px;color:#718096">Tax Expense</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 100</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Liability</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 171</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d102" value="gt" onchange="saveV2(&apos;d102&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d102" value="rule" onchange="saveV2(&apos;d102&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d102" value="other" onchange="saveV2(&apos;d102&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d102" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d102&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d102" value="" oninput="saveV2(&apos;d102&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d103">
+<td style="font-weight:700;color:#1a365d;width:30px">4</td>
+<td style="max-width:200px"><strong>(i) Commission</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Selling</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 70</span><br><span style="font-size:11px;color:#4a5568">Ads/Sales(Commission)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d103" value="gt" onchange="saveV2(&apos;d103&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d103" value="rule" onchange="saveV2(&apos;d103&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d103" value="other" onchange="saveV2(&apos;d103&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d103" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d103&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d103" value="" oninput="saveV2(&apos;d103&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d104">
+<td style="font-weight:700;color:#1a365d;width:30px">5</td>
+<td style="max-width:200px"><strong>(iv) Discount Allowed</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Selling</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 22</span><br><span style="font-size:11px;color:#4a5568">Domestic</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d104" value="gt" onchange="saveV2(&apos;d104&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d104" value="rule" onchange="saveV2(&apos;d104&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d104" value="other" onchange="saveV2(&apos;d104&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d104" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d104&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d104" value="" oninput="saveV2(&apos;d104&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d105">
+<td style="font-weight:700;color:#1a365d;width:30px">6</td>
+<td style="max-width:200px"><strong>(c) Other Charges</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 83</span><br><span style="font-size:11px;color:#4a5568">Interest on Fixed Loans / Term loans</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d105" value="gt" onchange="saveV2(&apos;d105&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d105" value="rule" onchange="saveV2(&apos;d105&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d105" value="other" onchange="saveV2(&apos;d105&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d105" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d105&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d105" value="" oninput="saveV2(&apos;d105&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d106">
+<td style="font-weight:700;color:#1a365d;width:30px">7</td>
+<td style="max-width:200px"><strong>Deferred Tax Liability</strong><br><span style="font-size:11px;color:#718096">tax</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 100</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Liability</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 159</span><br><span style="font-size:11px;color:#4a5568">Deferred tax liability</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d106" value="gt" onchange="saveV2(&apos;d106&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d106" value="rule" onchange="saveV2(&apos;d106&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d106" value="other" onchange="saveV2(&apos;d106&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d106" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d106&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d106" value="" oninput="saveV2(&apos;d106&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-MSL&apos;,&apos;rchev2-MSL&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (16 items)</div>
+  <span class="chevron" id="rchev2-MSL">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-MSL">
+<div class="resolved-row">
+  <span class="resolved-id">d089</span>
+  <span style="flex:1;font-size:13px">(d) Insurance Claim Received</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d090</span>
+  <span style="flex:1;font-size:13px">Raw Material Import Purchases</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d091</span>
+  <span style="flex:1;font-size:13px">(iii) Job Work Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d092</span>
+  <span style="flex:1;font-size:13px">(b) Carriage Inwards</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d093</span>
+  <span style="flex:1;font-size:13px">Security Charges</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d094</span>
+  <span style="flex:1;font-size:13px">Rent</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d095</span>
+  <span style="flex:1;font-size:13px">Stores and spares consumed ( Indigenous)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d096</span>
+  <span style="flex:1;font-size:13px">Rates and taxes (excluding, taxes on income)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d097</span>
+  <span style="flex:1;font-size:13px">(iv) Discount Allowed</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d098</span>
+  <span style="flex:1;font-size:13px">(iii) Freight Outwards</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d099</span>
+  <span style="flex:1;font-size:13px">(ii) Tour & Travel Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d107</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d108</span>
+  <span style="flex:1;font-size:13px">Provision for Gratuity (short-term)</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d109</span>
+  <span style="flex:1;font-size:13px">Advances recoverable in cash or in kind</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d110</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d111</span>
+  <span style="flex:1;font-size:13px">Creditors for Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-SLIPL">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">SLIPL</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 16 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">5</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">11</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:31%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d112">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>Duty drawback / IGST received</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 23</span><br><span style="font-size:11px;color:#4a5568">Exports</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others (Non-Op Income)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d112" value="gt" onchange="saveV2(&apos;d112&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d112" value="rule" onchange="saveV2(&apos;d112&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d112" value="other" onchange="saveV2(&apos;d112&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d112" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d112&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d112" value="" oninput="saveV2(&apos;d112&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d113">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>Consultancy Charges</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d113" value="gt" onchange="saveV2(&apos;d113&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d113" value="rule" onchange="saveV2(&apos;d113&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d113" value="other" onchange="saveV2(&apos;d113&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d113" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d113&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d113" value="" oninput="saveV2(&apos;d113&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d114">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>Packing Expenses</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 70</span><br><span style="font-size:11px;color:#4a5568">Advertisements and Sales Promotions</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d114" value="gt" onchange="saveV2(&apos;d114&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d114" value="rule" onchange="saveV2(&apos;d114&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d114" value="other" onchange="saveV2(&apos;d114&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d114" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d114&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d114" value="" oninput="saveV2(&apos;d114&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d116">
+<td style="font-weight:700;color:#1a365d;width:30px">4</td>
+<td style="max-width:200px"><strong>Rates and taxes (excluding taxes on income)</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 68</span><br><span style="font-size:11px;color:#4a5568">Rent , Rates and Taxes</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d116" value="gt" onchange="saveV2(&apos;d116&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d116" value="rule" onchange="saveV2(&apos;d116&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d116" value="other" onchange="saveV2(&apos;d116&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d116" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d116&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d116" value="" oninput="saveV2(&apos;d116&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d117">
+<td style="font-weight:700;color:#1a365d;width:30px">5</td>
+<td style="max-width:200px"><strong>Sundries</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Administration & Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 69</span><br><span style="font-size:11px;color:#4a5568">Bad Debts</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others (Admin)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d117" value="gt" onchange="saveV2(&apos;d117&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d117" value="rule" onchange="saveV2(&apos;d117&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d117" value="other" onchange="saveV2(&apos;d117&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d117" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d117&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d117" value="" oninput="saveV2(&apos;d117&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d118">
+<td style="font-weight:700;color:#1a365d;width:30px">6</td>
+<td style="max-width:200px"><strong>Repairs to Plant & Machinery</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Repairs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 72</span><br><span style="font-size:11px;color:#4a5568">Repairs & Maintenance</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 50</span><br><span style="font-size:11px;color:#4a5568">Repairs (Mfg)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d118" value="gt" onchange="saveV2(&apos;d118&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d118" value="rule" onchange="saveV2(&apos;d118&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d118" value="other" onchange="saveV2(&apos;d118&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d118" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d118&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d118" value="" oninput="saveV2(&apos;d118&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d119">
+<td style="font-weight:700;color:#1a365d;width:30px">7</td>
+<td style="max-width:200px"><strong>Interest expense</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 84</span><br><span style="font-size:11px;color:#4a5568">Interest on Working capital loans</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d119" value="gt" onchange="saveV2(&apos;d119&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d119" value="rule" onchange="saveV2(&apos;d119&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d119" value="other" onchange="saveV2(&apos;d119&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d119" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d119&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d119" value="" oninput="saveV2(&apos;d119&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d120">
+<td style="font-weight:700;color:#1a365d;width:30px">8</td>
+<td style="max-width:200px"><strong>Other Charges (Finance Costs)</strong><br><span style="font-size:11px;color:#718096">Finance Costs</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 85</span><br><span style="font-size:11px;color:#4a5568">Bank Charges</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d120" value="gt" onchange="saveV2(&apos;d120&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d120" value="rule" onchange="saveV2(&apos;d120&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d120" value="other" onchange="saveV2(&apos;d120&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d120" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d120&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d120" value="" oninput="saveV2(&apos;d120&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d121">
+<td style="font-weight:700;color:#1a365d;width:30px">9</td>
+<td style="max-width:200px"><strong>Bad Debts Written off</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Administration & Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 90</span><br><span style="font-size:11px;color:#4a5568">Sundry Balances Written off</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 69</span><br><span style="font-size:11px;color:#4a5568">Bad Debts</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d121" value="gt" onchange="saveV2(&apos;d121&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d121" value="rule" onchange="saveV2(&apos;d121&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d121" value="other" onchange="saveV2(&apos;d121&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d121" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d121&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d121" value="" oninput="saveV2(&apos;d121&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d123">
+<td style="font-weight:700;color:#1a365d;width:30px">10</td>
+<td style="max-width:200px"><strong>Deferred tax (credit)</strong><br><span style="font-size:11px;color:#718096">Tax expense</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 101</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 171</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d123" value="gt" onchange="saveV2(&apos;d123&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d123" value="rule" onchange="saveV2(&apos;d123&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d123" value="other" onchange="saveV2(&apos;d123&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d123" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d123&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d123" value="" oninput="saveV2(&apos;d123&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d127">
+<td style="font-weight:700;color:#1a365d;width:30px">11</td>
+<td style="max-width:200px"><strong>Freight Outward</strong><br><span style="font-size:11px;color:#718096">Other Expenses - Selling Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 47</span><br><span style="font-size:11px;color:#4a5568">Freight and Transportation Charges</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d127" value="gt" onchange="saveV2(&apos;d127&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d127" value="rule" onchange="saveV2(&apos;d127&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d127" value="other" onchange="saveV2(&apos;d127&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d127" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d127&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d127" value="" oninput="saveV2(&apos;d127&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-SLIPL&apos;,&apos;rchev2-SLIPL&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (5 items)</div>
+  <span class="chevron" id="rchev2-SLIPL">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-SLIPL">
+<div class="resolved-row">
+  <span class="resolved-id">d115</span>
+  <span style="flex:1;font-size:13px">Rent</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d122</span>
+  <span style="flex:1;font-size:13px">Deferred tax</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt">[AUTO-DEDUP] Same pattern as d056 (INPL, deferred </span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d124</span>
+  <span style="flex:1;font-size:13px">Margin money deposits</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d125</span>
+  <span style="flex:1;font-size:13px">Prepaid Expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d126</span>
+  <span style="flex:1;font-size:13px">Security Deposits - Others</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-SR_Papers">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">SR Papers</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 17 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">7</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">10</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:41%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d128">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>Unloading Charges - Mathadi</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 47</span><br><span style="font-size:11px;color:#4a5568">Freight and Transportation Charges</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 45</span><br><span style="font-size:11px;color:#4a5568">Wages</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d128" value="gt" onchange="saveV2(&apos;d128&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d128" value="rule" onchange="saveV2(&apos;d128&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d128" value="other" onchange="saveV2(&apos;d128&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d128" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d128&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d128" value="" oninput="saveV2(&apos;d128&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d129">
+<td style="font-weight:700;color:#1a365d;width:30px">2</td>
+<td style="max-width:200px"><strong>Labour Charges</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 45</span><br><span style="font-size:11px;color:#4a5568">Wages</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d129" value="gt" onchange="saveV2(&apos;d129&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d129" value="rule" onchange="saveV2(&apos;d129&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d129" value="other" onchange="saveV2(&apos;d129&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d129" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d129&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d129" value="" oninput="saveV2(&apos;d129&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d130">
+<td style="font-weight:700;color:#1a365d;width:30px">3</td>
+<td style="max-width:200px"><strong>Admin Exp for PF</strong><br><span style="font-size:11px;color:#718096">Other Expenses</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 67</span><br><span style="font-size:11px;color:#4a5568">Salary and staff expenses</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 45</span><br><span style="font-size:11px;color:#4a5568">Wages (EPF Admin)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d130" value="gt" onchange="saveV2(&apos;d130&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d130" value="rule" onchange="saveV2(&apos;d130&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d130" value="other" onchange="saveV2(&apos;d130&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d130" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d130&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d130" value="" oninput="saveV2(&apos;d130&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d133">
+<td style="font-weight:700;color:#1a365d;width:30px">4</td>
+<td style="max-width:200px"><strong>Discount Recieved</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 29</span><br><span style="font-size:11px;color:#4a5568">Dividends received from Mutual Funds</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 42</span><br><span style="font-size:11px;color:#4a5568">Raw Materials Consumed ( Indigenous)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d133" value="gt" onchange="saveV2(&apos;d133&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d133" value="rule" onchange="saveV2(&apos;d133&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d133" value="other" onchange="saveV2(&apos;d133&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d133" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d133&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d133" value="" oninput="saveV2(&apos;d133&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d134">
+<td style="font-weight:700;color:#1a365d;width:30px">5</td>
+<td style="max-width:200px"><strong>Discount Recieved</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 42</span><br><span style="font-size:11px;color:#4a5568">Raw Materials Consumed ( Indigenous)</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d134" value="gt" onchange="saveV2(&apos;d134&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d134" value="rule" onchange="saveV2(&apos;d134&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d134" value="other" onchange="saveV2(&apos;d134&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d134" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d134&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d134" value="" oninput="saveV2(&apos;d134&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d135">
+<td style="font-weight:700;color:#1a365d;width:30px">6</td>
+<td style="max-width:200px"><strong>Rate Difference</strong><br><span style="font-size:11px;color:#718096">Other Income</span></td>
+<td><span class="pill pill-mfg">Mfg</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 34</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 22</span><br><span style="font-size:11px;color:#4a5568">Domestic</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d135" value="gt" onchange="saveV2(&apos;d135&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d135" value="rule" onchange="saveV2(&apos;d135&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d135" value="other" onchange="saveV2(&apos;d135&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d135" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d135&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d135" value="" oninput="saveV2(&apos;d135&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d167">
+<td style="font-weight:700;color:#1a365d;width:30px">7</td>
+<td style="max-width:200px"><strong>Computer Maintanance</strong><br><span style="font-size:11px;color:#718096"></span></td>
+<td> </td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 72</span><br><span style="font-size:11px;color:#4a5568">Repairs & Maintenance</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 71</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d167" value="gt" onchange="saveV2(&apos;d167&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d167" value="rule" onchange="saveV2(&apos;d167&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d167" value="other" onchange="saveV2(&apos;d167&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d167" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d167&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d167" value="" oninput="saveV2(&apos;d167&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d168">
+<td style="font-weight:700;color:#1a365d;width:30px">8</td>
+<td style="max-width:200px"><strong>Manpower Charges</strong><br><span style="font-size:11px;color:#718096"></span></td>
+<td> </td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 49</span><br><span style="font-size:11px;color:#4a5568">Others</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 45</span><br><span style="font-size:11px;color:#4a5568">Wages</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d168" value="gt" onchange="saveV2(&apos;d168&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d168" value="rule" onchange="saveV2(&apos;d168&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d168" value="other" onchange="saveV2(&apos;d168&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d168" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d168&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d168" value="" oninput="saveV2(&apos;d168&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d169">
+<td style="font-weight:700;color:#1a365d;width:30px">9</td>
+<td style="max-width:200px"><strong>TDS Receivable</strong><br><span style="font-size:11px;color:#718096"></span></td>
+<td> </td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 219</span><br><span style="font-size:11px;color:#4a5568">Advances recoverable in cash or in kind</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 221</span><br><span style="font-size:11px;color:#4a5568">Advance Income Tax</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d169" value="gt" onchange="saveV2(&apos;d169&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d169" value="rule" onchange="saveV2(&apos;d169&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d169" value="other" onchange="saveV2(&apos;d169&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d169" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d169&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d169" value="" oninput="saveV2(&apos;d169&apos;)" placeholder="notes..."></td>
+</tr>
+<tr id="vr2-d170">
+<td style="font-weight:700;color:#1a365d;width:30px">10</td>
+<td style="max-width:200px"><strong>TCS Receivable</strong><br><span style="font-size:11px;color:#718096"></span></td>
+<td> </td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 219</span><br><span style="font-size:11px;color:#4a5568">Advances recoverable in cash or in kind</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 221</span><br><span style="font-size:11px;color:#4a5568">Advance Income Tax</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d170" value="gt" onchange="saveV2(&apos;d170&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d170" value="rule" onchange="saveV2(&apos;d170&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d170" value="other" onchange="saveV2(&apos;d170&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d170" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d170&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d170" value="" oninput="saveV2(&apos;d170&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-SR_Papers&apos;,&apos;rchev2-SR_Papers&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (7 items)</div>
+  <span class="chevron" id="rchev2-SR_Papers">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-SR_Papers">
+<div class="resolved-row">
+  <span class="resolved-id">d131</span>
+  <span style="flex:1;font-size:13px">Tea & Food Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d132</span>
+  <span style="flex:1;font-size:13px">Rates and taxes</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO-DEDUP] Same pattern as d026 (Dynamic_Air, rates and taxes, gt=68 rule=49) -> gt">[AUTO-DEDUP] Same pattern as d026 (Dynamic_Air, ra</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d136</span>
+  <span style="flex:1;font-size:13px">Deferred tax</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT <span style="background:#bee3f8;color:#2b6cb0;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700">AUTO</span></span>
+  <span style="font-size:11px;color:#718096;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt">[AUTO-DEDUP] Same pattern as d056 (INPL, deferred </span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d137</span>
+  <span style="flex:1;font-size:13px">Expenses Payable</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d138</span>
+  <span style="flex:1;font-size:13px">Short Term Borrowings - Debentures portion</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d139</span>
+  <span style="flex:1;font-size:13px">Term Loans from banks</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d140</span>
+  <span style="flex:1;font-size:13px">Security deposits - Unsecured, considered good</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+</div></div>
+</div>
+<div class="tab-content" id="tab-SSSS">
+<div class="co-header">
+  <div style="font-size:20px;font-weight:700;color:#1a365d">SSSS</div>
+  <div style="font-size:12px;color:#718096">Total disputes: 13 &nbsp;|&nbsp; Resolved: <span style="color:#276749;font-weight:600">12</span> &nbsp;|&nbsp; Remaining: <span style="color:#e07b39;font-weight:600">1</span></div>
+  <div class="pbar" style="margin-top:8px"><div class="pbar-fill" style="width:92%"></div></div>
+</div>
+<table class="vtable"><thead><tr><th>#</th><th>Item / Section</th><th>Context</th><th>GT Row</th><th>Rule Row</th><th>Decision</th><th>Notes</th></tr></thead><tbody>
+<tr id="vr2-d148">
+<td style="font-weight:700;color:#1a365d;width:30px">1</td>
+<td style="max-width:200px"><strong>(d) Deferred tax</strong><br><span style="font-size:11px;color:#718096">Tax expense</span></td>
+<td><span class="pill pill-trading">Trading</span> <span class="pill pill-pl">P&L</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 101</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td style="white-space:nowrap"><span style="font-weight:700">Row 171</span><br><span style="font-size:11px;color:#4a5568">Deferred Tax Asset</span></td>
+<td><div class="iradio">
+  <label><input type="radio" name="v2-d148" value="gt" onchange="saveV2(&apos;d148&apos;)"> GT</label>
+  <label><input type="radio" name="v2-d148" value="rule" onchange="saveV2(&apos;d148&apos;)"> Rule</label>
+  <label><input type="radio" name="v2-d148" value="other" onchange="saveV2(&apos;d148&apos;)"> Other:</label>
+  <input type="number" id="v2-other-d148" class="other-num" placeholder="Row#" oninput="saveV2(&apos;d148&apos;)" style="width:60px">
+</div></td>
+<td><input class="inline-note" type="text" id="v2-note-d148" value="" oninput="saveV2(&apos;d148&apos;)" placeholder="notes..."></td>
+</tr>
+</tbody></table>
+<div class="sec-block" style="margin-top:12px">
+<div class="sec-hdr green closed-state" onclick="toggleSec2(&apos;res2-SSSS&apos;,&apos;rchev2-SSSS&apos;)">
+  <div class="sec-letter green">&#10003;</div>
+  <div class="sec-title-text">Resolved (12 items)</div>
+  <span class="chevron" id="rchev2-SSSS">&#9660;</span>
+</div>
+<div class="sec-body hidden" id="res2-SSSS">
+<div class="resolved-row">
+  <span class="resolved-id">d141</span>
+  <span style="flex:1;font-size:13px">(i) Power And Fuel</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d142</span>
+  <span style="flex:1;font-size:13px">(a). Employee Benefit Expense</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d143</span>
+  <span style="flex:1;font-size:13px">(a) Auditor's Remuneration</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d144</span>
+  <span style="flex:1;font-size:13px">(b) Advertisement and Sales Promotion Expenses</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d145</span>
+  <span style="flex:1;font-size:13px">(j) Rent, Rates and Taxes</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d146</span>
+  <span style="flex:1;font-size:13px">(k) Repairs and Maintenance</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d147</span>
+  <span style="flex:1;font-size:13px">Loss on disposal of fixed assets (estimated)</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d149</span>
+  <span style="flex:1;font-size:13px">HSBC OD A/C</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d150</span>
+  <span style="flex:1;font-size:13px">Current Maturities of Long-term Debt (CMLTD)</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d151</span>
+  <span style="flex:1;font-size:13px">(B) Sundry Creditors for expenses</span>
+  <span style="font-weight:700;color:#276749;font-size:12px">GT</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d152</span>
+  <span style="flex:1;font-size:13px">Share Investments</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+<div class="resolved-row">
+  <span class="resolved-id">d174</span>
+  <span style="flex:1;font-size:13px">Current tax expense</span>
+  <span style="font-weight:700;color:#2b6cb0;font-size:12px">RULE</span>
+</div>
+</div></div>
+</div>
+</div>
+<script>
+const LS_KEY2 = "gt_violations_v2_responses";
+let saved2 = {};
+
+function loadSaved2() {
+  try {
+    const s = localStorage.getItem(LS_KEY2);
+    if (s) saved2 = JSON.parse(s);
+    const m = localStorage.getItem(LS_KEY2+"_meta");
+    if (m) {
+      const meta = JSON.parse(m);
+      if (meta.name) document.getElementById("ca2-name").value = meta.name;
+    }
+    // Restore radio states
+    Object.keys(saved2).forEach(function(iid) {
+      const sv = saved2[iid];
+      if (sv.decision) {
+        const radio = document.querySelector('input[name="v2-' + iid + '"][value="' + sv.decision + '"]');
+        if (radio) radio.checked = true;
+      }
+      if (sv.other_row) {
+        const el = document.getElementById("v2-other-" + iid);
+        if (el) el.value = sv.other_row;
+      }
+      if (sv.notes) {
+        const el = document.getElementById("v2-note-" + iid);
+        if (el) el.value = sv.notes;
+      }
+    });
+  } catch(e) {}
+}
+
+function saveMeta2() {
+  const meta = { name: document.getElementById("ca2-name").value };
+  localStorage.setItem(LS_KEY2+"_meta", JSON.stringify(meta));
+}
+
+function saveV2(iid) {
+  const radios = document.querySelectorAll('input[name="v2-' + iid + '"]');
+  let decision = null;
+  radios.forEach(function(r) { if (r.checked) decision = r.value; });
+  const otherEl = document.getElementById("v2-other-" + iid);
+  const noteEl = document.getElementById("v2-note-" + iid);
+  saved2[iid] = {
+    decision: decision,
+    other_row: otherEl ? otherEl.value : "",
+    notes: noteEl ? noteEl.value : ""
+  };
+  localStorage.setItem(LS_KEY2, JSON.stringify(saved2));
+  // Green row
+  const row = document.getElementById("vr2-" + iid);
+  if (row) row.style.background = decision ? "#f0fff4" : "";
+}
+
+function showTab2(co) {
+  document.querySelectorAll(".tab").forEach(function(t) { t.classList.remove("active"); });
+  document.querySelectorAll(".tab-content").forEach(function(t) { t.classList.remove("active"); });
+  const tab = document.querySelector('[data-tab="' + co + '"]');
+  if (tab) tab.classList.add("active");
+  const content = document.getElementById("tab-" + co);
+  if (content) content.classList.add("active");
+}
+
+function toggleSec2(bodyId, chevId) {
+  const body = document.getElementById(bodyId);
+  const chev = document.getElementById(chevId);
+  if (body.classList.contains("hidden")) {
+    body.classList.remove("hidden");
+    if (chev) chev.classList.add("rot");
+  } else {
+    body.classList.add("hidden");
+    if (chev) chev.classList.remove("rot");
+  }
+}
+
+function exportV2() {
+  const name = document.getElementById("ca2-name").value || "CA";
+  const out = { reviewer: name, responses: saved2, exported_at: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "GT_violations_v2_responses.json";
+  a.click();
+}
+
+function importV2() {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".json";
+  input.onchange = function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      try {
+        const data = JSON.parse(ev.target.result);
+        if (data.responses) {
+          saved2 = data.responses;
+          localStorage.setItem(LS_KEY2, JSON.stringify(saved2));
+          alert("Imported. Refreshing...");
+          location.reload();
+        }
+      } catch(err) { alert("Error: " + err.message); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+loadSaved2();
+</script>
+</body>
+</html>

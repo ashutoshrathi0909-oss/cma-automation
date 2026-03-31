@@ -1,0 +1,10 @@
+{
+  "company": "INPL",
+  "industry": "manufacturing",
+  "total_items": 186,
+  "correct": 3,
+  "wrong": 182,
+  "doubts": 1,
+  "accuracy_pct": 1.61,
+  "elapsed_seconds": 413.17
+}

@@ -1,0 +1,42 @@
+Item 1:
+  Description: S.B.I-06891-Devanahalli Branch
+  Amount: Rs 24,885.40
+  Section: subnotes to BS - bank balances(dr.)
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 2:
+  Description: Provision for IT 2022-23
+  Amount: Rs 19,446,650.00
+  Section: subnotes to BS - provision for income tax
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 3:
+  Description: CREAZIONE TOOLS
+  Amount: Rs 4,197,407.21
+  Section: subnotes to BS - capital advances
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 4:
+  Description: Y Chakradhar Rental Advance ( Staff)
+  Amount: Rs 3,553,612.76
+  Section: subnotes to BS - other advances/ receivables
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 5:
+  Description: TAX COLLECTED AT SOURCE 1%
+  Amount: Rs 1,417,774.24
+  Section: subnotes to BS - tds & tcs payable
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 6:
+  Description: ELRKE INDUSTRIAL ENTERPRIESES
+  Amount: Rs 32,393,867.05
+  Section: subnotes to BS - creditors for fixed assets purchased
+  Sheet: Subnotes to BS
+  Financial Year: 2023
+Item 7:
+  Description: BAGADIA BROTHERS-MFG
+  Amount: Rs 125,113,115.92
+  Section: subnotes to BS - sundry creditors-raw materials
+  Sheet: Subnotes to BS
+  Financial Year: 2023

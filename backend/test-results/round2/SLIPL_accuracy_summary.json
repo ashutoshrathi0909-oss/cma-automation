@@ -1,0 +1,13 @@
+{
+  "company": "SLIPL",
+  "industry": "manufacturing",
+  "total_items": 65,
+  "correct": 44,
+  "wrong": 18,
+  "doubts": 3,
+  "accuracy_pct": 67.69,
+  "elapsed_seconds": 152.98,
+  "total_tokens": 98314,
+  "run_date": "2026-03-27 02:45",
+  "comparison_method": "row_number"
+}

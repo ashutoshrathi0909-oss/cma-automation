@@ -1,0 +1,90 @@
+Item 1:
+  Description: Sales of Manufactured Products
+  Amount: Rs 1,049,700,540.12
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 2:
+  Description: Sales of Trading Goods
+  Amount: Rs 9,532,921.00
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 3:
+  Description: Job Work Charges - Interstate
+  Amount: Rs 2,435,018.22
+  Section: sale of products:
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 4:
+  Description: Job Work Charges - Local
+  Amount: Rs 586,565.96
+  Section: note 18 - revenue from operations
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 5:
+  Description: Export Sales
+  Amount: Rs 24,389,221.98
+  Section: sale of manufactured goods
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 6:
+  Description: DTL for the year (P&L effect)
+  Amount: Rs -768,561.27
+  Section: note 4 - deferred tax
+  Sheet: Notes BS (1)
+  Financial Year: 2021
+Item 7:
+  Description: Issued, Subscribed & Paid-up (Equity Shares)
+  Amount: Rs 30,942,000.00
+  Section: note 1 - share capital
+  Sheet: Notes BS (1)
+  Financial Year: 2021
+Item 8:
+  Description: Capital Reserve (Share Premium)
+  Amount: Rs 9,558,000.00
+  Section: note 2 - reserves and surplus
+  Sheet: Notes BS (1)
+  Financial Year: 2021
+Item 9:
+  Description: Net Deferred Tax Liability (BS)
+  Amount: Rs 11,560,239.83
+  Section: note 4 - deferred tax
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 10:
+  Description: Yes Bank CC (Cash Credit)
+  Amount: Rs 59,799,035.25
+  Section: note 5 - short-term borrowings
+  Sheet: Notes BS (2)
+  Financial Year: 2021
+Item 11:
+  Description: Depreciation - Building (For the Year)
+  Amount: Rs 9,669,918.00
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 12:
+  Description: Depreciation - Plant & Machinery (For the Year)
+  Amount: Rs 21,155,138.39
+  Section: depreciation schedule - for the year
+  Sheet: Co., Deprn 
+  Financial Year: 2021
+Item 13:
+  Description: Interest Income
+  Amount: Rs 812,858.00
+  Section: other income
+  Sheet: Notes to P & L
+  Financial Year: 2021
+Item 14:
+  Description: Interest Received - Fixed Deposits
+  Amount: Rs 577,873.00
+  Section: interest income
+  Sheet: Subnotes to PL
+  Financial Year: 2021
+Item 15:
+  Description: Interest Received - Others
+  Amount: Rs 134,711.00
+  Section: interest income
+  Sheet: Subnotes to PL
+  Financial Year: 2021

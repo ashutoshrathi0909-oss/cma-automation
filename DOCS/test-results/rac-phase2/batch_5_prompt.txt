@@ -1,0 +1,280 @@
+===
+You are classifying Indian financial statement line items into CMA (Credit Monitoring Arrangement) fields used by Indian banks.
+
+For each item below:
+- CANDIDATE CMA FIELDS lists the only valid options (pick from these only)
+- SIMILAR CLASSIFIED EXAMPLES shows already-classified items from other companies for reference
+- Return the single best CMA row number for each item
+
+
+--- ITEM 1 ---
+raw_text: "Salaries & Wages"
+sheet: Notes to P & L
+section: employee benefits expense
+CANDIDATE CMA FIELDS for this item:
+  Row 45: Wages
+  Row 67: Salary and Staff Expenses
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Salaries and Wages" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.960, company=MSL]
+2. "Salary, Wages and Bonus" (Notes to P&L | note 25 - employee benefits expense) -> Row 45 (Wages) [sim=0.914, company=INPL]
+3. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.904, company=INPL]
+4. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.904, company=INPL]
+5. "Bonus" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.856, company=MSL]
+--- ITEM 2 ---
+raw_text: "Rent"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 68: Rent, Rates and Taxes
+  Row 71: Others (Admin and Selling)
+  Row 90: Sundry Balances Written Off
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Rent" (Notes to P&L (Note 25) | other expenses) -> Row 68 (Rent, Rates & Taxes) [sim=0.945, company=MSL]
+2. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.934, company=INPL]
+3. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.934, company=INPL]
+4. "Rent Paid" (Notes to P&L | note 27 - other expenses) -> Row 68 (Rent, Rates and Taxes) [sim=0.934, company=INPL]
+5. "Office Expenses" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.836, company=INPL]
+--- ITEM 3 ---
+raw_text: "Insurance"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 71: Others (Admin and Selling)
+  Row 90: Sundry Balances Written Off
+  Row 34: Others (Non-Operating Income)
+  Row 73: Audit Fees & Directors Remuneration
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Insurance" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.940, company=MSL]
+2. "Insurance" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.936, company=INPL]
+3. "Insurance Paid" (Notes to P&L | note 27 - other expenses) -> Row 71 (Others (Admin and Selling)) [sim=0.925, company=INPL]
+4. "Liability Written Off" (Notes to P&L (Note 25) | other expenses) -> Row 90 (Sundry Balances Written Off) [sim=0.849, company=MSL]
+5. "General Expenses" (Notes to P&L (Note 25) | other expenses) -> Row 71 (Others (Admin)) [sim=0.837, company=MSL]
+--- ITEM 4 ---
+raw_text: "Salaries & Wages (FY23)"
+sheet: Notes to P & L
+section: employee benefits expense
+CANDIDATE CMA FIELDS for this item:
+  Row 45: Wages
+  Row 67: Salary and Staff Expenses
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Salaries and Wages" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.940, company=MSL]
+2. "Salary, Wages and Bonus" (Notes to P&L | note 25 - employee benefits expense) -> Row 45 (Wages) [sim=0.887, company=INPL]
+3. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.881, company=INPL]
+4. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.881, company=INPL]
+5. "Employee Benefits Expense (All Staff + Workers)" (Notes to P&L (Note 23, FY24 Audit PDF) | employee benefits expense) -> Row 45 (Wages) [sim=0.859, company=SLIPL]
+--- ITEM 5 ---
+raw_text: "Salaries & Wages (FY22)"
+sheet: Notes to P & L
+section: employee benefits expense
+CANDIDATE CMA FIELDS for this item:
+  Row 45: Wages
+  Row 67: Salary and Staff Expenses
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Salaries and Wages" (Notes to P&L (Note 23) | employee benefits expense) -> Row 45 (Wages) [sim=0.935, company=MSL]
+2. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.890, company=INPL]
+3. "Salary, Wages and Bonus" (Notes to P&L | note 24 - employee benefits expense) -> Row 45 (Wages) [sim=0.890, company=INPL]
+4. "Salary, Wages and Bonus" (Notes to P&L | note 25 - employee benefits expense) -> Row 45 (Wages) [sim=0.879, company=INPL]
+5. "Employee Benefits Expense (All Staff + Workers)" (Notes to P&L (Note 23, FY24 Audit PDF) | employee benefits expense) -> Row 45 (Wages) [sim=0.869, company=SLIPL]
+--- ITEM 6 ---
+raw_text: "Power & Fuel"
+sheet: Notes to P & L
+section: other expenses
+CANDIDATE CMA FIELDS for this item:
+  Row 48: Power and Fuel
+  Row 68: Rent, Rates and Taxes
+  Row 49: Others (Manufacturing)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Power And Fuel" (Notes to P&L | note 27 - other expenses) -> Row 48 (Power and Fuel) [sim=0.934, company=INPL]
+2. "Power and Fuel" (Notes to P&L | note 27 - other expenses) -> Row 48 (Power and Fuel) [sim=0.934, company=INPL]
+3. "Power And Fuel" (Notes to P&L | note 27 - other expenses) -> Row 48 (Power and Fuel) [sim=0.934, company=INPL]
+4. "Power, Coal & Fuel" (Notes to P&L (Note 25) | other expenses) -> Row 48 (Power, Coal, Fuel & Water) [sim=0.888, company=MSL]
+5. "Raw Power Supply" (Notes to P&L | note 27 - other expenses) -> Row 48 (Power and Fuel) [sim=0.803, company=INPL]
+--- ITEM 7 ---
+raw_text: "Less: Closing - Finished Goods"
+sheet: Notes to P & L
+section: note 22 - changes in inventories
+CANDIDATE CMA FIELDS for this item:
+  Row 59: Closing Stock of Finished Goods
+  Row 54: Closing Stock-in-Process
+  Row 53: Opening Stock-in-Process
+  Row 57: Opening Stock-in-Trade
+  Row 50: Repairs and Maintenance (Manufacturing)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Closing Finished Goods" (Notes to P&L | note 23 - changes in inventories) -> Row 59 (Closing Stock of Finished Goods) [sim=0.933, company=INPL]
+2. "Closing Finished Goods" (Notes to P&L | note 23 - changes in inventories) -> Row 59 (Closing Stock of Finished Goods) [sim=0.933, company=INPL]
+3. "Closing WIP" (Notes to P&L | note 23 - changes in inventories) -> Row 54 (Closing Stock-in-Process) [sim=0.792, company=INPL]
+4. "Unbilled Services (WIP closing)" (Notes to P&L | note 24 - changes in inventories) -> Row 54 (Closing Stock-in-Process) [sim=0.769, company=INPL]
+5. "Opening WIP (Stock-in-Process)" (Notes to P&L | note 23 - changes in inventories) -> Row 53 (Opening Stock-in-Process) [sim=0.727, company=INPL]
+--- ITEM 8 ---
+raw_text: "Interest Income"
+sheet: Notes to P & L
+section: other income
+CANDIDATE CMA FIELDS for this item:
+  Row 30: Interest Received
+  Row 34: Others (Non-Operating Income)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+  Row 49: Others (Manufacturing)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Interest Income" (Notes to P&L (Note 20) | other income) -> Row 30 (Interest Received) [sim=0.933, company=MSL]
+2. "Interest Income" (Notes to P&L | note 22 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.926, company=INPL]
+3. "Miscellaneous Income" (Notes to P&L | note 20 - other income) -> Row 34 (Others (Non-Operating Income)) [sim=0.879, company=INPL]
+4. "Interest on Fixed Deposit" (Notes to P&L | note 21 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.815, company=INPL]
+5. "Interest on Fixed Deposit" (Notes to P&L | note 20 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.813, company=INPL]
+--- ITEM 9 ---
+raw_text: "Interest Income"
+sheet: Notes to P & L
+section: other income
+CANDIDATE CMA FIELDS for this item:
+  Row 30: Interest Received
+  Row 34: Others (Non-Operating Income)
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+  Row 47: Freight and Transportation
+  Row 48: Power, Coal, Fuel and Water
+  Row 49: Others (Manufacturing)
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Interest Income" (Notes to P&L (Note 20) | other income) -> Row 30 (Interest Received) [sim=0.933, company=MSL]
+2. "Interest Income" (Notes to P&L | note 22 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.926, company=INPL]
+3. "Miscellaneous Income" (Notes to P&L | note 20 - other income) -> Row 34 (Others (Non-Operating Income)) [sim=0.879, company=INPL]
+4. "Interest on Fixed Deposit" (Notes to P&L | note 21 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.815, company=INPL]
+5. "Interest on Fixed Deposit" (Notes to P&L | note 20 - other income) -> Row 30 (Interest on Fixed Deposits and Other Interest Income) [sim=0.813, company=INPL]
+--- ITEM 10 ---
+raw_text: "Interest - Term Loan & Others"
+sheet: Notes to P & L
+section: note 24 - finance costs
+CANDIDATE CMA FIELDS for this item:
+  Row 83: Interest on Term Loans
+  Row 84: Interest on Working Capital Loans
+  Row 85: Bank Charges
+  Row 22: Domestic Sales
+  Row 23: Export Sales
+  Row 30: Interest Received
+  Row 31: Profit on sale of fixed assets / Investments
+  Row 32: Gain on Exchange Fluctuations
+  Row 34: Others (Non-Operating Income)
+  Row 41: Raw Materials Consumed (Imported)
+  Row 42: Raw Materials Consumed (Indigenous)
+  Row 43: Purchases of Stock-in-Trade
+  Row 44: Stores and spares consumed (Indigenous)
+  Row 45: Wages
+  Row 46: Processing / Job Work Charges
+SIMILAR CLASSIFIED EXAMPLES:
+1. "Interest on Term Loan / Others" (Notes to P&L | note 25 - finance cost) -> Row 83 (Interest on Term Loans) [sim=0.931, company=INPL]
+2. "Interest on Term Loan / Unsecured Loan" (Notes to P&L | note 25 - finance cost) -> Row 83 (Interest on Term Loans) [sim=0.909, company=INPL]
+3. "Interest on Term Loans (Banks)" (Notes to P&L (Note 24, FY24 Audit PDF) | finance costs) -> Row 83 (Interest on Fixed Loans / Term Loans) [sim=0.881, company=SLIPL]
+4. "Other Charges" (Notes to P&L (Note 24) | finance costs) -> Row 83 (Interest on Fixed Loans / Term Loans) [sim=0.879, company=MSL]
+5. "Bank Interest (CC/OD)" (Notes to P&L (Note 24) | finance costs) -> Row 84 (Interest on Working Capital Loans) [sim=0.875, company=MSL]
+
+Return ONLY a JSON array with exactly 10 objects:
+[
+  {"item_index": 1, "classified_cma_row": <row_number>, "confidence": <0.0-1.0>, "reasoning": "<brief reason>"},
+  ...
+]
+
+Rules:
+- item_index must match the ITEM number above (1-10)
+- classified_cma_row must be one of the candidate row numbers listed for that item
+- Do not include any text outside the JSON array
