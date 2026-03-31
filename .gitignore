@@ -44,8 +44,8 @@ backend/app/tmp/
 everything-claude-code/
 
 # Claude internal
-.claude/plan/
-.claude/checkpoints.log
+.claude/
+autoresearch-results.tsv
 
 # Git worktrees
 .worktrees/

@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     ocr_provider: str = "openrouter"          # "anthropic" or "openrouter"
     ocr_model: str = "qwen/qwen3.5-9b"      # OpenRouter model ID for OCR
     classifier_provider: str = "openrouter"  # "anthropic" or "openrouter"
-    classifier_model: str = "anthropic/claude-haiku-4-5"  # Haiku via OpenRouter
+    classifier_model: str = "deepseek/deepseek-chat-v3-0324"  # DeepSeek V3 via OpenRouter
     classifier_mode: str = "scoped"  # "scoped" (DeepSeek+Gemini debate) or "legacy" (old Haiku-only)
 
     # Redis
