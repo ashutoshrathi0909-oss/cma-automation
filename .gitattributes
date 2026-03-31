@@ -1,0 +1,6 @@
+
+# Force Unix line endings for shell scripts (required for Linux VMs)
+*.sh text eol=lf
+*.service text eol=lf
+Dockerfile text eol=lf
+Dockerfile.* text eol=lf
