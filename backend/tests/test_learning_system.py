@@ -52,6 +52,7 @@ SAMPLE_LINE_ITEM = {
     "id": LINE_ITEM_ID,
     "document_id": "doc-uuid-xyz",
     "description": "Staff Wages and Salaries",
+    "source_text": "Staff Wages and Salaries  5,00,000",
     "amount": 500000.0,
     "section": "expenses",
     "raw_text": "Staff Wages and Salaries  5,00,000",

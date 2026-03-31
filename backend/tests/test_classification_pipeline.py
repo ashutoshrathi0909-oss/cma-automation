@@ -1070,7 +1070,8 @@ class TestPipelineEdgeCases:
         )
 
         mock_service = _make_service()
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
+        # Pipeline uses .eq().eq().range().execute() for paginated fetch
+        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.range.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
         mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
 
         with patch(
@@ -1078,6 +1079,8 @@ class TestPipelineEdgeCases:
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
         ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
             "app.services.classification.pipeline.get_service_client",
             return_value=mock_service,
         ):
@@ -1087,7 +1090,9 @@ class TestPipelineEdgeCases:
 
             mock_ai = MagicMock()
             mock_ai.classify.return_value = ai_medium
+            mock_ai.classify_sync.return_value = ai_medium
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             summary = pipeline.classify_document(
@@ -1108,7 +1113,8 @@ class TestPipelineEdgeCases:
         from app.services.classification.pipeline import ClassificationPipeline
 
         mock_service = _make_service()
-        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
+        # Pipeline uses .eq().eq().range().execute() for paginated fetch
+        mock_service.table.return_value.select.return_value.eq.return_value.eq.return_value.range.return_value.execute.return_value.data = [SAMPLE_ITEM_1]
         mock_service.table.return_value.insert.return_value.execute.return_value.data = [{}]
 
         with patch(
@@ -1116,6 +1122,8 @@ class TestPipelineEdgeCases:
         ) as mock_fuzzy_cls, patch(
             "app.services.classification.pipeline.AIClassifier"
         ) as mock_ai_cls, patch(
+            "app.services.classification.pipeline.ScopedClassifier"
+        ) as mock_scoped_cls, patch(
             "app.services.classification.pipeline.get_service_client",
             return_value=mock_service,
         ):
@@ -1125,6 +1133,7 @@ class TestPipelineEdgeCases:
 
             mock_ai = MagicMock()
             mock_ai_cls.return_value = mock_ai
+            mock_scoped_cls.return_value = mock_ai
 
             pipeline = ClassificationPipeline()
             summary = pipeline.classify_document(
