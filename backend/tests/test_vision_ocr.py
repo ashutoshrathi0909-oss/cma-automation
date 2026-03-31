@@ -71,6 +71,18 @@ class TestGetScaleMultiplier:
 
 
 class TestOcrExtractor:
+    @pytest.fixture(autouse=True)
+    def force_anthropic_provider(self):
+        """Force OCR provider to 'anthropic' so tests can mock anthropic.Anthropic."""
+        from unittest.mock import patch, MagicMock
+        settings_mock = MagicMock(
+            ocr_provider="anthropic",
+            anthropic_api_key="test-key",
+            ocr_model="claude-sonnet-4-6",
+        )
+        with patch("app.services.extraction.ocr_extractor.get_settings", return_value=settings_mock):
+            yield
+
     def test_uses_sonnet_model(self):
         from app.services.extraction.ocr_extractor import ANTHROPIC_VISION_MODEL
         assert ANTHROPIC_VISION_MODEL == "claude-sonnet-4-6"
@@ -190,7 +202,7 @@ class TestOcrExtractor:
     @patch("app.services.extraction.ocr_extractor.filter_pages")
     @patch("app.services.extraction.ocr_extractor.anthropic.Anthropic")
     def test_batching_splits_large_page_sets(self, mock_anthropic, mock_filter, mock_convert):
-        """20 content pages should result in 2 API calls (batch size 15)."""
+        """20 content pages should result in 4 API calls (batch size 5)."""
         imgs = [make_content_image() for _ in range(20)]
         mock_convert.return_value = imgs
         mock_filter.return_value = [(i + 1, img) for i, img in enumerate(imgs)]
@@ -202,7 +214,7 @@ class TestOcrExtractor:
         extractor = OcrExtractor()
         asyncio.run(extractor.extract(b"fake pdf"))
 
-        assert mock_client.messages.create.call_count == 2  # 15 + 5
+        assert mock_client.messages.create.call_count == 4  # 5+5+5+5
 
     @patch("app.services.extraction.ocr_extractor.convert_from_bytes")
     @patch("app.services.extraction.ocr_extractor.filter_pages")
