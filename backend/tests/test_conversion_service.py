@@ -58,16 +58,17 @@ AUD_DOC = {
 }
 
 # Sales Revenue: amount changed; Wages: unchanged; Rent Expense: removed; New Equipment: added
+# Note: conversion_service fetches 'id,source_text,amount' from DB — use source_text here.
 PROV_ITEMS = [
-    {"id": "item-p-001", "description": "Sales Revenue", "amount": 1000.0},
-    {"id": "item-p-002", "description": "Wages", "amount": 200.0},
-    {"id": "item-p-003", "description": "Rent Expense", "amount": 50.0},
+    {"id": "item-p-001", "source_text": "Sales Revenue", "amount": 1000.0},
+    {"id": "item-p-002", "source_text": "Wages", "amount": 200.0},
+    {"id": "item-p-003", "source_text": "Rent Expense", "amount": 50.0},
 ]
 
 AUD_ITEMS = [
-    {"id": "item-a-001", "description": "Sales Revenue", "amount": 1050.0},
-    {"id": "item-a-002", "description": "Wages", "amount": 200.0},
-    {"id": "item-a-003", "description": "New Equipment", "amount": 300.0},
+    {"id": "item-a-001", "source_text": "Sales Revenue", "amount": 1050.0},
+    {"id": "item-a-002", "source_text": "Wages", "amount": 200.0},
+    {"id": "item-a-003", "source_text": "New Equipment", "amount": 300.0},
 ]
 
 
@@ -94,8 +95,12 @@ def employee_client():
 
 @pytest.fixture
 def unauthenticated_client():
+    import app.dependencies as _deps
+    _original = _deps._DISABLE_AUTH
+    _deps._DISABLE_AUTH = False
     app.dependency_overrides.clear()
-    return TestClient(app)
+    yield TestClient(app)
+    _deps._DISABLE_AUTH = _original
 
 
 # ── Mock factory ────────────────────────────────────────────────────────────

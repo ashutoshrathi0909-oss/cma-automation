@@ -85,8 +85,12 @@ def employee_client():
 
 @pytest.fixture
 def unauthenticated_client():
+    import app.dependencies as _deps
+    _original = _deps._DISABLE_AUTH
+    _deps._DISABLE_AUTH = False
     app.dependency_overrides.clear()
-    return TestClient(app)
+    yield TestClient(app)
+    _deps._DISABLE_AUTH = _original
 
 
 # ── Mock factory ────────────────────────────────────────────────────────────
