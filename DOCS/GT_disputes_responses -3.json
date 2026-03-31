@@ -1,0 +1,1511 @@
+{
+  "responses": {
+    "d007": {
+      "item_id": "d007",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_008: Selling & Distribution Expenses",
+      "pre_resolved": true,
+      "win_row": 70,
+      "win_name": "Advertisements and Sales Promotions"
+    },
+    "d015": {
+      "item_id": "d015",
+      "decision": "other",
+      "selected_row": 70,
+      "selected_name": "Advertisements and Sales Promotions",
+      "notes": "[AUTO] via cross_008: Selling & Distribution Expenses",
+      "pre_resolved": true,
+      "win_row": 70,
+      "win_name": "Advertisements and Sales Promotions"
+    },
+    "d024": {
+      "item_id": "d024",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d039": {
+      "item_id": "d039",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d050": {
+      "item_id": "d050",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_004: Bonus",
+      "pre_resolved": true,
+      "win_row": 67,
+      "win_name": "Salary and staff expenses"
+    },
+    "d051": {
+      "item_id": "d051",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_001: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 45,
+      "win_name": "Wages"
+    },
+    "d065": {
+      "item_id": "d065",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "notes": "[AUTO] via cross_002: Staff Welfare Expenses",
+      "pre_resolved": true,
+      "win_row": 67,
+      "win_name": "Salary and staff expenses"
+    },
+    "d074": {
+      "item_id": "d074",
+      "decision": "other",
+      "selected_row": 215,
+      "selected_name": "Other Fixed Deposits",
+      "notes": "[AUTO] via int_029: Fixed Deposits with banks & accrued interest (under lien)",
+      "pre_resolved": true,
+      "win_row": 215,
+      "win_name": "Other Fixed Deposits"
+    },
+    "d003": {
+      "item_id": "d003",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d023": {
+      "item_id": "d023",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d052": {
+      "item_id": "d052",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d115": {
+      "item_id": "d115",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d131": {
+      "item_id": "d131",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d141": {
+      "item_id": "d141",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d142": {
+      "item_id": "d142",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d019": {
+      "item_id": "d019",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d020": {
+      "item_id": "d020",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d021": {
+      "item_id": "d021",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d041": {
+      "item_id": "d041",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d042": {
+      "item_id": "d042",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d043": {
+      "item_id": "d043",
+      "decision": "other",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": 149,
+      "selected_name": "Balance Other Debts"
+    },
+    "d044": {
+      "item_id": "d044",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d060": {
+      "item_id": "d060",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d061": {
+      "item_id": "d061",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d062": {
+      "item_id": "d062",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d063": {
+      "item_id": "d063",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d073": {
+      "item_id": "d073",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d087": {
+      "item_id": "d087",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d088": {
+      "item_id": "d088",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d107": {
+      "item_id": "d107",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d108": {
+      "item_id": "d108",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d109": {
+      "item_id": "d109",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d110": {
+      "item_id": "d110",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d111": {
+      "item_id": "d111",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d124": {
+      "item_id": "d124",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d125": {
+      "item_id": "d125",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d126": {
+      "item_id": "d126",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d137": {
+      "item_id": "d137",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d138": {
+      "item_id": "d138",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d139": {
+      "item_id": "d139",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d140": {
+      "item_id": "d140",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d149": {
+      "item_id": "d149",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d150": {
+      "item_id": "d150",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d151": {
+      "item_id": "d151",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d152": {
+      "item_id": "d152",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d001": {
+      "item_id": "d001",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d002": {
+      "item_id": "d002",
+      "decision": "other",
+      "confidence": null,
+      "notes": "If it is an income then 32 if it is an loss then 91",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": null,
+      "selected_name": ""
+    },
+    "d004": {
+      "item_id": "d004",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d005": {
+      "item_id": "d005",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d022": {
+      "item_id": "d022",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d025": {
+      "item_id": "d025",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d026": {
+      "item_id": "d026",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d027": {
+      "item_id": "d027",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d028": {
+      "item_id": "d028",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d029": {
+      "item_id": "d029",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d030": {
+      "item_id": "d030",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "If liablity then 100 , if asset then 101",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d031": {
+      "item_id": "d031",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d032": {
+      "item_id": "d032",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d033": {
+      "item_id": "d033",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d034": {
+      "item_id": "d034",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d035": {
+      "item_id": "d035",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d036": {
+      "item_id": "d036",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d037": {
+      "item_id": "d037",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d038": {
+      "item_id": "d038",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d040": {
+      "item_id": "d040",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d045": {
+      "item_id": "d045",
+      "decision": null,
+      "confidence": null,
+      "notes": "should be subtracted in Row 42",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d046": {
+      "item_id": "d046",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d047": {
+      "item_id": "d047",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d048": {
+      "item_id": "d048",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d049": {
+      "item_id": "d049",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d053": {
+      "item_id": "d053",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d054": {
+      "item_id": "d054",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d055": {
+      "item_id": "d055",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d056": {
+      "item_id": "d056",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d057": {
+      "item_id": "d057",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d153": {
+      "item_id": "d153",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d154": {
+      "item_id": "d154",
+      "decision": "other",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": 70,
+      "selected_name": "Advertisements and Sales Promotions"
+    },
+    "d155": {
+      "item_id": "d155",
+      "decision": "other",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null,
+      "selected_row": 49,
+      "selected_name": "Others"
+    },
+    "d156": {
+      "item_id": "d156",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d157": {
+      "item_id": "d157",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d158": {
+      "item_id": "d158",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d159": {
+      "item_id": "d159",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d160": {
+      "item_id": "d160",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d161": {
+      "item_id": "d161",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d162": {
+      "item_id": "d162",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d163": {
+      "item_id": "d163",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d164": {
+      "item_id": "d164",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d064": {
+      "item_id": "d064",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d066": {
+      "item_id": "d066",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d067": {
+      "item_id": "d067",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d068": {
+      "item_id": "d068",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d069": {
+      "item_id": "d069",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d070": {
+      "item_id": "d070",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d071": {
+      "item_id": "d071",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d072": {
+      "item_id": "d072",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d165": {
+      "item_id": "d165",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d166": {
+      "item_id": "d166",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d089": {
+      "item_id": "d089",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d090": {
+      "item_id": "d090",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d091": {
+      "item_id": "d091",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d092": {
+      "item_id": "d092",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d093": {
+      "item_id": "d093",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d094": {
+      "item_id": "d094",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d095": {
+      "item_id": "d095",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d096": {
+      "item_id": "d096",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d097": {
+      "item_id": "d097",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d098": {
+      "item_id": "d098",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d099": {
+      "item_id": "d099",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d100": {
+      "item_id": "d100",
+      "decision": null,
+      "confidence": null,
+      "notes": "If working capital intrest in 84 \nif Fixed loan intrest loan 83 ",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d143": {
+      "item_id": "d143",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d144": {
+      "item_id": "d144",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d145": {
+      "item_id": "d145",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d146": {
+      "item_id": "d146",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d147": {
+      "item_id": "d147",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d174": {
+      "item_id": "d174",
+      "decision": "rule",
+      "confidence": null,
+      "notes": "",
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d006": {
+      "item_id": "d006",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "[AUTO-DEDUP] Same pattern as d054 (INPL, rates & taxes, gt=68 rule=49) -> gt",
+      "pre_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d017": {
+      "item_id": "d017",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt",
+      "pre_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d122": {
+      "item_id": "d122",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt",
+      "pre_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d132": {
+      "item_id": "d132",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "[AUTO-DEDUP] Same pattern as d026 (Dynamic_Air, rates and taxes, gt=68 rule=49) -> gt",
+      "pre_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d136": {
+      "item_id": "d136",
+      "decision": "gt",
+      "confidence": null,
+      "notes": "[AUTO-DEDUP] Same pattern as d056 (INPL, deferred tax, gt=100 rule=171) -> gt",
+      "pre_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d171": {
+      "item_id": "d171",
+      "decision": null,
+      "notes": "[DEDUP-PENDING] Inherits from d168 (Manpower Charges)",
+      "dedup_canonical": "d168",
+      "auto_resolved": false
+    },
+    "d172": {
+      "item_id": "d172",
+      "decision": "gt",
+      "confidence": "certain",
+      "notes": "[AUTO-DEDUP] Inherits from d167 (Computer Maintenance -> gt, row 72)",
+      "auto_resolved": true
+    },
+    "d173": {
+      "item_id": "d173",
+      "decision": null,
+      "notes": "[DEDUP-PENDING] Inherits from d168 (Manpower Charges)",
+      "dedup_canonical": "d168",
+      "auto_resolved": false
+    },
+    "d008": {
+      "item_id": "d008",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q3c confirmed Admin & General -> 71 Others. GT row 70 (Selling) is wrong for admin expenses.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d009": {
+      "item_id": "d009",
+      "decision": "other",
+      "selected_row": 68,
+      "selected_name": "Rent , Rates and Taxes",
+      "confidence": "certain",
+      "notes": "Neither GT=71 nor Rule=49 is correct. CA unanimously says Rates & Taxes -> 68 (Rent, Rates and Taxes).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d010": {
+      "item_id": "d010",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q27 confirmed Bad Debts -> 69. GT row 71 (Others) misses the specific row.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d011": {
+      "item_id": "d011",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q21b confirmed -> 73. d143 (SSSS same item) also answered rule=73.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d012": {
+      "item_id": "d012",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q21c confirmed -> 73. Same pattern as d011.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d013": {
+      "item_id": "d013",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Admin rent -> 68 (Rent, Rates and Taxes). d003 was factory rent=49, but admin rent=68.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d014": {
+      "item_id": "d014",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Appears under admin Other Expenses. GT=72 (Repairs & Maintenance admin) is correct. Rule=49 (Others) is wrong for a repair item.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d016": {
+      "item_id": "d016",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q10b confirmed tax delay interest -> 84. d027, d035, d040 all answered rule=84.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d018": {
+      "item_id": "d018",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same pattern as d057. All deferred tax P&L items -> gt (rows 100/101, not BS row 171).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d058": {
+      "item_id": "d058",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Row 165 is Capital WIP (Fixed Asset), wrong for inventory. GT=200 (Stocks-in-process BS) correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d059": {
+      "item_id": "d059",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Rule=58 is FG Opening (P&L row). GT=201 (Finished Goods BS) correct for Balance Sheet.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d076": {
+      "item_id": "d076",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q12a: for TRADING companies, Electricity -> 71. Mehta is trading. d066 (Kurunji trading) confirmed rule=71.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d077": {
+      "item_id": "d077",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Direct operational expense in trading. Row 49 (Others direct) correct for direct expenses context.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d078": {
+      "item_id": "d078",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Transport in direct expenses section for trading company -> row 49 acceptable.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d081": {
+      "item_id": "d081",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q6 confirmed Carriage Outward -> 70 (Selling). d034 same pattern -> rule=70.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d082": {
+      "item_id": "d082",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q3e confirmed Commission -> 70. d034 same pattern -> rule=70.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d083": {
+      "item_id": "d083",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Rule=90 (Sundry Balances Written Off) is the exact CMA row. GT=71 (Others) misses it.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d085": {
+      "item_id": "d085",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q10e confirmed Bill Discounting -> 84 (Interest on WC).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d086": {
+      "item_id": "d086",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Trading company stock = finished goods. Row 201 (FG BS) correct. Row 200 (SIP) is for WIP.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d175": {
+      "item_id": "d175",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Trading company direct expenses context. Row 49 acceptable.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d101": {
+      "item_id": "d101",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Finance Costs section -> stays in finance rows. Rule=49 is fuzzy match error.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d102": {
+      "item_id": "d102",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same pattern as all deferred tax disputes. P&L -> row 100, not BS 171.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d103": {
+      "item_id": "d103",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA confirmed commission -> 70. d034, d082 same pattern.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d104": {
+      "item_id": "d104",
+      "decision": "other",
+      "selected_row": 70,
+      "selected_name": "Advertisements and Sales Promotions",
+      "confidence": "certain",
+      "notes": "d097 (MSL, same item) answered gt=70. Consistent: selling expense -> 70.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d105": {
+      "item_id": "d105",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same as d101. Finance charges stay in finance section.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d106": {
+      "item_id": "d106",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same as d037 (Dynamic_Air). P&L DTL -> 100, not BS 159.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d112": {
+      "item_id": "d112",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Not export revenue. Government incentive -> row 34 (Others non-op income).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d113": {
+      "item_id": "d113",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Income side, not expense. Consultancy as income -> 34 (Others non-op).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d114": {
+      "item_id": "d114",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Manufacturing company, production context. Row 49 (Others Mfg) correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d116": {
+      "item_id": "d116",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same pattern as d006, d026, d054. Manufacturing Rates & Taxes -> 68 unanimously.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d117": {
+      "item_id": "d117",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Row 69 (Bad Debts) wrong for generic sundries. Row 71 (Others Admin) correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d118": {
+      "item_id": "d118",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "CA Q12b confirmed Plant & Machinery repairs -> 50 (Repairs Mfg). Not admin repairs.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d119": {
+      "item_id": "d119",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Finance section item. Rule=71 is fuzzy match error. GT=84 correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d120": {
+      "item_id": "d120",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same as d101/d105. Finance charges -> finance rows. GT=85 (Bank Charges).",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d123": {
+      "item_id": "d123",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same deferred tax pattern. P&L DTA -> 101.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d127": {
+      "item_id": "d127",
+      "decision": "other",
+      "selected_row": 70,
+      "selected_name": "Advertisements and Sales Promotions",
+      "confidence": "certain",
+      "notes": "CA Q6: Carriage/Freight Outward -> 70 (Selling). Neither GT=47 nor Rule=71 correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d128": {
+      "item_id": "d128",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Goods handling/transport charge, not wages. GT=47 (Freight) correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d130": {
+      "item_id": "d130",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "EPFO admin charge is part of EPF contributions -> 45 (Wages). CA Q1c confirmed.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d133": {
+      "item_id": "d133",
+      "decision": "other",
+      "selected_row": 34,
+      "selected_name": "Others",
+      "confidence": "certain",
+      "notes": "Neither row 29 (Dividends) nor 42 (Raw Materials) correct. Discount received as income -> 34.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d134": {
+      "item_id": "d134",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "GT=34 correct. Rule=42 wrong for income-side discount.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d135": {
+      "item_id": "d135",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Other Income context. Not sales revenue (22). GT=34 correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d167": {
+      "item_id": "d167",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Repair/maintenance item. d146 (SSSS Repairs) confirmed rule=72. GT=72 correct.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d169": {
+      "item_id": "d169",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "TDS = tax advance. Row 221 (Advance Income Tax) is the specific row.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d170": {
+      "item_id": "d170",
+      "decision": "rule",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same as d169. TCS = tax advance -> 221.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    },
+    "d148": {
+      "item_id": "d148",
+      "decision": "gt",
+      "selected_row": null,
+      "selected_name": null,
+      "confidence": "certain",
+      "notes": "Same deferred tax pattern. P&L -> 101.",
+      "auto_resolved": true,
+      "industry_specific": null,
+      "context_specific": null
+    }
+  },
+  "lastSaved": "2026-03-31T00:00:00Z",
+  "reviewer": ""
+}
