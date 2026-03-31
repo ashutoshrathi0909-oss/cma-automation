@@ -190,7 +190,7 @@ class TestExcelExtractor:
         mock_wb.sheets.return_value = [mock_sheet]
 
         with patch("xlrd.open_workbook", return_value=mock_wb):
-            items = await extractor.extract(_make_xls_bytes(), "xls")
+            items = await extractor.extract(_make_xls_bytes(), "xls", selected_sheets=["Sheet1"])
 
         assert isinstance(items, list)
         assert len(items) >= 1
@@ -202,6 +202,7 @@ class TestExcelExtractor:
 
         wb = openpyxl.Workbook()
         ws = wb.active
+        ws_name = ws.title  # default is "Sheet"
         # Use string format to simulate Indian number formatting in a cell
         ws.append(["Salaries & Wages", "5,00,000"])
 
@@ -209,7 +210,7 @@ class TestExcelExtractor:
         wb.save(buf)
         xlsx_bytes = buf.getvalue()
 
-        items = await extractor.extract(xlsx_bytes, "xlsx")
+        items = await extractor.extract(xlsx_bytes, "xlsx", selected_sheets=[ws_name])
 
         salary_items = [i for i in items if "Salaries" in i.description or "salaries" in i.description.lower()]
         assert len(salary_items) >= 1
@@ -223,6 +224,7 @@ class TestExcelExtractor:
 
         wb = openpyxl.Workbook()
         ws = wb.active
+        ws_name = ws.title  # default is "Sheet"
 
         # ALL-CAPS header (no amount) — should become section
         ws.append(["INCOME", ""])
@@ -233,7 +235,7 @@ class TestExcelExtractor:
         wb.save(buf)
         xlsx_bytes = buf.getvalue()
 
-        items = await extractor.extract(xlsx_bytes, "xlsx")
+        items = await extractor.extract(xlsx_bytes, "xlsx", selected_sheets=[ws_name])
 
         # Revenue item should carry the "income" section
         revenue_items = [i for i in items if "Revenue" in i.description or "revenue" in i.description.lower()]
@@ -248,13 +250,14 @@ class TestExcelExtractor:
 
         wb = openpyxl.Workbook()
         ws = wb.active
+        ws_name = ws.title  # default is "Sheet"
         ws.append(["Other Income", "1,23,456"])
 
         buf = io.BytesIO()
         wb.save(buf)
         xlsx_bytes = buf.getvalue()
 
-        items = await extractor.extract(xlsx_bytes, "xlsx")
+        items = await extractor.extract(xlsx_bytes, "xlsx", selected_sheets=[ws_name])
 
         income_items = [i for i in items if "Income" in i.description or "income" in i.description.lower()]
         assert len(income_items) >= 1
@@ -283,7 +286,7 @@ class TestExcelExtractor:
 
     @pytest.mark.asyncio
     async def test_excel_extractor_multi_sheet(self, extractor):
-        """Extractor scans ALL sheets, not just the first."""
+        """Extractor scans ALL selected sheets, not just the first."""
         import openpyxl
 
         wb = openpyxl.Workbook()
@@ -298,7 +301,7 @@ class TestExcelExtractor:
         wb.save(buf)
         xlsx_bytes = buf.getvalue()
 
-        items = await extractor.extract(xlsx_bytes, "xlsx")
+        items = await extractor.extract(xlsx_bytes, "xlsx", selected_sheets=["Sheet1", "Sheet2"])
         descriptions = [i.description for i in items]
         assert any("Revenue" in d for d in descriptions)
         assert any("Expenses" in d for d in descriptions)
