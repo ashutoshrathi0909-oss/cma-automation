@@ -1,0 +1,16 @@
+[Unit]
+Description=CMA Automation Cloudflare Tunnel
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/usr/bin/cloudflared tunnel --url http://localhost:8000
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
