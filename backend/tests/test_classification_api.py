@@ -207,9 +207,8 @@ class TestTriggerClassification:
 
         assert response.status_code == 404
 
-    def test_trigger_requires_auth_401(self):
+    def test_trigger_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.post(f"/api/documents/{DOC_ID}/classify")
         assert response.status_code == 401
 
@@ -295,9 +294,8 @@ class TestGetClassifications:
         assert response.status_code == 200
         assert response.json() == []
 
-    def test_get_classifications_requires_auth_401(self):
+    def test_get_classifications_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.get(f"/api/documents/{DOC_ID}/classifications")
         assert response.status_code == 401
 
@@ -363,9 +361,8 @@ class TestGetDoubts:
         assert response.status_code == 200
         assert response.json() == []
 
-    def test_get_doubts_requires_auth_401(self):
+    def test_get_doubts_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.get(f"/api/documents/{DOC_ID}/doubts")
         assert response.status_code == 401
 
@@ -445,9 +442,8 @@ class TestApproveClassification:
 
         assert response.status_code == 404
 
-    def test_approve_requires_auth_401(self):
+    def test_approve_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.post(f"/api/classifications/{CLF_ID}/approve", json={})
         assert response.status_code == 401
 
@@ -541,9 +537,8 @@ class TestCorrectClassification:
 
         assert response.status_code == 404
 
-    def test_correct_requires_auth_401(self):
+    def test_correct_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.post(
             f"/api/classifications/{CLF_ID}/correct",
             json=self.VALID_CORRECTION,
@@ -624,9 +619,8 @@ class TestBulkApprove:
         assert response.status_code == 200
         assert response.json()["approved_count"] == 2
 
-    def test_bulk_approve_requires_auth_401(self):
+    def test_bulk_approve_requires_auth_401(self, client):
         """Unauthenticated request returns 401."""
-        client = TestClient(app)
         response = client.post(
             f"/api/documents/{DOC_ID}/bulk-approve",
             json={},

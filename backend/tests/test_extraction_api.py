@@ -197,9 +197,8 @@ class TestTriggerExtraction:
 
         assert response.status_code == 404
 
-    def test_trigger_extraction_requires_auth_401(self):
+    def test_trigger_extraction_requires_auth_401(self, client):
         """POST /{id}/extract returns 401 when not authenticated."""
-        client = TestClient(app)
         response = client.post(f"/api/documents/{DOC_ID}/extract")
         assert response.status_code == 401
 
@@ -381,9 +380,8 @@ class TestTaskStatus:
         data = response.json()
         assert data["status"] == "not_found"
 
-    def test_task_status_requires_auth_401(self):
+    def test_task_status_requires_auth_401(self, client):
         """GET /api/tasks/{id} returns 401 when not authenticated."""
-        client = TestClient(app)
         response = client.get(f"/api/tasks/{TASK_ID}")
         assert response.status_code == 401
 
@@ -538,8 +536,8 @@ class TestGetLineItems:
         mock_service = _make_mock_service()
         # Ownership check: _get_owned_document fetch
         mock_service.table.return_value.select.return_value.eq.return_value.single.return_value.execute.return_value.data = SAMPLE_DOCUMENT_EXTRACTED
-        # Items query
-        mock_service.table.return_value.select.return_value.eq.return_value.order.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
+        # Items query — route uses .order().range().execute() for pagination
+        mock_service.table.return_value.select.return_value.eq.return_value.order.return_value.range.return_value.execute.return_value.data = [SAMPLE_LINE_ITEM]
 
         with patch("app.dependencies.get_service_client", return_value=mock_service), \
              patch("app.routers.extraction.get_service_client", return_value=mock_service):
@@ -575,9 +573,8 @@ class TestGetLineItems:
 
         assert response.status_code == 404
 
-    def test_get_line_items_requires_auth_401(self):
+    def test_get_line_items_requires_auth_401(self, client):
         """GET /{id}/items returns 401 when not authenticated."""
-        client = TestClient(app)
         response = client.get(f"/api/documents/{DOC_ID}/items")
         assert response.status_code == 401
 
@@ -670,9 +667,8 @@ class TestEditLineItem:
 
         assert response.status_code == 404
 
-    def test_edit_item_requires_auth_401(self):
+    def test_edit_item_requires_auth_401(self, client):
         """PATCH /{id}/items/{item_id} returns 401 when not authenticated."""
-        client = TestClient(app)
         response = client.patch(
             f"/api/documents/{DOC_ID}/items/{ITEM_ID}",
             json={"amount": 100.0},
@@ -789,9 +785,8 @@ class TestVerifyExtraction:
 
         assert response.status_code == 404
 
-    def test_verify_requires_auth_401(self):
+    def test_verify_requires_auth_401(self, client):
         """POST /{id}/verify returns 401 when not authenticated."""
-        client = TestClient(app)
         response = client.post(f"/api/documents/{DOC_ID}/verify")
         assert response.status_code == 401
 
