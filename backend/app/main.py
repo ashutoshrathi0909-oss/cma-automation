@@ -31,9 +31,19 @@ app = FastAPI(
     description="Automates CMA document preparation for CA firms",
 )
 
+cors_origins = [
+    settings.frontend_url,
+    "http://localhost:3000",
+    "http://localhost:3002",
+]
+# Add any extra origins from CORS_ORIGINS env var (comma-separated)
+_extra = getattr(settings, "cors_origins", "")
+if _extra:
+    cors_origins.extend([o.strip() for o in _extra.split(",") if o.strip()])
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url, "http://localhost:3000", "http://localhost:3002"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

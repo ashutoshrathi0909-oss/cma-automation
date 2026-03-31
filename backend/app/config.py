@@ -22,6 +22,9 @@ class Settings(BaseSettings):
     # Redis
     redis_url: str = "redis://redis:6379"
 
+    # CORS — extra allowed origins, comma-separated (e.g. Vercel preview URLs)
+    cors_origins: str = ""
+
     # App
     backend_url: str = "http://localhost:8000"
     frontend_url: str = "http://localhost:3000"
