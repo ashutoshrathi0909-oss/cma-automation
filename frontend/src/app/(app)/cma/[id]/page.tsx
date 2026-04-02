@@ -71,7 +71,8 @@ export default function CMAOverviewPage() {
 
   if (!report || !summary) return null;
 
-  const allReviewed = summary.total > 0 && summary.needs_review === 0;
+  const hasClassifications = summary.total > 0;
+  const allReviewed = hasClassifications && summary.needs_review === 0;
   const reviewProgress =
     summary.total > 0
       ? Math.round(((summary.approved + summary.corrected) / summary.total) * 100)
@@ -134,9 +135,11 @@ export default function CMAOverviewPage() {
               size="sm"
               disabled
               title={
-                summary.needs_review > 0
+                !hasClassifications
+                  ? "Run classification on all documents first"
+                  : summary.needs_review > 0
                   ? `Resolve ${summary.needs_review} doubt(s) first`
-                  : "Complete review first"
+                  : "Approve or correct all classifications first"
               }
             >
               <FileBarChart className="mr-1.5 h-4 w-4" />

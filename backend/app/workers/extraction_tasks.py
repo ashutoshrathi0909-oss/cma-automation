@@ -100,7 +100,33 @@ async def run_extraction(ctx: dict, document_id: str, selected_sheets: list[str]
                 service.table("extracted_line_items").insert(batch).execute()
             logger.info("Saved %d line items for document %s", len(rows), document_id)
 
-        # ── 6. Update status → extracted ─────────────────────────────────────
+        # ── 6. Update status ─────────────────────────────────────────────────
+        if len(line_items) == 0:
+            # Zero items extracted — this is almost certainly a failure.
+            # Mark as failed so the user can retry with a different file format
+            # rather than silently proceeding through the pipeline with nothing.
+            logger.warning(
+                "run_extraction produced 0 items for document_id=%s "
+                "(file_type=%s, path=%s). Marking as FAILED. "
+                "The file may be a scanned PDF without OCR support, "
+                "or the format could not be parsed by PdfExtractor.",
+                document_id,
+                file_type,
+                file_path,
+            )
+            service.table("documents").update(
+                {"extraction_status": "failed"}
+            ).eq("id", document_id).execute()
+
+            return {
+                "document_id": document_id,
+                "item_count": 0,
+                "status": "failed",
+                "reason": "Extraction completed but found 0 line items. "
+                          "The file format may not be supported or the document "
+                          "may not contain recognizable financial data.",
+            }
+
         service.table("documents").update(
             {"extraction_status": "extracted"}
         ).eq("id", document_id).execute()

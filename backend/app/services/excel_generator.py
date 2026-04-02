@@ -19,6 +19,7 @@ generate(report_id, user_id) -> str
 from __future__ import annotations
 
 import logging
+import math
 import os
 import re
 import tempfile
@@ -42,9 +43,39 @@ _REAL_FORMULA_RE = re.compile(
     r"[A-Za-z][A-Za-z0-9]*\("   # function call: SUM(, IF(, VLOOKUP(
     r"|[A-Za-z]{1,3}\d+"        # cell reference: A1, BC123
     r"|!"                        # sheet reference: 'Sheet1'!A1
-    r"|[+\-*/](?!\s*$)"         # arithmetic operators (not trailing)
     r"|:"                        # range operator: A1:A10
 )
+
+def _format_number(v: float) -> str:
+    """Format a number for an Excel formula: integer if whole, else 2 decimals."""
+    if math.isnan(v) or math.isinf(v):
+        return "0"
+    rounded = round(v, 2)
+    if rounded == int(rounded):
+        return str(int(rounded))
+    return f"{rounded:.2f}"
+
+
+def _build_formula(values: list[float]) -> str:
+    """Build an Excel formula showing individual values instead of their sum.
+
+    Examples:
+        [50000, 30000, -5000] → "=50000+30000-5000"
+        [12000]               → "=12000"  (single value, still a formula for consistency)
+    """
+    if not values:
+        return "=0"
+    parts = []
+    for i, v in enumerate(values):
+        formatted = _format_number(v)
+        if i == 0:
+            parts.append(formatted)
+        elif v < 0:
+            parts.append(formatted)  # negative sign already included
+        else:
+            parts.append(f"+{formatted}")
+    return "=" + "".join(parts)
+
 
 DEFAULT_TEMPLATE_PATH = "/app/DOCS/CMA.xlsm"
 STORAGE_BUCKET = "generated"
@@ -226,7 +257,7 @@ class ExcelGenerator:
         its document's specific divisor BEFORE accumulation.  This correctly
         handles reports with mixed source units (e.g. FY2021=rupees, FY2022=lakhs).
         """
-        accumulator: dict[tuple[int, int], float] = {}
+        accumulator: dict[tuple[int, int], list[float]] = {}
 
         for item in cell_data:
             field = item.get("cma_field_name")
@@ -255,9 +286,9 @@ class ExcelGenerator:
 
             col = column_index_from_string(col_letter)
             key = (row, col)
-            accumulator[key] = accumulator.get(key, 0.0) + amount
+            accumulator.setdefault(key, []).append(amount)
 
-        for (row, col), value in accumulator.items():
+        for (row, col), values in accumulator.items():
             cell = ws.cell(row=row, column=col)
             existing = cell.value
             if isinstance(existing, str) and existing.startswith("="):
@@ -272,13 +303,20 @@ class ExcelGenerator:
                     continue
                 # Placeholder formula (e.g. =0, =0.00) — safe to overwrite
                 logger.debug(
-                    "Overwriting placeholder formula '%s' at row=%d col=%d with %s",
+                    "Overwriting placeholder formula '%s' at row=%d col=%d",
                     existing,
                     row,
                     col,
-                    value,
                 )
-            cell.value = value
+
+            if len(values) == 1:
+                cell.value = values[0]
+            else:
+                cell.value = _build_formula(values)
+                logger.debug(
+                    "Multi-value formula at row=%d col=%d: %s (%d items)",
+                    row, col, cell.value, len(values),
+                )
 
     # ── Private: I/O helpers ──────────────────────────────────────────────
 

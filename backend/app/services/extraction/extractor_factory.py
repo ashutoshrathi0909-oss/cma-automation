@@ -97,11 +97,34 @@ async def extract_document(
             return await extractor.extract(file_content, file_type, selected_sheets=selected_sheets)
 
         if file_type == "pdf":
-            if is_scanned_pdf(file_content):
+            scanned = is_scanned_pdf(file_content)
+            if scanned:
+                logger.info("PDF detected as scanned (image-only) → using OcrExtractor: %s", file_path)
                 extractor = OcrExtractor()
+                items = await extractor.extract(file_content)
             else:
-                extractor = PdfExtractor()
-            return await extractor.extract(file_content)
+                logger.info("PDF detected as native (has text layer) → using PdfExtractor: %s", file_path)
+                items = await PdfExtractor().extract(file_content)
+                if not items:
+                    # Native PDF parsing returned nothing — likely an unusual layout
+                    # (image-heavy, non-standard table structure, or minimal text layer).
+                    # Fall back to OcrExtractor (vision model) for a second attempt.
+                    logger.warning(
+                        "PdfExtractor returned 0 items for %s — falling back to OcrExtractor",
+                        file_path,
+                    )
+                    items = await OcrExtractor().extract(file_content)
+                    if items:
+                        logger.info(
+                            "OcrExtractor fallback succeeded: %d items from %s",
+                            len(items), file_path,
+                        )
+            if not items:
+                logger.warning(
+                    "PDF extraction returned 0 items after all extractors (scanned=%s, path=%s).",
+                    scanned, file_path,
+                )
+            return items
 
         raise ExtractionError(
             f"Unsupported file type: '{file_type}'. Must be one of: xlsx, xls, pdf."

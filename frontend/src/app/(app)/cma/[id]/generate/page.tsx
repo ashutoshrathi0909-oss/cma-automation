@@ -33,12 +33,31 @@ export default function GeneratePage() {
 
   useEffect(() => {
     if (!reportId) return;
-    startGeneration();
+    checkAndStartGeneration();
     return () => {
       if (pollRef.current) clearInterval(pollRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reportId]);
+
+  async function checkAndStartGeneration() {
+    // Check current report status first — if already generating or complete, just poll/show result
+    try {
+      const report = await apiClient<CMAReport>(`/api/cma-reports/${reportId}`);
+      if (report.status === "complete") {
+        setState("complete");
+        return;
+      }
+      if (report.status === "generating") {
+        setState("generating");
+        startPolling();
+        return;
+      }
+    } catch {
+      // If we can't check status, proceed to try generation anyway
+    }
+    await startGeneration();
+  }
 
   async function startGeneration() {
     setState("starting");

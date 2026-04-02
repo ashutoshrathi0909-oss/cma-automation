@@ -90,10 +90,17 @@ def _make_generate_mocks():
         MagicMock(data=[{}]),            # audit log
     ]
 
+    # Line items — must have at least one item for the guard to pass
     items_chain = MagicMock()
     items_chain.select.return_value = items_chain
     items_chain.in_.return_value = items_chain
-    items_chain.execute.return_value = MagicMock(data=[])  # no doubts
+    items_chain.execute.return_value = MagicMock(data=[{"id": "e2e-item-1"}])
+
+    # Classifications — must have at least one non-doubt for the guard to pass
+    clf_chain = MagicMock()
+    clf_chain.select.return_value = clf_chain
+    clf_chain.in_.return_value = clf_chain
+    clf_chain.execute.return_value = MagicMock(data=[{"id": "e2e-clf-1", "is_doubt": False}])
 
     history_chain = MagicMock()
     history_chain.insert.return_value = history_chain
@@ -104,6 +111,8 @@ def _make_generate_mocks():
             return report_chain
         if name == "extracted_line_items":
             return items_chain
+        if name == "classifications":
+            return clf_chain
         if name == "cma_report_history":
             return history_chain
         m = MagicMock()

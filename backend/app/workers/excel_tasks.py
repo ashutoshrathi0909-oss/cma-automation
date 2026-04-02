@@ -52,6 +52,21 @@ async def run_excel_generation(ctx: dict, report_id: str) -> dict:
         }
 
     try:
+        # Verify template exists before starting
+        import os
+        template_path = "/app/DOCS/CMA.xlsm"
+        if not os.path.exists(template_path):
+            logger.error(
+                "CMA template not found at %s — check Docker volume mount. "
+                "Expected: ./DOCS/CMA.xlsm:/app/DOCS/CMA.xlsm:ro",
+                template_path,
+            )
+            raise FileNotFoundError(
+                f"CMA Excel template not found at {template_path}. "
+                "The Docker volume mount may be missing."
+            )
+        logger.info("CMA template found at %s (%d bytes)", template_path, os.path.getsize(template_path))
+
         generator = ExcelGenerator(service=service)
         storage_path = generator.generate(report_id=report_id, user_id=SYSTEM_USER_ID)
 

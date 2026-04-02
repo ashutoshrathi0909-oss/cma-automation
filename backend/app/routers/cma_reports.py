@@ -398,35 +398,62 @@ async def generate_cma_excel(
     report_id: str,
     current_user: UserProfile = Depends(get_current_user),
 ) -> GenerateTriggerResponse:
-    """Enqueue Excel generation. Blocked if any is_doubt=True classifications remain."""
+    """Enqueue Excel generation. Blocked if classifications are missing or doubts remain."""
     service = get_service_client()
     report = _get_owned_report(service, report_id, current_user)
 
-    # Guard: block if any unresolved doubts exist
+    # Guard: check that line items and classifications exist
     document_ids = report.get("document_ids") or []
     item_ids = _get_report_item_ids(service, document_ids)
-    if item_ids:
-        # Batch queries to avoid PostgREST URL length limits with large documents
-        _BATCH = 100
-        doubts: list[dict] = []
-        for i in range(0, len(item_ids), _BATCH):
-            batch = item_ids[i : i + _BATCH]
-            doubt_result = (
-                service.table("classifications")
-                .select("id")
-                .in_("line_item_id", batch)
-                .eq("is_doubt", True)
-                .execute()
-            )
-            doubts.extend(doubt_result.data or [])
-        if doubts:
-            raise HTTPException(
-                status_code=400,
-                detail=(
-                    f"Cannot generate: {len(doubts)} unresolved doubt(s) remain. "
-                    "Resolve all doubts before generating the Excel file."
-                ),
-            )
+
+    if not item_ids:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Cannot generate: no extracted line items found for this report's documents. "
+                "Ensure documents have been uploaded and extracted successfully."
+            ),
+        )
+
+    # Guard: check classifications exist and no unresolved doubts remain
+    _BATCH = 100
+    total_classifications = 0
+    doubts: list[dict] = []
+    for i in range(0, len(item_ids), _BATCH):
+        batch = item_ids[i : i + _BATCH]
+        # Count all classifications for this batch
+        clf_result = (
+            service.table("classifications")
+            .select("id,is_doubt")
+            .in_("line_item_id", batch)
+            .execute()
+        )
+        batch_clfs = clf_result.data or []
+        total_classifications += len(batch_clfs)
+        doubts.extend([c for c in batch_clfs if c.get("is_doubt")])
+
+    if total_classifications == 0:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Cannot generate: no classifications found. "
+                "Run classification on all linked documents before generating the Excel file."
+            ),
+        )
+
+    if doubts:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"Cannot generate: {len(doubts)} unresolved doubt(s) remain. "
+                "Resolve all doubts before generating the Excel file."
+            ),
+        )
+
+    logger.info(
+        "Generate guard passed: report_id=%s, line_items=%d, classifications=%d, doubts=%d",
+        report_id, len(item_ids), total_classifications, len(doubts),
+    )
 
     # Atomic status transition: only update from draft/failed → generating
     # This prevents double-enqueue race conditions

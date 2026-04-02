@@ -41,9 +41,13 @@ _extra = getattr(settings, "cors_origins", "")
 if _extra:
     cors_origins.extend([o.strip() for o in _extra.split(",") if o.strip()])
 
+# Allow all Vercel preview/production deployments for this project
+_vercel_regex = r"https://cma-automation.*\.vercel\.app"
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins,
+    allow_origin_regex=_vercel_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

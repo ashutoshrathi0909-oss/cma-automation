@@ -17,7 +17,7 @@ import openpyxl
 import pytest
 from openpyxl.utils import column_index_from_string
 
-from app.services.excel_generator import ExcelGenerator
+from app.services.excel_generator import ExcelGenerator, _build_formula, _format_number
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
@@ -183,8 +183,8 @@ def test_generator_handles_multiple_years():
     assert ws.cell(row=45, column=3).value == 200.0  # 2025 → col C
 
 
-def test_generator_sums_multiple_items_same_row():
-    """Multiple line items mapping to the same (field_name, year) are summed."""
+def test_generator_writes_formula_for_multiple_items_same_row():
+    """Multiple line items mapping to the same (field_name, year) produce an Excel formula."""
     _, ws = _make_ws()
     gen = _make_generator()
     docs = [{"financial_year": 2024, "nature": "audited"}]
@@ -195,8 +195,54 @@ def test_generator_sums_multiple_items_same_row():
 
     gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
 
-    # Only year is 2024 → base=2024 → column B → index 2
+    # Instead of writing the sum 500000, writes a formula showing individual components
+    assert ws.cell(row=22, column=2).value == "=300000+200000"
+
+
+def test_generator_formula_handles_negative_amounts():
+    """Negative amounts appear as subtraction in the formula."""
+    _, ws = _make_ws()
+    gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
+    cell_data = [
+        {"cma_field_name": "Others (Admin)", "financial_year": 2024, "amount": 50_000.0},
+        {"cma_field_name": "Others (Admin)", "financial_year": 2024, "amount": 30_000.0},
+        {"cma_field_name": "Others (Admin)", "financial_year": 2024, "amount": -5_000.0},
+    ]
+
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
+
+    # row 71 = Others (Admin), base=2024 → col B (index 2)
+    assert ws.cell(row=71, column=2).value == "=50000+30000-5000"
+
+
+def test_generator_single_item_writes_direct_value():
+    """A single line item is written as a plain number, not a formula."""
+    _, ws = _make_ws()
+    gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
+    cell_data = [
+        {"cma_field_name": "Domestic Sales", "financial_year": 2024, "amount": 500_000.0},
+    ]
+
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
+
     assert ws.cell(row=22, column=2).value == 500_000.0
+
+
+def test_generator_formula_preserves_decimals():
+    """Decimal amounts are shown with 2 decimal places in the formula."""
+    _, ws = _make_ws()
+    gen = _make_generator()
+    docs = [{"financial_year": 2024, "nature": "audited"}]
+    cell_data = [
+        {"cma_field_name": "Wages", "financial_year": 2024, "amount": 100.50},
+        {"cma_field_name": "Wages", "financial_year": 2024, "amount": 200.75},
+    ]
+
+    gen.fill_workbook(ws, client_name="Test Co", docs=docs, cell_data=cell_data)
+
+    assert ws.cell(row=45, column=2).value == "=100.50+200.75"
 
 
 def test_generator_does_not_overwrite_formula_cells():
@@ -618,3 +664,58 @@ def test_fill_data_cells_skips_formula_cells():
 
     # Real formula must be preserved — not overwritten with the data amount
     assert ws.cell(row=22, column=2).value == "=SUM(C22:D22)"
+
+
+# ── Helper function unit tests ────────────────────────────────────────────
+
+
+def test_format_number_integer():
+    assert _format_number(5000.0) == "5000"
+
+
+def test_format_number_decimal():
+    assert _format_number(100.50) == "100.50"
+
+
+def test_format_number_negative():
+    assert _format_number(-3000.0) == "-3000"
+
+
+def test_build_formula_single_value():
+    assert _build_formula([50000]) == "=50000"
+
+
+def test_build_formula_multiple_positive():
+    assert _build_formula([300000, 200000]) == "=300000+200000"
+
+
+def test_build_formula_with_negatives():
+    assert _build_formula([50000, 30000, -5000]) == "=50000+30000-5000"
+
+
+def test_build_formula_all_negative():
+    assert _build_formula([-1000, -2000]) == "=-1000-2000"
+
+
+def test_build_formula_with_decimals():
+    assert _build_formula([100.50, 200.75]) == "=100.50+200.75"
+
+
+def test_build_formula_empty_list():
+    assert _build_formula([]) == "=0"
+
+
+def test_build_formula_first_negative_second_positive():
+    assert _build_formula([-5000, 3000]) == "=-5000+3000"
+
+
+def test_build_formula_zeros():
+    assert _build_formula([0, 5000]) == "=0+5000"
+
+
+def test_format_number_nan():
+    assert _format_number(float("nan")) == "0"
+
+
+def test_format_number_inf():
+    assert _format_number(float("inf")) == "0"

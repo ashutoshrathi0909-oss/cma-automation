@@ -525,25 +525,25 @@ def test_generate_blocked_if_doubts_unresolved(admin_client):
         items_chain.in_.return_value = items_chain
         items_chain.execute.return_value = MagicMock(data=[{"id": ITEM_ID_1}])
 
-        # Doubts chain (returns 2 doubts)
-        doubt_chain = MagicMock()
-        doubt_chain.select.return_value = doubt_chain
-        doubt_chain.in_.return_value = doubt_chain
-        doubt_chain.eq.return_value = doubt_chain
-        doubt_chain.execute.return_value = MagicMock(
-            data=[{"id": "clf-doubt-1"}, {"id": "clf-doubt-2"}]
+        # Classifications chain — returns 2 items that are doubts
+        # The new code fetches all classifications (select id,is_doubt) and filters in Python
+        clf_chain = MagicMock()
+        clf_chain.select.return_value = clf_chain
+        clf_chain.in_.return_value = clf_chain
+        clf_chain.execute.return_value = MagicMock(
+            data=[
+                {"id": "clf-doubt-1", "is_doubt": True},
+                {"id": "clf-doubt-2", "is_doubt": True},
+            ]
         )
 
-        call_count = 0
         def table_se(name):
-            nonlocal call_count
-            call_count += 1
             if name == "cma_reports":
                 return report_chain
-            elif name == "extracted_line_items" and call_count <= 10:
+            elif name == "extracted_line_items":
                 return items_chain
             elif name == "classifications":
-                return doubt_chain
+                return clf_chain
             return MagicMock()
 
         svc.table.side_effect = table_se
@@ -628,11 +628,17 @@ def test_generate_returns_202_when_no_doubts(admin_client):
             MagicMock(data=[{}]),             # audit log insert → ignored
         ]
 
-        # Line items — none so doubt check is skipped
+        # Line items — must have at least one item for new guard to pass
         items_chain = MagicMock()
         items_chain.select.return_value = items_chain
         items_chain.in_.return_value = items_chain
-        items_chain.execute.return_value = MagicMock(data=[])
+        items_chain.execute.return_value = MagicMock(data=[{"id": "item-1"}])
+
+        # Classifications — must have at least one non-doubt for new guard to pass
+        clf_chain = MagicMock()
+        clf_chain.select.return_value = clf_chain
+        clf_chain.in_.return_value = clf_chain
+        clf_chain.execute.return_value = MagicMock(data=[{"id": "clf-1", "is_doubt": False}])
 
         # audit history table
         history_chain = MagicMock()
@@ -644,6 +650,8 @@ def test_generate_returns_202_when_no_doubts(admin_client):
                 return report_chain
             elif name == "extracted_line_items":
                 return items_chain
+            elif name == "classifications":
+                return clf_chain
             elif name == "cma_report_history":
                 return history_chain
             m = MagicMock()
@@ -685,23 +693,36 @@ def test_generate_returns_409_when_already_generating(admin_client):
         report_chain.single.return_value = report_chain
         report_chain.update.return_value = report_chain
 
-        call_count = 0
-        def execute_side_effect():
-            nonlocal call_count
-            call_count += 1
-            if call_count == 1:
+        # Line items chain — must return at least one item
+        items_chain = MagicMock()
+        items_chain.select.return_value = items_chain
+        items_chain.in_.return_value = items_chain
+        items_chain.execute.return_value = MagicMock(data=[{"id": "item-1"}])
+
+        # Classifications chain — must return at least one non-doubt
+        clf_chain = MagicMock()
+        clf_chain.select.return_value = clf_chain
+        clf_chain.in_.return_value = clf_chain
+        clf_chain.execute.return_value = MagicMock(data=[{"id": "clf-1", "is_doubt": False}])
+
+        report_call_count = 0
+        def report_execute_side_effect():
+            nonlocal report_call_count
+            report_call_count += 1
+            if report_call_count == 1:
                 # _get_owned_report fetch
                 return MagicMock(data=_REPORT_DRAFT)
-            elif call_count == 2:
-                # extracted_line_items (empty = no doubts)
-                return MagicMock(data=[])
             else:
                 # CAS update returns empty (already generating)
                 return MagicMock(data=[])
 
-        report_chain.execute.side_effect = execute_side_effect
+        report_chain.execute.side_effect = report_execute_side_effect
 
         def table_se(name):
+            if name == "extracted_line_items":
+                return items_chain
+            elif name == "classifications":
+                return clf_chain
             return report_chain
 
         svc.table.side_effect = table_se
