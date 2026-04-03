@@ -29,6 +29,8 @@ from app.services.extraction._types import ExtractionError, LineItem, parse_amou
 from app.services.extraction.excel_extractor import ExcelExtractor  # noqa: F401
 from app.services.extraction.pdf_extractor import PdfExtractor      # noqa: F401
 from app.services.extraction.ocr_extractor import OcrExtractor      # noqa: F401
+from app.services.extraction.glm_ocr_extractor import GlmOcrExtractor  # noqa: F401
+from app.config import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -97,6 +99,20 @@ async def extract_document(
             return await extractor.extract(file_content, file_type, selected_sheets=selected_sheets)
 
         if file_type == "pdf":
+            settings = get_settings()
+
+            if settings.pdf_extractor == "glm_ocr":
+                logger.info("PDF extraction via GLM-OCR (Ollama): %s", file_path)
+                items = await GlmOcrExtractor().extract(file_content)
+                if not items:
+                    logger.warning(
+                        "GLM-OCR returned 0 items for %s — falling back to pdfplumber",
+                        file_path,
+                    )
+                    items = await PdfExtractor().extract(file_content)
+                return items
+
+            # Legacy path: pdfplumber + OCR fallback
             scanned = is_scanned_pdf(file_content)
             if scanned:
                 logger.info("PDF detected as scanned (image-only) → using OcrExtractor: %s", file_path)
@@ -106,9 +122,6 @@ async def extract_document(
                 logger.info("PDF detected as native (has text layer) → using PdfExtractor: %s", file_path)
                 items = await PdfExtractor().extract(file_content)
                 if not items:
-                    # Native PDF parsing returned nothing — likely an unusual layout
-                    # (image-heavy, non-standard table structure, or minimal text layer).
-                    # Fall back to OcrExtractor (vision model) for a second attempt.
                     logger.warning(
                         "PdfExtractor returned 0 items for %s — falling back to OcrExtractor",
                         file_path,
