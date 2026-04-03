@@ -19,6 +19,11 @@ class Settings(BaseSettings):
     classifier_model: str = "deepseek/deepseek-chat-v3-0324"  # DeepSeek V3 via OpenRouter
     classifier_mode: str = "scoped"  # "scoped" (DeepSeek+Gemini debate) or "legacy" (old Haiku-only)
 
+    # ── PDF extraction
+    pdf_extractor: str = "glm_ocr"  # "glm_ocr" or "pdfplumber"
+    ollama_url: str = "http://ollama:11434"  # Ollama service URL (Docker internal)
+    glm_ocr_model: str = "glm-ocr"  # Ollama model name
+
     # Redis
     redis_url: str = "redis://redis:6379"
 
