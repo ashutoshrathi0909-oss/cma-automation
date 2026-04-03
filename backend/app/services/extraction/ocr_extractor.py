@@ -21,6 +21,7 @@ import base64
 import io
 import json
 import logging
+import re
 from typing import Any
 
 import anthropic
@@ -240,21 +241,54 @@ class OcrExtractor:
         return self._parse_tool_output(tool_block.input)
 
     def _parse_openrouter_response(self, response) -> list[LineItem]:
-        """Parse OpenAI-format tool call response into LineItem instances."""
+        """Parse OpenAI-format tool call response into LineItem instances.
+
+        Handles two response formats:
+        1. Tool calls (OpenAI-native models like GPT-4o, Qwen) — structured tool_calls
+        2. Plain text content (Gemini Flash on OpenRouter) — JSON in message.content
+        """
         message = response.choices[0].message
 
-        if not message.tool_calls:
-            logger.warning("Vision OCR: no tool_calls in OpenRouter response")
-            return []
+        # Try tool_calls first (works with OpenAI-native models)
+        if message.tool_calls:
+            tool_call = message.tool_calls[0]
+            try:
+                tool_output = json.loads(tool_call.function.arguments)
+            except json.JSONDecodeError as exc:
+                logger.error("Vision OCR: failed to parse OpenRouter tool arguments: %s", exc)
+                return []
+            return self._parse_tool_output(tool_output)
 
-        tool_call = message.tool_calls[0]
-        try:
-            tool_output = json.loads(tool_call.function.arguments)
-        except json.JSONDecodeError as exc:
-            logger.error("Vision OCR: failed to parse OpenRouter tool arguments: %s", exc)
-            return []
+        # Fallback: Gemini returns content as plain text with JSON
+        if message.content:
+            logger.info("Vision OCR: no tool_calls — parsing message content as JSON")
+            text = message.content.strip()
+            # Strip markdown fences if present
+            if text.startswith("```"):
+                text = re.sub(r"^```(?:json)?\s*\n?", "", text)
+                text = re.sub(r"\n?```\s*$", "", text)
+                text = text.strip()
+            try:
+                parsed = json.loads(text)
+                # Could be {"page_results": [...]} or any dict — pass to _parse_tool_output
+                if isinstance(parsed, dict):
+                    return self._parse_tool_output(parsed)
+                if isinstance(parsed, list):
+                    # Gemini might return a flat list of items — wrap it
+                    return self._parse_tool_output({"page_results": [{"page_number": 1, "page_type": "balance_sheet", "scale_factor": "absolute", "items": parsed}]})
+            except json.JSONDecodeError:
+                # Try to find JSON object in text
+                match = re.search(r"\{.*\}", text, re.DOTALL)
+                if match:
+                    try:
+                        parsed = json.loads(match.group())
+                        return self._parse_tool_output(parsed)
+                    except json.JSONDecodeError:
+                        pass
+                logger.warning("Vision OCR: could not parse content as JSON: %s", text[:200])
 
-        return self._parse_tool_output(tool_output)
+        logger.warning("Vision OCR: no tool_calls and no parseable content in response")
+        return []
 
     def _parse_tool_output(self, tool_output: dict) -> list[LineItem]:
         """Shared parser: convert tool output dict into LineItem instances.

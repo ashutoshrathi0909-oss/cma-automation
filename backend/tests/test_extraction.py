@@ -6,13 +6,12 @@ All tests were written BEFORE the service implementations.
 
 Coverage targets:
   - ExcelExtractor: xlsx, xls, amounts, sections, Indian number format
-  - PdfExtractor: native tables, native text fallback
-  - OcrExtractor: image conversion, surya call, Haiku structuring
-  - extractor_factory: routing logic, scanned-PDF detection
+  - OcrExtractor: vision AI extraction (see tests/test_vision_ocr.py)
+  - extractor_factory: routing logic
 """
 
 import io
-from unittest.mock import AsyncMock, MagicMock, patch, call
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
@@ -20,11 +19,9 @@ from app.services.extraction.extractor_factory import (
     ExtractionError,
     LineItem,
     extract_document,
-    is_scanned_pdf,
 )
 from app.services.extraction._types import parse_amount
 from app.services.extraction.excel_extractor import ExcelExtractor
-from app.services.extraction.pdf_extractor import PdfExtractor
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
@@ -39,15 +36,6 @@ def _make_xls_bytes() -> bytes:
     """Minimal OLE2 compound document magic bytes for xls."""
     return b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1" + b"\x00" * 100
 
-
-def _make_pdf_bytes_with_text() -> bytes:
-    """Minimal PDF header that pdfplumber can partially recognise."""
-    return b"%PDF-1.4\n1 0 obj\n<< /Type /Catalog >>\nendobj\n"
-
-
-def _make_pdf_bytes_no_text() -> bytes:
-    """PDF-like header with no embedded text (image-only)."""
-    return b"%PDF-1.4\n" + b"\x00" * 50
 
 
 # ── LineItem dataclass ─────────────────────────────────────────────────────────
@@ -307,201 +295,7 @@ class TestExcelExtractor:
         assert any("Expenses" in d for d in descriptions)
 
 
-# ── PdfExtractor ───────────────────────────────────────────────────────────────
-
-
-class TestPdfExtractor:
-    @pytest.fixture
-    def extractor(self):
-        return PdfExtractor()
-
-    @pytest.mark.asyncio
-    async def test_pdf_extractor_reads_native_pdf(self, extractor):
-        """PdfExtractor.extract() opens the PDF with pdfplumber (mocked)."""
-        mock_page = MagicMock()
-        mock_page.extract_tables.return_value = [
-            [["Description", "Amount"], ["Salaries", "5,00,000"]]
-        ]
-        mock_page.extract_text.return_value = None
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            items = await extractor.extract(_make_pdf_bytes_with_text())
-
-        assert isinstance(items, list)
-        assert len(items) >= 1
-
-    @pytest.mark.asyncio
-    async def test_pdf_extractor_extracts_tables(self, extractor):
-        """Tables in a PDF → each data row becomes a LineItem."""
-        mock_page = MagicMock()
-        mock_page.extract_tables.return_value = [
-            [
-                ["Description", "Amount"],
-                ["Salaries & Wages", "5,00,000"],
-                ["Rent", "1,20,000"],
-            ]
-        ]
-        mock_page.extract_text.return_value = None
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            items = await extractor.extract(_make_pdf_bytes_with_text())
-
-        assert len(items) == 2
-        assert items[0].description == "Salaries & Wages"
-        assert items[0].amount == pytest.approx(500000.0)
-        assert items[1].description == "Rent"
-        assert items[1].amount == pytest.approx(120000.0)
-
-    @pytest.mark.asyncio
-    async def test_pdf_extractor_fallback_to_text(self, extractor):
-        """When no tables are found, fall back to text parsing line-by-line."""
-        mock_page = MagicMock()
-        mock_page.extract_tables.return_value = []  # no tables
-        mock_page.extract_text.return_value = (
-            "Profit & Loss Account\n"
-            "Salaries & Wages          5,00,000\n"
-            "Rent Expense              1,20,000\n"
-        )
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            items = await extractor.extract(_make_pdf_bytes_with_text())
-
-        assert len(items) >= 1
-        descriptions = [i.description for i in items]
-        assert any("Salaries" in d for d in descriptions)
-
-    @pytest.mark.asyncio
-    async def test_pdf_extractor_handles_multi_page(self, extractor):
-        """Multi-page PDF: each page is processed."""
-        def make_page(label, amount_str):
-            p = MagicMock()
-            p.extract_tables.return_value = [
-                [["Item", "Value"], [label, amount_str]]
-            ]
-            p.extract_text.return_value = None
-            return p
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [
-            make_page("Revenue", "10,00,000"),
-            make_page("Expenses", "6,00,000"),
-        ]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            items = await extractor.extract(_make_pdf_bytes_with_text())
-
-        descriptions = [i.description for i in items]
-        assert any("Revenue" in d for d in descriptions)
-        assert any("Expenses" in d for d in descriptions)
-
-    @pytest.mark.asyncio
-    async def test_pdf_extractor_skips_header_rows(self, extractor):
-        """Header row (Description/Amount) in table should not become a LineItem."""
-        mock_page = MagicMock()
-        mock_page.extract_tables.return_value = [
-            [
-                ["Description", "Amount"],  # header
-                ["Revenue", "10,00,000"],
-            ]
-        ]
-        mock_page.extract_text.return_value = None
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            items = await extractor.extract(_make_pdf_bytes_with_text())
-
-        # Should be exactly 1 item (not 2 — header must be skipped)
-        assert len(items) == 1
-        assert items[0].description == "Revenue"
-
-
 # OcrExtractor tests moved to tests/test_vision_ocr.py (Claude Vision pipeline, Phase 10)
-
-
-# ── Factory: scanned PDF detection ────────────────────────────────────────────
-
-
-class TestIsScannedPdf:
-    def test_detects_native_pdf(self):
-        """PDF with extractable text → is_scanned_pdf returns False."""
-        mock_page = MagicMock()
-        mock_page.extract_text.return_value = "Some financial text here"
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            result = is_scanned_pdf(_make_pdf_bytes_with_text())
-
-        assert result is False
-
-    def test_factory_detects_scanned_pdf(self):
-        """PDF with no extractable text → is_scanned_pdf returns True."""
-        mock_page = MagicMock()
-        mock_page.extract_text.return_value = None
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            result = is_scanned_pdf(_make_pdf_bytes_no_text())
-
-        assert result is True
-
-    def test_detects_scanned_pdf_empty_string(self):
-        """PDF where extract_text returns empty string → is_scanned_pdf returns True."""
-        mock_page = MagicMock()
-        mock_page.extract_text.return_value = ""
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            result = is_scanned_pdf(_make_pdf_bytes_no_text())
-
-        assert result is True
-
-    def test_detects_scanned_pdf_whitespace_only(self):
-        """PDF where extract_text returns only whitespace → is_scanned_pdf returns True."""
-        mock_page = MagicMock()
-        mock_page.extract_text.return_value = "   \n\t  "
-
-        mock_pdf = MagicMock()
-        mock_pdf.pages = [mock_page]
-        mock_pdf.__enter__ = lambda s: s
-        mock_pdf.__exit__ = MagicMock(return_value=False)
-
-        with patch("pdfplumber.open", return_value=mock_pdf):
-            result = is_scanned_pdf(_make_pdf_bytes_no_text())
-
-        assert result is True
 
 
 # ── Factory: routing ──────────────────────────────────────────────────────────
@@ -534,44 +328,17 @@ class TestExtractorFactory:
         mock_extract.assert_called_once()
 
     @pytest.mark.asyncio
-    async def test_factory_routes_pdf_to_pdf_extractor(self):
-        """Native PDF → PdfExtractor.extract() is called (not OCR)."""
-        with (
-            patch(
-                "app.services.extraction.extractor_factory.is_scanned_pdf",
-                return_value=False,
-            ),
-            patch(
-                "app.services.extraction.extractor_factory.PdfExtractor.extract",
-                new_callable=AsyncMock,
-                return_value=[LineItem("Revenue", 1000000.0, "income", "Revenue")],
-            ) as mock_pdf,
-        ):
-            result = await extract_document(
-                _make_pdf_bytes_with_text(), "pdf", "client/file.pdf"
-            )
+    @patch("app.services.extraction.extractor_factory.OcrExtractor")
+    async def test_factory_routes_pdf_to_vision_ai(self, MockOcr):
+        """All PDFs now route through OcrExtractor (Gemini Flash vision)."""
+        mock_instance = AsyncMock()
+        mock_instance.extract.return_value = [LineItem(description="Sales", amount=500000, section="income", raw_text="Sales 500000")]
+        MockOcr.return_value = mock_instance
 
-        mock_pdf.assert_called_once()
-
-    @pytest.mark.asyncio
-    async def test_factory_routes_scanned_pdf_to_ocr_extractor(self):
-        """Scanned PDF → OcrExtractor.extract() is called (not PdfExtractor)."""
-        with (
-            patch(
-                "app.services.extraction.extractor_factory.is_scanned_pdf",
-                return_value=True,
-            ),
-            patch(
-                "app.services.extraction.extractor_factory.OcrExtractor.extract",
-                new_callable=AsyncMock,
-                return_value=[LineItem("Revenue", 1000000.0, "income", "Revenue")],
-            ) as mock_ocr,
-        ):
-            result = await extract_document(
-                _make_pdf_bytes_no_text(), "pdf", "client/scanned.pdf"
-            )
-
-        mock_ocr.assert_called_once()
+        result = await extract_document(b"fake-pdf", "pdf", "test.pdf")
+        assert len(result) == 1
+        assert result[0].description == "Sales"
+        MockOcr.assert_called_once()
 
     @pytest.mark.asyncio
     async def test_factory_returns_list_of_line_items(self):
