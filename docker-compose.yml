@@ -46,6 +46,7 @@ services:
       - .env
     depends_on:
       - redis
+      - ollama
     restart: unless-stopped
 
   redis:
@@ -56,8 +57,21 @@ services:
       - redis_data:/data
     restart: unless-stopped
 
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          memory: 2G
+
 volumes:
   backend_cache:
   frontend_node_modules:
   frontend_next:
   redis_data:
+  ollama_data:
