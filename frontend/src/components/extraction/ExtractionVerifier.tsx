@@ -1,12 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { AlertTriangle, CheckCircle2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { apiClient } from "@/lib/api";
 import { LineItemEditor } from "./LineItemEditor";
 import type { LineItemResponse, Document } from "@/types";
+
+function pageTypeBadge(pageType: string | null | undefined) {
+  if (!pageType || pageType === "unknown") return null;
+  if (pageType === "notes") {
+    return (
+      <span className="inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+        Notes
+      </span>
+    );
+  }
+  if (pageType === "face") {
+    return (
+      <span className="inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-600 dark:bg-slate-800/50 dark:text-slate-400">
+        Face
+      </span>
+    );
+  }
+  return null;
+}
 
 interface ExtractionVerifierProps {
   documentId: string;
@@ -103,10 +122,13 @@ export function ExtractionVerifier({ documentId, onVerified }: ExtractionVerifie
           </thead>
           <tbody className="divide-y">
             {items.map((item) => (
-              <>
-                <tr key={item.id} className="hover:bg-muted/30 transition-colors">
+              <Fragment key={item.id}>
+                <tr className="hover:bg-muted/30 transition-colors">
                   <td className="px-4 py-2.5 text-xs text-muted-foreground">
-                    {item.section ?? "—"}
+                    <div className="flex items-center gap-1.5">
+                      <span>{item.section ?? "—"}</span>
+                      {pageTypeBadge(item.page_type)}
+                    </div>
                   </td>
                   <td className="max-w-xs px-4 py-2.5">
                     <span className="line-clamp-2">{item.description}</span>
@@ -137,7 +159,7 @@ export function ExtractionVerifier({ documentId, onVerified }: ExtractionVerifie
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>

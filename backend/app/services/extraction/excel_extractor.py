@@ -24,6 +24,7 @@ from __future__ import annotations
 import io
 import logging
 import re
+from difflib import SequenceMatcher
 from typing import Optional
 
 from app.services.extraction._types import ExtractionError, LineItem, normalize_line_text, parse_amount
@@ -149,6 +150,169 @@ def _find_amount_in_row(row_values: list) -> Optional[float]:
     return None
 
 
+# ── Sheet priority for deduplication ──────────────────────────────────────────
+
+# Notes / Schedules contain the detailed breakdowns needed for CMA classification.
+# Face sheets (P&L, Balance Sheet, Cash Flow) contain summary totals that should
+# be superseded by their breakdown counterparts when both are present.
+# Higher score = higher priority (preferred when deduplicating).
+_FACE_SHEET_PATTERNS = re.compile(
+    r"(?:balance\s*sheet|b\.?\s*s\.?"
+    r"|p\s*[&.]\s*l|profit\s*(?:and|&)?\s*loss|income\s*statement"
+    r"|cash\s*flow"
+    r"|trading|manufacturing"
+    r"|receipt\s*(?:and|&)\s*payment)",
+    re.IGNORECASE,
+)
+
+_NOTE_SHEET_PATTERNS = re.compile(
+    r"(?:notes?\b|schedule|particular|statement\s*of)",
+    re.IGNORECASE,
+)
+
+
+def _sheet_priority(sheet_name: str) -> int:
+    """Return a priority score for *sheet_name*.  Higher = preferred for dedup."""
+    if _NOTE_SHEET_PATTERNS.search(sheet_name):
+        return 3  # Notes / Schedules — PRIMARY (breakdowns)
+    if _FACE_SHEET_PATTERNS.search(sheet_name):
+        return 1  # Face sheets (P&L, BS) — REFERENCE (totals)
+    return 2  # Unknown sheets — middle priority
+
+
+def _sheet_page_type(sheet_name: str) -> str:
+    """Return normalized page_type for a sheet based on its name.
+
+    Notes checked FIRST — sheets like "Notes BS (2)" contain both
+    patterns but are Notes breakdowns, not face sheets.
+    """
+    if _NOTE_SHEET_PATTERNS.search(sheet_name):
+        return "notes"
+    if _FACE_SHEET_PATTERNS.search(sheet_name):
+        return "face"
+    return "unknown"
+
+
+# ── Cross-sheet deduplication ─────────────────────────────────────────────────
+
+# Minimum similarity ratio (0-1) for two descriptions to be considered
+# "the same item".  0.85 handles minor wording differences like
+# "Revenue from Operations" vs "Revenue From Operations (Net)".
+_DEDUP_SIMILARITY_THRESHOLD = 0.85
+
+# Relative tolerance for amounts to be considered "the same".
+# 0.001 = 0.1% — handles minor rounding differences.
+_DEDUP_AMOUNT_RTOL = 0.001
+
+
+def _descriptions_match(a: str, b: str) -> bool:
+    """Return True if descriptions *a* and *b* refer to the same line item."""
+    if not a or not b:
+        return False
+    # Fast path: exact match after lowercasing
+    la, lb = a.lower(), b.lower()
+    if la == lb:
+        return True
+    # Fuzzy match for minor wording differences
+    return SequenceMatcher(None, la, lb).ratio() >= _DEDUP_SIMILARITY_THRESHOLD
+
+
+def _amounts_match(a: float, b: float) -> bool:
+    """Return True if amounts are effectively the same."""
+    if a == b:
+        return True
+    if a == 0 and b == 0:
+        return True
+    # Relative tolerance
+    denom = max(abs(a), abs(b))
+    if denom == 0:
+        return True
+    return abs(a - b) / denom <= _DEDUP_AMOUNT_RTOL
+
+
+def deduplicate_across_sheets(items: list[LineItem]) -> list[LineItem]:
+    """Remove duplicate line items that appear identically across multiple sheets.
+
+    When the same financial line item (same description + same amount) appears
+    on multiple sheets (e.g. P&L face AND Notes to Accounts), keep only the
+    copy from the highest-priority sheet.
+
+    Items with different amounts are NEVER deduplicated — they may represent
+    genuinely different line items (e.g. a total on the face vs a sub-item
+    in the notes that happens to have a similar name).
+
+    Parameters
+    ----------
+    items : list[LineItem]
+        All items extracted from all sheets (each must have source_sheet set).
+
+    Returns
+    -------
+    list[LineItem]
+        Deduplicated list, preserving original order (within each kept item).
+    """
+    if not items:
+        return items
+
+    # Build groups of items that match on (description, amount).
+    # We use a greedy approach: iterate items and assign each to the first
+    # existing group that matches, or create a new group.
+    groups: list[list[LineItem]] = []
+
+    for item in items:
+        matched_group = None
+        for group in groups:
+            representative = group[0]
+            if (_descriptions_match(item.description, representative.description)
+                    and _amounts_match(item.amount, representative.amount)):
+                matched_group = group
+                break
+        if matched_group is not None:
+            matched_group.append(item)
+        else:
+            groups.append([item])
+
+    # From each group, pick the item from the highest-priority sheet.
+    # On ties, keep the first one encountered (preserves original order).
+    kept: list[LineItem] = []
+    total_removed = 0
+
+    for group in groups:
+        if len(group) == 1:
+            kept.append(group[0])
+            continue
+
+        # Sort by sheet priority (descending) — first item wins
+        group.sort(key=lambda it: _sheet_priority(it.source_sheet), reverse=True)
+        winner = group[0]
+        kept.append(winner)
+        total_removed += len(group) - 1
+
+        if len(group) > 1:
+            sheets = [it.source_sheet for it in group]
+            logger.info(
+                "Dedup: '%s' (amount=%.2f) appeared on %d sheets %s — "
+                "keeping from '%s' (priority=%d)",
+                winner.description,
+                winner.amount,
+                len(group),
+                sheets,
+                winner.source_sheet,
+                _sheet_priority(winner.source_sheet),
+            )
+
+    if total_removed > 0:
+        logger.info(
+            "Cross-sheet deduplication removed %d duplicate items "
+            "(kept %d of %d total)",
+            total_removed,
+            len(kept),
+            len(items),
+        )
+
+    return kept
+
+
 # ── ExcelExtractor ────────────────────────────────────────────────────────────
 
 
@@ -216,6 +380,7 @@ class ExcelExtractor:
 
             sheet_items: list[LineItem] = []
             current_section = ""
+            sheet_page_type = _sheet_page_type(sheet_name)
             for row in sheet.iter_rows():
                 row_values = [cell.value for cell in row]
                 description = self._get_description(row_values)
@@ -236,6 +401,8 @@ class ExcelExtractor:
                         amount=amount,
                         section=current_section,
                         raw_text=str(row_values),
+                        source_sheet=sheet_name,
+                        page_type=sheet_page_type,
                     )
                 )
 
@@ -256,7 +423,7 @@ class ExcelExtractor:
             items.extend(sheet_items)
 
         wb.close()
-        return items
+        return deduplicate_across_sheets(items)
 
     # ── xls (xlrd) ────────────────────────────────────────────────────────────
 
@@ -278,6 +445,7 @@ class ExcelExtractor:
 
             sheet_items: list[LineItem] = []
             current_section = ""
+            sheet_page_type = _sheet_page_type(sheet_name)
             for row_idx in range(sheet.nrows):
                 row_values = sheet.row_values(row_idx)
                 description = self._get_description(row_values)
@@ -297,6 +465,8 @@ class ExcelExtractor:
                         amount=amount,
                         section=current_section,
                         raw_text=str(row_values),
+                        source_sheet=sheet_name,
+                        page_type=sheet_page_type,
                     )
                 )
 
@@ -315,7 +485,7 @@ class ExcelExtractor:
             )
             items.extend(sheet_items)
 
-        return items
+        return deduplicate_across_sheets(items)
 
     # ── Shared helpers ────────────────────────────────────────────────────────
 

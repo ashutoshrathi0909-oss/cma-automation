@@ -5,13 +5,13 @@ Extracts financial line items from scanned (image-only) PDFs using vision models
 
 Supports two providers (configured via OCR_PROVIDER env var):
   - "anthropic": Claude Sonnet Vision (~Rs 2.30/page)
-  - "openrouter": Qwen3.5 via OpenRouter (~Rs 0.05/page with 9B)
+  - "openrouter": Gemini 2.5 Flash via OpenRouter (~Rs 0.05/page)
 
 Pipeline:
   1. Convert PDF pages to PIL Images via pdf2image (wraps existing poppler-utils).
   2. Filter blank pages via page_filter.
   3. Send content pages to vision model in batches of MAX_PAGES_PER_BATCH.
-  4. Parse structured tool_use response into LineItem instances.
+  4. Parse structured JSON response into LineItem instances.
   5. Flag ambiguous items with ambiguity_question for CA review.
 """
 from __future__ import annotations
@@ -32,6 +32,7 @@ from app.config import get_settings
 from app.services.extraction._types import ExtractionError, LineItem
 from app.services.extraction.page_filter import filter_pages
 from app.services.extraction.vision_prompt import (
+    EXTRACT_JSON_SCHEMA,
     EXTRACT_TOOL_SCHEMA,
     MAX_PAGES_PER_BATCH,
     SYSTEM_PROMPT,
@@ -84,22 +85,21 @@ def _get_scale_multiplier(scale: str) -> float:
     }.get(scale, 1.0)
 
 
-def _anthropic_tool_to_openai(tool: dict) -> dict:
-    """Convert Anthropic tool schema format to OpenAI function calling format."""
-    return {
-        "type": "function",
-        "function": {
-            "name": tool["name"],
-            "description": tool["description"],
-            "parameters": tool["input_schema"],
-        },
-    }
+def _normalize_page_type(ocr_page_type: str) -> str:
+    """Map vision AI page_type to normalized value."""
+    _FACE_TYPES = {"profit_and_loss", "balance_sheet", "trading_account"}
+    _NOTE_TYPES = {"notes_to_accounts", "schedules"}
+    if ocr_page_type in _FACE_TYPES:
+        return "face"
+    if ocr_page_type in _NOTE_TYPES:
+        return "notes"
+    return "unknown"
 
 
 class OcrExtractor:
     """Extracts LineItems from scanned (image-only) PDFs using vision models.
 
-    Supports both Anthropic (Claude Sonnet) and OpenRouter (Qwen3.5, etc.)
+    Supports both Anthropic (Claude Sonnet) and OpenRouter (Gemini 2.5 Flash)
     via the OCR_PROVIDER setting.
     """
 
@@ -176,7 +176,7 @@ class OcrExtractor:
 
         response = client.messages.create(
             model=ANTHROPIC_VISION_MODEL,
-            max_tokens=16000,
+            max_tokens=24000,  # raised from 16k to handle 8-page batches with dense Notes
             system=SYSTEM_PROMPT,
             tools=[EXTRACT_TOOL_SCHEMA],
             tool_choice={"type": "tool", "name": "extract_financial_items"},
@@ -197,30 +197,36 @@ class OcrExtractor:
             base_url="https://openrouter.ai/api/v1",
         )
 
-        # Build message content: text label + image per page (OpenAI format)
+        # Build content: images first, then instruction
         content: list[dict[str, Any]] = []
         for page_num, image in pages:
             content.append({"type": "text", "text": f"--- Page {page_num} ---"})
             b64 = _image_to_base64(image)
             content.append({
                 "type": "image_url",
-                "image_url": {
-                    "url": f"data:image/jpeg;base64,{b64}",
-                },
+                "image_url": {"url": f"data:image/jpeg;base64,{b64}"},
             })
-
-        # Convert Anthropic tool schema to OpenAI function calling format
-        openai_tool = _anthropic_tool_to_openai(EXTRACT_TOOL_SCHEMA)
+        # Add extraction instruction AFTER all images
+        content.append({
+            "type": "text",
+            "text": "Extract all financial line items from the pages above. Respond with JSON only.",
+        })
 
         response = client.chat.completions.create(
             model=settings.ocr_model,
-            max_tokens=16000,
+            max_tokens=24000,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": content},
             ],
-            tools=[openai_tool],
-            tool_choice={"type": "function", "function": {"name": "extract_financial_items"}},
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "extract_financial_items",
+                    "strict": True,
+                    "schema": EXTRACT_JSON_SCHEMA,
+                },
+            },
         )
 
         return self._parse_openrouter_response(response)
@@ -241,54 +247,37 @@ class OcrExtractor:
         return self._parse_tool_output(tool_block.input)
 
     def _parse_openrouter_response(self, response) -> list[LineItem]:
-        """Parse OpenAI-format tool call response into LineItem instances.
+        """Parse structured JSON response from OpenRouter (Gemini structured output)."""
+        # Detect output truncation — if model hit max_tokens, JSON is likely incomplete
+        finish_reason = response.choices[0].finish_reason
+        if finish_reason == "length":
+            logger.error(
+                "Vision OCR: response truncated (finish_reason=length). "
+                "Batch may have too many items for max_tokens. Consider reducing batch size."
+            )
+            # Don't return early — try to parse anyway, _parse_tool_output handles partial data
 
-        Handles two response formats:
-        1. Tool calls (OpenAI-native models like GPT-4o, Qwen) — structured tool_calls
-        2. Plain text content (Gemini Flash on OpenRouter) — JSON in message.content
-        """
         message = response.choices[0].message
 
-        # Try tool_calls first (works with OpenAI-native models)
-        if message.tool_calls:
-            tool_call = message.tool_calls[0]
-            try:
-                tool_output = json.loads(tool_call.function.arguments)
-            except json.JSONDecodeError as exc:
-                logger.error("Vision OCR: failed to parse OpenRouter tool arguments: %s", exc)
-                return []
-            return self._parse_tool_output(tool_output)
+        if not message.content:
+            logger.warning("Vision OCR: empty response content")
+            return []
 
-        # Fallback: Gemini returns content as plain text with JSON
-        if message.content:
-            logger.info("Vision OCR: no tool_calls — parsing message content as JSON")
-            text = message.content.strip()
-            # Strip markdown fences if present
-            if text.startswith("```"):
-                text = re.sub(r"^```(?:json)?\s*\n?", "", text)
-                text = re.sub(r"\n?```\s*$", "", text)
-                text = text.strip()
-            try:
-                parsed = json.loads(text)
-                # Could be {"page_results": [...]} or any dict — pass to _parse_tool_output
-                if isinstance(parsed, dict):
-                    return self._parse_tool_output(parsed)
-                if isinstance(parsed, list):
-                    # Gemini might return a flat list of items — wrap it
-                    return self._parse_tool_output({"page_results": [{"page_number": 1, "page_type": "balance_sheet", "scale_factor": "absolute", "items": parsed}]})
-            except json.JSONDecodeError:
-                # Try to find JSON object in text
-                match = re.search(r"\{.*\}", text, re.DOTALL)
-                if match:
-                    try:
-                        parsed = json.loads(match.group())
-                        return self._parse_tool_output(parsed)
-                    except json.JSONDecodeError:
-                        pass
-                logger.warning("Vision OCR: could not parse content as JSON: %s", text[:200])
+        text = message.content.strip()
 
-        logger.warning("Vision OCR: no tool_calls and no parseable content in response")
-        return []
+        # Minimal fallback: strip markdown fences if present (rare with json_schema mode)
+        if text.startswith("```"):
+            text = re.sub(r"^```(?:json)?\s*\n?", "", text)
+            text = re.sub(r"\n?```\s*$", "", text)
+            text = text.strip()
+
+        try:
+            parsed = json.loads(text)
+        except json.JSONDecodeError as exc:
+            logger.error("Vision OCR: failed to parse response JSON: %s — content: %s", exc, text[:500])
+            return []
+
+        return self._parse_tool_output(parsed)
 
     def _parse_tool_output(self, tool_output: dict) -> list[LineItem]:
         """Shared parser: convert tool output dict into LineItem instances.
@@ -304,6 +293,8 @@ class OcrExtractor:
 
             multiplier = _get_scale_multiplier(page_result.get("scale_factor", "absolute"))
             page_num = page_result.get("page_number", "?")
+            raw_page_type = page_result.get("page_type", "")
+            normalized_page_type = _normalize_page_type(raw_page_type)
 
             for entry in page_result.get("items", []):
                 description = str(entry.get("description", "")).strip()
@@ -328,6 +319,7 @@ class OcrExtractor:
                     amount=amount,
                     section=str(entry.get("section", "")).strip().lower(),
                     raw_text=f"[Page {page_num}] {description}  {raw_amount}",
+                    page_type=normalized_page_type,
                     ambiguity_question=ambiguity,
                 ))
 

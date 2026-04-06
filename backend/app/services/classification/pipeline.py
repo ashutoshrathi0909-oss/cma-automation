@@ -1,10 +1,9 @@
-"""Classification pipeline orchestrator.
+"""Classification pipeline orchestrator — AI-only (April 2026).
 
-Tier 0a — Deterministic regex rules: hard-coded pattern matches
-Tier 0b — Golden rule lookup: exact + fuzzy match against 594 CA-verified rules
-Tier 1  — Fuzzy match (score >= 85):  auto_classified, no AI call
-Tier 2  — AI Haiku (confidence >= 0.8): auto_classified
-Tier 3  — Doubt report:                 needs_review, is_doubt=True
+All items are classified by the ScopedClassifier (DeepSeek V3 via OpenRouter).
+The previous 5-tier pipeline (regex → golden rules → fuzzy → AI → doubt) has
+been removed. Rules now serve as AI reference context, not deterministic
+lookup tables.
 
 Every item gets classified OR doubted — nothing left in 'pending' state.
 """
@@ -12,30 +11,14 @@ Every item gets classified OR doubted — nothing left in 'pending' state.
 from __future__ import annotations
 
 import logging
-import os
 
 from app.config import get_settings
 from app.dependencies import get_service_client
 from app.mappings.year_columns import get_year_column
-from app.services.classification.ai_classifier import AIClassifier
-from app.services.classification.fuzzy_matcher import FuzzyMatcher
 from app.services.classification.scoped_classifier import ScopedClassifier
-from app.services.classification.rule_engine import (
-    GoldenRuleLookup,
-    GoldenRuleResult,
-    RuleEngine,
-    RuleMatchResult,
-)
 from app.services.extraction._types import normalize_line_text
 
 logger = logging.getLogger(__name__)
-
-# Set SKIP_AI_CLASSIFICATION=true to skip Tier 2 AI calls (fuzzy + doubt only).
-# Useful for testing or when Anthropic API budget is limited.
-_SKIP_AI = os.getenv("SKIP_AI_CLASSIFICATION", "false").lower() == "true"
-
-# Fuzzy score threshold for Tier 1 confident match
-FUZZY_TIER1_THRESHOLD = 85.0
 
 # Confidence bucket thresholds for summary reporting
 HIGH_CONFIDENCE_FLOOR = 0.85
@@ -51,35 +34,17 @@ def _auto_status(confidence: float) -> str:
     return "approved" if confidence >= AUTO_APPROVE_THRESHOLD else "auto_classified"
 
 
-def _doc_type_to_sheet(document_type: str) -> str | None:
-    """Map document_type to golden rule source_sheet ('pl' or 'bs').
-
-    Returns None for document types that don't map cleanly to pl/bs
-    (e.g. notes_to_accounts, schedules).
-    """
-    dt = (document_type or "").lower()
-    if "profit" in dt or dt == "pl":
-        return "pl"
-    if "balance" in dt or dt == "bs":
-        return "bs"
-    return None  # combined, notes, schedules — don't filter by sheet
-
-
 class ClassificationPipeline:
-    """Orchestrates the 3-tier classification pipeline for financial line items."""
+    """Orchestrates AI-only classification for financial line items."""
 
     def __init__(self) -> None:
-        self._rules = RuleEngine()
-        self._golden = GoldenRuleLookup()
-        self._fuzzy = FuzzyMatcher()
         settings = get_settings()
         if settings.classifier_mode == "legacy":
-            from app.services.classification.ai_classifier import AIClassifier
-            self._ai = AIClassifier()
-            self._use_sync = False
-        else:
-            self._ai = ScopedClassifier()
-            self._use_sync = True  # scoped uses classify_sync
+            logger.warning(
+                "classifier_mode='legacy' is deprecated (April 2026). "
+                "Using ScopedClassifier. Update config to classifier_mode='scoped'."
+            )
+        self._ai = ScopedClassifier()
 
     def classify_item(
         self,
@@ -88,16 +53,17 @@ class ClassificationPipeline:
         industry_type: str,
         document_type: str,
         financial_year: int,
+        has_note_breakdowns: bool = False,
     ) -> dict:
-        """Classify a single line item through the 3-tier pipeline.
+        """Classify a single line item via AI.
 
         Parameters
         ----------
         item:            Extracted line item row (must have 'id', 'description').
         client_id:       Client UUID for the classification record.
-        industry_type:   Passed to fuzzy matcher and AI classifier.
+        industry_type:   Passed to the AI classifier for context filtering.
         document_type:   e.g. 'profit_and_loss', 'balance_sheet'.
-        financial_year:  Used to resolve cma_column (e.g. 2024 → 'C').
+        financial_year:  Used to resolve cma_column (e.g. 2024 → 'B').
 
         Returns
         -------
@@ -108,142 +74,26 @@ class ClassificationPipeline:
         description: str = normalize_line_text(raw_desc)
         amount: float | None = item.get("amount")
         section: str | None = item.get("section")
+        page_type: str | None = item.get("page_type")
         cma_column: str = get_year_column(financial_year, financial_year) or "B"
 
-        # Map document_type to source_sheet for golden rule lookup
-        source_sheet = _doc_type_to_sheet(document_type)
-
-        # ── Tier 0a: Deterministic regex rules ─────────────────────────────────
-        rule_result = self._rules.apply(description, amount, section, industry_type)
-        if rule_result:
-            logger.info(
-                "Tier 0a regex rule: '%s' → %s (rule=%s)",
-                description, rule_result.cma_field_name, rule_result.rule_id,
+        # ── AI classification (single tier) ───────────────────────────────────
+        try:
+            ai_result = self._ai.classify_sync(
+                raw_text=description,
+                amount=amount,
+                section=section,
+                industry_type=industry_type,
+                document_type=document_type,
+                fuzzy_candidates=[],
+                page_type=page_type,
+                has_note_breakdowns=has_note_breakdowns,
             )
-            return {
-                "line_item_id": item["id"],
-                "client_id": client_id,
-                "cma_field_name": rule_result.cma_field_name,
-                "cma_sheet": rule_result.cma_sheet,
-                "cma_row": rule_result.cma_row,
-                "cma_column": cma_column,
-                "broad_classification": rule_result.broad_classification,
-                "classification_method": f"rule_{rule_result.rule_id}",
-                "confidence_score": rule_result.confidence,
-                "fuzzy_match_score": 0,
-                "is_doubt": False,
-                "doubt_reason": None,
-                "ai_best_guess": rule_result.cma_field_name,
-                "alternative_fields": [],
-                "status": _auto_status(rule_result.confidence),
-            }
-
-        # ── Tier 0b: Golden rule lookup (594 CA-verified rules) ────────────────
-        golden_result = self._golden.find_rule(
-            raw_text=description,
-            source_sheet=source_sheet,
-            industry_type=industry_type,
-        )
-        if golden_result:
-            method = f"rule_engine_{golden_result.priority}"
-            # ca_override and ca_interview short-circuit (high confidence)
-            # legacy rules pass through to fuzzy for confirmation
-            if golden_result.priority in ("ca_override", "ca_interview") and golden_result.confidence >= 0.9:
-                logger.info(
-                    "Tier 0b golden rule (%s): '%s' → %s (rule=%s, conf=%.2f)",
-                    golden_result.priority, description,
-                    golden_result.canonical_field_name, golden_result.rule_id,
-                    golden_result.confidence,
-                )
-                return {
-                    "line_item_id": item["id"],
-                    "client_id": client_id,
-                    "cma_field_name": golden_result.canonical_field_name,
-                    "cma_sheet": "input_sheet",
-                    "cma_row": golden_result.canonical_sheet_row,
-                    "cma_column": cma_column,
-                    "broad_classification": None,
-                    "classification_method": method,
-                    "confidence_score": golden_result.confidence,
-                    "fuzzy_match_score": 0,
-                    "is_doubt": False,
-                    "doubt_reason": None,
-                    "ai_best_guess": golden_result.canonical_field_name,
-                    "alternative_fields": [],
-                    "status": _auto_status(golden_result.confidence),
-                }
-            elif golden_result.priority == "legacy":
-                # Legacy rules: log but don't short-circuit; pass to fuzzy for confirmation
-                logger.debug(
-                    "Tier 0b golden rule (legacy, not short-circuiting): '%s' → %s (rule=%s)",
-                    description, golden_result.canonical_field_name, golden_result.rule_id,
-                )
-            else:
-                # ca_interview with confidence < 0.9 — still use it but mark appropriately
-                logger.info(
-                    "Tier 0b golden rule (%s): '%s' → %s (rule=%s, conf=%.2f)",
-                    golden_result.priority, description,
-                    golden_result.canonical_field_name, golden_result.rule_id,
-                    golden_result.confidence,
-                )
-                return {
-                    "line_item_id": item["id"],
-                    "client_id": client_id,
-                    "cma_field_name": golden_result.canonical_field_name,
-                    "cma_sheet": "input_sheet",
-                    "cma_row": golden_result.canonical_sheet_row,
-                    "cma_column": cma_column,
-                    "broad_classification": None,
-                    "classification_method": method,
-                    "confidence_score": golden_result.confidence,
-                    "fuzzy_match_score": 0,
-                    "is_doubt": False,
-                    "doubt_reason": None,
-                    "ai_best_guess": golden_result.canonical_field_name,
-                    "alternative_fields": [],
-                    "status": _auto_status(golden_result.confidence),
-                }
-
-        # ── Tier 1: Fuzzy matching ────────────────────────────────────────────
-        fuzzy_results = self._fuzzy.match(description, industry_type)
-        best_fuzzy = fuzzy_results[0] if fuzzy_results else None
-
-        if best_fuzzy and best_fuzzy.score >= FUZZY_TIER1_THRESHOLD:
-            method = "learned" if best_fuzzy.source == "learned" else "fuzzy_match"
-            logger.debug(
-                "Tier 1 match: '%s' → %s (score=%.1f)",
-                description,
-                best_fuzzy.cma_field_name,
-                best_fuzzy.score,
+        except Exception as exc:
+            logger.error(
+                "classify_item AI call failed for '%s': %s",
+                description, type(exc).__name__,
             )
-            return {
-                "line_item_id": item["id"],
-                "client_id": client_id,
-                "cma_field_name": best_fuzzy.cma_field_name,
-                "cma_sheet": best_fuzzy.cma_sheet,
-                "cma_row": int(best_fuzzy.cma_row) if best_fuzzy.cma_row is not None else 0,
-                "cma_column": cma_column,
-                "broad_classification": best_fuzzy.broad_classification,
-                "classification_method": method,
-                "confidence_score": round(best_fuzzy.score / 100.0, 4),
-                "fuzzy_match_score": int(round(best_fuzzy.score)),
-                "is_doubt": False,
-                "doubt_reason": None,
-                "ai_best_guess": best_fuzzy.cma_field_name,
-                "alternative_fields": [
-                    {
-                        "cma_field_name": r.cma_field_name,
-                        "cma_row": r.cma_row,
-                        "score": r.score,
-                    }
-                    for r in fuzzy_results[1:3]
-                ],
-                "status": _auto_status(round(best_fuzzy.score / 100.0, 4)),
-            }
-
-        # ── Tier 2: AI classification ─────────────────────────────────────────
-        if _SKIP_AI:
-            logger.debug("SKIP_AI_CLASSIFICATION=true — routing '%s' to doubt", description)
             return {
                 "line_item_id": item["id"],
                 "client_id": client_id,
@@ -252,43 +102,20 @@ class ClassificationPipeline:
                 "cma_row": 0,
                 "cma_column": cma_column,
                 "broad_classification": None,
-                "classification_method": "manual",
+                "classification_method": "scoped_doubt",
                 "confidence_score": 0.0,
-                "fuzzy_match_score": int(round(best_fuzzy.score)) if best_fuzzy else 0,
+                "fuzzy_match_score": 0,
                 "is_doubt": True,
-                "doubt_reason": "AI classification skipped (SKIP_AI_CLASSIFICATION=true)",
+                "doubt_reason": f"Classification error: {type(exc).__name__}",
                 "ai_best_guess": None,
                 "alternative_fields": [],
                 "status": "needs_review",
             }
 
-        if self._use_sync:
-            ai_result = self._ai.classify_sync(
-                raw_text=description,
-                amount=amount,
-                section=section,
-                industry_type=industry_type,
-                document_type=document_type,
-                fuzzy_candidates=fuzzy_results,
-            )
-        else:
-            ai_result = self._ai.classify(
-                raw_text=description,
-                amount=amount,
-                section=section,
-                industry_type=industry_type,
-                document_type=document_type,
-                fuzzy_candidates=fuzzy_results,
-            )
-
-        fuzzy_score = best_fuzzy.score if best_fuzzy else 0.0
-
         if not ai_result.is_doubt:
             logger.debug(
-                "Tier 2 match: '%s' → %s (confidence=%.2f)",
-                description,
-                ai_result.cma_field_name,
-                ai_result.confidence,
+                "AI classified: '%s' → %s (confidence=%.2f)",
+                description, ai_result.cma_field_name, ai_result.confidence,
             )
             return {
                 "line_item_id": item["id"],
@@ -300,7 +127,7 @@ class ClassificationPipeline:
                 "broad_classification": ai_result.broad_classification,
                 "classification_method": ai_result.classification_method,
                 "confidence_score": ai_result.confidence,
-                "fuzzy_match_score": int(round(fuzzy_score)),
+                "fuzzy_match_score": 0,
                 "is_doubt": False,
                 "doubt_reason": None,
                 "ai_best_guess": ai_result.cma_field_name,
@@ -310,23 +137,19 @@ class ClassificationPipeline:
                 "status": _auto_status(ai_result.confidence),
             }
 
-        # ── Tier 3: Doubt report ──────────────────────────────────────────────
-        logger.info(
-            "Tier 3 doubt: '%s' — %s",
-            description,
-            ai_result.doubt_reason,
-        )
+        # ── Doubt ─────────────────────────────────────────────────────────────
+        logger.info("Doubt: '%s' — %s", description, ai_result.doubt_reason)
         return {
             "line_item_id": item["id"],
             "client_id": client_id,
-            "cma_field_name": ai_result.cma_field_name or "UNCLASSIFIED",  # NOT NULL
+            "cma_field_name": ai_result.cma_field_name or "UNCLASSIFIED",
             "cma_sheet": "input_sheet",
-            "cma_row": 0,  # NOT NULL; 0 = unresolved doubt
+            "cma_row": 0,
             "cma_column": cma_column,
             "broad_classification": None,
             "classification_method": ai_result.classification_method,
             "confidence_score": ai_result.confidence,
-            "fuzzy_match_score": int(round(fuzzy_score)),
+            "fuzzy_match_score": 0,
             "is_doubt": True,
             "doubt_reason": ai_result.doubt_reason,
             "ai_best_guess": ai_result.cma_field_name,
@@ -346,11 +169,64 @@ class ClassificationPipeline:
     ) -> dict:
         """Classify all verified line items for a document.
 
+        Fetches learned_mappings once (cached for the run) and passes
+        them to the ScopedClassifier so the AI sees CA corrections.
+
         Returns
         -------
         Summary dict: total, high_confidence, medium_confidence, needs_review.
         """
         service = get_service_client()
+
+        # Pre-fetch learned mappings for this industry (one DB call, not N)
+        try:
+            learned_resp = (
+                service.table("learned_mappings")
+                .select("source_text,cma_field_name,cma_input_row")
+                .eq("industry_type", industry_type)
+                .execute()
+            )
+            self._ai.set_learned_cache(learned_resp.data or [])
+        except Exception as exc:
+            logger.warning("Could not fetch learned_mappings: %s", exc)
+            self._ai.set_learned_cache([])
+
+        # ── Cross-document awareness: check for existing notes items ──────────
+        # If notes/schedule breakdown items exist (in this or sibling documents),
+        # face sheet totals should be skipped (cma_row=0) to prevent double-counting.
+        has_note_breakdowns = False
+        try:
+            # Check sibling documents (same client + financial year, different doc)
+            sibling_docs = (
+                service.table("documents")
+                .select("id")
+                .eq("client_id", client_id)
+                .eq("financial_year", financial_year)
+                .neq("id", document_id)
+                .execute()
+            )
+            sibling_ids = [d["id"] for d in (sibling_docs.data or [])]
+
+            # Check current document + siblings for notes items
+            all_doc_ids = [document_id] + sibling_ids
+            notes_check = (
+                service.table("extracted_line_items")
+                .select("id", count="exact")
+                .in_("document_id", all_doc_ids)
+                .eq("page_type", "notes")
+                .eq("is_verified", True)
+                .limit(1)
+                .execute()
+            )
+            has_note_breakdowns = (notes_check.count or 0) > 0
+            if has_note_breakdowns:
+                logger.info(
+                    "Cross-doc awareness: notes breakdowns found for client=%s year=%s — "
+                    "face sheet totals will be flagged for skipping",
+                    client_id, financial_year,
+                )
+        except Exception as exc:
+            logger.warning("Cross-doc awareness query failed: %s — proceeding without", exc)
 
         # Fetch all verified line items, paginated to bypass the 1000-row default limit
         _PAGE = 1000
@@ -384,6 +260,7 @@ class ClassificationPipeline:
                     industry_type=industry_type,
                     document_type=document_type,
                     financial_year=financial_year,
+                    has_note_breakdowns=has_note_breakdowns,
                 )
                 service.table("classifications").insert(classification).execute()
 
@@ -406,14 +283,14 @@ class ClassificationPipeline:
                     {
                         "line_item_id": item["id"],
                         "client_id": client_id,
-                        "cma_field_name": "UNCLASSIFIED",  # NOT NULL
+                        "cma_field_name": "UNCLASSIFIED",
                         "cma_sheet": "input_sheet",
-                        "cma_row": 0,  # NOT NULL; 0 = unresolved/error
+                        "cma_row": 0,
                         "cma_column": get_year_column(financial_year, financial_year) or "B",
                         "broad_classification": None,
-                        "classification_method": "manual",  # NOT NULL column
+                        "classification_method": "manual",
                         "confidence_score": 0.0,
-                        "fuzzy_match_score": 0,  # integer column
+                        "fuzzy_match_score": 0,
                         "is_doubt": True,
                         "doubt_reason": f"Classification error: {type(exc).__name__}",
                         "ai_best_guess": None,

@@ -14,8 +14,8 @@
       "ca_interview",
       "legacy"
     ],
-    "total_rules": 594,
-    "ca_override_count": 140,
+    "total_rules": 597,
+    "ca_override_count": 143,
     "ca_interview_count": 73,
     "legacy_count": 381,
     "doubt_count": 7
@@ -8504,6 +8504,45 @@
       "notes": "Only if 'imported' keyword present. Otherwise R44. CA-verified 2026-03-26.",
       "broad_classification": "Manufacturing Expense",
       "cma_classification_text": "Row 43: Stores and spares consumed (Imported)"
+    },
+    {
+      "id": "page_type_fix_001",
+      "fs_item": "consumption of stores & spares",
+      "fs_item_original": "Consumption of Stores & Spares",
+      "canonical_sheet_row": 44,
+      "canonical_field_name": "Stores and spares consumed (Indigenous)",
+      "source_sheet": "pl",
+      "industry_type": "manufacturing",
+      "source": "BCIPL_GT_FY2023",
+      "priority": "ca_override",
+      "confidence": 1.0,
+      "notes": "Stores & Spares consumed is always R44 for manufacturing. Not R71 (Others Admin)."
+    },
+    {
+      "id": "page_type_fix_002",
+      "fs_item": "job work charges & contract labour",
+      "fs_item_original": "Job Work Charges & Contract Labour",
+      "canonical_sheet_row": 46,
+      "canonical_field_name": "Processing / Job Work Charges",
+      "source_sheet": "pl",
+      "industry_type": "manufacturing",
+      "source": "BCIPL_GT_FY2023",
+      "priority": "ca_override",
+      "confidence": 1.0,
+      "notes": "Job work charges (expense) for manufacturing -> R46. Not R71 (Others Admin). Distinct from job work income (R22)."
+    },
+    {
+      "id": "page_type_fix_003",
+      "fs_item": "administrative & general expenses",
+      "fs_item_original": "Administrative & General Expenses",
+      "canonical_sheet_row": 70,
+      "canonical_field_name": "Advertisements and Sales Promotions",
+      "source_sheet": "pl",
+      "industry_type": "all",
+      "source": "BCIPL_GT_FY2023",
+      "priority": "ca_override",
+      "confidence": 1.0,
+      "notes": "CA groups Admin & General Expenses into R70 (Selling & Distribution). Not R71 (Others Admin)."
     }
   ],
   "doubts": [

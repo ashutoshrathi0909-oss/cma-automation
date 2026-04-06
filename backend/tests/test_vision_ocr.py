@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import MagicMock, patch, AsyncMock
 from PIL import Image
 
-from app.services.extraction.ocr_extractor import OcrExtractor, _image_to_base64, _get_scale_multiplier
+from app.services.extraction.ocr_extractor import OcrExtractor, _image_to_base64, _get_scale_multiplier, _normalize_page_type
 from app.services.extraction._types import LineItem, ExtractionError
 
 
@@ -202,7 +202,7 @@ class TestOcrExtractor:
     @patch("app.services.extraction.ocr_extractor.filter_pages")
     @patch("app.services.extraction.ocr_extractor.anthropic.Anthropic")
     def test_batching_splits_large_page_sets(self, mock_anthropic, mock_filter, mock_convert):
-        """20 content pages should result in 4 API calls (batch size 5)."""
+        """20 content pages should result in 3 API calls (batch size 8)."""
         imgs = [make_content_image() for _ in range(20)]
         mock_convert.return_value = imgs
         mock_filter.return_value = [(i + 1, img) for i, img in enumerate(imgs)]
@@ -214,7 +214,7 @@ class TestOcrExtractor:
         extractor = OcrExtractor()
         asyncio.run(extractor.extract(b"fake pdf"))
 
-        assert mock_client.messages.create.call_count == 4  # 5+5+5+5
+        assert mock_client.messages.create.call_count == 3  # 8+8+4
 
     @patch("app.services.extraction.ocr_extractor.convert_from_bytes")
     @patch("app.services.extraction.ocr_extractor.filter_pages")
@@ -248,3 +248,64 @@ class TestLineItemAmbiguityQuestion:
             ambiguity_question="Split: Wages (Row 45) | Other (Row 49)",
         )
         assert "Row 45" in item.ambiguity_question
+
+
+class TestNormalizePageType:
+    """Test page_type normalization from OCR values."""
+
+    def test_profit_and_loss_is_face(self):
+        assert _normalize_page_type("profit_and_loss") == "face"
+
+    def test_balance_sheet_is_face(self):
+        assert _normalize_page_type("balance_sheet") == "face"
+
+    def test_trading_account_is_face(self):
+        assert _normalize_page_type("trading_account") == "face"
+
+    def test_notes_to_accounts_is_notes(self):
+        assert _normalize_page_type("notes_to_accounts") == "notes"
+
+    def test_schedules_is_notes(self):
+        assert _normalize_page_type("schedules") == "notes"
+
+    def test_unknown_type(self):
+        assert _normalize_page_type("other_non_financial") == "unknown"
+        assert _normalize_page_type("") == "unknown"
+
+
+class TestOcrExtractorPageType:
+    """Test that page_type flows through the OCR extraction pipeline."""
+
+    @pytest.fixture(autouse=True)
+    def force_anthropic_provider(self):
+        """Force OCR provider to 'anthropic' so tests can mock anthropic.Anthropic."""
+        from unittest.mock import patch, MagicMock
+        settings_mock = MagicMock(
+            ocr_provider="anthropic",
+            anthropic_api_key="test-key",
+            ocr_model="claude-sonnet-4-6",
+        )
+        with patch("app.services.extraction.ocr_extractor.get_settings", return_value=settings_mock):
+            yield
+
+    @patch("app.services.extraction.ocr_extractor.convert_from_bytes")
+    @patch("app.services.extraction.ocr_extractor.filter_pages")
+    @patch("app.services.extraction.ocr_extractor.anthropic.Anthropic")
+    def test_page_type_carried_through(self, mock_anthropic_cls, mock_filter, mock_convert):
+        """page_type from vision AI should be set on extracted LineItems."""
+        mock_convert.return_value = [make_content_image()]
+        mock_filter.return_value = [(1, make_content_image())]
+
+        # Mock Anthropic response with notes_to_accounts page_type
+        mock_client = MagicMock()
+        mock_anthropic_cls.return_value = mock_client
+        mock_client.messages.create.return_value = make_tool_response(
+            [{"description": "Power & Fuel", "amount": 500000, "section": "expenses", "ambiguity_question": None}],
+            page_type="notes_to_accounts",
+        )
+
+        extractor = OcrExtractor()
+        result = asyncio.run(extractor.extract(b"fake-pdf"))
+
+        assert len(result) >= 1
+        assert result[0].page_type == "notes"

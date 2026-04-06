@@ -1,9 +1,17 @@
-"""Tier 2 classification: Scoped AI classifier with single DeepSeek V3 call.
+"""AI-only classification: Scoped AI classifier with single DeepSeek V3 call.
+
+As of April 2026 this is the ONLY classifier — the previous 5-tier pipeline
+(regex → golden rules → fuzzy → AI → doubt) has been collapsed to AI-only.
+Rules (594 golden + 398 legacy) are now AI reference context, not lookup tables.
 
 Uses DeepSeek V3 via OpenRouter (openai package).
 Dual-path routing: item text keywords + section header keywords to find the
 right CMA section(s). When paths disagree, both sections' contexts are merged
 so the model sees all plausible CMA rows.
+
+Industry-aware rule filtering: contexts are keyed by (section, industry_type).
+Learned mappings (CA corrections) are injected into the prompt as highest-priority
+reference. Unroutable items get a broad fallback context instead of auto-doubt.
 
 Ground truth data is pre-loaded once at init from:
   /app/CMA_Ground_Truth_v1/ (Docker mount) or GT_BASE_DIR env override.
@@ -48,7 +56,8 @@ _GT_BASE = Path(os.getenv("GT_BASE_DIR", Path(__file__).parents[3] / "CMA_Ground
 SECTION_MAPPING_PATH = _GT_BASE / "scripts" / "section_mapping.json"
 SHEET_MAPPING_PATH = _GT_BASE / "scripts" / "sheet_name_mapping.json"
 CANONICAL_LABELS_PATH = _GT_BASE / "reference" / "canonical_labels.json"
-RULES_PATH = _GT_BASE / "reference" / "cma_classification_rules.json"
+RULES_PATH = _GT_BASE / "reference" / "cma_golden_rules_v2.json"
+LEGACY_RULES_PATH = _GT_BASE / "reference" / "cma_classification_rules.json"
 TRAINING_DATA_PATH = _GT_BASE / "database" / "training_data.json"
 
 # ─── Thread pool for parallel API calls ──────────────────────────────────────
@@ -267,10 +276,40 @@ class ScopedClassifier:
             lbl["sheet_row"]: lbl for lbl in canonical_labels
         }
 
-        # Pre-compute scoped contexts for all 23 sections
-        self._contexts = self._build_scoped_contexts(canonical_labels, rules, training_data)
+        # Enrich golden rules with canonical_code and canonical_name
+        # (golden_rules_v2.json uses different field names than legacy rules)
+        for rule in rules:
+            lbl = self._labels_by_row.get(rule.get("canonical_sheet_row"))
+            if lbl:
+                rule["canonical_code"] = lbl["code"]
+                rule["canonical_name"] = lbl["name"]
+            else:
+                rule["canonical_code"] = ""
+                rule["canonical_name"] = rule.get("canonical_field_name", "")
+            # Map 'notes' → 'remarks' for prompt compatibility
+            if "notes" in rule and "remarks" not in rule:
+                rule["remarks"] = rule["notes"]
+
+        # Sort: ca_override first so they appear in prompt before legacy rules
+        _pri = {"ca_override": 0, "ca_interview": 1, "legacy": 2}
+        rules.sort(key=lambda r: _pri.get(r.get("priority", "legacy"), 99))
+
+        # Pre-compute scoped contexts keyed by (section_normalized, industry_type)
+        # 5 industries × 23 sections = up to 115 contexts.
+        # Each context includes industry-specific + "all" (universal) rules,
+        # excluding rules for OTHER industries.
+        self._all_rules = rules  # keep for fallback context building
+        self._canonical_labels = canonical_labels
+        self._training_data = training_data
+        self._contexts = self._build_industry_contexts(canonical_labels, rules, training_data)
+        # Also keep base (non-industry-filtered) contexts as fallback
+        self._base_contexts = self._build_scoped_contexts(canonical_labels, rules, training_data)
+
+        # Per-document learned_mappings cache (reset on each classify_document call)
+        self._learned_cache: list[dict] | None = None
+
         logger.info(
-            "ScopedClassifier ready: %d sections, %d canonical labels, %d rules, %d training examples",
+            "ScopedClassifier ready: %d industry-contexts, %d canonical labels, %d rules, %d training examples",
             len(self._contexts),
             len(canonical_labels),
             len(rules),
@@ -287,6 +326,8 @@ class ScopedClassifier:
         industry_type: str,
         document_type: str,
         fuzzy_candidates: list,
+        page_type: str | None = None,
+        has_note_breakdowns: bool = False,
     ) -> AIClassificationResult:
         """Synchronous wrapper for classify(). Used by pipeline.py.
 
@@ -297,13 +338,20 @@ class ScopedClassifier:
             loop = asyncio.new_event_loop()
             try:
                 return loop.run_until_complete(
-                    self.classify(raw_text, amount, section, industry_type, document_type, fuzzy_candidates)
+                    self.classify(raw_text, amount, section, industry_type, document_type, fuzzy_candidates, page_type=page_type, has_note_breakdowns=has_note_breakdowns)
                 )
             finally:
                 loop.close()
         except Exception as e:
             logger.error("classify_sync failed: %s", e)
             return self._make_doubt(f"Classification error: {e}")
+
+    def set_learned_cache(self, learned_mappings: list[dict]) -> None:
+        """Set the learned mappings cache for the current document run.
+
+        Called once per classify_document() to avoid N DB calls.
+        """
+        self._learned_cache = learned_mappings
 
     async def classify(
         self,
@@ -313,21 +361,41 @@ class ScopedClassifier:
         industry_type: str,
         document_type: str,
         fuzzy_candidates: list,  # FuzzyMatchResult list (unused, kept for signature compat)
+        page_type: str | None = None,
+        has_note_breakdowns: bool = False,
     ) -> AIClassificationResult:
         """Classify a line item using a single DeepSeek V3 call.
 
         Returns AIClassificationResult compatible with pipeline.py.
         Never raises — all failures return a doubt result.
         """
+        # ── Cost guard: item count limit ─────────────────────────────────────
+        if self._items_classified >= MAX_ITEMS_PER_DOCUMENT:
+            return self._make_doubt(
+                f"Item limit exceeded ({MAX_ITEMS_PER_DOCUMENT}). "
+                "Remaining items need manual classification."
+            )
+
         sections = self._route_section(raw_text, section or "", document_type, industry_type)
 
-        # Build context (merge if dual-path returned multiple sections)
-        if len(sections) == 1:
-            context = self._contexts.get(sections[0]) or self._contexts["admin_expense"]
+        # If routing failed, build a broad fallback context instead of auto-doubting.
+        # The AI still decides — it just sees more rows from multiple sections.
+        if "unroutable" in sections:
+            logger.info("Unroutable item → fallback context: '%s' (section='%s', doc_type='%s')",
+                        raw_text, section, document_type)
+            fallback_sections = self._get_fallback_sections(document_type)
+            context = self._merge_contexts(fallback_sections)
+        elif len(sections) == 1:
+            context = self._get_industry_context(sections[0], industry_type)
         else:
-            context = self._merge_contexts(sections)
+            context = self._merge_industry_contexts(sections, industry_type)
 
-        prompt = self._build_prompt(raw_text, amount, section or "not specified", context)
+        prompt = self._build_prompt(
+            raw_text, amount, section or "not specified", context,
+            learned_mappings=self._learned_cache,
+            page_type=page_type,
+            has_note_breakdowns=has_note_breakdowns,
+        )
 
         # ── Single model call ─────────────────────────────────────────────────
         loop = asyncio.get_running_loop()
@@ -346,7 +414,8 @@ class ScopedClassifier:
 
         label = self._labels_by_row.get(cma_row)
         cma_field_name = label["name"] if label else result.get("cma_code", "UNCLASSIFIED")
-        broad = _SECTION_TO_BROAD.get(sections[0], "admin_expense")
+        primary_section = sections[0] if sections[0] != "unroutable" else "admin_expense"
+        broad = _SECTION_TO_BROAD.get(primary_section, "admin_expense")
 
         return AIClassificationResult(
             cma_field_name=cma_field_name,
@@ -445,6 +514,50 @@ class ScopedClassifier:
             examples=all_examples[:20],
         )
 
+    def _get_industry_context(self, section: str, industry_type: str) -> _ScopedContext:
+        """Get context for a (section, industry_type) pair, with fallback."""
+        ind = (industry_type or "all").lower()
+        ctx = self._contexts.get((section, ind))
+        if ctx:
+            return ctx
+        # Fallback: try "all" industry, then base (non-filtered) context
+        ctx = self._contexts.get((section, "all"))
+        if ctx:
+            return ctx
+        return self._base_contexts.get(section) or self._base_contexts.get("admin_expense", self._make_empty_context())
+
+    def _merge_industry_contexts(self, sections: list[str], industry_type: str) -> _ScopedContext:
+        """Merge industry-filtered contexts from multiple sections."""
+        all_rows: list[dict] = []
+        all_rules: list[dict] = []
+        all_examples: list[dict] = []
+        seen_codes: set[str] = set()
+        seen_texts: set[str] = set()
+
+        for sec in sections:
+            ctx = self._get_industry_context(sec, industry_type)
+            for r in ctx.cma_rows:
+                if r["code"] not in seen_codes:
+                    all_rows.append(r)
+                    seen_codes.add(r["code"])
+            all_rules.extend(ctx.rules)
+            for ex in ctx.examples:
+                t = ex.get("text", "").lower()
+                if t not in seen_texts:
+                    all_examples.append(ex)
+                    seen_texts.add(t)
+
+        return _ScopedContext(
+            section_normalized=sections[0],
+            cma_rows=all_rows,
+            rules=all_rules[:30],
+            examples=all_examples[:20],
+        )
+
+    @staticmethod
+    def _make_empty_context() -> _ScopedContext:
+        return _ScopedContext(section_normalized="unknown", cma_rows=[], rules=[], examples=[])
+
     # ── Result Builder ────────────────────────────────────────────────────────
 
     def _make_doubt(self, reason: str) -> AIClassificationResult:
@@ -470,7 +583,11 @@ class ScopedClassifier:
 
     @staticmethod
     def _is_bs_context(document_type: str) -> bool:
-        """Return True if the document_type indicates a Balance Sheet source."""
+        """Return True if the document_type indicates a Balance Sheet source.
+
+        Matches: balance_sheet, "bs".
+        Does NOT match notes_to_accounts — Notes contain BOTH P&L and BS items.
+        """
         dt = (document_type or "").lower()
         return "balance" in dt or dt == "bs"
 
@@ -517,15 +634,19 @@ class ScopedClassifier:
 
         # ── Bug 4: Deferred Tax — P&L context → tax section (rows 99-101) ────
         # Deferred Tax in P&L should go to "tax", not "borrowings_long" (BS rows)
+        # For notes_to_accounts, do NOT override — let AI decide from merged context
         if re.search(r"(?i)deferred\s*tax", raw_lower):
-            if is_pl:
+            dt_lower = (document_type or "").lower()
+            is_notes = "notes" in dt_lower
+            if is_pl and not is_notes:
                 text_route = "tax"
-            elif is_bs:
+            elif is_bs and not is_notes:
                 text_route = "borrowings_long"  # BS Deferred Tax → rows 159/171
 
         # ── Bug 5: BS Inventories — inventory items in BS → bs inventories ────
         # Stock-in-Trade, Finished Goods, WIP on BS should NOT go to P&L rows
-        if is_bs and re.search(
+        # For notes_to_accounts, do NOT override — let AI decide from merged context
+        if is_bs and "notes" not in (document_type or "").lower() and re.search(
             r"(?i)(stock.?in.?trade|finished\s*goods?|work\s*in\s*progress|\bwip\b|semi.?finished|raw\s*material|stores.*spares)",
             raw_lower,
         ):
@@ -581,10 +702,25 @@ class ScopedClassifier:
                 return category
 
         # 5. Document-type fallback
-        if document_type in ("balance_sheet", "notes_bs"):
+        if document_type in ("balance_sheet", "notes_to_accounts"):
             return "other_assets"
 
-        return "admin_expense"  # safe default (largest section)
+        return "unroutable"  # no section matched — caller builds fallback context
+
+    @staticmethod
+    def _get_fallback_sections(document_type: str) -> list[str]:
+        """Return 2-3 broad fallback sections based on document_type.
+
+        Used when routing fails ("unroutable"). Instead of auto-doubting,
+        the AI sees a wider context from multiple sections and still decides.
+        """
+        dt = (document_type or "").lower()
+        if "profit" in dt or dt == "pl":
+            return ["admin_expense", "manufacturing_expense", "revenue"]
+        if "balance" in dt or dt == "bs":
+            return ["other_assets", "current_liabilities", "borrowings_long"]
+        # notes_to_accounts, unknown, or combined — merge top 3 largest
+        return ["admin_expense", "other_assets", "revenue"]
 
     # ── Prompt Builder ────────────────────────────────────────────────────────
 
@@ -616,6 +752,9 @@ class ScopedClassifier:
         amount: float | None,
         section: str,
         context: _ScopedContext,
+        learned_mappings: list[dict] | None = None,
+        page_type: str | None = None,
+        has_note_breakdowns: bool = False,
     ) -> str:
         # Filter out formula rows — these are auto-calculated, not classified
         filtered_rows = [r for r in context.cma_rows if r.get("sheet_row") not in FORMULA_ROWS]
@@ -627,11 +766,17 @@ class ScopedClassifier:
             f"  Row {r['sheet_row']} | {r['code']} | {self._disambiguate_row_name(r, name_counts)}\n"
             for r in filtered_rows
         )
+        # Show ALL ca_override rules (never truncated) + always at least 10 others
+        ca_rules = [r for r in context.rules if r.get("priority") == "ca_override"]
+        other_rules = [r for r in context.rules if r.get("priority") != "ca_override"]
+        shown_rules = ca_rules + other_rules[:max(10, 20 - len(ca_rules))]
+
         rules_text = "".join(
             f"  - \"{rule['fs_item']}\" -> Row {rule['canonical_sheet_row']} ({rule['canonical_name']})"
+            + (" [CA-VERIFIED OVERRIDE]" if rule.get("priority") == "ca_override" else "")
             + (f" [{rule['remarks'][:80]}]" if rule.get("remarks") else "")
             + "\n"
-            for rule in context.rules[:20]
+            for rule in shown_rules
         ) or "  (no specific rules for this section)\n"
 
         examples_text = "".join(
@@ -641,15 +786,69 @@ class ScopedClassifier:
 
         amount_str = f"Rs.{amount:,.0f}" if amount is not None else "not provided"
 
+        # Build page_type context
+        page_type_label = {
+            "face": "Face sheet (P&L / Balance Sheet / Trading Account — summary totals)",
+            "notes": "Notes to Accounts / Schedules (detailed breakdowns)",
+        }.get(page_type or "", "Unknown / not specified")
+
+        page_type_guidance = ""
+        if page_type == "notes":
+            page_type_guidance = (
+                "DOCUMENT SOURCE GUIDANCE:\n"
+                "This item is from NOTES/SCHEDULES — it contains detailed breakdowns.\n"
+                "Classify it normally into the correct CMA row.\n\n"
+            )
+        elif page_type == "face":
+            if has_note_breakdowns:
+                page_type_guidance = (
+                    "DOCUMENT SOURCE GUIDANCE:\n"
+                    "This item is from a FACE SHEET (P&L or Balance Sheet summary).\n"
+                    "IMPORTANT: Notes/Schedule breakdown items EXIST for this report.\n"
+                    "- If this is a TOTAL line that has breakdowns in Notes\n"
+                    "  (e.g., 'Other Expenses', 'Employee Benefit Expenses', 'Manufacturing Expenses',\n"
+                    "   'Finance Costs', 'Depreciation & Amortisation'),\n"
+                    "  set cma_row = 0 — the breakdown items from Notes already fill the CMA rows.\n"
+                    "- If this is a STANDALONE item unlikely to have breakdown\n"
+                    "  (e.g., 'Revenue from Operations', 'Tax Expense', 'Share Capital'),\n"
+                    "  classify it normally.\n"
+                    "- When unsure, prefer cma_row = 0 for face totals (breakdowns are more reliable).\n\n"
+                )
+            else:
+                page_type_guidance = (
+                    "DOCUMENT SOURCE GUIDANCE:\n"
+                    "This item is from a FACE SHEET (P&L or Balance Sheet summary).\n"
+                    "No Notes/Schedule breakdowns were found for this report.\n"
+                    "Classify this item normally — it is the only source of this data.\n\n"
+                )
+
+        # Build learned mappings section (CA-corrected, highest priority)
+        learned_text = ""
+        if learned_mappings:
+            learned_lines = []
+            for lm in learned_mappings[:15]:
+                src = lm.get("source_text", "")
+                field = lm.get("cma_field_name", "")
+                row = lm.get("cma_input_row", 0)
+                if src and field:
+                    learned_lines.append(f'  - "{src}" → Row {row} ({field})')
+            if learned_lines:
+                learned_text = (
+                    "\nCA-CORRECTED MAPPINGS (highest priority — these override all other rules):\n"
+                    + "\n".join(learned_lines)
+                    + "\n"
+                )
+
         return f"""Classify this financial line item into the correct CMA row.
 
 ITEM TO CLASSIFY:
   Text: "{raw_text}"
   Section: {section}
   Amount: {amount_str}
+  Document source: {page_type_label}
 
-POSSIBLE CMA ROWS (pick from ONLY these):
-{rows_text}
+{page_type_guidance}POSSIBLE CMA ROWS (pick from ONLY these):
+{rows_text}{learned_text}
 IMPORTANT RULES:
 - "Others" rows are LAST RESORT. Only pick an "Others" row if NO specific row matches.
 - Before picking "Others", verify you considered every specific row above.
@@ -703,8 +902,57 @@ INSTRUCTIONS:
 
     @staticmethod
     def _load_rules() -> list[dict]:
-        with open(RULES_PATH, encoding="utf-8") as f:
-            return json.load(f)["rules"]
+        """Load golden rules (594) + legacy rules (398), merged with zero loss.
+
+        Golden rules take priority. Legacy rules whose item text is NOT
+        already covered by a golden rule are added as gap-fillers.
+        Falls back to legacy-only if golden file not found (e.g. local tests).
+        """
+        golden_rules: list[dict] = []
+
+        if RULES_PATH.exists():
+            with open(RULES_PATH, encoding="utf-8") as f:
+                golden_rules = json.load(f)["rules"]
+            logger.info("Loaded %d golden rules from %s", len(golden_rules), RULES_PATH)
+        else:
+            logger.warning("Golden rules not found at %s — using legacy only", RULES_PATH)
+
+        # Track which item texts are already covered by golden rules
+        covered = set()
+        for r in golden_rules:
+            covered.add(r["fs_item"].lower().strip())
+
+        # Load legacy rules and keep only those NOT already in golden
+        gap_count = 0
+        if LEGACY_RULES_PATH.exists():
+            with open(LEGACY_RULES_PATH, encoding="utf-8") as f:
+                legacy_rules = json.load(f)["rules"]
+            for r in legacy_rules:
+                if r["fs_item"].lower().strip() not in covered:
+                    # Convert legacy format to golden-compatible format
+                    golden_rules.append({
+                        "id": f"legacy_{r.get('rule_id', 0)}",
+                        "fs_item": r["fs_item"],
+                        "fs_item_original": r["fs_item"],
+                        "canonical_sheet_row": r["canonical_sheet_row"],
+                        "canonical_field_name": r.get("canonical_name", ""),
+                        "source_sheet": r.get("source_sheet", "").lower().replace("balance sheet", "bs").replace("profit and loss", "pl").replace("p&l", "pl"),
+                        "industry_type": "all",
+                        "source": "legacy_classification_xls",
+                        "priority": "legacy",
+                        "confidence": 0.9,
+                        "notes": r.get("remarks", ""),
+                        # Preserve legacy-specific fields for prompt compatibility
+                        "canonical_code": r.get("canonical_code", ""),
+                        "canonical_name": r.get("canonical_name", ""),
+                        "remarks": r.get("remarks", ""),
+                    })
+                    gap_count += 1
+
+        if gap_count:
+            logger.info("Merged %d legacy gap-filler rules into %d golden rules", gap_count, len(golden_rules) - gap_count)
+
+        return golden_rules
 
     @staticmethod
     def _load_training_data() -> list[dict]:
@@ -763,5 +1011,76 @@ INSTRUCTIONS:
                 rules=relevant_rules,
                 examples=unique_examples,
             )
+
+        return contexts
+
+    @staticmethod
+    def _build_industry_contexts(
+        canonical_labels: list[dict],
+        rules: list[dict],
+        training_data: list[dict],
+    ) -> dict[tuple[str, str], _ScopedContext]:
+        """Build contexts keyed by (section_normalized, industry_type).
+
+        For each section, rules are filtered:
+        - Include rules where industry_type matches the target industry
+        - Include rules where industry_type == "all" (universal)
+        - Exclude rules for OTHER industries
+        """
+        industries = ["manufacturing", "trading", "services", "construction", "all"]
+
+        # Index canonical labels by their section
+        labels_by_section: dict[str, list] = {}
+        for lbl in canonical_labels:
+            labels_by_section.setdefault(lbl["section"], []).append(lbl)
+
+        # Index training data by section_normalized
+        training_by_section: dict[str, list] = {}
+        for t in training_data:
+            s = t.get("section_normalized", "other")
+            training_by_section.setdefault(s, []).append(t)
+
+        contexts: dict[tuple[str, str], _ScopedContext] = {}
+
+        for sec_norm, canonical_sections in SECTION_NORMALIZED_TO_CANONICAL.items():
+            # Collect CMA rows (same for all industries — rows don't change)
+            cma_rows: list[dict] = []
+            row_codes: set[str] = set()
+            for cs in canonical_sections:
+                for lbl in labels_by_section.get(cs, []):
+                    if lbl["code"] not in row_codes:
+                        cma_rows.append(lbl)
+                        row_codes.add(lbl["code"])
+
+            # Rules relevant to this section (by canonical_code)
+            section_rules = [r for r in rules if r.get("canonical_code") in row_codes]
+
+            # Training examples for this section
+            seen_texts: set[str] = set()
+            unique_examples: list[dict] = []
+            for ex in training_by_section.get(sec_norm, []):
+                txt = ex.get("text", "").lower()
+                if txt not in seen_texts:
+                    seen_texts.add(txt)
+                    unique_examples.append(ex)
+                    if len(unique_examples) >= 30:
+                        break
+
+            for ind in industries:
+                # Filter rules: include matching industry + "all", exclude others
+                if ind == "all":
+                    filtered_rules = section_rules
+                else:
+                    filtered_rules = [
+                        r for r in section_rules
+                        if r.get("industry_type", "all") in (ind, "all")
+                    ]
+
+                contexts[(sec_norm, ind)] = _ScopedContext(
+                    section_normalized=sec_norm,
+                    cma_rows=cma_rows,
+                    rules=filtered_rules,
+                    examples=unique_examples,
+                )
 
         return contexts

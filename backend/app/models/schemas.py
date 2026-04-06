@@ -142,6 +142,8 @@ class LineItemResponse(BaseModel):
     raw_text: str | None
     is_verified: bool
     ambiguity_question: str | None = None
+    page_type: str | None = None
+    source_sheet: str | None = None
 
     @classmethod
     def from_db(cls, row: dict) -> "LineItemResponse":
@@ -156,6 +158,8 @@ class LineItemResponse(BaseModel):
             raw_text=row.get("raw_text") or source,
             is_verified=row.get("is_verified", False),
             ambiguity_question=row.get("ambiguity_question"),
+            page_type=row.get("page_type"),
+            source_sheet=row.get("source_sheet"),
         )
 
 
@@ -218,6 +222,9 @@ class ClassificationResponse(BaseModel):
     # Joined from extracted_line_items for convenience
     line_item_description: str | None = None
     line_item_amount: float | None = None
+    line_item_section: str | None = None
+    document_name: str | None = None
+    document_type: str | None = None
 
 
 class ClassificationApproveRequest(BaseModel):

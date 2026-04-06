@@ -72,6 +72,8 @@ export interface ExtractedLineItem {
   verified_at: string | null;
   created_at: string;
   ambiguity_question: string | null;
+  page_type: string | null;
+  source_sheet: string | null;
 }
 
 export type ClassificationMethod = "fuzzy_match" | "ai_haiku" | "ai_sonnet" | "manual" | "learned";
@@ -101,6 +103,10 @@ export interface Classification {
   // Joined from extracted_line_items (present in API responses)
   line_item_description?: string | null;
   line_item_amount?: number | null;
+  // Document context for review (joined server-side)
+  line_item_section?: string | null;
+  document_name?: string | null;
+  document_type?: string | null;
 }
 
 export interface LineItemResponse {
@@ -112,6 +118,8 @@ export interface LineItemResponse {
   raw_text: string | null;
   is_verified: boolean;
   ambiguity_question: string | null;
+  page_type: string | null;
+  source_sheet: string | null;
 }
 
 // ── Sheet preview (Excel files) ──────────────────────────────────────────

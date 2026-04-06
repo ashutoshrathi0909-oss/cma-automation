@@ -90,6 +90,8 @@ async def run_extraction(ctx: dict, document_id: str, selected_sheets: list[str]
                     "financial_year": financial_year,
                     "is_verified": False,
                     "ambiguity_question": item.ambiguity_question,
+                    "page_type": item.page_type or None,
+                    "source_sheet": item.source_sheet or None,
                 }
                 for item in line_items
             ]

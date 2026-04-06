@@ -54,6 +54,8 @@ class LineItem:
     amount: float      # 1234567.89 — always normalised to float
     section: str       # "expenses", "income", "assets", "liabilities", ""
     raw_text: str      # original text / cell value before parsing
+    source_sheet: str = field(default="", kw_only=True)  # sheet name for dedup priority
+    page_type: str = field(default="", kw_only=True)     # NEW: "face" | "notes" | "unknown" | ""
     ambiguity_question: str | None = field(default=None, kw_only=True)
 
 
