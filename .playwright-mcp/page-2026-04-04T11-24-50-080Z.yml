@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - heading "CMA Assist" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Automation Platform
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: Sign in
+        - generic [ref=e10]: Enter your credentials to continue
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: Email
+          - textbox "Email" [ref=e15]:
+            - /placeholder: you@firm.com
+            - text: admin@cma-automation.in
+        - generic [ref=e16]:
+          - generic [ref=e17]: Password
+          - textbox "Password" [ref=e18]:
+            - /placeholder: ••••••••
+            - text: CmaAdmin@2026
+        - button "Sign in" [ref=e19]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

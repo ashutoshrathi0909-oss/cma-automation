@@ -343,12 +343,23 @@ async def get_report_classifications(
         batch = item_ids[i : i + _BATCH]
         result = (
             service.table("classifications")
-            .select("*, extracted_line_items(source_text, amount)")
+            .select("*, extracted_line_items(source_text, amount, document_id, section)")
             .in_("line_item_id", batch)
             .order("created_at")
             .execute()
         )
         all_rows.extend(result.data or [])
+
+    # Fetch document metadata for review context
+    doc_map: dict[str, dict] = {}
+    if document_ids:
+        doc_result = (
+            service.table("documents")
+            .select("id, file_name, financial_year, document_type")
+            .in_("id", document_ids)
+            .execute()
+        )
+        doc_map = {d["id"]: d for d in (doc_result.data or [])}
 
     # Flatten the joined data into the response model
     flat_rows: list[dict] = []
@@ -356,6 +367,11 @@ async def get_report_classifications(
         line_item = row.pop("extracted_line_items", None) or {}
         row["line_item_description"] = line_item.get("source_text")
         row["line_item_amount"] = line_item.get("amount")
+        row["line_item_section"] = line_item.get("section")
+        doc_id = line_item.get("document_id")
+        doc = doc_map.get(doc_id, {}) if doc_id else {}
+        row["document_name"] = doc.get("file_name")
+        row["document_type"] = doc.get("document_type")
         flat_rows.append(row)
 
     return [ClassificationResponse(**r) for r in flat_rows]

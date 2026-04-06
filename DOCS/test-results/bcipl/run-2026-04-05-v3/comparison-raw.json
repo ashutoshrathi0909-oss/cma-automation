@@ -1,0 +1,1277 @@
+{
+  "total": 390,
+  "gt_nonzero": 186,
+  "matches": 7,
+  "mismatches": 22,
+  "missing": 157,
+  "extra": 9,
+  "both_empty": 195,
+  "accuracy": 3.763440860215054,
+  "match_details": [
+    {
+      "row": 56,
+      "field": "Depreciation (Manufacturing)",
+      "fy": "B(2021)",
+      "expected": 4.0745669,
+      "got": 4.07,
+      "diff": 0.0011208307808124307
+    },
+    {
+      "row": 99,
+      "field": "Income Tax provision",
+      "fy": "C(2022)",
+      "expected": 2.1999999999999997,
+      "got": 2.19,
+      "diff": 0.004545454545454449
+    },
+    {
+      "row": 100,
+      "field": "Deferred Tax Liability (P&L)",
+      "fy": "D(2023)",
+      "expected": 0.2604,
+      "got": 0.26,
+      "diff": 0.0015360983102919025
+    },
+    {
+      "row": 136,
+      "field": "Term Loan Repayable in next one year",
+      "fy": "B(2021)",
+      "expected": 3.0046986,
+      "got": 3,
+      "diff": 0.001563750853413457
+    },
+    {
+      "row": 136,
+      "field": "Term Loan Repayable in next one year",
+      "fy": "C(2022)",
+      "expected": 4.1154,
+      "got": 4.12,
+      "diff": 0.0011177528308305238
+    },
+    {
+      "row": 136,
+      "field": "Term Loan Repayable in next one year",
+      "fy": "D(2023)",
+      "expected": 5.05186,
+      "got": 5.05,
+      "diff": 0.0003681812243410845
+    },
+    {
+      "row": 172,
+      "field": "Other Intangible assets",
+      "fy": "D(2023)",
+      "expected": 0.0803978,
+      "got": 0.08,
+      "diff": 0.004947896584234938
+    }
+  ],
+  "mismatch_details": [
+    {
+      "row": 34,
+      "field": "Others (Non-Operating Income)",
+      "fy": "B(2021)",
+      "expected": 0.0101926,
+      "got": 10.23,
+      "diff": 1002.6693287286856,
+      "formula": ""
+    },
+    {
+      "row": 34,
+      "field": "Others (Non-Operating Income)",
+      "fy": "D(2023)",
+      "expected": 0.1479,
+      "got": 8.05,
+      "diff": 53.42866801893172,
+      "formula": ""
+    },
+    {
+      "row": 59,
+      "field": "Finished Goods Closing Balance",
+      "fy": "B(2021)",
+      "expected": 3.0139463,
+      "got": -1.84,
+      "diff": 1.6104952832105868,
+      "formula": ""
+    },
+    {
+      "row": 59,
+      "field": "Finished Goods Closing Balance",
+      "fy": "C(2022)",
+      "expected": 3.4024,
+      "got": -1.84,
+      "diff": 1.5407947331295555,
+      "formula": ""
+    },
+    {
+      "row": 67,
+      "field": "Salary and staff expenses",
+      "fy": "B(2021)",
+      "expected": 0.3,
+      "got": 6.68,
+      "diff": 21.266666666666666,
+      "formula": ""
+    },
+    {
+      "row": 67,
+      "field": "Salary and staff expenses",
+      "fy": "C(2022)",
+      "expected": 1.6644,
+      "got": 11.98,
+      "diff": 6.197788993030521,
+      "formula": ""
+    },
+    {
+      "row": 67,
+      "field": "Salary and staff expenses",
+      "fy": "D(2023)",
+      "expected": 1.255,
+      "got": 13.79,
+      "diff": 9.988047808764941,
+      "formula": ""
+    },
+    {
+      "row": 99,
+      "field": "Income Tax provision",
+      "fy": "D(2023)",
+      "expected": 1.7590999999999999,
+      "got": 1.64,
+      "diff": 0.06770507645955318,
+      "formula": ""
+    },
+    {
+      "row": 131,
+      "field": "Working Capital Bank Finance - Bank 1",
+      "fy": "C(2022)",
+      "expected": 19.6089,
+      "got": 13.91,
+      "diff": 0.29062823513812597,
+      "formula": ""
+    },
+    {
+      "row": 131,
+      "field": "Working Capital Bank Finance - Bank 1",
+      "fy": "D(2023)",
+      "expected": 12.1533166,
+      "got": 9.07,
+      "diff": 0.25370166033525365,
+      "formula": ""
+    },
+    {
+      "row": 137,
+      "field": "Term Loan Balance Repayable after one year",
+      "fy": "B(2021)",
+      "expected": 16.6752957,
+      "got": 20.82,
+      "diff": 0.24855357137684828,
+      "formula": ""
+    },
+    {
+      "row": 162,
+      "field": "Gross Block",
+      "fy": "B(2021)",
+      "expected": 45.8968528,
+      "got": 27.27,
+      "diff": 0.40584161361059595,
+      "formula": ""
+    },
+    {
+      "row": 162,
+      "field": "Gross Block",
+      "fy": "C(2022)",
+      "expected": 49.8568,
+      "got": 27.32,
+      "diff": 0.45203061568331704,
+      "formula": ""
+    },
+    {
+      "row": 162,
+      "field": "Gross Block",
+      "fy": "D(2023)",
+      "expected": 53.193990889,
+      "got": 30.44,
+      "diff": 0.42775491195012594,
+      "formula": ""
+    },
+    {
+      "row": 172,
+      "field": "Other Intangible assets",
+      "fy": "B(2021)",
+      "expected": 0.0069279,
+      "got": 0.01,
+      "diff": 0.44343884871317435,
+      "formula": ""
+    },
+    {
+      "row": 172,
+      "field": "Other Intangible assets",
+      "fy": "C(2022)",
+      "expected": 0.1923,
+      "got": 27.51,
+      "diff": 142.05772230889238,
+      "formula": ""
+    },
+    {
+      "row": 194,
+      "field": "Raw Material Indigenous",
+      "fy": "C(2022)",
+      "expected": 8.0476,
+      "got": 11.46,
+      "diff": 0.4240270391172526,
+      "formula": ""
+    },
+    {
+      "row": 212,
+      "field": "Cash on Hand",
+      "fy": "B(2021)",
+      "expected": 0.0137016,
+      "got": 1.75,
+      "diff": 126.72230980323465,
+      "formula": ""
+    },
+    {
+      "row": 213,
+      "field": "Bank Balances",
+      "fy": "C(2022)",
+      "expected": 0.0166,
+      "got": 1.75,
+      "diff": 104.42168674698796,
+      "formula": ""
+    },
+    {
+      "row": 213,
+      "field": "Bank Balances",
+      "fy": "D(2023)",
+      "expected": 0.00248854,
+      "got": 1.16,
+      "diff": 465.13677095807174,
+      "formula": ""
+    },
+    {
+      "row": 221,
+      "field": "Advance Income Tax",
+      "fy": "C(2022)",
+      "expected": 0.4516,
+      "got": 2.38,
+      "diff": 4.270150575730735,
+      "formula": ""
+    },
+    {
+      "row": 249,
+      "field": "Creditors for Expenses",
+      "fy": "D(2023)",
+      "expected": 0.3802,
+      "got": 18.07,
+      "diff": 46.52761704366124,
+      "formula": ""
+    }
+  ],
+  "missing_details": [
+    {
+      "row": 22,
+      "field": "Domestic Sales",
+      "fy": "B(2021)",
+      "expected": 96.5766559
+    },
+    {
+      "row": 22,
+      "field": "Domestic Sales",
+      "fy": "C(2022)",
+      "expected": 234.6388
+    },
+    {
+      "row": 22,
+      "field": "Domestic Sales",
+      "fy": "D(2023)",
+      "expected": 256.95320000000004
+    },
+    {
+      "row": 23,
+      "field": "Export Sales",
+      "fy": "B(2021)",
+      "expected": 8.8566
+    },
+    {
+      "row": 23,
+      "field": "Export Sales",
+      "fy": "C(2022)",
+      "expected": 2.4389
+    },
+    {
+      "row": 23,
+      "field": "Export Sales",
+      "fy": "D(2023)",
+      "expected": 7.44229
+    },
+    {
+      "row": 30,
+      "field": "Interest Received",
+      "fy": "B(2021)",
+      "expected": 0.0812858
+    },
+    {
+      "row": 30,
+      "field": "Interest Received",
+      "fy": "C(2022)",
+      "expected": 0.0579
+    },
+    {
+      "row": 30,
+      "field": "Interest Received",
+      "fy": "D(2023)",
+      "expected": 0.0643
+    },
+    {
+      "row": 32,
+      "field": "Gain on Exchange Fluctuations",
+      "fy": "C(2022)",
+      "expected": 0.1471
+    },
+    {
+      "row": 32,
+      "field": "Gain on Exchange Fluctuations",
+      "fy": "D(2023)",
+      "expected": 0.0297
+    },
+    {
+      "row": 34,
+      "field": "Others (Non-Operating Income)",
+      "fy": "C(2022)",
+      "expected": 0.0187
+    },
+    {
+      "row": 42,
+      "field": "Raw Materials Consumed (Indigenous)",
+      "fy": "B(2021)",
+      "expected": 84.3487361
+    },
+    {
+      "row": 42,
+      "field": "Raw Materials Consumed (Indigenous)",
+      "fy": "C(2022)",
+      "expected": 196.50109999999998
+    },
+    {
+      "row": 42,
+      "field": "Raw Materials Consumed (Indigenous)",
+      "fy": "D(2023)",
+      "expected": 217.7362
+    },
+    {
+      "row": 44,
+      "field": "Stores and spares consumed (Indigenous)",
+      "fy": "B(2021)",
+      "expected": 1.7628801
+    },
+    {
+      "row": 44,
+      "field": "Stores and spares consumed (Indigenous)",
+      "fy": "C(2022)",
+      "expected": 3.4897
+    },
+    {
+      "row": 44,
+      "field": "Stores and spares consumed (Indigenous)",
+      "fy": "D(2023)",
+      "expected": 4.392800182
+    },
+    {
+      "row": 45,
+      "field": "Wages",
+      "fy": "B(2021)",
+      "expected": 6.376117744
+    },
+    {
+      "row": 45,
+      "field": "Wages",
+      "fy": "C(2022)",
+      "expected": 10.315299999999999
+    },
+    {
+      "row": 45,
+      "field": "Wages",
+      "fy": "D(2023)",
+      "expected": 12.5305265
+    },
+    {
+      "row": 46,
+      "field": "Processing / Job Work Charges",
+      "fy": "B(2021)",
+      "expected": 1.216922
+    },
+    {
+      "row": 46,
+      "field": "Processing / Job Work Charges",
+      "fy": "C(2022)",
+      "expected": 2.0517
+    },
+    {
+      "row": 46,
+      "field": "Processing / Job Work Charges",
+      "fy": "D(2023)",
+      "expected": 2.263867022
+    },
+    {
+      "row": 48,
+      "field": "Power, Coal, Fuel and Water",
+      "fy": "B(2021)",
+      "expected": 0.8037364
+    },
+    {
+      "row": 48,
+      "field": "Power, Coal, Fuel and Water",
+      "fy": "C(2022)",
+      "expected": 0.9833
+    },
+    {
+      "row": 48,
+      "field": "Power, Coal, Fuel and Water",
+      "fy": "D(2023)",
+      "expected": 1.216384724
+    },
+    {
+      "row": 49,
+      "field": "Others (Manufacturing)",
+      "fy": "B(2021)",
+      "expected": 0.0825133
+    },
+    {
+      "row": 49,
+      "field": "Others (Manufacturing)",
+      "fy": "C(2022)",
+      "expected": 0.1591
+    },
+    {
+      "row": 49,
+      "field": "Others (Manufacturing)",
+      "fy": "D(2023)",
+      "expected": 0.033101
+    },
+    {
+      "row": 50,
+      "field": "Repairs & Maintenance (Manufacturing)",
+      "fy": "C(2022)",
+      "expected": 0.221
+    },
+    {
+      "row": 50,
+      "field": "Repairs & Maintenance (Manufacturing)",
+      "fy": "D(2023)",
+      "expected": 0.417737848
+    },
+    {
+      "row": 56,
+      "field": "Depreciation (Manufacturing)",
+      "fy": "C(2022)",
+      "expected": 3.9177
+    },
+    {
+      "row": 56,
+      "field": "Depreciation (Manufacturing)",
+      "fy": "D(2023)",
+      "expected": 4.2997
+    },
+    {
+      "row": 58,
+      "field": "Finished Goods Opening Balance",
+      "fy": "B(2021)",
+      "expected": 1.1889489
+    },
+    {
+      "row": 58,
+      "field": "Finished Goods Opening Balance",
+      "fy": "C(2022)",
+      "expected": 3.0139463
+    },
+    {
+      "row": 58,
+      "field": "Finished Goods Opening Balance",
+      "fy": "D(2023)",
+      "expected": 3.4024
+    },
+    {
+      "row": 59,
+      "field": "Finished Goods Closing Balance",
+      "fy": "D(2023)",
+      "expected": 1.8112
+    },
+    {
+      "row": 63,
+      "field": "Depreciation (CMA)",
+      "fy": "B(2021)",
+      "expected": 4.0745669
+    },
+    {
+      "row": 63,
+      "field": "Depreciation (CMA)",
+      "fy": "C(2022)",
+      "expected": 3.9177
+    },
+    {
+      "row": 63,
+      "field": "Depreciation (CMA)",
+      "fy": "D(2023)",
+      "expected": 4.2997
+    },
+    {
+      "row": 64,
+      "field": "Other Manufacturing Exp (CMA)",
+      "fy": "B(2021)",
+      "expected": 8.479289444000006
+    },
+    {
+      "row": 64,
+      "field": "Other Manufacturing Exp (CMA)",
+      "fy": "C(2022)",
+      "expected": 13.730400000000031
+    },
+    {
+      "row": 64,
+      "field": "Other Manufacturing Exp (CMA)",
+      "fy": "D(2023)",
+      "expected": 16.46161709399999
+    },
+    {
+      "row": 68,
+      "field": "Rent, Rates and Taxes",
+      "fy": "B(2021)",
+      "expected": 0.098005
+    },
+    {
+      "row": 68,
+      "field": "Rent, Rates and Taxes",
+      "fy": "C(2022)",
+      "expected": 0.0934
+    },
+    {
+      "row": 68,
+      "field": "Rent, Rates and Taxes",
+      "fy": "D(2023)",
+      "expected": 0.066498461
+    },
+    {
+      "row": 69,
+      "field": "Bad Debts",
+      "fy": "C(2022)",
+      "expected": 0.0934
+    },
+    {
+      "row": 69,
+      "field": "Bad Debts",
+      "fy": "D(2023)",
+      "expected": 0.00134
+    },
+    {
+      "row": 70,
+      "field": "Advertisements and Sales Promotions",
+      "fy": "C(2022)",
+      "expected": 3.2085
+    },
+    {
+      "row": 70,
+      "field": "Advertisements and Sales Promotions",
+      "fy": "D(2023)",
+      "expected": 6.775638744
+    },
+    {
+      "row": 71,
+      "field": "Others (Admin)",
+      "fy": "B(2021)",
+      "expected": 2.3111141
+    },
+    {
+      "row": 71,
+      "field": "Others (Admin)",
+      "fy": "C(2022)",
+      "expected": 3.3785
+    },
+    {
+      "row": 71,
+      "field": "Others (Admin)",
+      "fy": "D(2023)",
+      "expected": 1.6750644319999999
+    },
+    {
+      "row": 72,
+      "field": "Repairs & Maintenance (Admin)",
+      "fy": "B(2021)",
+      "expected": 0.0535862
+    },
+    {
+      "row": 73,
+      "field": "Audit Fees & Directors Remuneration",
+      "fy": "B(2021)",
+      "expected": 1.9927679
+    },
+    {
+      "row": 75,
+      "field": "Miscellaneous Expenses written off",
+      "fy": "C(2022)",
+      "expected": 0.006723
+    },
+    {
+      "row": 83,
+      "field": "Interest on Fixed Loans / Term loans",
+      "fy": "B(2021)",
+      "expected": 1.3013757999999997
+    },
+    {
+      "row": 83,
+      "field": "Interest on Fixed Loans / Term loans",
+      "fy": "C(2022)",
+      "expected": 1.4739
+    },
+    {
+      "row": 83,
+      "field": "Interest on Fixed Loans / Term loans",
+      "fy": "D(2023)",
+      "expected": 1.4261
+    },
+    {
+      "row": 84,
+      "field": "Interest on Working capital loans",
+      "fy": "B(2021)",
+      "expected": 0.6504465
+    },
+    {
+      "row": 84,
+      "field": "Interest on Working capital loans",
+      "fy": "C(2022)",
+      "expected": 1.2744
+    },
+    {
+      "row": 84,
+      "field": "Interest on Working capital loans",
+      "fy": "D(2023)",
+      "expected": 2.5874
+    },
+    {
+      "row": 85,
+      "field": "Bank Charges",
+      "fy": "B(2021)",
+      "expected": 0.087677
+    },
+    {
+      "row": 85,
+      "field": "Bank Charges",
+      "fy": "C(2022)",
+      "expected": 0.1455
+    },
+    {
+      "row": 85,
+      "field": "Bank Charges",
+      "fy": "D(2023)",
+      "expected": 0.1743
+    },
+    {
+      "row": 91,
+      "field": "Loss on Exchange Fluctuations",
+      "fy": "B(2021)",
+      "expected": 0.164477
+    },
+    {
+      "row": 99,
+      "field": "Income Tax provision",
+      "fy": "B(2021)",
+      "expected": 0.018166
+    },
+    {
+      "row": 100,
+      "field": "Deferred Tax Liability (P&L)",
+      "fy": "B(2021)",
+      "expected": -0.0768561
+    },
+    {
+      "row": 101,
+      "field": "Deferred Tax Asset (P&L)",
+      "fy": "C(2022)",
+      "expected": 0.34
+    },
+    {
+      "row": 106,
+      "field": "Brought forward from previous year",
+      "fy": "B(2021)",
+      "expected": 4.2645593999999925
+    },
+    {
+      "row": 106,
+      "field": "Brought forward from previous year",
+      "fy": "C(2022)",
+      "expected": 6.0480591560000025
+    },
+    {
+      "row": 106,
+      "field": "Brought forward from previous year",
+      "fy": "D(2023)",
+      "expected": 12.900289856000013
+    },
+    {
+      "row": 116,
+      "field": "Issued, Subscribed and Paid up",
+      "fy": "B(2021)",
+      "expected": 3.0942
+    },
+    {
+      "row": 116,
+      "field": "Issued, Subscribed and Paid up",
+      "fy": "C(2022)",
+      "expected": 3.0942
+    },
+    {
+      "row": 116,
+      "field": "Issued, Subscribed and Paid up",
+      "fy": "D(2023)",
+      "expected": 3.09
+    },
+    {
+      "row": 122,
+      "field": "Balance transferred from profit and loss a/c",
+      "fy": "B(2021)",
+      "expected": 6.0480591560000025
+    },
+    {
+      "row": 122,
+      "field": "Balance transferred from profit and loss a/c",
+      "fy": "C(2022)",
+      "expected": 12.900289856000013
+    },
+    {
+      "row": 122,
+      "field": "Balance transferred from profit and loss a/c",
+      "fy": "D(2023)",
+      "expected": 17.075320943000076
+    },
+    {
+      "row": 123,
+      "field": "Share Premium A/c",
+      "fy": "B(2021)",
+      "expected": 0.9558
+    },
+    {
+      "row": 123,
+      "field": "Share Premium A/c",
+      "fy": "C(2022)",
+      "expected": 0.9558
+    },
+    {
+      "row": 123,
+      "field": "Share Premium A/c",
+      "fy": "D(2023)",
+      "expected": 0.9558
+    },
+    {
+      "row": 131,
+      "field": "Working Capital Bank Finance - Bank 1",
+      "fy": "B(2021)",
+      "expected": 11.1297613
+    },
+    {
+      "row": 132,
+      "field": "Working Capital Bank Finance - Bank 2",
+      "fy": "B(2021)",
+      "expected": 0.8975441
+    },
+    {
+      "row": 132,
+      "field": "Working Capital Bank Finance - Bank 2",
+      "fy": "C(2022)",
+      "expected": 1.4719
+    },
+    {
+      "row": 137,
+      "field": "Term Loan Balance Repayable after one year",
+      "fy": "C(2022)",
+      "expected": 12.7628
+    },
+    {
+      "row": 137,
+      "field": "Term Loan Balance Repayable after one year",
+      "fy": "D(2023)",
+      "expected": 6.324398
+    },
+    {
+      "row": 152,
+      "field": "Unsecured Loans - Quasi Equity",
+      "fy": "B(2021)",
+      "expected": 4.1312812
+    },
+    {
+      "row": 152,
+      "field": "Unsecured Loans - Quasi Equity",
+      "fy": "C(2022)",
+      "expected": 4.1312812
+    },
+    {
+      "row": 152,
+      "field": "Unsecured Loans - Quasi Equity",
+      "fy": "D(2023)",
+      "expected": 4.1312812
+    },
+    {
+      "row": 153,
+      "field": "Unsecured Loans - Long Term Debt",
+      "fy": "D(2023)",
+      "expected": 3.2394
+    },
+    {
+      "row": 159,
+      "field": "Deferred tax liability (BS)",
+      "fy": "B(2021)",
+      "expected": 1.1560242
+    },
+    {
+      "row": 159,
+      "field": "Deferred tax liability (BS)",
+      "fy": "C(2022)",
+      "expected": 0.8161
+    },
+    {
+      "row": 159,
+      "field": "Deferred tax liability (BS)",
+      "fy": "D(2023)",
+      "expected": 1.0759261
+    },
+    {
+      "row": 163,
+      "field": "Less Accumulated Depreciation",
+      "fy": "B(2021)",
+      "expected": 18.6286504
+    },
+    {
+      "row": 163,
+      "field": "Less Accumulated Depreciation",
+      "fy": "C(2022)",
+      "expected": 22.5413
+    },
+    {
+      "row": 163,
+      "field": "Less Accumulated Depreciation",
+      "fy": "D(2023)",
+      "expected": 22.7493617850745
+    },
+    {
+      "row": 165,
+      "field": "Capital Work in Progress",
+      "fy": "B(2021)",
+      "expected": 0.1700714
+    },
+    {
+      "row": 165,
+      "field": "Capital Work in Progress",
+      "fy": "C(2022)",
+      "expected": 0.3956
+    },
+    {
+      "row": 165,
+      "field": "Capital Work in Progress",
+      "fy": "D(2023)",
+      "expected": 0.3113082
+    },
+    {
+      "row": 194,
+      "field": "Raw Material Indigenous",
+      "fy": "B(2021)",
+      "expected": 6.9540016
+    },
+    {
+      "row": 194,
+      "field": "Raw Material Indigenous",
+      "fy": "D(2023)",
+      "expected": 16.825403987999998
+    },
+    {
+      "row": 198,
+      "field": "Stores and Spares Indigenous",
+      "fy": "B(2021)",
+      "expected": 0.0183335
+    },
+    {
+      "row": 198,
+      "field": "Stores and Spares Indigenous",
+      "fy": "C(2022)",
+      "expected": 0.0086
+    },
+    {
+      "row": 198,
+      "field": "Stores and Spares Indigenous",
+      "fy": "D(2023)",
+      "expected": 0.0059969
+    },
+    {
+      "row": 201,
+      "field": "Finished Goods",
+      "fy": "B(2021)",
+      "expected": 3.0139463
+    },
+    {
+      "row": 201,
+      "field": "Finished Goods",
+      "fy": "C(2022)",
+      "expected": 3.4024
+    },
+    {
+      "row": 201,
+      "field": "Finished Goods",
+      "fy": "D(2023)",
+      "expected": 1.8112
+    },
+    {
+      "row": 206,
+      "field": "Domestic Receivables",
+      "fy": "B(2021)",
+      "expected": 17.920598596
+    },
+    {
+      "row": 206,
+      "field": "Domestic Receivables",
+      "fy": "C(2022)",
+      "expected": 34.7017
+    },
+    {
+      "row": 206,
+      "field": "Domestic Receivables",
+      "fy": "D(2023)",
+      "expected": 15.48420118
+    },
+    {
+      "row": 207,
+      "field": "Export Receivables",
+      "fy": "B(2021)",
+      "expected": 0.593770304
+    },
+    {
+      "row": 207,
+      "field": "Export Receivables",
+      "fy": "C(2022)",
+      "expected": 1.6205
+    },
+    {
+      "row": 207,
+      "field": "Export Receivables",
+      "fy": "D(2023)",
+      "expected": 1.092081601
+    },
+    {
+      "row": 208,
+      "field": "Debtors more than 6 months",
+      "fy": "B(2021)",
+      "expected": 0.0077514
+    },
+    {
+      "row": 208,
+      "field": "Debtors more than 6 months",
+      "fy": "D(2023)",
+      "expected": 0.0656847
+    },
+    {
+      "row": 212,
+      "field": "Cash on Hand",
+      "fy": "C(2022)",
+      "expected": 0.0089
+    },
+    {
+      "row": 212,
+      "field": "Cash on Hand",
+      "fy": "D(2023)",
+      "expected": 0.0132336
+    },
+    {
+      "row": 213,
+      "field": "Bank Balances",
+      "fy": "B(2021)",
+      "expected": 0.6445703
+    },
+    {
+      "row": 215,
+      "field": "Other Fixed Deposits",
+      "fy": "B(2021)",
+      "expected": 1.0919991
+    },
+    {
+      "row": 215,
+      "field": "Other Fixed Deposits",
+      "fy": "C(2022)",
+      "expected": 0.6316
+    },
+    {
+      "row": 215,
+      "field": "Other Fixed Deposits",
+      "fy": "D(2023)",
+      "expected": 1.1400874
+    },
+    {
+      "row": 219,
+      "field": "Advances recoverable in cash or in kind",
+      "fy": "B(2021)",
+      "expected": 0.0425099
+    },
+    {
+      "row": 219,
+      "field": "Advances recoverable in cash or in kind",
+      "fy": "C(2022)",
+      "expected": 0.6746
+    },
+    {
+      "row": 219,
+      "field": "Advances recoverable in cash or in kind",
+      "fy": "D(2023)",
+      "expected": 2.203673809
+    },
+    {
+      "row": 220,
+      "field": "Advances to suppliers of raw materials",
+      "fy": "B(2021)",
+      "expected": 0.7549062
+    },
+    {
+      "row": 220,
+      "field": "Advances to suppliers of raw materials",
+      "fy": "C(2022)",
+      "expected": 1.2373
+    },
+    {
+      "row": 220,
+      "field": "Advances to suppliers of raw materials",
+      "fy": "D(2023)",
+      "expected": 0.3528
+    },
+    {
+      "row": 221,
+      "field": "Advance Income Tax",
+      "fy": "B(2021)",
+      "expected": 0.1800876
+    },
+    {
+      "row": 221,
+      "field": "Advance Income Tax",
+      "fy": "D(2023)",
+      "expected": -0.1137
+    },
+    {
+      "row": 222,
+      "field": "Prepaid Expenses",
+      "fy": "B(2021)",
+      "expected": 0.1190591
+    },
+    {
+      "row": 222,
+      "field": "Prepaid Expenses",
+      "fy": "C(2022)",
+      "expected": 0.1317
+    },
+    {
+      "row": 222,
+      "field": "Prepaid Expenses",
+      "fy": "D(2023)",
+      "expected": 0.1428
+    },
+    {
+      "row": 223,
+      "field": "Other Advances / current asset",
+      "fy": "B(2021)",
+      "expected": 0.2451413
+    },
+    {
+      "row": 223,
+      "field": "Other Advances / current asset",
+      "fy": "C(2022)",
+      "expected": 0.2909
+    },
+    {
+      "row": 223,
+      "field": "Other Advances / current asset",
+      "fy": "D(2023)",
+      "expected": 0.3554
+    },
+    {
+      "row": 232,
+      "field": "Debtors more than six months (Non-Current)",
+      "fy": "B(2021)",
+      "expected": 0.0077514
+    },
+    {
+      "row": 232,
+      "field": "Debtors more than six months (Non-Current)",
+      "fy": "D(2023)",
+      "expected": 0.0656847
+    },
+    {
+      "row": 236,
+      "field": "Advances to suppliers of capital goods",
+      "fy": "B(2021)",
+      "expected": 1.1702349
+    },
+    {
+      "row": 236,
+      "field": "Advances to suppliers of capital goods",
+      "fy": "C(2022)",
+      "expected": 0.1691
+    },
+    {
+      "row": 236,
+      "field": "Advances to suppliers of capital goods",
+      "fy": "D(2023)",
+      "expected": 0.419740721
+    },
+    {
+      "row": 237,
+      "field": "Security deposits with government departments",
+      "fy": "B(2021)",
+      "expected": 0.2460627
+    },
+    {
+      "row": 237,
+      "field": "Security deposits with government departments",
+      "fy": "C(2022)",
+      "expected": 0.3221
+    },
+    {
+      "row": 237,
+      "field": "Security deposits with government departments",
+      "fy": "D(2023)",
+      "expected": 0.3563923
+    },
+    {
+      "row": 238,
+      "field": "Other non current assets",
+      "fy": "B(2021)",
+      "expected": 0.3384301
+    },
+    {
+      "row": 242,
+      "field": "Sundry Creditors for goods",
+      "fy": "B(2021)",
+      "expected": 10.3146846
+    },
+    {
+      "row": 242,
+      "field": "Sundry Creditors for goods",
+      "fy": "C(2022)",
+      "expected": 12.7866
+    },
+    {
+      "row": 242,
+      "field": "Sundry Creditors for goods",
+      "fy": "D(2023)",
+      "expected": 14.2867881
+    },
+    {
+      "row": 243,
+      "field": "Advance received from customers",
+      "fy": "D(2023)",
+      "expected": 0.8996
+    },
+    {
+      "row": 244,
+      "field": "Provision for Taxation",
+      "fy": "B(2021)",
+      "expected": 0.3206985
+    },
+    {
+      "row": 246,
+      "field": "Other statutory liabilities (due within 1 year)",
+      "fy": "B(2021)",
+      "expected": 0.4849663
+    },
+    {
+      "row": 246,
+      "field": "Other statutory liabilities (due within 1 year)",
+      "fy": "C(2022)",
+      "expected": 1.3365
+    },
+    {
+      "row": 246,
+      "field": "Other statutory liabilities (due within 1 year)",
+      "fy": "D(2023)",
+      "expected": 0.8386
+    },
+    {
+      "row": 249,
+      "field": "Creditors for Expenses",
+      "fy": "C(2022)",
+      "expected": 0.9561
+    },
+    {
+      "row": 250,
+      "field": "Other current liabilities",
+      "fy": "B(2021)",
+      "expected": 2.5472587
+    },
+    {
+      "row": 250,
+      "field": "Other current liabilities",
+      "fy": "C(2022)",
+      "expected": 4.6491
+    },
+    {
+      "row": 250,
+      "field": "Other current liabilities",
+      "fy": "D(2023)",
+      "expected": 1.4527400000000001
+    }
+  ],
+  "extra_details": [
+    {
+      "row": 47,
+      "field": "Freight and Transportation Charges",
+      "fy": "D(2023)",
+      "got": 4.54,
+      "formula": ""
+    },
+    {
+      "row": 93,
+      "field": "Others (Non-Operating Expenses)",
+      "fy": "B(2021)",
+      "got": 1.75,
+      "formula": ""
+    },
+    {
+      "row": 101,
+      "field": "Deferred Tax Asset (P&L)",
+      "fy": "B(2021)",
+      "got": -0.08,
+      "formula": ""
+    },
+    {
+      "row": 121,
+      "field": "General Reserve",
+      "fy": "B(2021)",
+      "got": 7.05,
+      "formula": ""
+    },
+    {
+      "row": 121,
+      "field": "General Reserve",
+      "fy": "C(2022)",
+      "got": 13.89,
+      "formula": ""
+    },
+    {
+      "row": 154,
+      "field": "Unsecured Loans - Short Term Debt",
+      "fy": "D(2023)",
+      "got": 0.74,
+      "formula": ""
+    },
+    {
+      "row": 214,
+      "field": "Fixed Deposit under lien",
+      "fy": "B(2021)",
+      "got": 0.01,
+      "formula": ""
+    },
+    {
+      "row": 214,
+      "field": "Fixed Deposit under lien",
+      "fy": "D(2023)",
+      "got": 0.01,
+      "formula": ""
+    },
+    {
+      "row": 238,
+      "field": "Other non current assets",
+      "fy": "D(2023)",
+      "got": 0.38,
+      "formula": ""
+    }
+  ]
+}

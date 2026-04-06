@@ -1,0 +1,118 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: CMA Assist
+        - paragraph [ref=e5]: Automation Platform
+      - navigation [ref=e6]:
+        - link "Dashboard" [ref=e7] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e8]
+          - text: Dashboard
+        - link "Clients" [ref=e13] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e14]
+          - text: Clients
+        - link "Settings" [ref=e19] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e20]
+          - text: Settings
+    - generic [ref=e23]:
+      - banner [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - img [ref=e27]
+            - generic [ref=e30]: Ashutosh Rathi
+            - generic [ref=e31]: admin
+          - button "Logout" [ref=e32]:
+            - img
+            - text: Logout
+      - main [ref=e33]:
+        - generic [ref=e34]:
+          - link "BCIPL" [ref=e54] [cursor=pointer]:
+            - /url: /clients/8c3f47b0-1f4a-4159-8166-6f48664d114c
+            - img [ref=e55]
+            - text: BCIPL
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - generic [ref=e57]:
+                - heading "BCIPL CMA v2" [level=1] [ref=e58]
+                - generic [ref=e59]: draft
+              - paragraph [ref=e60]: BCIPL
+            - generic [ref=e40]:
+              - link "Review (54%)" [ref=e61] [cursor=pointer]:
+                - /url: /cma/7f82a84b-6945-46a8-9f44-8d41f36dc5c0/review
+                - button "Review (54%)" [ref=e62]:
+                  - img
+                  - text: Review (54%)
+              - link "Resolve Doubts (228)" [ref=e63] [cursor=pointer]:
+                - /url: /cma/7f82a84b-6945-46a8-9f44-8d41f36dc5c0/doubts
+                - button "Resolve Doubts (228)" [ref=e64]:
+                  - img
+                  - text: Resolve Doubts (228)
+              - link "Audit Trail" [ref=e65] [cursor=pointer]:
+                - /url: /cma/7f82a84b-6945-46a8-9f44-8d41f36dc5c0/audit-trail
+                - button "Audit Trail" [ref=e66]:
+                  - img
+                  - text: Audit Trail
+              - button "Generate Excel" [disabled]:
+                - img
+                - text: Generate Excel
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Classification Summary
+              - generic [ref=e70]: Live counts from the classifications table — updates as you review.
+            - generic [ref=e72]:
+              - generic [ref=e74]:
+                - list [ref=e76]:
+                  - listitem [ref=e77]:
+                    - img "High Confidence legend icon" [ref=e78]
+                    - text: High Confidence
+                  - listitem [ref=e80]:
+                    - img "Medium legend icon" [ref=e81]
+                    - text: Medium
+                  - listitem [ref=e83]:
+                    - img "Needs Review legend icon" [ref=e84]
+                    - text: Needs Review
+                - application [ref=e86]
+              - generic [ref=e99]:
+                - generic [ref=e100]:
+                  - paragraph [ref=e101]: "583"
+                  - paragraph [ref=e102]: Total
+                - generic [ref=e103]:
+                  - paragraph [ref=e104]: "315"
+                  - paragraph [ref=e105]: High
+                - generic [ref=e106]:
+                  - paragraph [ref=e107]: "40"
+                  - paragraph [ref=e108]: Medium
+                - generic [ref=e109]:
+                  - paragraph [ref=e110]: "228"
+                  - paragraph [ref=e111]: Doubts
+                - generic [ref=e112]:
+                  - paragraph [ref=e113]: "315"
+                  - paragraph [ref=e114]: Approved
+                - generic [ref=e115]:
+                  - paragraph [ref=e116]: "0"
+                  - paragraph [ref=e117]: Corrected
+              - generic [ref=e119]:
+                - generic [ref=e120]: Review progress
+                - generic [ref=e121]: 54% reviewed
+          - generic [ref=e124]:
+            - generic [ref=e126]: Linked Documents (3)
+            - list [ref=e128]:
+              - listitem [ref=e129]:
+                - generic "BCIPL_ FY 2023 Final Accounts_25092023.xls" [ref=e130]
+                - generic [ref=e131]: FY 2022-2023
+                - generic [ref=e132]: combined financial statement
+              - listitem [ref=e133]:
+                - generic "6. BCIPL_ Final Accounts_2021-22.xls" [ref=e134]
+                - generic [ref=e135]: FY 2021-2022
+                - generic [ref=e136]: combined financial statement
+              - listitem [ref=e137]:
+                - generic "6. BCIPL_ Final Accounts_2020-21.xls" [ref=e138]
+                - generic [ref=e139]: FY 2020-2021
+                - generic [ref=e140]: combined financial statement
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e49] [cursor=pointer]:
+    - img [ref=e50]
+  - alert [ref=e53]

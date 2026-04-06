@@ -1,0 +1,54 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e38]:
+    - complementary [ref=e39]:
+      - generic [ref=e40]:
+        - text: CMA Assist
+        - paragraph [ref=e41]: Automation Platform
+      - navigation [ref=e42]:
+        - link "Dashboard" [ref=e43] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e44]
+          - text: Dashboard
+        - link "Clients" [ref=e49] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e50]
+          - text: Clients
+        - link "Settings" [ref=e55] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e56]
+          - text: Settings
+    - generic [ref=e59]:
+      - banner [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - generic [ref=e66]: Ashutosh Rathi
+            - generic [ref=e67]: admin
+          - button "Logout" [ref=e68]:
+            - img
+            - text: Logout
+      - main [ref=e69]:
+        - generic [ref=e159]:
+          - link "Back to BCIPL" [ref=e160] [cursor=pointer]:
+            - /url: /clients/8c3f47b0-1f4a-4159-8166-6f48664d114c
+            - img [ref=e161]
+            - text: Back to BCIPL
+          - generic [ref=e163]:
+            - heading "Upload Documents" [level=1] [ref=e164]
+            - paragraph [ref=e165]: Upload financial documents for BCIPL
+          - generic [ref=e166]:
+            - heading "Add New Document" [level=2] [ref=e167]
+            - generic [ref=e169] [cursor=pointer]:
+              - button "Choose File" [ref=e170]
+              - img [ref=e171]
+              - paragraph [ref=e174]: Drag & drop or click to select
+              - paragraph [ref=e175]: PDF, XLSX, XLS — up to 50 MB
+          - generic [ref=e176]:
+            - heading "Uploaded Documents" [level=2] [ref=e177]
+            - generic [ref=e178]:
+              - img [ref=e179]
+              - paragraph [ref=e182]: No documents uploaded yet
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

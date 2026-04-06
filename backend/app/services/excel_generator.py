@@ -258,6 +258,9 @@ class ExcelGenerator:
         handles reports with mixed source units (e.g. FY2021=rupees, FY2022=lakhs).
         """
         accumulator: dict[tuple[int, int], list[float]] = {}
+        _converted_count = 0
+        _raw_count = 0
+        _skipped_count = 0
 
         for item in cell_data:
             field = item.get("cma_field_name")
@@ -272,6 +275,7 @@ class ExcelGenerator:
                     logger.debug("No valid row for field '%s' (cma_row=%s) — skipping", field, item.get("cma_row"))
                 if col_letter is None:
                     logger.warning("Year %s not in year mapping — skipping data cell", year)
+                _skipped_count += 1
                 continue
 
             # Per-document unit conversion: convert BEFORE accumulation
@@ -280,13 +284,30 @@ class ExcelGenerator:
                 divisor = doc_divisors[doc_id]
                 if divisor and divisor != 1:
                     amount = round(amount / divisor, 2)
+                    _converted_count += 1
+                else:
+                    _raw_count += 1
             elif unit_divisor and unit_divisor != 1:
                 # Fallback to single divisor (backwards compat for tests)
                 amount = round(amount / unit_divisor, 2)
+                _converted_count += 1
+            else:
+                _raw_count += 1
+                if doc_divisors and doc_id and doc_id not in doc_divisors:
+                    # Safety net: item references a document not in doc_divisors
+                    logger.warning(
+                        "No divisor found for document_id=%s (field=%s, amount=%s) — writing raw amount",
+                        doc_id, field, item.get("amount"),
+                    )
 
             col = column_index_from_string(col_letter)
             key = (row, col)
             accumulator.setdefault(key, []).append(amount)
+
+        logger.info(
+            "Unit conversion summary: %d converted, %d raw (divisor=1), %d skipped (no row/col)",
+            _converted_count, _raw_count, _skipped_count,
+        )
 
         for (row, col), values in accumulator.items():
             cell = ws.cell(row=row, column=col)

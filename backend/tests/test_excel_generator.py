@@ -17,7 +17,12 @@ import openpyxl
 import pytest
 from openpyxl.utils import column_index_from_string
 
-from app.services.excel_generator import ExcelGenerator, _build_formula, _format_number
+from app.services.excel_generator import (
+    ExcelGenerator,
+    _build_formula,
+    _format_number,
+    compute_unit_divisor,
+)
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
@@ -719,3 +724,472 @@ def test_format_number_nan():
 
 def test_format_number_inf():
     assert _format_number(float("inf")) == "0"
+
+
+# ── Unit conversion tests ────────────────────────────────────────────────
+
+
+class TestComputeUnitDivisor:
+    """Tests for compute_unit_divisor — the heart of per-document conversion."""
+
+    def test_lakhs_to_crores(self):
+        assert compute_unit_divisor("lakhs", "crores") == 100
+
+    def test_rupees_to_crores(self):
+        assert compute_unit_divisor("rupees", "crores") == 10_000_000
+
+    def test_rupees_to_lakhs(self):
+        assert compute_unit_divisor("rupees", "lakhs") == 100_000
+
+    def test_thousands_to_lakhs(self):
+        assert compute_unit_divisor("thousands", "lakhs") == 100
+
+    def test_thousands_to_crores(self):
+        assert compute_unit_divisor("thousands", "crores") == 10_000
+
+    def test_lakhs_to_lakhs(self):
+        """Same unit → divisor 1 → no conversion."""
+        assert compute_unit_divisor("lakhs", "lakhs") == 1
+
+    def test_crores_to_crores(self):
+        """Same unit → divisor 1 → no conversion."""
+        assert compute_unit_divisor("crores", "crores") == 1
+
+    def test_crores_to_lakhs(self):
+        """Crores→lakhs means MULTIPLYING, so divisor < 1."""
+        assert compute_unit_divisor("crores", "lakhs") == pytest.approx(0.01)
+
+    def test_unknown_source_defaults_to_1(self):
+        """Unknown source_unit defaults to 1 (rupees)."""
+        assert compute_unit_divisor("unknown_unit", "crores") == 10_000_000
+
+    def test_unknown_output_defaults_to_lakhs(self):
+        """Unknown output_unit defaults to lakhs (100_000)."""
+        assert compute_unit_divisor("rupees", "unknown_unit") == 100_000
+
+
+class TestFillDataCellsWithDocDivisors:
+    """Tests for _fill_data_cells unit conversion using per-document divisors.
+
+    This is the critical path: each item's amount must be divided by its
+    document's divisor BEFORE writing to the worksheet.
+    """
+
+    def test_single_doc_lakhs_to_crores(self):
+        """Lakhs source → crores output: amounts divided by 100."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 15000.0,  # 15000 lakhs
+                "document_id": "doc-fy22",
+            }
+        ]
+        doc_divisors = {"doc-fy22": 100}  # lakhs → crores
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # 15000 / 100 = 150.0 crores
+        assert ws.cell(row=22, column=2).value == 150.0
+
+    def test_single_doc_rupees_to_crores(self):
+        """Rupees source → crores output: amounts divided by 10,000,000."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2023, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Wages",
+                "financial_year": 2023,
+                "amount": 50_000_000.0,  # 5 crore in rupees
+                "document_id": "doc-fy23",
+            }
+        ]
+        doc_divisors = {"doc-fy23": 10_000_000}  # rupees → crores
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # 50,000,000 / 10,000,000 = 5.0 crores
+        assert ws.cell(row=45, column=2).value == 5.0
+
+    def test_mixed_source_units_across_years(self):
+        """FY2021 in rupees, FY2022 in lakhs, output in crores.
+
+        This is the exact scenario from the bug report:
+        each year has a different source_unit, and the generator must
+        apply the correct divisor per-document.
+        """
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [
+            {"financial_year": 2021, "nature": "audited"},
+            {"financial_year": 2022, "nature": "audited"},
+            {"financial_year": 2023, "nature": "audited"},
+        ]
+        cell_data = [
+            # FY2021: rupees
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2021,
+                "amount": 100_000_000.0,  # 10 crore in rupees
+                "document_id": "doc-fy21",
+            },
+            # FY2022: lakhs (the bug scenario)
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 23700.0,  # 237 crore in lakhs
+                "document_id": "doc-fy22",
+            },
+            # FY2023: rupees
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2023,
+                "amount": 150_000_000.0,  # 15 crore in rupees
+                "document_id": "doc-fy23",
+            },
+        ]
+        doc_divisors = {
+            "doc-fy21": 10_000_000,  # rupees → crores
+            "doc-fy22": 100,          # lakhs → crores
+            "doc-fy23": 10_000_000,  # rupees → crores
+        }
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # base=2021 → B=2021, C=2022, D=2023
+        assert ws.cell(row=22, column=2).value == 10.0   # 100M / 10M = 10 Cr
+        assert ws.cell(row=22, column=3).value == 237.0   # 23700 / 100 = 237 Cr
+        assert ws.cell(row=22, column=4).value == 15.0    # 150M / 10M = 15 Cr
+
+    def test_no_conversion_when_divisor_is_1(self):
+        """When divisor is 1 (same unit), amounts pass through unchanged."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2024, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2024,
+                "amount": 500.0,
+                "document_id": "doc-1",
+            }
+        ]
+        doc_divisors = {"doc-1": 1}  # lakhs → lakhs = no conversion
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        assert ws.cell(row=22, column=2).value == 500.0
+
+    def test_multi_item_formula_with_conversion(self):
+        """Multiple items mapping to same cell: each value converted before formula."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Salary and staff expenses",
+                "financial_year": 2022,
+                "amount": 15471.0,  # raw lakhs
+                "document_id": "doc-fy22",
+            },
+            {
+                "cma_field_name": "Salary and staff expenses",
+                "financial_year": 2022,
+                "amount": 11.98,  # raw lakhs
+                "document_id": "doc-fy22",
+            },
+        ]
+        doc_divisors = {"doc-fy22": 100}  # lakhs → crores
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # 15471/100 = 154.71, 11.98/100 = 0.12
+        # row 67 = Salary and staff expenses, col B (base=2022)
+        assert ws.cell(row=67, column=2).value == "=154.71+0.12"
+
+    def test_conversion_applied_to_all_sections(self):
+        """Conversion works for both P&L and Balance Sheet items."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            # P&L item
+            {
+                "cma_field_name": "Wages",
+                "financial_year": 2022,
+                "amount": 500.0,  # lakhs
+                "document_id": "doc-1",
+            },
+            # Balance Sheet item
+            {
+                "cma_field_name": "Bank Balances",
+                "financial_year": 2022,
+                "amount": 11.28,  # lakhs
+                "document_id": "doc-1",
+            },
+        ]
+        doc_divisors = {"doc-1": 100}  # lakhs → crores
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # Wages (row 45): 500/100 = 5.0
+        assert ws.cell(row=45, column=2).value == 5.0
+        # Bank Balances (row 213): 11.28/100 = 0.11 (rounded to 2dp)
+        assert ws.cell(row=213, column=2).value == 0.11
+
+    def test_fallback_to_single_unit_divisor(self):
+        """When doc_divisors is None, falls back to the legacy single unit_divisor."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 10000.0,
+                "document_id": "doc-1",
+            }
+        ]
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, unit_divisor=100)
+
+        # 10000 / 100 = 100.0
+        assert ws.cell(row=22, column=2).value == 100.0
+
+    def test_item_without_document_id_uses_fallback(self):
+        """Item missing document_id falls back to single unit_divisor."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 10000.0,
+                # no document_id
+            }
+        ]
+        doc_divisors = {"doc-1": 100}
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, unit_divisor=50, doc_divisors=doc_divisors)
+
+        # No matching doc_id in doc_divisors → falls back to unit_divisor=50
+        # 10000 / 50 = 200.0
+        assert ws.cell(row=22, column=2).value == 200.0
+
+    def test_item_with_unknown_document_id_uses_fallback(self):
+        """Item with doc_id not in doc_divisors falls back to single unit_divisor."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 10000.0,
+                "document_id": "doc-unknown",
+            }
+        ]
+        doc_divisors = {"doc-1": 100}
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, unit_divisor=50, doc_divisors=doc_divisors)
+
+        # doc-unknown not in doc_divisors → falls back to unit_divisor=50
+        # 10000 / 50 = 200.0
+        assert ws.cell(row=22, column=2).value == 200.0
+
+    def test_no_value_over_1000_for_lakhs_to_crores(self):
+        """Bug regression: for BCIPL FY2022 in lakhs → crores, no cell should exceed ~237 Cr.
+
+        If any value is > 1000, it's still in raw lakhs (not converted).
+        """
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        # Simulate multiple items from a lakhs-denominated document
+        cell_data = [
+            {"cma_field_name": "Domestic Sales", "financial_year": 2022, "amount": 23700.0, "document_id": "doc-fy22"},
+            {"cma_field_name": "Wages", "financial_year": 2022, "amount": 166.0, "document_id": "doc-fy22"},
+            {"cma_field_name": "Bank Balances", "financial_year": 2022, "amount": 2.0, "document_id": "doc-fy22"},
+            {"cma_field_name": "Audit Fees & Directors Remuneration", "financial_year": 2022, "amount": 15.0, "document_id": "doc-fy22"},
+        ]
+        doc_divisors = {"doc-fy22": 100}  # lakhs → crores
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors=doc_divisors)
+
+        # Verify converted values
+        assert ws.cell(row=22, column=2).value == 237.0    # 23700/100
+        assert ws.cell(row=45, column=2).value == 1.66     # 166/100
+        assert ws.cell(row=213, column=2).value == 0.02    # 2/100
+        assert ws.cell(row=73, column=2).value == 0.15     # 15/100
+
+    def test_item_without_doc_id_and_no_fallback_passes_raw(self):
+        """Item without doc_id and unit_divisor=1: amount passes through raw."""
+        _, ws = _make_ws()
+        gen = _make_generator()
+        docs = [{"financial_year": 2022, "nature": "audited"}]
+        cell_data = [
+            {
+                "cma_field_name": "Domestic Sales",
+                "financial_year": 2022,
+                "amount": 15471.0,
+                # no document_id
+            }
+        ]
+
+        gen.fill_workbook(ws, "Test Co", docs, cell_data, doc_divisors={})
+
+        # Empty doc_divisors + no fallback → raw amount
+        assert ws.cell(row=22, column=2).value == 15471.0
+
+
+class TestGenerateIntegrationWithUnits:
+    """Integration tests verifying that generate() correctly computes and applies doc_divisors."""
+
+    def _build_service_with_units(
+        self,
+        source_unit: str = "lakhs",
+        cma_output_unit: str = "crores",
+    ) -> MagicMock:
+        """Build mock service with source_unit and cma_output_unit set."""
+        service = MagicMock()
+
+        report_row = {
+            "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "client_id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+            "document_ids": ["doc-ccc"],
+            "cma_output_unit": cma_output_unit,
+        }
+        client_row = {"id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb", "name": "Test Client Ltd"}
+        doc_row = {
+            "id": "doc-ccc",
+            "financial_year": 2022,
+            "nature": "audited",
+            "source_unit": source_unit,
+        }
+        item_row = {"id": "item-ddd", "document_id": "doc-ccc", "amount": 15000.0}
+        clf_row = {"line_item_id": "item-ddd", "cma_field_name": "Domestic Sales", "cma_row": 22}
+
+        call_count = {"extracted_line_items": 0}
+
+        def table_side_effect(name: str):
+            chain = MagicMock()
+            chain.select.return_value = chain
+            chain.eq.return_value = chain
+            chain.in_.return_value = chain
+            chain.single.return_value = chain
+            chain.update.return_value = chain
+            chain.range.return_value = chain
+
+            if name == "cma_reports":
+                chain.execute.return_value = MagicMock(data=report_row)
+            elif name == "clients":
+                chain.execute.return_value = MagicMock(data=client_row)
+            elif name == "documents":
+                chain.execute.return_value = MagicMock(data=[doc_row])
+            elif name == "extracted_line_items":
+                # First call returns items, second call returns empty (pagination end)
+                call_count["extracted_line_items"] += 1
+                if call_count["extracted_line_items"] == 1:
+                    chain.execute.return_value = MagicMock(data=[item_row])
+                else:
+                    chain.execute.return_value = MagicMock(data=[])
+            elif name == "classifications":
+                chain.execute.return_value = MagicMock(data=[clf_row])
+            elif name == "cma_report_history":
+                chain.execute.return_value = MagicMock(data=[])
+            else:
+                chain.execute.return_value = MagicMock(data=[])
+            return chain
+
+        service.table.side_effect = table_side_effect
+
+        storage_bucket = MagicMock()
+        storage_bucket.upload.return_value = {"Key": "cma_reports/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/output.xlsm"}
+        service.storage.from_.return_value = storage_bucket
+
+        return service
+
+    def test_generate_applies_lakhs_to_crores_conversion(self):
+        """End-to-end: generate() with lakhs source + crores output divides by 100."""
+        service = self._build_service_with_units(source_unit="lakhs", cma_output_unit="crores")
+
+        # Use a real workbook to verify actual cell values
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "INPUT SHEET"
+
+        with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
+            mock_load.return_value = wb
+            gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+            gen.generate(
+                report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                user_id="user-xxx",
+            )
+
+        # Domestic Sales = row 22, FY2022 = col B (index 2, since only year)
+        cell_val = ws.cell(row=22, column=2).value
+        # 15000 lakhs / 100 = 150.0 crores
+        assert cell_val == 150.0, f"Expected 150.0 (crores), got {cell_val} — lakhs not converted!"
+
+    def test_generate_no_conversion_when_same_unit(self):
+        """generate() with lakhs source + lakhs output: divisor=1, no conversion."""
+        service = self._build_service_with_units(source_unit="lakhs", cma_output_unit="lakhs")
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "INPUT SHEET"
+
+        with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
+            mock_load.return_value = wb
+            gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+            gen.generate(
+                report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                user_id="user-xxx",
+            )
+
+        cell_val = ws.cell(row=22, column=2).value
+        # 15000 lakhs / 1 = 15000.0 lakhs
+        assert cell_val == 15000.0, f"Expected 15000.0 (same unit), got {cell_val}"
+
+    def test_generate_rupees_to_crores_conversion(self):
+        """generate() with rupees source + crores output: divides by 10,000,000."""
+        service = self._build_service_with_units(source_unit="rupees", cma_output_unit="crores")
+
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "INPUT SHEET"
+
+        with patch("app.services.excel_generator.openpyxl.load_workbook") as mock_load:
+            mock_load.return_value = wb
+
+            # Override item amount for this test
+            # Find and update the mock to return a rupees amount
+            original_side_effect = service.table.side_effect
+            call_count = {"extracted_line_items": 0}
+
+            def modified_table(name):
+                chain = original_side_effect(name)
+                if name == "extracted_line_items":
+                    call_count["extracted_line_items"] += 1
+                    if call_count["extracted_line_items"] <= 1:
+                        chain.execute.return_value = MagicMock(
+                            data=[{"id": "item-ddd", "document_id": "doc-ccc", "amount": 50_000_000.0}]
+                        )
+                return chain
+
+            service.table.side_effect = modified_table
+
+            gen = ExcelGenerator(service=service, template_path="/fake/CMA.xlsm")
+            gen.generate(
+                report_id="aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+                user_id="user-xxx",
+            )
+
+        cell_val = ws.cell(row=22, column=2).value
+        # 50,000,000 rupees / 10,000,000 = 5.0 crores
+        assert cell_val == 5.0, f"Expected 5.0 (crores), got {cell_val}"

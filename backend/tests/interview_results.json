@@ -1,0 +1,138 @@
+{
+  "total": 12,
+  "correct": 8,
+  "results": [
+    {
+      "id": "IQ01",
+      "text": "staff welfare expenses",
+      "industry": "manufacturing",
+      "correct": 45,
+      "got": 45,
+      "got_name": "Wages",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Industry routing: should be R45 for manufacturing, R67 for trading"
+    },
+    {
+      "id": "IQ02",
+      "text": "staff welfare expenses",
+      "industry": "trading",
+      "correct": 67,
+      "got": 45,
+      "got_name": "Wages",
+      "conf": 0.9,
+      "passed": false,
+      "probe": "Same item, different industry \u2014 must give DIFFERENT answer"
+    },
+    {
+      "id": "IQ03",
+      "text": "leave encashment",
+      "industry": "manufacturing",
+      "correct": 45,
+      "got": 45,
+      "got_name": "Wages",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Leave encashment in P&L \u2192 R45. In BS \u2192 R249. Tests context awareness."
+    },
+    {
+      "id": "IQ04",
+      "text": "provision for leave encashment",
+      "industry": "manufacturing",
+      "correct": 249,
+      "got": 249,
+      "got_name": "Creditors for Expenses",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Same concept, BS context \u2192 R249 (Creditors for Expenses), NOT R45"
+    },
+    {
+      "id": "IQ05",
+      "text": "government grant subsidy",
+      "industry": "manufacturing",
+      "correct": 33,
+      "got": 34,
+      "got_name": "Others",
+      "conf": 0.9,
+      "passed": false,
+      "probe": "P&L subsidy \u2192 R33 (Extraordinary income). BS \u2192 R125 (Other Reserve)."
+    },
+    {
+      "id": "IQ06",
+      "text": "insurance premium",
+      "industry": "manufacturing",
+      "correct": 71,
+      "got": 71,
+      "got_name": "Others",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Even under 'manufacturing overheads', insurance \u2192 R71 Admin. CA rule."
+    },
+    {
+      "id": "IQ07",
+      "text": "employee benefit expenses including gratuity epf and esi",
+      "industry": "manufacturing",
+      "correct": 45,
+      "got": 45,
+      "got_name": "Wages",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Long combined line \u2014 must classify by nature (employee cost \u2192 R45 mfg)"
+    },
+    {
+      "id": "IQ08",
+      "text": "repairs and maintenance",
+      "industry": "manufacturing",
+      "correct": 50,
+      "got": 72,
+      "got_name": "Repairs & Maintenance",
+      "conf": 0.9,
+      "passed": false,
+      "probe": "Even tiny amount \u2014 repairs in manufacturing context \u2192 R50, not R72 (Admin)"
+    },
+    {
+      "id": "IQ09",
+      "text": "interest on unsecured loan from directors",
+      "industry": "manufacturing",
+      "correct": 83,
+      "got": 83,
+      "got_name": "Interest on Fixed Loans / Term loans",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Unsecured loan interest \u2192 R83 (Fixed Loans), not R84 (WC). Source: BCIPL-006"
+    },
+    {
+      "id": "IQ10",
+      "text": "discount received from suppliers",
+      "industry": "manufacturing",
+      "correct": 34,
+      "got": 34,
+      "got_name": "Others",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Negative-looking income item. Should be R34 (Others Non-Op Income)."
+    },
+    {
+      "id": "IQ11",
+      "text": "other charges",
+      "industry": "manufacturing",
+      "correct": 71,
+      "got": 49,
+      "got_name": "Others",
+      "conf": 0.9,
+      "passed": false,
+      "probe": "Vague 'other charges' with no context \u2014 should default to R71 (Admin Others)"
+    },
+    {
+      "id": "IQ12",
+      "text": "electricity charges",
+      "industry": "trading",
+      "correct": 71,
+      "got": 71,
+      "got_name": "Others",
+      "conf": 0.9,
+      "passed": true,
+      "probe": "Electricity: manufacturing \u2192 R48, trading \u2192 R71. Source: Q12a"
+    }
+  ]
+}

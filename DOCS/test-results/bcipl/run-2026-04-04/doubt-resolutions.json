@@ -1,0 +1,155 @@
+[
+  {
+    "line_item": "Total Income (I+II)",
+    "amount": 2646373846.20,
+    "doubt_reason": "Total Income not in list",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "P&L subtotal — CMA Excel macro auto-calculates Total Income from Revenue + Other Income inputs. Not a mappable CMA input row.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Profit Before Tax (III-IV)",
+    "amount": 61945241.62,
+    "doubt_reason": "Profit Before Tax not in list",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "P&L computed total. CMA Row 97 (PBT) is auto-calculated by the macro from Revenue - Expenses - Depreciation - Interest.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Profit After Tax (V-VI)",
+    "amount": 41750312.62,
+    "doubt_reason": "Profit After Tax not in expense rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "P&L computed total. CMA Row 102 (PAT) is auto-calculated. Appears in expenses section due to extraction parsing.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Profit After Tax for the year",
+    "amount": 41750312.62,
+    "doubt_reason": "Profit After Tax does not match any specified rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Duplicate PAT from Notes to Financial Statements. Parent P&L PAT already captured.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Cash Generated from Operations before taxes",
+    "amount": 193092089.51,
+    "doubt_reason": "Not applicable to provided rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Cash Flow Statement subtotal. CMA does not have explicit cash flow input rows — these are derived from P&L and BS data.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Net Cash Flow From Operating Activities",
+    "amount": 182223062.88,
+    "doubt_reason": "Not applicable to listed rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Cash flow subtotal. No CMA input mapping.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Net Cash Flow From Investing Activities",
+    "amount": -70973327.87,
+    "doubt_reason": "Not applicable to listed rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Cash flow subtotal. No CMA input mapping.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Net Cash Flow From Financing Activities",
+    "amount": -106262282.49,
+    "doubt_reason": "Not applicable to listed rows",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Cash flow subtotal. No CMA input mapping.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Axis Bank Arena Metal",
+    "amount": 2233614.14,
+    "doubt_reason": "Unclear term, defaulting to Others",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Note-level loan facility name from borrowing schedule. Parent BS borrowing totals (Long-term/Short-term) already classified.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Operating Profit before Changes Working Capital",
+    "amount": 1525.08,
+    "doubt_reason": "Cash flow subtotal",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Cash flow computation subtotal from FY2022 (lakhs). No CMA input row.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "(i) Less than 1 year (aging detail)",
+    "amount": 4291299.38,
+    "doubt_reason": "generic time frame",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Receivable/payable aging bucket from Notes. Parent BS totals already classified.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "(ii) Less than 6 months (aging detail)",
+    "amount": 165762827.81,
+    "doubt_reason": "No matching keywords",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Aging schedule detail line. Parent receivables/payables total already captured in BS classification.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "(Less): Closing",
+    "amount": 17779528.50,
+    "doubt_reason": "Generic expense",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Inventory closing stock adjustment sub-line from Notes. Parent inventory total already classified.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Interest - Term Loan & Others",
+    "amount": 12227090.11,
+    "doubt_reason": "Interest not classified",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Note-level interest detail. Parent P&L interest expense (Row 83) already classified from P&L.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Axis Bank-Business Empowerment",
+    "amount": 325000.00,
+    "doubt_reason": "No specific match",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Specific loan facility name from borrowing notes. Parent borrowing total already classified.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Mrs. Ronak S. Bagadia",
+    "amount": 1547100.00,
+    "doubt_reason": "Person name, no match",
+    "ai_best_guess": null,
+    "my_decision": "UNCLASSIFIED",
+    "reasoning": "Related party name from Notes. Likely director remuneration or unsecured loan detail. Parent total already captured.",
+    "action": "approved_as_exclude"
+  },
+  {
+    "line_item": "Cash & Bank Balances",
+    "amount": 175.03,
+    "doubt_reason": "auto_classified as Cash on Hand",
+    "ai_best_guess": "Cash on Hand",
+    "my_decision": "Cash on Hand",
+    "reasoning": "FY2022 (lakhs). Combined cash & bank line. Mapping to CMA Row 212 (Cash on Hand) is acceptable for a combined line. Bank balance component minor.",
+    "action": "approved_ai_guess"
+  }
+]

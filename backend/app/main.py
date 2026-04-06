@@ -96,9 +96,16 @@ async def unhandled_exception_handler(
 ) -> JSONResponse:
     """Catch-all handler for unexpected exceptions — logs server-side, never leaks details."""
     logger.exception("Unhandled exception on %s %s", request.method, request.url)
+    # Include CORS headers so the browser shows the real error, not "CORS blocked"
+    origin = request.headers.get("origin", "")
+    headers = {}
+    if origin in cors_origins:
+        headers["access-control-allow-origin"] = origin
+        headers["access-control-allow-credentials"] = "true"
     return JSONResponse(
         status_code=500,
         content={"detail": "Internal server error"},
+        headers=headers,
     )
 
 

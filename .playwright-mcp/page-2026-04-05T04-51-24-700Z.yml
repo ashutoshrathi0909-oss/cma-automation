@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e38]:
+    - complementary [ref=e39]:
+      - generic [ref=e40]:
+        - text: CMA Assist
+        - paragraph [ref=e41]: Automation Platform
+      - navigation [ref=e42]:
+        - link "Dashboard" [ref=e43] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e44]
+          - text: Dashboard
+        - link "Clients" [ref=e49] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e50]
+          - text: Clients
+        - link "Settings" [ref=e55] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e56]
+          - text: Settings
+    - generic [ref=e59]:
+      - banner [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - generic [ref=e66]: Ashutosh Rathi
+            - generic [ref=e67]: admin
+          - button "Logout" [ref=e68]:
+            - img
+            - text: Logout
+      - main [ref=e69]:
+        - generic [ref=e334]:
+          - link "Back to client" [ref=e335] [cursor=pointer]:
+            - /url: /clients/8c3f47b0-1f4a-4159-8166-6f48664d114c
+            - img [ref=e336]
+            - text: Back to client
+          - generic [ref=e338]:
+            - heading "Verify Extracted Data" [level=1] [ref=e339]
+            - paragraph [ref=e340]: Review and confirm the extracted financial line items
+            - paragraph [ref=e341]: 6. BCIPL_ Final Accounts_2020-21.xls
+          - generic [ref=e343]:
+            - generic [ref=e344]:
+              - img [ref=e345]
+              - heading "Select Sheets to Extract" [level=2] [ref=e348]
+            - paragraph [ref=e349]: Choose which sheets contain financial data. Sheets are auto-detected, but you can adjust the selection below.
+            - generic [ref=e350]:
+              - button "Select all" [ref=e351]
+              - button "Deselect all" [ref=e352]
+              - generic [ref=e353]: 7 of 17 selected
+            - generic [ref=e354]:
+              - generic [ref=e355] [cursor=pointer]:
+                - checkbox "Trial Balance(523 rows)" [ref=e356]
+                - generic [ref=e357]:
+                  - text: Trial Balance
+                  - generic [ref=e358]: (523 rows)
+              - generic [ref=e359] [cursor=pointer]:
+                - checkbox "BS(59 rows) Auto-detected" [checked] [ref=e360]
+                - generic [ref=e361]:
+                  - text: BS
+                  - generic [ref=e362]: (59 rows)
+                - generic [ref=e363]: Auto-detected
+              - generic [ref=e364] [cursor=pointer]:
+                - checkbox "P & L Ac(54 rows) Auto-detected" [checked] [ref=e365]
+                - generic [ref=e366]:
+                  - text: P & L Ac
+                  - generic [ref=e367]: (54 rows)
+                - generic [ref=e368]: Auto-detected
+              - generic [ref=e369] [cursor=pointer]:
+                - checkbox "CASH FLOW(85 rows) Auto-detected" [checked] [ref=e370]
+                - generic [ref=e371]:
+                  - text: CASH FLOW
+                  - generic [ref=e372]: (85 rows)
+                - generic [ref=e373]: Auto-detected
+              - generic [ref=e374] [cursor=pointer]:
+                - checkbox "Notes BS (1)(56 rows) Auto-detected" [checked] [ref=e375]
+                - generic [ref=e376]:
+                  - text: Notes BS (1)
+                  - generic [ref=e377]: (56 rows)
+                - generic [ref=e378]: Auto-detected
+              - generic [ref=e379] [cursor=pointer]:
+                - checkbox "Notes BS (2)(246 rows) Auto-detected" [checked] [ref=e380]
+                - generic [ref=e381]:
+                  - text: Notes BS (2)
+                  - generic [ref=e382]: (246 rows)
+                - generic [ref=e383]: Auto-detected
+              - generic [ref=e384] [cursor=pointer]:
+                - checkbox "Notes to P & L(146 rows) Auto-detected" [checked] [ref=e385]
+                - generic [ref=e386]:
+                  - text: Notes to P & L
+                  - generic [ref=e387]: (146 rows)
+                - generic [ref=e388]: Auto-detected
+              - generic [ref=e389] [cursor=pointer]:
+                - checkbox "Subnotes to BS(292 rows)" [ref=e390]
+                - generic [ref=e391]:
+                  - text: Subnotes to BS
+                  - generic [ref=e392]: (292 rows)
+              - generic [ref=e393] [cursor=pointer]:
+                - checkbox "Subnotes to PL(156 rows)" [ref=e394]
+                - generic [ref=e395]:
+                  - text: Subnotes to PL
+                  - generic [ref=e396]: (156 rows)
+              - generic [ref=e397] [cursor=pointer]:
+                - checkbox "Co., Deprn (52 rows) Auto-detected" [checked] [ref=e398]
+                - generic [ref=e399]:
+                  - text: Co., Deprn
+                  - generic [ref=e400]: (52 rows)
+                - generic [ref=e401]: Auto-detected
+              - generic [ref=e402] [cursor=pointer]:
+                - checkbox "Memo Schedule(75 rows)" [ref=e403]
+                - generic [ref=e404]:
+                  - text: Memo Schedule
+                  - generic [ref=e405]: (75 rows)
+              - generic [ref=e406] [cursor=pointer]:
+                - checkbox "Memo_18-19(104 rows)" [ref=e407]
+                - generic [ref=e408]:
+                  - text: Memo_18-19
+                  - generic [ref=e409]: (104 rows)
+              - generic [ref=e410] [cursor=pointer]:
+                - checkbox "Def Tax(69 rows)" [ref=e411]
+                - generic [ref=e412]:
+                  - text: Def Tax
+                  - generic [ref=e413]: (69 rows)
+              - generic [ref=e414] [cursor=pointer]:
+                - checkbox "Capital WIP(20 rows)" [ref=e415]
+                - generic [ref=e416]:
+                  - text: Capital WIP
+                  - generic [ref=e417]: (20 rows)
+              - generic [ref=e418] [cursor=pointer]:
+                - checkbox "Depn - IT(45 rows)" [ref=e419]
+                - generic [ref=e420]:
+                  - text: Depn - IT
+                  - generic [ref=e421]: (45 rows)
+              - generic [ref=e422] [cursor=pointer]:
+                - checkbox "E.M.I Schedule(14 rows)" [ref=e423]
+                - generic [ref=e424]:
+                  - text: E.M.I Schedule
+                  - generic [ref=e425]: (14 rows)
+              - generic [ref=e426] [cursor=pointer]:
+                - checkbox "Comparison(78 rows)" [ref=e427]
+                - generic [ref=e428]:
+                  - text: Comparison
+                  - generic [ref=e429]: (78 rows)
+            - generic [ref=e430]:
+              - button "Cancel" [ref=e431]
+              - button "Extract Selected Sheets" [ref=e432]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

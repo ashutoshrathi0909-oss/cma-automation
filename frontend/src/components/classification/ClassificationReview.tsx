@@ -138,6 +138,20 @@ export function ClassificationReview({
                     ₹{clf.line_item_amount.toLocaleString("en-IN")}
                   </p>
                 )}
+                {/* Document context */}
+                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-muted-foreground/70">
+                  {clf.document_name && (
+                    <span className="truncate max-w-[30ch]" title={clf.document_name}>
+                      {clf.document_name}
+                    </span>
+                  )}
+                  {clf.line_item_section && (
+                    <span>Section: {clf.line_item_section}</span>
+                  )}
+                  {clf.cma_row != null && clf.cma_row > 0 && (
+                    <span>Row {clf.cma_row}</span>
+                  )}
+                </div>
               </div>
 
               {/* Right: classification + actions */}

@@ -1,0 +1,34 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e30]:
+    - complementary [ref=e31]:
+      - generic [ref=e32]:
+        - text: CMA Assist
+        - paragraph [ref=e33]: Automation Platform
+      - navigation [ref=e34]:
+        - link "Dashboard" [ref=e35] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e36]
+          - text: Dashboard
+        - link "Clients" [ref=e41] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e42]
+          - text: Clients
+        - link "Settings" [ref=e47] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e48]
+          - text: Settings
+    - generic [ref=e51]:
+      - banner [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e58]: Ashutosh Rathi
+            - generic [ref=e59]: admin
+          - button "Logout" [ref=e60]:
+            - img
+            - text: Logout
+      - main [ref=e61]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

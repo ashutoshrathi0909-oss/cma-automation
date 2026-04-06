@@ -3,13 +3,16 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
 import {
   AlertCircle,
   ArrowLeft,
   ArrowRight,
   CheckSquare,
   FileBarChart,
+  Loader2,
   MessageSquare,
+  Play,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,6 +36,38 @@ export default function CMAOverviewPage() {
   const [client, setClient] = useState<Client | null>(null);
   const [summary, setSummary] = useState<ConfidenceSummary | null>(null);
   const [loading, setLoading] = useState(true);
+  const [classifying, setClassifying] = useState(false);
+  const [documents, setDocuments] = useState<Record<string, { file_name: string; financial_year: number; document_type: string }>>({});
+
+  // Live polling — updates classification summary every 5s while classifying
+  useEffect(() => {
+    if (!reportId || !classifying) return;
+
+    const interval = setInterval(async () => {
+      try {
+        const s = await apiClient<ConfidenceSummary>(
+          `/api/cma-reports/${reportId}/confidence`
+        );
+        setSummary(s);
+        if (s.total > 0) {
+          setClassifying(false);
+        }
+      } catch {
+        // silently ignore polling errors
+      }
+    }, 5000);
+
+    // Safety: stop polling after 2 minutes
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      setClassifying(false);
+    }, 120000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [reportId, classifying]);
 
   useEffect(() => {
     if (!reportId) return;
@@ -45,7 +80,18 @@ export default function CMAOverviewPage() {
         setSummary(s);
         return apiClient<Client>(`/api/clients/${r.client_id}`);
       })
-      .then(setClient)
+      .then((c) => {
+        setClient(c);
+        // Fetch document names for the linked documents card
+        return apiClient<Array<{ id: string; file_name: string; financial_year: number; document_type: string }>>(
+          `/api/documents/?client_id=${c.id}`
+        );
+      })
+      .then((docs) => {
+        const map: Record<string, { file_name: string; financial_year: number; document_type: string }> = {};
+        for (const d of docs) map[d.id] = d;
+        setDocuments(map);
+      })
       .catch(() => router.replace("/clients"))
       .finally(() => setLoading(false));
   }, [reportId, router]);
@@ -73,6 +119,23 @@ export default function CMAOverviewPage() {
 
   const hasClassifications = summary.total > 0;
   const allReviewed = hasClassifications && summary.needs_review === 0;
+
+  const handleRunClassification = async () => {
+    if (!report) return;
+    setClassifying(true);
+    try {
+      for (const docId of report.document_ids) {
+        await apiClient(`/api/documents/${docId}/classify`, { method: "POST" });
+      }
+      toast.success(
+        `Classification triggered for ${report.document_ids.length} documents`
+      );
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Classification failed");
+      setClassifying(false);
+    }
+  };
+
   const reviewProgress =
     summary.total > 0
       ? Math.round(((summary.approved + summary.corrected) / summary.total) * 100)
@@ -123,6 +186,18 @@ export default function CMAOverviewPage() {
               Audit Trail
             </Button>
           </Link>
+          {!hasClassifications && !classifying && (
+            <Button size="sm" onClick={handleRunClassification}>
+              <Play className="mr-1.5 h-4 w-4" />
+              Run Classification
+            </Button>
+          )}
+          {classifying && (
+            <Button size="sm" disabled>
+              <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+              Classifying...
+            </Button>
+          )}
           {allReviewed ? (
             <Link href={`/cma/${reportId}/generate`}>
               <Button size="sm">
@@ -130,14 +205,12 @@ export default function CMAOverviewPage() {
                 Generate Excel
               </Button>
             </Link>
-          ) : (
+          ) : hasClassifications ? (
             <Button
               size="sm"
               disabled
               title={
-                !hasClassifications
-                  ? "Run classification on all documents first"
-                  : summary.needs_review > 0
+                summary.needs_review > 0
                   ? `Resolve ${summary.needs_review} doubt(s) first`
                   : "Approve or correct all classifications first"
               }
@@ -145,7 +218,7 @@ export default function CMAOverviewPage() {
               <FileBarChart className="mr-1.5 h-4 w-4" />
               Generate Excel
             </Button>
-          )}
+          ) : null}
           {report.status === "complete" && (
             <Link href={`/cma/${reportId}/roll-forward`}>
               <Button variant="outline" size="sm">
@@ -181,12 +254,27 @@ export default function CMAOverviewPage() {
           {report.document_ids.length === 0 ? (
             <p className="text-sm text-muted-foreground">No documents linked.</p>
           ) : (
-            <ul className="space-y-1">
-              {report.document_ids.map((docId) => (
-                <li key={docId} className="text-sm text-muted-foreground font-mono">
-                  {docId}
-                </li>
-              ))}
+            <ul className="space-y-1.5">
+              {report.document_ids.map((docId) => {
+                const doc = documents[docId];
+                return (
+                  <li key={docId} className="flex items-center gap-2 text-sm">
+                    <span className="font-medium truncate max-w-[30ch]" title={doc?.file_name ?? docId}>
+                      {doc?.file_name ?? docId}
+                    </span>
+                    {doc?.financial_year && (
+                      <Badge variant="outline" className="text-xs shrink-0">
+                        FY {doc.financial_year - 1}-{doc.financial_year}
+                      </Badge>
+                    )}
+                    {doc?.document_type && (
+                      <span className="text-xs text-muted-foreground capitalize shrink-0">
+                        {doc.document_type.replace(/_/g, " ")}
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </CardContent>

@@ -1,0 +1,72 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e30]:
+    - complementary [ref=e31]:
+      - generic [ref=e32]:
+        - text: CMA Assist
+        - paragraph [ref=e33]: Automation Platform
+      - navigation [ref=e34]:
+        - link "Dashboard" [ref=e35] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e36]
+          - text: Dashboard
+        - link "Clients" [ref=e41] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e42]
+          - text: Clients
+        - link "Settings" [ref=e47] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e48]
+          - text: Settings
+    - generic [ref=e51]:
+      - banner [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e58]: Ashutosh Rathi
+            - generic [ref=e59]: admin
+          - button "Logout" [ref=e60]:
+            - img
+            - text: Logout
+      - main [ref=e61]:
+        - generic [ref=e89]:
+          - generic [ref=e90]:
+            - heading "New Client" [level=1] [ref=e91]
+            - paragraph [ref=e92]: Add a new client to start their CMA preparation
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - text: Client Name
+                - generic [ref=e96]: "*"
+              - textbox "Client Name *" [ref=e97]:
+                - /placeholder: e.g. ABC Manufacturing Ltd
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - text: Industry Type
+                - generic [ref=e100]: "*"
+              - combobox "Industry Type *" [ref=e101]:
+                - option "Manufacturing" [selected]
+                - option "Service"
+                - option "Trading"
+                - option "Other"
+              - paragraph [ref=e102]: Industry type determines classification defaults in the CMA pipeline.
+            - generic [ref=e103]:
+              - generic [ref=e104]: Financial Year Ending
+              - textbox "Financial Year Ending" [ref=e105]:
+                - /placeholder: 31st March
+                - text: 31st March
+            - generic [ref=e106]:
+              - generic [ref=e107]: Currency
+              - textbox "Currency" [ref=e108]:
+                - /placeholder: INR
+                - text: INR
+            - generic [ref=e109]:
+              - generic [ref=e110]: Notes
+              - textbox "Notes" [ref=e111]:
+                - /placeholder: Any additional notes about this client…
+            - generic [ref=e112]:
+              - button "Create Client" [ref=e113]
+              - button "Cancel" [ref=e114]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

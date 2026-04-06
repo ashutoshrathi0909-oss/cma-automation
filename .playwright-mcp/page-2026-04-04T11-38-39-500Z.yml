@@ -1,0 +1,106 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: CMA Assist
+        - paragraph [ref=e5]: Automation Platform
+      - navigation [ref=e6]:
+        - link "Dashboard" [ref=e7] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e8]
+          - text: Dashboard
+        - link "Clients" [ref=e13] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e14]
+          - text: Clients
+        - link "Settings" [ref=e19] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e20]
+          - text: Settings
+    - generic [ref=e23]:
+      - banner [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - img [ref=e27]
+            - generic [ref=e30]: Ashutosh Rathi
+            - generic [ref=e31]: admin
+          - button "Logout" [ref=e32]:
+            - img
+            - text: Logout
+      - main [ref=e33]:
+        - generic [ref=e163]:
+          - link "BCIPL" [ref=e180] [cursor=pointer]:
+            - /url: /clients/4101352f-ffe5-4368-9611-6f4c671bd4bc
+            - img [ref=e181]
+            - text: BCIPL
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - generic [ref=e183]:
+                - heading "BCIPL CMA FY2021-FY2023" [level=1] [ref=e184]
+                - generic [ref=e185]: draft
+              - paragraph [ref=e186]: BCIPL
+            - generic [ref=e169]:
+              - link "Review (0%)" [ref=e187] [cursor=pointer]:
+                - /url: /cma/8368ded4-f8cd-413f-8616-d2ecd5ff1178/review
+                - button "Review (0%)" [ref=e188]:
+                  - img
+                  - text: Review (0%)
+              - link "Audit Trail" [ref=e189] [cursor=pointer]:
+                - /url: /cma/8368ded4-f8cd-413f-8616-d2ecd5ff1178/audit-trail
+                - button "Audit Trail" [ref=e190]:
+                  - img
+                  - text: Audit Trail
+              - button "Classifying..." [disabled]:
+                - img
+                - text: Classifying...
+          - generic [ref=e192]:
+            - generic [ref=e193]:
+              - generic [ref=e194]: Classification Summary
+              - generic [ref=e195]: Live counts from the classifications table — updates as you review.
+            - generic [ref=e197]:
+              - generic [ref=e198]: No classifications yet
+              - generic [ref=e199]:
+                - generic [ref=e200]:
+                  - paragraph [ref=e201]: "0"
+                  - paragraph [ref=e202]: Total
+                - generic [ref=e203]:
+                  - paragraph [ref=e204]: "0"
+                  - paragraph [ref=e205]: High
+                - generic [ref=e206]:
+                  - paragraph [ref=e207]: "0"
+                  - paragraph [ref=e208]: Medium
+                - generic [ref=e209]:
+                  - paragraph [ref=e210]: "0"
+                  - paragraph [ref=e211]: Doubts
+                - generic [ref=e212]:
+                  - paragraph [ref=e213]: "0"
+                  - paragraph [ref=e214]: Approved
+                - generic [ref=e215]:
+                  - paragraph [ref=e216]: "0"
+                  - paragraph [ref=e217]: Corrected
+              - generic [ref=e219]:
+                - generic [ref=e220]: Review progress
+                - generic [ref=e221]: 0% reviewed
+          - generic [ref=e223]:
+            - generic [ref=e225]: Linked Documents (3)
+            - list [ref=e227]:
+              - listitem [ref=e228]:
+                - generic "BCIPL_ FY 2023 Final Accounts_25092023.xls" [ref=e229]
+                - generic [ref=e230]: FY 2022-2023
+                - generic [ref=e231]: combined financial statement
+              - listitem [ref=e232]:
+                - generic "6. BCIPL_ Final Accounts_2021-22.xls" [ref=e233]
+                - generic [ref=e234]: FY 2021-2022
+                - generic [ref=e235]: combined financial statement
+              - listitem [ref=e236]:
+                - generic "6. BCIPL_ Final Accounts_2020-21.xls" [ref=e237]
+                - generic [ref=e238]: FY 2020-2021
+                - generic [ref=e239]: combined financial statement
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e240]:
+        - img [ref=e242]
+        - generic [ref=e246]: Classification triggered for 3 documents
+  - button "Open Next.js Dev Tools" [ref=e42] [cursor=pointer]:
+    - img [ref=e43]
+  - alert [ref=e114]

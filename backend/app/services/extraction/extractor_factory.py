@@ -5,55 +5,26 @@ Routes a document to the correct extractor based on file type and content.
 
 Hierarchy:
   xlsx / xls  → ExcelExtractor
-  pdf (native)→ PdfExtractor
-  pdf (scanned→ OcrExtractor
+  pdf         → OcrExtractor (Gemini Flash vision via OpenRouter — all PDFs)
 
 Public API (re-exported for convenience):
   LineItem      — shared dataclass
   parse_amount  — Indian/Western number normalisation
-  is_scanned_pdf — detect whether a PDF is image-only
   extract_document — main entry point
 """
 
 from __future__ import annotations
 
 import logging
-from io import BytesIO
-
-import pdfplumber
 
 # ── Re-export shared types (tests import LineItem / parse_amount from here) ───
 from app.services.extraction._types import ExtractionError, LineItem, parse_amount  # noqa: F401
 
 # ── Extractor classes (imported at module level so patch() can target them) ───
 from app.services.extraction.excel_extractor import ExcelExtractor  # noqa: F401
-from app.services.extraction.pdf_extractor import PdfExtractor      # noqa: F401
 from app.services.extraction.ocr_extractor import OcrExtractor      # noqa: F401
-from app.services.extraction.glm_ocr_extractor import GlmOcrExtractor  # noqa: F401
-from app.config import get_settings
 
 logger = logging.getLogger(__name__)
-
-
-# ── Scanned PDF detection ─────────────────────────────────────────────────────
-
-
-def is_scanned_pdf(file_content: bytes) -> bool:
-    """
-    Return True when the PDF contains no extractable text on any page.
-
-    A scanned (image-only) PDF will have no text layer — pdfplumber's
-    extract_text() returns None or an empty / whitespace-only string.
-    """
-    try:
-        with pdfplumber.open(BytesIO(file_content)) as pdf:
-            for page in pdf.pages:
-                text = page.extract_text()
-                if text and text.strip():
-                    return False  # at least one page has text → native PDF
-        return True  # no page had extractable text → scanned
-    except Exception as e:
-        raise ExtractionError(f"Failed to read PDF for scanned detection: {e}") from e
 
 
 # ── Factory entry point ───────────────────────────────────────────────────────
@@ -99,43 +70,14 @@ async def extract_document(
             return await extractor.extract(file_content, file_type, selected_sheets=selected_sheets)
 
         if file_type == "pdf":
-            settings = get_settings()
-
-            if settings.pdf_extractor == "glm_ocr":
-                logger.info("PDF extraction via GLM-OCR (Ollama): %s", file_path)
-                items = await GlmOcrExtractor().extract(file_content)
-                if not items:
-                    logger.warning(
-                        "GLM-OCR returned 0 items for %s — falling back to pdfplumber",
-                        file_path,
-                    )
-                    items = await PdfExtractor().extract(file_content)
-                return items
-
-            # Legacy path: pdfplumber + OCR fallback
-            scanned = is_scanned_pdf(file_content)
-            if scanned:
-                logger.info("PDF detected as scanned (image-only) → using OcrExtractor: %s", file_path)
-                extractor = OcrExtractor()
-                items = await extractor.extract(file_content)
-            else:
-                logger.info("PDF detected as native (has text layer) → using PdfExtractor: %s", file_path)
-                items = await PdfExtractor().extract(file_content)
-                if not items:
-                    logger.warning(
-                        "PdfExtractor returned 0 items for %s — falling back to OcrExtractor",
-                        file_path,
-                    )
-                    items = await OcrExtractor().extract(file_content)
-                    if items:
-                        logger.info(
-                            "OcrExtractor fallback succeeded: %d items from %s",
-                            len(items), file_path,
-                        )
+            logger.info("PDF extraction via vision AI (OpenRouter): %s", file_path)
+            extractor = OcrExtractor()
+            items = await extractor.extract(file_content)
             if not items:
                 logger.warning(
-                    "PDF extraction returned 0 items after all extractors (scanned=%s, path=%s).",
-                    scanned, file_path,
+                    "Vision extraction returned 0 items for %s. "
+                    "The document may not contain recognizable financial data.",
+                    file_path,
                 )
             return items
 

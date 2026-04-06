@@ -1,0 +1,3902 @@
+[
+  {
+    "row": 22,
+    "field": "Domestic Sales",
+    "fy": "FY2021(B)",
+    "expected": 96.5766559,
+    "got": 335.38,
+    "formula": "=105.43+0.55+105.43+123.97",
+    "status": "MISMATCH",
+    "diff_pct": 2.47268184919623
+  },
+  {
+    "row": 22,
+    "field": "Domestic Sales",
+    "fy": "FY2022(C)",
+    "expected": 234.6388,
+    "got": 1030.79,
+    "formula": "=237.08+278.31+278.32+237.08",
+    "status": "MISMATCH",
+    "diff_pct": 3.393092702485693
+  },
+  {
+    "row": 22,
+    "field": "Domestic Sales",
+    "fy": "FY2023(D)",
+    "expected": 256.95320000000004,
+    "got": 1103.1,
+    "formula": "=264.07+262.70+1.72+310.54+264.07",
+    "status": "MISMATCH",
+    "diff_pct": 3.2929996590818864
+  },
+  {
+    "row": 23,
+    "field": "Export Sales",
+    "fy": "FY2021(B)",
+    "expected": 8.8566,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 23,
+    "field": "Export Sales",
+    "fy": "FY2022(C)",
+    "expected": 2.4389,
+    "got": 24.05,
+    "formula": "=B23*1.05",
+    "status": "MISMATCH",
+    "diff_pct": 8.86100291114847
+  },
+  {
+    "row": 23,
+    "field": "Export Sales",
+    "fy": "FY2023(D)",
+    "expected": 7.44229,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 25,
+    "field": "Less Excise Duty and Cess",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 25,
+    "field": "Less Excise Duty and Cess",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 25,
+    "field": "Less Excise Duty and Cess",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 29,
+    "field": "Dividends received from Mutual Funds",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 29,
+    "field": "Dividends received from Mutual Funds",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 29,
+    "field": "Dividends received from Mutual Funds",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 30,
+    "field": "Interest Received",
+    "fy": "FY2021(B)",
+    "expected": 0.0812858,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 30,
+    "field": "Interest Received",
+    "fy": "FY2022(C)",
+    "expected": 0.0579,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 30,
+    "field": "Interest Received",
+    "fy": "FY2023(D)",
+    "expected": 0.0643,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 31,
+    "field": "Profit on sale of fixed assets / Investments",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=-0.07+0.07",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 31,
+    "field": "Profit on sale of fixed assets / Investments",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 31,
+    "field": "Profit on sale of fixed assets / Investments",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=-0.13+0.13",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 32,
+    "field": "Gain on Exchange Fluctuations",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 32,
+    "field": "Gain on Exchange Fluctuations",
+    "fy": "FY2022(C)",
+    "expected": 0.1471,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 32,
+    "field": "Gain on Exchange Fluctuations",
+    "fy": "FY2023(D)",
+    "expected": 0.0297,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 33,
+    "field": "Extraordinary income",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 33,
+    "field": "Extraordinary income",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 33,
+    "field": "Extraordinary income",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 34,
+    "field": "Others (Non-Operating Income)",
+    "fy": "FY2021(B)",
+    "expected": 0.0101926,
+    "got": 0.09999999999999999,
+    "formula": "=0.09-0.08+0.08+0.01",
+    "status": "MISMATCH",
+    "diff_pct": 8.811039381512078
+  },
+  {
+    "row": 34,
+    "field": "Others (Non-Operating Income)",
+    "fy": "FY2022(C)",
+    "expected": 0.0187,
+    "got": 6.55,
+    "formula": "6.55",
+    "status": "MISMATCH",
+    "diff_pct": 349.26737967914437
+  },
+  {
+    "row": 34,
+    "field": "Others (Non-Operating Income)",
+    "fy": "FY2023(D)",
+    "expected": 0.1479,
+    "got": 0.72,
+    "formula": "=0.57-0.06+0.06+0.15+0",
+    "status": "MISMATCH",
+    "diff_pct": 3.8681541582150096
+  },
+  {
+    "row": 41,
+    "field": "Raw Materials Consumed (Imported)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 41,
+    "field": "Raw Materials Consumed (Imported)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 41,
+    "field": "Raw Materials Consumed (Imported)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 42,
+    "field": "Raw Materials Consumed (Indigenous)",
+    "fy": "FY2021(B)",
+    "expected": 84.3487361,
+    "got": 91.3,
+    "formula": "=84.35+6.95",
+    "status": "MISMATCH",
+    "diff_pct": 0.08241100248092516
+  },
+  {
+    "row": 42,
+    "field": "Raw Materials Consumed (Indigenous)",
+    "fy": "FY2022(C)",
+    "expected": 196.50109999999998,
+    "got": 204.47,
+    "formula": "=196.42+8.05",
+    "status": "MISMATCH",
+    "diff_pct": 0.04055397145359502
+  },
+  {
+    "row": 42,
+    "field": "Raw Materials Consumed (Indigenous)",
+    "fy": "FY2023(D)",
+    "expected": 217.7362,
+    "got": 234.54000000000002,
+    "formula": "=217.71+16.83",
+    "status": "MISMATCH",
+    "diff_pct": 0.07717504025513454
+  },
+  {
+    "row": 43,
+    "field": "Stores and spares consumed (Imported)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 43,
+    "field": "Stores and spares consumed (Imported)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 43,
+    "field": "Stores and spares consumed (Imported)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 44,
+    "field": "Stores and spares consumed (Indigenous)",
+    "fy": "FY2021(B)",
+    "expected": 1.7628801,
+    "got": 86.11,
+    "formula": "=-0.01+84.35+1.77",
+    "status": "MISMATCH",
+    "diff_pct": 47.84620343720483
+  },
+  {
+    "row": 44,
+    "field": "Stores and spares consumed (Indigenous)",
+    "fy": "FY2022(C)",
+    "expected": 3.4897,
+    "got": 199.91,
+    "formula": "=196.42+3.49",
+    "status": "MISMATCH",
+    "diff_pct": 56.28572656675359
+  },
+  {
+    "row": 44,
+    "field": "Stores and spares consumed (Indigenous)",
+    "fy": "FY2023(D)",
+    "expected": 4.392800182,
+    "got": 222.13,
+    "formula": "=0.03+217.71+4.39",
+    "status": "MISMATCH",
+    "diff_pct": 49.56683454672102
+  },
+  {
+    "row": 45,
+    "field": "Wages",
+    "fy": "FY2021(B)",
+    "expected": 6.376117744,
+    "got": 14.1,
+    "formula": "=6.68-0.06-0.09+0.80+0.32+0.23+0.08+5.60+0.54",
+    "status": "MISMATCH",
+    "diff_pct": 1.2113769798665122
+  },
+  {
+    "row": 45,
+    "field": "Wages",
+    "fy": "FY2022(C)",
+    "expected": 10.315299999999999,
+    "got": 22.22,
+    "formula": "=11.98+10.24",
+    "status": "MISMATCH",
+    "diff_pct": 1.154081800820141
+  },
+  {
+    "row": 45,
+    "field": "Wages",
+    "fy": "FY2023(D)",
+    "expected": 12.5305265,
+    "got": 27.97,
+    "formula": "=13.79-0.12-0.19+0.42+0.07+0.66+0.70+11.54+1.10",
+    "status": "MISMATCH",
+    "diff_pct": 1.2321488247121937
+  },
+  {
+    "row": 46,
+    "field": "Processing / Job Work Charges",
+    "fy": "FY2021(B)",
+    "expected": 1.216922,
+    "got": 1.46,
+    "formula": "=0.24+1.22",
+    "status": "MISMATCH",
+    "diff_pct": 0.19974821722345384
+  },
+  {
+    "row": 46,
+    "field": "Processing / Job Work Charges",
+    "fy": "FY2022(C)",
+    "expected": 2.0517,
+    "got": 2.05,
+    "formula": "2.05",
+    "status": "MATCH",
+    "diff_pct": 0.0008285811765852877
+  },
+  {
+    "row": 46,
+    "field": "Processing / Job Work Charges",
+    "fy": "FY2023(D)",
+    "expected": 2.263867022,
+    "got": 2.4,
+    "formula": "=0.02+0.12+2.26",
+    "status": "MISMATCH",
+    "diff_pct": 0.06013293920405897
+  },
+  {
+    "row": 47,
+    "field": "Freight and Transportation Charges",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 47,
+    "field": "Freight and Transportation Charges",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 47,
+    "field": "Freight and Transportation Charges",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 48,
+    "field": "Power, Coal, Fuel and Water",
+    "fy": "FY2021(B)",
+    "expected": 0.8037364,
+    "got": 0.8,
+    "formula": "0.8",
+    "status": "MATCH",
+    "diff_pct": 0.004648787836410013
+  },
+  {
+    "row": 48,
+    "field": "Power, Coal, Fuel and Water",
+    "fy": "FY2022(C)",
+    "expected": 0.9833,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 48,
+    "field": "Power, Coal, Fuel and Water",
+    "fy": "FY2023(D)",
+    "expected": 1.216384724,
+    "got": 1.22,
+    "formula": "1.22",
+    "status": "MATCH",
+    "diff_pct": 0.0029721484729858293
+  },
+  {
+    "row": 49,
+    "field": "Others (Manufacturing)",
+    "fy": "FY2021(B)",
+    "expected": 0.0825133,
+    "got": 0.13,
+    "formula": "=0+0.10+0.03",
+    "status": "MISMATCH",
+    "diff_pct": 0.575503585482583
+  },
+  {
+    "row": 49,
+    "field": "Others (Manufacturing)",
+    "fy": "FY2022(C)",
+    "expected": 0.1591,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 49,
+    "field": "Others (Manufacturing)",
+    "fy": "FY2023(D)",
+    "expected": 0.033101,
+    "got": 0.28,
+    "formula": "=0.12+0.13+0.03",
+    "status": "MISMATCH",
+    "diff_pct": 7.458958943838556
+  },
+  {
+    "row": 50,
+    "field": "Repairs & Maintenance (Manufacturing)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.05,
+    "formula": "0.05",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 50,
+    "field": "Repairs & Maintenance (Manufacturing)",
+    "fy": "FY2022(C)",
+    "expected": 0.221,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 50,
+    "field": "Repairs & Maintenance (Manufacturing)",
+    "fy": "FY2023(D)",
+    "expected": 0.417737848,
+    "got": 1.44,
+    "formula": "=0.31+0.40+0.31+0.42",
+    "status": "MISMATCH",
+    "diff_pct": 2.4471379763511396
+  },
+  {
+    "row": 51,
+    "field": "Security Service Charges",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 51,
+    "field": "Security Service Charges",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 51,
+    "field": "Security Service Charges",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 53,
+    "field": "Stock in process Opening Balance",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 1.19,
+    "formula": "=1.13+0.06",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 53,
+    "field": "Stock in process Opening Balance",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 54.0,
+    "formula": "=B54",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 53,
+    "field": "Stock in process Opening Balance",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 54.0,
+    "formula": "=C54",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 54,
+    "field": "Stock in process Closing Balance",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 9.55,
+    "formula": "=10-1.84+1.42-0.03",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 54,
+    "field": "Stock in process Closing Balance",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 8.170000000000002,
+    "formula": "=11.46-1.84-1.45",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 54,
+    "field": "Stock in process Closing Balance",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 13.13,
+    "formula": "=18.64+1.59-7.18+0.08",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 56,
+    "field": "Depreciation (Manufacturing)",
+    "fy": "FY2021(B)",
+    "expected": 4.0745669,
+    "got": 13.520000000000001,
+    "formula": "=4.07+4.07+1.31+4.07",
+    "status": "MISMATCH",
+    "diff_pct": 2.318144070723198
+  },
+  {
+    "row": 56,
+    "field": "Depreciation (Manufacturing)",
+    "fy": "FY2022(C)",
+    "expected": 3.9177,
+    "got": 67.83,
+    "formula": "=3.92+3.92+1.17+3.91+11.07+11.14+11.23+8.88+2.12+1.99+8.48",
+    "status": "MISMATCH",
+    "diff_pct": 16.31372999463971
+  },
+  {
+    "row": 56,
+    "field": "Depreciation (Manufacturing)",
+    "fy": "FY2023(D)",
+    "expected": 4.2997,
+    "got": 61.89,
+    "formula": "=4.30+4.30+1.39+4.16+11.14+11.23+11.23+1.87+0.89+2.75+0.15+8.48",
+    "status": "MISMATCH",
+    "diff_pct": 13.394027490290021
+  },
+  {
+    "row": 58,
+    "field": "Finished Goods Opening Balance",
+    "fy": "FY2021(B)",
+    "expected": 1.1889489,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 58,
+    "field": "Finished Goods Opening Balance",
+    "fy": "FY2022(C)",
+    "expected": 3.0139463,
+    "got": 59.0,
+    "formula": "=B59",
+    "status": "MISMATCH",
+    "diff_pct": 18.57566397251338
+  },
+  {
+    "row": 58,
+    "field": "Finished Goods Opening Balance",
+    "fy": "FY2023(D)",
+    "expected": 3.4024,
+    "got": 59.0,
+    "formula": "=C59",
+    "status": "MISMATCH",
+    "diff_pct": 16.34070068187162
+  },
+  {
+    "row": 59,
+    "field": "Finished Goods Closing Balance",
+    "fy": "FY2021(B)",
+    "expected": 3.0139463,
+    "got": 9.98,
+    "formula": "=6.95+3.03",
+    "status": "MISMATCH",
+    "diff_pct": 2.311273329587856
+  },
+  {
+    "row": 59,
+    "field": "Finished Goods Closing Balance",
+    "fy": "FY2022(C)",
+    "expected": 3.4024,
+    "got": 11.450000000000001,
+    "formula": "=3.40+8.05",
+    "status": "MISMATCH",
+    "diff_pct": 2.365271573007289
+  },
+  {
+    "row": 59,
+    "field": "Finished Goods Closing Balance",
+    "fy": "FY2023(D)",
+    "expected": 1.8112,
+    "got": 18.639999999999997,
+    "formula": "=1.81+16.83",
+    "status": "MISMATCH",
+    "diff_pct": 9.291519434628974
+  },
+  {
+    "row": 63,
+    "field": "Depreciation (CMA)",
+    "fy": "FY2021(B)",
+    "expected": 4.0745669,
+    "got": 56.0,
+    "formula": "=B56",
+    "status": "MISMATCH",
+    "diff_pct": 12.743792008912653
+  },
+  {
+    "row": 63,
+    "field": "Depreciation (CMA)",
+    "fy": "FY2022(C)",
+    "expected": 3.9177,
+    "got": 56.0,
+    "formula": "=C56",
+    "status": "MISMATCH",
+    "diff_pct": 13.294101130765501
+  },
+  {
+    "row": 63,
+    "field": "Depreciation (CMA)",
+    "fy": "FY2023(D)",
+    "expected": 4.2997,
+    "got": 56.0,
+    "formula": "=D56",
+    "status": "MISMATCH",
+    "diff_pct": 12.024164476591391
+  },
+  {
+    "row": 64,
+    "field": "Other Manufacturing Exp (CMA)",
+    "fy": "FY2021(B)",
+    "expected": 8.479289444000006,
+    "got": 222.0,
+    "formula": "=B52-B41-B42-B43-B44",
+    "status": "MISMATCH",
+    "diff_pct": 25.181439077668053
+  },
+  {
+    "row": 64,
+    "field": "Other Manufacturing Exp (CMA)",
+    "fy": "FY2022(C)",
+    "expected": 13.730400000000031,
+    "got": 222.0,
+    "formula": "=C52-C41-C42-C43-C44",
+    "status": "MISMATCH",
+    "diff_pct": 15.16850201013805
+  },
+  {
+    "row": 64,
+    "field": "Other Manufacturing Exp (CMA)",
+    "fy": "FY2023(D)",
+    "expected": 16.46161709399999,
+    "got": 222.0,
+    "formula": "=D52-D41-D42-D43-D44",
+    "status": "MISMATCH",
+    "diff_pct": 12.485916889715266
+  },
+  {
+    "row": 67,
+    "field": "Salary and staff expenses",
+    "fy": "FY2021(B)",
+    "expected": 0.3,
+    "got": 0.86,
+    "formula": "=0.15+0.15+0.01+0.02+0.53",
+    "status": "MISMATCH",
+    "diff_pct": 1.866666666666667
+  },
+  {
+    "row": 67,
+    "field": "Salary and staff expenses",
+    "fy": "FY2022(C)",
+    "expected": 1.6644,
+    "got": 15482.98,
+    "formula": "=15471+11.98",
+    "status": "MISMATCH",
+    "diff_pct": 9301.43931747176
+  },
+  {
+    "row": 67,
+    "field": "Salary and staff expenses",
+    "fy": "FY2023(D)",
+    "expected": 1.255,
+    "got": 2.8299999999999996,
+    "formula": "=0.96+0.02+0.70+1.15",
+    "status": "MISMATCH",
+    "diff_pct": 1.254980079681275
+  },
+  {
+    "row": 68,
+    "field": "Rent, Rates and Taxes",
+    "fy": "FY2021(B)",
+    "expected": 0.098005,
+    "got": 18.58,
+    "formula": "=18.54+0.04",
+    "status": "MISMATCH",
+    "diff_pct": 188.58216417529715
+  },
+  {
+    "row": 68,
+    "field": "Rent, Rates and Taxes",
+    "fy": "FY2022(C)",
+    "expected": 0.0934,
+    "got": 41.24,
+    "formula": "41.24",
+    "status": "MISMATCH",
+    "diff_pct": 440.541755888651
+  },
+  {
+    "row": 68,
+    "field": "Rent, Rates and Taxes",
+    "fy": "FY2023(D)",
+    "expected": 0.066498461,
+    "got": 92.91,
+    "formula": "=-0.12+46.48+46.48+0.07",
+    "status": "MISMATCH",
+    "diff_pct": 1396.1751917687238
+  },
+  {
+    "row": 69,
+    "field": "Bad Debts",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.02,
+    "formula": "=0.01+0.01",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 69,
+    "field": "Bad Debts",
+    "fy": "FY2022(C)",
+    "expected": 0.0934,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 69,
+    "field": "Bad Debts",
+    "fy": "FY2023(D)",
+    "expected": 0.00134,
+    "got": -0.24000000000000002,
+    "formula": "=0-0.26+0.02",
+    "status": "MISMATCH",
+    "diff_pct": 180.10447761194033
+  },
+  {
+    "row": 70,
+    "field": "Advertisements and Sales Promotions",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 1.96,
+    "formula": "1.96",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 70,
+    "field": "Advertisements and Sales Promotions",
+    "fy": "FY2022(C)",
+    "expected": 3.2085,
+    "got": 240.24,
+    "formula": "=237.03+3.21",
+    "status": "MISMATCH",
+    "diff_pct": 73.87611033193082
+  },
+  {
+    "row": 70,
+    "field": "Advertisements and Sales Promotions",
+    "fy": "FY2023(D)",
+    "expected": 6.775638744,
+    "got": 7.49,
+    "formula": "=2.95+4.54",
+    "status": "MISMATCH",
+    "diff_pct": 0.105430835820842
+  },
+  {
+    "row": 71,
+    "field": "Others (Admin)",
+    "fy": "FY2021(B)",
+    "expected": 2.3111141,
+    "got": 285.19,
+    "formula": "=103.77-0.31+0.32+0.05+0.50+0.31+0.09+0.08+0.01+0+0+0.96+0.01+20.82+0.02+0+0.01+0.29+1.17+0.14+0.29+10.02+0.48+0+27.27+0.02+0.02+0.64+0.25+0.95+0.06+18.54+81.07+0.07+0+0.77+1.47+2.36+11.07+0.07+0.56+0.97",
+    "status": "MISMATCH",
+    "diff_pct": 122.3993596421743
+  },
+  {
+    "row": 71,
+    "field": "Others (Admin)",
+    "fy": "FY2022(C)",
+    "expected": 3.3785,
+    "got": 2173.27,
+    "formula": "=448.13+5+3.09+228.60+1.04+436.17+438.62+1.93+1.47+12.55+2.11+1.17+197.51+1.82+196.30+196.42+1.34",
+    "status": "MISMATCH",
+    "diff_pct": 642.2647624685512
+  },
+  {
+    "row": 71,
+    "field": "Others (Admin)",
+    "fy": "FY2023(D)",
+    "expected": 1.6750644319999999,
+    "got": 759.78,
+    "formula": "=0.70+258.44+0+6.19+14.34+0.50+0.31+0.96+0.04+0.24+0.65+0.01+0.03+10.46+1.47+0.55+13.74+0.55+0.12+0.02+0.03+0.01+0+0.02+0.01+0.04+0+0.36+0.74+0.42+0.20+226.48+215.40+2.31+0.03+0.14+0.70+1.34+2.23+0",
+    "status": "MISMATCH",
+    "diff_pct": 452.5825521008974
+  },
+  {
+    "row": 72,
+    "field": "Repairs & Maintenance (Admin)",
+    "fy": "FY2021(B)",
+    "expected": 0.0535862,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 72,
+    "field": "Repairs & Maintenance (Admin)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 72,
+    "field": "Repairs & Maintenance (Admin)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 73,
+    "field": "Audit Fees & Directors Remuneration",
+    "fy": "FY2021(B)",
+    "expected": 1.9927679,
+    "got": 4.2,
+    "formula": "=1.24+1.94+0.96+0.03+0.01+0.02",
+    "status": "MISMATCH",
+    "diff_pct": 1.1076212638712215
+  },
+  {
+    "row": 73,
+    "field": "Audit Fees & Directors Remuneration",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 30942.0,
+    "formula": "=15471+15471",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 73,
+    "field": "Audit Fees & Directors Remuneration",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 3.88,
+    "formula": "=0.15+0.15+0.15+0.15+1.24+1.93+0.05+0.04+0.02",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 75,
+    "field": "Miscellaneous Expenses written off",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 0.78,
+    "formula": "=0-0.01+0.79",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 75,
+    "field": "Miscellaneous Expenses written off",
+    "fy": "FY2022(C)",
+    "expected": 0.006723,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 75,
+    "field": "Miscellaneous Expenses written off",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0.03,
+    "formula": "=0+0.03",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 76,
+    "field": "Deferred Revenue Expenditures",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 76,
+    "field": "Deferred Revenue Expenditures",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 76,
+    "field": "Deferred Revenue Expenditures",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 77,
+    "field": "Other Amortisations",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0.01,
+    "formula": "0.01",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 77,
+    "field": "Other Amortisations",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 3.92,
+    "formula": "3.92",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 77,
+    "field": "Other Amortisations",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.14,
+    "formula": "0.14",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 83,
+    "field": "Interest on Fixed Loans / Term loans",
+    "fy": "FY2021(B)",
+    "expected": 1.3013757999999997,
+    "got": 0.15,
+    "formula": "0.15",
+    "status": "MISMATCH",
+    "diff_pct": 0.8847373679455235
+  },
+  {
+    "row": 83,
+    "field": "Interest on Fixed Loans / Term loans",
+    "fy": "FY2022(C)",
+    "expected": 1.4739,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 83,
+    "field": "Interest on Fixed Loans / Term loans",
+    "fy": "FY2023(D)",
+    "expected": 1.4261,
+    "got": 0.18,
+    "formula": "0.18",
+    "status": "MISMATCH",
+    "diff_pct": 0.8737816422410771
+  },
+  {
+    "row": 84,
+    "field": "Interest on Working capital loans",
+    "fy": "FY2021(B)",
+    "expected": 0.6504465,
+    "got": 0.77,
+    "formula": "=0.04+0.08+0.65",
+    "status": "MISMATCH",
+    "diff_pct": 0.1838022035632446
+  },
+  {
+    "row": 84,
+    "field": "Interest on Working capital loans",
+    "fy": "FY2022(C)",
+    "expected": 1.2744,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 84,
+    "field": "Interest on Working capital loans",
+    "fy": "FY2023(D)",
+    "expected": 2.5874,
+    "got": 2.01,
+    "formula": "=0.04+0.06+0.02+1.89",
+    "status": "MISMATCH",
+    "diff_pct": 0.22315838293267384
+  },
+  {
+    "row": 85,
+    "field": "Bank Charges",
+    "fy": "FY2021(B)",
+    "expected": 0.087677,
+    "got": 2.04,
+    "formula": "=1.95+1.95-1.95+0.09",
+    "status": "MISMATCH",
+    "diff_pct": 22.267219453220342
+  },
+  {
+    "row": 85,
+    "field": "Bank Charges",
+    "fy": "FY2022(C)",
+    "expected": 0.1455,
+    "got": 2.75,
+    "formula": "=2.75-2.75+2.75",
+    "status": "MISMATCH",
+    "diff_pct": 17.900343642611684
+  },
+  {
+    "row": 85,
+    "field": "Bank Charges",
+    "fy": "FY2023(D)",
+    "expected": 0.1743,
+    "got": 4.36,
+    "formula": "=4.19+4.19-4.19+0.17",
+    "status": "MISMATCH",
+    "diff_pct": 24.014343086632245
+  },
+  {
+    "row": 89,
+    "field": "Loss on sale of fixed assets / Investments",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 89,
+    "field": "Loss on sale of fixed assets / Investments",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 89,
+    "field": "Loss on sale of fixed assets / Investments",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 90,
+    "field": "Sundry Balances Written off",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 90,
+    "field": "Sundry Balances Written off",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 90,
+    "field": "Sundry Balances Written off",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 91,
+    "field": "Loss on Exchange Fluctuations",
+    "fy": "FY2021(B)",
+    "expected": 0.164477,
+    "got": 0.32,
+    "formula": "=0.16+0.16",
+    "status": "MISMATCH",
+    "diff_pct": 0.9455607774947256
+  },
+  {
+    "row": 91,
+    "field": "Loss on Exchange Fluctuations",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 91,
+    "field": "Loss on Exchange Fluctuations",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=-0.03+0.03",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 92,
+    "field": "Extraordinary losses",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 92,
+    "field": "Extraordinary losses",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 92,
+    "field": "Extraordinary losses",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 93,
+    "field": "Others (Non-Operating Expenses)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 93,
+    "field": "Others (Non-Operating Expenses)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 93,
+    "field": "Others (Non-Operating Expenses)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 99,
+    "field": "Income Tax provision",
+    "fy": "FY2021(B)",
+    "expected": 0.018166,
+    "got": 2.31,
+    "formula": "=1.01+1.30",
+    "status": "MISMATCH",
+    "diff_pct": 126.16062974788065
+  },
+  {
+    "row": 99,
+    "field": "Income Tax provision",
+    "fy": "FY2022(C)",
+    "expected": 2.1999999999999997,
+    "got": 6.369999999999999,
+    "formula": "=2.19+2.17+2.01",
+    "status": "MISMATCH",
+    "diff_pct": 1.8954545454545457
+  },
+  {
+    "row": 99,
+    "field": "Income Tax provision",
+    "fy": "FY2023(D)",
+    "expected": 1.7590999999999999,
+    "got": 3.58,
+    "formula": "=1.64+1.94",
+    "status": "MISMATCH",
+    "diff_pct": 1.035131601387073
+  },
+  {
+    "row": 100,
+    "field": "Deferred Tax Liability (P&L)",
+    "fy": "FY2021(B)",
+    "expected": -0.0768561,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 100,
+    "field": "Deferred Tax Liability (P&L)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 100,
+    "field": "Deferred Tax Liability (P&L)",
+    "fy": "FY2023(D)",
+    "expected": 0.2604,
+    "got": 0.0,
+    "formula": "=0",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 101,
+    "field": "Deferred Tax Asset (P&L)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 4.55,
+    "formula": "=1.16-0.08+1.16+1.23-0.08+1.16",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 101,
+    "field": "Deferred Tax Asset (P&L)",
+    "fy": "FY2022(C)",
+    "expected": 0.34,
+    "got": 4.64,
+    "formula": "=1.16+1.16+1.16+1.16",
+    "status": "MISMATCH",
+    "diff_pct": 12.64705882352941
+  },
+  {
+    "row": 101,
+    "field": "Deferred Tax Asset (P&L)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 4.58,
+    "formula": "=1.08+0.26+1.08+0.82+0.26+1.08",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 106,
+    "field": "Brought forward from previous year",
+    "fy": "FY2021(B)",
+    "expected": 4.2645593999999925,
+    "got": 4.26,
+    "formula": "4.26",
+    "status": "MATCH",
+    "diff_pct": 0.0010691374119428778
+  },
+  {
+    "row": 106,
+    "field": "Brought forward from previous year",
+    "fy": "FY2022(C)",
+    "expected": 6.0480591560000025,
+    "got": 109.0,
+    "formula": "=B109",
+    "status": "MISMATCH",
+    "diff_pct": 17.02231049474212
+  },
+  {
+    "row": 106,
+    "field": "Brought forward from previous year",
+    "fy": "FY2023(D)",
+    "expected": 12.900289856000013,
+    "got": 109.0,
+    "formula": "=C109",
+    "status": "MISMATCH",
+    "diff_pct": 7.449422549161045
+  },
+  {
+    "row": 107,
+    "field": "Dividend",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 107,
+    "field": "Dividend",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 107,
+    "field": "Dividend",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 108,
+    "field": "Other Appropriation of profit",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 108,
+    "field": "Other Appropriation of profit",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 108,
+    "field": "Other Appropriation of profit",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 116,
+    "field": "Issued, Subscribed and Paid up",
+    "fy": "FY2021(B)",
+    "expected": 3.0942,
+    "got": 3.09,
+    "formula": "3.09",
+    "status": "MATCH",
+    "diff_pct": 0.0013573783207291002
+  },
+  {
+    "row": 116,
+    "field": "Issued, Subscribed and Paid up",
+    "fy": "FY2022(C)",
+    "expected": 3.0942,
+    "got": 3.09,
+    "formula": "3.09",
+    "status": "MATCH",
+    "diff_pct": 0.0013573783207291002
+  },
+  {
+    "row": 116,
+    "field": "Issued, Subscribed and Paid up",
+    "fy": "FY2023(D)",
+    "expected": 3.09,
+    "got": 3.09,
+    "formula": "3.09",
+    "status": "MATCH",
+    "diff_pct": 0.0
+  },
+  {
+    "row": 117,
+    "field": "Share Application Money",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 117,
+    "field": "Share Application Money",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 117,
+    "field": "Share Application Money",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 121,
+    "field": "General Reserve",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 7.05,
+    "formula": "7.05",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 121,
+    "field": "General Reserve",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 121,
+    "field": "General Reserve",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 122,
+    "field": "Balance transferred from P&L",
+    "fy": "FY2021(B)",
+    "expected": 6.0480591560000025,
+    "got": 109.0,
+    "formula": "=B109",
+    "status": "MISMATCH",
+    "diff_pct": 17.02231049474212
+  },
+  {
+    "row": 122,
+    "field": "Balance transferred from P&L",
+    "fy": "FY2022(C)",
+    "expected": 12.900289856000013,
+    "got": 109.0,
+    "formula": "=C109",
+    "status": "MISMATCH",
+    "diff_pct": 7.449422549161045
+  },
+  {
+    "row": 122,
+    "field": "Balance transferred from P&L",
+    "fy": "FY2023(D)",
+    "expected": 17.075320943000076,
+    "got": 109.0,
+    "formula": "=D109",
+    "status": "MISMATCH",
+    "diff_pct": 5.383481772545182
+  },
+  {
+    "row": 123,
+    "field": "Share Premium A/c",
+    "fy": "FY2021(B)",
+    "expected": 0.9558,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 123,
+    "field": "Share Premium A/c",
+    "fy": "FY2022(C)",
+    "expected": 0.9558,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 123,
+    "field": "Share Premium A/c",
+    "fy": "FY2023(D)",
+    "expected": 0.9558,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 124,
+    "field": "Revaluation Reserve",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 124,
+    "field": "Revaluation Reserve",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 124,
+    "field": "Revaluation Reserve",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 125,
+    "field": "Other Reserve",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 125,
+    "field": "Other Reserve",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 125,
+    "field": "Other Reserve",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 18.07,
+    "formula": "18.07",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 131,
+    "field": "WC Bank Finance - Bank 1",
+    "fy": "FY2021(B)",
+    "expected": 11.1297613,
+    "got": 26.6,
+    "formula": "=12.03+3.44+5.98+5.15",
+    "status": "MISMATCH",
+    "diff_pct": 1.3899883639013895
+  },
+  {
+    "row": 131,
+    "field": "WC Bank Finance - Bank 1",
+    "fy": "FY2022(C)",
+    "expected": 19.6089,
+    "got": 27.39,
+    "formula": "=13.91+8.33+5.15",
+    "status": "MISMATCH",
+    "diff_pct": 0.3968147116870402
+  },
+  {
+    "row": 131,
+    "field": "WC Bank Finance - Bank 1",
+    "fy": "FY2023(D)",
+    "expected": 12.1533166,
+    "got": 13.09,
+    "formula": "=9.07+4.02",
+    "status": "MISMATCH",
+    "diff_pct": 0.07707224544779816
+  },
+  {
+    "row": 132,
+    "field": "WC Bank Finance - Bank 2",
+    "fy": "FY2021(B)",
+    "expected": 0.8975441,
+    "got": 0.9,
+    "formula": "0.9",
+    "status": "MATCH",
+    "diff_pct": 0.002736244380638307
+  },
+  {
+    "row": 132,
+    "field": "WC Bank Finance - Bank 2",
+    "fy": "FY2022(C)",
+    "expected": 1.4719,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 132,
+    "field": "WC Bank Finance - Bank 2",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 136,
+    "field": "TL Repayable < 1yr",
+    "fy": "FY2021(B)",
+    "expected": 3.0046986,
+    "got": 7.630000000000001,
+    "formula": "=4.23+0.40+3",
+    "status": "MISMATCH",
+    "diff_pct": 1.5393561936628186
+  },
+  {
+    "row": 136,
+    "field": "TL Repayable < 1yr",
+    "fy": "FY2022(C)",
+    "expected": 4.1154,
+    "got": 0.48,
+    "formula": "=-3.64+4.12",
+    "status": "MISMATCH",
+    "diff_pct": 0.8833649220002916
+  },
+  {
+    "row": 136,
+    "field": "TL Repayable < 1yr",
+    "fy": "FY2023(D)",
+    "expected": 5.05186,
+    "got": 5.05,
+    "formula": "5.05",
+    "status": "MATCH",
+    "diff_pct": 0.0003681812243410845
+  },
+  {
+    "row": 137,
+    "field": "TL Balance > 1yr",
+    "fy": "FY2021(B)",
+    "expected": 16.6752957,
+    "got": 12.27,
+    "formula": "=1.22+1.91+2.28+0.23+1.23+2.87+0.68+0.01+0.03+0.10+0.02+0.50+1.19",
+    "status": "MISMATCH",
+    "diff_pct": 0.2641809644191197
+  },
+  {
+    "row": 137,
+    "field": "TL Balance > 1yr",
+    "fy": "FY2022(C)",
+    "expected": 12.7628,
+    "got": 908.79,
+    "formula": "=1.17+1.91+2.28+1.23+3.02+1.19+1.64+1.89+446.82+447.64",
+    "status": "MISMATCH",
+    "diff_pct": 70.20616165731657
+  },
+  {
+    "row": 137,
+    "field": "TL Balance > 1yr",
+    "fy": "FY2023(D)",
+    "expected": 6.324398,
+    "got": 1.1799999999999995,
+    "formula": "=-6.44+1.17+0.05+0.62+1.81+0.03+0.67+0.41+1.63+0.15+0.71+0.01+0.03+0.08+0.01+0.04+0.08+0.10+0.02",
+    "status": "MISMATCH",
+    "diff_pct": 0.813420976984687
+  },
+  {
+    "row": 140,
+    "field": "Debentures < 1yr",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 140,
+    "field": "Debentures < 1yr",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 140,
+    "field": "Debentures < 1yr",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 141,
+    "field": "Debentures > 1yr",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 141,
+    "field": "Debentures > 1yr",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 141,
+    "field": "Debentures > 1yr",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 144,
+    "field": "Pref Shares < 1yr",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 144,
+    "field": "Pref Shares < 1yr",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 144,
+    "field": "Pref Shares < 1yr",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 145,
+    "field": "Pref Shares > 1yr",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 145,
+    "field": "Pref Shares > 1yr",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 145,
+    "field": "Pref Shares > 1yr",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 148,
+    "field": "Other Debts < 1yr",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 148,
+    "field": "Other Debts < 1yr",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 148,
+    "field": "Other Debts < 1yr",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 149,
+    "field": "Balance Other Debts",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 149,
+    "field": "Balance Other Debts",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 149,
+    "field": "Balance Other Debts",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 152,
+    "field": "Unsecured - Quasi Equity",
+    "fy": "FY2021(B)",
+    "expected": 4.1312812,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 152,
+    "field": "Unsecured - Quasi Equity",
+    "fy": "FY2022(C)",
+    "expected": 4.1312812,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 152,
+    "field": "Unsecured - Quasi Equity",
+    "fy": "FY2023(D)",
+    "expected": 4.1312812,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 153,
+    "field": "Unsecured - LT Debt",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 21.07,
+    "formula": "=20.82+0.25",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 153,
+    "field": "Unsecured - LT Debt",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 16.89,
+    "formula": "16.89",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 153,
+    "field": "Unsecured - LT Debt",
+    "fy": "FY2023(D)",
+    "expected": 3.2394,
+    "got": 10.46,
+    "formula": "10.46",
+    "status": "MISMATCH",
+    "diff_pct": 2.2289930233993953
+  },
+  {
+    "row": 154,
+    "field": "Unsecured - ST Debt",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 1.3,
+    "formula": "1.3",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 154,
+    "field": "Unsecured - ST Debt",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 154,
+    "field": "Unsecured - ST Debt",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0.74,
+    "formula": "0.74",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 159,
+    "field": "Deferred tax liability (BS)",
+    "fy": "FY2021(B)",
+    "expected": 1.1560242,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 159,
+    "field": "Deferred tax liability (BS)",
+    "fy": "FY2022(C)",
+    "expected": 0.8161,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 159,
+    "field": "Deferred tax liability (BS)",
+    "fy": "FY2023(D)",
+    "expected": 1.0759261,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 162,
+    "field": "Gross Block",
+    "fy": "FY2021(B)",
+    "expected": 45.8968528,
+    "got": 27.27,
+    "formula": "27.27",
+    "status": "MISMATCH",
+    "diff_pct": 0.40584161361059595
+  },
+  {
+    "row": 162,
+    "field": "Gross Block",
+    "fy": "FY2022(C)",
+    "expected": 49.8568,
+    "got": 54.64,
+    "formula": "=27.32+27.32",
+    "status": "MISMATCH",
+    "diff_pct": 0.09593876863336598
+  },
+  {
+    "row": 162,
+    "field": "Gross Block",
+    "fy": "FY2023(D)",
+    "expected": 53.193990889,
+    "got": 60.88,
+    "formula": "=30.44+30.44",
+    "status": "MISMATCH",
+    "diff_pct": 0.14449017609974807
+  },
+  {
+    "row": 163,
+    "field": "Less Accum Depreciation",
+    "fy": "FY2021(B)",
+    "expected": 18.6286504,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 163,
+    "field": "Less Accum Depreciation",
+    "fy": "FY2022(C)",
+    "expected": 22.5413,
+    "got": 13.89,
+    "formula": "=1.87+2.75+9.27",
+    "status": "MISMATCH",
+    "diff_pct": 0.3837977401480837
+  },
+  {
+    "row": 163,
+    "field": "Less Accum Depreciation",
+    "fy": "FY2023(D)",
+    "expected": 22.7493617850745,
+    "got": 14.59,
+    "formula": "=1.74+1.62+2.90+8.33",
+    "status": "MISMATCH",
+    "diff_pct": 0.35866332700496806
+  },
+  {
+    "row": 165,
+    "field": "Capital WIP",
+    "fy": "FY2021(B)",
+    "expected": 0.1700714,
+    "got": 0.34,
+    "formula": "=0.17+0.17",
+    "status": "MISMATCH",
+    "diff_pct": 0.9991603526518862
+  },
+  {
+    "row": 165,
+    "field": "Capital WIP",
+    "fy": "FY2022(C)",
+    "expected": 0.3956,
+    "got": 2.36,
+    "formula": "2.36",
+    "status": "MISMATCH",
+    "diff_pct": 4.965621840242669
+  },
+  {
+    "row": 165,
+    "field": "Capital WIP",
+    "fy": "FY2023(D)",
+    "expected": 0.3113082,
+    "got": 5.39,
+    "formula": "=0.31+0.31+0.09+4.68",
+    "status": "MISMATCH",
+    "diff_pct": 16.314031561006104
+  },
+  {
+    "row": 169,
+    "field": "Patents/Goodwill",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 169,
+    "field": "Patents/Goodwill",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 169,
+    "field": "Patents/Goodwill",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 170,
+    "field": "Misc Expenditure",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 170,
+    "field": "Misc Expenditure",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 170,
+    "field": "Misc Expenditure",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 171,
+    "field": "Deferred Tax Asset (BS)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 171,
+    "field": "Deferred Tax Asset (BS)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 171,
+    "field": "Deferred Tax Asset (BS)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 172,
+    "field": "Other Intangible",
+    "fy": "FY2021(B)",
+    "expected": 0.0069279,
+    "got": 0.02,
+    "formula": "=0.01+0.01",
+    "status": "MISMATCH",
+    "diff_pct": 1.8868776974263486
+  },
+  {
+    "row": 172,
+    "field": "Other Intangible",
+    "fy": "FY2022(C)",
+    "expected": 0.1923,
+    "got": 27.51,
+    "formula": "27.51",
+    "status": "MISMATCH",
+    "diff_pct": 142.05772230889238
+  },
+  {
+    "row": 172,
+    "field": "Other Intangible",
+    "fy": "FY2023(D)",
+    "expected": 0.0803978,
+    "got": 0.16,
+    "formula": "=0.08+0.08",
+    "status": "MISMATCH",
+    "diff_pct": 0.9901042068315301
+  },
+  {
+    "row": 175,
+    "field": "Additions to FA",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": -1.64,
+    "formula": "-1.64",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 175,
+    "field": "Additions to FA",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 654.0,
+    "formula": "=C162+C165-B162-B165",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 175,
+    "field": "Additions to FA",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 176,
+    "field": "Sale of FA WDV",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 176,
+    "field": "Sale of FA WDV",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 176,
+    "field": "Sale of FA WDV",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": -7.19,
+    "formula": "-7.19",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 177,
+    "field": "Profit on sale FA (BS)",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 31.0,
+    "formula": "=B31",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 177,
+    "field": "Profit on sale FA (BS)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 31.0,
+    "formula": "=C31",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 177,
+    "field": "Profit on sale FA (BS)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 31.0,
+    "formula": "=D31",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 178,
+    "field": "Loss on sale FA (BS)",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 89.0,
+    "formula": "=B89",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 178,
+    "field": "Loss on sale FA (BS)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 89.0,
+    "formula": "=C89",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 178,
+    "field": "Loss on sale FA (BS)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 89.0,
+    "formula": "=D89",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 182,
+    "field": "Inv Govt Sec (Current)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 182,
+    "field": "Inv Govt Sec (Current)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 182,
+    "field": "Inv Govt Sec (Current)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 183,
+    "field": "Inv Govt Sec (Non-Current)",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 183,
+    "field": "Inv Govt Sec (Non-Current)",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 183,
+    "field": "Inv Govt Sec (Non-Current)",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 185,
+    "field": "Other Current Inv",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 185,
+    "field": "Other Current Inv",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 185,
+    "field": "Other Current Inv",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 186,
+    "field": "Other Non-Current Inv",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 186,
+    "field": "Other Non-Current Inv",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 186,
+    "field": "Other Non-Current Inv",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 188,
+    "field": "Inv in Group Co",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 188,
+    "field": "Inv in Group Co",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 188,
+    "field": "Inv in Group Co",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 193,
+    "field": "Raw Material Imported",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 193,
+    "field": "Raw Material Imported",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 193,
+    "field": "Raw Material Imported",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 194,
+    "field": "Raw Material Indigenous",
+    "fy": "FY2021(B)",
+    "expected": 6.9540016,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 194,
+    "field": "Raw Material Indigenous",
+    "fy": "FY2022(C)",
+    "expected": 8.0476,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 194,
+    "field": "Raw Material Indigenous",
+    "fy": "FY2023(D)",
+    "expected": 16.825403987999998,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 197,
+    "field": "Stores Imported",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 197,
+    "field": "Stores Imported",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 197,
+    "field": "Stores Imported",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 198,
+    "field": "Stores Indigenous",
+    "fy": "FY2021(B)",
+    "expected": 0.0183335,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 198,
+    "field": "Stores Indigenous",
+    "fy": "FY2022(C)",
+    "expected": 0.0086,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 198,
+    "field": "Stores Indigenous",
+    "fy": "FY2023(D)",
+    "expected": 0.0059969,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 200,
+    "field": "Stocks-in-process",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 54.0,
+    "formula": "=B54",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 200,
+    "field": "Stocks-in-process",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 54.0,
+    "formula": "=C54",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 200,
+    "field": "Stocks-in-process",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 54.0,
+    "formula": "=D54",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 201,
+    "field": "Finished Goods",
+    "fy": "FY2021(B)",
+    "expected": 3.0139463,
+    "got": 59.0,
+    "formula": "=B59",
+    "status": "MISMATCH",
+    "diff_pct": 18.57566397251338
+  },
+  {
+    "row": 201,
+    "field": "Finished Goods",
+    "fy": "FY2022(C)",
+    "expected": 3.4024,
+    "got": 59.0,
+    "formula": "=C59",
+    "status": "MISMATCH",
+    "diff_pct": 16.34070068187162
+  },
+  {
+    "row": 201,
+    "field": "Finished Goods",
+    "fy": "FY2023(D)",
+    "expected": 1.8112,
+    "got": 59.0,
+    "formula": "=D59",
+    "status": "MISMATCH",
+    "diff_pct": 31.575088339222617
+  },
+  {
+    "row": 206,
+    "field": "Domestic Receivables",
+    "fy": "FY2021(B)",
+    "expected": 17.920598596,
+    "got": 32.63,
+    "formula": "=-4.40+18.52+18.51",
+    "status": "MISMATCH",
+    "diff_pct": 0.8208097137605236
+  },
+  {
+    "row": 206,
+    "field": "Domestic Receivables",
+    "fy": "FY2022(C)",
+    "expected": 34.7017,
+    "got": 54.89,
+    "formula": "=36.32-17.75+36.32",
+    "status": "MISMATCH",
+    "diff_pct": 0.5817668875011887
+  },
+  {
+    "row": 206,
+    "field": "Domestic Receivables",
+    "fy": "FY2023(D)",
+    "expected": 15.48420118,
+    "got": 52.93,
+    "formula": "=16.62+19.73+16.58",
+    "status": "MISMATCH",
+    "diff_pct": 2.4183229334663037
+  },
+  {
+    "row": 207,
+    "field": "Export Receivables",
+    "fy": "FY2021(B)",
+    "expected": 0.593770304,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 207,
+    "field": "Export Receivables",
+    "fy": "FY2022(C)",
+    "expected": 1.6205,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 207,
+    "field": "Export Receivables",
+    "fy": "FY2023(D)",
+    "expected": 1.092081601,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 208,
+    "field": "Debtors > 6 months",
+    "fy": "FY2021(B)",
+    "expected": 0.0077514,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 208,
+    "field": "Debtors > 6 months",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 208,
+    "field": "Debtors > 6 months",
+    "fy": "FY2023(D)",
+    "expected": 0.0656847,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 212,
+    "field": "Cash on Hand",
+    "fy": "FY2021(B)",
+    "expected": 0.0137016,
+    "got": 6.4,
+    "formula": "=1.75+2.90+1.75",
+    "status": "MISMATCH",
+    "diff_pct": 466.09873299468677
+  },
+  {
+    "row": 212,
+    "field": "Cash on Hand",
+    "fy": "FY2022(C)",
+    "expected": 0.0089,
+    "got": 2.41,
+    "formula": "=-1.09+1.75+1.75",
+    "status": "MISMATCH",
+    "diff_pct": 269.7865168539326
+  },
+  {
+    "row": 212,
+    "field": "Cash on Hand",
+    "fy": "FY2023(D)",
+    "expected": 0.0132336,
+    "got": 1.8199999999999998,
+    "formula": "=0.66+1.16",
+    "status": "MISMATCH",
+    "diff_pct": 136.52871478660379
+  },
+  {
+    "row": 213,
+    "field": "Bank Balances",
+    "fy": "FY2021(B)",
+    "expected": 0.6445703,
+    "got": -1.14,
+    "formula": "=-1.15+0.01",
+    "status": "MISMATCH",
+    "diff_pct": 2.7686201179297276
+  },
+  {
+    "row": 213,
+    "field": "Bank Balances",
+    "fy": "FY2022(C)",
+    "expected": 0.0166,
+    "got": 11.28,
+    "formula": "11.28",
+    "status": "MISMATCH",
+    "diff_pct": 678.5180722891565
+  },
+  {
+    "row": 213,
+    "field": "Bank Balances",
+    "fy": "FY2023(D)",
+    "expected": 0.00248854,
+    "got": 9.81,
+    "formula": "=1.16+0.50+8.14+0.01",
+    "status": "MISMATCH",
+    "diff_pct": 3941.070450947142
+  },
+  {
+    "row": 214,
+    "field": "FD under lien",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 214,
+    "field": "FD under lien",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 214,
+    "field": "FD under lien",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 215,
+    "field": "Other FD",
+    "fy": "FY2021(B)",
+    "expected": 1.0919991,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 215,
+    "field": "Other FD",
+    "fy": "FY2022(C)",
+    "expected": 0.6316,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 215,
+    "field": "Other FD",
+    "fy": "FY2023(D)",
+    "expected": 1.1400874,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 219,
+    "field": "Advances recoverable",
+    "fy": "FY2021(B)",
+    "expected": 0.0425099,
+    "got": 0.04,
+    "formula": "0.04",
+    "status": "MISMATCH",
+    "diff_pct": 0.05904271710825013
+  },
+  {
+    "row": 219,
+    "field": "Advances recoverable",
+    "fy": "FY2022(C)",
+    "expected": 0.6746,
+    "got": 1.21,
+    "formula": "1.21",
+    "status": "MISMATCH",
+    "diff_pct": 0.793655499555292
+  },
+  {
+    "row": 219,
+    "field": "Advances recoverable",
+    "fy": "FY2023(D)",
+    "expected": 2.203673809,
+    "got": 2.2,
+    "formula": "2.2",
+    "status": "MATCH",
+    "diff_pct": 0.0016671292207566081
+  },
+  {
+    "row": 220,
+    "field": "Advances to suppliers RM",
+    "fy": "FY2021(B)",
+    "expected": 0.7549062,
+    "got": 0.75,
+    "formula": "0.75",
+    "status": "MATCH",
+    "diff_pct": 0.006499085581758332
+  },
+  {
+    "row": 220,
+    "field": "Advances to suppliers RM",
+    "fy": "FY2022(C)",
+    "expected": 1.2373,
+    "got": 1.24,
+    "formula": "1.24",
+    "status": "MATCH",
+    "diff_pct": 0.0021821708558958414
+  },
+  {
+    "row": 220,
+    "field": "Advances to suppliers RM",
+    "fy": "FY2023(D)",
+    "expected": 0.3528,
+    "got": 0.35,
+    "formula": "0.35",
+    "status": "MATCH",
+    "diff_pct": 0.007936507936508007
+  },
+  {
+    "row": 221,
+    "field": "Advance Income Tax",
+    "fy": "FY2021(B)",
+    "expected": 0.1800876,
+    "got": 1.1800000000000002,
+    "formula": "=-0.13+0.04+0.08+1.07+0.12",
+    "status": "MISMATCH",
+    "diff_pct": 5.552366737076846
+  },
+  {
+    "row": 221,
+    "field": "Advance Income Tax",
+    "fy": "FY2022(C)",
+    "expected": 0.4516,
+    "got": 1.24,
+    "formula": "=-2.48+1.34+2.38",
+    "status": "MISMATCH",
+    "diff_pct": 1.745792736935341
+  },
+  {
+    "row": 221,
+    "field": "Advance Income Tax",
+    "fy": "FY2023(D)",
+    "expected": -0.1137,
+    "got": 0.99,
+    "formula": "=-1.09+0.11+0.14+0.26+1.57",
+    "status": "MISMATCH",
+    "diff_pct": 9.70712401055409
+  },
+  {
+    "row": 222,
+    "field": "Prepaid Expenses",
+    "fy": "FY2021(B)",
+    "expected": 0.1190591,
+    "got": 0.12,
+    "formula": "0.12",
+    "status": "MATCH",
+    "diff_pct": 0.007902797854174897
+  },
+  {
+    "row": 222,
+    "field": "Prepaid Expenses",
+    "fy": "FY2022(C)",
+    "expected": 0.1317,
+    "got": null,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 222,
+    "field": "Prepaid Expenses",
+    "fy": "FY2023(D)",
+    "expected": 0.1428,
+    "got": 0.14,
+    "formula": "0.14",
+    "status": "MATCH",
+    "diff_pct": 0.019607843137254877
+  },
+  {
+    "row": 223,
+    "field": "Other Advances",
+    "fy": "FY2021(B)",
+    "expected": 0.2451413,
+    "got": 1.21,
+    "formula": "1.21",
+    "status": "MISMATCH",
+    "diff_pct": 3.935928788825057
+  },
+  {
+    "row": 223,
+    "field": "Other Advances",
+    "fy": "FY2022(C)",
+    "expected": 0.2909,
+    "got": 3.32,
+    "formula": "=2.11+1.21",
+    "status": "MISMATCH",
+    "diff_pct": 10.412856651770367
+  },
+  {
+    "row": 223,
+    "field": "Other Advances",
+    "fy": "FY2023(D)",
+    "expected": 0.3554,
+    "got": 0.8400000000000001,
+    "formula": "=2.62-1.78",
+    "status": "MISMATCH",
+    "diff_pct": 1.3635340461451888
+  },
+  {
+    "row": 224,
+    "field": "Advances to group co",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 224,
+    "field": "Advances to group co",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 224,
+    "field": "Advances to group co",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 229,
+    "field": "Exposure - Investments",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 188.0,
+    "formula": "=B188",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 229,
+    "field": "Exposure - Investments",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 188.0,
+    "formula": "=C188",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 229,
+    "field": "Exposure - Investments",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 188.0,
+    "formula": "=D188",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 230,
+    "field": "Exposure - Advances",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 224.0,
+    "formula": "=B224",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 230,
+    "field": "Exposure - Advances",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 224.0,
+    "formula": "=C224",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 230,
+    "field": "Exposure - Advances",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 224.0,
+    "formula": "=D224",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 232,
+    "field": "Debtors > 6m (NC)",
+    "fy": "FY2021(B)",
+    "expected": 0.0077514,
+    "got": 208.0,
+    "formula": "=B208",
+    "status": "MISMATCH",
+    "diff_pct": 26832.86227004154
+  },
+  {
+    "row": 232,
+    "field": "Debtors > 6m (NC)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 208.0,
+    "formula": "=C208",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 232,
+    "field": "Debtors > 6m (NC)",
+    "fy": "FY2023(D)",
+    "expected": 0.0656847,
+    "got": 208.0,
+    "formula": "=D208",
+    "status": "MISMATCH",
+    "diff_pct": 3165.643069086104
+  },
+  {
+    "row": 233,
+    "field": "Investments (NC)",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 369.0,
+    "formula": "=B183+B186",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 233,
+    "field": "Investments (NC)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 369.0,
+    "formula": "=C183+C186",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 233,
+    "field": "Investments (NC)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 369.0,
+    "formula": "=D183+D186",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 234,
+    "field": "FD (Non Current)",
+    "fy": "FY2021(B)",
+    "expected": 0.0,
+    "got": 214.0,
+    "formula": "=B214",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 234,
+    "field": "FD (Non Current)",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 214.0,
+    "formula": "=C214",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 234,
+    "field": "FD (Non Current)",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 214.0,
+    "formula": "=D214",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 235,
+    "field": "Dues from directors",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 235,
+    "field": "Dues from directors",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 235,
+    "field": "Dues from directors",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 236,
+    "field": "Advances to cap goods",
+    "fy": "FY2021(B)",
+    "expected": 1.1702349,
+    "got": -0.05,
+    "formula": "-0.05",
+    "status": "MISMATCH",
+    "diff_pct": 1.0427264645756165
+  },
+  {
+    "row": 236,
+    "field": "Advances to cap goods",
+    "fy": "FY2022(C)",
+    "expected": 0.1691,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 236,
+    "field": "Advances to cap goods",
+    "fy": "FY2023(D)",
+    "expected": 0.419740721,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 237,
+    "field": "Security deposits",
+    "fy": "FY2021(B)",
+    "expected": 0.2460627,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 237,
+    "field": "Security deposits",
+    "fy": "FY2022(C)",
+    "expected": 0.3221,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 237,
+    "field": "Security deposits",
+    "fy": "FY2023(D)",
+    "expected": 0.3563923,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 238,
+    "field": "Other NC assets",
+    "fy": "FY2021(B)",
+    "expected": 0.3384301,
+    "got": 0.71,
+    "formula": "=0.34+0.09+0.03+0.25",
+    "status": "MISMATCH",
+    "diff_pct": 1.0979221410861502
+  },
+  {
+    "row": 238,
+    "field": "Other NC assets",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 238,
+    "field": "Other NC assets",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 1.03,
+    "formula": "=0.38-0.06+0.03+0.36+0.32",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 242,
+    "field": "Sundry Creditors",
+    "fy": "FY2021(B)",
+    "expected": 10.3146846,
+    "got": 3.1800000000000006,
+    "formula": "=10.31-7.13",
+    "status": "MISMATCH",
+    "diff_pct": 0.6917016735538379
+  },
+  {
+    "row": 242,
+    "field": "Sundry Creditors",
+    "fy": "FY2022(C)",
+    "expected": 12.7866,
+    "got": 15.28,
+    "formula": "=12.79+2.49",
+    "status": "MISMATCH",
+    "diff_pct": 0.1950010166893466
+  },
+  {
+    "row": 242,
+    "field": "Sundry Creditors",
+    "fy": "FY2023(D)",
+    "expected": 14.2867881,
+    "got": 15.79,
+    "formula": "=14.29+1.50",
+    "status": "MISMATCH",
+    "diff_pct": 0.10521692415946159
+  },
+  {
+    "row": 243,
+    "field": "Advance from customers",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 1.27,
+    "formula": "1.27",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 243,
+    "field": "Advance from customers",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 1.37,
+    "formula": "1.37",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 243,
+    "field": "Advance from customers",
+    "fy": "FY2023(D)",
+    "expected": 0.8996,
+    "got": 0.9,
+    "formula": "0.9",
+    "status": "MATCH",
+    "diff_pct": 0.00044464206313924744
+  },
+  {
+    "row": 244,
+    "field": "Provision for Tax",
+    "fy": "FY2021(B)",
+    "expected": 0.3206985,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 244,
+    "field": "Provision for Tax",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 244,
+    "field": "Provision for Tax",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": 0,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 245,
+    "field": "Dividend payable",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 245,
+    "field": "Dividend payable",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 245,
+    "field": "Dividend payable",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 246,
+    "field": "Other statutory liabilities",
+    "fy": "FY2021(B)",
+    "expected": 0.4849663,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 246,
+    "field": "Other statutory liabilities",
+    "fy": "FY2022(C)",
+    "expected": 1.3365,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 246,
+    "field": "Other statutory liabilities",
+    "fy": "FY2023(D)",
+    "expected": 0.8386,
+    "got": 0,
+    "formula": "",
+    "status": "MISSING",
+    "diff_pct": null
+  },
+  {
+    "row": 247,
+    "field": "Interest accrued not due",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 247,
+    "field": "Interest accrued not due",
+    "fy": "FY2022(C)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 247,
+    "field": "Interest accrued not due",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 248,
+    "field": "Interest accrued and due",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 248,
+    "field": "Interest accrued and due",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 248,
+    "field": "Interest accrued and due",
+    "fy": "FY2023(D)",
+    "expected": 0.0,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 249,
+    "field": "Creditors for expenses",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": 9.06,
+    "formula": "=8.57+0.31+0.18",
+    "status": "EXTRA",
+    "diff_pct": null
+  },
+  {
+    "row": 249,
+    "field": "Creditors for expenses",
+    "fy": "FY2022(C)",
+    "expected": 0.9561,
+    "got": 15.83,
+    "formula": "=13.82+2.01",
+    "status": "MISMATCH",
+    "diff_pct": 15.556845518251231
+  },
+  {
+    "row": 249,
+    "field": "Creditors for expenses",
+    "fy": "FY2023(D)",
+    "expected": 0.3802,
+    "got": 17.53,
+    "formula": "=16.84+0.31+0.38",
+    "status": "MISMATCH",
+    "diff_pct": 45.10731194108365
+  },
+  {
+    "row": 250,
+    "field": "Other current liabilities",
+    "fy": "FY2021(B)",
+    "expected": 2.5472587,
+    "got": 4.5,
+    "formula": "=0.31+6.04+0.99-3+0.16",
+    "status": "MISMATCH",
+    "diff_pct": 0.7666050173859451
+  },
+  {
+    "row": 250,
+    "field": "Other current liabilities",
+    "fy": "FY2022(C)",
+    "expected": 4.6491,
+    "got": 33.57,
+    "formula": "=17.27+3.09+3.09+14.24-4.12",
+    "status": "MISMATCH",
+    "diff_pct": 6.220752403691037
+  },
+  {
+    "row": 250,
+    "field": "Other current liabilities",
+    "fy": "FY2023(D)",
+    "expected": 1.4527400000000001,
+    "got": 4.9,
+    "formula": "=14.25-7.85+0.31-5.05+3.24",
+    "status": "MISMATCH",
+    "diff_pct": 2.3729366576262785
+  },
+  {
+    "row": 254,
+    "field": "Arrears cumulative div",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 254,
+    "field": "Arrears cumulative div",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 254,
+    "field": "Arrears cumulative div",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 255,
+    "field": "Gratuity liability",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 255,
+    "field": "Gratuity liability",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 255,
+    "field": "Gratuity liability",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 256,
+    "field": "Disputed liabilities",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 256,
+    "field": "Disputed liabilities",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 256,
+    "field": "Disputed liabilities",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 257,
+    "field": "Bank guarantee/LC",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 257,
+    "field": "Bank guarantee/LC",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 257,
+    "field": "Bank guarantee/LC",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 258,
+    "field": "Other contingent liabilities",
+    "fy": "FY2021(B)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 258,
+    "field": "Other contingent liabilities",
+    "fy": "FY2022(C)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  },
+  {
+    "row": 258,
+    "field": "Other contingent liabilities",
+    "fy": "FY2023(D)",
+    "expected": null,
+    "got": null,
+    "formula": "",
+    "status": "BOTH_EMPTY",
+    "diff_pct": 0
+  }
+]

@@ -55,6 +55,7 @@ class LearningSystem:
             .update(
                 {
                     "status": "approved",
+                    "is_doubt": False,
                     "reviewed_by": user_id,
                     "reviewed_at": now,
                 }

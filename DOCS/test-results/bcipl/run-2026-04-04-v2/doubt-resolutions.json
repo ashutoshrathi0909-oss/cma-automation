@@ -1,0 +1,1394 @@
+[
+  {
+    "id": "9cfac3d6-0e41-4f6f-bc6c-3178ec345d34",
+    "desc": "Other Bank Balances(Cr.):",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Bank Balances"
+  },
+  {
+    "id": "3ab8f115-7d6c-4e51-a371-4f8a7d2fdd43",
+    "desc": "Intangible Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Tangible"
+  },
+  {
+    "id": "29fdc0b4-bcb1-4c4d-90cd-ecb360dbba11",
+    "desc": "Reserves & Surplus",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Reserves & Surplus"
+  },
+  {
+    "id": "17120833-6bf0-46ec-b4ed-6521c1410d43",
+    "desc": "Long-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Long-term Borrowings"
+  },
+  {
+    "id": "3e7f384a-3873-46c1-a41f-79e86d64ba81",
+    "desc": "Short-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Short-term Borrowings"
+  },
+  {
+    "id": "422c3606-403d-4c34-80e9-1ce61e26956d",
+    "desc": "Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "3d2f870a-98ac-4174-8a6b-984762f1e939",
+    "desc": "Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "a2924a0f-044c-4d6f-b472-97c39f8ac1ed",
+    "desc": "Revenue from operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Revenue from operations"
+  },
+  {
+    "id": "f227d5b0-0ce5-4426-b680-4844f6fb25a8",
+    "desc": "No. 225657",
+    "action": "approve_unclassified",
+    "reason": "Pattern: No. 225657"
+  },
+  {
+    "id": "9c5188d9-445f-424a-a336-d3373e1500fd",
+    "desc": "- Trade Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Trade Receivables"
+  },
+  {
+    "id": "3c19ad2e-05c3-4544-b1a8-650c11aabe2c",
+    "desc": "- Loans and Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Loans and Advances"
+  },
+  {
+    "id": "980e94be-332d-42a2-a52e-652133dfb0da",
+    "desc": "- Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "25401513-6712-4b73-b61f-5246523c24ca",
+    "desc": "- Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "383375e1-235c-4a75-84a3-b51175460616",
+    "desc": "- Purchase/Sale of Fixed Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Purchase"
+  },
+  {
+    "id": "3ea62d3b-8ab8-4a6b-9aa2-2d65cd01ea29",
+    "desc": "- Increase / (Decrease) in Term Loans",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "81724b4b-bd97-4ee2-9560-ccb9715ece01",
+    "desc": "Net increase/(decrease) in Cash & Cash Equivalents",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Net increase/(decrease)"
+  },
+  {
+    "id": "01bd5207-c722-4d4c-84fc-8f36ad290bbc",
+    "desc": "Cash and Cash Equivalent  at the beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Cash and Cash Equivalent"
+  },
+  {
+    "id": "ac6c3d6a-bf4f-4b72-864d-83e48ca87968",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "1bce2fdc-d26b-4bd2-aeed-f6ad16e2eb34",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "5eb1bfcb-123a-4a38-8986-2c60a05d913b",
+    "desc": "Outstanding at the Beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Outstanding at the Beginning"
+  },
+  {
+    "id": "2bad9189-67e9-4771-8819-3dbb2279f8bd",
+    "desc": "Mr. Chaitra Sundaresh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "4c671b29-5fac-4240-8e27-33dba6af00ce",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "6265ad52-2520-40c2-951a-e20627ede2f6",
+    "desc": "Axis Term Loan A/c No. 918060114069483",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "ceaa57b5-b30c-496d-b33c-a9caf5b3e968",
+    "desc": "Axis Term Loan No. 917060080315769",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "de9ba291-0a17-4b8b-af73-41b8c1d4ce87",
+    "desc": "Axis Bank 915060043569330 TLV Business Empower",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "2d478039-52ac-443d-9556-a603d12d3692",
+    "desc": "Axis Term Loan no. 312175",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "e74e7be8-7553-4bc2-9571-10812d748ea1",
+    "desc": "Current Liabilities\" [Note No. 7]",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Current Liabilities"
+  },
+  {
+    "id": "1d63f075-8486-469c-8197-0bc9b9a533d0",
+    "desc": "Axis Bank Forklift Loan A/c No. CER000904154855",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "20e4b32a-5647-498c-85bf-93eb2a60578a",
+    "desc": "Vechicle Loan Kotak Mahindra",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "47e0c12b-edb9-44f0-b9f8-194355b6471b",
+    "desc": "Mr. Chaitra Sunderesh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "3bb3eca4-dd44-47c2-ae6d-e21fae74950c",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "47beed99-00e2-4172-905a-32d548bafe75",
+    "desc": "A+B",
+    "action": "approve_unclassified",
+    "reason": "Pattern: A+B"
+  },
+  {
+    "id": "5372e2bf-1710-4a5d-9614-fd27ca25dd2e",
+    "desc": "A+B",
+    "action": "approve_unclassified",
+    "reason": "Pattern: A+B"
+  },
+  {
+    "id": "a8453b22-aa12-4916-8b20-f9407b80519f",
+    "desc": "Reserves & Surplus",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Reserves & Surplus"
+  },
+  {
+    "id": "b0c4bdb5-2b48-44c5-9fac-07512cc8b061",
+    "desc": "Long-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Long-term Borrowings"
+  },
+  {
+    "id": "e1b536f7-ee33-4581-989b-680763addc13",
+    "desc": "Short-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Short-term Borrowings"
+  },
+  {
+    "id": "547aff3e-2dd1-42d3-8aab-f1b1d29bfa2d",
+    "desc": "Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "d56e33ee-ef1a-4f55-936e-8d9ef66499b6",
+    "desc": "Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "c1c76dbb-282e-45b1-8ef6-d1bed649ae8f",
+    "desc": "Short-term Provisions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Short-term Provisions"
+  },
+  {
+    "id": "acdc6e61-65da-4033-a6de-f2638611f7ba",
+    "desc": "Gross Revenue from operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Gross Revenue"
+  },
+  {
+    "id": "0ec48b9c-1b06-4b19-b734-bc3e7136b4f8",
+    "desc": "Total Revenue",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Total Revenue"
+  },
+  {
+    "id": "376f036a-0d1a-424e-9d91-bdde7038fa5d",
+    "desc": "- Earlier Year Taxes Written off",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Earlier Year"
+  },
+  {
+    "id": "cd859e25-dd86-44a2-a485-ac4b61b2ca1e",
+    "desc": "- Provisions / Payables Written-back",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Provisions"
+  },
+  {
+    "id": "b80bbfd2-063a-4966-93dc-b2e084e64af0",
+    "desc": "- Trade Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Trade Receivables"
+  },
+  {
+    "id": "43e1a7dd-5da3-458f-a6cb-3e2a0f0f25f6",
+    "desc": "- Loans and Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Loans and Advances"
+  },
+  {
+    "id": "ff0a0f7b-148f-4867-884e-2bff5b23045a",
+    "desc": "- Other Current/ Non-Current Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Other Current"
+  },
+  {
+    "id": "d2762125-ab44-4d2f-bbf3-8b875767cb2a",
+    "desc": "- Provisions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Provisions"
+  },
+  {
+    "id": "4d04a9f5-2420-4f60-b1eb-0829b49f3ab0",
+    "desc": "- Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "2cd66a45-e89b-46aa-8f45-aee74abb244d",
+    "desc": "- Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "ab0984b8-9373-4b8e-a495-c93068da648f",
+    "desc": "- Purchase of Fixed Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Purchase"
+  },
+  {
+    "id": "ee98ded4-4cc6-448a-8d5c-a1adfdc7bdcd",
+    "desc": "- Increase / (Decrease) in Term Loans",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "3fd1404a-a2c0-47fa-bdd4-2993cadc078d",
+    "desc": "- Increase / (Decrease) in Unsecured Loans",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "feeed05a-b45f-4da0-8852-130efaac33d6",
+    "desc": "- Increase / (Decrease) in Working Capital Loans",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "f8b9e9d8-4251-4ebc-b020-f4d18d546f6f",
+    "desc": "Net increase/(decrease) in Cash & Cash Equivalents",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Net increase/(decrease)"
+  },
+  {
+    "id": "30aeaa87-0d5a-47bb-b6c8-df9c7fee8284",
+    "desc": "Cash and Cash Equivalent  at the beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Cash and Cash Equivalent"
+  },
+  {
+    "id": "816ed8c9-3238-433e-87de-6beb9eb33d78",
+    "desc": "Cash and Cash Equivalent  at the end of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Cash and Cash Equivalent"
+  },
+  {
+    "id": "87051620-8a1f-4fe3-afac-386e4481b12d",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "6c939e00-74dd-4885-a9ac-f5c1f397c23b",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "a17726d1-d874-4e6f-a4ae-40308b21c91b",
+    "desc": "Outstanding at the Beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Outstanding at the Beginning"
+  },
+  {
+    "id": "456d5026-7683-4aee-a00c-a36ab72700b5",
+    "desc": "Mr. Chaitra Sundaresh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "bf9b01aa-eada-4096-a018-ebbd1d3bba55",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "e50248df-7b8b-4031-8ff6-3991d90dc4d8",
+    "desc": "Balance at the beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Balance at the beginning"
+  },
+  {
+    "id": "2d41fbd9-3408-4fe6-bf5f-a9591881711c",
+    "desc": "Axis Term Loan A/c No. 917060080315785",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "5ca15f67-6e47-431c-afbf-8d8dc835e85b",
+    "desc": "Axis Term Loan A/c No. 918060114069483",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "8c57e5fb-eba5-4791-9f62-7305954b4701",
+    "desc": "Axis Term Loan No. 917060080315769",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "307510ed-a868-4aeb-9bd7-b27119eca40e",
+    "desc": "Axis Term Loan No. 917060081658416",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "1afd9bd0-f99f-4a19-869d-2f321aba1185",
+    "desc": "Vechicle Loan Yes Bank Ltd",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "408a29c9-5241-4df6-8145-801c8f4bb6d0",
+    "desc": "Axis Bank 915060043569330 TLV Business Empower",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "e4302a68-5242-46a6-90a5-df64cea49e40",
+    "desc": "Axis Bank Forklift Loan A/c No. CER000904154855",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "ad89064a-33c1-43f8-bdc8-3acbb7c7f8e1",
+    "desc": "Vechicle Loan Kotak Mahindra",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "8a4926fd-9cfd-4f54-8f06-0bb94f942495",
+    "desc": "Current Liabilities\" [Note No. 7]",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Current Liabilities"
+  },
+  {
+    "id": "6918912f-2119-42c0-8e1c-69c4059c5a38",
+    "desc": "Axis Term Loan A/c No. 917060080315785",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "ed96c595-a275-41e3-a6e5-79a1d4d3d4e7",
+    "desc": "Axis Term Loan A/c No. 918060114069483",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "f06916c2-6803-4644-9add-79b77bd1cf66",
+    "desc": "Axis Term Loan A/c. No. 917060080315769",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "43ecc741-bbe2-4e3c-be6b-364aafb5b5a5",
+    "desc": "Axis Term Loan A/c. No. 917060081658416",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "2608049c-655c-4f6c-9a4e-08e2e092e813",
+    "desc": "Yes Bank Ltd - Vechicle Loan",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "6bb08f0f-a526-4db3-a83a-db42e1373ac6",
+    "desc": "Axis Bank Forklift Loan A/c No. CER000904154855",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "0c7f7987-2b52-44e9-857d-59be2a9ac449",
+    "desc": "Vechicle Loan Kotak Mahindra",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "1e2e64e4-76cc-439f-9048-c16b58011bb6",
+    "desc": "Mr. Chaitra Sunderesh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "a553af98-0a27-40b4-9f50-651da3344702",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "99cdd6ba-c540-4f43-bc15-19866a5bc166",
+    "desc": "Mrs. Ashwini M Chaitra",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ashwini"
+  },
+  {
+    "id": "65e4ae25-2433-4224-872d-a843e180fa33",
+    "desc": "Mr. Nishanth Sunderesh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Nishanth"
+  },
+  {
+    "id": "4a0bb9c8-640d-4877-afda-0db23addd564",
+    "desc": "Dues to Micro, Small & Medium Enterprises",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Dues to Micro"
+  },
+  {
+    "id": "9ac8650f-26ce-4c00-8400-e3dd458f2b1c",
+    "desc": "Dues to other than Micro, Small & Medium Enterprises",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Dues to other than Micro"
+  },
+  {
+    "id": "5a6bf067-33a2-4180-a86c-aad9f2fc1c72",
+    "desc": "S.T. Payable",
+    "action": "approve_unclassified",
+    "reason": "Pattern: S.T. Payable"
+  },
+  {
+    "id": "4643d7af-d2bb-40ca-910a-2f2f8141a602",
+    "desc": "Interest on Late payment of TDS",
+    "action": "correct",
+    "target": "Row 84: Interest on WC",
+    "reason": "Interest penalty"
+  },
+  {
+    "id": "4a245528-80dc-4b53-aa66-629a46001896",
+    "desc": "Unpaid Salary",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Unpaid Salary"
+  },
+  {
+    "id": "17712781-19a9-44a8-b996-f00469d6169e",
+    "desc": "Tangible",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Tangible"
+  },
+  {
+    "id": "47e91655-c61d-4a2b-9055-7691e559713e",
+    "desc": "Unsecured Considered Good",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Unsecured Considered Good"
+  },
+  {
+    "id": "425d90f0-68a7-4f49-94b4-6aa6cfa776d9",
+    "desc": "Add: Credit Availed",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add: Credit Availed"
+  },
+  {
+    "id": "b71b6b02-d8ab-4506-80bf-418189917b6f",
+    "desc": "Scraps",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Scraps"
+  },
+  {
+    "id": "57c24e84-df2d-4523-8647-9406a410480a",
+    "desc": "- Other Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Other Receivables"
+  },
+  {
+    "id": "2e28eec8-1277-4d1d-80d2-3d8b9802f65d",
+    "desc": "Balance With Bank",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Balance With Bank"
+  },
+  {
+    "id": "01a151f8-7a16-4427-b6a5-59dc5c3c39bb",
+    "desc": "3 months but less than 12 months *",
+    "action": "approve_unclassified",
+    "reason": "Pattern: 3 months but less than"
+  },
+  {
+    "id": "6477f042-e7b6-4d77-ab93-1df192366c8e",
+    "desc": "Other Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Advances"
+  },
+  {
+    "id": "e579fff5-2505-49cd-9b24-021c51f50a98",
+    "desc": "(A + B)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (A + B)"
+  },
+  {
+    "id": "08dbe2e5-3d6e-4c73-bf00-1eab8378b371",
+    "desc": "Capital Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Capital Advances"
+  },
+  {
+    "id": "3227fb7d-ac97-42cd-8859-2387413f2e71",
+    "desc": "Add: G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add: G S T Paid"
+  },
+  {
+    "id": "6b374989-bce4-4d94-88e1-8fc555f26cfd",
+    "desc": "- Local",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Local"
+  },
+  {
+    "id": "3aed7c2b-95f3-44c2-9abb-3e051a62a5c4",
+    "desc": "Less: Credit Notes",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Less: Credit Notes"
+  },
+  {
+    "id": "37f055e8-60e6-41f6-bd97-bc11312ce86b",
+    "desc": "Gross Revenue From Operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Gross Revenue"
+  },
+  {
+    "id": "3cb80f40-21c9-4a46-abd3-4f781b620fb2",
+    "desc": "(Less): G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (Less): G S T Paid"
+  },
+  {
+    "id": "2c477ded-0f51-460b-b24c-050f2ef512b0",
+    "desc": "Opening Stock of Raw Materials",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Opening Stock of Raw Materials"
+  },
+  {
+    "id": "8c2af053-fedf-4785-ab22-1a5a5b12817f",
+    "desc": "Add : Purchases",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add : Purchases"
+  },
+  {
+    "id": "7542d72a-663f-4413-902a-6a413a9c4f5f",
+    "desc": "CRCA Sheets & Coils",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Primary raw material for manufacturing"
+  },
+  {
+    "id": "5f6fdb6a-5f7e-4b8e-a8c5-cb42dca48e90",
+    "desc": "Aluminium",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Raw material"
+  },
+  {
+    "id": "9739d58a-7a47-4ee7-9b8e-2fb585f389eb",
+    "desc": "- Scrap",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Scrap"
+  },
+  {
+    "id": "7f5366d6-3e93-4d1b-9a48-b8f4358b5565",
+    "desc": "Labour Welfare Expenses",
+    "action": "correct",
+    "target": "Row 45: Wages (Manufacturing)",
+    "reason": "Factory labour welfare"
+  },
+  {
+    "id": "a7203018-3165-43e4-85b5-3631baf10abd",
+    "desc": "Interest on C.C.  A/c",
+    "action": "correct",
+    "target": "Row 84: Interest on WC",
+    "reason": "Cash credit interest is working capital interest"
+  },
+  {
+    "id": "d13587b1-c3dd-459e-ba87-ef4a0e075e55",
+    "desc": "Amortization Expenses",
+    "action": "correct",
+    "target": "Row 63: Depreciation (General Admin)",
+    "reason": "Amortization of intangible assets"
+  },
+  {
+    "id": "a9596d1e-ef1b-4ab8-84b3-13fbf3542e7f",
+    "desc": "Manufacturing Expenses",
+    "action": "correct",
+    "target": "Row 53: Other Manufacturing Expenses",
+    "reason": "General manufacturing expenses"
+  },
+  {
+    "id": "6fe0084f-1ab3-4180-a749-cb1f74391047",
+    "desc": "Consultation  Fees",
+    "action": "correct",
+    "target": "Row 71: Other Admin Expenses",
+    "reason": "Professional/consultation fees"
+  },
+  {
+    "id": "4c6203fd-2a7c-45ef-869a-5d62f2305b67",
+    "desc": "At 1st April, 2019",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 1st April"
+  },
+  {
+    "id": "09aa24ab-3f80-4f1d-bd99-5600ed164cfc",
+    "desc": "Additions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Additions"
+  },
+  {
+    "id": "25e2b632-8466-4050-89b9-e341cb914b1b",
+    "desc": "Disposals",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Disposals"
+  },
+  {
+    "id": "796f6be8-e412-4984-b5e1-15f5c4f6e449",
+    "desc": "At 31st March, 2020",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "652a54e5-c5bb-4481-8d88-49ce1573a15a",
+    "desc": "Additions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Additions"
+  },
+  {
+    "id": "14ae0e17-68e3-48f0-965b-5909bdc2d7bb",
+    "desc": "At 31st March, 2021",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "8662e280-cfc3-42b6-9f2e-9f32603c8522",
+    "desc": "At 1st April, 2019",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 1st April"
+  },
+  {
+    "id": "b08048d2-de3a-47c6-b851-9313076ceda0",
+    "desc": "For the Year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: For the Year"
+  },
+  {
+    "id": "aeac64ce-6993-4628-b7d2-746197a253ba",
+    "desc": "Disposals",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Disposals"
+  },
+  {
+    "id": "a4ccaf6a-8a20-4608-9f71-16a52e59db77",
+    "desc": "At 31st March, 2020",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "226b066e-f124-49ed-94ed-dd79e9abed42",
+    "desc": "For the Year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: For the Year"
+  },
+  {
+    "id": "fce48ca0-a12b-4319-994a-7d045040c736",
+    "desc": "At 31st March, 2021",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "c7235376-ae4a-4994-95f2-52c0629378d6",
+    "desc": "At 31st March, 2020",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "d3aa27cb-5f87-475a-8361-560f92a466d7",
+    "desc": "At 31st March, 2021",
+    "action": "approve_unclassified",
+    "reason": "Pattern: At 31st March"
+  },
+  {
+    "id": "66b5b710-3fa4-4428-9d28-819b95b5906c",
+    "desc": "Reserves & Surplus",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Reserves & Surplus"
+  },
+  {
+    "id": "839d7b6c-eabe-49bb-8e64-70c20b244b1d",
+    "desc": "Long-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Long-term Borrowings"
+  },
+  {
+    "id": "00c5e673-217f-46f6-9dd3-b3abf1bb071e",
+    "desc": "Short-term Borrowings",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Short-term Borrowings"
+  },
+  {
+    "id": "0c5d0dfd-6c66-494e-bfcc-05c4527b1d86",
+    "desc": "Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "50e3cb12-858c-4daa-89c5-a4248cd9138a",
+    "desc": "Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "36825f6a-4747-4c75-b219-1ac07846e9b0",
+    "desc": "Short-term Provisions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Short-term Provisions"
+  },
+  {
+    "id": "dfdd4285-fc8d-4ae8-8e8b-c2914124bece",
+    "desc": "Revenue from operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Revenue from operations"
+  },
+  {
+    "id": "e89c9053-1a22-4626-998b-fffa423d2fe7",
+    "desc": "No. 225657",
+    "action": "approve_unclassified",
+    "reason": "Pattern: No. 225657"
+  },
+  {
+    "id": "8c28f4b3-a60e-4b5c-be70-14fc61c750e7",
+    "desc": "- Earlier Year Taxes Written off",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Earlier Year"
+  },
+  {
+    "id": "65b00c24-4e69-4535-bead-5cd6181f247c",
+    "desc": "- Provisions / Payables Written-back",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Provisions"
+  },
+  {
+    "id": "741ec874-f367-4a77-a977-d37934d092b9",
+    "desc": "- Trade Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Trade Receivables"
+  },
+  {
+    "id": "0064ced0-aaba-4ce4-8f64-5dfee5ebc1b5",
+    "desc": "- Loans and Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Loans and Advances"
+  },
+  {
+    "id": "aa49a5b5-906d-423a-bf67-3afb9b17009b",
+    "desc": "- Other Current Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Other Current"
+  },
+  {
+    "id": "9d501a7b-8081-42e3-a94e-ad8c8192f90e",
+    "desc": "TATA Capital Financial Services Ltd",
+    "action": "approve_unclassified",
+    "reason": "Pattern: TATA Capital"
+  },
+  {
+    "id": "ef6de514-01de-4648-a6c5-a64f53fbbe6b",
+    "desc": "Dues to other than Micro, Small & Medium Enterprises",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Dues to other than Micro"
+  },
+  {
+    "id": "0311f7a7-b000-43f6-99f6-b4bb052c7caf",
+    "desc": "Scraps",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Scraps"
+  },
+  {
+    "id": "92443e56-c0bd-486f-bb77-c3cc41f7094d",
+    "desc": "- Other Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Other Receivables"
+  },
+  {
+    "id": "556cad36-6c8d-45a2-bebf-cbe96c3d0ceb",
+    "desc": "3 months but less than 12 months *",
+    "action": "approve_unclassified",
+    "reason": "Pattern: 3 months but less than"
+  },
+  {
+    "id": "6e465cc6-de0a-4b72-a8f1-29fdf751613d",
+    "desc": "(A + B)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (A + B)"
+  },
+  {
+    "id": "b0a7dabb-dbf5-49b6-a7f1-19d02968ef44",
+    "desc": "Capital Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Capital Advances"
+  },
+  {
+    "id": "d120a611-31aa-46ce-9f1c-f89117d2db1f",
+    "desc": "Add: G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add: G S T Paid"
+  },
+  {
+    "id": "9b52fed0-e048-4658-a50f-6b9dd6e5836b",
+    "desc": "Gross Revenue From Operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Gross Revenue"
+  },
+  {
+    "id": "87887703-b296-44d4-ba9e-1dab0ff0f483",
+    "desc": "(Less): G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (Less): G S T Paid"
+  },
+  {
+    "id": "84c16e32-dbef-4ad1-ba36-0dfa18357eee",
+    "desc": "Opening Stock of Raw Materials",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Opening Stock of Raw Materials"
+  },
+  {
+    "id": "c237d06d-9621-4573-969d-76e03f130070",
+    "desc": "Add : Purchases",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add : Purchases"
+  },
+  {
+    "id": "5d8d8848-1bf8-48dd-93d6-b4bd101f1561",
+    "desc": "CRCA Sheets & Coils",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Primary raw material for manufacturing"
+  },
+  {
+    "id": "5c9720a7-c615-40fa-81eb-20d779eb3193",
+    "desc": "Aluminium",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Raw material"
+  },
+  {
+    "id": "bc57fb09-749c-486d-9b94-3d4a40fc44db",
+    "desc": "Labour Welfare Expenses",
+    "action": "correct",
+    "target": "Row 45: Wages (Manufacturing)",
+    "reason": "Factory labour welfare"
+  },
+  {
+    "id": "4fa48f70-06ed-4bca-8e19-cbbd179bb8dc",
+    "desc": "Amortization Expenses",
+    "action": "correct",
+    "target": "Row 63: Depreciation (General Admin)",
+    "reason": "Amortization of intangible assets"
+  },
+  {
+    "id": "a7d4c51d-7a33-4757-a123-1360e0cdeeb5",
+    "desc": "Consultation  Fees",
+    "action": "correct",
+    "target": "Row 71: Other Admin Expenses",
+    "reason": "Professional/consultation fees"
+  },
+  {
+    "id": "831ae974-b880-4a0a-b4cc-af91816273a6",
+    "desc": "- Provisions",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Provisions"
+  },
+  {
+    "id": "7de2e771-5915-4e5d-93d4-c3e3a30d3057",
+    "desc": "- Other Current Liabilities",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Current Liabilities"
+  },
+  {
+    "id": "5d50a6a6-3a64-485d-97a2-34fc54693c27",
+    "desc": "- Trade Payables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Trade Payables"
+  },
+  {
+    "id": "6bc53a70-bda7-4d1d-9eb6-0c7d87630bd8",
+    "desc": "- Purchase/Sale of Fixed Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Purchase"
+  },
+  {
+    "id": "17793f5b-11a4-4f67-9806-b2a22fed4c19",
+    "desc": "- Increase / (Decrease) in Other Non Current Assets",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "bab2ad13-5f8c-413d-a72e-f4ea3a6f5260",
+    "desc": "- Increase / (Decrease) in Term Loans",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Increase"
+  },
+  {
+    "id": "03149d0e-7c16-4c0f-b410-e674394d40b6",
+    "desc": "Net increase/(decrease) in Cash & Cash Equivalents",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Net increase/(decrease)"
+  },
+  {
+    "id": "74e8b537-1d79-4b6d-84fe-624af192d7df",
+    "desc": "Cash and Cash Equivalent  at the beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Cash and Cash Equivalent"
+  },
+  {
+    "id": "0937d15f-831b-42ee-91ac-cdf7fa5a2ba3",
+    "desc": "Cash and Cash Equivalent  at the end of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Cash and Cash Equivalent"
+  },
+  {
+    "id": "cdea80b0-d267-41ad-975d-5a373bcbcdfc",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "21966f9b-bfb4-47dd-9291-799df2934981",
+    "desc": "Equity Shares",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Equity Shares"
+  },
+  {
+    "id": "f8a0fc9f-eabb-4fac-9f2b-d051bff32816",
+    "desc": "Outstanding at the Beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Outstanding at the Beginning"
+  },
+  {
+    "id": "758d6aad-312f-4fae-9349-5e320f18206c",
+    "desc": "Mr. Chaitra Sundaresh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "9cf7f1a4-cfe9-4595-89ea-5f0542bcce5c",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "02ae643e-28b0-4bde-8d06-f90f0fabab7a",
+    "desc": "Balance at the beginning of the year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Balance at the beginning"
+  },
+  {
+    "id": "6f36dece-8831-434a-ac38-3723b17511d5",
+    "desc": "Axis Term Loan A/c No. 917060080315785 ( Crane)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "4cdf1862-e529-464a-a581-0bb9896d9394",
+    "desc": "Axis Term Loan A/c No. 918060114069483 Corporate",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "e7670626-d339-4332-a342-275d69173497",
+    "desc": "Axis Term Loan No. 917060080315769 ( Construction)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "f69e2881-24bb-4fd8-bffd-238d42302d8a",
+    "desc": "Axis Term Loan No. 917060081658416 ( Machinery)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "5883ceca-e943-4fe6-a9ae-266693a95487",
+    "desc": "Vechicle Loan Yes Bank Ltd",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "7cc66059-84b0-48f0-a6c5-86ec4e2acb85",
+    "desc": "Axis Bank ELGC A/C NO:920060046321519",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "94f850e0-22f3-496d-a34b-79c515b032e4",
+    "desc": "Axis Bank - 915060043569330 - TL-V Business Empower",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "122ae738-72ef-494c-8128-20a5f941b71d",
+    "desc": "Axis Bank Forklift Loan A/c No. CER000904154855",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Bank"
+  },
+  {
+    "id": "144271f5-5af5-47ce-8cd2-cb13c1e11657",
+    "desc": "Vechicle Loan Kotak Mahindra",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Vechicle Loan"
+  },
+  {
+    "id": "75f4fe73-d865-4b59-be85-9c3ab5ea2184",
+    "desc": "Axis Term Loan no. 312175",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "41ad2ce0-1d34-4049-b880-27547a67da00",
+    "desc": "Axis Term Loan A/c  - 921060054261031",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "1f15c573-d517-4104-8217-128952174e85",
+    "desc": "Axis Term Loan A/c No:879974",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "57d4573e-ac25-4076-ac67-508e8a5faef3",
+    "desc": "Current Liabilities\" [Note No. 7]",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Current Liabilities"
+  },
+  {
+    "id": "e84f1315-de79-4f7f-9750-cfcfff205b5d",
+    "desc": "Axis Term Loan A/c No. 917060080315785",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "18369136-f50e-4dce-96de-b36b86c5c21f",
+    "desc": "Axis Term Loan A/c No. 918060114069483",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "d82e2e9f-04bc-44e6-832d-24c054e8c216",
+    "desc": "Axis Term Loan A/c  - 921060054261031",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "7d97ca8e-5762-4f87-aef8-f1988dc8f582",
+    "desc": "Axis Term Loan A/c No:879974",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "396fbaf9-5cf3-40f6-becc-0b0da2e75645",
+    "desc": "Axis Term Loan no. 312175",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "fb48a469-963e-462c-b3f3-236ea7e96595",
+    "desc": "Axis Term Loan A/c. No. 917060080315769",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "21dbea6e-4d9c-4439-9378-8c86971237bd",
+    "desc": "Axis Term Loan A/c. No. 917060081658416",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Axis Term Loan"
+  },
+  {
+    "id": "c945edb2-17ec-4bac-8704-61e6b90fa07c",
+    "desc": "Mr. Chaitra Sundaresh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Chaitra"
+  },
+  {
+    "id": "bdae5f60-e6cc-4080-a822-664971c36787",
+    "desc": "Mrs. Ronak S. Bagadia",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mrs. Ronak"
+  },
+  {
+    "id": "732be5c3-d0eb-4783-9664-26da3b4ab5ee",
+    "desc": "Mr. Nishanth Sunderesh",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Mr. Nishanth"
+  },
+  {
+    "id": "9ca21cf9-d8d9-47a7-ab65-a3428bcdabfc",
+    "desc": "A+B",
+    "action": "approve_unclassified",
+    "reason": "Pattern: A+B"
+  },
+  {
+    "id": "f004ce22-0a2f-4abe-8c91-361cecfb3212",
+    "desc": "TATA Capital Financial Services Ltd",
+    "action": "approve_unclassified",
+    "reason": "Pattern: TATA Capital"
+  },
+  {
+    "id": "d1aa655c-86ee-4d3e-a475-4b8cf66e68b3",
+    "desc": "Dues to Micro, Small & Medium Enterprises",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Dues to Micro"
+  },
+  {
+    "id": "6a492545-f0d8-4313-9a7d-6617d863cfde",
+    "desc": "Dues to other than Micro, Small & Medium Enterprises",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Dues to other than Micro"
+  },
+  {
+    "id": "07598442-8fcf-4484-bfc0-2d4eb3721db0",
+    "desc": "(i) Principal amount remaining unpaid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (i) Principal amount"
+  },
+  {
+    "id": "f7353123-a872-49ff-8b88-ad8ce1423ecc",
+    "desc": "Other Bank Balances(Cr.):",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Bank Balances"
+  },
+  {
+    "id": "da879122-5982-41cb-a91c-7f2f66a43a75",
+    "desc": "S.T. Payable",
+    "action": "approve_unclassified",
+    "reason": "Pattern: S.T. Payable"
+  },
+  {
+    "id": "6d100b1d-ef40-4f8f-8539-e18544eaf5a6",
+    "desc": "Unpaid Salary",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Unpaid Salary"
+  },
+  {
+    "id": "4de6caf8-3f9d-4432-87ac-23b36d10ab2b",
+    "desc": "Exgratia Payable",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Exgratia Payable"
+  },
+  {
+    "id": "95421f1f-1037-4891-9f98-5e884c28d2b4",
+    "desc": "Unsecured Considered Good",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Unsecured Considered Good"
+  },
+  {
+    "id": "b339b1fe-a27b-4383-8e3d-9c705073f6c9",
+    "desc": "Raw Materials & Consumables",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Raw materials consumed"
+  },
+  {
+    "id": "e5d14fa0-f40f-4fa8-9966-7493ca657bf6",
+    "desc": "Scraps",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Scraps"
+  },
+  {
+    "id": "57611717-a95f-489f-81b3-c38afc246be5",
+    "desc": "- Other Receivables",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Other Receivables"
+  },
+  {
+    "id": "483dd0f6-94d7-465b-a133-c77ae3211a32",
+    "desc": "(iii) 6 months to 1 year",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (iii) 6 months"
+  },
+  {
+    "id": "833a87ff-3bd4-4bcb-952d-a55a27da15f0",
+    "desc": "Balance With Bank",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Balance With Bank"
+  },
+  {
+    "id": "78e44afb-6490-4965-9736-659a2898210e",
+    "desc": "Other Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Other Advances"
+  },
+  {
+    "id": "64755745-9bc1-49f7-a468-d1d9c01976e0",
+    "desc": "(A + B)",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (A + B)"
+  },
+  {
+    "id": "df8fa759-3c19-423c-9f10-827d722dbb37",
+    "desc": "Capital Advances",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Capital Advances"
+  },
+  {
+    "id": "43a31204-7571-468c-a12f-21f90733294a",
+    "desc": "Sale of Manufactured Goods",
+    "action": "correct",
+    "target": "Row 22: Sale of Products",
+    "reason": "Domestic sales of manufactured goods"
+  },
+  {
+    "id": "517d9987-88ee-43a8-8214-28e0dcb0b8cb",
+    "desc": "Add: G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add: G S T Paid"
+  },
+  {
+    "id": "33306ec8-e479-4a58-9fea-f260b76c41f5",
+    "desc": "Gross Revenue From Operations",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Gross Revenue"
+  },
+  {
+    "id": "26b6431f-fa50-4583-984b-ae22e0696b6b",
+    "desc": "(Less): G S T Paid",
+    "action": "approve_unclassified",
+    "reason": "Pattern: (Less): G S T Paid"
+  },
+  {
+    "id": "2b1a36a7-ce74-431c-a5b4-3a42b291b8f4",
+    "desc": "Sale of Duty Credit Scrips",
+    "action": "correct",
+    "target": "Row 32: Other Income",
+    "reason": "Duty credit scrips are other income"
+  },
+  {
+    "id": "2d2e58de-2359-4e12-a51d-69298af09477",
+    "desc": "Opening Stock of Raw Materials",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Opening Stock of Raw Materials"
+  },
+  {
+    "id": "12aa044c-ac38-4bdf-9201-05c9b7945e86",
+    "desc": "Add : Purchases",
+    "action": "approve_unclassified",
+    "reason": "Pattern: Add : Purchases"
+  },
+  {
+    "id": "db401afa-8b60-4f92-ab04-7743d5e9c503",
+    "desc": "CRCA Sheets & Coils",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Primary raw material for manufacturing"
+  },
+  {
+    "id": "1d0da091-9bd8-40b0-a491-ca3cf3d32ee9",
+    "desc": "Aluminium",
+    "action": "correct",
+    "target": "Row 42: Raw Materials Consumed",
+    "reason": "Raw material"
+  },
+  {
+    "id": "c0a372ec-e99a-4c87-8935-ec3a2aec38f6",
+    "desc": "- Scrap",
+    "action": "approve_unclassified",
+    "reason": "Pattern: - Scrap"
+  },
+  {
+    "id": "3c391ad5-3aae-4c45-9948-de4edc68381b",
+    "desc": "Labour Welfare Expenses",
+    "action": "correct",
+    "target": "Row 45: Wages (Manufacturing)",
+    "reason": "Factory labour welfare"
+  },
+  {
+    "id": "eb89eb99-32fb-437d-b795-2b39a66dab85",
+    "desc": "Interest on C.C.  A/c",
+    "action": "correct",
+    "target": "Row 84: Interest on WC",
+    "reason": "Cash credit interest is working capital interest"
+  },
+  {
+    "id": "7ff08a28-1846-4e69-a695-ecf4ecb49623",
+    "desc": "Amortization Expenses",
+    "action": "correct",
+    "target": "Row 63: Depreciation (General Admin)",
+    "reason": "Amortization of intangible assets"
+  },
+  {
+    "id": "433a0592-5d60-483a-81b5-9418bf78f00b",
+    "desc": "Manufacturing Expenses",
+    "action": "correct",
+    "target": "Row 53: Other Manufacturing Expenses",
+    "reason": "General manufacturing expenses"
+  },
+  {
+    "id": "f143bbd1-14dd-4e53-b563-cef9e231abbc",
+    "desc": "Consultation  Fees",
+    "action": "correct",
+    "target": "Row 71: Other Admin Expenses",
+    "reason": "Professional/consultation fees"
+  },
+  {
+    "id": "0f8cdfde-a7a6-40f0-afb3-106cdb350e39",
+    "desc": "Advacnes Written off",
+    "action": "correct",
+    "target": "Row 71: Other Admin Expenses",
+    "reason": "Advances written off"
+  }
+]

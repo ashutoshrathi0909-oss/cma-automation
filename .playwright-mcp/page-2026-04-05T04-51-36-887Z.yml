@@ -1,0 +1,47 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e38]:
+    - complementary [ref=e39]:
+      - generic [ref=e40]:
+        - text: CMA Assist
+        - paragraph [ref=e41]: Automation Platform
+      - navigation [ref=e42]:
+        - link "Dashboard" [ref=e43] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e44]
+          - text: Dashboard
+        - link "Clients" [ref=e49] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e50]
+          - text: Clients
+        - link "Settings" [ref=e55] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e56]
+          - text: Settings
+    - generic [ref=e59]:
+      - banner [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - generic [ref=e66]: Ashutosh Rathi
+            - generic [ref=e67]: admin
+          - button "Logout" [ref=e68]:
+            - img
+            - text: Logout
+      - main [ref=e69]:
+        - generic [ref=e334]:
+          - link "Back to client" [ref=e335] [cursor=pointer]:
+            - /url: /clients/8c3f47b0-1f4a-4159-8166-6f48664d114c
+            - img [ref=e336]
+            - text: Back to client
+          - generic [ref=e338]:
+            - heading "Verify Extracted Data" [level=1] [ref=e339]
+            - paragraph [ref=e340]: Review and confirm the extracted financial line items
+            - paragraph [ref=e341]: 6. BCIPL_ Final Accounts_2020-21.xls
+          - generic [ref=e433]:
+            - img [ref=e434]
+            - paragraph [ref=e436]: Extracting document...
+            - paragraph [ref=e437]: This may take a minute. Do not close this page.
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

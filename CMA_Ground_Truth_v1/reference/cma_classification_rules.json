@@ -18,7 +18,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 2,
@@ -31,7 +32,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 3,
@@ -44,7 +46,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 4,
@@ -57,7 +60,8 @@
       "canonical_code": "III_L6b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 5,
@@ -70,7 +74,8 @@
       "canonical_code": "III_L1a",
       "canonical_name": "Share Application Money",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 6,
@@ -83,7 +88,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 7,
@@ -96,7 +102,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 8,
@@ -109,7 +116,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 9,
@@ -122,7 +130,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 10,
@@ -135,7 +144,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 11,
@@ -148,7 +158,8 @@
       "canonical_code": "III_L2b",
       "canonical_name": "Balance transferred from profit and loss a/c",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 12,
@@ -161,7 +172,8 @@
       "canonical_code": "III_L2a",
       "canonical_name": "General Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 13,
@@ -174,7 +186,8 @@
       "canonical_code": "III_L2c",
       "canonical_name": "Share Premium A/c",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 14,
@@ -187,7 +200,8 @@
       "canonical_code": "III_A2",
       "canonical_name": "Less Accumulated Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 15,
@@ -200,7 +214,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 16,
@@ -213,7 +228,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 17,
@@ -226,7 +242,8 @@
       "canonical_code": "III_L2d",
       "canonical_name": "Revaluation Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 18,
@@ -239,7 +256,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 19,
@@ -252,7 +270,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 20,
@@ -265,7 +284,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "likely",
-      "mapping_notes": "Other term liabilities default to long term debt"
+      "mapping_notes": "Other term liabilities default to long term debt",
+      "industry_type": "all"
     },
     {
       "rule_id": 21,
@@ -278,7 +298,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 22,
@@ -291,7 +312,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 23,
@@ -304,7 +326,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "likely",
-      "mapping_notes": "Other term liabilities default to long term debt"
+      "mapping_notes": "Other term liabilities default to long term debt",
+      "industry_type": "all"
     },
     {
       "rule_id": 24,
@@ -317,7 +340,8 @@
       "canonical_code": "III_L10d",
       "canonical_name": "Dividend payable",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 25,
@@ -330,7 +354,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 26,
@@ -343,7 +368,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 27,
@@ -356,7 +382,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 28,
@@ -369,7 +396,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 29,
@@ -382,7 +410,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 30,
@@ -395,7 +424,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 31,
@@ -408,7 +438,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 32,
@@ -421,7 +452,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 33,
@@ -434,7 +466,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 34,
@@ -447,7 +480,8 @@
       "canonical_code": "III_L9",
       "canonical_name": "Deferred tax liability",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 35,
@@ -460,7 +494,8 @@
       "canonical_code": "III_L7b",
       "canonical_name": "Balance Other Debts",
       "mapping_confidence": "likely",
-      "mapping_notes": "Deferred payment credits"
+      "mapping_notes": "Deferred payment credits",
+      "industry_type": "all"
     },
     {
       "rule_id": 36,
@@ -473,7 +508,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 37,
@@ -486,7 +522,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 38,
@@ -499,7 +536,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 39,
@@ -512,7 +550,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 40,
@@ -525,7 +564,8 @@
       "canonical_code": "III_L3c",
       "canonical_name": "(o/s bill discounting balance to be included)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 41,
@@ -538,7 +578,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 42,
@@ -551,7 +592,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 43,
@@ -564,7 +606,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "likely",
-      "mapping_notes": "Other term liabilities default to long term debt"
+      "mapping_notes": "Other term liabilities default to long term debt",
+      "industry_type": "all"
     },
     {
       "rule_id": 44,
@@ -577,7 +620,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 45,
@@ -590,7 +634,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 46,
@@ -603,7 +648,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 47,
@@ -616,7 +662,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 48,
@@ -629,7 +676,8 @@
       "canonical_code": "III_L5b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 49,
@@ -642,7 +690,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 50,
@@ -655,7 +704,8 @@
       "canonical_code": "III_L3a",
       "canonical_name": "From Indian Bank",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 51,
@@ -668,7 +718,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 52,
@@ -681,12 +732,13 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 53,
       "source_sheet": "Balance Sheet",
-      "fs_item": "In case of Proprietory Concern – Housing Loan (excluding repayable within 1 year)",
+      "fs_item": "In case of Proprietory Concern â€“ Housing Loan (excluding repayable within 1 year)",
       "cma_classification_text": "Item 13: Term Loans",
       "broad_classification": "Term Liability",
       "remarks": "",
@@ -694,7 +746,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 54,
@@ -707,7 +760,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 55,
@@ -720,12 +774,13 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 56,
       "source_sheet": "Balance Sheet",
-      "fs_item": "In case of Proprietory Concern –Personal Loan (excluding repayable within 1 year)",
+      "fs_item": "In case of Proprietory Concern â€“Personal Loan (excluding repayable within 1 year)",
       "cma_classification_text": "Item 13: Term Loans",
       "broad_classification": "Term Liability",
       "remarks": "",
@@ -733,7 +788,8 @@
       "canonical_code": "III_L4b",
       "canonical_name": "Balance Repayable after one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 57,
@@ -746,7 +802,8 @@
       "canonical_code": "III_L7b",
       "canonical_name": "Balance Other Debts",
       "mapping_confidence": "likely",
-      "mapping_notes": "Term deposits mapped to Other Debts"
+      "mapping_notes": "Term deposits mapped to Other Debts",
+      "industry_type": "all"
     },
     {
       "rule_id": 58,
@@ -759,7 +816,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 59,
@@ -772,7 +830,8 @@
       "canonical_code": "III_L7b",
       "canonical_name": "Balance Other Debts",
       "mapping_confidence": "likely",
-      "mapping_notes": "Term deposits mapped to Other Debts"
+      "mapping_notes": "Term deposits mapped to Other Debts",
+      "industry_type": "all"
     },
     {
       "rule_id": 60,
@@ -785,7 +844,8 @@
       "canonical_code": "III_L4a",
       "canonical_name": "Term Loan Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 61,
@@ -798,7 +858,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "certain",
-      "mapping_notes": "Unsecured loan without shortfall undertaking"
+      "mapping_notes": "Unsecured loan without shortfall undertaking",
+      "industry_type": "all"
     },
     {
       "rule_id": 62,
@@ -811,7 +872,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "certain",
-      "mapping_notes": "Unsecured loan without shortfall undertaking"
+      "mapping_notes": "Unsecured loan without shortfall undertaking",
+      "industry_type": "all"
     },
     {
       "rule_id": 63,
@@ -824,7 +886,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "certain",
-      "mapping_notes": "Unsecured loan without shortfall undertaking"
+      "mapping_notes": "Unsecured loan without shortfall undertaking",
+      "industry_type": "all"
     },
     {
       "rule_id": 64,
@@ -837,7 +900,8 @@
       "canonical_code": "III_L8b",
       "canonical_name": "As Long Term Debt",
       "mapping_confidence": "certain",
-      "mapping_notes": "Unsecured loan without shortfall undertaking"
+      "mapping_notes": "Unsecured loan without shortfall undertaking",
+      "industry_type": "all"
     },
     {
       "rule_id": 65,
@@ -850,7 +914,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 66,
@@ -863,7 +928,8 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 67,
@@ -876,20 +942,22 @@
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 68,
       "source_sheet": "Balance Sheet",
       "fs_item": "Unsecured Loans from friends (with shortfall undertaking)",
-      "cma_classification_text": "Item 23: Networth – Others",
+      "cma_classification_text": "Item 23: Networth â€“ Others",
       "broad_classification": "Networth",
       "remarks": "",
       "canonical_sheet_row": 125,
       "canonical_code": "III_L2e",
       "canonical_name": "Other Reserve",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 69,
@@ -902,7 +970,8 @@
       "canonical_code": "III_L10a",
       "canonical_name": "Sundry Creditors for goods",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 70,
@@ -915,7 +984,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 71,
@@ -928,7 +998,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 72,
@@ -941,7 +1012,8 @@
       "canonical_code": "III_L7b",
       "canonical_name": "Balance Other Debts",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 73,
@@ -954,7 +1026,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 74,
@@ -967,7 +1040,8 @@
       "canonical_code": "III_L10c",
       "canonical_name": "Provision for Taxation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 75,
@@ -980,7 +1054,8 @@
       "canonical_code": "III_L10d",
       "canonical_name": "Dividend payable",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 76,
@@ -993,7 +1068,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 77,
@@ -1006,7 +1082,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 78,
@@ -1019,7 +1096,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 79,
@@ -1032,7 +1110,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 80,
@@ -1045,7 +1124,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 81,
@@ -1058,7 +1138,8 @@
       "canonical_code": "III_L10b",
       "canonical_name": "Advance received from customers",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 82,
@@ -1071,7 +1152,8 @@
       "canonical_code": "III_L10b",
       "canonical_name": "Advance received from customers",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 83,
@@ -1084,7 +1166,8 @@
       "canonical_code": "III_L10e",
       "canonical_name": "Other statutory liabilities (due within 1 year)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 84,
@@ -1097,7 +1180,8 @@
       "canonical_code": "III_L10e",
       "canonical_name": "Other statutory liabilities (due within 1 year)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 85,
@@ -1110,7 +1194,8 @@
       "canonical_code": "III_L10e",
       "canonical_name": "Other statutory liabilities (due within 1 year)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 86,
@@ -1123,7 +1208,8 @@
       "canonical_code": "III_L10e",
       "canonical_name": "Other statutory liabilities (due within 1 year)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 87,
@@ -1136,7 +1222,8 @@
       "canonical_code": "III_L10e",
       "canonical_name": "Other statutory liabilities (due within 1 year)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 88,
@@ -1149,7 +1236,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 89,
@@ -1162,7 +1250,8 @@
       "canonical_code": "III_L10i",
       "canonical_name": "Other current liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 90,
@@ -1175,7 +1264,8 @@
       "canonical_code": "III_A1",
       "canonical_name": "Gross Block",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 91,
@@ -1188,7 +1278,8 @@
       "canonical_code": "III_A2",
       "canonical_name": "Less Accumulated Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 92,
@@ -1201,7 +1292,8 @@
       "canonical_code": "III_A3a",
       "canonical_name": "Add : Capital Work in Progress",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 93,
@@ -1214,7 +1306,8 @@
       "canonical_code": "III_A20",
       "canonical_name": "Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 94,
@@ -1227,20 +1320,22 @@
       "canonical_code": "III_A20",
       "canonical_name": "Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 95,
       "source_sheet": "Balance Sheet",
       "fs_item": "NSC",
-      "cma_classification_text": "Item 27 (i) : Investments – Gvt. And other trustee securities",
+      "cma_classification_text": "Item 27 (i) : Investments â€“ Gvt. And other trustee securities",
       "broad_classification": "Investments",
       "remarks": "",
       "canonical_sheet_row": 182,
       "canonical_code": "III_A10a",
       "canonical_name": "Investment in Govt. Securities ( Current )",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 96,
@@ -1253,7 +1348,8 @@
       "canonical_code": "III_A11a",
       "canonical_name": "Imported",
       "mapping_confidence": "likely",
-      "mapping_notes": "Raw materials inventory"
+      "mapping_notes": "Raw materials inventory",
+      "industry_type": "all"
     },
     {
       "rule_id": 97,
@@ -1266,7 +1362,8 @@
       "canonical_code": "III_A13",
       "canonical_name": "Stocks-in-process",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 98,
@@ -1279,7 +1376,8 @@
       "canonical_code": "III_A14",
       "canonical_name": "Finished Goods",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 99,
@@ -1292,7 +1390,8 @@
       "canonical_code": "III_A19",
       "canonical_name": "Debtors more than six months",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 100,
@@ -1305,7 +1404,8 @@
       "canonical_code": "III_A15a",
       "canonical_name": "Domestic Receivables ( including bills purchased and discounted)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 101,
@@ -1318,7 +1418,8 @@
       "canonical_code": "III_A19",
       "canonical_name": "Debtors more than six months",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 102,
@@ -1331,7 +1432,8 @@
       "canonical_code": "III_A17a",
       "canonical_name": "Advances recoverable in cash or in kind",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 103,
@@ -1344,7 +1446,8 @@
       "canonical_code": "III_A22d",
       "canonical_name": "Other non current assets",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 104,
@@ -1357,7 +1460,8 @@
       "canonical_code": "III_A22a",
       "canonical_name": "Dues from directors / partners / promoters",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 105,
@@ -1370,7 +1474,8 @@
       "canonical_code": "III_A16a",
       "canonical_name": "Cash on Hand",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 106,
@@ -1383,7 +1488,8 @@
       "canonical_code": "III_A16b",
       "canonical_name": "Bank Balances",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 107,
@@ -1396,7 +1502,8 @@
       "canonical_code": "III_A17e",
       "canonical_name": "Other Advances / current asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 108,
@@ -1409,7 +1516,8 @@
       "canonical_code": "III_A16b",
       "canonical_name": "Bank Balances",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 109,
@@ -1422,7 +1530,8 @@
       "canonical_code": "III_A15a",
       "canonical_name": "Domestic Receivables ( including bills purchased and discounted)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 110,
@@ -1435,7 +1544,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 111,
@@ -1448,7 +1558,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 112,
@@ -1461,7 +1572,8 @@
       "canonical_code": "III_A17c",
       "canonical_name": "Advance Income Tax",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 113,
@@ -1474,7 +1586,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 114,
@@ -1487,7 +1600,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 115,
@@ -1500,7 +1614,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 116,
@@ -1513,7 +1628,8 @@
       "canonical_code": "III_A17c",
       "canonical_name": "Advance Income Tax",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 117,
@@ -1526,7 +1642,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 118,
@@ -1539,7 +1656,8 @@
       "canonical_code": "III_A22c",
       "canonical_name": "Security deposits with government departments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 119,
@@ -1552,7 +1670,8 @@
       "canonical_code": "III_A21",
       "canonical_name": "Fixed Deposits (Non Current)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 120,
@@ -1565,7 +1684,8 @@
       "canonical_code": "III_A21",
       "canonical_name": "Fixed Deposits (Non Current)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 121,
@@ -1578,7 +1698,8 @@
       "canonical_code": "III_A16d",
       "canonical_name": "Other Fixed Deposits",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 122,
@@ -1591,7 +1712,8 @@
       "canonical_code": "III_A22d",
       "canonical_name": "Other non current assets",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 123,
@@ -1604,7 +1726,8 @@
       "canonical_code": "III_A17b",
       "canonical_name": "Advances to suppliers of raw materials",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 124,
@@ -1617,7 +1740,8 @@
       "canonical_code": "III_A17c",
       "canonical_name": "Advance Income Tax",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 125,
@@ -1630,7 +1754,8 @@
       "canonical_code": "III_A17e",
       "canonical_name": "Other Advances / current asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 126,
@@ -1643,7 +1768,8 @@
       "canonical_code": "III_A17c",
       "canonical_name": "Advance Income Tax",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 127,
@@ -1656,7 +1782,8 @@
       "canonical_code": "III_A17e",
       "canonical_name": "Other Advances / current asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 128,
@@ -1669,7 +1796,8 @@
       "canonical_code": "III_A17c",
       "canonical_name": "Advance Income Tax",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 129,
@@ -1682,7 +1810,8 @@
       "canonical_code": "III_A17e",
       "canonical_name": "Other Advances / current asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 130,
@@ -1695,7 +1824,8 @@
       "canonical_code": "III_A17e",
       "canonical_name": "Other Advances / current asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 131,
@@ -1708,7 +1838,8 @@
       "canonical_code": "III_A5c",
       "canonical_name": "Deferred Tax Asset",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 132,
@@ -1721,20 +1852,22 @@
       "canonical_code": "III_A5a",
       "canonical_name": "Patents / goodwill / copyrights etc",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 133,
       "source_sheet": "Balance Sheet",
       "fs_item": "Profit & Loss A/c (Debit Balance)",
-      "cma_classification_text": "Item 23: Surplus / deficit in Profit & Loss A/c (Put figure with – ve sign)",
+      "cma_classification_text": "Item 23: Surplus / deficit in Profit & Loss A/c (Put figure with â€“ ve sign)",
       "broad_classification": "Fictitious Asset",
       "remarks": "",
       "canonical_sheet_row": 122,
       "canonical_code": "III_L2b",
       "canonical_name": "Balance transferred from profit and loss a/c",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 134,
@@ -1747,7 +1880,8 @@
       "canonical_code": "III_A5b",
       "canonical_name": "Misc Expenditure (to the extent not w/o)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 135,
@@ -1760,7 +1894,8 @@
       "canonical_code": "III_A5b",
       "canonical_name": "Misc Expenditure (to the extent not w/o)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 136,
@@ -1773,7 +1908,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": "Deducted from share capital (negative value)"
+      "mapping_notes": "Deducted from share capital (negative value)",
+      "industry_type": "all"
     },
     {
       "rule_id": 137,
@@ -1786,7 +1922,8 @@
       "canonical_code": "III_L1",
       "canonical_name": "Issued, Subscribed and Paid up",
       "mapping_confidence": "certain",
-      "mapping_notes": "Deducted from share capital (negative value)"
+      "mapping_notes": "Deducted from share capital (negative value)",
+      "industry_type": "all"
     },
     {
       "rule_id": 138,
@@ -1799,7 +1936,8 @@
       "canonical_code": "III_A10e",
       "canonical_name": "Investment in group companies / subsidiaries",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 139,
@@ -1812,7 +1950,8 @@
       "canonical_code": "III_A12b",
       "canonical_name": "Indigenous",
       "mapping_confidence": "likely",
-      "mapping_notes": "Stores & Spares inventory"
+      "mapping_notes": "Stores & Spares inventory",
+      "industry_type": "all"
     },
     {
       "rule_id": 140,
@@ -1825,7 +1964,8 @@
       "canonical_code": "III_A22d",
       "canonical_name": "Other non current assets",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 141,
@@ -1838,7 +1978,8 @@
       "canonical_code": "III_A22b",
       "canonical_name": "Advances to suppliers of capital goods",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 142,
@@ -1851,7 +1992,8 @@
       "canonical_code": "III_A22a",
       "canonical_name": "Dues from directors / partners / promoters",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 143,
@@ -1864,7 +2006,8 @@
       "canonical_code": "III_A22a",
       "canonical_name": "Dues from directors / partners / promoters",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 144,
@@ -1877,7 +2020,8 @@
       "canonical_code": "III_A22a",
       "canonical_name": "Dues from directors / partners / promoters",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 145,
@@ -1890,7 +2034,8 @@
       "canonical_code": "III_A5d",
       "canonical_name": "Other Intangible assets",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 146,
@@ -1903,7 +2048,8 @@
       "canonical_code": "III_A5d",
       "canonical_name": "Other Intangible assets",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 147,
@@ -1916,7 +2062,8 @@
       "canonical_code": "III_CL5",
       "canonical_name": "Other contingent liabilities",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 148,
@@ -1929,7 +2076,8 @@
       "canonical_code": "III_CL1",
       "canonical_name": "Arrears of cumulative dividends",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 149,
@@ -1942,7 +2090,8 @@
       "canonical_code": null,
       "canonical_name": null,
       "mapping_confidence": "unmapped",
-      "mapping_notes": "Cannot parse item number from: Not appear in Balance Sheet until its declared."
+      "mapping_notes": "Cannot parse item number from: Not appear in Balance Sheet until its declared.",
+      "industry_type": "all"
     },
     {
       "rule_id": 150,
@@ -1955,7 +2104,8 @@
       "canonical_code": "III_CL2",
       "canonical_name": "Gratuity liability not provided for",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 151,
@@ -1968,7 +2118,8 @@
       "canonical_code": "III_CL3",
       "canonical_name": "Disputed excise / customs / tax liabilities",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 152,
@@ -1981,7 +2132,8 @@
       "canonical_code": "III_CL5",
       "canonical_name": "Other contingent liabilities",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 153,
@@ -1994,7 +2146,8 @@
       "canonical_code": "III_L10b",
       "canonical_name": "Advance received from customers",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 154,
@@ -2007,7 +2160,8 @@
       "canonical_code": "III_L7b",
       "canonical_name": "Balance Other Debts",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 155,
@@ -2020,7 +2174,8 @@
       "canonical_code": "III_L3c",
       "canonical_name": "(o/s bill discounting balance to be included)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 156,
@@ -2033,7 +2188,8 @@
       "canonical_code": "III_L10a",
       "canonical_name": "Sundry Creditors for goods",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 157,
@@ -2046,7 +2202,8 @@
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 158,
@@ -2059,7 +2216,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 159,
@@ -2072,7 +2230,8 @@
       "canonical_code": "II_C8",
       "canonical_name": "Power, Coal, Fuel and Water",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 160,
@@ -2085,20 +2244,22 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 161,
       "source_sheet": "Profit and Loss",
       "fs_item": "Freight inward / carriage inward",
-      "cma_classification_text": "Item 5 (i) (a) or (b) : RM – Indigenous / Imported",
+      "cma_classification_text": "Item 5 (i) (a) or (b) : RM â€“ Indigenous / Imported",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 41,
       "canonical_code": "II_C1",
       "canonical_name": "Raw Materials Consumed ( Imported)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 162,
@@ -2111,7 +2272,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 163,
@@ -2124,33 +2286,36 @@
       "canonical_code": "II_C8",
       "canonical_name": "Power, Coal, Fuel and Water",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 164,
       "source_sheet": "Profit and Loss",
       "fs_item": "Octroi on purchases",
-      "cma_classification_text": "Item 5 (i) (b) : RM – Indigenous",
+      "cma_classification_text": "Item 5 (i) (b) : RM â€“ Indigenous",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 165,
       "source_sheet": "Profit and Loss",
       "fs_item": "Excise duty on purchases",
-      "cma_classification_text": "Item 5 (i) (b) : RM – Indigenous",
+      "cma_classification_text": "Item 5 (i) (b) : RM â€“ Indigenous",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 166,
@@ -2163,7 +2328,8 @@
       "canonical_code": "II_C1",
       "canonical_name": "Raw Materials Consumed ( Imported)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 167,
@@ -2176,7 +2342,8 @@
       "canonical_code": "II_C1",
       "canonical_name": "Raw Materials Consumed ( Imported)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 168,
@@ -2189,7 +2356,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 169,
@@ -2202,7 +2370,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 170,
@@ -2215,7 +2384,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 171,
@@ -2228,7 +2398,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "manufacturing"
     },
     {
       "rule_id": 172,
@@ -2241,7 +2412,8 @@
       "canonical_code": "II_D6",
       "canonical_name": "Repairs & Maintenance",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 173,
@@ -2254,20 +2426,22 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 174,
       "source_sheet": "Profit and Loss",
       "fs_item": "Purchase Tax",
-      "cma_classification_text": "Item 5 (i) (b) : RM – Indigenous",
+      "cma_classification_text": "Item 5 (i) (b) : RM â€“ Indigenous",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 175,
@@ -2280,7 +2454,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 176,
@@ -2293,7 +2468,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 177,
@@ -2306,7 +2482,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 178,
@@ -2319,7 +2496,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 179,
@@ -2332,7 +2510,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 180,
@@ -2345,12 +2524,13 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 181,
       "source_sheet": "Profit and Loss",
-      "fs_item": "Clearing & Forwarding – For Imports",
+      "fs_item": "Clearing & Forwarding â€“ For Imports",
       "cma_classification_text": "Item 5 (i) (a) : RM - Imported",
       "broad_classification": "Cost of Sales",
       "remarks": "",
@@ -2358,12 +2538,13 @@
       "canonical_code": "II_C1",
       "canonical_name": "Raw Materials Consumed ( Imported)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 182,
       "source_sheet": "Profit and Loss",
-      "fs_item": "Clearing & Forwarding – For Exports",
+      "fs_item": "Clearing & Forwarding â€“ For Exports",
       "cma_classification_text": "Item 6 : Selling, General & Administrative Expenses",
       "broad_classification": "Selling, Gen. & Adm. Exp.",
       "remarks": "",
@@ -2371,7 +2552,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 183,
@@ -2384,7 +2566,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 184,
@@ -2397,7 +2580,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 185,
@@ -2410,7 +2594,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 186,
@@ -2423,7 +2608,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 187,
@@ -2436,7 +2622,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 188,
@@ -2449,7 +2636,8 @@
       "canonical_code": "II_F3",
       "canonical_name": "Bank Charges",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 189,
@@ -2462,7 +2650,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 190,
@@ -2475,7 +2664,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 191,
@@ -2488,7 +2678,8 @@
       "canonical_code": "II_D7a",
       "canonical_name": "Audit Fees & Directors Remuneration",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 192,
@@ -2501,7 +2692,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 193,
@@ -2514,7 +2706,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 194,
@@ -2527,7 +2720,8 @@
       "canonical_code": "II_D2",
       "canonical_name": "Rent, Rates and Taxes",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 195,
@@ -2540,7 +2734,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 196,
@@ -2553,7 +2748,8 @@
       "canonical_code": "II_D2",
       "canonical_name": "Rent, Rates and Taxes",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 197,
@@ -2566,7 +2762,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 198,
@@ -2579,7 +2776,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 199,
@@ -2592,7 +2790,8 @@
       "canonical_code": "II_D6",
       "canonical_name": "Repairs & Maintenance",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 200,
@@ -2605,7 +2804,8 @@
       "canonical_code": "II_C14",
       "canonical_name": "Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 201,
@@ -2618,7 +2818,8 @@
       "canonical_code": "II_C14",
       "canonical_name": "Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 202,
@@ -2631,7 +2832,8 @@
       "canonical_code": "II_C14",
       "canonical_name": "Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 203,
@@ -2644,7 +2846,8 @@
       "canonical_code": "II_C14",
       "canonical_name": "Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 204,
@@ -2657,7 +2860,8 @@
       "canonical_code": "II_C14",
       "canonical_name": "Depreciation",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 205,
@@ -2670,7 +2874,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 206,
@@ -2683,7 +2888,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 207,
@@ -2696,7 +2902,8 @@
       "canonical_code": "II_D6",
       "canonical_name": "Repairs & Maintenance",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 208,
@@ -2709,7 +2916,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 209,
@@ -2722,7 +2930,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 210,
@@ -2735,7 +2944,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 211,
@@ -2748,7 +2958,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 212,
@@ -2761,7 +2972,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 213,
@@ -2774,7 +2986,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 214,
@@ -2787,7 +3000,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 215,
@@ -2800,7 +3014,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 216,
@@ -2813,7 +3028,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 217,
@@ -2826,7 +3042,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 218,
@@ -2839,7 +3056,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 219,
@@ -2852,7 +3070,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 220,
@@ -2865,7 +3084,8 @@
       "canonical_code": "II_H1",
       "canonical_name": "Income Tax  provision",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 221,
@@ -2878,7 +3098,8 @@
       "canonical_code": "II_I2",
       "canonical_name": "Dividend ( Final + Interim , Including Dividend Tax )",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 222,
@@ -2891,7 +3112,8 @@
       "canonical_code": "II_H1",
       "canonical_name": "Income Tax  provision",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 223,
@@ -2904,7 +3126,8 @@
       "canonical_code": "II_D3",
       "canonical_name": "Bad Debts",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 224,
@@ -2917,7 +3140,8 @@
       "canonical_code": "II_D3",
       "canonical_name": "Bad Debts",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 225,
@@ -2930,7 +3154,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 226,
@@ -2943,7 +3168,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 227,
@@ -2956,7 +3182,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 228,
@@ -2969,7 +3196,8 @@
       "canonical_code": "II_C5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 229,
@@ -2982,7 +3210,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 230,
@@ -2995,7 +3224,8 @@
       "canonical_code": "II_D7a",
       "canonical_name": "Audit Fees & Directors Remuneration",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 231,
@@ -3008,7 +3238,8 @@
       "canonical_code": "II_D7a",
       "canonical_name": "Audit Fees & Directors Remuneration",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 232,
@@ -3021,7 +3252,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 233,
@@ -3034,7 +3266,8 @@
       "canonical_code": "II_F1",
       "canonical_name": "Interest on Fixed Loans / Term loans",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 234,
@@ -3047,7 +3280,8 @@
       "canonical_code": "II_F1",
       "canonical_name": "Interest on Fixed Loans / Term loans",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 235,
@@ -3060,7 +3294,8 @@
       "canonical_code": "II_F1",
       "canonical_name": "Interest on Fixed Loans / Term loans",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 236,
@@ -3073,7 +3308,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 237,
@@ -3086,7 +3322,8 @@
       "canonical_code": "II_D2",
       "canonical_name": "Rent, Rates and Taxes",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 238,
@@ -3099,7 +3336,8 @@
       "canonical_code": "II_C4",
       "canonical_name": "Stores and spares consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 239,
@@ -3112,7 +3350,8 @@
       "canonical_code": "II_C4",
       "canonical_name": "Stores and spares consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 240,
@@ -3125,7 +3364,8 @@
       "canonical_code": "II_G1",
       "canonical_name": "Loss on sale of fixed assets / Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 241,
@@ -3138,7 +3378,8 @@
       "canonical_code": "II_G1",
       "canonical_name": "Loss on sale of fixed assets / Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 242,
@@ -3151,7 +3392,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 243,
@@ -3164,7 +3406,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 244,
@@ -3177,7 +3420,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 245,
@@ -3190,7 +3434,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 246,
@@ -3203,7 +3448,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 247,
@@ -3216,7 +3462,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 248,
@@ -3229,7 +3476,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 249,
@@ -3242,7 +3490,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 250,
@@ -3255,7 +3504,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 251,
@@ -3268,7 +3518,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 252,
@@ -3281,7 +3532,8 @@
       "canonical_code": "II_D6",
       "canonical_name": "Repairs & Maintenance",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 253,
@@ -3294,7 +3546,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 254,
@@ -3307,7 +3560,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 255,
@@ -3320,7 +3574,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 256,
@@ -3333,7 +3588,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 257,
@@ -3346,7 +3602,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 258,
@@ -3359,7 +3616,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 259,
@@ -3372,7 +3630,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 260,
@@ -3385,7 +3644,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 261,
@@ -3398,7 +3658,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 262,
@@ -3411,7 +3672,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 263,
@@ -3424,7 +3686,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 264,
@@ -3437,7 +3700,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 265,
@@ -3450,7 +3714,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 266,
@@ -3463,7 +3728,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 267,
@@ -3476,7 +3742,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 268,
@@ -3489,7 +3756,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 269,
@@ -3502,7 +3770,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 270,
@@ -3515,7 +3784,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 271,
@@ -3528,7 +3798,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 272,
@@ -3541,7 +3812,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 273,
@@ -3554,7 +3826,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 274,
@@ -3567,7 +3840,8 @@
       "canonical_code": "II_H1",
       "canonical_name": "Income Tax  provision",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 275,
@@ -3580,7 +3854,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 276,
@@ -3593,7 +3868,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 277,
@@ -3606,7 +3882,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 278,
@@ -3619,7 +3896,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 279,
@@ -3632,7 +3910,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 280,
@@ -3645,12 +3924,13 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 281,
       "source_sheet": "Profit and Loss",
-      "fs_item": "Ex – Gratia expenses",
+      "fs_item": "Ex â€“ Gratia expenses",
       "cma_classification_text": "Item 6 : Selling, General & Administrative Expenses",
       "broad_classification": "Selling, Gen. & Adm. Exp.",
       "remarks": "",
@@ -3658,7 +3938,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 282,
@@ -3671,7 +3952,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 283,
@@ -3684,7 +3966,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 284,
@@ -3697,7 +3980,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 285,
@@ -3710,7 +3994,8 @@
       "canonical_code": "II_D2",
       "canonical_name": "Rent, Rates and Taxes",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 286,
@@ -3723,7 +4008,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 287,
@@ -3736,7 +4022,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 288,
@@ -3749,7 +4036,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 289,
@@ -3762,7 +4050,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 290,
@@ -3775,7 +4064,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "manufacturing"
     },
     {
       "rule_id": 291,
@@ -3788,7 +4078,8 @@
       "canonical_code": "II_D6",
       "canonical_name": "Repairs & Maintenance",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 292,
@@ -3801,7 +4092,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 293,
@@ -3814,7 +4106,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 294,
@@ -3827,7 +4120,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 295,
@@ -3840,7 +4134,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 296,
@@ -3853,7 +4148,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 297,
@@ -3866,7 +4162,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 298,
@@ -3879,7 +4176,8 @@
       "canonical_code": "II_F1",
       "canonical_name": "Interest on Fixed Loans / Term loans",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 299,
@@ -3892,7 +4190,8 @@
       "canonical_code": "II_I2",
       "canonical_name": "Dividend ( Final + Interim , Including Dividend Tax )",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 300,
@@ -3905,7 +4204,8 @@
       "canonical_code": "II_D7a",
       "canonical_name": "Audit Fees & Directors Remuneration",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 301,
@@ -3918,7 +4218,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 302,
@@ -3931,7 +4232,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 303,
@@ -3944,7 +4246,8 @@
       "canonical_code": "II_G2",
       "canonical_name": "Sundry Balances Written off",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 304,
@@ -3957,7 +4260,8 @@
       "canonical_code": "II_G2",
       "canonical_name": "Sundry Balances Written off",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 305,
@@ -3970,7 +4274,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 306,
@@ -3983,7 +4288,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 307,
@@ -3996,7 +4302,8 @@
       "canonical_code": "II_G2",
       "canonical_name": "Sundry Balances Written off",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 308,
@@ -4009,7 +4316,8 @@
       "canonical_code": "II_G2",
       "canonical_name": "Sundry Balances Written off",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 309,
@@ -4022,7 +4330,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 310,
@@ -4035,7 +4344,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 311,
@@ -4048,7 +4358,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 312,
@@ -4061,7 +4372,8 @@
       "canonical_code": "II_I2",
       "canonical_name": "Dividend ( Final + Interim , Including Dividend Tax )",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 313,
@@ -4074,7 +4386,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 314,
@@ -4087,7 +4400,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 315,
@@ -4100,7 +4414,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 316,
@@ -4113,7 +4428,8 @@
       "canonical_code": "II_H1",
       "canonical_name": "Income Tax  provision",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 317,
@@ -4126,7 +4442,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 318,
@@ -4139,7 +4456,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 319,
@@ -4152,7 +4470,8 @@
       "canonical_code": "II_D1",
       "canonical_name": "Salary and staff expenses",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 320,
@@ -4165,7 +4484,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 321,
@@ -4178,7 +4498,8 @@
       "canonical_code": "II_D4",
       "canonical_name": "Advertisements and Sales Promotions",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 322,
@@ -4191,7 +4512,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 323,
@@ -4204,7 +4526,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 324,
@@ -4217,7 +4540,8 @@
       "canonical_code": "II_C8",
       "canonical_name": "Power, Coal, Fuel and Water",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 325,
@@ -4230,7 +4554,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 326,
@@ -4243,7 +4568,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 327,
@@ -4256,7 +4582,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 328,
@@ -4269,7 +4596,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 329,
@@ -4282,7 +4610,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 330,
@@ -4295,7 +4624,8 @@
       "canonical_code": "II_C9",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "manufacturing"
     },
     {
       "rule_id": 331,
@@ -4308,7 +4638,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 332,
@@ -4321,7 +4652,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 333,
@@ -4334,7 +4666,8 @@
       "canonical_code": null,
       "canonical_name": null,
       "mapping_confidence": "ambiguous",
-      "mapping_notes": "Stock change must be split into opening/closing"
+      "mapping_notes": "Stock change must be split into opening/closing",
+      "industry_type": "all"
     },
     {
       "rule_id": 334,
@@ -4347,7 +4680,8 @@
       "canonical_code": "II_G5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 335,
@@ -4360,7 +4694,8 @@
       "canonical_code": "II_F1",
       "canonical_name": "Interest on Fixed Loans / Term loans",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 336,
@@ -4373,7 +4708,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 337,
@@ -4386,7 +4722,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 338,
@@ -4399,7 +4736,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 339,
@@ -4412,7 +4750,8 @@
       "canonical_code": "II_A4",
       "canonical_name": "Less Excise Duty and Cess",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 340,
@@ -4425,7 +4764,8 @@
       "canonical_code": "II_D5",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 341,
@@ -4438,7 +4778,8 @@
       "canonical_code": "II_G2",
       "canonical_name": "Sundry Balances Written off",
       "mapping_confidence": "likely",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 342,
@@ -4451,7 +4792,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 343,
@@ -4464,7 +4806,8 @@
       "canonical_code": "II_A2",
       "canonical_name": "Exports",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 344,
@@ -4477,7 +4820,8 @@
       "canonical_code": "II_A2",
       "canonical_name": "Exports",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 345,
@@ -4490,7 +4834,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 346,
@@ -4503,7 +4848,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 347,
@@ -4516,7 +4862,8 @@
       "canonical_code": "II_A2",
       "canonical_name": "Exports",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 348,
@@ -4529,7 +4876,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 349,
@@ -4542,7 +4890,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 350,
@@ -4555,7 +4904,8 @@
       "canonical_code": "II_B2",
       "canonical_name": "Interest Received",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 351,
@@ -4568,7 +4918,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 352,
@@ -4581,7 +4932,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 353,
@@ -4594,7 +4946,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 354,
@@ -4607,7 +4960,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 355,
@@ -4620,7 +4974,8 @@
       "canonical_code": "II_B3",
       "canonical_name": "Profit on sale of fixed assets / Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 356,
@@ -4633,7 +4988,8 @@
       "canonical_code": "II_B3",
       "canonical_name": "Profit on sale of fixed assets / Investments",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 357,
@@ -4646,7 +5002,8 @@
       "canonical_code": "II_B2",
       "canonical_name": "Interest Received",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 358,
@@ -4659,7 +5016,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 359,
@@ -4672,7 +5030,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 360,
@@ -4685,7 +5044,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 361,
@@ -4698,33 +5058,36 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 362,
       "source_sheet": "Profit and Loss",
       "fs_item": "Trade Discounts Received",
-      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in â€“ ve)",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 363,
       "source_sheet": "Profit and Loss",
       "fs_item": "Cash Discounts Received",
-      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in â€“ ve)",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 364,
@@ -4737,7 +5100,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 365,
@@ -4750,7 +5114,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 366,
@@ -4763,7 +5128,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 367,
@@ -4776,7 +5142,8 @@
       "canonical_code": "II_B4",
       "canonical_name": "Gain on Exchange Fluctuations",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 368,
@@ -4789,7 +5156,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 369,
@@ -4802,7 +5170,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 370,
@@ -4815,7 +5184,8 @@
       "canonical_code": "II_B2",
       "canonical_name": "Interest Received",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 371,
@@ -4828,7 +5198,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 372,
@@ -4841,7 +5212,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 373,
@@ -4854,7 +5226,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 374,
@@ -4867,7 +5240,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 375,
@@ -4880,7 +5254,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 376,
@@ -4893,7 +5268,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 377,
@@ -4906,7 +5282,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 378,
@@ -4919,7 +5296,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 379,
@@ -4932,7 +5310,8 @@
       "canonical_code": "II_A1",
       "canonical_name": "Domestic",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 380,
@@ -4945,7 +5324,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 381,
@@ -4958,33 +5338,36 @@
       "canonical_code": "II_B2",
       "canonical_name": "Interest Received",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 382,
       "source_sheet": "Profit and Loss",
       "fs_item": "Quantity Discount Receivable / Received",
-      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in â€“ ve)",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 383,
       "source_sheet": "Profit and Loss",
       "fs_item": "Purchase return",
-      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in – ve)",
+      "cma_classification_text": "Item 5 (i) / (ii) : Less from Purchases (Figure in â€“ ve)",
       "broad_classification": "Cost of Sales",
       "remarks": "",
       "canonical_sheet_row": 42,
       "canonical_code": "II_C2",
       "canonical_name": "Raw Materials Consumed ( Indigenous)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": 384,
@@ -4997,7 +5380,8 @@
       "canonical_code": null,
       "canonical_name": null,
       "mapping_confidence": "ambiguous",
-      "mapping_notes": "Subsidy deducted from respective expense line"
+      "mapping_notes": "Subsidy deducted from respective expense line",
+      "industry_type": "all"
     },
     {
       "rule_id": 385,
@@ -5010,7 +5394,8 @@
       "canonical_code": "II_B6a",
       "canonical_name": "Others",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R01",
@@ -5023,7 +5408,8 @@
       "canonical_code": "II_M5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": "For manufacturing/construction. Trading/services → R67."
+      "mapping_notes": "For manufacturing/construction. Trading/services â†’ R67.",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R02",
@@ -5036,7 +5422,8 @@
       "canonical_code": "II_M5",
       "canonical_name": "Wages",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R03",
@@ -5049,7 +5436,8 @@
       "canonical_code": "II_A7",
       "canonical_name": "Audit Fees & Directors Remuneration",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R04",
@@ -5062,7 +5450,8 @@
       "canonical_code": "II_A5",
       "canonical_name": "Others (Admin)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R05",
@@ -5075,7 +5464,8 @@
       "canonical_code": "II_F3",
       "canonical_name": "Bank Charges",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R06",
@@ -5088,7 +5478,8 @@
       "canonical_code": "II_A5",
       "canonical_name": "Others (Admin)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R07",
@@ -5101,7 +5492,8 @@
       "canonical_code": "II_A5",
       "canonical_name": "Others (Admin)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R08",
@@ -5114,7 +5506,8 @@
       "canonical_code": "III_L8a",
       "canonical_name": "Repayable in next one year",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R09",
@@ -5127,7 +5520,8 @@
       "canonical_code": "III_A10b",
       "canonical_name": "Advance to suppliers of Raw Materials and stores etc.",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R10",
@@ -5140,7 +5534,8 @@
       "canonical_code": "II_M10a",
       "canonical_name": "Finished Goods Opening Balance",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R11",
@@ -5148,12 +5543,13 @@
       "fs_item": "Row 75 Usage",
       "cma_classification_text": "Row 75 is ONLY for non-cash write-offs",
       "broad_classification": "Admin Expense",
-      "remarks": "Preliminary/pre-operative expense amortisation ONLY. Regular 'Miscellaneous Expenses' → R71. CA-verified 2026-03-26.",
+      "remarks": "Preliminary/pre-operative expense amortisation ONLY. Regular 'Miscellaneous Expenses' â†’ R71. CA-verified 2026-03-26.",
       "canonical_sheet_row": 75,
       "canonical_code": "II_A9",
       "canonical_name": "Miscellaneous Expenses Written off",
       "mapping_confidence": "certain",
-      "mapping_notes": "Non-cash expenditure only"
+      "mapping_notes": "Non-cash expenditure only",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R12",
@@ -5166,7 +5562,8 @@
       "canonical_code": "II_NI4",
       "canonical_name": "Extraordinary income",
       "mapping_confidence": "certain",
-      "mapping_notes": "P&L context. BS context → R125."
+      "mapping_notes": "P&L context. BS context â†’ R125.",
+      "industry_type": "all"
     },
     {
       "rule_id": "CA_R13",
@@ -5179,7 +5576,8 @@
       "canonical_code": "II_M3",
       "canonical_name": "Stores and spares consumed (Imported)",
       "mapping_confidence": "certain",
-      "mapping_notes": ""
+      "mapping_notes": "",
+      "industry_type": "all"
     }
   ]
 }

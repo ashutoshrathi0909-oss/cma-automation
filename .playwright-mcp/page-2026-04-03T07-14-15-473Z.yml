@@ -1,0 +1,803 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: CMA Assist
+        - paragraph [ref=e5]: Automation Platform
+      - navigation [ref=e6]:
+        - link "Dashboard" [ref=e7] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e8]
+          - text: Dashboard
+        - link "Clients" [ref=e13] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e14]
+          - text: Clients
+        - link "Settings" [ref=e19] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e20]
+          - text: Settings
+    - generic [ref=e23]:
+      - banner [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - img [ref=e27]
+            - generic [ref=e30]: CMA Admin
+            - generic [ref=e31]: admin
+          - button "Logout" [ref=e32]:
+            - img
+            - text: Logout
+      - main [ref=e33]:
+        - generic [ref=e149]:
+          - link "Back to report" [ref=e150] [cursor=pointer]:
+            - /url: /cma/ef924f63-ddbe-40af-ae61-ddb5c7dc2282
+            - img [ref=e151]
+            - text: Back to report
+          - generic [ref=e153]:
+            - generic [ref=e154]:
+              - heading "Review Classifications" [level=1] [ref=e155]
+              - paragraph [ref=e156]: Showing 38 items needing review (650 total, 612 auto-approved)
+            - button "Show All (650)" [ref=e158]:
+              - img
+              - text: Show All (650)
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e161]: Line Item
+              - generic [ref=e162]: Classification
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - generic [ref=e165]:
+                  - paragraph [ref=e166]: Chennai -
+                  - paragraph [ref=e167]: ₹6,00,003
+                  - generic [ref=e168]:
+                    - generic "PandL.pdf" [ref=e169]
+                    - generic [ref=e170]: "Section: s"
+                - generic [ref=e171]:
+                  - generic [ref=e172]:
+                    - generic [ref=e173]: UNCLASSIFIED
+                    - generic [ref=e174]: Doubt
+                    - generic [ref=e175]: needs review
+                  - paragraph [ref=e176]: No specific keywords match
+                  - generic [ref=e177]:
+                    - button "Approve" [ref=e178]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e179]:
+                      - img
+                      - text: Correct
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - paragraph [ref=e182]: Chennai -
+                  - paragraph [ref=e183]: ₹6,00,003
+                  - generic "BSheet.pdf" [ref=e185]
+                - generic [ref=e186]:
+                  - generic [ref=e187]:
+                    - generic [ref=e188]: UNCLASSIFIED
+                    - generic [ref=e189]: Doubt
+                    - generic [ref=e190]: needs review
+                  - paragraph [ref=e191]: Chennai - likely advance
+                  - generic [ref=e192]:
+                    - button "Approve" [ref=e193]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e194]:
+                      - img
+                      - text: Correct
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - paragraph [ref=e197]: "Ph : 044-42624072 ,"
+                  - paragraph [ref=e198]: ₹4,26,24,806
+                  - generic "BSheet.pdf" [ref=e200]
+                - generic [ref=e201]:
+                  - generic [ref=e202]:
+                    - generic [ref=e203]: UNCLASSIFIED
+                    - generic [ref=e204]: Doubt
+                    - generic [ref=e205]: needs review
+                  - paragraph [ref=e206]: No relevant keywords
+                  - generic [ref=e207]:
+                    - button "Approve" [ref=e208]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e209]:
+                      - img
+                      - text: Correct
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - paragraph [ref=e212]: JSW Infra
+                  - paragraph [ref=e213]: ₹3,094
+                  - generic [ref=e214]:
+                    - generic "Mehta_Computers_financials_2024.xlsx" [ref=e215]
+                    - generic [ref=e216]: "Section: investments :"
+                    - generic [ref=e217]: Row 185
+                - generic [ref=e218]:
+                  - generic [ref=e219]:
+                    - generic [ref=e220]: Other current investments
+                    - generic [ref=e221]: Medium
+                    - generic [ref=e222]: auto classified
+                  - generic [ref=e223]:
+                    - button "Approve" [ref=e224]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e225]:
+                      - img
+                      - text: Correct
+              - generic [ref=e226]:
+                - generic [ref=e227]:
+                  - paragraph [ref=e228]: To Gross Profit
+                  - paragraph [ref=e229]: ₹11,33,409.55
+                  - generic [ref=e230]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e231]
+                    - generic [ref=e232]: "Section: expenditure"
+                - generic [ref=e233]:
+                  - generic [ref=e234]:
+                    - generic [ref=e235]: UNCLASSIFIED
+                    - generic [ref=e236]: Doubt
+                    - generic [ref=e237]: needs review
+                  - paragraph [ref=e238]: Gross Profit not in list
+                  - generic [ref=e239]:
+                    - button "Approve" [ref=e240]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e241]:
+                      - img
+                      - text: Correct
+              - generic [ref=e242]:
+                - generic [ref=e243]:
+                  - paragraph [ref=e244]: To Net Profit
+                  - paragraph [ref=e245]: ₹7,69,048.76
+                  - generic [ref=e246]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e247]
+                    - generic [ref=e248]: "Section: expenditure"
+                - generic [ref=e249]:
+                  - generic [ref=e250]:
+                    - generic [ref=e251]: UNCLASSIFIED
+                    - generic [ref=e252]: Doubt
+                    - generic [ref=e253]: needs review
+                  - paragraph [ref=e254]: Not in listed rows
+                  - generic [ref=e255]:
+                    - button "Approve" [ref=e256]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e257]:
+                      - img
+                      - text: Correct
+              - generic [ref=e258]:
+                - generic [ref=e259]:
+                  - paragraph [ref=e260]: Purchase @ 18% (Inter -State)
+                  - paragraph [ref=e261]: ₹31,23,085.46
+                  - generic [ref=e262]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e263]
+                    - generic [ref=e264]: "Section: purchases account less returns :"
+                    - generic [ref=e265]: Row 71
+                - generic [ref=e266]:
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: Others
+                    - generic [ref=e269]: Medium
+                    - generic [ref=e270]: auto classified
+                  - generic [ref=e271]:
+                    - button "Approve" [ref=e272]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e273]:
+                      - img
+                      - text: Correct
+              - generic [ref=e274]:
+                - generic [ref=e275]:
+                  - paragraph [ref=e276]: ASP COMPUTERS (P) LTD
+                  - paragraph [ref=e277]: ₹250
+                  - generic [ref=e278]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e279]
+                    - generic [ref=e280]: "Section: details of sundry creditors"
+                - generic [ref=e281]:
+                  - generic [ref=e282]:
+                    - generic [ref=e283]: UNCLASSIFIED
+                    - generic [ref=e284]: Doubt
+                    - generic [ref=e285]: needs review
+                  - paragraph [ref=e286]: "AI classification failed: Expecting property name enclosed in double quotes: line 2 column 1 (char 2)"
+                  - generic [ref=e287]:
+                    - button "Approve" [ref=e288]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e289]:
+                      - img
+                      - text: Correct
+              - generic [ref=e290]:
+                - generic [ref=e291]:
+                  - paragraph [ref=e292]: RAJAT ELECTRICALS
+                  - paragraph [ref=e293]: ₹3,30,641
+                  - generic [ref=e294]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e295]
+                    - generic [ref=e296]: "Section: ingram micro in pvt ltd (maha)"
+                - generic [ref=e297]:
+                  - generic [ref=e298]:
+                    - generic [ref=e299]: UNCLASSIFIED
+                    - generic [ref=e300]: Doubt
+                    - generic [ref=e301]: needs review
+                  - paragraph [ref=e302]: Generic name, lacks specific keywords
+                  - generic [ref=e303]:
+                    - button "Approve" [ref=e304]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e305]:
+                      - img
+                      - text: Correct
+              - generic [ref=e306]:
+                - generic [ref=e307]:
+                  - paragraph [ref=e308]: SUPREME COMPUTERS INDIA PVT. LTD
+                  - paragraph [ref=e309]: ₹1,19,734
+                  - generic [ref=e310]:
+                    - generic "Mehta_Computers_financials_2022.xls" [ref=e311]
+                    - generic [ref=e312]: "Section: ingram micro in pvt ltd (maha)"
+                - generic [ref=e313]:
+                  - generic [ref=e314]:
+                    - generic [ref=e315]: UNCLASSIFIED
+                    - generic [ref=e316]: Doubt
+                    - generic [ref=e317]: needs review
+                  - paragraph [ref=e318]: Generic company name, no specific category
+                  - generic [ref=e319]:
+                    - button "Approve" [ref=e320]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e321]:
+                      - img
+                      - text: Correct
+              - generic [ref=e322]:
+                - generic [ref=e323]:
+                  - paragraph [ref=e324]: To Gross Profit
+                  - paragraph [ref=e325]: ₹32,16,064.93
+                  - generic [ref=e326]:
+                    - generic "Mehta_Computers_financials_2024.xlsx" [ref=e327]
+                    - generic [ref=e328]: "Section: expenditure"
+                - generic [ref=e329]:
+                  - generic [ref=e330]:
+                    - generic [ref=e331]: UNCLASSIFIED
+                    - generic [ref=e332]: Doubt
+                    - generic [ref=e333]: needs review
+                  - paragraph [ref=e334]: No matching row
+                  - generic [ref=e335]:
+                    - button "Approve" [ref=e336]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e337]:
+                      - img
+                      - text: Correct
+              - generic [ref=e338]:
+                - generic [ref=e339]:
+                  - paragraph [ref=e340]: To Net Profit
+                  - paragraph [ref=e341]: ₹12,43,471.44
+                  - generic [ref=e342]:
+                    - generic "Mehta_Computers_financials_2024.xlsx" [ref=e343]
+                    - generic [ref=e344]: "Section: expenditure"
+                - generic [ref=e345]:
+                  - generic [ref=e346]:
+                    - generic [ref=e347]: UNCLASSIFIED
+                    - generic [ref=e348]: Doubt
+                    - generic [ref=e349]: needs review
+                  - paragraph [ref=e350]: Net Profit not in CMA rows
+                  - generic [ref=e351]:
+                    - button "Approve" [ref=e352]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e353]:
+                      - img
+                      - text: Correct
+              - generic [ref=e354]:
+                - generic [ref=e355]:
+                  - paragraph [ref=e356]: To Gross Profit
+                  - paragraph [ref=e357]: ₹20,25,394.15
+                  - generic [ref=e358]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e359]
+                    - generic [ref=e360]: "Section: expenditure"
+                - generic [ref=e361]:
+                  - generic [ref=e362]:
+                    - generic [ref=e363]: UNCLASSIFIED
+                    - generic [ref=e364]: Doubt
+                    - generic [ref=e365]: needs review
+                  - paragraph [ref=e366]: Gross Profit not in list
+                  - generic [ref=e367]:
+                    - button "Approve" [ref=e368]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e369]:
+                      - img
+                      - text: Correct
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - paragraph [ref=e372]: To Net Profit
+                  - paragraph [ref=e373]: ₹8,84,125.66
+                  - generic [ref=e374]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e375]
+                    - generic [ref=e376]: "Section: expenditure"
+                - generic [ref=e377]:
+                  - generic [ref=e378]:
+                    - generic [ref=e379]: UNCLASSIFIED
+                    - generic [ref=e380]: Doubt
+                    - generic [ref=e381]: needs review
+                  - paragraph [ref=e382]: Net Profit not in list
+                  - generic [ref=e383]:
+                    - button "Approve" [ref=e384]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e385]:
+                      - img
+                      - text: Correct
+              - generic [ref=e386]:
+                - generic [ref=e387]:
+                  - paragraph [ref=e388]: Motor Vehicles
+                  - paragraph [ref=e389]: ₹13,357.33
+                  - generic "Mehta Computers financials 2023.xls" [ref=e391]
+                - generic [ref=e392]:
+                  - generic [ref=e393]:
+                    - generic [ref=e394]: UNCLASSIFIED
+                    - generic [ref=e395]: Doubt
+                    - generic [ref=e396]: needs review
+                  - paragraph [ref=e397]: Motor Vehicles fits Others category
+                  - generic [ref=e398]:
+                    - button "Approve" [ref=e399]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e400]:
+                      - img
+                      - text: Correct
+              - generic [ref=e401]:
+                - generic [ref=e402]:
+                  - paragraph [ref=e403]: Newchem Pharma.
+                  - paragraph [ref=e404]: ₹5,11,726
+                  - generic "Mehta Computers financials 2023.xls" [ref=e406]
+                - generic [ref=e407]:
+                  - generic [ref=e408]:
+                    - generic [ref=e409]: UNCLASSIFIED
+                    - generic [ref=e410]: Doubt
+                    - generic [ref=e411]: needs review
+                  - paragraph [ref=e412]: No specific match found
+                  - generic [ref=e413]:
+                    - button "Approve" [ref=e414]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e415]:
+                      - img
+                      - text: Correct
+              - generic [ref=e416]:
+                - generic [ref=e417]:
+                  - paragraph [ref=e418]: Bhagirathi Associates
+                  - paragraph [ref=e419]: ₹2,000
+                  - generic [ref=e420]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e421]
+                    - generic [ref=e422]: "Section: details of loans & advances"
+                - generic [ref=e423]:
+                  - generic [ref=e424]:
+                    - generic [ref=e425]: UNCLASSIFIED
+                    - generic [ref=e426]: Doubt
+                    - generic [ref=e427]: needs review
+                  - paragraph [ref=e428]: No specific keywords matched
+                  - generic [ref=e429]:
+                    - button "Approve" [ref=e430]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e431]:
+                      - img
+                      - text: Correct
+              - generic [ref=e432]:
+                - generic [ref=e433]:
+                  - paragraph [ref=e434]: COMPRINT COMPUTERS
+                  - paragraph [ref=e435]: ₹2,04,140
+                  - generic [ref=e436]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e437]
+                    - generic [ref=e438]: "Section: blackdots inks and toners"
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - generic [ref=e441]: UNCLASSIFIED
+                    - generic [ref=e442]: Doubt
+                    - generic [ref=e443]: needs review
+                  - paragraph [ref=e444]: No specific matching row
+                  - generic [ref=e445]:
+                    - button "Approve" [ref=e446]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e447]:
+                      - img
+                      - text: Correct
+              - generic [ref=e448]:
+                - generic [ref=e449]:
+                  - paragraph [ref=e450]: COMPUTERS WAVES
+                  - paragraph [ref=e451]: ₹83,050
+                  - generic [ref=e452]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e453]
+                    - generic [ref=e454]: "Section: blackdots inks and toners"
+                - generic [ref=e455]:
+                  - generic [ref=e456]:
+                    - generic [ref=e457]: UNCLASSIFIED
+                    - generic [ref=e458]: Doubt
+                    - generic [ref=e459]: needs review
+                  - paragraph [ref=e460]: No specific match, 'Others' last resort
+                  - generic [ref=e461]:
+                    - button "Approve" [ref=e462]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e463]:
+                      - img
+                      - text: Correct
+              - generic [ref=e464]:
+                - generic [ref=e465]:
+                  - paragraph [ref=e466]: EMAGINE INDIA INC
+                  - paragraph [ref=e467]: ₹64,40,000
+                  - generic [ref=e468]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e469]
+                    - generic [ref=e470]: "Section: blackdots inks and toners"
+                    - generic [ref=e471]: Row 70
+                - generic [ref=e472]:
+                  - generic [ref=e473]:
+                    - generic [ref=e474]: Advertisements and Sales Promotions
+                    - generic [ref=e475]: Medium
+                    - generic [ref=e476]: auto classified
+                  - generic [ref=e477]:
+                    - button "Approve" [ref=e478]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e479]:
+                      - img
+                      - text: Correct
+              - generic [ref=e480]:
+                - generic [ref=e481]:
+                  - paragraph [ref=e482]: SM COMPUTERS
+                  - paragraph [ref=e483]: ₹2,154
+                  - generic [ref=e484]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e485]
+                    - generic [ref=e486]: "Section: blackdots inks and toners"
+                - generic [ref=e487]:
+                  - generic [ref=e488]:
+                    - generic [ref=e489]: UNCLASSIFIED
+                    - generic [ref=e490]: Doubt
+                    - generic [ref=e491]: needs review
+                  - paragraph [ref=e492]: computers under admin section
+                  - generic [ref=e493]:
+                    - button "Approve" [ref=e494]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e495]:
+                      - img
+                      - text: Correct
+              - generic [ref=e496]:
+                - generic [ref=e497]:
+                  - paragraph [ref=e498]: VISUAL TECNOLOGY
+                  - paragraph [ref=e499]: ₹950
+                  - generic [ref=e500]:
+                    - generic "Mehta Computers financials 2023.xls" [ref=e501]
+                    - generic [ref=e502]: "Section: blackdots inks and toners"
+                - generic [ref=e503]:
+                  - generic [ref=e504]:
+                    - generic [ref=e505]: UNCLASSIFIED
+                    - generic [ref=e506]: Doubt
+                    - generic [ref=e507]: needs review
+                  - paragraph [ref=e508]: Section suggests selling expense, but no specific match
+                  - generic [ref=e509]:
+                    - button "Approve" [ref=e510]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e511]:
+                      - img
+                      - text: Correct
+              - generic [ref=e512]:
+                - generic [ref=e513]:
+                  - paragraph [ref=e514]: Dividend - TTL
+                  - paragraph [ref=e515]: ₹190.95
+                  - generic [ref=e516]:
+                    - generic "PandL.pdf" [ref=e517]
+                    - generic [ref=e518]: "Section: 4c x 1sqmm copper flexible cable"
+                    - generic [ref=e519]: Row 71
+                - generic [ref=e520]:
+                  - generic [ref=e521]:
+                    - generic [ref=e522]: Others
+                    - generic [ref=e523]: Medium
+                    - generic [ref=e524]: auto classified
+                  - generic [ref=e525]:
+                    - button "Approve" [ref=e526]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e527]:
+                      - img
+                      - text: Correct
+              - generic [ref=e528]:
+                - generic [ref=e529]:
+                  - paragraph [ref=e530]: DELL
+                  - paragraph [ref=e531]: ₹747.83
+                  - generic [ref=e532]:
+                    - generic "PandL.pdf" [ref=e533]
+                    - generic [ref=e534]: "Section: 8c x 1.5 sqmm armoured cable"
+                    - generic [ref=e535]: Row 72
+                - generic [ref=e536]:
+                  - generic [ref=e537]:
+                    - generic [ref=e538]: Repairs & Maintenance
+                    - generic [ref=e539]: Medium
+                    - generic [ref=e540]: auto classified
+                  - generic [ref=e541]:
+                    - button "Approve" [ref=e542]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e543]:
+                      - img
+                      - text: Correct
+              - generic [ref=e544]:
+                - generic [ref=e545]:
+                  - paragraph [ref=e546]: DLINK
+                  - paragraph [ref=e547]: ₹34,204.29
+                  - generic [ref=e548]:
+                    - generic "PandL.pdf" [ref=e549]
+                    - generic [ref=e550]: "Section: 8c x 1.5 sqmm armoured cable"
+                - generic [ref=e551]:
+                  - generic [ref=e552]:
+                    - generic [ref=e553]: UNCLASSIFIED
+                    - generic [ref=e554]: Doubt
+                    - generic [ref=e555]: needs review
+                  - paragraph [ref=e556]: Armoured cable fits Repairs & Maintenance
+                  - generic [ref=e557]:
+                    - button "Approve" [ref=e558]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e559]:
+                      - img
+                      - text: Correct
+              - generic [ref=e560]:
+                - generic [ref=e561]:
+                  - paragraph [ref=e562]: 8GB DDR4 RAM
+                  - paragraph [ref=e563]: ₹1,761.66
+                  - generic [ref=e564]:
+                    - generic "PandL.pdf" [ref=e565]
+                    - generic [ref=e566]: "Section: 8c x 1.5 sqmm armoured cable"
+                - generic [ref=e567]:
+                  - generic [ref=e568]:
+                    - generic [ref=e569]: UNCLASSIFIED
+                    - generic [ref=e570]: Doubt
+                    - generic [ref=e571]: needs review
+                  - paragraph [ref=e572]: Others Admin
+                  - generic [ref=e573]:
+                    - button "Approve" [ref=e574]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e575]:
+                      - img
+                      - text: Correct
+              - generic [ref=e576]:
+                - generic [ref=e577]:
+                  - paragraph [ref=e578]: LOGITECH
+                  - paragraph [ref=e579]: ₹1,150.32
+                  - generic [ref=e580]:
+                    - generic "PandL.pdf" [ref=e581]
+                    - generic [ref=e582]: "Section: 8c x 1.5 sqmm armoured cable"
+                - generic [ref=e583]:
+                  - generic [ref=e584]:
+                    - generic [ref=e585]: UNCLASSIFIED
+                    - generic [ref=e586]: Doubt
+                    - generic [ref=e587]: needs review
+                  - paragraph [ref=e588]: Generic item, no specific match
+                  - generic [ref=e589]:
+                    - button "Approve" [ref=e590]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e591]:
+                      - img
+                      - text: Correct
+              - generic [ref=e592]:
+                - generic [ref=e593]:
+                  - paragraph [ref=e594]: WD
+                  - paragraph [ref=e595]: ₹3,507.4
+                  - generic [ref=e596]:
+                    - generic "PandL.pdf" [ref=e597]
+                    - generic [ref=e598]: "Section: 8c x 1.5 sqmm armoured cable"
+                - generic [ref=e599]:
+                  - generic [ref=e600]:
+                    - generic [ref=e601]: UNCLASSIFIED
+                    - generic [ref=e602]: Doubt
+                    - generic [ref=e603]: needs review
+                  - paragraph [ref=e604]: armoured cable suggests Repairs & Maintenance
+                  - generic [ref=e605]:
+                    - button "Approve" [ref=e606]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e607]:
+                      - img
+                      - text: Correct
+              - generic [ref=e608]:
+                - generic [ref=e609]:
+                  - paragraph [ref=e610]: CAT 6 I/O SOCKET
+                  - paragraph [ref=e611]: ₹148.5
+                  - generic [ref=e612]:
+                    - generic "PandL.pdf" [ref=e613]
+                    - generic [ref=e614]: "Section: cat6 cables"
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - generic [ref=e617]: UNCLASSIFIED
+                    - generic [ref=e618]: Doubt
+                    - generic [ref=e619]: needs review
+                  - paragraph [ref=e620]: Repairs & Maintenance
+                  - generic [ref=e621]:
+                    - button "Approve" [ref=e622]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e623]:
+                      - img
+                      - text: Correct
+              - generic [ref=e624]:
+                - generic [ref=e625]:
+                  - paragraph [ref=e626]: HFCL - 24Core SM 9/125um Armoured OFC 378.00 DELL WIRELESS MOUSE
+                  - paragraph [ref=e627]: ₹636.16
+                  - generic [ref=e628]:
+                    - generic "PandL.pdf" [ref=e629]
+                    - generic [ref=e630]: "Section: freight charges 190.41 commscope fiber adap. plate 6 port lc sm dup"
+                - generic [ref=e631]:
+                  - generic [ref=e632]:
+                    - generic [ref=e633]: UNCLASSIFIED
+                    - generic [ref=e634]: Doubt
+                    - generic [ref=e635]: needs review
+                  - paragraph [ref=e636]: freight and miscellaneous expenses
+                  - generic [ref=e637]:
+                    - button "Approve" [ref=e638]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e639]:
+                      - img
+                      - text: Correct
+              - generic [ref=e640]:
+                - generic [ref=e641]:
+                  - paragraph [ref=e642]: INTEL CHIPSET H81 MOTHERBOARD 4,473.17 HDMI CABLE
+                  - paragraph [ref=e643]: ₹2,236.26
+                  - generic [ref=e644]:
+                    - generic "PandL.pdf" [ref=e645]
+                    - generic [ref=e646]: "Section: intel chipset h61 motherboard 3,636.34 hardware screw 10’s"
+                - generic [ref=e647]:
+                  - generic [ref=e648]:
+                    - generic [ref=e649]: UNCLASSIFIED
+                    - generic [ref=e650]: Doubt
+                    - generic [ref=e651]: needs review
+                  - paragraph [ref=e652]: Hardware purchase likely Others
+                  - generic [ref=e653]:
+                    - button "Approve" [ref=e654]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e655]:
+                      - img
+                      - text: Correct
+              - generic [ref=e656]:
+                - generic [ref=e657]:
+                  - paragraph [ref=e658]: RJ 45 JACK 562.45 LOGITECH SPEAKERS
+                  - paragraph [ref=e659]: ₹889.84
+                  - generic [ref=e660]:
+                    - generic "PandL.pdf" [ref=e661]
+                    - generic [ref=e662]: "Section: ram 2gb ddr3 764.57 livetech usb wifi dongle"
+                - generic [ref=e663]:
+                  - generic [ref=e664]:
+                    - generic [ref=e665]: UNCLASSIFIED
+                    - generic [ref=e666]: Doubt
+                    - generic [ref=e667]: needs review
+                  - paragraph [ref=e668]: No specific match, falls under Others
+                  - generic [ref=e669]:
+                    - button "Approve" [ref=e670]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e671]:
+                      - img
+                      - text: Correct
+              - generic [ref=e672]:
+                - generic [ref=e673]:
+                  - paragraph [ref=e674]: SANDISK 128GB PEN DRIVE 3.0 720.35 LOGITECH USB KEYBOARD
+                  - paragraph [ref=e675]: ₹1,942.63
+                  - generic [ref=e676]:
+                    - generic "PandL.pdf" [ref=e677]
+                    - generic [ref=e678]: "Section: ram 2gb ddr3 764.57 livetech usb wifi dongle"
+                - generic [ref=e679]:
+                  - generic [ref=e680]:
+                    - generic [ref=e681]: UNCLASSIFIED
+                    - generic [ref=e682]: Doubt
+                    - generic [ref=e683]: needs review
+                  - paragraph [ref=e684]: Others due to unspecified nature
+                  - generic [ref=e685]:
+                    - button "Approve" [ref=e686]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e687]:
+                      - img
+                      - text: Correct
+              - generic [ref=e688]:
+                - generic [ref=e689]:
+                  - paragraph [ref=e690]: TVS 80COL TRACTOR UNIT 635.60 SANDISK 128GB PEN DRIVE 3.0
+                  - paragraph [ref=e691]: ₹720.35
+                  - generic [ref=e692]:
+                    - generic "PandL.pdf" [ref=e693]
+                    - generic [ref=e694]: "Section: sandisk 64gb pen drive 1,474.80 ofc single mode 6c"
+                - generic [ref=e695]:
+                  - generic [ref=e696]:
+                    - generic [ref=e697]: UNCLASSIFIED
+                    - generic [ref=e698]: Doubt
+                    - generic [ref=e699]: needs review
+                  - paragraph [ref=e700]: Other admin expense
+                  - generic [ref=e701]:
+                    - button "Approve" [ref=e702]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e703]:
+                      - img
+                      - text: Correct
+              - generic [ref=e704]:
+                - generic [ref=e705]:
+                  - paragraph [ref=e706]: VALRACK 27U 70,000.16 SANDISK 64GB PEN DRIVE
+                  - paragraph [ref=e707]: ₹683.93
+                  - generic [ref=e708]:
+                    - generic "PandL.pdf" [ref=e709]
+                    - generic [ref=e710]: "Section: sandisk 64gb pen drive 1,474.80 ofc single mode 6c"
+                    - generic [ref=e711]: Row 71
+                - generic [ref=e712]:
+                  - generic [ref=e713]:
+                    - generic [ref=e714]: Others
+                    - generic [ref=e715]: Medium
+                    - generic [ref=e716]: auto classified
+                  - generic [ref=e717]:
+                    - button "Approve" [ref=e718]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e719]:
+                      - img
+                      - text: Correct
+              - generic [ref=e720]:
+                - generic [ref=e721]:
+                  - paragraph [ref=e722]: ZENER BARRIERS (-)27,806.49 TVS USB PCB
+                  - paragraph [ref=e723]: ₹593.24
+                  - generic [ref=e724]:
+                    - generic "PandL.pdf" [ref=e725]
+                    - generic [ref=e726]: "Section: zebronics stand mic 275.42 tvs 80col tractor unit"
+                - generic [ref=e727]:
+                  - generic [ref=e728]:
+                    - generic [ref=e729]: UNCLASSIFIED
+                    - generic [ref=e730]: Doubt
+                    - generic [ref=e731]: needs review
+                  - paragraph [ref=e732]: No specific match, likely miscellaneous
+                  - generic [ref=e733]:
+                    - button "Approve" [ref=e734]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e735]:
+                      - img
+                      - text: Correct
+              - generic [ref=e736]:
+                - generic [ref=e737]:
+                  - paragraph [ref=e738]: 5,23,45,330.12
+                  - paragraph [ref=e739]: ₹5,23,45,330.12
+                  - generic [ref=e740]:
+                    - generic "PandL.pdf" [ref=e741]
+                    - generic [ref=e742]: "Section: zener barriers"
+                - generic [ref=e743]:
+                  - generic [ref=e744]:
+                    - generic [ref=e745]: UNCLASSIFIED
+                    - generic [ref=e746]: Doubt
+                    - generic [ref=e747]: needs review
+                  - paragraph [ref=e748]: zener barriers not specific
+                  - generic [ref=e749]:
+                    - button "Approve" [ref=e750]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e751]:
+                      - img
+                      - text: Correct
+              - generic [ref=e752]:
+                - generic [ref=e753]:
+                  - paragraph [ref=e754]: Nett Profit
+                  - paragraph [ref=e755]: ₹10,47,504.22
+                  - generic [ref=e756]:
+                    - generic "PandL.pdf" [ref=e757]
+                    - generic [ref=e758]: "Section: s"
+                - generic [ref=e759]:
+                  - generic [ref=e760]:
+                    - generic [ref=e761]: UNCLASSIFIED
+                    - generic [ref=e762]: Doubt
+                    - generic [ref=e763]: needs review
+                  - paragraph [ref=e764]: Net Profit not in provided rows
+                  - generic [ref=e765]:
+                    - button "Approve" [ref=e766]:
+                      - img
+                      - text: Approve
+                    - button "Correct" [ref=e767]:
+                      - img
+                      - text: Correct
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e49] [cursor=pointer]:
+    - img [ref=e50]
+  - alert [ref=e148]

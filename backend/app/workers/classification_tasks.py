@@ -10,7 +10,7 @@ import asyncio
 import logging
 
 from app.dependencies import get_service_client
-from app.services.classification.pipeline import ClassificationPipeline
+from app.services.classification.multi_agent_pipeline import MultiAgentPipeline
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +97,7 @@ async def run_classification(ctx: dict, document_id: str) -> dict:
     # ── 4. Run pipeline ───────────────────────────────────────────────────────
     # classify_document is synchronous (N Supabase + Anthropic calls).
     # asyncio.to_thread keeps the ARQ worker event loop responsive.
-    pipeline = ClassificationPipeline()
+    pipeline = MultiAgentPipeline()
     summary = await asyncio.to_thread(
         pipeline.classify_document,
         document_id=document_id,

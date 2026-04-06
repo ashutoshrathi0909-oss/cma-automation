@@ -1,0 +1,129 @@
+{
+  "page_results": [
+    {
+      "page_number": 1,
+      "page_type": "balance_sheet",
+      "scale_factor": "absolute",
+      "items": [
+        {
+          "description": "Capital Account",
+          "amount": 5826789.51,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Dividend Income",
+          "amount": 2814.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "DRAWINGS",
+          "amount": -91999.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "EB - Residence",
+          "amount": -30261.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Gift From Father",
+          "amount": 600000.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Income Tax",
+          "amount": -98484.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Interest on Housing Loan",
+          "amount": -115665.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "IOC GAS SUBSIDY",
+          "amount": 124.75,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Jignesh Mehta",
+          "amount": 5794497.69,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "LIC OF INDIA",
+          "amount": -61204.68,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Long Term Capital Gain",
+          "amount": 31.75,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Mediclaim",
+          "amount": -23185.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "PROPERTY TAX",
+          "amount": -5128.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "School Fees",
+          "amount": -123270.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Share Expenses/ Brokerages",
+          "amount": -1111.72,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Shares Intraday",
+          "amount": 656.7,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Short Term Capital Gain",
+          "amount": 10479.02,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Software Charges",
+          "amount": -28900.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "WATER TAX",
+          "amount": -2606.0,
+          "section": "equity",
+          "ambiguity_question": null
+        },
+        {
+          "description": "Loans (Liability)",
+          "amount": 6528748.0,
+          "section": "liabilities",
+          "ambiguity_question": null
+        },
+        {
+          "description": 

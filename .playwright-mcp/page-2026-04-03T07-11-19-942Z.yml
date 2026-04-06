@@ -1,0 +1,69 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e30]:
+    - complementary [ref=e31]:
+      - generic [ref=e32]:
+        - text: CMA Assist
+        - paragraph [ref=e33]: Automation Platform
+      - navigation [ref=e34]:
+        - link "Dashboard" [ref=e35] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e36]
+          - text: Dashboard
+        - link "Clients" [ref=e41] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e42]
+          - text: Clients
+        - link "Settings" [ref=e47] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e48]
+          - text: Settings
+    - generic [ref=e51]:
+      - banner [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e58]: CMA Admin
+            - generic [ref=e59]: admin
+          - button "Logout" [ref=e60]:
+            - img
+            - text: Logout
+      - main [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - heading "Clients" [level=1] [ref=e65]
+              - paragraph [ref=e66]: Manage client accounts and CMA reports
+            - link "New Client" [ref=e67] [cursor=pointer]:
+              - /url: /clients/new
+              - button "New Client" [ref=e68]:
+                - img
+                - text: New Client
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - img
+              - textbox "Search clients…" [ref=e71]
+            - combobox "Filter by industry" [ref=e72]:
+              - option "All industries" [selected]
+              - option "Manufacturing"
+              - option "Service"
+              - option "Trading"
+              - option "Other"
+          - link "Mehata Computer manufacturing FY ends 31st March INR" [ref=e74] [cursor=pointer]:
+            - /url: /clients/519cf01a-03f2-4f4d-b730-a4d49f53b68a
+            - generic [ref=e75]:
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - img [ref=e80]
+                  - generic [ref=e84]: Mehata Computer
+                - generic [ref=e85]: manufacturing
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - img [ref=e89]
+                  - text: FY ends 31st March
+                - generic [ref=e91]:
+                  - img [ref=e92]
+                  - text: INR
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

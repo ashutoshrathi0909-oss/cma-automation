@@ -1,0 +1,98 @@
+- generic [ref=e1]:
+  - generic [ref=e38]:
+    - complementary [ref=e39]:
+      - generic [ref=e40]:
+        - text: CMA Assist
+        - paragraph [ref=e41]: Automation Platform
+      - navigation [ref=e42]:
+        - link "Dashboard" [ref=e43] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e44]
+          - text: Dashboard
+        - link "Clients" [ref=e49] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e50]
+          - text: Clients
+        - link "Settings" [ref=e55] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e56]
+          - text: Settings
+    - generic [ref=e59]:
+      - banner [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - generic [ref=e66]: Ashutosh Rathi
+            - generic [ref=e67]: admin
+          - button "Logout" [ref=e68]:
+            - img
+            - text: Logout
+      - main [ref=e69]:
+        - generic [ref=e159]:
+          - link "Back to BCIPL" [ref=e160] [cursor=pointer]:
+            - /url: /clients/8c3f47b0-1f4a-4159-8166-6f48664d114c
+            - img [ref=e161]
+            - text: Back to BCIPL
+          - generic [ref=e163]:
+            - heading "Upload Documents" [level=1] [ref=e164]
+            - paragraph [ref=e165]: Upload financial documents for BCIPL
+          - generic [ref=e166]:
+            - heading "Add New Document" [level=2] [ref=e167]
+            - generic [ref=e168]:
+              - generic [active] [ref=e169] [cursor=pointer]:
+                - button "Choose File" [ref=e170]
+                - generic [ref=e183]:
+                  - img [ref=e184]
+                  - generic [ref=e187]:
+                    - paragraph [ref=e188]: 6. BCIPL_ Final Accounts_2020-21.xls
+                    - paragraph [ref=e189]: 1910 KB
+                  - button [ref=e190]:
+                    - img [ref=e191]
+              - generic [ref=e194]:
+                - generic [ref=e195]:
+                  - generic [ref=e196]: Document Type
+                  - combobox "Document Type" [ref=e197]:
+                    - option "Profit & Loss"
+                    - option "Balance Sheet"
+                    - option "Notes to Accounts"
+                    - option "Schedules"
+                    - option "Loan Repayment Schedule"
+                    - option "Combined Financial Statement" [selected]
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Financial Year
+                  - combobox "Financial Year" [ref=e200]:
+                    - option "FY 2025–2026" [selected]
+                    - option "FY 2024–2025"
+                    - option "FY 2023–2024"
+                    - option "FY 2022–2023"
+                    - option "FY 2021–2022"
+                    - option "FY 2020–2021"
+                    - option "FY 2019–2020"
+                    - option "FY 2018–2019"
+                    - option "FY 2017–2018"
+                    - option "FY 2016–2017"
+                - generic [ref=e201]:
+                  - generic [ref=e202]: Nature
+                  - combobox "Nature" [ref=e203]:
+                    - option "Audited" [selected]
+                    - option "Provisional"
+                - generic [ref=e204]:
+                  - generic [ref=e205]: Source Unit
+                  - combobox "Source Unit" [ref=e206]:
+                    - option "Full Rupees" [selected]
+                    - option "Thousands (Rs.'000)"
+                    - option "Lakhs"
+                    - option "Crores"
+              - button "Upload Document" [ref=e207]:
+                - generic [ref=e208]:
+                  - img
+                  - text: Upload Document
+          - generic [ref=e176]:
+            - heading "Uploaded Documents" [level=2] [ref=e177]
+            - generic [ref=e178]:
+              - img [ref=e179]
+              - paragraph [ref=e182]: No documents uploaded yet
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]

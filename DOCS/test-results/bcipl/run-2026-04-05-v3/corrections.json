@@ -1,0 +1,746 @@
+[
+  {
+    "id": "0583ee6b-bd93-43b5-ae90-28842561dae0",
+    "desc": "Long-term Borrowings",
+    "cma_field_name": "Balance Repayable after one year",
+    "cma_row": 137,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "1c008f80-63f9-432e-9f7d-983ece4ad832",
+    "desc": "Deferred Tax Liabilities (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "40083188-91a5-4b6f-9fff-f0fa0ea7ae1a",
+    "desc": "Short-term Borrowings",
+    "cma_field_name": "From Indian Bank",
+    "cma_row": 131,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "cf9a9ae8-b67e-4204-ae41-49e46abc601e",
+    "desc": "Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "ab2c64d3-61c5-42fa-8b13-baf31b0cecb6",
+    "desc": "Gross Revenue from operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "503c31c9-4a0d-4580-994c-07afd9010ea0",
+    "desc": "Profit After Tax",
+    "cma_field_name": "Net Profit After Tax",
+    "cma_row": 97,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "758d053d-40b6-4385-9fe2-990d25b19319",
+    "desc": "- Depreciation & Amortization",
+    "cma_field_name": "Depreciation",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "7b1bba4e-5a2d-422c-b3da-9f20421440ac",
+    "desc": "-Profit on sale of Fixed Asset",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "99f945ce-d161-4fd6-849e-fd1d0e2aa02d",
+    "desc": "- Bad Debts Written off",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "c926ad3c-60da-4817-ad95-e72f4fb87e2d",
+    "desc": "- Inventories",
+    "cma_field_name": "Indigenous",
+    "cma_row": 198,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "87fcd4a8-2d3d-49a0-8ecb-772fd9ae1558",
+    "desc": "- Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "7211a95b-11dd-4165-8f3e-10cb3c19193a",
+    "desc": "- Capital Work in Progress",
+    "cma_field_name": "Add : Capital Work in Progress",
+    "cma_row": 165,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Fixed Assets"
+  },
+  {
+    "id": "43c8c64a-57ee-4d47-b4c1-ef9ddd9d7159",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "328403d0-a916-4190-9a6b-6c553977d4cb",
+    "desc": "Deferred Tax Liabilities / (Assets) (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "f1990768-b7ba-4f0b-bce8-84aa750ae3fd",
+    "desc": "Closing Balance - Deferred Tax Liabilities/(Assets)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "f5ebed46-d733-400b-8f02-309797a0437a",
+    "desc": "Dues to Micro, Small & Medium Enterprises",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "0135cd41-19f1-4efc-bc27-e9efefb3de17",
+    "desc": "Current Maturities of Long - Term Debts  [Ref. Note 3]",
+    "cma_field_name": "Term Loan Repayable in next one year",
+    "cma_row": 136,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "faabc1ed-21e7-49d2-a433-ba9daa5e8e8c",
+    "desc": "Profession Tax",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "45b7c9dd-892f-4cf7-842e-fb1030cfbc76",
+    "desc": "Unpaid Salary",
+    "cma_field_name": "Other current liabilities",
+    "cma_row": 250,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "c225bde7-6cff-4f74-a2f9-e7fbef280dcd",
+    "desc": "Advance From Customers",
+    "cma_field_name": "Other current liabilities",
+    "cma_row": 250,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "766a5ec3-64d1-4466-a429-2088c00cd4a9",
+    "desc": "Cash on Hand",
+    "cma_field_name": "Cash on Hand",
+    "cma_row": 214,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "78c98a7d-6910-476a-9543-28cb31260bb7",
+    "desc": "Gross Revenue From Operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "7991dd0e-5e10-44e0-be87-6c85bf1378a5",
+    "desc": "Depreciation",
+    "cma_field_name": "Depreciation",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "eb430b3c-8b5c-42f6-aef5-d43b519bef49",
+    "desc": "Share Capital",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "c6b91868-fae9-4b09-9f1b-1e0785fb3dba",
+    "desc": "Other Income",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "ab43f1b2-99f2-4679-8d7e-8f24300ea5fa",
+    "desc": "Profit Before Tax",
+    "cma_field_name": "Profit before tax",
+    "cma_row": 93,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "c8daac37-f1e8-4c51-861a-464210155aef",
+    "desc": "- Interest Received",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "9122b5f4-53f5-435b-b6d5-c1a9b39aa690",
+    "desc": "- Trade Receivables",
+    "cma_field_name": "Domestic Receivables",
+    "cma_row": 206,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "65bd2bf8-141a-41d2-9c8b-bbf41f4eb23f",
+    "desc": "- Interest Received",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "72aaf6ec-2994-45f4-916e-7d454140bc19",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "c6744386-1536-4cdc-81e2-2b742d664def",
+    "desc": "Security Deposits",
+    "cma_field_name": "Other Advances / current asset",
+    "cma_row": 223,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "666b7304-5b8c-427e-aa58-6823f50cbf4b",
+    "desc": "Tax Deducted at Source",
+    "cma_field_name": "Advance Income Tax",
+    "cma_row": 221,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  },
+  {
+    "id": "cd24cadc-0e42-4479-9723-e3cbc8a222dd",
+    "desc": "Profit on Sale of Fixed Asset",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "6cd28689-0267-40dc-9e17-f0633ed99c05",
+    "desc": "Selling & Distribution Expenses",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Selling, Gen. & Adm. Exp."
+  },
+  {
+    "id": "66afc970-75eb-4b0d-b5af-71992913c764",
+    "desc": "Advance Tax",
+    "cma_field_name": "Advance Income Tax",
+    "cma_row": 221,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  },
+  {
+    "id": "e63d0594-2934-4020-a3f4-7da1f6bac175",
+    "desc": "Share Capital",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "06408f9b-9542-4639-9161-3c9e5b386926",
+    "desc": "Advance From Customers",
+    "cma_field_name": "Other current liabilities",
+    "cma_row": 250,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "7ad7e2a0-e8fd-4fca-92f6-7cf720f1ee64",
+    "desc": "Intangible Assets",
+    "cma_field_name": "Other Intangible assets",
+    "cma_row": 172,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Fixed Assets"
+  },
+  {
+    "id": "5abe9751-49cb-4c00-b1da-e3e526c3f126",
+    "desc": "Long-term Borrowings",
+    "cma_field_name": "Balance Repayable after one year",
+    "cma_row": 137,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "66ef1f70-b984-4dcb-a7ac-4bdb69bc499c",
+    "desc": "Deferred Tax Liabilities (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "d05d33a4-8213-4d56-b601-0784bf336b57",
+    "desc": "Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "8326ac8d-780d-4bbf-a8bf-878c0c86325b",
+    "desc": "Revenue from operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "518a11ef-6afe-405f-bf1f-78a61dc05655",
+    "desc": "Profit Before Tax (III-IV)",
+    "cma_field_name": "Profit before tax",
+    "cma_row": 93,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "a6463d89-2d15-4a78-8835-ec2018d92510",
+    "desc": "Profit Before Tax",
+    "cma_field_name": "Profit before tax",
+    "cma_row": 93,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "f9e59414-c15f-4c20-bc52-31d5fef2abd1",
+    "desc": "- Depreciation & Amortization",
+    "cma_field_name": "Depreciation",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "c088cd73-8e74-4aea-abcb-b31770f98fcb",
+    "desc": "- Interest Received",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "e0148786-3482-42bd-b588-ed189170d7ad",
+    "desc": "- Trade Receivables",
+    "cma_field_name": "Domestic Receivables",
+    "cma_row": 206,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "1715224a-5cb3-40ed-b594-96627a1f5cd5",
+    "desc": "- Inventories",
+    "cma_field_name": "Indigenous",
+    "cma_row": 198,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "31538835-d36a-46f3-b4a3-d8fd0ea9378f",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "23c5a63e-4fc3-4aa6-96be-8e97086f98df",
+    "desc": "Closing Balance - Deferred Tax Liabilities/(Assets)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "f293b3ac-b689-410d-bc3b-8e802bdcadde",
+    "desc": "Advance Tax",
+    "cma_field_name": "Advance Income Tax",
+    "cma_row": 221,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  },
+  {
+    "id": "70fe862d-d93a-4189-b6e2-c00da75381d3",
+    "desc": "Gross Revenue From Operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "8a657a9b-25f2-4ad2-84c4-605cc099ae02",
+    "desc": "CRCA Sheets & Coils",
+    "cma_field_name": "Indigenous",
+    "cma_row": 198,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "e841fcf1-c2f4-43b3-b29c-c1cdeaac789d",
+    "desc": "Depreciation",
+    "cma_field_name": "Depreciation",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "8040b891-788a-47ca-abe8-5fd93920eee6",
+    "desc": "Short-term Borrowings",
+    "cma_field_name": "From Indian Bank",
+    "cma_row": 131,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "a1f01841-2a98-472b-9f3e-5883a8fa2a25",
+    "desc": "- Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "e57c8c0a-b3b5-480c-829d-f99b739ed43e",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "3e3b5f42-c1fd-4886-8019-7058748607a4",
+    "desc": "- Book and Tax Depreciation on WDV",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "958f1c12-bd6d-4dac-ae2f-b2475d4381be",
+    "desc": "Deferred Tax Liabilities / (Assets) (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "82abb566-b98e-41bf-a78b-96969b385a18",
+    "desc": "Selling & Distribution Expenses",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Selling, Gen. & Adm. Exp."
+  },
+  {
+    "id": "d5ef5bba-04a0-4a04-b364-df014e5fc82e",
+    "desc": "Deferred Tax Liabilities (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "b7fa71fc-3c07-4986-b749-54f212fe4952",
+    "desc": "Revenue from operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "f84fe499-24f2-4f54-ac01-0985a962f71c",
+    "desc": "Profit Before Tax (III-IV)",
+    "cma_field_name": "Profit before tax",
+    "cma_row": 93,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "461da44a-136e-4653-97e9-e87796803163",
+    "desc": "- Depreciation & Amortization",
+    "cma_field_name": "Depreciation",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "e7c9cd1a-f8c7-4230-b8ba-38b054f63d5e",
+    "desc": "- Bad Debts Written off",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "baa48aec-f812-4dd9-949e-16378dcfb5fa",
+    "desc": "- Interest Received",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "026f7642-8689-4ce4-937e-caa83cd91950",
+    "desc": "- Trade Receivables",
+    "cma_field_name": "Domestic Receivables",
+    "cma_row": 206,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "62b2c728-6895-4d6e-bc21-bf00ff870e7e",
+    "desc": "- Inventories",
+    "cma_field_name": "Indigenous",
+    "cma_row": 198,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "4d3c482e-c26a-455e-9e9b-f0b79d4d9cf9",
+    "desc": "- Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "364aa7a3-c69b-4ce1-b760-fdae50feb78a",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "ea14b66e-4d8c-4cf1-874f-6e55cc0f0c6b",
+    "desc": "- Book and Tax Depreciation on WDV",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "982b75b3-73aa-4246-b2ad-c66941ab1947",
+    "desc": "Dues to Micro, Small & Medium Enterprises",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "b18748e2-1122-4e49-8359-edec41779027",
+    "desc": "Advance From Customers",
+    "cma_field_name": "Other current liabilities",
+    "cma_row": 250,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "a196ac25-f431-4bc1-bb3b-8777ac1932f3",
+    "desc": "Security Deposits",
+    "cma_field_name": "Other Advances / current asset",
+    "cma_row": 223,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "5bf9c723-86b3-41f4-82d9-125cf38c9c97",
+    "desc": "Cash on Hand",
+    "cma_field_name": "Cash on Hand",
+    "cma_row": 214,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "b2232de5-7d12-4401-a50e-f8b9ae8890ad",
+    "desc": "Prepaid Expenses",
+    "cma_field_name": "Other Advances / current asset",
+    "cma_row": 223,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  },
+  {
+    "id": "5bef03cf-ae49-4634-9770-b75b33a2f097",
+    "desc": "Gross Revenue From Operations",
+    "cma_field_name": "Domestic Sales",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "9fb4e130-6c68-4fe5-ab8e-cd58788c6dac",
+    "desc": "Share Capital",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "c0eacb7e-9325-4a74-8bce-1aa6e54161ac",
+    "desc": "Long-term Borrowings",
+    "cma_field_name": "Balance Repayable after one year",
+    "cma_row": 137,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "521f3209-fd82-424d-9dc5-bb0b8ce0e9e4",
+    "desc": "Short-term Borrowings",
+    "cma_field_name": "From Indian Bank",
+    "cma_row": 131,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "13284889-ccf4-4b2c-92ac-9d1f2b20fada",
+    "desc": "Trade Payables",
+    "cma_field_name": "Creditors for purchase of raw material & stores",
+    "cma_row": 234,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Liability"
+  },
+  {
+    "id": "b580032d-c479-4372-b140-567c5bdfab74",
+    "desc": "Equity Shares",
+    "cma_field_name": "Issued, Subscribed and Paid up",
+    "cma_row": 116,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Networth"
+  },
+  {
+    "id": "c7687c33-b118-4e13-b8c2-14808fd41b13",
+    "desc": "Deferred Tax Liabilities / (Assets) (Net)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "f3536042-4fa3-45e5-81d6-6cfa9f086a81",
+    "desc": "Profession Tax",
+    "cma_field_name": "Others",
+    "cma_row": 71,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Expense"
+  },
+  {
+    "id": "9ea788f9-6a4e-4842-be67-88696c979ac1",
+    "desc": "Tax Deducted at Source",
+    "cma_field_name": "Advance Income Tax",
+    "cma_row": 221,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  },
+  {
+    "id": "b8d81006-7035-4844-92cd-94f790c288ba",
+    "desc": "Sales Return",
+    "cma_field_name": "Domestic",
+    "cma_row": 22,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Sales"
+  },
+  {
+    "id": "5d833bec-cc82-4985-8476-5574b694d9b6",
+    "desc": "CRCA Sheets & Coils",
+    "cma_field_name": "Indigenous",
+    "cma_row": 198,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Asset"
+  },
+  {
+    "id": "36eb2df3-12c5-4d5e-88bf-d0b57e86cbf6",
+    "desc": "Other Income",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "d78c112c-b8d8-4a78-bdda-99dc5e64626c",
+    "desc": "Profit Before Tax",
+    "cma_field_name": "Profit before tax",
+    "cma_row": 93,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "P&L"
+  },
+  {
+    "id": "a46e33c6-04f6-4a9c-9070-21b150c26049",
+    "desc": "- Interest Received",
+    "cma_field_name": "Any Other Operating Income",
+    "cma_row": 30,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Income"
+  },
+  {
+    "id": "4498d1b6-e84a-440e-8f03-9fc2e5a77675",
+    "desc": "- Capital Work in Progress",
+    "cma_field_name": "Add : Capital Work in Progress",
+    "cma_row": 165,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Fixed Assets"
+  },
+  {
+    "id": "88008585-889b-4951-aff9-ee83436a087d",
+    "desc": "Closing Balance - Deferred Tax Liabilities/(Assets)",
+    "cma_field_name": "Deferred tax liability",
+    "cma_row": 159,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Term Liability"
+  },
+  {
+    "id": "bdf2de1d-e181-4399-9f9c-26880756efdd",
+    "desc": "Advance Tax",
+    "cma_field_name": "Advance Income Tax",
+    "cma_row": 221,
+    "cma_sheet": "input_sheet",
+    "broad_classification": "Current Assets"
+  }
+]

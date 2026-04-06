@@ -1,0 +1,111 @@
+- generic [ref=e1]:
+  - generic [ref=e30]:
+    - complementary [ref=e31]:
+      - generic [ref=e32]:
+        - text: CMA Assist
+        - paragraph [ref=e33]: Automation Platform
+      - navigation [ref=e34]:
+        - link "Dashboard" [ref=e35] [cursor=pointer]:
+          - /url: /dashboard
+          - img [ref=e36]
+          - text: Dashboard
+        - link "Clients" [ref=e41] [cursor=pointer]:
+          - /url: /clients
+          - img [ref=e42]
+          - text: Clients
+        - link "Settings" [ref=e47] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e48]
+          - text: Settings
+    - generic [ref=e51]:
+      - banner [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - img [ref=e55]
+            - generic [ref=e58]: Ashutosh Rathi
+            - generic [ref=e59]: admin
+          - button "Logout" [ref=e60]:
+            - img
+            - text: Logout
+      - main [ref=e61]:
+        - generic [ref=e165]:
+          - link "Back to BCIPL" [ref=e168] [cursor=pointer]:
+            - /url: /clients/4101352f-ffe5-4368-9611-6f4c671bd4bc
+            - img [ref=e169]
+            - text: Back to BCIPL
+          - generic [ref=e167]:
+            - heading "Upload Documents" [level=1] [ref=e171]
+            - paragraph [ref=e172]: Upload financial documents for BCIPL
+          - generic [ref=e173]:
+            - heading "Add New Document" [level=2] [ref=e174]
+            - generic [ref=e175]:
+              - generic [active] [ref=e176] [cursor=pointer]:
+                - button "Choose File" [ref=e177]
+                - generic [ref=e241]:
+                  - img [ref=e242]
+                  - generic [ref=e245]:
+                    - paragraph [ref=e246]: 6. BCIPL_ Final Accounts_2021-22.xls
+                    - paragraph [ref=e247]: 422 KB
+                  - button [ref=e248]:
+                    - img [ref=e249]
+              - generic [ref=e252]:
+                - generic [ref=e253]:
+                  - generic [ref=e254]: Document Type
+                  - combobox "Document Type" [ref=e255]:
+                    - option "Profit & Loss"
+                    - option "Balance Sheet"
+                    - option "Notes to Accounts"
+                    - option "Schedules"
+                    - option "Loan Repayment Schedule"
+                    - option "Combined Financial Statement" [selected]
+                - generic [ref=e256]:
+                  - generic [ref=e257]: Financial Year
+                  - combobox "Financial Year" [ref=e258]:
+                    - option "FY 2025–2026"
+                    - option "FY 2024–2025"
+                    - option "FY 2023–2024"
+                    - option "FY 2022–2023"
+                    - option "FY 2021–2022" [selected]
+                    - option "FY 2020–2021"
+                    - option "FY 2019–2020"
+                    - option "FY 2018–2019"
+                    - option "FY 2017–2018"
+                    - option "FY 2016–2017"
+                - generic [ref=e259]:
+                  - generic [ref=e260]: Nature
+                  - combobox "Nature" [ref=e261]:
+                    - option "Audited" [selected]
+                    - option "Provisional"
+                - generic [ref=e262]:
+                  - generic [ref=e263]: Source Unit
+                  - combobox "Source Unit" [ref=e264]:
+                    - option "Full Rupees" [selected]
+                    - option "Thousands (Rs.'000)"
+                    - option "Lakhs"
+                    - option "Crores"
+              - button "Upload Document" [ref=e265]:
+                - generic [ref=e266]:
+                  - img
+                  - text: Upload Document
+          - generic [ref=e183]:
+            - heading "Uploaded Documents(1)" [level=2] [ref=e216]:
+              - text: Uploaded Documents
+              - generic [ref=e217]: (1)
+            - generic [ref=e218]:
+              - generic [ref=e219]: XLS
+              - generic [ref=e220]:
+                - paragraph [ref=e221]: 6. BCIPL_ Final Accounts_2020-21.xls
+                - paragraph [ref=e222]: Combined · FY 2020–2021 · audited
+              - generic [ref=e223]:
+                - img [ref=e224]
+                - text: Pending
+              - text: "0"
+              - button "Extract & Verify" [ref=e227]:
+                - img
+                - text: Extract & Verify
+              - button [ref=e228]:
+                - img
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]
+  - alert [ref=e29]
