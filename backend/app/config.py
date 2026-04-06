@@ -11,18 +11,11 @@ class Settings(BaseSettings):
     # Anthropic (optional until Phase 5)
     anthropic_api_key: str = ""
 
-    # OpenRouter (cheaper alternative for OCR + classification)
+    # OpenRouter (all AI calls: OCR + classification)
     openrouter_api_key: str = ""
-    ocr_provider: str = "openrouter"          # "anthropic" or "openrouter"
-    ocr_model: str = "qwen/qwen3.5-9b"      # OpenRouter model ID for OCR
-    classifier_provider: str = "openrouter"  # "anthropic" or "openrouter"
-    classifier_model: str = "deepseek/deepseek-chat-v3-0324"  # DeepSeek V3 via OpenRouter
-    classifier_mode: str = "scoped"  # "scoped" (DeepSeek+Gemini debate) or "legacy" (old Haiku-only)
-
-    # ── PDF extraction
-    pdf_extractor: str = "glm_ocr"  # "glm_ocr" or "pdfplumber"
-    ollama_url: str = "http://ollama:11434"  # Ollama service URL (Docker internal)
-    glm_ocr_model: str = "glm-ocr"  # Ollama model name
+    ocr_provider: str = "openrouter"
+    ocr_model: str = "google/gemini-2.5-flash"
+    gemini_model: str = "google/gemini-2.5-flash"  # Multi-agent classification model
 
     # Redis
     redis_url: str = "redis://redis:6379"
