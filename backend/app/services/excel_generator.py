@@ -142,7 +142,7 @@ class ExcelGenerator:
         cell_data: list[dict],
         unit_divisor: float = 1,
         doc_divisors: dict[str, float] | None = None,
-    ) -> None:
+    ) -> list[dict]:
         """Pure transform: fill *ws* (an open worksheet) with CMA data.
 
         Parameters
@@ -162,7 +162,7 @@ class ExcelGenerator:
         logger.info("Dynamic year mapping: %s (base=%s)", year_map, min(years) if years else "N/A")
 
         self._fill_headers(ws, client_name, docs, year_map)
-        self._fill_data_cells(ws, cell_data, year_map=year_map, unit_divisor=unit_divisor, doc_divisors=doc_divisors)
+        return self._fill_data_cells(ws, cell_data, year_map=year_map, unit_divisor=unit_divisor, doc_divisors=doc_divisors)
 
     def generate(self, report_id: str, user_id: str) -> str:
         """Full pipeline: fetch → fill → save → upload → audit → cleanup.
@@ -199,9 +199,23 @@ class ExcelGenerator:
         )
 
         # 4. Fill worksheet
-        self.fill_workbook(ws, client_name, docs, cell_data, doc_divisors=doc_divisors)
+        provenance = self.fill_workbook(ws, client_name, docs, cell_data, doc_divisors=doc_divisors)
 
-        # 4. Save, upload, cleanup
+        # 5. Insert provenance records
+        _BATCH_SIZE = 500
+        if provenance:
+            for i in range(0, len(provenance), _BATCH_SIZE):
+                batch = provenance[i : i + _BATCH_SIZE]
+                records = [
+                    {**p, "cma_report_id": report_id}
+                    for p in batch
+                ]
+                try:
+                    self.service.table("cell_provenance").insert(records).execute()
+                except Exception as exc:
+                    logger.error("Provenance insert failed (batch %d): %s", i // _BATCH_SIZE, exc)
+
+        # 6. Save, upload, cleanup
         storage_path = self._save_upload_cleanup(wb, report_id, user_id)
 
         logger.info(
@@ -250,13 +264,16 @@ class ExcelGenerator:
         year_map: dict[int, str],
         unit_divisor: float = 1,
         doc_divisors: dict[str, float] | None = None,
-    ) -> None:
+    ) -> list[dict]:
         """Accumulate amounts by (row, col), apply per-document unit conversion, then write once per cell.
 
         When doc_divisors is provided, each item's amount is converted using
         its document's specific divisor BEFORE accumulation.  This correctly
         handles reports with mixed source units (e.g. FY2021=rupees, FY2022=lakhs).
+
+        Returns a list of provenance records (one per item that was successfully processed).
         """
+        provenance_records: list[dict] = []
         accumulator: dict[tuple[int, int], list[float]] = {}
         _converted_count = 0
         _raw_count = 0
@@ -300,6 +317,18 @@ class ExcelGenerator:
                         doc_id, field, item.get("amount"),
                     )
 
+            provenance_records.append({
+                "cma_row": row,
+                "cma_column": col_letter,
+                "financial_year": year,
+                "line_item_id": item.get("line_item_id"),
+                "classification_id": item.get("classification_id"),
+                "source_text": item.get("source_text"),
+                "raw_amount": float(item.get("amount") or 0),
+                "converted_amount": amount,
+                "document_id": doc_id,
+            })
+
             col = column_index_from_string(col_letter)
             key = (row, col)
             accumulator.setdefault(key, []).append(amount)
@@ -338,6 +367,8 @@ class ExcelGenerator:
                     "Multi-value formula at row=%d col=%d: %s (%d items)",
                     row, col, cell.value, len(values),
                 )
+
+        return provenance_records
 
     # ── Private: I/O helpers ──────────────────────────────────────────────
 
@@ -473,7 +504,7 @@ class ExcelGenerator:
                 batch_ids = item_ids[i : i + _BATCH]
                 clf_result = (
                     self.service.table("classifications")
-                    .select("line_item_id,cma_field_name,cma_row")
+                    .select("id,line_item_id,cma_field_name,cma_row")
                     .in_("line_item_id", batch_ids)
                     .eq("is_doubt", False)
                     .execute()
@@ -493,6 +524,9 @@ class ExcelGenerator:
                         "financial_year": year,
                         "amount": item.get("amount") or 0.0,
                         "document_id": doc_id,
+                        "line_item_id": clf["line_item_id"],
+                        "classification_id": clf["id"],
+                        "source_text": item.get("description") or item.get("source_text"),
                     }
                 )
 
