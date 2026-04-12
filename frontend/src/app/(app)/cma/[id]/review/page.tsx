@@ -10,6 +10,7 @@ import { apiClient } from "@/lib/api";
 import { ClassificationReview } from "@/components/classification/ClassificationReview";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Classification } from "@/types";
+import { CellProvenance } from "@/components/cma/CellProvenance";
 
 type FilterMode = "needs_review" | "all";
 
