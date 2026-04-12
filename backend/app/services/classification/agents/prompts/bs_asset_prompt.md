@@ -90,9 +90,6 @@ These are the ONLY rows you may classify into. Any row NOT in this table is INVA
 | 222 | III_A17d | Prepaid Expenses | Balance Sheet - Loans and Advances |
 | 223 | III_A17e | Other Advances / current asset | Balance Sheet - Loans and Advances |
 | 224 | III_A17f | Advances to group / subsidiaries companies | Balance Sheet - Loans and Advances |
-| 229 | III_A18a | Investments (Group Exposure NCA) | Balance Sheet - Non Current Assets |
-| 230 | III_A18b | Advances (Group Exposure NCA) | Balance Sheet - Non Current Assets |
-| 234 | III_A21 | Fixed Deposits (Non Current) | Balance Sheet - Non Current Assets |
 | 235 | III_A22a | Dues from directors / partners / promoters | Balance Sheet - Non Current Assets |
 | 236 | III_A22b | Advances to suppliers of capital goods | Balance Sheet - Non Current Assets |
 | 237 | III_A22c | Security deposits with government departments | Balance Sheet - Non Current Assets |
@@ -124,6 +121,25 @@ These rows are FORMULA CELLS in the CMA Excel workbook. They auto-calculate from
 | 201 | R59 (pl_expense) | Finished Goods | Auto-picks from P&L Finished Goods Closing Balance R59. If you see "Finished Goods" on BS inventory, do NOT classify — emit DOUBT. |
 | 232 | R208 | Debtors more than six months (NCA) | Auto-picks from Current Debtors R208. ALL debtors >6 months go to R208 only. |
 | 233 | R186 | Investments (NCA) | Auto-picks from Other non-current investments R186. ALL non-current investments go to R186 only. |
+| 229 | -- | Investments (Group Exposure NCA) | Formula row — auto-aggregates from source rows. Classify "Investment in subsidiary / group company" to R188 (Investment in group companies / subsidiaries) instead. (CA decision 2026-04-12) |
+| 230 | -- | Advances (Group Exposure NCA) | Formula row — auto-aggregates from source rows. Classify "Advance / loan to group company or subsidiary (long-term)" to R224 (Advances to group / subsidiaries companies) instead. (CA decision 2026-04-12) |
+| 234 | -- | Fixed Deposits (Non Current) | Formula row. Classify non-current FDs (maturity > 1 year) as DOUBT — the CA will resolve via the doubt resolution system. R215 may apply for some clients. (CA decision 2026-04-12) |
+| 164 | -- | Net Block | = R162 - R163. Auto-computed from Gross Block minus Accumulated Depreciation. |
+| 166 | -- | Total (Fixed Assets) | =SUM(Net Block + CWIP). Auto-computed. |
+| 173 | -- | Total (Intangibles) | =SUM(R169:R172). Auto-sums intangible sub-rows. |
+| 179 | -- | Total (FA Movement) | Auto-computed FA movement total. |
+| 184 | -- | Sub Total (Govt Securities) | =SUM(R182:R183). Auto-sums govt security rows. |
+| 187 | -- | Sub Total (Other Investments) | =SUM(R185:R186). Auto-sums other investment rows. |
+| 189 | -- | Total (Investments) | Grand total of all investment rows. Auto-computed. |
+| 195 | -- | Sub Total (Raw Material) | =SUM(R193:R194). Auto-sums imported + indigenous raw material. |
+| 199 | -- | Sub Total (Stores & Spares) | =SUM(R197:R198). Auto-sums imported + indigenous stores. |
+| 203 | -- | Total (Inventories) | Grand total of all inventory rows including WIP and FG. Auto-computed. |
+| 209 | -- | Total (Sundry Debtors) | =SUM(R206:R208). Auto-sums debtors sub-rows. |
+| 216 | -- | Total (Cash and Bank) | =SUM(R212:R215). Auto-sums cash and bank sub-rows. |
+| 225 | -- | Total (Loans and Advances) | =SUM(R219:R224). Auto-sums loans and advances sub-rows. |
+| 231 | -- | Sub Total (Group NCA) | Auto-aggregates group NCA exposure. Source rows are R188 and R224. |
+| 239 | -- | Total Non Current Assets | Grand total of all NCA rows. Auto-computed. |
+| 251 | -- | Total (Current Liabilities) | =SUM(R242:R250). Auto-sums current liability sub-rows. |
 
 **If the router sends you an item whose correct destination is R31, R59, R89, or R54 (outside your range), emit DOUBT and note in reasoning: "Item belongs to [pl_income/pl_expense] specialist, not bs_asset."**
 </never_classify>

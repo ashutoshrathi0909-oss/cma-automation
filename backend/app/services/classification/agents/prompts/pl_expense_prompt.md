@@ -77,6 +77,7 @@ When confidence < 0.80, or when a DOUBT rule applies:
 | 56 | II_C14 | Depreciation | Manufacturing Expenses |
 | 58 | II_C17 | Finished Goods Opening Balance | Manufacturing Expenses |
 | 59 | II_C18a | Finished Goods Closing Balance | Manufacturing Expenses |
+| 62 | II_C19a | Manufacturing Expenses (for CMA purpose) | Manufacturing Expenses |
 | 67 | II_D1 | Salary and staff expenses | Admin & Selling Expenses |
 | 68 | II_D2 | Rent , Rates and Taxes | Admin & Selling Expenses |
 | 69 | II_D3 | Bad Debts | Admin & Selling Expenses |
@@ -87,6 +88,7 @@ When confidence < 0.80, or when a DOUBT rule applies:
 | 75 | II_E1 | Miscellaneous Expenses written off | Misc Amortisation |
 | 76 | II_E2 | Deferred Revenue Expenditures | Misc Amortisation |
 | 77 | II_E3a | Other Amortisations | Misc Amortisation |
+| 82 | II_F0 | Finance Charges | Finance Charges |
 | 83 | II_F1 | Interest on Fixed Loans / Term loans | Finance Charges |
 | 84 | II_F2 | Interest on Working capital loans | Finance Charges |
 | 85 | II_F3 | Bank Charges | Finance Charges |
@@ -95,6 +97,7 @@ When confidence < 0.80, or when a DOUBT rule applies:
 | 91 | II_G3 | Loss on Exchange Fluctuations | Non Operating Expenses |
 | 92 | II_G4 | Extraordinary losses | Non Operating Expenses |
 | 93 | II_G5 | Others | Non Operating Expenses |
+| 98 | II_H0 | Tax | Tax |
 | 99 | II_H1 | Income Tax  provision | Tax |
 | 100 | II_H2 | Deferred Tax Liability | Tax |
 | 101 | II_H3 | Deferred Tax Asset | Tax |
@@ -113,6 +116,20 @@ NEVER classify any item into these rows. They are Excel formula cells that auto-
 | 178 | III_A9 | Loss on sale of FA (BS) | R89 | BS Fixed Asset Movement -- auto-picks from P&L R89. Always classify loss on sale into R89. (CA_VERIFIED_2026 id 7, id 53) |
 | 200 | -- | Formula row | -- | Excel formula row. Never classify into R200. |
 | 201 | III_A14 | Finished Goods (BS) | R59 | BS Inventories Finished Goods -- auto-picks from P&L R59. Always classify finished goods closing into R59. (CA_VERIFIED_2026 id 24, id 55) |
+| 52 | II_C11 | Sub Total (Manufacturing Inputs) | SUM(R41:R51) | Auto-sums raw materials, stores, wages, job work, freight, power, others, repairs. Individual items go to R41-R51. |
+| 55 | II_C13b | Sub total -- WIP change in stock | R53-R54 | Auto-computes WIP stock change from Opening (R53) minus Closing (R54). Classify WIP opening to R53, closing to R54. |
+| 57 | II_C16 | Cost Of Production | formula | = Manufacturing sub-total + WIP change + Depreciation. Auto-computed. Never a direct classification target. |
+| 60 | II_C18b | Sub total -- FG change in stock | R58-R59 | Auto-computes FG stock change from Opening (R58) minus Closing (R59). Classify FG opening to R58, closing to R59. |
+| 61 | II_C19 | Cost Of Sales | formula | = Cost of Production +/- FG stock change. Auto-computed. |
+| 74 | II_D8 | Sub Total (Admin & Selling) | SUM(R67:R73) | Auto-sums admin and selling sub-rows. Individual items go to R67-R73. |
+| 78 | II_E4 | Sub Total (Misc Amortisation) | SUM(R75:R77) | Auto-sums misc amortisation sub-rows. Individual items go to R75-R77. |
+| 80 | -- | Total (Admin + Misc) | SUM formula | Combined total of admin and misc sections. Auto-computed. |
+| 86 | -- | Total Finance Charges | SUM(R83:R85) | Auto-sums finance charge sub-rows. Individual items go to R83-R85. |
+| 94 | -- | Total Non-Operating Expenses | SUM(R89:R93) | Auto-sums non-operating expense sub-rows. Individual items go to R89-R93. |
+| 96 | -- | Profit Before Tax | formula | = Net Sales - Total Costs. Auto-computed. Never a direct classification target. |
+| 102 | -- | Total Tax | SUM(R99:R101) | Auto-sums tax provision sub-rows. Individual items go to R99-R101. |
+| 104 | -- | Net Profit PAT | formula | = Profit Before Tax - Total Tax. Auto-computed. |
+| 109 | -- | Balance carried to Balance Sheet | formula | Auto-carries net profit/appropriation balance forward. Never a direct classification target. |
 </never_classify>
 
 <classification_rules>

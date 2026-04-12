@@ -64,7 +64,6 @@ Critical rules:
 | 116 | III_L1 | Issued, Subscribed and Paid up | Balance Sheet - Share Capital |
 | 117 | III_L1a | Share Application Money | Balance Sheet - Share Capital |
 | 121 | III_L2a | General Reserve | Balance Sheet - Reserves and Surplus |
-| 122 | III_L2b | Balance transferred from profit and loss a/c | Balance Sheet - Reserves and Surplus |
 | 123 | III_L2c | Share Premium A/c | Balance Sheet - Reserves and Surplus |
 | 124 | III_L2d | Revaluation Reserve | Balance Sheet - Reserves and Surplus |
 | 125 | III_L2e | Other Reserve | Balance Sheet - Reserves and Surplus |
@@ -84,6 +83,25 @@ Critical rules:
 | 154 | III_L8c | As Short Term Debt | Balance Sheet - Unsecured Loans |
 | 159 | III_L9 | Deferred tax liability | Balance Sheet - Deferred Tax |
 </valid_categories>
+
+<never_classify>
+These rows are formula/subtotal cells in the CMA Excel template. Writing to them will overwrite Excel formulas and corrupt the document. NEVER output these cma_row values.
+
+| Row | Label | Reason |
+|-----|-------|--------|
+| 113 | (label row) | Auto-reference row — structural, not a data row. |
+| 114 | (label row) | Auto-reference row — structural, not a data row. |
+| 118 | Total (Share Capital) | =SUM(R116:R117) — auto-sums share capital sub-rows. |
+| 122 | Balance transferred from P&L a/c | Auto-links from P&L Net Profit. NEVER classify here. When you see "Retained Earnings", "Surplus in P&L", or "Balance brought forward" as a standalone BS Reserves item, emit DOUBT — the CA resolves these manually. Candidate rows: R121, R125. (CA_VERIFIED_2026 rules V9, V10) |
+| 126 | Total (Reserves & Surplus) | =SUM of reserves sub-rows. Auto-computed. |
+| 134 | Sub Total (Working Capital) | =SUM(R131:R133) — auto-sums WC bank finance sub-rows. |
+| 138 | Sub Total (Term Loans) | =SUM(R136:R137) — auto-sums term loan sub-rows. |
+| 142 | Sub Total (Debentures) | =SUM(R140:R141) — auto-sums debenture sub-rows. |
+| 146 | Sub Total (Preference Shares) | =SUM(R144:R145) — auto-sums preference share sub-rows. |
+| 150 | Sub Total (Other Debts) | =SUM(R148:R149) — auto-sums other debt sub-rows. |
+| 155 | Sub Total (Unsecured Loans) | =SUM(R152:R154) — auto-sums unsecured loan sub-rows. |
+| 157 | Total (All Loans) | Grand total formula across all loan categories. Auto-computed. |
+</never_classify>
 
 <classification_rules>
 Priority order: CA_VERIFIED_2026 > CA_OVERRIDE > CA_INTERVIEW > LEGACY.

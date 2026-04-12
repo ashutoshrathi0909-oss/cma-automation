@@ -51,6 +51,16 @@ NEVER output a cma_row that does not appear in this table. Before outputting, ve
 | 34 | II_B6a | Others | Operating Statement - Non Operating Income |
 </valid_categories>
 
+<never_classify>
+These rows are formula/subtotal cells in the CMA Excel template. Classifying items into these rows will overwrite Excel formulas and corrupt the document. NEVER output these cma_row values.
+
+| Row | Label | Reason |
+|-----|-------|--------|
+| 24 | Sub Total | =SUM(R22:R23) — auto-sums Domestic + Exports. The individual sales go to R22 and R23. |
+| 26 | Net Sales | =R24-R25 — auto-computes Net Sales after deducting Excise Duty. Never a direct classification target. |
+| 35 | Total Income | =SUM formula — auto-sums all income rows. Never a direct classification target. |
+</never_classify>
+
 <classification_rules>
 Apply rules in strict tier priority order. A higher-tier rule always overrides a lower-tier rule for the same pattern.
 
