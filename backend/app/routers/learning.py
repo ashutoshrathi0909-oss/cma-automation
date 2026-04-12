@@ -4,6 +4,7 @@ Endpoints for:
   - Uploading a corrected CMA file
   - Generating + viewing questionnaires
   - Submitting answers → proposed rules
+  - Doubt resolution (employee resolve → father approve/reject)
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ from pydantic import BaseModel
 
 from app.dependencies import get_current_user, get_service_client
 from app.models.schemas import UserProfile
+from app.services.doubt_resolution import DoubtResolutionService
 from app.services.excel_diff import diff_cma_files
 from app.services.questionnaire_generator import generate_questionnaire
 from app.services.rule_processor import process_answers
@@ -35,6 +37,18 @@ class AnswerItem(BaseModel):
 class SubmitAnswersRequest(BaseModel):
     questionnaire_id: str
     answers: list[AnswerItem]
+
+
+class ResolveDoubtRequest(BaseModel):
+    classification_id: str
+    resolved_cma_row: int
+    resolved_cma_field: str
+    note: str | None = None
+
+
+class ApproveRejectRequest(BaseModel):
+    resolution_id: str
+    reason: str | None = None
 
 
 @router.post("/{report_id}/upload-corrected")
@@ -252,3 +266,66 @@ def submit_answers(
         "rules_created": len(rules),
         "rules": rules,
     }
+
+
+# ── Loop 1: Doubt Resolution ────────────────────────────────────────────────
+
+
+@router.get("/{report_id}/doubts")
+def list_doubts(
+    report_id: str,
+    user: UserProfile = Depends(get_current_user),
+):
+    """List all pending doubt items for a report."""
+    service = get_service_client()
+    svc = DoubtResolutionService(service)
+    return svc.list_pending_doubts(report_id)
+
+
+@router.post("/{report_id}/resolve-doubt")
+def resolve_doubt(
+    report_id: str,
+    body: ResolveDoubtRequest,
+    user: UserProfile = Depends(get_current_user),
+):
+    """Employee resolves a doubt item."""
+    service = get_service_client()
+    svc = DoubtResolutionService(service)
+    return svc.resolve_doubt(
+        classification_id=body.classification_id,
+        resolved_cma_row=body.resolved_cma_row,
+        resolved_cma_field=body.resolved_cma_field,
+        resolved_by=user.id,
+        note=body.note,
+    )
+
+
+@router.post("/{report_id}/approve-resolution")
+def approve_resolution(
+    report_id: str,
+    body: ApproveRejectRequest,
+    user: UserProfile = Depends(get_current_user),
+):
+    """Father approves a doubt resolution."""
+    service = get_service_client()
+    svc = DoubtResolutionService(service)
+    return svc.approve_resolution(
+        resolution_id=body.resolution_id,
+        approved_by=user.id,
+    )
+
+
+@router.post("/{report_id}/reject-resolution")
+def reject_resolution(
+    report_id: str,
+    body: ApproveRejectRequest,
+    user: UserProfile = Depends(get_current_user),
+):
+    """Father rejects a doubt resolution."""
+    service = get_service_client()
+    svc = DoubtResolutionService(service)
+    return svc.reject_resolution(
+        resolution_id=body.resolution_id,
+        rejected_by=user.id,
+        reason=body.reason,
+    )
