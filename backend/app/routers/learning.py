@@ -19,6 +19,7 @@ from pydantic import BaseModel
 from app.dependencies import get_current_user, get_service_client
 from app.models.schemas import UserProfile
 from app.services.doubt_resolution import DoubtResolutionService
+from app.services.metrics_service import MetricsService
 from app.services.excel_diff import diff_cma_files
 from app.services.questionnaire_generator import generate_questionnaire
 from app.services.rule_processor import process_answers
@@ -49,6 +50,27 @@ class ResolveDoubtRequest(BaseModel):
 class ApproveRejectRequest(BaseModel):
     resolution_id: str
     reason: str | None = None
+
+
+@router.get("/system/metrics")
+def get_system_metrics(
+    user: UserProfile = Depends(get_current_user),
+):
+    """Get system-wide metrics (rules, resolutions, etc.)."""
+    service = get_service_client()
+    svc = MetricsService(service)
+    return svc.compute_system_metrics()
+
+
+@router.get("/{report_id}/metrics")
+def get_report_metrics(
+    report_id: str,
+    user: UserProfile = Depends(get_current_user),
+):
+    """Get classification metrics for a specific report."""
+    service = get_service_client()
+    svc = MetricsService(service)
+    return svc.compute_report_metrics(report_id)
 
 
 @router.post("/{report_id}/upload-corrected")
