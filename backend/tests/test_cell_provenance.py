@@ -309,7 +309,7 @@ class TestGenerateInsertProvenance:
         # Mock client name
         tbl_clients.select.return_value \
             .eq.return_value.single.return_value.execute.return_value.data = {
-                "company_name": "Test Co"
+                "name": "Test Co"
             }
         # Mock documents
         tbl_documents.select.return_value \
@@ -361,11 +361,24 @@ class TestProvenanceEndpoint:
 
     def test_endpoint_exists_and_returns_200(self, admin_client):
         """GET /api/cma-reports/{id}/provenance returns 200."""
-        # This will 404 or 405 because the endpoint doesn't exist yet
-        resp = admin_client.get(
-            "/api/cma-reports/rpt-001/provenance",
-            params={"row": 42, "column": "B"},
-        )
+        from unittest.mock import patch
+
+        mock_service = MagicMock()
+        # Mock _get_owned_report's query
+        mock_service.table("cma_reports").select.return_value \
+            .eq.return_value.single.return_value.execute.return_value.data = {
+                "id": "rpt-001", "created_by": "admin-uuid-0001",
+            }
+        # Mock provenance query
+        mock_service.table("cell_provenance").select.return_value \
+            .eq.return_value.eq.return_value.eq.return_value \
+            .execute.return_value.data = []
+
+        with patch("app.routers.cma_reports.get_service_client", return_value=mock_service):
+            resp = admin_client.get(
+                "/api/cma-reports/rpt-001/provenance",
+                params={"row": 42, "column": "B"},
+            )
         assert resp.status_code == 200, (
             f"Expected 200 but got {resp.status_code}. "
             "The /provenance endpoint must exist on cma_reports router."
@@ -373,20 +386,42 @@ class TestProvenanceEndpoint:
 
     def test_returns_provenance_records_for_cell(self, admin_client):
         """Endpoint returns provenance records filtered by row + column."""
-        resp = admin_client.get(
-            "/api/cma-reports/rpt-001/provenance",
-            params={"row": 45, "column": "B"},
-        )
+        from unittest.mock import patch
+
+        provenance_record = {
+            "id": "prov-001",
+            "cma_report_id": "rpt-001",
+            "cma_row": 45,
+            "cma_column": "B",
+            "financial_year": 2024,
+            "source_text": "Wages & Salaries",
+            "raw_amount": 500000.0,
+            "converted_amount": 5.0,
+            "document_id": "doc-001",
+        }
+        mock_service = MagicMock()
+        mock_service.table("cma_reports").select.return_value \
+            .eq.return_value.single.return_value.execute.return_value.data = {
+                "id": "rpt-001", "created_by": "admin-uuid-0001",
+            }
+        mock_service.table("cell_provenance").select.return_value \
+            .eq.return_value.eq.return_value.eq.return_value \
+            .execute.return_value.data = [provenance_record]
+
+        with patch("app.routers.cma_reports.get_service_client", return_value=mock_service):
+            resp = admin_client.get(
+                "/api/cma-reports/rpt-001/provenance",
+                params={"row": 45, "column": "B"},
+            )
         assert resp.status_code == 200
         data = resp.json()
         assert isinstance(data, list), "Response must be a list of provenance records"
-        # Each record must have the required fields
-        if len(data) > 0:
-            record = data[0]
-            required_fields = {"cma_row", "cma_column", "source_text"}
-            assert required_fields.issubset(record.keys()), (
-                f"Provenance record missing fields: {required_fields - record.keys()}"
-            )
+        assert len(data) == 1
+        record = data[0]
+        required_fields = {"cma_row", "cma_column", "source_text"}
+        assert required_fields.issubset(record.keys()), (
+            f"Provenance record missing fields: {required_fields - record.keys()}"
+        )
 
     def test_requires_row_and_column_params(self, admin_client):
         """Endpoint returns 422 when row or column params are missing."""

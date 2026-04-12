@@ -14,6 +14,7 @@ import tempfile
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
+from postgrest.exceptions import APIError
 from pydantic import BaseModel
 
 from app.dependencies import get_current_user, get_service_client
@@ -26,6 +27,30 @@ from app.services.rule_processor import process_answers
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/learning", tags=["learning"])
+
+_ADMIN_ROLE = "admin"
+
+
+def _verify_report_access(service, report_id: str, user: UserProfile) -> dict:
+    """Verify user owns the report (or is admin). Returns report data."""
+    try:
+        result = (
+            service.table("cma_reports")
+            .select("*")
+            .eq("id", report_id)
+            .single()
+            .execute()
+        )
+    except APIError:
+        raise HTTPException(status_code=404, detail="CMA report not found")
+
+    if not result.data:
+        raise HTTPException(status_code=404, detail="CMA report not found")
+
+    report = result.data
+    if user.role != _ADMIN_ROLE and report.get("created_by") != user.id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    return report
 
 
 class AnswerItem(BaseModel):
@@ -69,6 +94,7 @@ def get_report_metrics(
 ):
     """Get classification metrics for a specific report."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
     svc = MetricsService(service)
     return svc.compute_report_metrics(report_id)
 
@@ -81,17 +107,7 @@ def upload_corrected(
 ):
     """Upload a father-corrected CMA file and generate a questionnaire."""
     service = get_service_client()
-
-    # Fetch AI output path from storage
-    report = (
-        service.table("cma_reports")
-        .select("id, output_path")
-        .eq("id", report_id)
-        .single()
-        .execute()
-    ).data
-    if not report:
-        raise HTTPException(404, "Report not found")
+    report = _verify_report_access(service, report_id, user)
 
     ai_output_path = report.get("output_path")
     if not ai_output_path:
@@ -99,6 +115,7 @@ def upload_corrected(
 
     # Download AI file from storage to temp
     ai_tmp = tempfile.NamedTemporaryFile(suffix=".xlsm", delete=False)
+    corrected_tmp = None
     try:
         ai_bytes = service.storage.from_("generated").download(ai_output_path)
         ai_tmp.write(ai_bytes)
@@ -170,7 +187,7 @@ def upload_corrected(
         }
     finally:
         Path(ai_tmp.name).unlink(missing_ok=True)
-        if "corrected_tmp" in dir():
+        if corrected_tmp is not None:
             Path(corrected_tmp.name).unlink(missing_ok=True)
 
 
@@ -181,6 +198,7 @@ def get_questionnaire(
 ):
     """Get the latest questionnaire for a report."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
 
     q = (
         service.table("questionnaires")
@@ -219,6 +237,7 @@ def submit_answers(
 ):
     """Submit answers to a questionnaire and generate proposed rules."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
 
     # Verify questionnaire exists and belongs to this report
     q = (
@@ -300,6 +319,7 @@ def list_doubts(
 ):
     """List all pending doubt items for a report."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
     svc = DoubtResolutionService(service)
     return svc.list_pending_doubts(report_id)
 
@@ -312,6 +332,7 @@ def resolve_doubt(
 ):
     """Employee resolves a doubt item."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
     svc = DoubtResolutionService(service)
     return svc.resolve_doubt(
         classification_id=body.classification_id,
@@ -330,6 +351,7 @@ def approve_resolution(
 ):
     """Father approves a doubt resolution."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
     svc = DoubtResolutionService(service)
     return svc.approve_resolution(
         resolution_id=body.resolution_id,
@@ -345,6 +367,7 @@ def reject_resolution(
 ):
     """Father rejects a doubt resolution."""
     service = get_service_client()
+    _verify_report_access(service, report_id, user)
     svc = DoubtResolutionService(service)
     return svc.reject_resolution(
         resolution_id=body.resolution_id,

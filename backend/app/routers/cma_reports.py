@@ -415,6 +415,7 @@ def get_cell_provenance(
 ):
     """Return provenance records for a specific CMA cell."""
     service = get_service_client()
+    _get_owned_report(service, report_id, user)
     result = (
         service.table("cell_provenance")
         .select("*")

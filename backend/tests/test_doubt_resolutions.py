@@ -19,6 +19,23 @@ class TestDoubtResolutionService:
         from app.services.doubt_resolution import DoubtResolutionService
 
         service = MagicMock()
+        # Mock classifications lookup
+        service.table("classifications").select.return_value \
+            .eq.return_value.single.return_value.execute.return_value.data = {
+                "id": "clf-001",
+                "extracted_line_items": {"source_text": "Wages & Salaries", "document_id": "doc-001"},
+            }
+        # Mock doubt_resolutions insert
+        inserted = {
+            "id": "res-001",
+            "classification_id": "clf-001",
+            "resolved_cma_row": 45,
+            "resolved_cma_field": "Wages",
+            "status": "pending",
+        }
+        service.table("doubt_resolutions").insert.return_value \
+            .execute.return_value.data = [inserted]
+
         svc = DoubtResolutionService(service)
 
         result = svc.resolve_doubt(
@@ -29,13 +46,24 @@ class TestDoubtResolutionService:
             note="This is clearly wages",
         )
         assert result is not None
-        assert "id" in result
+        assert result["id"] == "res-001"
 
     def test_approve_resolution_creates_proposed_rule(self):
         """Father approving a resolution creates a proposed_rule."""
         from app.services.doubt_resolution import DoubtResolutionService
 
         service = MagicMock()
+        # Mock fetching the resolution
+        service.table("doubt_resolutions").select.return_value \
+            .eq.return_value.single.return_value.execute.return_value.data = {
+                "id": "res-001",
+                "classification_id": "clf-001",
+                "original_source_text": "Wages & Salaries",
+                "resolved_cma_row": 45,
+                "resolved_cma_field": "Wages",
+                "status": "pending",
+            }
+
         svc = DoubtResolutionService(service)
 
         result = svc.approve_resolution(
@@ -65,7 +93,24 @@ class TestDoubtResolutionService:
         from app.services.doubt_resolution import DoubtResolutionService
 
         service = MagicMock()
+        # Mock report lookup
+        service.table("cma_reports").select.return_value \
+            .eq.return_value.single.return_value.execute.return_value.data = {
+                "document_ids": ["doc-001"],
+            }
+        # Mock line items lookup
+        service.table("extracted_line_items").select.return_value \
+            .in_.return_value.execute.return_value.data = [
+                {"id": "li-001"},
+            ]
+        # Mock classifications lookup
+        service.table("classifications").select.return_value \
+            .in_.return_value.eq.return_value.execute.return_value.data = [
+                {"id": "clf-001", "line_item_id": "li-001", "cma_row": 45, "is_doubt": True},
+            ]
+
         svc = DoubtResolutionService(service)
 
         result = svc.list_pending_doubts(report_id="rpt-001")
         assert isinstance(result, list)
+        assert len(result) == 1
