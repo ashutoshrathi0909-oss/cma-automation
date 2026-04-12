@@ -161,7 +161,7 @@ def _make_company_result() -> dict:
         "doubt": 0,
         "misrouted": 0,
         "per_agent": {k: {"correct": 0, "wrong": 0, "doubt": 0} for k in AGENT_RANGES},
-        "confusion": Counter(),   # (expected_row, predicted_row) → count
+        "confusion": Counter(),   # (expected_row, predicted_row) -> count
     }
 
 
@@ -173,6 +173,7 @@ def eval_company(
     company: str,
     industry: str,
     agent_filter: str | None = None,
+    prompt_dir: str | None = None,
 ) -> dict:
     """Run router + specialists on all GT entries for one company.
 
@@ -180,7 +181,7 @@ def eval_company(
     ----------
     company:      Company key (matches directory name under GT_DIR)
     industry:     "manufacturing" | "trading" | "services"
-    agent_filter: If set, only classify items in this bucket (others → skipped)
+    agent_filter: If set, only classify items in this bucket (others -> skipped)
 
     Returns
     -------
@@ -231,12 +232,21 @@ def eval_company(
                 )
 
     # ── 3. Instantiate specialists ────────────────────────────────────────────
-    specialists: dict[str, Any] = {
-        "pl_income": PLIncomeAgent(),
-        "pl_expense": PLExpenseAgent(),
-        "bs_liability": BSLiabilityAgent(),
-        "bs_asset": BSAssetAgent(),
-    }
+    if prompt_dir:
+        pd = Path(prompt_dir)
+        specialists: dict[str, Any] = {
+            "pl_income": PLIncomeAgent(prompt_path=str(pd / "pl_income_prompt.md")),
+            "pl_expense": PLExpenseAgent(prompt_path=str(pd / "pl_expense_prompt.md")),
+            "bs_liability": BSLiabilityAgent(prompt_path=str(pd / "bs_liability_prompt.md")),
+            "bs_asset": BSAssetAgent(prompt_path=str(pd / "bs_asset_prompt.md")),
+        }
+    else:
+        specialists: dict[str, Any] = {
+            "pl_income": PLIncomeAgent(),
+            "pl_expense": PLExpenseAgent(),
+            "bs_liability": BSLiabilityAgent(),
+            "bs_asset": BSAssetAgent(),
+        }
 
     # ── 4. Classify each bucket ───────────────────────────────────────────────
     for bucket_name, bucket_items in buckets.items():
@@ -249,7 +259,7 @@ def eval_company(
         agent = specialists[bucket_name]
         classifications, _tokens = agent.classify_batch(bucket_items, industry)
 
-        # Build lookup: item_id → classification dict
+        # Build lookup: item_id -> classification dict
         clf_by_id: dict[str, dict] = {c["id"]: c for c in classifications}
 
         for item in bucket_items:
@@ -333,9 +343,9 @@ def print_company_report(company: str, result: dict) -> None:
         )
 
     if result["confusion"]:
-        print("\nTop confusion pairs (expected_row → predicted_row):")
+        print("\nTop confusion pairs (expected_row -> predicted_row):")
         for (exp, pred), cnt in result["confusion"].most_common(10):
-            print(f"  row {exp:>3} → row {pred:>3} : {cnt} time(s)")
+            print(f"  row {exp:>3} -> row {pred:>3} : {cnt} time(s)")
 
 
 def print_aggregate_report(all_results: dict[str, dict]) -> None:
@@ -375,9 +385,9 @@ def print_aggregate_report(all_results: dict[str, dict]) -> None:
         )
 
     if agg["confusion"]:
-        print("\nTop 15 confusion pairs (expected_row → predicted_row):")
+        print("\nTop 15 confusion pairs (expected_row -> predicted_row):")
         for (exp, pred), cnt in agg["confusion"].most_common(15):
-            print(f"  row {exp:>3} → row {pred:>3} : {cnt} time(s)")
+            print(f"  row {exp:>3} -> row {pred:>3} : {cnt} time(s)")
 
 
 # ---------------------------------------------------------------------------
@@ -446,10 +456,66 @@ Notes
         help="Enable DEBUG logging for per-item detail.",
     )
 
+    parser.add_argument(
+        "--prompt-dir",
+        metavar="DIR",
+        help=(
+            "Directory containing specialist prompt .md files.  When set, "
+            "agents load prompts from DIR/{agent}_prompt.md instead of the "
+            "default production path.  Useful for A/B-testing prompt versions."
+        ),
+    )
+
+    parser.add_argument("--json", action="store_true", help="Output results as JSON.")
+    parser.add_argument("--output", "-o", metavar="FILE", help="Write results to FILE.")
+
     return parser
 
 
+def build_json_report(all_results: dict[str, dict], prompt_dir: str | None) -> dict:
+    """Build a JSON-serialisable report from eval results."""
+    from datetime import datetime
+    companies = {}
+    for company, result in all_results.items():
+        c, w, d = result["correct"], result["wrong"], result["doubt"]
+        companies[company] = {
+            "total": result["total"], "correct": c, "wrong": w, "doubt": d,
+            "misrouted": result["misrouted"],
+            "accuracy": round(c / (c + w) * 100, 1) if (c + w) > 0 else None,
+            "doubt_rate": round(d / result["total"] * 100, 1) if result["total"] > 0 else None,
+            "per_agent": result["per_agent"],
+        }
+    # Build aggregate
+    agg = _make_company_result()
+    for result in all_results.values():
+        agg["total"] += result["total"]
+        agg["correct"] += result["correct"]
+        agg["wrong"] += result["wrong"]
+        agg["doubt"] += result["doubt"]
+        agg["misrouted"] += result["misrouted"]
+        for agent_name, counts in result["per_agent"].items():
+            for k in ("correct", "wrong", "doubt"):
+                agg["per_agent"][agent_name][k] += counts[k]
+    ac, aw, ad = agg["correct"], agg["wrong"], agg["doubt"]
+    return {
+        "timestamp": datetime.now().isoformat(),
+        "prompt_dir": prompt_dir,
+        "companies": companies,
+        "aggregate": {
+            "total": agg["total"], "correct": ac, "wrong": aw, "doubt": ad,
+            "misrouted": agg["misrouted"],
+            "accuracy": round(ac / (ac + aw) * 100, 1) if (ac + aw) > 0 else None,
+            "doubt_rate": round(ad / agg["total"] * 100, 1) if agg["total"] > 0 else None,
+            "per_agent": agg["per_agent"],
+        },
+    }
+
+
 def main() -> None:
+    import sys
+    if sys.platform == "win32":
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
     parser = build_parser()
     args = parser.parse_args()
 
@@ -458,6 +524,10 @@ def main() -> None:
         format="%(levelname)s [%(name)s] %(message)s",
         level=log_level,
     )
+
+    prompt_dir = getattr(args, "prompt_dir", None)
+    if prompt_dir:
+        print(f"Using custom prompts from: {prompt_dir}", flush=True)
 
     if args.all:
         all_results: dict[str, dict] = {}
@@ -468,16 +538,32 @@ def main() -> None:
                     company=company,
                     industry=meta["industry"],
                     agent_filter=getattr(args, "agent", None),
+                    prompt_dir=prompt_dir,
                 )
-                print_company_report(company, result)
-                all_results[company] = result
+                all_results[company] = result  # Save BEFORE printing
             except FileNotFoundError as exc:
-                print(f"  SKIP — {exc}")
+                print(f"  SKIP -- {exc}")
+                continue
             except Exception as exc:
-                print(f"  ERROR — {exc}")
+                print(f"  ERROR -- {exc}")
                 logger.exception("Unexpected error for %s", company)
+                continue
+            try:
+                print_company_report(company, result)
+            except Exception as exc:
+                print(f"  PRINT ERROR -- {exc}")
 
         print_aggregate_report(all_results)
+
+        if args.json or args.output:
+            report = build_json_report(all_results, prompt_dir)
+            report_json = json.dumps(report, indent=2, default=str)
+            if args.output:
+                with open(args.output, "w", encoding="utf-8") as f:
+                    f.write(report_json)
+                print(f"\nJSON report written to {args.output}")
+            if args.json:
+                print(report_json)
 
     else:
         company = args.company
@@ -489,8 +575,19 @@ def main() -> None:
             company=company,
             industry=meta["industry"],
             agent_filter=agent_filter,
+            prompt_dir=prompt_dir,
         )
         print_company_report(company, result)
+
+        if args.json or args.output:
+            report = build_json_report({company: result}, prompt_dir)
+            report_json = json.dumps(report, indent=2, default=str)
+            if args.output:
+                with open(args.output, "w", encoding="utf-8") as f:
+                    f.write(report_json)
+                print(f"\nJSON report written to {args.output}")
+            if args.json:
+                print(report_json)
 
 
 if __name__ == "__main__":
