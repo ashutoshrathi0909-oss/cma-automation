@@ -319,6 +319,17 @@ class DownloadUrlResponse(BaseModel):
     expires_in: int = Field(default=60, description="Seconds until the signed URL expires.", gt=0)
 
 
+class CellProvenanceResponse(BaseModel):
+    id: str
+    cma_row: int
+    cma_column: str
+    financial_year: int | None = None
+    source_text: str | None = None
+    raw_amount: float | None = None
+    converted_amount: float | None = None
+    document_id: str | None = None
+
+
 # ── Phase 8: Conversion schemas ───────────────────────────────────────────
 
 ChangeType = Literal["changed", "added", "removed"]

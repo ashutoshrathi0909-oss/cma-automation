@@ -26,6 +26,7 @@ from app.dependencies import get_current_user, get_service_client
 from app.services import audit_service
 from app.models.schemas import (
     AuditEntry,
+    CellProvenanceResponse,
     CMAReportCreate,
     CMAReportResponse,
     ClassificationResponse,
@@ -400,6 +401,29 @@ async def get_audit_trail(
         .execute()
     )
     return [AuditEntry(**r) for r in (result.data or [])]
+
+
+# ── Cell Provenance ────────────────────────────────────────────────────────
+
+
+@router.get("/cma-reports/{report_id}/provenance", response_model=list[CellProvenanceResponse])
+def get_cell_provenance(
+    report_id: str,
+    row: int,
+    column: str,
+    user: UserProfile = Depends(get_current_user),
+):
+    """Return provenance records for a specific CMA cell."""
+    service = get_service_client()
+    result = (
+        service.table("cell_provenance")
+        .select("*")
+        .eq("cma_report_id", report_id)
+        .eq("cma_row", row)
+        .eq("cma_column", column)
+        .execute()
+    )
+    return result.data or []
 
 
 # ── Generate Excel ─────────────────────────────────────────────────────────
