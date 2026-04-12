@@ -480,7 +480,7 @@ class ExcelGenerator:
             while True:
                 page = (
                     self.service.table("extracted_line_items")
-                    .select("id,document_id,amount")
+                    .select("id,document_id,amount,source_text")
                     .eq("document_id", doc_id)
                     .range(offset, offset + PAGE_SIZE - 1)
                     .execute()
@@ -526,7 +526,7 @@ class ExcelGenerator:
                         "document_id": doc_id,
                         "line_item_id": clf["line_item_id"],
                         "classification_id": clf["id"],
-                        "source_text": item.get("description") or item.get("source_text"),
+                        "source_text": item.get("source_text"),
                     }
                 )
 

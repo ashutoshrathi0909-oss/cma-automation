@@ -276,11 +276,29 @@ class TestGenerateInsertProvenance:
     @patch("app.services.excel_generator.openpyxl.load_workbook")
     def test_generate_inserts_provenance_records(self, mock_load_wb):
         """After filling the workbook, provenance is batch-inserted to cell_provenance."""
+        # Per-table mocks (service.table() returns same mock regardless of arg
+        # with plain MagicMock, so we route via side_effect)
+        tbl_reports = MagicMock()
+        tbl_clients = MagicMock()
+        tbl_documents = MagicMock()
+        tbl_line_items = MagicMock()
+        tbl_classifications = MagicMock()
+        tbl_provenance = MagicMock()
+
+        table_map = {
+            "cma_reports": tbl_reports,
+            "clients": tbl_clients,
+            "documents": tbl_documents,
+            "extracted_line_items": tbl_line_items,
+            "classifications": tbl_classifications,
+            "cell_provenance": tbl_provenance,
+        }
         service = MagicMock()
+        service.table.side_effect = lambda name: table_map.get(name, MagicMock())
         gen = ExcelGenerator(service=service, template_path="/fake/template.xlsm")
 
         # Mock report fetch
-        service.table("cma_reports").select.return_value \
+        tbl_reports.select.return_value \
             .eq.return_value.single.return_value.execute.return_value.data = {
                 "id": "rpt-001",
                 "client_id": "client-001",
@@ -289,22 +307,22 @@ class TestGenerateInsertProvenance:
                 "status": "generating",
             }
         # Mock client name
-        service.table("clients").select.return_value \
+        tbl_clients.select.return_value \
             .eq.return_value.single.return_value.execute.return_value.data = {
                 "company_name": "Test Co"
             }
         # Mock documents
-        service.table("documents").select.return_value \
+        tbl_documents.select.return_value \
             .in_.return_value.execute.return_value.data = [
                 {"id": "doc-001", "financial_year": 2024, "nature": "audited", "source_unit": "rupees"}
             ]
         # Mock line items
-        service.table("extracted_line_items").select.return_value \
+        tbl_line_items.select.return_value \
             .eq.return_value.range.return_value.execute.return_value.data = [
                 {"id": "li-001", "document_id": "doc-001", "amount": 500000}
             ]
         # Mock classifications
-        service.table("classifications").select.return_value \
+        tbl_classifications.select.return_value \
             .in_.return_value.eq.return_value.execute.return_value.data = [
                 {
                     "id": "clf-001",
@@ -328,11 +346,7 @@ class TestGenerateInsertProvenance:
         gen.generate(report_id="rpt-001", user_id="user-001")
 
         # Verify cell_provenance insert was called
-        insert_calls = [
-            c for c in service.table.call_args_list
-            if c.args == ("cell_provenance",)
-        ]
-        assert len(insert_calls) > 0, (
+        assert tbl_provenance.insert.called, (
             "generate() must insert provenance records into cell_provenance table"
         )
 
