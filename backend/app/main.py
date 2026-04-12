@@ -15,6 +15,7 @@ from app.routers import (
     conversion,
     documents,
     extraction,
+    learning,
     roll_forward,
     rollover,
     tasks,
@@ -64,6 +65,7 @@ app.include_router(conversion.router)
 app.include_router(rollover.router)
 app.include_router(roll_forward.router)
 app.include_router(users.router)
+app.include_router(learning.router)
 
 
 # ── Exception handlers ────────────────────────────────────────────────────────
