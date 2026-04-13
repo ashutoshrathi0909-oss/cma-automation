@@ -41,7 +41,7 @@ class RouterAgent(BaseAgent):
 
     def __init__(self, prompt_path: str | None = None) -> None:
         resolved = str(prompt_path) if prompt_path is not None else str(_DEFAULT_PROMPT_PATH)
-        super().__init__(name="router", prompt_path=resolved)
+        super().__init__(name="router", prompt_path=resolved, reasoning_effort="medium")
 
         # Populated by the most recent call to route(); empty list means all
         # items were successfully routed.

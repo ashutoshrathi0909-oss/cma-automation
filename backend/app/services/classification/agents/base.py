@@ -34,8 +34,9 @@ class BaseAgent:
         this agent's system prompt.  Loaded once at init time.
     """
 
-    def __init__(self, name: str, prompt_path: str) -> None:
+    def __init__(self, name: str, prompt_path: str, reasoning_effort: str = "none") -> None:
         self.name = name
+        self._reasoning_effort = reasoning_effort
 
         # Load system prompt — raise immediately if the file is missing so
         # misconfigurations are caught at startup, not first request.
@@ -75,6 +76,7 @@ class BaseAgent:
                     {"role": "system", "content": self._system_prompt},
                     {"role": "user", "content": user_content},
                 ],
+                extra_body={"reasoning": {"effort": self._reasoning_effort}},
             )
         except Exception as exc:
             logger.error(
@@ -107,7 +109,7 @@ class BaseAgent:
     # ------------------------------------------------------------------
 
     def classify_batch(
-        self, items: list[dict], industry_type: str
+        self, items: list[dict], industry_type: str, document_type: str = "annual_report"
     ) -> tuple[list[dict], int]:
         """Classify a batch of line items.
 
@@ -120,7 +122,7 @@ class BaseAgent:
         items:
             Each dict must contain at least ``id``.  Optional keys:
             ``source_text``, ``description``, ``amount``, ``section``,
-            ``page_type``, ``has_note_breakdowns``.
+            ``page_type``, ``source_sheet``, ``has_note_breakdowns``.
         industry_type:
             e.g. ``"manufacturing"``, ``"trading"``, ``"services"``.
 
@@ -141,12 +143,13 @@ class BaseAgent:
                     "amount": item.get("amount"),
                     "section": item.get("section"),
                     "page_type": item.get("page_type"),
+                    "source_sheet": item.get("source_sheet", ""),
                     "has_note_breakdowns": item.get("has_note_breakdowns", False),
                 }
             )
 
         user_content = json.dumps(
-            {"industry_type": industry_type, "items": payload_items},
+            {"industry_type": industry_type, "document_type": document_type, "items": payload_items},
             ensure_ascii=False,
         )
 

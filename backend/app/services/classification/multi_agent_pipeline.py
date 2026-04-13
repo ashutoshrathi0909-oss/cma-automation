@@ -169,6 +169,7 @@ class MultiAgentPipeline:
                 industry_type=industry_type,
                 client_id=client_id,
                 cma_column=cma_column,
+                document_type=document_type,
             )
 
         # ── 7. Combine all records ────────────────────────────────────────────
@@ -214,8 +215,14 @@ class MultiAgentPipeline:
         }
         """
         # Build normalized lookup: lower-stripped text → mapping row
+        # Skip poisoned entries (cma_input_row=0 or UNCLASSIFIED) — these are
+        # DOUBT items that were incorrectly saved to learned_mappings
         lookup: dict[str, dict] = {}
         for mapping in learned_mappings:
+            row = mapping.get("cma_input_row", 0)
+            field = mapping.get("cma_field_name", "")
+            if not row or row <= 0 or field == "UNCLASSIFIED":
+                continue
             raw = mapping.get("source_text") or ""
             key = normalize_line_text(raw).strip().lower()
             if key:
@@ -329,6 +336,7 @@ class MultiAgentPipeline:
         industry_type: str,
         client_id: str,
         cma_column: str,
+        document_type: str = "annual_report",
     ) -> list[dict]:
         """Run the four specialist agents in parallel and collect records.
 
@@ -374,7 +382,7 @@ class MultiAgentPipeline:
                         )
                     continue
 
-                future = executor.submit(agent.classify_batch, items, industry_type)
+                future = executor.submit(agent.classify_batch, items, industry_type, document_type)
                 future_to_bucket[future] = (bucket_name, items)
 
             for future in as_completed(future_to_bucket):

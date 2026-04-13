@@ -10,4 +10,4 @@ class BSLiabilityAgent(BaseAgent):
     """Classifies B/S liabilities: capital, reserves, borrowings."""
 
     def __init__(self, prompt_path: str | None = None) -> None:
-        super().__init__(name="bs_liability", prompt_path=prompt_path or str(_DEFAULT_PROMPT))
+        super().__init__(name="bs_liability", prompt_path=prompt_path or str(_DEFAULT_PROMPT), reasoning_effort="medium")
