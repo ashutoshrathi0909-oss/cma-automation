@@ -681,7 +681,7 @@
       "original_cma_row": "Form_II_Repairs_Mfg"
     },
     {
-      "cma_row": 49,
+      "cma_row": 45,
       "cma_code": "II_C9",
       "cma_field_name": "Others",
       "raw_text": "Labour Charges",
@@ -695,7 +695,7 @@
       "financial_year": "2022-23",
       "industry_specific": true,
       "industry_note": "Factory Expenses, Labour Charges, and Manpower Charges relate to warehouse/godown operations (the factory equivalent in trading), classified as Manufacturing Others.",
-      "reasoning": "Composite component of CMA Others (Mfg): Labour Charges from Note 17, classified as manufacturing overhead for trading operations",
+      "reasoning": "Composite component of CMA Others (Mfg): Labour Charges from Note 17, classified as manufacturing overhead for trading operations | [CA 2026-04-15] Updated from R49->R45: Labour Charges (manufacturing) -> R45 per CA_INTERVIEW 129",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": "Form_II_Others_Mfg"
@@ -2061,7 +2061,7 @@
       "original_cma_row": "Form_III_ST_Applicant_Bank"
     },
     {
-      "cma_row": 132,
+      "cma_row": 131,
       "cma_code": "III_L3b",
       "cma_field_name": "From Indian Overseas Bank",
       "raw_text": "Short Term Borrowings - HDFC Bank",
@@ -2075,13 +2075,13 @@
       "financial_year": "2023-24",
       "industry_specific": true,
       "industry_note": "HDFC Bank facility appears in FY23-24, suggesting the company diversified its banking relationships. This is a common pattern when credit limits grow.",
-      "reasoning": "Split component: HDFC Bank CC/OD from Note 4. New banking relationship from FY23-24.",
+      "reasoning": "Split component: HDFC Bank CC/OD from Note 4. New banking relationship from FY23-24. | [CA 2026-04-15] Updated from R132->R131: Short Term Borrowings HDFC CC -> R131 per CA_VERIFIED_2026 V2",
       "validation_issue": null,
       "normalization_confidence": "likely",
       "original_cma_row": "Form_III_ST_Other_Bank"
     },
     {
-      "cma_row": 132,
+      "cma_row": 131,
       "cma_code": "III_L3b",
       "cma_field_name": "From Indian Overseas Bank",
       "raw_text": "Short Term Borrowings - HDFC Bank",
@@ -2095,7 +2095,7 @@
       "financial_year": "2024-25",
       "industry_specific": true,
       "industry_note": "HDFC Bank facility appears in FY23-24, suggesting the company diversified its banking relationships. This is a common pattern when credit limits grow.",
-      "reasoning": "Split component: HDFC Bank CC/OD from Note 4. New banking relationship from FY23-24.",
+      "reasoning": "Split component: HDFC Bank CC/OD from Note 4. New banking relationship from FY23-24. | [CA 2026-04-15] Updated from R132->R131: Short Term Borrowings HDFC CC -> R131 per CA_VERIFIED_2026 V2",
       "validation_issue": null,
       "normalization_confidence": "likely",
       "original_cma_row": "Form_III_ST_Other_Bank"
