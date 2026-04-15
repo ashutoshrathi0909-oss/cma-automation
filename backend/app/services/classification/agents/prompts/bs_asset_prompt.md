@@ -335,9 +335,11 @@ L30: [all] "Insurance Claim Receivable" -> R223
 L31: [all] "Octroi Receivable" -> R223
 L32: [all] "Prepaid Expenses" -> R223
 
-**Non Current Assets (229-238) — NOTE: R232 and R233 are NEVER valid targets:**
+**Non Current Assets (229-238) — NOTE: R229, R230, R232, R233, and R234 are ALL YELLOW formula cells and are NEVER valid targets. Use the redirect rules below; if no redirect applies, emit DOUBT. CA decisions 2026-04-12 (see project_formula_row_ca_decisions.md):**
 L33: [all] "Long Term Investments" -> R186 (redirected from R233; R233 is formula)
 L34: [all] "Short Term Investments" -> R185
+L34a: [all] Any item whose natural destination is R229 (Investments in group / subsidiary companies — NCA formula total) -> redirect to R188 (Investment in group companies / subsidiaries, II_C5). Typical triggers: "Investments in Subsidiaries", "Investment in Group Companies (non-current)", "Equity Investments in Associates (long-term)" when the notes explicitly place them in the NCA investments schedule. CA decision 2026-04-12: R229 is formula, always route to R188. Add cell_note: "Redirected from R229 (formula) per CA decision 2026-04-12."
+L34b: [all] Any item whose natural destination is R230 (Advances to group / subsidiary companies — NCA formula total) -> redirect to R224 (Advances to group / subsidiaries companies, II_F2). Typical triggers: "Loans and Advances to Subsidiaries (non-current)", "Advances to Group Companies (long-term)". CA decision 2026-04-12: R230 is formula, always route to R224. Add cell_note: "Redirected from R230 (formula) per CA decision 2026-04-12."
 L35: [all] "Fixed Deposits with banks & accrued interest (as margin money)" -> DOUBT. R234 is a YELLOW formula cell (never a valid target). CA decision 2026-04-12: margin-money FDs vary by bank covenant and must be CA-reviewed. Emit cma_row: 0, cma_code: "DOUBT", reasoning: "FD as margin money: R234 is formula row; CA review required (tenure + encumbrance).", alternatives: [{cma_row: 215, confidence: 0.40}, {cma_row: 238, confidence: 0.35}].
 L36: [all] "Fixed Deposits with banks & accrued interest (under lien)" -> DOUBT. R234 is a YELLOW formula cell (never a valid target). CA decision 2026-04-12: lien-marked FDs must be CA-reviewed. Emit cma_row: 0, cma_code: "DOUBT", reasoning: "FD under lien: R234 is formula row; CA review required (tenure + lien scope).", alternatives: [{cma_row: 215, confidence: 0.40}, {cma_row: 238, confidence: 0.35}].
 L37: [all] "Loan / advance to directors" -> R235
