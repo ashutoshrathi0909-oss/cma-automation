@@ -1,0 +1,1148 @@
+{
+  "generated_from": [
+    "DOCS/cma_cell_map.json",
+    "backend/app/mappings/cma_field_rows.py"
+  ],
+  "type_counts": {
+    "BLUE": 118,
+    "YELLOW": 56,
+    "WHITE_HEADER": 34,
+    "NOTE_ROW": 1,
+    "BLANK": 34,
+    "META": 5
+  },
+  "rows": {
+    "11": {
+      "label": "Financial Year ending",
+      "type": "META"
+    },
+    "12": {
+      "label": "Currency",
+      "type": "META"
+    },
+    "13": {
+      "label": "Units",
+      "type": "META"
+    },
+    "14": {
+      "label": "Auditors",
+      "type": "META"
+    },
+    "15": {
+      "label": "Auditors Opinion",
+      "type": "META"
+    },
+    "16": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "17": {
+      "label": "Profit and Loss",
+      "type": "WHITE_HEADER"
+    },
+    "18": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "19": {
+      "label": "Income",
+      "type": "WHITE_HEADER"
+    },
+    "20": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "21": {
+      "label": "Sales",
+      "type": "WHITE_HEADER"
+    },
+    "22": {
+      "label": "Domestic",
+      "type": "BLUE"
+    },
+    "23": {
+      "label": "Exports",
+      "type": "BLUE"
+    },
+    "24": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "25": {
+      "label": "Less Excise Duty and Cess",
+      "type": "BLUE"
+    },
+    "26": {
+      "label": "Net Sales",
+      "type": "YELLOW"
+    },
+    "27": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "28": {
+      "label": "Non Operating Income",
+      "type": "WHITE_HEADER"
+    },
+    "29": {
+      "label": "Dividends received from Mutual Funds",
+      "type": "BLUE"
+    },
+    "30": {
+      "label": "Interest Received",
+      "type": "BLUE"
+    },
+    "31": {
+      "label": "Profit on sale of fixed assets / Investments",
+      "type": "BLUE"
+    },
+    "32": {
+      "label": "Gain on Exchange Fluctuations",
+      "type": "BLUE"
+    },
+    "33": {
+      "label": "Extraordinary income",
+      "type": "BLUE"
+    },
+    "34": {
+      "label": "Others",
+      "type": "BLUE"
+    },
+    "35": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "36": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "37": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "38": {
+      "label": "Expenditure",
+      "type": "WHITE_HEADER"
+    },
+    "39": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "40": {
+      "label": "Manufacturing Expenses",
+      "type": "WHITE_HEADER"
+    },
+    "41": {
+      "label": "Raw Materials Consumed ( Imported)",
+      "type": "BLUE"
+    },
+    "42": {
+      "label": "Raw Materials Consumed ( Indigenous)",
+      "type": "BLUE"
+    },
+    "43": {
+      "label": "Stores and spares consumed ( Imported)",
+      "type": "BLUE"
+    },
+    "44": {
+      "label": "Stores and spares consumed ( Indigenous)",
+      "type": "BLUE"
+    },
+    "45": {
+      "label": "Wages",
+      "type": "BLUE"
+    },
+    "46": {
+      "label": "Processing / Job Work Charges",
+      "type": "BLUE"
+    },
+    "47": {
+      "label": "Freight and Transportation Charges",
+      "type": "BLUE"
+    },
+    "48": {
+      "label": "Power, Coal, Fuel and Water",
+      "type": "BLUE"
+    },
+    "49": {
+      "label": "Others",
+      "type": "BLUE"
+    },
+    "50": {
+      "label": "Repairs & Maintenance",
+      "type": "BLUE"
+    },
+    "51": {
+      "label": "Security Service Charges",
+      "type": "BLUE"
+    },
+    "52": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "53": {
+      "label": "Stock in process Opening Balance",
+      "type": "BLUE"
+    },
+    "54": {
+      "label": "Stock in process Closing Balance",
+      "type": "BLUE"
+    },
+    "55": {
+      "label": "Sub total  -- WIP change in stock",
+      "type": "YELLOW"
+    },
+    "56": {
+      "label": "Depreciation",
+      "type": "BLUE"
+    },
+    "57": {
+      "label": "Cost Of Production",
+      "type": "YELLOW"
+    },
+    "58": {
+      "label": "Finished Goods Opening Balance",
+      "type": "BLUE"
+    },
+    "59": {
+      "label": "Finished Goods Closing Balance",
+      "type": "BLUE"
+    },
+    "60": {
+      "label": "Sub total  -- Finished goods change in stock",
+      "type": "YELLOW"
+    },
+    "61": {
+      "label": "Cost Of Sales",
+      "type": "YELLOW"
+    },
+    "62": {
+      "label": "Manufacturing Expenses ( for CMA purpose)",
+      "type": "WHITE_HEADER"
+    },
+    "63": {
+      "label": "Depreciation",
+      "type": "YELLOW"
+    },
+    "64": {
+      "label": "Other Manufacturing Exp",
+      "type": "YELLOW"
+    },
+    "65": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "66": {
+      "label": "Administrative and Selling Expenses",
+      "type": "WHITE_HEADER"
+    },
+    "67": {
+      "label": "Salary and staff expenses",
+      "type": "BLUE"
+    },
+    "68": {
+      "label": "Rent , Rates and Taxes",
+      "type": "BLUE"
+    },
+    "69": {
+      "label": "Bad Debts",
+      "type": "BLUE"
+    },
+    "70": {
+      "label": "Advertisements and Sales Promotions",
+      "type": "BLUE"
+    },
+    "71": {
+      "label": "Others",
+      "type": "BLUE"
+    },
+    "72": {
+      "label": "Repairs & Maintenance",
+      "type": "BLUE"
+    },
+    "73": {
+      "label": "Audit Fees & Directors Remuneration",
+      "type": "BLUE"
+    },
+    "74": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "75": {
+      "label": "Miscellaneous Expenses written off",
+      "type": "BLUE"
+    },
+    "76": {
+      "label": "Deferred Revenue Expenditures",
+      "type": "BLUE"
+    },
+    "77": {
+      "label": "Other Amortisations",
+      "type": "BLUE"
+    },
+    "78": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "79": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "80": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "81": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "82": {
+      "label": "Finance Charges",
+      "type": "WHITE_HEADER"
+    },
+    "83": {
+      "label": "Interest on Fixed Loans / Term loans",
+      "type": "BLUE"
+    },
+    "84": {
+      "label": "Interest on Working capital loans",
+      "type": "BLUE"
+    },
+    "85": {
+      "label": "Bank Charges",
+      "type": "BLUE"
+    },
+    "86": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "87": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "88": {
+      "label": "Non Operating Expenses",
+      "type": "WHITE_HEADER"
+    },
+    "89": {
+      "label": "Loss on sale of fixed assets / Investments",
+      "type": "BLUE"
+    },
+    "90": {
+      "label": "Sundry Balances Written off",
+      "type": "BLUE"
+    },
+    "91": {
+      "label": "Loss on Exchange Fluctuations",
+      "type": "BLUE"
+    },
+    "92": {
+      "label": "Extraordinary losses",
+      "type": "BLUE"
+    },
+    "93": {
+      "label": "Others",
+      "type": "BLUE"
+    },
+    "94": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "95": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "96": {
+      "label": "Profit Before Tax",
+      "type": "YELLOW"
+    },
+    "97": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "98": {
+      "label": "Tax",
+      "type": "WHITE_HEADER"
+    },
+    "99": {
+      "label": "Income Tax  provision",
+      "type": "BLUE"
+    },
+    "100": {
+      "label": "Deferred Tax Liability",
+      "type": "BLUE"
+    },
+    "101": {
+      "label": "Deferred Tax Asset",
+      "type": "BLUE"
+    },
+    "102": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "103": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "104": {
+      "label": "Net Profit for the year ( PAT)",
+      "type": "YELLOW"
+    },
+    "105": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "106": {
+      "label": "Brought forward from previous year",
+      "type": "BLUE"
+    },
+    "107": {
+      "label": "Dividend ( Final + Interim , Including Dividend Tax )",
+      "type": "BLUE"
+    },
+    "108": {
+      "label": "Other Appropriation of profit",
+      "type": "BLUE"
+    },
+    "109": {
+      "label": "Balance carried to Balance Sheet",
+      "type": "YELLOW"
+    },
+    "110": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "111": {
+      "label": "Balance Sheet",
+      "type": "WHITE_HEADER"
+    },
+    "112": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "113": {
+      "label": "=A8",
+      "type": "YELLOW"
+    },
+    "114": {
+      "label": "=A10",
+      "type": "YELLOW"
+    },
+    "115": {
+      "label": "Share Capital",
+      "type": "WHITE_HEADER"
+    },
+    "116": {
+      "label": "Issued, Subscribed and Paid up",
+      "type": "BLUE"
+    },
+    "117": {
+      "label": "Share Application Money",
+      "type": "BLUE"
+    },
+    "118": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "119": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "120": {
+      "label": "Reserves and Surplus",
+      "type": "WHITE_HEADER"
+    },
+    "121": {
+      "label": "General Reserve",
+      "type": "BLUE"
+    },
+    "122": {
+      "label": "Balance transferred from profit and loss a/c",
+      "type": "YELLOW"
+    },
+    "123": {
+      "label": "Share Premium A/c",
+      "type": "BLUE"
+    },
+    "124": {
+      "label": "Revaluation Reserve",
+      "type": "BLUE"
+    },
+    "125": {
+      "label": "Other Reserve",
+      "type": "BLUE"
+    },
+    "126": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "127": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "128": {
+      "label": "Secured and Unsecured Loans",
+      "type": "WHITE_HEADER"
+    },
+    "129": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "130": {
+      "label": "Working Capital Bank Finance",
+      "type": "WHITE_HEADER"
+    },
+    "131": {
+      "label": "From Indian Bank",
+      "type": "BLUE"
+    },
+    "132": {
+      "label": "From Indian Overseas Bank",
+      "type": "BLUE"
+    },
+    "133": {
+      "label": "(o/s bill discounting balance to be included)",
+      "type": "NOTE_ROW"
+    },
+    "134": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "135": {
+      "label": "Term Loans",
+      "type": "WHITE_HEADER"
+    },
+    "136": {
+      "label": "Term Loan Repayable in next one year",
+      "type": "BLUE"
+    },
+    "137": {
+      "label": "Balance Repayable after one year",
+      "type": "BLUE"
+    },
+    "138": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "139": {
+      "label": "Debentures",
+      "type": "WHITE_HEADER"
+    },
+    "140": {
+      "label": "Repayable in next one year",
+      "type": "BLUE"
+    },
+    "141": {
+      "label": "Balance Repayable after one year",
+      "type": "BLUE"
+    },
+    "142": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "143": {
+      "label": "Preference Shares",
+      "type": "WHITE_HEADER"
+    },
+    "144": {
+      "label": "Repayable in next one year",
+      "type": "BLUE"
+    },
+    "145": {
+      "label": "Balance Repayable after one year",
+      "type": "BLUE"
+    },
+    "146": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "147": {
+      "label": "Other Debts",
+      "type": "WHITE_HEADER"
+    },
+    "148": {
+      "label": "Debts Repayable in Next One year",
+      "type": "BLUE"
+    },
+    "149": {
+      "label": "Balance Other Debts",
+      "type": "BLUE"
+    },
+    "150": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "151": {
+      "label": "Unsecured Loans",
+      "type": "WHITE_HEADER"
+    },
+    "152": {
+      "label": "As Quasi Equity",
+      "type": "BLUE"
+    },
+    "153": {
+      "label": "As Long Term Debt",
+      "type": "BLUE"
+    },
+    "154": {
+      "label": "As Short Term Debt",
+      "type": "BLUE"
+    },
+    "155": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "156": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "157": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "158": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "159": {
+      "label": "Deferred tax liability",
+      "type": "BLUE"
+    },
+    "160": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "161": {
+      "label": "Fixed Assets",
+      "type": "WHITE_HEADER"
+    },
+    "162": {
+      "label": "Gross Block",
+      "type": "BLUE"
+    },
+    "163": {
+      "label": "Less Accumulated Depreciation",
+      "type": "BLUE"
+    },
+    "164": {
+      "label": "Net Block",
+      "type": "YELLOW"
+    },
+    "165": {
+      "label": "Add : Capital Work in Progress",
+      "type": "BLUE"
+    },
+    "166": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "167": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "168": {
+      "label": "Intangibles",
+      "type": "WHITE_HEADER"
+    },
+    "169": {
+      "label": "Patents / goodwill / copyrights etc",
+      "type": "BLUE"
+    },
+    "170": {
+      "label": "Misc Expenditure ( to the extent not w/o)",
+      "type": "BLUE"
+    },
+    "171": {
+      "label": "Deferred Tax Asset",
+      "type": "BLUE"
+    },
+    "172": {
+      "label": "Other Intangible assets",
+      "type": "BLUE"
+    },
+    "173": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "174": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "175": {
+      "label": "Additions to Fixed Assets",
+      "type": "BLUE"
+    },
+    "176": {
+      "label": "Sale of  Fixed assets WDV of asset sold",
+      "type": "BLUE"
+    },
+    "177": {
+      "label": "Profit on sale of Fixed assets / Investments",
+      "type": "YELLOW"
+    },
+    "178": {
+      "label": "Loss on sale of Fixed assets / Investments",
+      "type": "YELLOW"
+    },
+    "179": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "180": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "181": {
+      "label": "Investments",
+      "type": "WHITE_HEADER"
+    },
+    "182": {
+      "label": "Investment in Govt. Securities ( Current )",
+      "type": "BLUE"
+    },
+    "183": {
+      "label": "Investment in Govt. Securities ( Non Current )",
+      "type": "BLUE"
+    },
+    "184": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "185": {
+      "label": "Other current investments",
+      "type": "BLUE"
+    },
+    "186": {
+      "label": "Other non current investments",
+      "type": "BLUE"
+    },
+    "187": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "188": {
+      "label": "Investment in group companies / subsidiaries",
+      "type": "BLUE"
+    },
+    "189": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "190": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "191": {
+      "label": "Inventories",
+      "type": "WHITE_HEADER"
+    },
+    "192": {
+      "label": "Raw Material",
+      "type": "WHITE_HEADER"
+    },
+    "193": {
+      "label": "Imported",
+      "type": "BLUE"
+    },
+    "194": {
+      "label": "Indigenous",
+      "type": "BLUE"
+    },
+    "195": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "196": {
+      "label": "Stores and Spares",
+      "type": "WHITE_HEADER"
+    },
+    "197": {
+      "label": "Imported",
+      "type": "BLUE"
+    },
+    "198": {
+      "label": "Indigenous",
+      "type": "BLUE"
+    },
+    "199": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "200": {
+      "label": "Stocks-in-process",
+      "type": "YELLOW"
+    },
+    "201": {
+      "label": "Finished Goods",
+      "type": "YELLOW"
+    },
+    "202": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "203": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "204": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "205": {
+      "label": "Sundry Debtors",
+      "type": "WHITE_HEADER"
+    },
+    "206": {
+      "label": "Domestic Receivables ( including bills purchased and discounted)",
+      "type": "BLUE"
+    },
+    "207": {
+      "label": "Export Receivables ( including bills purchased and discounted)",
+      "type": "BLUE"
+    },
+    "208": {
+      "label": "Debtors more than 6 months",
+      "type": "BLUE"
+    },
+    "209": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "210": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "211": {
+      "label": "Cash and Bank Balances",
+      "type": "WHITE_HEADER"
+    },
+    "212": {
+      "label": "Cash on Hand",
+      "type": "BLUE"
+    },
+    "213": {
+      "label": "Bank Balances",
+      "type": "BLUE"
+    },
+    "214": {
+      "label": "Fixed Deposit under lien",
+      "type": "BLUE"
+    },
+    "215": {
+      "label": "Other Fixed Deposits",
+      "type": "BLUE"
+    },
+    "216": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "217": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "218": {
+      "label": "Loans and Advances",
+      "type": "WHITE_HEADER"
+    },
+    "219": {
+      "label": "Advances recoverable in cash or in kind",
+      "type": "BLUE"
+    },
+    "220": {
+      "label": "Advances to suppliers of raw materials",
+      "type": "BLUE"
+    },
+    "221": {
+      "label": "Advance Income Tax",
+      "type": "BLUE"
+    },
+    "222": {
+      "label": "Prepaid Expenses",
+      "type": "BLUE"
+    },
+    "223": {
+      "label": "Other Advances / current asset",
+      "type": "BLUE"
+    },
+    "224": {
+      "label": "Advances to group / subsidiaries companies",
+      "type": "BLUE"
+    },
+    "225": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "226": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "227": {
+      "label": "Non Current Assets",
+      "type": "WHITE_HEADER"
+    },
+    "228": {
+      "label": "Exposure in group companies",
+      "type": "WHITE_HEADER"
+    },
+    "229": {
+      "label": "Investments",
+      "type": "YELLOW"
+    },
+    "230": {
+      "label": "Advances",
+      "type": "YELLOW"
+    },
+    "231": {
+      "label": "Sub Total",
+      "type": "YELLOW"
+    },
+    "232": {
+      "label": "Debtors more than six months",
+      "type": "YELLOW"
+    },
+    "233": {
+      "label": "Investments",
+      "type": "YELLOW"
+    },
+    "234": {
+      "label": "Fixed Deposits ( Non Current )",
+      "type": "YELLOW"
+    },
+    "235": {
+      "label": "Dues from directors / partners / promoters",
+      "type": "BLUE"
+    },
+    "236": {
+      "label": "Advances to suppliers of capital goods",
+      "type": "BLUE"
+    },
+    "237": {
+      "label": "Security deposits with government departments",
+      "type": "BLUE"
+    },
+    "238": {
+      "label": "Other non current assets",
+      "type": "BLUE"
+    },
+    "239": {
+      "label": "Total Non Current Assets",
+      "type": "YELLOW"
+    },
+    "240": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "241": {
+      "label": "Current Liabilities",
+      "type": "WHITE_HEADER"
+    },
+    "242": {
+      "label": "Sundry Creditors for goods",
+      "type": "BLUE"
+    },
+    "243": {
+      "label": "Advance received from customers",
+      "type": "BLUE"
+    },
+    "244": {
+      "label": "Provision for Taxation",
+      "type": "BLUE"
+    },
+    "245": {
+      "label": "Dividend payable",
+      "type": "BLUE"
+    },
+    "246": {
+      "label": "Other statutory liabilities (due within 1 year)",
+      "type": "BLUE"
+    },
+    "247": {
+      "label": "Interest Accrued but not due",
+      "type": "BLUE"
+    },
+    "248": {
+      "label": "Interest Accrued and due",
+      "type": "BLUE"
+    },
+    "249": {
+      "label": "Creditors for Expenses",
+      "type": "BLUE"
+    },
+    "250": {
+      "label": "Other current liabilities",
+      "type": "BLUE"
+    },
+    "251": {
+      "label": "Total",
+      "type": "YELLOW"
+    },
+    "252": {
+      "label": "",
+      "type": "BLANK"
+    },
+    "253": {
+      "label": "Contingent Liabilities:",
+      "type": "WHITE_HEADER"
+    },
+    "254": {
+      "label": "Arrears of cumulative dividends",
+      "type": "BLUE"
+    },
+    "255": {
+      "label": "Gratuity liability not provided for",
+      "type": "BLUE"
+    },
+    "256": {
+      "label": "Disputed excise / customs / tax liabilities",
+      "type": "BLUE"
+    },
+    "257": {
+      "label": "Bank guarantee / Letter of credit outstanding",
+      "type": "BLUE"
+    },
+    "258": {
+      "label": "Other contingent liabilities",
+      "type": "BLUE"
+    }
+  },
+  "agents": {
+    "pl_income": {
+      "section_tree": "R17  [HEADER ]  Profit and Loss\nR19  [HEADER ]  Income\nR21  [HEADER ]  Sales\nR22  [TARGET ]  Domestic\nR23  [TARGET ]  Exports\nR24  [FORMULA]  Sub Total\nR25  [TARGET ]  Less Excise Duty and Cess\nR26  [FORMULA]  Net Sales\nR28  [HEADER ]  Non Operating Income\nR29  [TARGET ]  Dividends received from Mutual Funds\nR30  [TARGET ]  Interest Received\nR31  [TARGET ]  Profit on sale of fixed assets / Investments\nR32  [TARGET ]  Gain on Exchange Fluctuations\nR33  [TARGET ]  Extraordinary income\nR34  [TARGET ]  Others\nR35  [FORMULA]  Total",
+      "valid_rows": [
+        22,
+        23,
+        25,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "pl_expense": {
+      "section_tree": "R38  [HEADER ]  Expenditure\nR40  [HEADER ]  Manufacturing Expenses\nR41  [TARGET ]  Raw Materials Consumed ( Imported)\nR42  [TARGET ]  Raw Materials Consumed ( Indigenous)\nR43  [TARGET ]  Stores and spares consumed ( Imported)\nR44  [TARGET ]  Stores and spares consumed ( Indigenous)\nR45  [TARGET ]  Wages\nR46  [TARGET ]  Processing / Job Work Charges\nR47  [TARGET ]  Freight and Transportation Charges\nR48  [TARGET ]  Power, Coal, Fuel and Water\nR49  [TARGET ]  Others\nR50  [TARGET ]  Repairs & Maintenance\nR51  [TARGET ]  Security Service Charges\nR52  [FORMULA]  Sub Total\nR53  [TARGET ]  Stock in process Opening Balance\nR54  [TARGET ]  Stock in process Closing Balance\nR55  [FORMULA]  Sub total  -- WIP change in stock\nR56  [TARGET ]  Depreciation\nR57  [FORMULA]  Cost Of Production\nR58  [TARGET ]  Finished Goods Opening Balance\nR59  [TARGET ]  Finished Goods Closing Balance\nR60  [FORMULA]  Sub total  -- Finished goods change in stock\nR61  [FORMULA]  Cost Of Sales\nR62  [HEADER ]  Manufacturing Expenses ( for CMA purpose)\nR63  [FORMULA]  Depreciation\nR64  [FORMULA]  Other Manufacturing Exp\nR66  [HEADER ]  Administrative and Selling Expenses\nR67  [TARGET ]  Salary and staff expenses\nR68  [TARGET ]  Rent , Rates and Taxes\nR69  [TARGET ]  Bad Debts\nR70  [TARGET ]  Advertisements and Sales Promotions\nR71  [TARGET ]  Others\nR72  [TARGET ]  Repairs & Maintenance\nR73  [TARGET ]  Audit Fees & Directors Remuneration\nR74  [FORMULA]  Sub Total\nR75  [TARGET ]  Miscellaneous Expenses written off\nR76  [TARGET ]  Deferred Revenue Expenditures\nR77  [TARGET ]  Other Amortisations\nR78  [FORMULA]  Sub Total\nR80  [FORMULA]  Total\nR82  [HEADER ]  Finance Charges\nR83  [TARGET ]  Interest on Fixed Loans / Term loans\nR84  [TARGET ]  Interest on Working capital loans\nR85  [TARGET ]  Bank Charges\nR86  [FORMULA]  Total\nR88  [HEADER ]  Non Operating Expenses\nR89  [TARGET ]  Loss on sale of fixed assets / Investments\nR90  [TARGET ]  Sundry Balances Written off\nR91  [TARGET ]  Loss on Exchange Fluctuations\nR92  [TARGET ]  Extraordinary losses\nR93  [TARGET ]  Others\nR94  [FORMULA]  Total\nR96  [FORMULA]  Profit Before Tax\nR98  [HEADER ]  Tax\nR99  [TARGET ]  Income Tax  provision\nR100 [TARGET ]  Deferred Tax Liability\nR101 [TARGET ]  Deferred Tax Asset\nR102 [FORMULA]  Total\nR104 [FORMULA]  Net Profit for the year ( PAT)\nR106 [TARGET ]  Brought forward from previous year\nR107 [TARGET ]  Dividend ( Final + Interim , Including Dividend Tax )\nR108 [TARGET ]  Other Appropriation of profit\nR109 [FORMULA]  Balance carried to Balance Sheet",
+      "valid_rows": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        53,
+        54,
+        56,
+        58,
+        59,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        75,
+        76,
+        77,
+        83,
+        84,
+        85,
+        89,
+        90,
+        91,
+        92,
+        93,
+        99,
+        100,
+        101,
+        106,
+        107,
+        108
+      ]
+    },
+    "bs_liability": {
+      "section_tree": "R111 [HEADER ]  Balance Sheet\nR113 [FORMULA]  =A8\nR114 [FORMULA]  =A10\nR115 [HEADER ]  Share Capital\nR116 [TARGET ]  Issued, Subscribed and Paid up\nR117 [TARGET ]  Share Application Money\nR118 [FORMULA]  Total\nR120 [HEADER ]  Reserves and Surplus\nR121 [TARGET ]  General Reserve\nR122 [FORMULA]  Balance transferred from profit and loss a/c\nR123 [TARGET ]  Share Premium A/c\nR124 [TARGET ]  Revaluation Reserve\nR125 [TARGET ]  Other Reserve\nR126 [FORMULA]  Total\nR128 [HEADER ]  Secured and Unsecured Loans\nR130 [HEADER ]  Working Capital Bank Finance\nR131 [TARGET ]  From Indian Bank\nR132 [TARGET ]  From Indian Overseas Bank\nR133 [NOTE   ]  (o/s bill discounting balance to be included)\nR134 [FORMULA]  Sub Total\nR135 [HEADER ]  Term Loans\nR136 [TARGET ]  Term Loan Repayable in next one year\nR137 [TARGET ]  Balance Repayable after one year\nR138 [FORMULA]  Sub Total\nR139 [HEADER ]  Debentures\nR140 [TARGET ]  Repayable in next one year\nR141 [TARGET ]  Balance Repayable after one year\nR142 [FORMULA]  Sub Total\nR143 [HEADER ]  Preference Shares\nR144 [TARGET ]  Repayable in next one year\nR145 [TARGET ]  Balance Repayable after one year\nR146 [FORMULA]  Sub Total\nR147 [HEADER ]  Other Debts\nR148 [TARGET ]  Debts Repayable in Next One year\nR149 [TARGET ]  Balance Other Debts\nR150 [FORMULA]  Sub Total\nR151 [HEADER ]  Unsecured Loans\nR152 [TARGET ]  As Quasi Equity\nR153 [TARGET ]  As Long Term Debt\nR154 [TARGET ]  As Short Term Debt\nR155 [FORMULA]  Sub Total\nR157 [FORMULA]  Total\nR159 [TARGET ]  Deferred tax liability",
+      "valid_rows": [
+        116,
+        117,
+        121,
+        123,
+        124,
+        125,
+        131,
+        132,
+        136,
+        137,
+        140,
+        141,
+        144,
+        145,
+        148,
+        149,
+        152,
+        153,
+        154,
+        159
+      ]
+    },
+    "bs_asset": {
+      "section_tree": "R161 [HEADER ]  Fixed Assets\nR162 [TARGET ]  Gross Block\nR163 [TARGET ]  Less Accumulated Depreciation\nR164 [FORMULA]  Net Block\nR165 [TARGET ]  Add : Capital Work in Progress\nR166 [FORMULA]  Total\nR168 [HEADER ]  Intangibles\nR169 [TARGET ]  Patents / goodwill / copyrights etc\nR170 [TARGET ]  Misc Expenditure ( to the extent not w/o)\nR171 [TARGET ]  Deferred Tax Asset\nR172 [TARGET ]  Other Intangible assets\nR173 [FORMULA]  Total\nR175 [TARGET ]  Additions to Fixed Assets\nR176 [TARGET ]  Sale of  Fixed assets WDV of asset sold\nR177 [FORMULA]  Profit on sale of Fixed assets / Investments\nR178 [FORMULA]  Loss on sale of Fixed assets / Investments\nR179 [FORMULA]  Total\nR181 [HEADER ]  Investments\nR182 [TARGET ]  Investment in Govt. Securities ( Current )\nR183 [TARGET ]  Investment in Govt. Securities ( Non Current )\nR184 [FORMULA]  Sub Total\nR185 [TARGET ]  Other current investments\nR186 [TARGET ]  Other non current investments\nR187 [FORMULA]  Sub Total\nR188 [TARGET ]  Investment in group companies / subsidiaries\nR189 [FORMULA]  Total\nR191 [HEADER ]  Inventories\nR192 [HEADER ]  Raw Material\nR193 [TARGET ]  Imported\nR194 [TARGET ]  Indigenous\nR195 [FORMULA]  Sub Total\nR196 [HEADER ]  Stores and Spares\nR197 [TARGET ]  Imported\nR198 [TARGET ]  Indigenous\nR199 [FORMULA]  Sub Total\nR200 [FORMULA]  Stocks-in-process\nR201 [FORMULA]  Finished Goods\nR203 [FORMULA]  Total\nR205 [HEADER ]  Sundry Debtors\nR206 [TARGET ]  Domestic Receivables ( including bills purchased and discounted)\nR207 [TARGET ]  Export Receivables ( including bills purchased and discounted)\nR208 [TARGET ]  Debtors more than 6 months\nR209 [FORMULA]  Total\nR211 [HEADER ]  Cash and Bank Balances\nR212 [TARGET ]  Cash on Hand\nR213 [TARGET ]  Bank Balances\nR214 [TARGET ]  Fixed Deposit under lien\nR215 [TARGET ]  Other Fixed Deposits\nR216 [FORMULA]  Total\nR218 [HEADER ]  Loans and Advances\nR219 [TARGET ]  Advances recoverable in cash or in kind\nR220 [TARGET ]  Advances to suppliers of raw materials\nR221 [TARGET ]  Advance Income Tax\nR222 [TARGET ]  Prepaid Expenses\nR223 [TARGET ]  Other Advances / current asset\nR224 [TARGET ]  Advances to group / subsidiaries companies\nR225 [FORMULA]  Total\nR227 [HEADER ]  Non Current Assets\nR228 [HEADER ]  Exposure in group companies\nR229 [FORMULA]  Investments\nR230 [FORMULA]  Advances\nR231 [FORMULA]  Sub Total\nR232 [FORMULA]  Debtors more than six months\nR233 [FORMULA]  Investments\nR234 [FORMULA]  Fixed Deposits ( Non Current )\nR235 [TARGET ]  Dues from directors / partners / promoters\nR236 [TARGET ]  Advances to suppliers of capital goods\nR237 [TARGET ]  Security deposits with government departments\nR238 [TARGET ]  Other non current assets\nR239 [FORMULA]  Total Non Current Assets\nR241 [HEADER ]  Current Liabilities\nR242 [TARGET ]  Sundry Creditors for goods\nR243 [TARGET ]  Advance received from customers\nR244 [TARGET ]  Provision for Taxation\nR245 [TARGET ]  Dividend payable\nR246 [TARGET ]  Other statutory liabilities (due within 1 year)\nR247 [TARGET ]  Interest Accrued but not due\nR248 [TARGET ]  Interest Accrued and due\nR249 [TARGET ]  Creditors for Expenses\nR250 [TARGET ]  Other current liabilities\nR251 [FORMULA]  Total\nR253 [HEADER ]  Contingent Liabilities:\nR254 [TARGET ]  Arrears of cumulative dividends\nR255 [TARGET ]  Gratuity liability not provided for\nR256 [TARGET ]  Disputed excise / customs / tax liabilities\nR257 [TARGET ]  Bank guarantee / Letter of credit outstanding\nR258 [TARGET ]  Other contingent liabilities",
+      "valid_rows": [
+        162,
+        163,
+        165,
+        169,
+        170,
+        171,
+        172,
+        175,
+        176,
+        182,
+        183,
+        185,
+        186,
+        188,
+        193,
+        194,
+        197,
+        198,
+        206,
+        207,
+        208,
+        212,
+        213,
+        214,
+        215,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        235,
+        236,
+        237,
+        238,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        254,
+        255,
+        256,
+        257,
+        258
+      ]
+    }
+  }
+}
