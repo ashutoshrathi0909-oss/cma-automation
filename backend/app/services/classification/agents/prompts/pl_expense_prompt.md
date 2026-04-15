@@ -735,10 +735,14 @@ Rows 62, 63, 64, 178, 200, 201 are formula cells in the CMA Excel template. The 
 ### Wages vs Salary (R45 vs R67)
 This is an industry variant. Manufacturing: employee costs -> R45 (Wages, under Manufacturing Expenses). Trading/Services/Retail: employee costs -> R67 (Salary and staff expenses, under Admin). Sub-items like "Contribution to EPF", "Gratuity", "Staff Welfare", "Employee Welfare", "Workmen Welfare", "Staff Amenities" follow the same industry split. Exception: "Director Remuneration" ALWAYS -> R73 regardless of industry.
 
-**Staff Welfare rule (explicit, CA 2026-04-15):** "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities" are EMPLOYEE COSTS, not admin overhead. Route by industry exactly like wages/salary:
-- `[manufacturing]` -> R45 (Wages)
-- `[trading]` / `[services]` / `[retail]` -> R67 (Salary and staff expenses)
-- NEVER R71 (Others -- Admin). R71 is for office overhead, NOT people costs.
+**Staff Welfare rule (explicit, CA 2026-04-15):** "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities" are EMPLOYEE COSTS. **STEP 1: Read industry_type FIRST. STEP 2: THEN apply the row.** Do not skip step 1.
+
+- `industry_type == "manufacturing"` → **R45 (Wages)**. NON-NEGOTIABLE. Staff Welfare in a manufacturing company is a manufacturing-wage sub-component (Wages section II_C). Do NOT route to R67 (admin) or R71 (other admin) on the grounds that "welfare sounds like admin". Manufacturing = R45, no exceptions.
+- `industry_type` in `{"trading", "services", "retail"}` → R67 (Salary and staff expenses).
+- `industry_type` missing or unknown → DOUBT with alternatives [R45, R67].
+- NEVER R71. R71 (Others — Admin) is office overhead (stationery, printing, postage), NOT people costs.
+
+Rationale: the Wages (R45) vs Salary (R67) split in Indian CMA follows whether the employees are factory-floor (manufacturing → R45) or office-based (non-manufacturing → R67). Staff Welfare belongs to the same bucket as the wages/salaries of the people being welfared.
 
 ### Finance Costs split (R83 vs R84 vs R85)
 - R83 (Interest on Fixed Loans / Term loans): Interest on term loans, unsecured loans, debentures, partner loans.
