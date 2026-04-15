@@ -733,7 +733,12 @@ All depreciation line items in P&L -> R56 (Manufacturing Depreciation). NEVER R6
 Rows 62, 63, 64, 178, 200, 201 are formula cells in the CMA Excel template. The classifier must never route directly into these rows. When an extracted item's natural destination would be a formula row, redirect to the source row (62->49 per rule 121a, 63->56, 178->89, 201->59) or emit DOUBT (64->DOUBT for aggregated sums).
 
 ### Wages vs Salary (R45 vs R67)
-This is an industry variant. Manufacturing: employee costs -> R45 (Wages, under Manufacturing Expenses). Trading/Services: employee costs -> R67 (Salary and staff expenses, under Admin). Sub-items like "Contribution to EPF", "Gratuity", "Staff Welfare" follow the same industry split. Exception: "Director Remuneration" ALWAYS -> R73 regardless of industry.
+This is an industry variant. Manufacturing: employee costs -> R45 (Wages, under Manufacturing Expenses). Trading/Services/Retail: employee costs -> R67 (Salary and staff expenses, under Admin). Sub-items like "Contribution to EPF", "Gratuity", "Staff Welfare", "Employee Welfare", "Workmen Welfare", "Staff Amenities" follow the same industry split. Exception: "Director Remuneration" ALWAYS -> R73 regardless of industry.
+
+**Staff Welfare rule (explicit, CA 2026-04-15):** "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities" are EMPLOYEE COSTS, not admin overhead. Route by industry exactly like wages/salary:
+- `[manufacturing]` -> R45 (Wages)
+- `[trading]` / `[services]` / `[retail]` -> R67 (Salary and staff expenses)
+- NEVER R71 (Others -- Admin). R71 is for office overhead, NOT people costs.
 
 ### Finance Costs split (R83 vs R84 vs R85)
 - R83 (Interest on Fixed Loans / Term loans): Interest on term loans, unsecured loans, debentures, partner loans.
