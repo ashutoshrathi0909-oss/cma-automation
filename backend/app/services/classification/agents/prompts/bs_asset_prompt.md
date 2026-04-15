@@ -262,7 +262,12 @@ O32: [all] "Advance to Suppliers" / "Advance to Creditors" / "Supplier Advance" 
 
 O33: [all] Individual company/person names that appear in creditor/payable sections (e.g., "Newchem Pharma.", "Bhagirathi Associates", "STATUSTRONICS", "JSW Infra") -> R242 (Sundry Creditors for goods). When a line item in the balance sheet is clearly a party name (not an accounting label), and it appears in the liabilities/creditors section, classify as sundry creditors.
 
-O34: [all] Individual company/person names that appear in debtor/receivable sections (e.g., "Jignesh C Mehta (HUF)", "ABC Enterprises") -> R206 (Domestic Receivables). Party names in the debtors section are trade receivables.
+O34: [all] Individual company/person names that appear in debtor/receivable sections → R206 (Domestic Receivables) ONLY when the party is clearly a 3rd-party vendor/customer with no relation to the filer. Emit DOUBT (cma_row: 0, alternatives [R206, R235]) when the party name suggests a related party per the DOUBT meta-principle in the notes-primary block:
+  - Same-family naming pattern (party name closely resembles the filer's own name — e.g., "Kurinji Shopping" in Kurunji_Retail's books, "Mehta Enterprises" in Mehta_Computer's books)
+  - "HUF" suffix with a name matching the proprietor/director
+  - "Holdings" / "Ventures" / "Group" / "Associates" patterns where affiliation is not verified from the notes
+  - LLP / trust / private limited where ownership structure is unclear from the FS
+In the DOUBT case, reasoning must state: "Related-party status ambiguous — CA must verify; could be R206 (trade receivable) or R235 (dues from directors/partners/promoters)."
 
 O35: [all] "For Duties & Taxes" / "- For Duties & Taxes" -> R246 (Statutory Liabilities). Tally-format statutory liability sub-item.
 
