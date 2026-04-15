@@ -224,7 +224,7 @@ O4: [manufacturing] "Advances recoverable in cash or in kind" -> R219
 O5: [trading] "Gst Receivable" -> R219 (Advances recoverable in cash or in kind)
 O6: [all] "TCS Receivable" -> R221 (Advance Income Tax)
 O7: [all] "TDS Receivable" -> R221 (Advance Income Tax)
-O8: [manufacturing] "Prepaid Expenses" -> R222
+O8: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" -> R222 (Prepaid Expenses, III_A17d). R222's label IS "Prepaid Expenses" — any prepayment for goods/services consumed in the next period belongs here, regardless of industry.
 O9: [trading] "Share Investments" -> R186 (Other non current investments). NOTE: R233 is formula, use R186.
 O10: [manufacturing] "Security Deposits - Others" -> R238 (Other non current assets)
 O11: [manufacturing] "Security deposits - Unsecured, considered good" -> R238
@@ -258,7 +258,7 @@ O30: [all] Generic "Provisions — Current Liabilities" NOT covered by a higher-
 
 O31: [all] "Stock in Trade" / "Stock-in-Trade" / "Inventory" / "Inventories" / "Closing Stock" / "Stock" (when in asset section) -> R200 (Inventories — Raw Materials). For trading companies, stock-in-trade maps to R200 (inventory row). NOTE: Row 200-201 may be formula rows — check the never_classify list. If R200 is in never_classify, route to the appropriate sub-row.
 
-O32: [all] "Advance to Suppliers" / "Advance to Creditors" / "Supplier Advance" / "Creditor Advance" / "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" -> R223 (Other Advances / Current Asset). Advances and prepayments are current assets.
+O32: [all] "Advance to Suppliers" / "Advance to Creditors" / "Supplier Advance" / "Creditor Advance" (for NON-raw-material suppliers — e.g. service vendors, AMC providers, consultants) -> R223 (Other Advances / Current Asset). NOTE: Prepaid Expenses / Prepaid Rent / Prepaid Insurance are NOT in this rule — they go to R222 via O8 (R222's label is literally "Prepaid Expenses"). Raw-material supplier advances go to R220 (Advances to suppliers of raw materials) per L22.
 
 O33: [all] Individual company/person names that appear in creditor/payable sections (e.g., "Newchem Pharma.", "Bhagirathi Associates", "STATUSTRONICS", "JSW Infra") -> R242 (Sundry Creditors for goods). When a line item in the balance sheet is clearly a party name (not an accounting label), and it appears in the liabilities/creditors section, classify as sundry creditors.
 
@@ -321,7 +321,20 @@ L18: [all] "Bank current account" -> R213
 L19: [all] "Cash at bank" -> R213
 L20: [all] "Fixed Deposits with banks & accrued interest (without lien)" -> R215
 
-**Loans and Advances (219-224):**
+**Loans and Advances (219-224) — decision framework (CA 2026-04-15):**
+
+The CMA template has 5 SPECIFIC buckets + 1 residual in this block. Match the ledger to the most specific row first; only fall through to R223 if none of the 5 apply.
+
+| Row | Canonical label | Goes here |
+|---|---|---|
+| R219 | Advances recoverable in cash or in kind | Refundable recoverables: staff imprest/travel advances, insurance claim receivable, octroi recoverable, earnest money that will be returned |
+| R220 | Advances to suppliers of raw materials | Advances to RM suppliers (manufacturing) or trading-goods suppliers (trading) pending delivery |
+| R221 | Advance Income Tax | Advance Tax paid, TDS receivable, TCS receivable, MAT credit, PLA excise balance, net tax recoverable |
+| R222 | Prepaid Expenses | Any expense paid in advance — Prepaid Insurance, Prepaid Rent, Prepaid AMC, Prepaid Subscription — benefit lies in the next period |
+| R223 | Other Advances / current asset | RESIDUAL BUCKET — only when the item is genuinely miscellaneous and doesn't fit R219/R220/R221/R222/R224 (e.g. misc supplier advances for services, unlabelled "Other advances") |
+| R224 | Advances to group / subsidiaries companies | Inter-company advances only (holding/subsidiary/associate/related-party) |
+
+KEY DISTINCTIONS: "Prepaid X" ALWAYS → R222 (the label matches). "Recoverable in cash or kind" → R219 (label matches). A plain "Supplier Advance" without raw-materials context → R223. "Advance to Employees" is refundable from salary → R219 (not R223 despite older legacy rules). If in doubt between R219 and R223, prefer R219 when the item is clearly REFUNDABLE; prefer R223 only for genuinely miscellaneous amounts.
 L21: [all] "Staff Advances" -> R219
 L22: [all] "Advances to suppliers" -> R220
 L23: [all] "Advance Sales Tax" -> R221
@@ -330,10 +343,10 @@ L25: [all] "Advance Tax" -> R221
 L26: [all] "PLA Balance with excise" -> R221
 L27: [all] "Tax Deducted at Source" -> R221
 L28: [all] "Advance to employees" -> R223
-L29: [all] "Advances recoverable in cash or kind" -> R223
-L30: [all] "Insurance Claim Receivable" -> R223
-L31: [all] "Octroi Receivable" -> R223
-L32: [all] "Prepaid Expenses" -> R223
+L29: [all] "Advances recoverable in cash or in kind" / "Advances recoverable in cash or kind" -> R219 (Advances recoverable in cash or in kind, III_A17a). R219's label is an exact match — these items go to R219, NOT R223.
+L30: [all] "Insurance Claim Receivable" -> R219 (Advances recoverable in cash or in kind — insurance settlement is recoverable in cash)
+L31: [all] "Octroi Receivable" -> R219 (Advances recoverable in cash or in kind — octroi is refundable in cash)
+L32: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" -> R222 (Prepaid Expenses, III_A17d). Supersedes any older rule that routed these to R223. See O8.
 
 **Non Current Assets (229-238) — NOTE: R229, R230, R232, R233, and R234 are ALL YELLOW formula cells and are NEVER valid targets. Use the redirect rules below; if no redirect applies, emit DOUBT. CA decisions 2026-04-12 (see project_formula_row_ca_decisions.md):**
 L33: [all] "Long Term Investments" -> R186 (redirected from R233; R233 is formula)
