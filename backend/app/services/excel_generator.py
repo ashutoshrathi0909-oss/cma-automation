@@ -25,7 +25,8 @@ import re
 import tempfile
 
 import openpyxl
-from openpyxl.utils import column_index_from_string
+from openpyxl.comments import Comment
+from openpyxl.utils import column_index_from_string, get_column_letter
 
 from app.mappings.cma_field_rows import ALL_FIELD_TO_ROW
 from app.mappings.year_columns import build_year_map
@@ -75,6 +76,19 @@ def _build_formula(values: list[float]) -> str:
         else:
             parts.append(f"+{formatted}")
     return "=" + "".join(parts)
+
+
+def write_data_cell_with_note(ws, row: int, col_letter: str, value, note: str | None = None) -> None:
+    """Write *value* to ws[<col_letter><row>] and attach *note* as a Comment if non-empty.
+
+    Using openpyxl Comments preserves macros as long as the workbook was
+    loaded with keep_vba=True. Empty strings and None both produce no comment.
+    """
+    col = column_index_from_string(col_letter)
+    cell = ws.cell(row=row, column=col)
+    cell.value = value
+    if note:
+        cell.comment = Comment(note, author="CMA Agent")
 
 
 DEFAULT_TEMPLATE_PATH = "/app/DOCS/CMA.xlsm"
@@ -275,6 +289,10 @@ class ExcelGenerator:
         """
         provenance_records: list[dict] = []
         accumulator: dict[tuple[int, int], list[float]] = {}
+        # First-non-empty-note-wins per (row, col). A single cell may aggregate
+        # multiple input items, each potentially carrying its own cell_note;
+        # the earliest note encountered is kept so rendering is deterministic.
+        cell_notes: dict[tuple[int, int], str] = {}
         _converted_count = 0
         _raw_count = 0
         _skipped_count = 0
@@ -333,6 +351,10 @@ class ExcelGenerator:
             key = (row, col)
             accumulator.setdefault(key, []).append(amount)
 
+            note = item.get("cell_note")
+            if note and key not in cell_notes:
+                cell_notes[key] = note
+
         logger.info(
             "Unit conversion summary: %d converted, %d raw (divisor=1), %d skipped (no row/col)",
             _converted_count, _raw_count, _skipped_count,
@@ -360,13 +382,22 @@ class ExcelGenerator:
                 )
 
             if len(values) == 1:
-                cell.value = values[0]
+                new_value = values[0]
             else:
-                cell.value = _build_formula(values)
+                new_value = _build_formula(values)
                 logger.debug(
                     "Multi-value formula at row=%d col=%d: %s (%d items)",
-                    row, col, cell.value, len(values),
+                    row, col, new_value, len(values),
                 )
+
+            col_letter_for_write = get_column_letter(col)
+            write_data_cell_with_note(
+                ws,
+                row=row,
+                col_letter=col_letter_for_write,
+                value=new_value,
+                note=cell_notes.get((row, col)),
+            )
 
         return provenance_records
 

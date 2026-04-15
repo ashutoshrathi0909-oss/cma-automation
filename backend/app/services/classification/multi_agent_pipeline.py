@@ -298,6 +298,7 @@ class MultiAgentPipeline:
             "ai_best_guess": cma_code,
             "alternative_fields": classification.get("alternatives") or [],
             "status": status,
+            "cell_note": classification.get("cell_note"),
         }
 
     def _combine_results(
@@ -412,6 +413,7 @@ class MultiAgentPipeline:
                             "confidence": clf.get("confidence", 0.0),
                             "alternatives": clf.get("alternatives", []),
                             "reasoning": clf.get("reasoning"),
+                            "cell_note": clf.get("cell_note"),
                         }
                         record = self._build_record(
                             item=item,
