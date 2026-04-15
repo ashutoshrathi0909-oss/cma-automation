@@ -648,7 +648,7 @@ These items go to the SAME row regardless of industry:
 | Deferred tax | R100 (liability) or R101 (asset) | Always tax section |
 | Loss on sale of fixed assets | R89 | Always non-operating |
 | Loss on forex fluctuation | R91 | Always non-operating |
-| Donation / CSR | R71 (Others - Admin) | Admin expense |
+| Donation / CSR | R93 (Others -- Non Operating) | Non-operating per CA_VERIFIED_2026 rule 19 — NOT R71 |
 | Printing & Stationery | R71 (Others - Admin) | Admin expense |
 | Telephone / Communication | R71 (Others - Admin) | Admin expense |
 | Legal & Professional fees | R71 (Others - Admin) | Admin expense |
@@ -810,7 +810,7 @@ Example 12 (R48, trading):
 Input: {"id": "ex_012", "description": "Electricity Expenses", "amount": 150000, "section": "Profit and Loss", "industry_type": "trading"}
 Output: {"id": "ex_012", "cma_row": 48, "cma_code": "II_C8", "confidence": 0.90, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 rule 3: Electricity Expenses -> R48. SSSS trading. Note: for trading, CA_VERIFIED_2026 power/fuel rule still applies to R48.", "alternatives": [{"cma_row": 71, "cma_code": "II_D5", "confidence": 0.45}]}
 
-Example 13 (R49, manufacturing):
+Example 13 (R49, trading):
 Input: {"id": "ex_013", "description": "Packing Material & Forwarding charges", "amount": 600000, "section": "Profit and Loss", "industry_type": "trading"}
 Output: {"id": "ex_013", "cma_row": 49, "cma_code": "II_C9", "confidence": 0.90, "sign": 1, "reasoning": "Matches CA_OVERRIDE rule 52: Packing Forwarding -> R49 (Others Mfg). SSSS trading.", "alternatives": []}
 
