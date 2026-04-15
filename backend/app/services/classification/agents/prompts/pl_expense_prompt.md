@@ -71,7 +71,7 @@ When confidence < 0.80, or when a DOUBT rule applies:
 ### Critical output rules
 1. Classify ALL items -- never skip any item from the classifications array.
 2. confidence < 0.80 -> MUST use DOUBT format (cma_row: 0, cma_code: "DOUBT").
-3. NEVER classify into formula rows 63, 64, 200, or 201.
+3. NEVER classify into formula rows 62, 63, 64, 178, 200, or 201. (R62 is the manufacturing-expenses aggregator — redirect generic "Manufacturing Expenses" to R49 per rule 121a.)
 4. Face vs notes dedup: if has_note_breakdowns=true AND page_type="face" -> classify as DOUBT (the face total duplicates the notes breakdown).
 5. Use the tiered rules as the primary signal. Few-shot examples are secondary.
 6. If an item's industry_type is provided and a matching industry rule exists, prefer it over "all" rules.
@@ -131,7 +131,6 @@ The `source_sheet` field tells you which Excel sheet the item was extracted from
 | 56 | II_C14 | Depreciation | Manufacturing Expenses |
 | 58 | II_C17 | Finished Goods Opening Balance | Manufacturing Expenses |
 | 59 | II_C18a | Finished Goods Closing Balance | Manufacturing Expenses |
-| 62 | II_C19a | Manufacturing Expenses (for CMA purpose) | Manufacturing Expenses |
 | 67 | II_D1 | Salary and staff expenses | Admin & Selling Expenses |
 | 68 | II_D2 | Rent , Rates and Taxes | Admin & Selling Expenses |
 | 69 | II_D3 | Bad Debts | Admin & Selling Expenses |
@@ -731,7 +730,7 @@ Services companies follow trading patterns for admin rows:
 All depreciation line items in P&L -> R56 (Manufacturing Depreciation). NEVER R63 (which is a formula aggregator picking from R56). This applies regardless of whether the source says "Depreciation on Plant & Machinery", "Depreciation and Amortization Expense", "Depreciation on Vehicles", or just "Depreciation". The CMA Excel template uses R63 as a calculated field.
 
 ### Formula cell awareness
-Rows 63, 64, 178, 200, 201 are formula cells in the CMA Excel template. The classifier must never route directly into these rows. When an extracted item's natural destination would be a formula row, redirect to the source row (63->56, 178->89, 201->59) or emit DOUBT (64->DOUBT for aggregated sums).
+Rows 62, 63, 64, 178, 200, 201 are formula cells in the CMA Excel template. The classifier must never route directly into these rows. When an extracted item's natural destination would be a formula row, redirect to the source row (62->49 per rule 121a, 63->56, 178->89, 201->59) or emit DOUBT (64->DOUBT for aggregated sums).
 
 ### Wages vs Salary (R45 vs R67)
 This is an industry variant. Manufacturing: employee costs -> R45 (Wages, under Manufacturing Expenses). Trading/Services: employee costs -> R67 (Salary and staff expenses, under Admin). Sub-items like "Contribution to EPF", "Gratuity", "Staff Welfare" follow the same industry split. Exception: "Director Remuneration" ALWAYS -> R73 regardless of industry.
@@ -954,7 +953,7 @@ You will receive a JSON object with industry_type and an items array. For each i
 
 Before returning, self-verify:
 1. Every item in the input has a corresponding entry in the output classifications array.
-2. No cma_row is 63, 64, 178, 200, or 201.
+2. No cma_row is 62, 63, 64, 178, 200, or 201.
 3. Every item with confidence < 0.80 uses the DOUBT format (cma_row: 0).
 4. Every cma_row is in the valid_categories table (or is 0 for DOUBT).
 5. The reasoning field references the specific rule number and tier.
