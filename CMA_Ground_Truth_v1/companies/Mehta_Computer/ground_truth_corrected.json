@@ -361,7 +361,7 @@
       "original_cma_row": 52
     },
     {
-      "cma_row": 54,
+      "cma_row": 59,
       "cma_code": "II_C13a",
       "cma_field_name": "Stock in process Closing Balance",
       "raw_text": "By Closing Stock",
@@ -375,7 +375,7 @@
       "financial_year": "2023-24",
       "industry_specific": true,
       "industry_note": "Closing stock (stock-in-trade) maps to 'Stock in process Closing Balance' (II_C13a) for trading firms. Same logic as opening stock — trading inventory = WIP in CMA terminology.",
-      "reasoning": "Direct match — Closing Stock in Trading Account maps to CMA Stock in process Closing Balance (sheet_row 53, II_C13a).",
+      "reasoning": "Direct match — Closing Stock in Trading Account maps to CMA Stock in process Closing Balance (sheet_row 53, II_C13a). | [CA 2026-04-15] Updated from R54->R59: Closing Stock (trading) -> R59 per CA 2026-04-15 (only 'Stock in Process' -> R54)",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 53
