@@ -263,7 +263,7 @@ CA override rules from the previous interview round. Apply when no CA_VERIFIED_2
 81. [CA_OVERRIDE] [trading] "Commission on sales" -> R70 (Advertisements and Sales Promotions)
 82. [CA_OVERRIDE] [manufacturing] "Freight Outward" -> R70 (Advertisements and Sales Promotions)
 83. [CA_OVERRIDE] [manufacturing] "(i) Commission" -> R70 (Advertisements and Sales Promotions)
-84. [CA_OVERRIDE] [manufacturing] "(ii) Tour & Travel Expenses" -> R70 (Advertisements and Sales Promotions)
+84. [CA_OVERRIDE] [all] "Tour & Travel Expenses" / "(ii) Tour & Travel Expenses" / "Tour Expenses" / "Travel Expenses" / "Travelling Expenses" / "Travelling & Conveyance" / "Conveyance, Communication and Travelling Expenses" / "(c) Conveyance, Communication and Travelling Expenses" / "Conveyance" / "Communication Expenses" -> R71 (Others -- Admin). CA 2026-04-15 CORRECTION: the old [manufacturing] scoping + R70 target was wrong — travel/conveyance are generic admin overhead, NOT sales-promotion. R70 is specifically for advertising / marketing / promotional spend.
 85. [CA_OVERRIDE] [manufacturing] "(iii) Freight Outwards" -> R70 (Advertisements and Sales Promotions)
 86. [CA_OVERRIDE] [manufacturing] "(iv) Discount Allowed" -> R70 (Advertisements and Sales Promotions)
 87. [CA_OVERRIDE] [all] "Packing and Forwarding Charges" -> R70 (Advertisements and Sales Promotions)
@@ -975,6 +975,6 @@ Before returning, self-verify:
 4. Every cma_row is in the valid_categories table (or is 0 for DOUBT).
 5. The reasoning field references the specific rule number and tier.
 6. Items matching DOUBT rules (23-26) have cma_row: 0 regardless of confidence.
-7. **Staff-Welfare industry guard (CA 2026-04-15):** For any item whose description contains "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities", check the batch-level industry_type. If industry_type == "manufacturing" AND you classified to R67 or R71 → RE-CLASSIFY to R45 before returning. This guard is mandatory because "Employee Benefits Expense" section headings mislead the model into admin-side reasoning. Manufacturing Staff Welfare is ALWAYS R45 per the Staff Welfare rule, regardless of which note it appears under.
+7. **Staff-Welfare DOUBT-escalation guard (CA 2026-04-15, revised):** For any item whose description contains "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities", if the item lacks clear factory/plant context in section AND source_sheet (no "Factory", "Plant", "Production", "Manufacturing Overhead", "Shop Floor" keywords anywhere in the item's section/source_sheet fields), emit DOUBT with alternatives [R45, R67]. Do NOT rely on the batch-level industry_type — it is the dominant industry across the batch and may differ from the specific item's true industry (e.g., a retail company's items can appear in a manufacturing-majority batch). The CA resolves DOUBT items with client-specific knowledge.
 8. **Professional-fees scope guard (CA 2026-04-15):** For any item whose description is "Professional Fees" / "Legal & Professional Charges" / "Consulting Fees" / "Legal Fees" without the word "Audit" or "Director" — if you classified to R73, RE-CLASSIFY to R71. R73 is reserved for auditors and directors only.
 </task>
