@@ -38,11 +38,14 @@ def mock_settings():
 # Helpers / constants
 # ---------------------------------------------------------------------------
 
+# Each specialist must receive rows from its own whitelist; we pick the first
+# two valid_rows per agent (from DOCS/cma_cell_types.json) so the new whitelist
+# validator in BaseAgent leaves them untouched.
 AGENT_CLASSES_NAMES = [
-    ("pl_income", "app.services.classification.agents.pl_income", "PLIncomeAgent"),
-    ("pl_expense", "app.services.classification.agents.pl_expense", "PLExpenseAgent"),
-    ("bs_liability", "app.services.classification.agents.bs_liability", "BSLiabilityAgent"),
-    ("bs_asset", "app.services.classification.agents.bs_asset", "BSAssetAgent"),
+    ("pl_income", "app.services.classification.agents.pl_income", "PLIncomeAgent", 22, 23),
+    ("pl_expense", "app.services.classification.agents.pl_expense", "PLExpenseAgent", 67, 68),
+    ("bs_liability", "app.services.classification.agents.bs_liability", "BSLiabilityAgent", 116, 117),
+    ("bs_asset", "app.services.classification.agents.bs_asset", "BSAssetAgent", 162, 163),
 ]
 
 SAMPLE_ITEMS = [
@@ -64,26 +67,29 @@ SAMPLE_ITEMS = [
     },
 ]
 
-MOCK_RESPONSE = {
-    "classifications": [
-        {
-            "id": "i1",
-            "cma_row": 67,
-            "cma_code": "II_D1",
-            "confidence": 0.95,
-            "sign": 1,
-            "reasoning": "Staff welfare -> Salary",
-        },
-        {
-            "id": "i2",
-            "cma_row": 22,
-            "cma_code": "II_A1",
-            "confidence": 0.90,
-            "sign": -1,
-            "reasoning": "Sales Returns subtract from Domestic",
-        },
-    ]
-}
+
+def _build_mock_response(row1: int, row2: int) -> dict:
+    """Build a mock classification response using rows valid for the agent under test."""
+    return {
+        "classifications": [
+            {
+                "id": "i1",
+                "cma_row": row1,
+                "cma_code": "II_D1",
+                "confidence": 0.95,
+                "sign": 1,
+                "reasoning": "Staff welfare -> Salary",
+            },
+            {
+                "id": "i2",
+                "cma_row": row2,
+                "cma_code": "II_A1",
+                "confidence": 0.90,
+                "sign": -1,
+                "reasoning": "Sales Returns subtract from Domestic",
+            },
+        ]
+    }
 
 
 def _make_agent(module_path: str, class_name: str, tmp_path):
@@ -130,16 +136,19 @@ def _make_mock_client(response_dict: dict | None):
 
 
 @pytest.mark.parametrize(
-    "name,module_path,class_name",
+    "name,module_path,class_name,row1,row2",
     AGENT_CLASSES_NAMES,
     ids=[a[0] for a in AGENT_CLASSES_NAMES],
 )
 class TestSpecialistAgent:
 
-    def test_classify_batch_returns_classifications(self, name, module_path, class_name, tmp_path):
+    def test_classify_batch_returns_classifications(
+        self, name, module_path, class_name, row1, row2, tmp_path
+    ):
         """API returns 2 valid classifications — verify correct parsing."""
+        mock_response = _build_mock_response(row1, row2)
         with patch("app.services.classification.agents.base.OpenAI") as MockOpenAI:
-            MockOpenAI.return_value = _make_mock_client(MOCK_RESPONSE)
+            MockOpenAI.return_value = _make_mock_client(mock_response)
             agent = _make_agent(module_path, class_name, tmp_path)
 
         results, tokens = agent.classify_batch(SAMPLE_ITEMS, industry_type="manufacturing")
@@ -151,16 +160,18 @@ class TestSpecialistAgent:
         assert ids_returned == {"i1", "i2"}
 
         r1 = next(r for r in results if r["id"] == "i1")
-        assert r1["cma_row"] == 67
+        assert r1["cma_row"] == row1
         assert r1["cma_code"] == "II_D1"
         assert r1["confidence"] == pytest.approx(0.95)
         assert r1["sign"] == 1
 
         r2 = next(r for r in results if r["id"] == "i2")
-        assert r2["cma_row"] == 22
+        assert r2["cma_row"] == row2
         assert r2["sign"] == -1
 
-    def test_classify_batch_api_failure_returns_doubts(self, name, module_path, class_name, tmp_path):
+    def test_classify_batch_api_failure_returns_doubts(
+        self, name, module_path, class_name, row1, row2, tmp_path
+    ):
         """API raises an exception — all items must become doubt records with cma_row=0."""
         with patch("app.services.classification.agents.base.OpenAI") as MockOpenAI:
             MockOpenAI.return_value = _make_mock_client(None)  # raises RuntimeError
@@ -176,7 +187,9 @@ class TestSpecialistAgent:
             assert result["cma_code"] == "DOUBT"
             assert result["confidence"] == pytest.approx(0.0)
 
-    def test_classify_batch_empty_returns_empty(self, name, module_path, class_name, tmp_path):
+    def test_classify_batch_empty_returns_empty(
+        self, name, module_path, class_name, row1, row2, tmp_path
+    ):
         """Empty item list must return ([], 0) without touching the API."""
         with patch("app.services.classification.agents.base.OpenAI") as MockOpenAI:
             mock_client = MagicMock()

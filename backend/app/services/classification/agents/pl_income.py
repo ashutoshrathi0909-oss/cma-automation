@@ -10,4 +10,8 @@ class PLIncomeAgent(BaseAgent):
     """Classifies P&L income items: domestic/export sales, other income."""
 
     def __init__(self, prompt_path: str | None = None) -> None:
-        super().__init__(name="pl_income", prompt_path=prompt_path or str(_DEFAULT_PROMPT))
+        super().__init__(
+            name="pl_income",
+            prompt_path=prompt_path or str(_DEFAULT_PROMPT),
+            agent_key="pl_income",
+        )

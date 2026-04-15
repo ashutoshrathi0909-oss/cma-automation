@@ -22,7 +22,12 @@ class PLExpenseAgent(BaseAgent):
     """Classifies P&L expenses: manufacturing, admin, finance, tax."""
 
     def __init__(self, prompt_path: str | None = None) -> None:
-        super().__init__(name="pl_expense", prompt_path=prompt_path or str(_DEFAULT_PROMPT), reasoning_effort="medium")
+        super().__init__(
+            name="pl_expense",
+            prompt_path=prompt_path or str(_DEFAULT_PROMPT),
+            reasoning_effort="medium",
+            agent_key="pl_expense",
+        )
 
     # ------------------------------------------------------------------
     # Override classify_batch to inject industry emphasis
@@ -98,4 +103,4 @@ class PLExpenseAgent(BaseAgent):
                     self._make_doubt(item, "Item missing from model response — please classify manually")
                 )
 
-        return classifications, tokens
+        return self._validate_whitelist(classifications), tokens

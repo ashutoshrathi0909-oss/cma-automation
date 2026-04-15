@@ -34,9 +34,16 @@ class BaseAgent:
         this agent's system prompt.  Loaded once at init time.
     """
 
-    def __init__(self, name: str, prompt_path: str, reasoning_effort: str = "none") -> None:
+    def __init__(
+        self,
+        name: str,
+        prompt_path: str,
+        reasoning_effort: str = "none",
+        agent_key: str | None = None,
+    ) -> None:
         self.name = name
         self._reasoning_effort = reasoning_effort
+        self._agent_key = agent_key
 
         # Load system prompt — raise immediately if the file is missing so
         # misconfigurations are caught at startup, not first request.
@@ -45,7 +52,8 @@ class BaseAgent:
             raise FileNotFoundError(
                 f"[{self.name}] Prompt file not found: {prompt_path}"
             )
-        self._system_prompt: str = prompt_file.read_text(encoding="utf-8")
+        raw_prompt = prompt_file.read_text(encoding="utf-8")
+        self._system_prompt: str = self._substitute_placeholders(raw_prompt)
 
         settings = get_settings()
         self._client = OpenAI(
@@ -53,6 +61,71 @@ class BaseAgent:
             base_url="https://openrouter.ai/api/v1",
         )
         self._model: str = settings.gemini_model
+
+    # ------------------------------------------------------------------
+    # Prompt placeholder substitution + whitelist validation
+    # ------------------------------------------------------------------
+
+    def _substitute_placeholders(self, prompt: str) -> str:
+        """Inject {{section_structure}} and {{valid_output_rows}} from cell_types.
+
+        If agent_key is None (router or test stubs), return prompt unchanged.
+        """
+        if self._agent_key is None:
+            return prompt
+        # Import inside method to avoid a circular import at module load time.
+        from app.services.classification import cell_types
+
+        try:
+            ctx = cell_types.get_agent_context(self._agent_key)
+        except (KeyError, FileNotFoundError) as exc:
+            logger.warning(
+                "[%s] cell_types context unavailable (%s) — leaving placeholders raw",
+                self.name, exc,
+            )
+            return prompt
+        return (
+            prompt
+            .replace("{{section_structure}}", ctx["section_tree"])
+            .replace("{{valid_output_rows}}", cell_types.valid_rows_csv(self._agent_key))
+        )
+
+    def _validate_whitelist(self, classifications: list[dict]) -> list[dict]:
+        """Force-DOUBT any classification whose cma_row is not in this agent's whitelist.
+
+        Passthrough when agent_key is None. Existing DOUBT records are not modified.
+        """
+        if self._agent_key is None:
+            return classifications
+        from app.services.classification import cell_types
+
+        try:
+            ctx = cell_types.get_agent_context(self._agent_key)
+        except (KeyError, FileNotFoundError):
+            return classifications
+        whitelist = set(ctx["valid_rows"])
+        validated: list[dict] = []
+        for clf in classifications:
+            cma_row = clf.get("cma_row", 0)
+            code = clf.get("cma_code", "")
+            if code == "DOUBT" or cma_row == 0:
+                validated.append(clf)
+                continue
+            if cma_row in whitelist:
+                validated.append(clf)
+                continue
+            clf_doubt = dict(clf)
+            clf_doubt["cma_code"] = "DOUBT"
+            clf_doubt["cma_row"] = 0
+            clf_doubt["confidence"] = min(float(clf.get("confidence", 0.0)), 0.40)
+            original = clf.get("reasoning", "")
+            clf_doubt["reasoning"] = (
+                f"Whitelist violation: agent output row {cma_row} is not a valid "
+                f"target for '{self._agent_key}' (header/formula/blank/note). "
+                f"Auto-converted to DOUBT. Original reasoning: {original}"
+            )
+            validated.append(clf_doubt)
+        return validated
 
     # ------------------------------------------------------------------
     # Core model call
@@ -184,7 +257,7 @@ class BaseAgent:
                     )
                 )
 
-        return classifications, tokens
+        return self._validate_whitelist(classifications), tokens
 
     # ------------------------------------------------------------------
     # Helpers
