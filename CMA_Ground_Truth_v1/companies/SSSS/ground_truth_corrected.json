@@ -901,7 +901,7 @@
       "original_cma_row": 125
     },
     {
-      "cma_row": 122,
+      "cma_row": 125,
       "cma_code": "III_L2b",
       "cma_field_name": "Balance transferred from profit and loss a/c",
       "raw_text": "Reserves and Surplus",
@@ -915,7 +915,7 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Split — P&L surplus portion extracted from total Reserves. FY22-23 Note 2 = 64.77 Cr = P&L Balance (45.01) + Share Premium (19.75) + Shri Ganesh Maharaj (~0).",
+      "reasoning": "Split — P&L surplus portion extracted from total Reserves. FY22-23 Note 2 = 64.77 Cr = P&L Balance (45.01) + Share Premium (19.75) + Shri Ganesh Maharaj (~0). | [CA 2026-04-15 R5] R122->R125: Reserves and Surplus total P&L-balance portion. R122 not in bs_liability whitelist (formula-equivalent per r122_special_note). Per V9/V10 DOUBT alternatives, canonical choice is R125 (Other Reserve). Same pattern as Dynamic_Air Surplus Closing Balance (commit 38a8a12).",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 125
