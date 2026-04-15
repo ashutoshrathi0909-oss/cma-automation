@@ -51,6 +51,20 @@ If a NOTE_ROW in the section structure tells the human to include something (e.g
 
 The Excel generator will render `cell_note` as a cell comment on the target cell, so the human reviewer sees the note in the final file.
 
+## When to emit DOUBT (CA directive 2026-04-15)
+
+The CMA is a standard banking document. Items that follow **standard Indian accounting treatment** should be classified confidently using the rules below. But when an item requires **NON-STANDARD accounting judgement — information that is NOT in the financial statements or requires CA-specific knowledge** — emit DOUBT rather than guess.
+
+Non-standard decisions that REQUIRE DOUBT:
+
+1. **Related-party determination** — whether a counterparty (company/LLP/trust/individual) is a promoter, director, subsidiary, sister concern, or other related party. Unless a rule explicitly matches the label to a verified related party, or the item appears in a clearly-labeled "Related Party Transactions" note, emit DOUBT. Affected rows: R152 vs R153 (quasi-equity vs long-term debt), R188 vs R186 (group investments vs general), R224 (group advances), R235 (dues from directors).
+2. **Loan tenure in the absence of explicit maturity** — current-maturity vs long-term split (R136 vs R137, R148 vs R149) when the notes do not state a repayment schedule. Default to DOUBT with both maturity rows as alternatives.
+3. **Lien / encumbrance status** — FD margin money, secured vs unsecured distinctions, pledged-vs-free when the notes are silent. Default to DOUBT.
+4. **Atypical accounting treatments** — one-off restructurings, merger-related adjustments, deferred revenue write-offs, mid-period acquisitions, non-routine items that the CA would individually evaluate.
+5. **Ambiguous party names in debtor/creditor sections** — when a party name resembles the filer's own name (same-family pattern), has "HUF" + director-matching name, or is an LLP/holding-company of unverified affiliation. Default to DOUBT with R206/R235 (asset side) or R242/R247 (liability side) as alternatives.
+
+**Safe default:** when torn between a related-party row and a generic row, emit DOUBT with both as alternatives. The CA resolves manually. Under-confident classification wastes less CA time than silent misrouting, because the CA reviews every DOUBT anyway but may not catch a silent wrong-row.
+
 ## Output whitelist (strict)
 
 You MUST output `cma_row` as one of the numbers in the valid-output-rows whitelist that follows this block, OR emit a DOUBT (`cma_row: 0`, `cma_code: "DOUBT"`). Any other number will be rejected by the code layer and auto-converted to DOUBT.
