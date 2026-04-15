@@ -254,7 +254,7 @@ O28: [all] "Duties & Taxes" / "GST Input Credit" / "CGST Input Credit" / "SGST I
 
 O29: [all] "Statutory Dues" / "GST Payable" / "CGST Payable" / "SGST Payable" / "IGST Payable" / "TDS Payable" / "TCS Payable" / "Professional Tax Payable" / "PF Payable" / "ESI Payable" / "Output CGST" / "Output SGST" / "Output IGST" -> R246 (Statutory Liabilities — Current Liabilities). Tax/statutory payables are current liabilities.
 
-O30: [all] "Provision for Income Tax" / "Provision for Tax" / "Provision for Taxation" / "Income Tax Provision" -> R250 (Provisions — Current Liabilities). Tax provisions are current liability provisions.
+O30: [all] Generic "Provisions — Current Liabilities" NOT covered by a higher-tier rule (e.g. gratuity provision, bonus provision, leave-encashment provision that has no income-tax nexus) -> R250 (Provisions — Current Liabilities). IMPORTANT: Income-tax-related provisions ("Provision for Taxation" / "Provision for Income Tax" / "Income Tax Provision") are covered by T1-R30 at tier 1 and route to R244, NOT R250 — do NOT apply O30 to those labels.
 
 O31: [all] "Stock in Trade" / "Stock-in-Trade" / "Inventory" / "Inventories" / "Closing Stock" / "Stock" (when in asset section) -> R200 (Inventories — Raw Materials). For trading companies, stock-in-trade maps to R200 (inventory row). NOTE: Row 200-201 may be formula rows — check the never_classify list. If R200 is in never_classify, route to the appropriate sub-row.
 
@@ -505,7 +505,7 @@ Reserve 0.95+ for exact rule matches only. If you classified using the accountin
 ### When to DOUBT
 Only when:
 1. An item could be EITHER an asset or a current liability and the section context doesn't disambiguate
-2. A deposit could be current (R215) or non-current (R234) and you can't tell the tenure
+2. A deposit could be current (R215) or non-current (R237/R238) and you can't tell the tenure — emit DOUBT; never target R234 (formula cell)
 3. An inventory item could be raw material (R194) or finished goods (R201) for a manufacturer
 4. A party name appears without clear creditor/debtor context
 
@@ -628,7 +628,7 @@ E35: {"description": "Net Prepaid Tax / TDS (B)", "source": "notes_bs", "industr
 E36: {"description": "Prepaid Expenses", "source": "notes_bs", "industry": "manufacturing"} -> R222. Reasoning: "Rule O8."
 E37: {"description": "Other Advances", "source": "notes_bs", "industry": "manufacturing"} -> R223. Reasoning: "Rule T1-R29."
 
-**Non Current Assets (R234-R238):**
+**Non Current Assets (R235-R238; R234 is a formula cell and is never a valid target — DOUBT or redirect to R237/R238 instead):**
 E38: {"description": "Capital Advances", "source": "notes_bs", "industry": "manufacturing"} -> R236. Reasoning: "Rule L41: Advance to supplier of capital goods -> R236."
 E39: {"description": "Security Deposits (Unsecured, Considered Good)", "source": "notes_bs", "industry": "manufacturing"} -> R237. Reasoning: "Rule L46."
 E40: {"description": "MAT Credit Entitlement", "source": "notes_bs", "industry": "manufacturing"} -> R238. Reasoning: "Rule T1-R58."
