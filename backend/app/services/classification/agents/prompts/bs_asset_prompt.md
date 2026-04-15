@@ -223,9 +223,13 @@ O3: [manufacturing] "Margin money deposits" -> R215 (Other Fixed Deposits)
 O4: [manufacturing] "Advances recoverable in cash or in kind" -> R219
 O5: [trading] "Gst Receivable" -> R219 (Advances recoverable in cash or in kind)
 O6: [all] "TCS Receivable" -> R221 (Advance Income Tax)
+O6a: [all] "Balances with Statutory Authorities" / "Statutory Balance Recoverable" / "Duties and Taxes Recoverable" / "Excise / CENVAT Credit Receivable" / "Sales Tax Recoverable" (when in Loans & Advances / current-asset section) → R221 (Advance Income Tax). Indian CMA uses R221 broadly for tax and statutory-duty recoverables (advance tax, TDS, TCS, excise balance, sales tax refund receivable). Supersedes any generic R223 routing for these specific labels.
 O7: [all] "TDS Receivable" -> R221 (Advance Income Tax)
 O8: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" -> R222 (Prepaid Expenses, III_A17d). R222's label IS "Prepaid Expenses" — any prepayment for goods/services consumed in the next period belongs here, regardless of industry.
-O9: [trading] "Share Investments" -> R186 (Other non current investments). NOTE: R233 is formula, use R186.
+O9: [trading] "Share Investments" IN GROUP / SUBSIDIARY / ASSOCIATE companies (per related-party note) → R186 (Investment in group companies / subsidiaries, II_C5). NOTE: R233 is formula, use R186. For share/MF investments in UNRELATED entities:
+  - Aggregate labels like "Mutual Funds and Shares" without group-company context → DOUBT with alternatives [R185 (Short Term Investments, if current/tradable), R186 (if long-term group holding)]. Per DOUBT meta-principle, the related-party status of aggregate holdings cannot be determined from the label alone.
+  - Clearly labeled "Mutual Fund" / "Liquid Fund" / "Debt MF" (unrelated) → R185 (Short Term Investments) if current, or DOUBT if tenure unclear.
+  - "Listed Equity Shares" / "Quoted Investments" in unrelated companies → R185 or DOUBT.
 O10: [manufacturing] "Security Deposits - Others" -> R238 (Other non current assets)
 O11: [manufacturing] "Security deposits - Unsecured, considered good" -> R238
 O12: [trading] "(B) Sundry Creditors for expenses" -> R249 (Creditors for Expenses)
