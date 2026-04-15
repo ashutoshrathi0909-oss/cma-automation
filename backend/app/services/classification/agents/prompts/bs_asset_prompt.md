@@ -338,8 +338,8 @@ L32: [all] "Prepaid Expenses" -> R223
 **Non Current Assets (229-238) — NOTE: R232 and R233 are NEVER valid targets:**
 L33: [all] "Long Term Investments" -> R186 (redirected from R233; R233 is formula)
 L34: [all] "Short Term Investments" -> R185
-L35: [all] "Fixed Deposits with banks & accrued interest (as margin money)" -> R234
-L36: [all] "Fixed Deposits with banks & accrued interest (under lien)" -> R234
+L35: [all] "Fixed Deposits with banks & accrued interest (as margin money)" -> DOUBT. R234 is a YELLOW formula cell (never a valid target). CA decision 2026-04-12: margin-money FDs vary by bank covenant and must be CA-reviewed. Emit cma_row: 0, cma_code: "DOUBT", reasoning: "FD as margin money: R234 is formula row; CA review required (tenure + encumbrance).", alternatives: [{cma_row: 215, confidence: 0.40}, {cma_row: 238, confidence: 0.35}].
+L36: [all] "Fixed Deposits with banks & accrued interest (under lien)" -> DOUBT. R234 is a YELLOW formula cell (never a valid target). CA decision 2026-04-12: lien-marked FDs must be CA-reviewed. Emit cma_row: 0, cma_code: "DOUBT", reasoning: "FD under lien: R234 is formula row; CA review required (tenure + lien scope).", alternatives: [{cma_row: 215, confidence: 0.40}, {cma_row: 238, confidence: 0.35}].
 L37: [all] "Loan / advance to directors" -> R235
 L38: [all] "Loan / advance to partners" -> R235
 L39: [all] "Loan / advance to proprietor" -> R235
