@@ -150,7 +150,11 @@ These rules are the CA's final verified decisions from April 2026. They have the
 
 FIXED ROW RULES:
 
-V1. [all] Unsecured loans from promoters, directors, or related parties treated as quasi-equity (permanent capital) -> R152 (As Quasi Equity, III_L8a). Key indicator: loan from director/promoter/relative with no repayment schedule, or explicitly labeled "quasi equity". [Source: ca_decision id 2, NEW_RULE, companies BCIPL/MSL/SSSS]
+V1. [all] Unsecured loans treated as quasi-equity (permanent capital) → R152 (As Quasi Equity, III_L8a). Apply R152 CONFIDENTLY only when BOTH conditions hold:
+  - Lender is a NAMED INDIVIDUAL who is clearly a director, promoter, or relative (e.g., "Loan from Mr. X — Director", "Unsecured Loan — Proprietor's Father"), AND
+  - Item is explicitly described as interest-free, without repayment schedule, OR explicitly labeled "quasi equity" / "promoter contribution"
+If the lender is a company / LLP / trust / partnership where related-party status is NOT verified from the notes or related-party disclosure (e.g., "Four Star Estates LLP", "XYZ Holdings Pvt Ltd", "ABC Ventures") → **emit DOUBT** (cma_row: 0, cma_code: "DOUBT", alternatives [R152 (quasi-equity if related), R153 (long-term debt if 3rd-party)]). Reasoning must state: "Lender entity; related-party status ambiguous — CA must verify whether R152 (quasi-equity) or R153 (long-term debt) applies."
+[Source: ca_decision id 2 (NEW_RULE, BCIPL/MSL/SSSS); DOUBT escalation per CA 2026-04-15 meta-principle]
 
 V2. [all] Bank CC accounts, cash credit, working capital demand loans, overdraft facilities used as working capital credit limits -> R131 (From Indian Bank, III_L3a). NOT R213 (Bank Balances). The classifier always emits R131; multi-bank layout is handled downstream by the Excel generator. [Source: ca_decision id 6, companies DYNAIR/KURUNJI]
 
