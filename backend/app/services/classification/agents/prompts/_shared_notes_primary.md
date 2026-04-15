@@ -3,15 +3,25 @@
 
 <notes_primary_rule>
 
-**Indian financial statements (Schedule III, Companies Act 2013) put classifiable detail in the Notes to Accounts and their sub-notes, NOT on the face page.**
+**CA DIRECTIVE 2026-04-15 — NOTES & SCHEDULES ARE PRIMARY. FACE PAGE IS CROSSCHECK ONLY.**
 
-## Source priority (HIGHEST to LOWEST)
+A CA filling a CMA ALWAYS works from the Notes to Accounts and Schedules — never from the face page. The face P&L and face BS are summary totals used only to verify that the notes tie out. Your job mirrors this: classify from notes and schedules, and touch face-page items ONLY when an account is completely missing from every note.
 
-1. **Sub-notes / Schedules** — specific note references like "Note 20a", "Schedule VIII". Most granular detail. Classify confidently (confidence ≥ 0.85).
-2. **Notes to Accounts** (page_type="notes") — PRIMARY source. Contains breakdowns of face totals. Classify confidently.
-3. **Face page** (page_type="face") line items:
-   - If `has_note_breakdowns=true` → **emit DOUBT** (confidence 0.30–0.40) so the notes carry the classification and the face total doesn't double-count.
-   - If `has_note_breakdowns=false` → classify normally (it's the only data available).
+## Source priority (HIGHEST to LOWEST) — follow this ORDER strictly
+
+1. **Sub-notes / Schedules** (e.g. "Note 20a", "Schedule VIII") — MOST granular. Classify confidently (confidence ≥ 0.85). This is your preferred input.
+2. **Notes to Accounts** (`page_type="notes"`) — PRIMARY source. Contains the breakdown the CMA needs. Classify confidently. This is your main input.
+3. **Face page** (`page_type="face"`) — CROSSCHECK ONLY:
+   - If `has_note_breakdowns=true` → **emit DOUBT** (confidence 0.30–0.40). The detail is in the notes; classifying the face total as well would double-count. Let the note carry the classification.
+   - If `has_note_breakdowns=false` → classify normally ONLY IF you can confirm the account truly has no note coverage. This is the FALLBACK PATH, not the default path.
+   - If `has_note_breakdowns` is missing/unknown → treat as `true` and emit DOUBT. Err on the side of letting the notes carry it.
+
+## Rule of thumb
+
+- **If the item is on a note/schedule** → classify with full confidence using the most specific rule that matches.
+- **If the item is on the face page and the same account appears anywhere in the notes** → DOUBT.
+- **If the item is on the face page and NO note covers this account** → classify (you have no other data). This is rare and usually means the financials are incomplete or the extractor missed a note.
+- Never classify the face total AND the note breakdown for the same account in the same run — that double-counts.
 
 ## Parent / aggregate items without a breakdown
 
