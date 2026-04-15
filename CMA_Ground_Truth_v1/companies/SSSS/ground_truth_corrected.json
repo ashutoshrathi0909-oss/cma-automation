@@ -581,7 +581,7 @@
       "original_cma_row": 36
     },
     {
-      "cma_row": 101,
+      "cma_row": 100,
       "cma_code": "II_H3",
       "cma_field_name": "Deferred Tax Asset",
       "raw_text": "(d) Deferred tax",
@@ -595,7 +595,7 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "FY22-23: DTA = 0.062 Cr (P&L deferred tax was -6.20 L = net DTA creation). FY23-24: DTA = 0.019 Cr. FY24-25: DTA = 0 (the deferred tax was positive/combined with prior tax in Row 36 instead).",
+      "reasoning": "FY22-23: DTA = 0.062 Cr (P&L deferred tax was -6.20 L = net DTA creation). FY23-24: DTA = 0.019 Cr. FY24-25: DTA = 0 (the deferred tax was positive/combined with prior tax in Row 36 instead). | [CA 2026-04-15] Updated from R101->R100: (e) Deferred tax / 'Deferred Tax' P&L charge -> R100 per CA_VERIFIED_2026 rule 12",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 37
@@ -1081,7 +1081,7 @@
       "original_cma_row": 220
     },
     {
-      "cma_row": 222,
+      "cma_row": 223,
       "cma_code": "III_A17d",
       "cma_field_name": "Prepaid Expenses",
       "raw_text": "Other current assets",
@@ -1095,7 +1095,7 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Split — Prepaid portion from FY22-23 Other Current Assets. Only non-zero in FY22-23 (0.065 Cr).",
+      "reasoning": "Split — Prepaid portion from FY22-23 Other Current Assets. Only non-zero in FY22-23 (0.065 Cr). | [CA 2026-04-15] Updated from R222->R223: 'Other current assets' label matches R223 canonical 'Other Advances / current asset' — not R222 (Prepaid Expenses)",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 221
