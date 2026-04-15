@@ -201,7 +201,7 @@
       "original_cma_row": 23
     },
     {
-      "cma_row": 71,
+      "cma_row": 73,
       "cma_code": "II_D5",
       "cma_field_name": "Others",
       "raw_text": "(a) Auditor's Remuneration",
@@ -215,13 +215,13 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 2 of 12 for SGA — Audit fees are always SGA.",
+      "reasoning": "Component 2 of 12 for SGA — Audit fees are always SGA. | [CA 2026-04-15] Updated from R71->R73: Auditor's Remuneration -> R73 per CA_VERIFIED_2026 rule 16",
       "validation_issue": null,
       "normalization_confidence": "likely",
       "original_cma_row": 23
     },
     {
-      "cma_row": 71,
+      "cma_row": 70,
       "cma_code": "II_D5",
       "cma_field_name": "Others",
       "raw_text": "(b) Advertisement and Sales Promotion Expenses",
@@ -235,7 +235,7 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 3 of 12 for SGA — Advertising and sales promotion.",
+      "reasoning": "Component 3 of 12 for SGA — Advertising and sales promotion. | [CA 2026-04-15] Updated from R71->R70: Advertisement and Sales Promotion -> R70 per CA rule 23",
       "validation_issue": null,
       "normalization_confidence": "likely",
       "original_cma_row": 23
@@ -421,7 +421,7 @@
       "original_cma_row": 27
     },
     {
-      "cma_row": 84,
+      "cma_row": 83,
       "cma_code": "II_F2",
       "cma_field_name": "Interest on Working capital loans",
       "raw_text": "(a). Finance Costs",
@@ -435,7 +435,7 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Split — Working capital interest portion of total finance costs. OD interest on HDFC and HSBC accounts.",
+      "reasoning": "Split — Working capital interest portion of total finance costs. OD interest on HDFC and HSBC accounts. | [CA 2026-04-15] Updated from R84->R83: Finance Costs -> R83 per CA rule 17 (bare label; breakdown in notes)",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 28
@@ -501,7 +501,7 @@
       "original_cma_row": 30
     },
     {
-      "cma_row": 93,
+      "cma_row": 89,
       "cma_code": "II_G5",
       "cma_field_name": "Others",
       "raw_text": "Loss on disposal of fixed assets (estimated)",
@@ -515,7 +515,7 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Small amount (Rs 56,666) appearing only in FY24-25. Likely loss on disposal of motor vehicle: Dep Schedule shows vehicle deletion (Gross 17,81,652 - Dep Write-back 17,18,978 = NBV 62,674). The loss = NBV minus sale proceeds. Exact source not confirmed in FS notes. Marked as unmatched — manually verify from sale deed or vehicle transfer records.",
+      "reasoning": "Small amount (Rs 56,666) appearing only in FY24-25. Likely loss on disposal of motor vehicle: Dep Schedule shows vehicle deletion (Gross 17,81,652 - Dep Write-back 17,18,978 = NBV 62,674). The loss = NBV minus sale proceeds. Exact source not confirmed in FS notes. Marked as unmatched — manually verify from sale deed or vehicle transfer records. | [CA 2026-04-15] Updated from R93->R89: Loss on disposal of fixed assets -> R89 per CA_VERIFIED_2026 rule 2",
       "validation_issue": "Amount Rs 56,666 does not exactly match any single FS line item. Best estimate is loss on vehicle disposal (NBV Rs 62,674 minus estimated sale proceeds of Rs 6,008).",
       "normalization_confidence": "likely",
       "original_cma_row": 31
@@ -641,7 +641,7 @@
       "original_cma_row": 101
     },
     {
-      "cma_row": 131,
+      "cma_row": 136,
       "cma_code": "III_L3a",
       "cma_field_name": "From Indian Bank",
       "raw_text": "Current Maturities of Long-term Debt (CMLTD)",
@@ -655,7 +655,7 @@
       "financial_year": "2024-25",
       "industry_specific": true,
       "industry_note": "CMA standard requires Current Maturities of Long-term Debt (CMLTD) to be shown under Current Liabilities, even though the BS may show the full term loan balance under Non-current Liabilities. The CA reclassified ~9.12 Cr of term loan instalments due within 1 year from LT Borrowings (Note 2) to CMA Row 101.",
-      "reasoning": "Component 3 of 3 — CMLTD reclassified from Note 2 Long-term Borrowings. This explains why CMA Row 101 (48.93 Cr) > BS Short-term Borrowings (39.81 Cr). The difference of 9.12 Cr = current portion of bank term loans. Only applicable in FY24-25; FY22-23 and FY23-24 had CMA Row 101 = BS ST Borrowings exactly.",
+      "reasoning": "Component 3 of 3 — CMLTD reclassified from Note 2 Long-term Borrowings. This explains why CMA Row 101 (48.93 Cr) > BS Short-term Borrowings (39.81 Cr). The difference of 9.12 Cr = current portion of bank term loans. Only applicable in FY24-25; FY22-23 and FY23-24 had CMA Row 101 = BS ST Borrowings exactly. | [CA 2026-04-15] Updated from R131->R136: Current Maturities of Long-term Debt -> R136 per CA_OVERRIDE O3",
       "validation_issue": "CMLTD amount (9.12 Cr) is derived as CMA Row 101 minus BS Note 3 total. Cannot be independently verified from the FS notes which don't show current/non-current bifurcation of term loans. For FY22-23 and FY23-24, no CMLTD reclassification was needed (CMA = BS exactly).",
       "normalization_confidence": "uncertain",
       "original_cma_row": 101
