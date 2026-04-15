@@ -4421,7 +4421,7 @@
       "original_cma_row": 245
     },
     {
-      "cma_row": 249,
+      "cma_row": 250,
       "cma_code": "III_L10h",
       "cma_field_name": "Creditors for Expenses",
       "raw_text": "(b) Outstanding expenses - (i) Salary and wages Payable",
@@ -4435,13 +4435,13 @@
       "financial_year": "2021-22",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 1/2 — Salary payable to staff",
+      "reasoning": "Component 1/2 — Salary payable to staff | [CA 2026-04-15] Updated from R249->R250: Outstanding expenses -> R250 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 248
     },
     {
-      "cma_row": 249,
+      "cma_row": 250,
       "cma_code": "III_L10h",
       "cma_field_name": "Creditors for Expenses",
       "raw_text": "(b) Outstanding expenses - (ii) Other Expenses Payable",
@@ -4455,13 +4455,13 @@
       "financial_year": "2021-22",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 2/2 — Other accrued expenses. Sum: 1852.47+1575.67=3428.14",
+      "reasoning": "Component 2/2 — Other accrued expenses. Sum: 1852.47+1575.67=3428.14 | [CA 2026-04-15] Updated from R249->R250: Outstanding expenses -> R250 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 248
     },
     {
-      "cma_row": 249,
+      "cma_row": 250,
       "cma_code": "III_L10h",
       "cma_field_name": "Creditors for Expenses",
       "raw_text": "(b) Outstanding expenses - (i) Salary and wages Payable",
@@ -4475,13 +4475,13 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 1/2",
+      "reasoning": "Component 1/2 | [CA 2026-04-15] Updated from R249->R250: Outstanding expenses -> R250 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 248
     },
     {
-      "cma_row": 249,
+      "cma_row": 250,
       "cma_code": "III_L10h",
       "cma_field_name": "Creditors for Expenses",
       "raw_text": "(b) Outstanding expenses - (ii) Other Expenses Payable",
@@ -4495,13 +4495,13 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 2/2. Sum: 2158.59+1981.79=4140.38",
+      "reasoning": "Component 2/2. Sum: 2158.59+1981.79=4140.38 | [CA 2026-04-15] Updated from R249->R250: Outstanding expenses -> R250 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 248
     },
     {
-      "cma_row": 249,
+      "cma_row": 250,
       "cma_code": "III_L10h",
       "cma_field_name": "Creditors for Expenses",
       "raw_text": "Outstanding expenses (Salary + Other)",
@@ -4515,7 +4515,7 @@
       "financial_year": "2023-24",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Direct match — Expense creditors from Note 9",
+      "reasoning": "Direct match — Expense creditors from Note 9 | [CA 2026-04-15] Updated from R249->R250: Outstanding expenses -> R250 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 248
