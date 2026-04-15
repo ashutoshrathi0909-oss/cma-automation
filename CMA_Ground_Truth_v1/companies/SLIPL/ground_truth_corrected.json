@@ -1961,7 +1961,7 @@
       "original_cma_row": 73
     },
     {
-      "cma_row": 215,
+      "cma_row": 214,
       "cma_code": "III_A16d",
       "cma_field_name": "Other Fixed Deposits",
       "raw_text": "Margin money deposits",
@@ -1975,7 +1975,7 @@
       "financial_year": "2023-24",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Direct match — Margin money deposits (likely against bank guarantees/LC facilities) from Note 15 = 5,427.73 in '000 = 54.28L",
+      "reasoning": "Direct match — Margin money deposits (likely against bank guarantees/LC facilities) from Note 15 = 5,427.73 in '000 = 54.28L | [CA 2026-04-15] Updated from R215->R214: Margin money deposits = lien-restricted FD -> R214 (Fixed Deposit under lien) per CMA label match",
       "validation_issue": null,
       "normalization_confidence": "likely",
       "original_cma_row": 74
