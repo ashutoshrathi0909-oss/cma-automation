@@ -2641,7 +2641,7 @@
       "original_cma_row": 115
     },
     {
-      "cma_row": 122,
+      "cma_row": 125,
       "cma_code": "III_L2b",
       "cma_field_name": "Balance transferred from profit and loss a/c",
       "raw_text": "Surplus - Closing Balance",
@@ -2655,13 +2655,13 @@
       "financial_year": "2021-22",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings)",
+      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings) | [CA 2026-04-15 R5] R122->R125: R122 not in bs_liability whitelist (formula-cell equivalent per r122_special_note). Per V9/V10, Surplus Closing Balance routes to one of [R122, R125]; with R122 forbidden, canonical choice is R125 (Other Reserve).",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 121
     },
     {
-      "cma_row": 122,
+      "cma_row": 125,
       "cma_code": "III_L2b",
       "cma_field_name": "Balance transferred from profit and loss a/c",
       "raw_text": "Surplus - Closing Balance",
@@ -2675,13 +2675,13 @@
       "financial_year": "2022-23",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings)",
+      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings) | [CA 2026-04-15 R5] R122->R125: R122 not in bs_liability whitelist (formula-cell equivalent per r122_special_note). Per V9/V10, Surplus Closing Balance routes to one of [R122, R125]; with R122 forbidden, canonical choice is R125 (Other Reserve).",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 121
     },
     {
-      "cma_row": 122,
+      "cma_row": 125,
       "cma_code": "III_L2b",
       "cma_field_name": "Balance transferred from profit and loss a/c",
       "raw_text": "Surplus - Closing Balance",
@@ -2695,7 +2695,7 @@
       "financial_year": "2023-24",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings)",
+      "reasoning": "Direct match — P&L balance carried to B/S (retained earnings) | [CA 2026-04-15 R5] R122->R125: R122 not in bs_liability whitelist (formula-cell equivalent per r122_special_note). Per V9/V10, Surplus Closing Balance routes to one of [R122, R125]; with R122 forbidden, canonical choice is R125 (Other Reserve).",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 121

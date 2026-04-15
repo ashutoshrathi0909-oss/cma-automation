@@ -701,7 +701,7 @@
       "original_cma_row": 107
     },
     {
-      "cma_row": 244,
+      "cma_row": 99,
       "cma_code": "III_L10c",
       "cma_field_name": "Provision for Taxation",
       "raw_text": "Current tax",
@@ -715,13 +715,13 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "FY24-25: Zero. FY23-24: 1.83 Cr = current tax provision (Rs 18,271,126). FY22-23: 1.44 Cr from BS Note 7 (Short-term Provisions). The CMA shows tax provision in CL when there's an outstanding liability; in FY24-25 the tax was either paid or netted against advance tax.",
+      "reasoning": "FY24-25: Zero. FY23-24: 1.83 Cr = current tax provision (Rs 18,271,126). FY22-23: 1.44 Cr from BS Note 7 (Short-term Provisions). The CMA shows tax provision in CL when there's an outstanding liability; in FY24-25 the tax was either paid or netted against advance tax. | [CA 2026-04-15 R5] R244->R99: P&L current-tax line on Cons_PL sheet -> R99 per rule 116 (Income Tax provision)",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 108
     },
     {
-      "cma_row": 244,
+      "cma_row": 99,
       "cma_code": "III_L10c",
       "cma_field_name": "Provision for Taxation",
       "raw_text": "Current tax expense",
@@ -735,7 +735,7 @@
       "financial_year": "2023-24",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "FY23-24: Current tax provision carried on BS = Rs 18,271,126 = 1.83 Cr.",
+      "reasoning": "FY23-24: Current tax provision carried on BS = Rs 18,271,126 = 1.83 Cr. | [CA 2026-04-15 R5] R244->R99: P&L current-tax line on Cons_PL sheet -> R99 per rule 116 (Income Tax provision)",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": 108
