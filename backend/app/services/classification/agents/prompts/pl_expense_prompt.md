@@ -179,7 +179,13 @@ CA-verified decisions from April 2026. HIGHEST PRIORITY. These override all lowe
 13. [CA_VERIFIED_2026] [all] "Finished Goods Closing" / "Closing Stock" / "Less: Closing Stock" / "Stock In Trade" (closing context) -> R59 (Finished Goods Closing Balance). NEVER R201. R201 auto-picks from R59. (id 24)
 14. [CA_VERIFIED_2026] [all] "Raw Materials Consumed (Indigenous)" / "Cost of Raw Materials Consumed" / "Purchases" / "Goods Purchased" / "To Purchases" -> R42 (Raw Materials Consumed (Indigenous)). (id 34)
 15. [CA_VERIFIED_2026] [all] "Stock in Process Closing" / "Work in Progress (Closing)" / "Closing Inventories - Work in Progress" -> R54 (Stock in process Closing Balance). (id 35)
-16. [CA_VERIFIED_2026] [all] "Audit Fees" / "Auditor's Remuneration" / "Payment to Auditors" / "Salary to Partners" -> R73 (Audit Fees & Directors Remuneration). (id 36)
+16. [CA_VERIFIED_2026] [all] "Audit Fees" / "Auditor's Remuneration" / "Payment to Auditors" / "Statutory Audit Fee" / "Tax Audit Fee" / "Salary to Partners" / "Director Remuneration" / "Directors Remuneration" / "Remuneration to Directors" / "Commission to Directors" / "Directors Fees" -> R73 (Audit Fees & Directors Remuneration). (id 36)
+
+**R73 SCOPING (CA 2026-04-15):** R73 is ONLY for (a) payments to auditors/audit firm, or (b) remuneration/fees paid to directors/partners. It is NOT a general professional-services bucket.
+- "Professional Fees" / "Legal & Professional Charges" / "Consulting Fees" / "Legal Fees" / "Professional Charges" → R71 (Others — Admin), per rule 164. Do NOT route these to R73 even though they contain the word "Professional".
+- "Consultancy Charges" / "Advisory Fees" / "Retainership Fee" → R71.
+- "Professional Tax" (PT paid to govt) → NOT an expense label; that's a statutory liability (BS side), not R73.
+Test: if the recipient is the statutory auditor or a director/partner, → R73. Otherwise → R71.
 17. [CA_VERIFIED_2026] [all] "Bank Charges" / "Interest on delay payment" / "Credit card charges" / "Other Charges (Finance)" -> R85 (Bank Charges). (id 44)
 18. [CA_VERIFIED_2026] [all] "Loss on Exchange Fluctuations" / "Loss on Foreign Currency" / "Exchange Rate Fluctuation Loss" -> R91 (Loss on Exchange Fluctuations). (id 45)
 19. [CA_VERIFIED_2026] [all] "Donation" / "CSR Expenses" / "Corporate Social Responsibility" / "Contribution Towards CSR" -> R93 (Others -- Non Operating Expenses). (id 46)
@@ -218,6 +224,8 @@ CA override rules from the previous interview round. Apply when no CA_VERIFIED_2
 44. [CA_OVERRIDE] [manufacturing] "(iii) Job Work Charges" -> R46 (Processing / Job Work Charges)
 45. [CA_OVERRIDE] [manufacturing] "Job Work Charges & Contract Labour" -> R46 (Processing / Job Work Charges)
 46. [CA_OVERRIDE] [all] "Material Handling Charges" -> R46 (Processing / Job Work Charges)
+46a. [CA_VERIFIED_2026] [manufacturing] "Hamali Charges" / "Hamali" / "Handling and Loading Charges" / "Loading & Unloading Charges" / "Cooli Charges" / "Coolie Charges" -> R47 (Freight and Transportation Charges). Hamali = labor for loading/unloading goods, part of the inward-freight chain in Indian manufacturing logistics. Not R45 (Wages — those are shop-floor workers) and not R49 (Other Mfg — those are residual). CA 2026-04-15.
+46b. [CA_VERIFIED_2026] [manufacturing] "Warehouse Charges" / "Warehouse Rent" / "Godown Rent" / "Storage Charges" / "Warehousing Expenses" -> R49 (Others — Manufacturing Expenses). Warehouse storage rental is a manufacturing-support cost but not freight/transportation, so R49 (Others Mfg) is the right bucket. Not R47 (which is specifically freight/transport). CA 2026-04-15.
 47. [CA_OVERRIDE] [manufacturing] "(b) Carriage Inwards" -> R47 (Freight and Transportation Charges)
 48. [CA_OVERRIDE] [manufacturing] "Carriage Inwards" -> R47 (Freight and Transportation Charges)
 49. [CA_OVERRIDE] [manufacturing] "Unloading Charges - Mathadi" -> R47 (Freight and Transportation Charges)
@@ -967,4 +975,6 @@ Before returning, self-verify:
 4. Every cma_row is in the valid_categories table (or is 0 for DOUBT).
 5. The reasoning field references the specific rule number and tier.
 6. Items matching DOUBT rules (23-26) have cma_row: 0 regardless of confidence.
+7. **Staff-Welfare industry guard (CA 2026-04-15):** For any item whose description contains "Staff Welfare" / "Employee Welfare" / "Workmen Welfare" / "Staff Amenities", check the batch-level industry_type. If industry_type == "manufacturing" AND you classified to R67 or R71 → RE-CLASSIFY to R45 before returning. This guard is mandatory because "Employee Benefits Expense" section headings mislead the model into admin-side reasoning. Manufacturing Staff Welfare is ALWAYS R45 per the Staff Welfare rule, regardless of which note it appears under.
+8. **Professional-fees scope guard (CA 2026-04-15):** For any item whose description is "Professional Fees" / "Legal & Professional Charges" / "Consulting Fees" / "Legal Fees" without the word "Audit" or "Director" — if you classified to R73, RE-CLASSIFY to R71. R73 is reserved for auditors and directors only.
 </task>
