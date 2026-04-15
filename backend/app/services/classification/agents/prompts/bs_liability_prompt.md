@@ -517,17 +517,17 @@ Example 7 (trading, R121):
 Input: {"id": "ex07", "description": "General Reserve", "amount": 200000, "section": "Note 1A - Reserves and Surplus", "page_type": "notes_bs", "industry_type": "trading"}
 Output: {"id": "ex07", "cma_row": 121, "cma_code": "III_L2a", "confidence": 0.97, "sign": 1, "reasoning": "Matches LEGACY rule L11: General Reserve -> R121.", "alternatives": []}
 
-Example 8 (manufacturing, R122):
+Example 8 (manufacturing, DOUBT — P&L appropriation sub-item):
 Input: {"id": "ex08", "description": "Surplus - Add: Profit After Tax for the year", "amount": 12500000, "section": "Note 2 - Reserves & Surplus", "page_type": "notes_bs", "industry_type": "manufacturing"}
-Output: {"id": "ex08", "cma_row": 122, "cma_code": "III_L2b", "confidence": 0.95, "sign": 1, "reasoning": "Matches LEGACY rule L12: Profit transferred to reserves -> R122. Surplus sub-component adds to P&L balance carried forward.", "alternatives": []}
+Output: {"id": "ex08", "cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35, "sign": 1, "reasoning": "P&L appropriation sub-item on a BS note. Router should have sent this to pl_expense (R106 Profit Before Tax path). If it arrives here, emit DOUBT: R122 is not in this agent's whitelist (see r122_special_note) and the item is not a bs_liability responsibility. Candidate rows on resolution: pl_expense R106 (retained profit for the year) or BS R122 (retained earnings balance) depending on whether the figure is an annual addition or a cumulative balance.", "alternatives": [{"cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35}]}
 
-Example 9 (trading, R122):
+Example 9 (trading, DOUBT — matches V10 directive):
 Input: {"id": "ex09", "description": "Profit & Loss Account (Brought Forward)", "amount": 3400000, "section": "Schedule-2 - Reserves & Surplus", "page_type": "notes_bs", "industry_type": "trading"}
-Output: {"id": "ex09", "cma_row": 122, "cma_code": "III_L2b", "confidence": 0.94, "sign": 1, "reasoning": "Matches LEGACY rule L12: Profit & Loss A/c (Credit Balance) -> R122. Trading company retained earnings.", "alternatives": []}
+Output: {"id": "ex09", "cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 DOUBT rule V10 (Brought Forward P&L balance). R122 is not in this agent's whitelist (see r122_special_note). Candidate rows on resolution: R122 (cumulative retained earnings) or R125 (other reserve when segregated). CA must decide.", "alternatives": [{"cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35}]}
 
-Example 10 (manufacturing, R122):
+Example 10 (manufacturing, DOUBT — matches V9 directive):
 Input: {"id": "ex10", "description": "Surplus/(Deficit) in Profit and Loss", "amount": 8500000, "section": "Notes to BS", "page_type": "notes_bs", "industry_type": "manufacturing"}
-Output: {"id": "ex10", "cma_row": 122, "cma_code": "III_L2b", "confidence": 0.93, "sign": 1, "reasoning": "Matches LEGACY rule L12: Surplus in Profit and Loss is the balance transferred from P&L a/c -> R122.", "alternatives": []}
+Output: {"id": "ex10", "cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 DOUBT rule V9 (Surplus in P&L). R122 is not in this agent's whitelist (see r122_special_note). Candidate rows on resolution: R122 (retained earnings) or pl_expense R106 if the figure is the current-year addition rather than cumulative balance. CA must decide.", "alternatives": [{"cma_row": 0, "cma_code": "DOUBT", "confidence": 0.35}]}
 
 Example 11 (manufacturing, R123):
 Input: {"id": "ex11", "description": "Securities Premium Reserve", "amount": 5000000, "section": "Note 4 - Reserves & Surplus", "page_type": "notes_bs", "industry_type": "manufacturing"}
