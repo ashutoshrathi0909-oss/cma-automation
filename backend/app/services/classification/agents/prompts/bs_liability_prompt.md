@@ -210,7 +210,7 @@ O12. [all] "From [Name] - Housing Loan" / pattern matching "Housing Loan" / "Hom
 
 O13. [all] "From [Name] - Car Loan" / "Car Loan" / "Vehicle Loan" / "Auto Loan" → R137 (Term Loans from Banks — medium and long term). Vehicle loans are medium-term secured loans.
 
-O14. [all] "Current Account" / "O/D Account" / "Overdraft" / "OD A/c" / "Cash Credit" / "CC Account" (when in loan/liability section) → R152 (Short-term Bank Borrowings). Working capital facilities are short-term borrowings.
+O14. [REMOVED — previously routed CC/OD to R152 (Quasi Equity), which is wrong row. CA_VERIFIED_2026 rule V2 already routes these to R131 (Working Capital Bank Finance) at higher tier priority. Do not re-add.]
 
 O15. [all] "Other Financial Liabilities" / "Other Financial Liabilities (Non-Current)" → DOUBT. Ind AS aggregate label that could contain multiple liability types. Emit cma_row: 0, alternatives [{cma_row: 149, confidence: 0.40}, {cma_row: 153, confidence: 0.35}].
 </tier_2>
@@ -348,13 +348,13 @@ For CMA purposes:
 **Tally-specific liability labels:**
 - "SECURED LOAN :" / "UNSECURED LOAN :" — These are Tally section HEADERS, not loan items. Skip them.
 - Individual loans appear as "From [Lender Name] - [Loan Type]" — classify based on the loan type.
-- "Current Account" in liabilities context means bank overdraft/CC facility (R152), NOT the proprietor's capital account.
+- "Current Account" in liabilities context means bank overdraft/CC facility (R131, Working Capital Bank Finance — per V2), NOT the proprietor's capital account. R152 is Quasi Equity and is NEVER the right destination for CC/OD.
 
 **Indian loan types:**
 - Housing Loan / Home Loan → R137 (Term Loans, long-term)
 - Car Loan / Vehicle Loan → R137 (Term Loans, medium-term)
-- Cash Credit (CC) / Overdraft (OD) → R152 (Short-term Bank Borrowings)
-- Personal Loan → R137 if > 1 year tenor, R152 if < 1 year
+- Cash Credit (CC) / Overdraft (OD) → R131 (Working Capital Bank Finance, III_L3a — per V2). NEVER R152.
+- Personal Loan → R137 if > 1 year tenor, R154 (Short Term Debt under Unsecured Loans) if < 1 year. NEVER R152 (R152 is quasi-equity).
 </indian_accounting_context>
 
 <accounting_brain>
