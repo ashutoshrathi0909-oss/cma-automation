@@ -98,3 +98,13 @@ def test_specialist_agents_wire_agent_key(monkeypatch):
     ]:
         agent = cls()
         assert agent._agent_key == key, f"{cls.__name__} did not set agent_key"
+
+
+def test_notes_primary_placeholder_substituted(tmp_path: Path, monkeypatch):
+    monkeypatch.setenv("OPENROUTER_API_KEY", "dummy")
+    p = tmp_path / "p.md"
+    p.write_text("X\n{{notes_primary}}\nY", encoding="utf-8")
+    agent = BaseAgent(name="t", prompt_path=str(p), agent_key="pl_income")
+    assert "{{notes_primary}}" not in agent._system_prompt
+    assert "Notes to Accounts" in agent._system_prompt
+    assert "cell_note" in agent._system_prompt

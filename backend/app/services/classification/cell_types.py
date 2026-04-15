@@ -56,3 +56,17 @@ def valid_rows_csv(agent_key: str) -> str:
 
 def section_tree(agent_key: str) -> str:
     return get_agent_context(agent_key)["section_tree"]
+
+
+_SHARED_NOTES_PRIMARY_PATH = (
+    Path(__file__).parent / "agents" / "prompts" / "_shared_notes_primary.md"
+)
+
+
+def shared_notes_primary() -> str:
+    """Return the shared Notes-Primary rule block, read fresh each call.
+
+    Kept uncached so the prompt can be edited without restarting the worker
+    during development. Cost is a single small file read per agent init.
+    """
+    return _SHARED_NOTES_PRIMARY_PATH.read_text(encoding="utf-8")

@@ -88,6 +88,7 @@ class BaseAgent:
             prompt
             .replace("{{section_structure}}", ctx["section_tree"])
             .replace("{{valid_output_rows}}", cell_types.valid_rows_csv(self._agent_key))
+            .replace("{{notes_primary}}", cell_types.shared_notes_primary())
         )
 
     def _validate_whitelist(self, classifications: list[dict]) -> list[dict]:
