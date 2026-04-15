@@ -219,7 +219,7 @@ Second priority. Apply only if no T1 rule matches.
 
 O1: [trading] "Bank Interest" -> R215 (Other Fixed Deposits)
 O2: [trading] "FD Accrued Interest (reclassified from Investments to Kotak FD)" -> R215
-O3: [manufacturing] "Margin money deposits" -> R215 (Other Fixed Deposits)
+O3: [all] "Margin money deposits" / "Margin Money FD" / "FD — Margin Money" -> R214 (Fixed Deposit under lien, III_A16c). Margin money is by definition lien-restricted (held as bank collateral for L/C, BG, or working-capital limits), so R214 is the canonical row. NOT R215. CA decision 2026-04-15. Supersedes the prior [manufacturing]-scoped O3 rule that routed to R215.
 O4: [manufacturing] "Advances recoverable in cash or in kind" -> R219
 O5: [trading] "Gst Receivable" -> R219 (Advances recoverable in cash or in kind)
 O6: [all] "TCS Receivable" -> R221 (Advance Income Tax)
@@ -236,7 +236,7 @@ O12: [trading] "(B) Sundry Creditors for expenses" -> R249 (Creditors for Expens
 O13: [manufacturing] "Creditors for Expenses" -> R249
 O14: [manufacturing] "Expenses Payable" -> R249
 O15: [manufacturing] "Leave Encashment" -> R249 (Creditors for Expenses)
-O16: [manufacturing] "Outstanding expenses (Salary + Other)" -> R249
+O16: [all] "Outstanding Expenses" / "Outstanding expenses (Salary + Other)" / "Salary Payable" / "Wages Payable" / "Other Expenses Payable" / "Accrued Expenses" -> R250 (Other Current Liabilities, III_A18b). CA decision 2026-04-15: outstanding/accrued expenses are R250, NOT R249. R249 (Creditors for Expenses) is for unbilled supplier services specifically. Supersedes the prior [manufacturing]-scoped O16 rule that routed to R249.
 O17: [manufacturing] "Provision for Gratuity (short-term)" -> R250 (Other current liabilities)
 O18: [manufacturing] "Other Non-Current Assets" -> R237 (Security deposits with government departments). NOT R238. For manufacturing companies, generic NCA labels map to R237 per CA convention.
 O19: [manufacturing] "Long-term Loans and Advances" -> R237 (Security deposits with government departments). NOT R238. Same convention as O18 — generic long-term advance labels → R237.
@@ -256,7 +256,7 @@ O27: [all] "Gem Caution Deposit" / "Caution Deposit" / "Security Deposit" / "Tel
 
 O28: [all] "Duties & Taxes" / "GST Input Credit" / "CGST Input Credit" / "SGST Input Credit" / "IGST Input Credit" / "Input CGST" / "Input SGST" / "Input IGST" / "TDS Receivable" / "TCS Receivable" / "Advance Tax" / "Tax Deducted at Source" / "Service Tax Input Credit" -> R221 (Advance payment of Tax). All tax receivables/input credits are advance tax payments.
 
-O29: [all] "Statutory Dues" / "GST Payable" / "CGST Payable" / "SGST Payable" / "IGST Payable" / "TDS Payable" / "TCS Payable" / "Professional Tax Payable" / "PF Payable" / "ESI Payable" / "Output CGST" / "Output SGST" / "Output IGST" -> R246 (Statutory Liabilities — Current Liabilities). Tax/statutory payables are current liabilities.
+O29: [all] "Statutory Dues" / "(a) Statutory Dues" / "(b) Statutory Dues" / "GST Payable" / "CGST Payable" / "SGST Payable" / "IGST Payable" / "TDS Payable" / "TCS Payable" / "Professional Tax Payable" / "PF Payable" / "ESI Payable" / "Output CGST" / "Output SGST" / "Output IGST" -> R246 (Statutory Liabilities — Current Liabilities). Tax/statutory payables are current liabilities. **IMPORTANT: "Statutory Dues" routes to R246 EVEN WHEN the parent section is "Short-term Provisions" or "Provisions"** — don't confuse with R244 (Provision for Taxation). R244 is ONLY for explicit income-tax provisions (not generic statutory dues). If the label is literally "Statutory Dues" (anywhere), use R246.
 
 O30: [all] Generic "Provisions — Current Liabilities" NOT covered by a higher-tier rule (e.g. gratuity provision, bonus provision, leave-encashment provision that has no income-tax nexus) -> R250 (Provisions — Current Liabilities). IMPORTANT: Income-tax-related provisions ("Provision for Taxation" / "Provision for Income Tax" / "Income Tax Provision") are covered by T1-R30 at tier 1 and route to R244, NOT R250 — do NOT apply O30 to those labels.
 
