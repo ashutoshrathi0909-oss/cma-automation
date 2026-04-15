@@ -199,7 +199,7 @@
       "original_cma_row": "INPUT_R44"
     },
     {
-      "cma_row": 45,
+      "cma_row": 67,
       "cma_code": "II_C5",
       "cma_field_name": "Wages",
       "raw_text": "Staff Welfare",
@@ -213,7 +213,7 @@
       "financial_year": "2024-25",
       "industry_specific": false,
       "industry_note": null,
-      "reasoning": "Component 4 of 5 for CMA Wages — staff welfare expenses.",
+      "reasoning": "Component 4 of 5 for CMA Wages — staff welfare expenses. | [CA 2026-04-15] Updated from R45->R67: Staff Welfare (retail) -> R67 per CA 2026-04-15",
       "validation_issue": null,
       "normalization_confidence": "certain",
       "original_cma_row": "INPUT_R44"
