@@ -158,7 +158,9 @@ If the lender is a company / LLP / trust / partnership where related-party statu
 
 V2. [all] Bank CC accounts, cash credit, working capital demand loans, overdraft facilities used as working capital credit limits -> R131 (From Indian Bank, III_L3a). NOT R213 (Bank Balances). The classifier always emits R131; multi-bank layout is handled downstream by the Excel generator. [Source: ca_decision id 6, companies DYNAIR/KURUNJI]
 
-V3. [all] Secured term loans with maturity greater than 1 year -> R137 (Balance Repayable after one year, III_L4b). For maturity 1 year or less, use R136. [Source: ca_decision id 23, companies BCIPL/DYNAIR/MSL/SSSS]
+V2a. [all] Items labeled "Short Term Borrowings" / "Short-term Borrowings" from a bank (section header or note title says "Short Term Borrowings") with NO explicit term-loan / CMLTD / vehicle-loan / housing-loan / debenture context → R131 (Working Capital Bank Finance). "Short Term Borrowings" on its own means CC/OD/WCDL, which is R131. **V3 (R136/R137) does NOT apply to "Short Term Borrowings" labels** — V3 applies only when the note explicitly describes a term loan's current-maturity portion (e.g., "Current Maturities of Long-Term Debt", "Term Loan — Repayable within 1 year"). When in doubt between V2a and V3 for a bank line item, prefer V2a (R131) because Short Term Borrowings = WC finance in Indian CMA convention.
+
+V3. [all] Secured term loans with maturity greater than 1 year -> R137 (Balance Repayable after one year, III_L4b). For maturity 1 year or less, use R136. V3 applies ONLY to items explicitly labeled or contextualised as term loans, vehicle loans, housing loans, debentures, or CMLTD — NOT to generic "Short Term Borrowings" entries (those go to R131 via V2a). [Source: ca_decision id 23, companies BCIPL/DYNAIR/MSL/SSSS]
 
 V4. [all] Share Capital (Issued, Subscribed and Paid up) -> R116 (III_L1). Includes equity share capital, partners' capital account, proprietor's capital account. [Source: ca_decision id 37, companies DYNAIR/SLIPL]
 
