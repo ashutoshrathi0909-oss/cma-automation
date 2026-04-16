@@ -444,11 +444,11 @@ Services companies: follow manufacturing rules unless an explicit [services] rul
 </example>
 <example>
 <input>{"id": "ex_gst_001", "description": "Sales @ 18% (Igst)", "amount": 1500000, "section": "Sales Accounts", "page_type": "face"}</input>
-<output>{"id": "ex_gst_001", "reasoning": "Rule 11 (CA_OVERRIDE): 'Sales @ 18% (Igst)' matches GST-rate-wise sales pattern -> R22 Domestic. GST rate slab breakdown from Tally.", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
+<output>{"id": "ex_gst_001", "reasoning": "Rule 13 (CA_OVERRIDE): 'Sales @ 18% (Igst)' matches GST-rate-wise sales pattern -> R22 Domestic. GST rate slab breakdown from Tally.", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
 </example>
 <example>
 <input>{"id": "ex_gst_002", "description": "Sales @ 28% (Local)", "amount": 800000, "section": "Sales Accounts", "page_type": "face"}</input>
-<output>{"id": "ex_gst_002", "reasoning": "Rule 11 (CA_OVERRIDE): 'Sales @ 28% (Local)' matches GST-rate-wise sales pattern -> R22 Domestic.", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
+<output>{"id": "ex_gst_002", "reasoning": "Rule 13 (CA_OVERRIDE): 'Sales @ 28% (Local)' matches GST-rate-wise sales pattern -> R22 Domestic.", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
 </example>
 <example>
 <input>{"id": "ex_contra_001", "description": "Less : Sale Return", "amount": 50000, "section": "Sales Accounts", "page_type": "face"}</input>
