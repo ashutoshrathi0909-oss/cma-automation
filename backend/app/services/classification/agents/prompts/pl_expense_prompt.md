@@ -166,7 +166,8 @@ CA-verified decisions from April 2026. HIGHEST PRIORITY. These override all lowe
 
 1. [CA_VERIFIED_2026] [all] "Depreciation" / "Depreciation and Amortization" / "Depreciation on *" -> R56 (Depreciation). NEVER R63. Row 63 is a formula cell. (id 1, id 3 -- HIGH PRIORITY, 11 instances across BCIPL, DYNAIR, INPL, MEHTA, SLIPL)
 2. [CA_VERIFIED_2026] [all] "Loss on Sale of Fixed Assets" / "Loss on sale of Investments" / "Fixed Assets Written off" -> R89 (Loss on sale of fixed assets / Investments). NEVER R178. Row 178 is a formula cell. (id 7, id 53)
-3. [CA_VERIFIED_2026] [all] "Power & Fuel" / "Power and Fuel" / "Electricity Expenses" / "Electricity Charges" -> R48 (Power, Coal, Fuel and Water). NEVER R64. Row 64 is a formula cell. (id 10, id 11)
+3. [CA_VERIFIED_2026] [manufacturing] "Power & Fuel" / "Power and Fuel" / "Electricity Expenses" / "Electricity Charges" -> R48 (Power, Coal, Fuel and Water). NEVER R64. Row 64 is a formula cell. (id 10, id 11)
+   <!-- Scope narrowed from [all] to [manufacturing] per DECISIONS_PENDING #2. Trading/service companies: electricity → R71 via CA_OVERRIDE rules 93-96 below (no factory floor). -->
 4. [CA_VERIFIED_2026] [all] "Job Work Charges" / "Processing Charges" / "Contract Labour" / "Conversion Charges" -> R46 (Processing / Job Work Charges). ALWAYS R46 regardless of section. Old GT mapping to R85 is SUPERSEDED. (id 12)
 5. [CA_VERIFIED_2026] [manufacturing] "Employee Benefits Expense" / "Employee Benefit Expense" -> R45 (Wages). (id 13 -- industry variant)
 6. [CA_VERIFIED_2026] [trading] "Employee Benefits Expense" / "Employee Benefit Expense" -> R67 (Salary and staff expenses). (id 13 -- industry variant)
@@ -273,9 +274,14 @@ CA override rules from the previous interview round. Apply when no CA_VERIFIED_2
 91. [CA_OVERRIDE] [all] "Consultancy Charges" -> R71 (Others -- Admin)
 92. [CA_OVERRIDE] [trading] "Delivery Charges" -> R71 (Others -- Admin)
 93. [CA_OVERRIDE] [trading] "Electric Charges" -> R71 (Others -- Admin)
+93a. [CA_OVERRIDE] [services] "Electric Charges" -> R71 (Others -- Admin)
 94. [CA_OVERRIDE] [trading] "Electricty Charges" -> R71 (Others -- Admin)
+94a. [CA_OVERRIDE] [services] "Electricty Charges" -> R71 (Others -- Admin)
 95. [CA_OVERRIDE] [trading] "Generator Expenses" -> R71 (Others -- Admin)
+95a. [CA_OVERRIDE] [services] "Generator Expenses" -> R71 (Others -- Admin)
 96. [CA_OVERRIDE] [trading] "(i) Power And Fuel" -> R71 (Others -- Admin)
+96a. [CA_OVERRIDE] [services] "(i) Power And Fuel" -> R71 (Others -- Admin)
+<!-- Rules 93-96 + 93a-96a: fallthrough for electricity/power when CA_VERIFIED_2026 rule 3 does not apply (non-manufacturing). No factory floor → office utility → R71. -->
 97. [CA_OVERRIDE] [manufacturing] "Licence And Subscription" -> R71 (Others -- Admin)
 98. [CA_OVERRIDE] [manufacturing] "Liquidty Damages" -> R71 (Others -- Admin)
 99. [CA_OVERRIDE] [all] "Miscellaneous Expenses" -> R71 (Others -- Admin)
@@ -823,9 +829,9 @@ Example 11 (R48, manufacturing):
 Input: {"id": "ex_011", "description": "Power & Fuel", "amount": 7500000, "section": "Notes to P&L", "industry_type": "manufacturing"}
 Output: {"id": "ex_011", "cma_row": 48, "cma_code": "II_C8", "confidence": 0.97, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 rule 3: Power & Fuel -> R48. NEVER R64. BCIPL.", "alternatives": []}
 
-Example 12 (R48, trading):
+Example 12 (R71, trading):
 Input: {"id": "ex_012", "description": "Electricity Expenses", "amount": 150000, "section": "Profit and Loss", "industry_type": "trading"}
-Output: {"id": "ex_012", "cma_row": 48, "cma_code": "II_C8", "confidence": 0.90, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 rule 3: Electricity Expenses -> R48. SSSS trading. Note: for trading, CA_VERIFIED_2026 power/fuel rule still applies to R48.", "alternatives": [{"cma_row": 71, "cma_code": "II_D5", "confidence": 0.45}]}
+Output: {"id": "ex_012", "cma_row": 71, "cma_code": "II_D5", "confidence": 0.93, "sign": 1, "reasoning": "CA_VERIFIED_2026 rule 3 scope is [manufacturing] only. Trading company: electricity has no factory floor, falls through to CA_OVERRIDE rule 93: Electric Charges -> R71 (Others -- Admin). SSSS trading.", "alternatives": [{"cma_row": 48, "cma_code": "II_C8", "confidence": 0.10}]}
 
 Example 13 (R49, trading):
 Input: {"id": "ex_013", "description": "Packing Material & Forwarding charges", "amount": 600000, "section": "Profit and Loss", "industry_type": "trading"}
