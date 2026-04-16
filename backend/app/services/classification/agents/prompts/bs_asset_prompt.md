@@ -76,38 +76,6 @@ Return ONLY valid JSON. No markdown, no commentary, no wrapping.
 **reasoning MUST appear BEFORE cma_row in the JSON object.**
 </output_schema>
 
-<data_priority>
-## Notes-First Classification Principle
-
-In Indian financial statements (Schedule III, Companies Act 2013), the actual classifiable detail lives in the **Notes to Accounts** and their sub-notes, NOT on the face page.
-
-**How a CA works:** They ALWAYS classify from notes first, then cross-check totals against the face page. The AI must do the same.
-
-### Priority order:
-1. **Sub-notes / Schedules** (page_type="notes", specific note references like "Note 20a") → HIGHEST priority. These have the most granular detail. Classify confidently.
-2. **Notes to Accounts** (page_type="notes") → PRIMARY source. Contains breakdowns of face totals. Classify confidently.
-3. **Face page items** (page_type="face") → SECONDARY. Used for cross-verification only.
-   - If `has_note_breakdowns=true` → **SKIP (emit DOUBT)**. The notes carry the detail; classifying the face total would double-count.
-   - If `has_note_breakdowns=false` or not set → Classify normally (it's the only data available for this line).
-
-### Why notes matter more:
-- Face P&L shows: "Other Expenses: ₹50,00,000" (one line)
-- Note 20 shows: "Audit Fees: ₹1,50,000 | Rent: ₹12,00,000 | Depreciation: ₹8,00,000 | ..." (15 sub-items)
-- The CA needs each sub-item classified to its specific CMA row. The face total is useless for CMA.
-
-### Confidence guidance:
-- Notes items with clear labels → confidence 0.90-0.98 (high, because notes are authoritative)
-- Notes items with ambiguous labels → apply accounting brain, still aim for confident classification
-- Face items with has_note_breakdowns=true → confidence 0.30-0.40 (DOUBT, dedup protection)
-- Face items without notes → classify as normal, confidence based on label clarity
-
-### source_sheet Signal
-The `source_sheet` field tells you which Excel sheet the item was extracted from:
-- source_sheet containing "Notes" / "Schedule" / "Subnotes" → notes-level detail, classify with higher confidence
-- source_sheet containing "Balance Sheet" / "BS" → face page items, check has_note_breakdowns
-- source_sheet containing "Depreciation" / "FA Schedule" → fixed asset schedule items
-- Use source_sheet to confirm page_type when page_type is empty or "unknown"
-</data_priority>
 
 <valid_categories>
 These are the ONLY rows you may classify into. Any row NOT in this table is INVALID.
@@ -199,7 +167,7 @@ T1-R57: "Jewellery" held as investment -> R186 (Other non current investments). 
 T1-R58: "MAT Credit Entitlement" -> R238 (Other non current assets).
 T1-R59: "Sundry Creditors for Duties and Taxes" or creditors holding government dues -> R246.
 T1-R60: "Provision for Bonus" or "Provision for Employee Benefits (bonus)" -> R250.
-T1-R61: "Prepaid Expenses" / "Prepaid" / "Prepayments" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" / "Prepaid Salary" / "Prepaid Advertisement" -> R222 (Prepaid Expenses, III_A17d), ALL INDUSTRIES. <!-- CA_VERIFIED_2026: R222 is the canonical row for ALL prepaid expenses regardless of industry or expense type. Supersedes O8 (CA_OVERRIDE), I3 (CA_INTERVIEW), L32 (LEGACY), and any other rule that previously sent prepaid items to R223, R224, or any other row. -->
+T1-R61: "Prepaid Expenses" / "Prepaid" / "Prepayments" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" / "Prepaid Salary" / "Prepaid Advertisement" -> R222 (Prepaid Expenses, III_A17d), ALL INDUSTRIES. <!-- CA_VERIFIED_2026: R222 is the canonical row for ALL prepaid expenses regardless of industry or expense type. -->
 T1-R62: "Security Deposit" / "Caution Deposit" / "Gem Caution Deposit" placed with GOVERNMENT departments (excise duty deposit, customs deposit, licensing fee deposit, court deposit, government bond, electricity board deposit, MSEB deposit, water connection deposit, telecom/telephone department deposit) -> R237 (Security deposits with government departments). <!-- CA_VERIFIED_2026: Government-side deposits only. Private-party security deposits → R238 per T1-R63. -->
 T1-R63: "Security Deposit" / "Caution Deposit" / "Rent Deposit" / "Telephone Deposit" / "Electricity Deposit" / "MSEB Deposit" / "Gem Caution Deposit" placed with PRIVATE parties (landlord, private telephone company, private electricity provider, private utility, gem/trade caution with non-government party) -> R238 (Other non current assets). <!-- CA_VERIFIED_2026: Private-party security deposits only. Government deposits → R237 per T1-R62. -->
 
@@ -228,18 +196,17 @@ O5: [trading] "Gst Receivable" -> R219 (Advances recoverable in cash or in kind)
 O6: [all] "TCS Receivable" -> R221 (Advance Income Tax)
 O6a: [all] "Balances with Statutory Authorities" / "Statutory Balance Recoverable" / "Duties and Taxes Recoverable" / "Excise / CENVAT Credit Receivable" / "Sales Tax Recoverable" (when in Loans & Advances / current-asset section) → R221 (Advance Income Tax). Indian CMA uses R221 broadly for tax and statutory-duty recoverables (advance tax, TDS, TCS, excise balance, sales tax refund receivable). Supersedes any generic R223 routing for these specific labels.
 O7: [all] "TDS Receivable" -> R221 (Advance Income Tax)
-O8: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" -> R222 (Prepaid Expenses, III_A17d). R222's label IS "Prepaid Expenses" — any prepayment for goods/services consumed in the next period belongs here, regardless of industry. <!-- SUPERSEDED by CA_VERIFIED_2026 T1-R61 which covers all prepaid variants. O8 retained for compatibility; T1-R61 is now the authoritative rule at a higher tier. Both point to R222. -->
 O9: [trading] "Share Investments" IN GROUP / SUBSIDIARY / ASSOCIATE companies (per related-party note) → R186 (Investment in group companies / subsidiaries, II_C5). NOTE: R233 is formula, use R186. For share/MF investments in UNRELATED entities:
   - Aggregate labels like "Mutual Funds and Shares" without group-company context → DOUBT with alternatives [R185 (Short Term Investments, if current/tradable), R186 (if long-term group holding)]. Per DOUBT meta-principle, the related-party status of aggregate holdings cannot be determined from the label alone.
   - Clearly labeled "Mutual Fund" / "Liquid Fund" / "Debt MF" (unrelated) → R185 (Short Term Investments) if current, or DOUBT if tenure unclear.
   - "Listed Equity Shares" / "Quoted Investments" in unrelated companies → R185 or DOUBT.
-O10: [manufacturing] "Security Deposits - Others" -> R238 (Other non current assets)
-O11: [manufacturing] "Security deposits - Unsecured, considered good" -> R238
 O12: [trading] "(B) Sundry Creditors for expenses" -> R249 (Creditors for Expenses)
 O13: [manufacturing] "Creditors for Expenses" -> R249
 O14: [manufacturing] "Expenses Payable" -> R249
-O15: [manufacturing] "Leave Encashment" -> R249 (Creditors for Expenses)
-O16: [all] "Outstanding Expenses" / "Outstanding expenses (Salary + Other)" / "Outstanding expenses - Salary and wages Payable" / "Outstanding expenses - Other Expenses Payable" / "Salary Payable" / "Wages Payable" / "Other Expenses Payable" / "Accrued Expenses" / "Accrued Salary" / "Accrued Wages" -> R250 (Other Current Liabilities, III_A18b). **CA 2026-04-15 (MANDATORY):** outstanding/accrued expenses are R250, NEVER R249. R249 is for "Creditors for Expenses" — unbilled supplier-service payables (e.g. pending vendor invoices). R250 is for "Other Current Liabilities" which includes all employee-side accruals (salary payable, wages payable, bonus payable, leave encashment payable) AND all generic "Outstanding expenses" labels. If you are about to classify an item whose description contains "Outstanding expenses", "Salary Payable", "Wages Payable", or "Accrued" → the answer is R250, not R249. Supersedes O13/O14/O15 for these specific phrases.
+O15: [manufacturing] "Leave Encashment" (as a provision/accrual — i.e., the liability for accrued but unpaid leave entitlements recognised as an expense provision) -> R249 (Creditors for Expenses). <!-- Scope: provision/accrual form only. "Leave Encashment Payable" — explicitly a current payable to employees — routes to R250 per O16. -->
+O16: [all] "Leave Encashment Payable" (explicitly payable to employees as a current liability) -> R250 (Other Current Liabilities, III_L10i). <!-- Scope: current payable form only — amount already due and payable. "Leave Encashment" as a provision/accrual routes to R249 per O15. -->
+
+O16b: [all] "Outstanding Expenses" / "Outstanding expenses (Salary + Other)" / "Outstanding expenses - Salary and wages Payable" / "Outstanding expenses - Other Expenses Payable" / "Salary Payable" / "Wages Payable" / "Other Expenses Payable" / "Accrued Expenses" / "Accrued Salary" / "Accrued Wages" -> R250 (Other Current Liabilities, III_A18b). **CA 2026-04-15 (MANDATORY):** outstanding/accrued expenses are R250, NEVER R249. R249 is for "Creditors for Expenses" — unbilled supplier-service payables (e.g. pending vendor invoices). R250 is for "Other Current Liabilities" which includes all employee-side accruals (salary payable, wages payable, bonus payable, leave encashment payable) AND all generic "Outstanding expenses" labels. If you are about to classify an item whose description contains "Outstanding expenses", "Salary Payable", "Wages Payable", or "Accrued" → the answer is R250, not R249. Supersedes O13/O14/O15 for these specific phrases.
 O17: [manufacturing] "Provision for Gratuity (short-term)" -> R250 (Other current liabilities)
 O18: [manufacturing] "Other Non-Current Assets" -> R237 (Security deposits with government departments). NOT R238. For manufacturing companies, generic NCA labels map to R237 per CA convention.
 O19: [manufacturing] "Long-term Loans and Advances" -> R237 (Security deposits with government departments). NOT R238. Same convention as O18 — generic long-term advance labels → R237.
@@ -251,12 +218,10 @@ O23: [all] "Sundry Creditors" / "Trade Payables" / "Trade Creditors" / "Creditor
 
 O24: [all] "Sundry Debtors" / "Trade Receivables" / "Trade Debtors" / "Debtors for goods" -> R206 (Domestic Receivables). Primary debtors row. ALL trade debtor items map here.
 
-O25: [all] "Cash in Hand" / "Cash" / "Cash-in-hand" / "Cash at Bank" / "Cash and Cash Equivalents" / "Cash & Cash Equivalents" / "Cash and Bank Balances" / "Balances with Banks" -> R212 (Cash and Bank Balances). Basic cash/bank items.
+O25a: [all] "Cash in Hand" / "Cash" / "Cash-in-hand" / "Petty Cash" -> R212 (Cash on Hand). Physical cash held at the entity's premises.
+O25b: [all] "Balances with Banks" / "Balance with Banks" / "Bank Balances" / "Cash at Bank" / "Cash and Cash Equivalents" / "Cash & Cash Equivalents" / "Cash and Bank Balances" -> R213 (Bank Balances). Any balance held in a bank account routes to R213, NOT R212. <!-- CA_VERIFIED_2026: Bank balances are R213; only physical cash on hand is R212. Supersedes the old O25 which incorrectly lumped both into R212. -->
 
 O26: [all] "Fixed Deposit" / "Fixed Deposits" / "FD" / "Bank FD" / "Term Deposit" / "Deposit with Bank" -> R215 (Other Fixed Deposits). Bank fixed deposits are non-current investments shown as fixed deposits.
-
-O27: [all] ~~RESCOPED by CA_VERIFIED_2026 T1-R62 and T1-R63. Original O27 (generic security deposits → R237) is SUPERSEDED. Security deposits are now split: government deposits → R237 (T1-R62), private deposits → R238 (T1-R63). Do NOT apply O27 — use T1-R62 or T1-R63 instead.~~
-<!-- CA_VERIFIED_2026 DECISION #5: O27 original text routed ALL deposits (Gem Caution, Rent, Telephone, Electricity, MSEB) to R237. This was incorrect. The CA-verified split is: government-side deposits → R237; private-party deposits → R238. T1-R62 and T1-R63 now govern this. O27 is defunct. -->
 
 O28: [all] "Duties & Taxes" / "GST Input Credit" / "CGST Input Credit" / "SGST Input Credit" / "IGST Input Credit" / "Input CGST" / "Input SGST" / "Input IGST" / "TDS Receivable" / "TCS Receivable" / "Advance Tax" / "Tax Deducted at Source" / "Service Tax Input Credit" -> R221 (Advance payment of Tax). All tax receivables/input credits are advance tax payments.
 
@@ -265,8 +230,6 @@ O29: [all] "Statutory Dues" / "(a) Statutory Dues" / "(b) Statutory Dues" / "GST
 O30: [all] Generic "Provisions — Current Liabilities" NOT covered by a higher-tier rule (e.g. gratuity provision, bonus provision, leave-encashment provision that has no income-tax nexus) -> R250 (Provisions — Current Liabilities). IMPORTANT: Income-tax-related provisions ("Provision for Taxation" / "Provision for Income Tax" / "Income Tax Provision") are covered by T1-R30 at tier 1 and route to R244, NOT R250 — do NOT apply O30 to those labels.
 
 O31: [all] "Stock in Trade" / "Stock-in-Trade" / "Inventory" / "Inventories" / "Closing Stock" / "Stock" (when in asset section) -> R200 (Inventories — Raw Materials). For trading companies, stock-in-trade maps to R200 (inventory row). NOTE: Row 200-201 may be formula rows — check the never_classify list. If R200 is in never_classify, route to the appropriate sub-row.
-
-O32: [all] "Advance to Suppliers" / "Advance to Creditors" / "Supplier Advance" / "Creditor Advance" (for NON-raw-material suppliers — e.g. service vendors, AMC providers, consultants) -> R223 (Other Advances / Current Asset). NOTE: Prepaid Expenses / Prepaid Rent / Prepaid Insurance are NOT in this rule — they go to R222 via O8 (R222's label is literally "Prepaid Expenses"). Raw-material supplier advances go to R220 (Advances to suppliers of raw materials) per L22.
 
 O33: [all] Individual company/person names that appear in creditor/payable sections (e.g., "Newchem Pharma.", "Bhagirathi Associates", "STATUSTRONICS", "JSW Infra") -> R242 (Sundry Creditors for goods). When a line item in the balance sheet is clearly a party name (not an accounting label), and it appears in the liabilities/creditors section, classify as sundry creditors.
 
@@ -295,10 +258,7 @@ Third priority. Apply only if no T1 or T2 rule matches.
 
 I1: [all] "Capital Work in Progress (CWIP)" -> R165
 I2: [all] "Advances to Suppliers (Balance Sheet)" -> R220
-I3: [all] "Prepaid Expenses (BS current asset)" -> R222. <!-- UPGRADED to CA_VERIFIED_2026 — now governed by T1-R61 (all prepaid → R222, all industries). I3 retained for traceability only. -->
-I4: [all] "Security Deposits Paid (to landlord, utility companies, private telephone, private electricity, gem caution with private party)" -> R238 (Other non-current assets). <!-- UPGRADED to CA_VERIFIED_2026 — now governed by T1-R63. I4 is retained here for traceability only; T1-R63 takes precedence as the authoritative higher-tier rule. -->
 I5: [all] "Statutory Liabilities (GST Payable, TDS Payable)" -> R246
-I6: [all] "Leave Encashment" -> R249 (Creditors for Expenses)
 </tier_3>
 
 <tier_4 name="LEGACY">
@@ -347,7 +307,7 @@ The CMA template has 5 SPECIFIC buckets + 1 residual in this block. Match the le
 | R223 | Other Advances / current asset | RESIDUAL BUCKET — only when the item is genuinely miscellaneous and doesn't fit R219/R220/R221/R222/R224 (e.g. misc supplier advances for services, unlabelled "Other advances") |
 | R224 | Advances to group / subsidiaries companies | Inter-company advances only (holding/subsidiary/associate/related-party) |
 
-KEY DISTINCTIONS: "Prepaid X" ALWAYS → R222 (the label matches). "Recoverable in cash or kind" → R219 (label matches). A plain "Supplier Advance" without raw-materials context → R223. "Advance to Employees" is refundable from salary → R219 (not R223 despite older legacy rules). If in doubt between R219 and R223, prefer R219 when the item is clearly REFUNDABLE; prefer R223 only for genuinely miscellaneous amounts.
+KEY DISTINCTIONS: "Prepaid X" ALWAYS → R222 (the label matches). "Recoverable in cash or kind" → R219 (label matches). A plain "Supplier Advance" without raw-materials context → R223. "Advance to Employees" → R223 per L28 (CA-confirmed). If in doubt between R219 and R223, prefer R219 when the item is clearly REFUNDABLE; prefer R223 only for genuinely miscellaneous amounts.
 L21: [all] "Staff Advances" -> R219
 L22: [all] "Advances to suppliers" -> R220
 L23: [all] "Advance Sales Tax" -> R221
@@ -359,8 +319,6 @@ L28: [all] "Advance to employees" -> R223
 L29: [all] "Advances recoverable in cash or in kind" / "Advances recoverable in cash or kind" -> R219 (Advances recoverable in cash or in kind, III_A17a). R219's label is an exact match — these items go to R219, NOT R223.
 L30: [all] "Insurance Claim Receivable" -> R219 (Advances recoverable in cash or in kind — insurance settlement is recoverable in cash)
 L31: [all] "Octroi Receivable" -> R219 (Advances recoverable in cash or in kind — octroi is refundable in cash)
-L32: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" -> R222 (Prepaid Expenses, III_A17d). Supersedes any older rule that routed these to R223. See O8. <!-- UPGRADED to CA_VERIFIED_2026 via T1-R61 (Decision #6). L32 retained for traceability; T1-R61 is now the highest-tier authoritative rule. Both agree: all prepaid → R222. -->
-
 **Non Current Assets (229-238) — NOTE: R229, R230, R232, R233, and R234 are ALL YELLOW formula cells and are NEVER valid targets. Use the redirect rules below; if no redirect applies, emit DOUBT. CA decisions 2026-04-12 (see project_formula_row_ca_decisions.md):**
 L33: [all] "Long Term Investments" -> R186 (redirected from R233; R233 is formula)
 L34: [all] "Short Term Investments" -> R185
@@ -524,12 +482,11 @@ When you see what looks like a company name or person's name (not an accounting 
 | Provision for tax / income tax provision | R244 | Always tax provision — T1-R30, never R250 |
 
 ### Confidence Calibration
-Use these ranges consistently — do NOT cluster everything at 0.95:
-- **0.95-0.99:** Exact rule match (you found a specific numbered rule for this item)
-- **0.88-0.94:** Accounting principle match (no exact rule, but the asset/liability category is clear from accounting knowledge)
-- **0.80-0.87:** Best guess — reviewer should verify
-- **Below 0.80:** DOUBT — emit cma_row: 0, cma_code: "DOUBT"
-Reserve 0.95+ for exact rule matches only. If you classified using the accounting_brain (no rule matched), confidence should be 0.88-0.94.
+(General threshold scale in shared notes: below 0.80 = DOUBT.)
+
+Agent-specific guidance:
+- For this specialist, classifying using the accounting_brain (no rule matched) → confidence 0.88-0.94.
+- Reserve 0.95+ for exact numbered rule matches only — do NOT cluster everything at 0.95.
 
 ### When to DOUBT
 Only when:
@@ -596,11 +553,10 @@ The FA Movement section (R175-R178) captures year-on-year changes:
 - Route debtors >6m to R208, non-current investments to R186
 
 **Pattern 6: Security Deposits Classification (CA_VERIFIED_2026 — Decision #5)**
-The split is now CA-verified and governed by T1-R62 and T1-R63:
-- Government deposits → R237: excise duty deposit, customs deposit, licensing fee deposit, court deposit, government bond, electricity board (MSEB/BESCOM/state board), telecom department (BSNL/MTNL), water authority
-- Private deposits → R238: rent deposit (to landlord), telephone deposit (to private telecom), electricity deposit (to private provider), gem caution deposit (to trade party), security deposit to any private vendor/utility company
-- "Security Deposits - Others" without context → apply accounting judgment on government vs private nature; if genuinely unclear, DOUBT
-- O27 (old generic → R237) is SUPERSEDED. O10/O11 (manufacturing "Security Deposits - Others"/"Unsecured, considered good" → R238) remain valid for manufacturing context.
+The split is CA-verified and governed exclusively by T1-R62 and T1-R63:
+- Government deposits → R237 (T1-R62): excise duty deposit, customs deposit, licensing fee deposit, court deposit, government bond, electricity board (MSEB/BESCOM/state board), telecom department (BSNL/MTNL), water authority
+- Private deposits → R238 (T1-R63): rent deposit (to landlord), telephone deposit (to private telecom), electricity deposit (to private provider), gem caution deposit (to trade party), security deposit to any private vendor/utility company
+- Generic "Security Deposit" label without counterparty context → apply T1-R62/T1-R63 based on available context; if counterparty genuinely unclear → DOUBT
 </reasoning_patterns>
 
 <examples>
@@ -616,7 +572,7 @@ E6: {"description": "Capital Work-In-Progress", "source": "bs_face", "industry":
 E7: {"description": "Capital work-in progress", "source": "balance_sheet", "industry": "manufacturing"} -> R165. Reasoning: "Rule T1-R51: Capital WIP -> R165."
 
 **Intangibles (R169-R172):**
-E8: {"description": "Intangible Assets (Software + Licence)", "source": "balance_sheet", "industry": "manufacturing"} -> R169. Reasoning: "Rule L5: Goodwill/patents/copyrights -> R169. Software + Licence = named intangibles."
+E8: {"description": "Intangible Assets (Software + Licence)", "source": "balance_sheet", "industry": "manufacturing"} -> R172 (III_A5d). Reasoning: "Rule T1-R39: Intangible assets → R172 (Other Intangible assets). Software + Licence are intangible assets — not purchased goodwill, so R169 does not apply. T1-R39 is the authoritative rule for all software, licences, trademarks, and other named intangibles."
 E9: {"description": "Deferred Tax Asset (Net)", "source": "balance_sheet", "industry": "manufacturing"} -> R171. Reasoning: "Rule L8: Deferred Tax Asset -> R171."
 E10: {"description": "Deferred tax Assets (Net)", "source": "bs_face", "industry": "trading"} -> R171. Reasoning: "Rule L8."
 E11: {"description": "Other Intangible Assets", "source": "balance_sheet", "industry": "manufacturing"} -> R172. Reasoning: "Rule T1-R39: Intangible assets -> R172."
@@ -656,7 +612,7 @@ E32: {"description": "Fixed Deposits (Current Investments)", "source": "notes_bs
 E33: {"description": "GST Input Recoverable", "source": "notes_bs", "industry": "manufacturing"} -> R219. Reasoning: "Rule O4: Advances recoverable -> R219."
 E34: {"description": "Advance to Suppliers / Contractors", "source": "notes_bs", "industry": "manufacturing"} -> R220. Reasoning: "Rule L22."
 E35: {"description": "Net Prepaid Tax / TDS (B)", "source": "notes_bs", "industry": "manufacturing"} -> R221. Reasoning: "Rule O7: TDS Receivable -> R221."
-E36: {"description": "Prepaid Expenses", "source": "notes_bs", "industry": "manufacturing"} -> R222. Reasoning: "Rule O8."
+E36: {"description": "Prepaid Expenses", "source": "notes_bs", "industry": "manufacturing"} -> R222. Reasoning: "Rule T1-R61: Prepaid Expenses → R222, all industries."
 E37: {"description": "Other Advances", "source": "notes_bs", "industry": "manufacturing"} -> R223. Reasoning: "Rule T1-R29."
 
 **Non Current Assets (R235-R238; R234 is a formula cell and is never a valid target — DOUBT or redirect to R237/R238 instead):**
