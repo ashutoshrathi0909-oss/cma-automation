@@ -145,7 +145,7 @@ V2a. [all] **MANDATORY SHORT-TERM BORROWINGS RULE (CA 2026-04-15):** Any item wh
 V2b. [all] **BILL DISCOUNTING RULE (CA 2026-04-16):** Bill Discounting / Bills Discounted / Bills Purchased → **R131 (Working Capital Bank Finance, III_L3a)**, NOT R133. R133 is a NOTE_ROW (parenthetical annotation in the template) — it must never receive a numeric value.
   - If the bill discounting balance appears in brackets / as a deduction / subtracted / netted against borrowings → R131 with sign = -1. Reasoning: bill discounting reduces the bank's WC exposure.
   - If the bill discounting balance appears as a normal positive line item → R131 with sign = 1. Reasoning: bill discounting facility is a WC borrowing from bank.
-  When classified to R131, also emit a `cell_note` on R133: "Bill discounting balance of [amount] classified to R131."
+  When classified to R131, add a `cell_note` field to the R131 output record: "Bill discounting balance of [amount] classified to R131; R133 is a NOTE_ROW and receives no numeric value"
   [Source: CA_VERIFIED_2026 2026-04-16; replaces deleted LEGACY rules L36/L37]
 
 V3. [all] Secured term loans with maturity greater than 1 year -> R137 (Balance Repayable after one year, III_L4b). For maturity 1 year or less, use R136. V3 applies ONLY to items explicitly labeled or contextualised as term loans, vehicle loans, housing loans, debentures, or CMLTD — NOT to generic "Short Term Borrowings" entries (those go to R131 via V2a). [Source: ca_decision id 23, companies BCIPL/DYNAIR/MSL/SSSS]
@@ -476,7 +476,7 @@ When an item is just an account number (e.g., "ICICI Ca 608105026198"), look at 
 </bank_slot_addendum>
 
 <examples>
-Below are 38 classification examples drawn from real verified company data. Each includes the reasoning rule reference.
+Below are 41 classification examples drawn from real verified company data. Each includes the reasoning rule reference.
 
 Example 1 (manufacturing, R116):
 Input: {"id": "ex01", "description": "Issued, Subscribed and Fully Paid - Equity Shares (3094200 shares of Rs 10 each)", "amount": 30942000, "section": "Note 1 - Share Capital", "page_type": "notes_bs", "industry_type": "manufacturing"}
@@ -637,6 +637,10 @@ Output: {"id": "ex39", "cma_row": 0, "cma_code": "DOUBT", "confidence": 0.0, "si
 Example 40 (manufacturing, R131 - NSIC):
 Input: {"id": "ex40", "description": "NSIC - Loan against guarantee", "amount": 3000000, "section": "Note 7 - Short Term Borrowings", "page_type": "notes_bs", "industry_type": "manufacturing"}
 Output: {"id": "ex40", "cma_row": 131, "cma_code": "III_L3a", "confidence": 0.94, "sign": 1, "reasoning": "Matches CA_VERIFIED_2026 rule V2: NSIC loan in short-term borrowings section is working capital -> R131. Source: DYNAIR.", "alternatives": []}
+
+Example 41 (manufacturing, R131 - Bills Discounted with cell_note):
+Input: {"id": "ex41", "description": "Bills Discounted", "amount": 1500000, "section": "Note 5 - Short Term Borrowings", "page_type": "notes_bs", "industry_type": "manufacturing"}
+Output: {"id": "ex41", "cma_row": 131, "cma_code": "III_L3a", "confidence": 0.92, "sign": -1, "reasoning": "Bills Discounted appears in brackets as deduction from WC borrowings. Rule V2b: bill discounting facility is WC borrowing from bank -> R131 with sign=-1.", "alternatives": [], "cell_note": "Bill discounting balance classified to R131; R133 (o/s bill discounting) is a NOTE_ROW, not a classification target"}
 </examples>
 
 <task>
