@@ -233,7 +233,7 @@ O31: [all] "Stock in Trade" / "Stock-in-Trade" / "Inventory" / "Inventories" / "
 
 O33: [all] Individual company/person names that appear in creditor/payable sections (e.g., "Newchem Pharma.", "Bhagirathi Associates", "STATUSTRONICS", "JSW Infra") -> R242 (Sundry Creditors for goods). When a line item in the balance sheet is clearly a party name (not an accounting label), and it appears in the liabilities/creditors section, classify as sundry creditors.
 
-O34: [all] Individual company/person names that appear in debtor/receivable sections → R206 (Domestic Receivables) ONLY when the party is clearly a 3rd-party vendor/customer with no relation to the filer. Emit DOUBT (cma_row: 0, alternatives [R206, R235]) when the party name suggests a related party per the DOUBT meta-principle in the notes-primary block:
+O34: [all] Individual company/person names that appear in debtor/receivable sections → R206 (Domestic Receivables) ONLY when the party is clearly a 3rd-party vendor/customer with no relation to the filer. Emit DOUBT (cma_row: 0, alternatives [R206, R235]) when the party name suggests a related party:
   - Same-family naming pattern (party name closely resembles the filer's own name — e.g., "Kurinji Shopping" in Kurunji_Retail's books, "Mehta Enterprises" in Mehta_Computer's books)
   - "HUF" suffix with a name matching the proprietor/director
   - "Holdings" / "Ventures" / "Group" / "Associates" patterns where affiliation is not verified from the notes
