@@ -176,11 +176,12 @@ V7. [all] Ambiguous bank account numbers (e.g., "ICICI Ca 608105026198") -> clas
   - IF item appears inside a BANK BALANCES or CASH section -> R213 (Bank Balances, III_A16b) [NOTE: R213 is outside bs_liability range; pipeline handles cross-specialist routing]
   [Source: ca_decision id 16, companies KURUNJI]
 
-V8. [all] Vehicle HP (Hire Purchase) loans are SECURED TERM LOANS, not debentures and not other debts. Route by maturity:
-  - IF maturity is 1 year or less (current maturities) -> R136 (Term Loan Repayable in next one year, III_L4a)
-  - IF maturity is greater than 1 year (non-current) -> R137 (Balance Repayable after one year, III_L4b)
+V8. [all] Vehicle HP (Hire Purchase) loans are SECURED TERM LOANS, not debentures and not other debts. Route by tenure information:
+  - IF the statement explicitly labels or splits as "current maturities" / "due within 12 months" / "repayable within one year" -> R136 (Term Loan Repayable in next one year, III_L4a)
+  - IF the statement explicitly labels or splits as "non-current" / "long-term" / "due after 12 months" / "repayable after one year" -> R137 (Balance Repayable after one year, III_L4b)
+  - IF the statement provides NO clear tenure or maturity information (no current/non-current split, no loan term mentioned, bare label such as "Vehicle HP Loan" or "Hire Purchase Loan" with no qualifier) -> DOUBT (cma_row: 0, cma_code: "DOUBT", alternatives: [R136, R137]). Reasoning must state: "Vehicle HP loan tenure unclear — cannot determine current vs non-current split."
   SUPERSEDES old R148/R149 routing for vehicle HP loans. R141 (Debentures) is WRONG for vehicle HP.
-  [Source: ca_decision id 49, companies DYNAIR]
+  [Source: ca_decision id 49, companies DYNAIR; tenure-DOUBT condition added 2026-04-16]
 
 DOUBT RULES (classifier MUST emit cma_row=0, cma_code=DOUBT):
 
