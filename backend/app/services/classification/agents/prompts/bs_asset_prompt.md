@@ -184,7 +184,7 @@ T1-R15: "Export Receivables" -> R207 (Export Receivables). NOT R206.
 T1-R27: "Accumulated Depreciation" in any form -> R163 (Less Accumulated Depreciation). sign=-1.
 T1-R28: "Additions to Fixed Assets" or gross block YoY additions -> R175.
 T1-R29: "Other Advances" or "Other current assets" (miscellaneous advances bucket) -> R223 (Other Advances / current asset).
-T1-R30: "Provision for Taxation" or "Provision for Income Tax" -> R244 (Provision for Taxation).
+T1-R30: "Provision for Taxation" or "Provision for Income Tax" or "Income Tax Provision" -> R244 (Provision for Taxation). <!-- CA_VERIFIED_2026: R244 confirmed for all income tax provisions — never R250. Any O30/LEGACY rule that might suggest R250 for these labels is superseded by this rule. -->
 T1-R31: "Debtors >6 months" with R232 redirected -> R208. R232 is formula, auto-picks from R208.
 T1-R39: "Intangible Assets" (software, goodwill, licence, trademark) -> R172 (Other Intangible assets).
 T1-R40: "Debtors >6 months outstanding" -> R208.
@@ -199,6 +199,9 @@ T1-R57: "Jewellery" held as investment -> R186 (Other non current investments). 
 T1-R58: "MAT Credit Entitlement" -> R238 (Other non current assets).
 T1-R59: "Sundry Creditors for Duties and Taxes" or creditors holding government dues -> R246.
 T1-R60: "Provision for Bonus" or "Provision for Employee Benefits (bonus)" -> R250.
+T1-R61: "Prepaid Expenses" / "Prepaid" / "Prepayments" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" / "Prepaid Salary" / "Prepaid Advertisement" -> R222 (Prepaid Expenses, III_A17d), ALL INDUSTRIES. <!-- CA_VERIFIED_2026: R222 is the canonical row for ALL prepaid expenses regardless of industry or expense type. Supersedes O8 (CA_OVERRIDE), I3 (CA_INTERVIEW), L32 (LEGACY), and any other rule that previously sent prepaid items to R223, R224, or any other row. -->
+T1-R62: "Security Deposit" / "Caution Deposit" / "Gem Caution Deposit" placed with GOVERNMENT departments (excise duty deposit, customs deposit, licensing fee deposit, court deposit, government bond, electricity board deposit, MSEB deposit, water connection deposit, telecom/telephone department deposit) -> R237 (Security deposits with government departments). <!-- CA_VERIFIED_2026: Government-side deposits only. Private-party security deposits → R238 per T1-R63. -->
+T1-R63: "Security Deposit" / "Caution Deposit" / "Rent Deposit" / "Telephone Deposit" / "Electricity Deposit" / "MSEB Deposit" / "Gem Caution Deposit" placed with PRIVATE parties (landlord, private telephone company, private electricity provider, private utility, gem/trade caution with non-government party) -> R238 (Other non current assets). <!-- CA_VERIFIED_2026: Private-party security deposits only. Government deposits → R237 per T1-R62. -->
 
 **Conditional Rules (2):**
 T1-R8: "Trade Receivables" (general, without explicit aging qualifier):
@@ -225,7 +228,7 @@ O5: [trading] "Gst Receivable" -> R219 (Advances recoverable in cash or in kind)
 O6: [all] "TCS Receivable" -> R221 (Advance Income Tax)
 O6a: [all] "Balances with Statutory Authorities" / "Statutory Balance Recoverable" / "Duties and Taxes Recoverable" / "Excise / CENVAT Credit Receivable" / "Sales Tax Recoverable" (when in Loans & Advances / current-asset section) → R221 (Advance Income Tax). Indian CMA uses R221 broadly for tax and statutory-duty recoverables (advance tax, TDS, TCS, excise balance, sales tax refund receivable). Supersedes any generic R223 routing for these specific labels.
 O7: [all] "TDS Receivable" -> R221 (Advance Income Tax)
-O8: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" -> R222 (Prepaid Expenses, III_A17d). R222's label IS "Prepaid Expenses" — any prepayment for goods/services consumed in the next period belongs here, regardless of industry.
+O8: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" / "Prepaid AMC" / "Prepaid Subscription" / "Prepaid Maintenance" -> R222 (Prepaid Expenses, III_A17d). R222's label IS "Prepaid Expenses" — any prepayment for goods/services consumed in the next period belongs here, regardless of industry. <!-- SUPERSEDED by CA_VERIFIED_2026 T1-R61 which covers all prepaid variants. O8 retained for compatibility; T1-R61 is now the authoritative rule at a higher tier. Both point to R222. -->
 O9: [trading] "Share Investments" IN GROUP / SUBSIDIARY / ASSOCIATE companies (per related-party note) → R186 (Investment in group companies / subsidiaries, II_C5). NOTE: R233 is formula, use R186. For share/MF investments in UNRELATED entities:
   - Aggregate labels like "Mutual Funds and Shares" without group-company context → DOUBT with alternatives [R185 (Short Term Investments, if current/tradable), R186 (if long-term group holding)]. Per DOUBT meta-principle, the related-party status of aggregate holdings cannot be determined from the label alone.
   - Clearly labeled "Mutual Fund" / "Liquid Fund" / "Debt MF" (unrelated) → R185 (Short Term Investments) if current, or DOUBT if tenure unclear.
@@ -252,7 +255,8 @@ O25: [all] "Cash in Hand" / "Cash" / "Cash-in-hand" / "Cash at Bank" / "Cash and
 
 O26: [all] "Fixed Deposit" / "Fixed Deposits" / "FD" / "Bank FD" / "Term Deposit" / "Deposit with Bank" -> R215 (Other Fixed Deposits). Bank fixed deposits are non-current investments shown as fixed deposits.
 
-O27: [all] "Gem Caution Deposit" / "Caution Deposit" / "Security Deposit" / "Telephone Deposit" / "Telephone Deposits" / "Electricity Deposit" / "MSEB Deposit" / "Rent Deposit" -> R237 (Loans and Advances — Other Advances / Current Asset). Security/caution deposits are current assets.
+O27: [all] ~~RESCOPED by CA_VERIFIED_2026 T1-R62 and T1-R63. Original O27 (generic security deposits → R237) is SUPERSEDED. Security deposits are now split: government deposits → R237 (T1-R62), private deposits → R238 (T1-R63). Do NOT apply O27 — use T1-R62 or T1-R63 instead.~~
+<!-- CA_VERIFIED_2026 DECISION #5: O27 original text routed ALL deposits (Gem Caution, Rent, Telephone, Electricity, MSEB) to R237. This was incorrect. The CA-verified split is: government-side deposits → R237; private-party deposits → R238. T1-R62 and T1-R63 now govern this. O27 is defunct. -->
 
 O28: [all] "Duties & Taxes" / "GST Input Credit" / "CGST Input Credit" / "SGST Input Credit" / "IGST Input Credit" / "Input CGST" / "Input SGST" / "Input IGST" / "TDS Receivable" / "TCS Receivable" / "Advance Tax" / "Tax Deducted at Source" / "Service Tax Input Credit" -> R221 (Advance payment of Tax). All tax receivables/input credits are advance tax payments.
 
@@ -291,8 +295,8 @@ Third priority. Apply only if no T1 or T2 rule matches.
 
 I1: [all] "Capital Work in Progress (CWIP)" -> R165
 I2: [all] "Advances to Suppliers (Balance Sheet)" -> R220
-I3: [all] "Prepaid Expenses (BS current asset)" -> R222
-I4: [all] "Security Deposits Paid (to landlord, utility companies)" -> R238 (Other non-current assets)
+I3: [all] "Prepaid Expenses (BS current asset)" -> R222. <!-- UPGRADED to CA_VERIFIED_2026 — now governed by T1-R61 (all prepaid → R222, all industries). I3 retained for traceability only. -->
+I4: [all] "Security Deposits Paid (to landlord, utility companies, private telephone, private electricity, gem caution with private party)" -> R238 (Other non-current assets). <!-- UPGRADED to CA_VERIFIED_2026 — now governed by T1-R63. I4 is retained here for traceability only; T1-R63 takes precedence as the authoritative higher-tier rule. -->
 I5: [all] "Statutory Liabilities (GST Payable, TDS Payable)" -> R246
 I6: [all] "Leave Encashment" -> R249 (Creditors for Expenses)
 </tier_3>
@@ -355,7 +359,7 @@ L28: [all] "Advance to employees" -> R223
 L29: [all] "Advances recoverable in cash or in kind" / "Advances recoverable in cash or kind" -> R219 (Advances recoverable in cash or in kind, III_A17a). R219's label is an exact match — these items go to R219, NOT R223.
 L30: [all] "Insurance Claim Receivable" -> R219 (Advances recoverable in cash or in kind — insurance settlement is recoverable in cash)
 L31: [all] "Octroi Receivable" -> R219 (Advances recoverable in cash or in kind — octroi is refundable in cash)
-L32: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" -> R222 (Prepaid Expenses, III_A17d). Supersedes any older rule that routed these to R223. See O8.
+L32: [all] "Prepaid Expenses" / "Prepaid Rent" / "Prepaid Insurance" -> R222 (Prepaid Expenses, III_A17d). Supersedes any older rule that routed these to R223. See O8. <!-- UPGRADED to CA_VERIFIED_2026 via T1-R61 (Decision #6). L32 retained for traceability; T1-R61 is now the highest-tier authoritative rule. Both agree: all prepaid → R222. -->
 
 **Non Current Assets (229-238) — NOTE: R229, R230, R232, R233, and R234 are ALL YELLOW formula cells and are NEVER valid targets. Use the redirect rules below; if no redirect applies, emit DOUBT. CA decisions 2026-04-12 (see project_formula_row_ca_decisions.md):**
 L33: [all] "Long Term Investments" -> R186 (redirected from R233; R233 is formula)
@@ -369,13 +373,13 @@ L38: [all] "Loan / advance to partners" -> R235
 L39: [all] "Loan / advance to proprietor" -> R235
 L40: [all] "Loan / advance to relatives of directors / partners / proprietor" -> R235
 L41: [all] "Advance to supplier of capital goods and contractors" -> R236
-L42: [all] "Deposit with electricity board" -> R237
-L43: [all] "Deposit with excise" -> R237
-L44: [all] "Earnest Money Deposit" -> R237
-L45: [all] "License Deposit" -> R237
-L46: [all] "Security Deposit" -> R237
-L47: [all] "Telephone Deposit" -> R237
-L48: [all] "Water Connection Deposit" -> R237
+L42: [all] "Deposit with electricity board" -> R237 (government electricity board = government department; confirmed per T1-R62)
+L43: [all] "Deposit with excise" -> R237 (excise is government; confirmed per T1-R62)
+L44: [all] "Earnest Money Deposit" -> R237 (typically deposited with government/court; confirmed per T1-R62)
+L45: [all] "License Deposit" -> R237 (licensing is a government function; confirmed per T1-R62)
+L46: [all] "Security Deposit" (generic label without context) -> Apply T1-R62 / T1-R63 based on counterparty: if with government department → R237; if with private party → R238. If counterparty unclear from context → DOUBT. <!-- CA_VERIFIED_2026: Old L46 routing to R237 was incorrect for private-party security deposits. Now split per Decision #5. -->
+L47: [all] "Telephone Deposit" -> R237 if deposit is with BSNL/MTNL (government telecom); -> R238 if with private telecom provider (Airtel, Jio, Vodafone). If provider unclear → default R237 (BSNL/MTNL historically dominant for security deposits in Indian SMEs). <!-- CA_VERIFIED_2026: Split per Decision #5; old blanket R237 only correct for government telecom. -->
+L48: [all] "Water Connection Deposit" -> R237 (municipal/government water authority; confirmed per T1-R62)
 L49: [all] "Deposits to suppliers" -> R238
 L50: [all] "Miscellaneous Advances" -> R238
 L51: [all] "Stores & Spares (non-consumable)" -> R238
@@ -431,7 +435,9 @@ L81: [all] "Other Liabilities not provided for" -> R258
 - In debtor/receivable section → R206
 - If section is ambiguous → DOUBT
 
-**Deposits:** Indian businesses commonly have various deposits — telephone, electricity, MSEB, gem caution, rent — these are all security deposits classified as current assets (R237).
+**Deposits (CA_VERIFIED_2026 — Decision #5):** Indian businesses commonly have various deposits. They are now split by counterparty type:
+- Government-side deposits (electricity board/MSEB, excise/customs, licensing, court, telecom department like BSNL) → R237 (Security deposits with government departments)
+- Private-party deposits (landlord/rent deposit, private telephone company, private electricity provider, gem caution with trade party) → R238 (Other non current assets)
 
 **Stock-in-Trade vs Inventory:** For trading companies, "Stock-in-Trade" is the same as inventory/closing stock. Manufacturing companies may have separate raw materials, WIP, and finished goods inventory.
 </indian_accounting_context>
@@ -510,11 +516,12 @@ When you see what looks like a company name or person's name (not an accounting 
 | Any type of trade receivable/debtor | R206 | Always debtors |
 | Any type of trade payable/creditor | R242 | Always creditors |
 | Any type of advance to supplier | R220 | Always advance |
-| Any type of security/caution deposit | R237 | Always non-current asset |
+| Security/caution deposit with GOVERNMENT (excise, customs, licensing, court, electricity board, telecom dept) | R237 | Government deposit — T1-R62 |
+| Security/caution deposit with PRIVATE party (landlord, rent, private telephone, private electricity, gem caution with private party) | R238 | Private deposit — T1-R63 |
 | Any type of GST/tax receivable | R221 | Always advance tax |
 | Any type of GST/tax payable | R246 | Always statutory liability |
-| Prepaid anything | R222 | Always prepaid |
-| Provision for tax | R244 | Always tax provision |
+| Prepaid anything | R222 | Always prepaid — T1-R61, all industries |
+| Provision for tax / income tax provision | R244 | Always tax provision — T1-R30, never R250 |
 
 ### Confidence Calibration
 Use these ranges consistently — do NOT cluster everything at 0.95:
@@ -588,10 +595,12 @@ The FA Movement section (R175-R178) captures year-on-year changes:
 - R233 (NCA Investments) auto-picks from R186 — NEVER classify
 - Route debtors >6m to R208, non-current investments to R186
 
-**Pattern 6: Security Deposits Classification**
-- Government deposits (electricity board, excise, telecom) -> R237
-- Private deposits (landlord, vendor, utility companies) -> R238
-- Manufacturing "Security Deposits - Others" or "Unsecured, considered good" -> R238 (CA_OVERRIDE)
+**Pattern 6: Security Deposits Classification (CA_VERIFIED_2026 — Decision #5)**
+The split is now CA-verified and governed by T1-R62 and T1-R63:
+- Government deposits → R237: excise duty deposit, customs deposit, licensing fee deposit, court deposit, government bond, electricity board (MSEB/BESCOM/state board), telecom department (BSNL/MTNL), water authority
+- Private deposits → R238: rent deposit (to landlord), telephone deposit (to private telecom), electricity deposit (to private provider), gem caution deposit (to trade party), security deposit to any private vendor/utility company
+- "Security Deposits - Others" without context → apply accounting judgment on government vs private nature; if genuinely unclear, DOUBT
+- O27 (old generic → R237) is SUPERSEDED. O10/O11 (manufacturing "Security Deposits - Others"/"Unsecured, considered good" → R238) remain valid for manufacturing context.
 </reasoning_patterns>
 
 <examples>
