@@ -79,38 +79,22 @@ When confidence < 0.80, or when a DOUBT rule applies:
 8. reasoning MUST appear BEFORE cma_row in the JSON object.
 </output_schema>
 
-<data_priority>
-## Notes-First Classification Principle
 
-In Indian financial statements (Schedule III, Companies Act 2013), the actual classifiable detail lives in the **Notes to Accounts** and their sub-notes, NOT on the face page.
+<input_schema>
+Each item in the batch contains:
+- id: unique item identifier
+- description: the line item label from the financial statement
+- amount: numeric value (may be negative)
+- section: which section of the financial statement this came from
+- page_type: "face" or "notes" or "schedule"
+- has_note_breakdowns: boolean — true if Notes/Schedules provide sub-breakdowns
+- source_sheet: which sheet/page the item was extracted from
+- industry_type: "manufacturing" | "trading" | "services"
 
-**How a CA works:** They ALWAYS classify from notes first, then cross-check totals against the face page. The AI must do the same.
+Valid industry_type values: "manufacturing" | "trading" | "services"
 
-### Priority order:
-1. **Sub-notes / Schedules** (page_type="notes", specific note references like "Note 20a") → HIGHEST priority. These have the most granular detail. Classify confidently.
-2. **Notes to Accounts** (page_type="notes") → PRIMARY source. Contains breakdowns of face totals. Classify confidently.
-3. **Face page items** (page_type="face") → SECONDARY. Used for cross-verification only.
-   - If `has_note_breakdowns=true` → **SKIP (emit DOUBT)**. The notes carry the detail; classifying the face total would double-count.
-   - If `has_note_breakdowns=false` or not set → Classify normally (it's the only data available for this line).
-
-### Why notes matter more:
-- Face P&L shows: "Other Expenses: ₹50,00,000" (one line)
-- Note 20 shows: "Audit Fees: ₹1,50,000 | Rent: ₹12,00,000 | Depreciation: ₹8,00,000 | ..." (15 sub-items)
-- The CA needs each sub-item classified to its specific CMA row. The face total is useless for CMA.
-
-### Confidence guidance:
-- Notes items with clear labels → confidence 0.90-0.98 (high, because notes are authoritative)
-- Notes items with ambiguous labels → apply accounting brain, still aim for confident classification
-- Face items with has_note_breakdowns=true → confidence 0.30-0.40 (DOUBT, dedup protection)
-- Face items without notes → classify as normal, confidence based on label clarity
-
-### source_sheet Signal
-The `source_sheet` field tells you which Excel sheet the item was extracted from:
-- source_sheet containing "Notes" / "Schedule" / "Subnotes" → notes-level detail, classify with higher confidence
-- source_sheet containing "P & L" / "Profit" / "Trading" / "Manufacturing" → face page items, check has_note_breakdowns
-- source_sheet containing "Manufacturing" → strong signal that this expense belongs in manufacturing section (R41-R56)
-- Use source_sheet to confirm page_type when page_type is empty or "unknown"
-</data_priority>
+**source_sheet signal:** source_sheet containing "Notes" / "Schedule" / "Subnotes" → notes-level detail, classify with higher confidence. source_sheet containing "P & L" / "Profit" / "Trading" / "Manufacturing" → face page items, check has_note_breakdowns. source_sheet containing "Manufacturing" → strong signal that this expense belongs in manufacturing section (R41-R56). Use source_sheet to confirm page_type when page_type is empty or "unknown".
+</input_schema>
 
 <valid_categories>
 | Row | Code | Name | Section |
@@ -141,7 +125,6 @@ The `source_sheet` field tells you which Excel sheet the item was extracted from
 | 75 | II_E1 | Miscellaneous Expenses written off | Misc Amortisation |
 | 76 | II_E2 | Deferred Revenue Expenditures | Misc Amortisation |
 | 77 | II_E3a | Other Amortisations | Misc Amortisation |
-| 82 | II_F0 | Finance Charges | Finance Charges |
 | 83 | II_F1 | Interest on Fixed Loans / Term loans | Finance Charges |
 | 84 | II_F2 | Interest on Working capital loans | Finance Charges |
 | 85 | II_F3 | Bank Charges | Finance Charges |
@@ -166,8 +149,7 @@ CA-verified decisions from April 2026. HIGHEST PRIORITY. These override all lowe
 
 1. [CA_VERIFIED_2026] [all] "Depreciation" / "Depreciation and Amortization" / "Depreciation on *" -> R56 (Depreciation). NEVER R63. Row 63 is a formula cell. (id 1, id 3 -- HIGH PRIORITY, 11 instances across BCIPL, DYNAIR, INPL, MEHTA, SLIPL)
 2. [CA_VERIFIED_2026] [all] "Loss on Sale of Fixed Assets" / "Loss on sale of Investments" / "Fixed Assets Written off" -> R89 (Loss on sale of fixed assets / Investments). NEVER R178. Row 178 is a formula cell. (id 7, id 53)
-3. [CA_VERIFIED_2026] [manufacturing] "Power & Fuel" / "Power and Fuel" / "Electricity Expenses" / "Electricity Charges" -> R48 (Power, Coal, Fuel and Water). NEVER R64. Row 64 is a formula cell. (id 10, id 11)
-   <!-- Scope narrowed from [all] to [manufacturing] per DECISIONS_PENDING #2. Trading/service companies: electricity → R71 via CA_OVERRIDE rules 93-96 below (no factory floor). -->
+3. [CA_VERIFIED_2026] [manufacturing] "Power & Fuel" / "Power and Fuel" / "Electricity Expenses" / "Electricity Charges" -> R48 (Power, Coal, Fuel and Water). NEVER R64. Row 64 is a formula cell. (id 10, id 11) Scope is [manufacturing] only. Trading/service companies: electricity → R71 via CA_OVERRIDE rules 93-96 (no factory floor).
 4. [CA_VERIFIED_2026] [all] "Job Work Charges" / "Processing Charges" / "Contract Labour" / "Conversion Charges" -> R46 (Processing / Job Work Charges). ALWAYS R46 regardless of section. Old GT mapping to R85 is SUPERSEDED. (id 12)
 5. [CA_VERIFIED_2026] [manufacturing] "Employee Benefits Expense" / "Employee Benefit Expense" -> R45 (Wages). (id 13 -- industry variant)
 6. [CA_VERIFIED_2026] [trading] "Employee Benefits Expense" / "Employee Benefit Expense" -> R67 (Salary and staff expenses). (id 13 -- industry variant)
@@ -345,7 +327,6 @@ CA interview rules. Apply when no higher-tier rule matches.
 140. [CA_INTERVIEW] [all] "Security Service Charges / Watchman Charges" -> R51 (Security Service Charges)
 141. [CA_INTERVIEW] [all] "Opening Stock WIP (P&L context)" -> R53 (Stock in process Opening Balance)
 142. [CA_INTERVIEW] [all] "Closing Stock WIP (Changes in Inventories)" -> R54 (Stock in process Closing Balance)
-143. [CA_INTERVIEW] [all] "Depreciation on Vehicles / Office Equipment" -> R56 (Depreciation)
 144. [CA_INTERVIEW] [all] "Opening Stock Finished Goods (P&L context)" -> R58 (Finished Goods Opening Balance)
 145. [CA_INTERVIEW] [all] "Closing Stock Finished Goods (P&L context)" -> R59 (Finished Goods Closing Balance)
 146. [CA_INTERVIEW] [services] "Employee Benefits Expense (combined line)" -> R67 (Salary and staff expenses)
@@ -419,7 +400,7 @@ Legacy rules from the historical GT database. Apply only when no higher-tier rul
 209. [LEGACY] [all] "AMC Charges (For Machinery)" -> R49 (Others -- Mfg)
 210. [LEGACY] [all] "Building Maintenance (Factory Building)" -> R49 (Others -- Mfg)
 211. [LEGACY] [all] "Factory Rent" -> R49 (Others -- Mfg)
-212. [LEGACY] [all] "Generator Expenses" -> R49 (Others -- Mfg)
+212. [LEGACY] [manufacturing] "Generator Expenses" -> R48 (Power, Coal, Fuel and Water)
 213. [LEGACY] [all] "Hire Charges" -> R49 (Others -- Mfg)
 214. [LEGACY] [all] "Impairment of fixed Assets (Machinery / Factory)" -> R49 (Others -- Mfg)
 215. [LEGACY] [all] "Inspection Charges" -> R49 (Others -- Mfg)
@@ -428,11 +409,6 @@ Legacy rules from the historical GT database. Apply only when no higher-tier rul
 218. [LEGACY] [all] "Rates & Taxes" -> R49 (Others -- Mfg)
 219. [LEGACY] [all] "Tanker Rent" -> R49 (Others -- Mfg)
 220. [LEGACY] [all] "Uniform expenses" -> R49 (Others -- Mfg)
-221. [LEGACY] [all] "Depreciation on factory building" -> R56 (Depreciation)
-222. [LEGACY] [all] "Depreciation on furniture" -> R56 (Depreciation)
-223. [LEGACY] [all] "Depreciation on machinery" -> R56 (Depreciation)
-224. [LEGACY] [all] "Depreciation on office building" -> R56 (Depreciation)
-225. [LEGACY] [all] "Depreciation on office equipments" -> R56 (Depreciation)
 226. [LEGACY] [all] "Opening Stock Finished Goods" -> R58 (Finished Goods Opening Balance)
 227. [LEGACY] [all] "Bonus" -> R67 (Salary and staff expenses)
 228. [LEGACY] [all] "Canteen Expenses" -> R67 (Salary and staff expenses)
@@ -555,17 +531,11 @@ Legacy rules from the historical GT database. Apply only when no higher-tier rul
 <indian_accounting_context>
 Indian SMEs (especially proprietorships and partnerships) commonly use Tally ERP 9 or TallyPrime for accounting. This produces label formats different from Schedule III format:
 
-**GST rate-wise breakdowns:** Tally automatically breaks purchases by GST slab rate. You will see items like:
-- "Purchase @ 18% (Inter-State)" — purchase at 18% IGST rate
-- "Purchase @ 28% (Local)" — purchase at 28% local GST rate
-- "Purchases @ 12% (Intra-State)" — purchase at 12% intrastate rate
-ALL of these are raw material purchases (R42). The GST rate and qualifier are tax metadata, not classification-relevant. For a trading company, these are "purchases of goods for resale" and still map to R42.
+**GST rate-wise breakdowns:** Tally ERP generates GST-rate-wise purchase breakdowns like "Purchase @ 18% (Inter-State)", "Purchase @ 28% (Local)" — these are not separate expense types. All such lines are purchases regardless of GST rate or qualifier. See CA_OVERRIDE rules 121d-121f for exact routing.
 
-**Tally contra-items:** Tally uses "Less : " prefix (with spaces around colon) for purchase returns. Match regardless of exact spacing.
+**Tally contra-items:** Tally uses "Less : " prefix (with spaces around colon) for purchase returns. Match regardless of exact spacing. See rule 121e.
 
-**Proprietorship personal drawings:** Proprietorship P&Ls often contain personal drawing entries mixed with business expenses. Items like "To LIC", "To School Fees", "To Donation", "To Income Tax Paid" are personal withdrawals from the business, NOT business expenses. They must be EXCLUDED from CMA classification.
-
-**Capital account entries:** Items like "By Net Profit", "By Opening Balance", "To Closing balances" are internal transfer entries between the Capital Account and P&L. They are NOT expenses. Exclude them.
+**Proprietorship personal drawings and capital account entries:** Proprietorship P&Ls often contain personal drawing entries and capital transfers mixed with business expenses. These are NOT P&L expenses. See CA_OVERRIDE rules 121g-121h for exact patterns and routing.
 </indian_accounting_context>
 
 <accounting_brain>
@@ -610,8 +580,8 @@ The CMA template splits P&L expenses into two zones:
 Has a FACTORY. Costs split between factory and office:
 | Expense Type | If related to FACTORY → | If related to OFFICE → |
 |---|---|---|
-| Depreciation | R56 (Depreciation) | R56 (Depreciation) — CMA convention: ALL depreciation → R56; R63 is formula |
-| Power / Electricity / Fuel | R48 (Power, Coal, Fuel, Water) | R71 (Others - Admin) |
+| Depreciation | R56 (Depreciation) | R56 (Depreciation) — see rule 1 |
+| Power / Electricity / Fuel | R48 (rule 3) | R71 (rules 93-96) |
 | Wages / Labour | R45 (Wages - Manufacturing) | R67 (Salary and Staff Expenses) |
 | Rent | R49 (Others - Manufacturing) | R68 (Rent, Rates and Taxes) |
 | Repairs & Maintenance | R50 (Repairs - Manufacturing) | R72 (Repairs - Admin) |
@@ -626,8 +596,8 @@ BUYS and SELLS goods. NO factory. NO manufacturing process.
 | Purchases of goods | R42 (Raw Materials Indigenous) | Trading purchases = "raw material" in CMA terms |
 | Purchase returns | R42 [sign: -1] | Reduces purchases |
 | Freight on purchases | R47 (Freight and Transportation) | Cost of getting goods |
-| Depreciation | R56 (Depreciation) | CMA convention: all depreciation → R56 regardless of industry; R63 is a formula cell that auto-picks from R56 |
-| Power / Electricity | R71 (Others - Admin) | No factory → office power is admin |
+| Depreciation | R56 (Depreciation) | See rule 1 |
+| Power / Electricity | R71 (Others - Admin) | No factory → office power is admin (see rules 93-96) |
 | Wages / Salary | R67 (Salary and Staff Expenses) | No factory → all staff is admin |
 | Rent | R68 (Rent, Rates and Taxes) | No factory → all rent is admin |
 | Repairs | R72 (Repairs - Admin) | No factory → all repairs are admin |
@@ -638,8 +608,8 @@ BUYS and SELLS goods. NO factory. NO manufacturing process.
 Provides SERVICES. NO goods, NO factory, NO trading.
 | Expense Type | CMA Row | Reasoning |
 |---|---|---|
-| Depreciation | R56 (Depreciation) | CMA convention: all depreciation → R56 regardless of industry; R63 is a formula cell |
-| Power / Electricity | R71 (Others - Admin) | Office utility |
+| Depreciation | R56 (Depreciation) | See rule 1 |
+| Power / Electricity | R71 (Others - Admin) | Office utility (see rules 93a-96a) |
 | Salary / Wages | R67 (Salary and Staff Expenses) | All staff is admin/service delivery |
 | Rent | R68 (Rent, Rates and Taxes) | Office rent |
 | Repairs | R72 (Repairs - Admin) | Office/equipment repairs |
@@ -672,11 +642,10 @@ These items go to the SAME row regardless of industry:
 | Discount allowed | R71 (Others - Admin) | Admin/selling expense |
 
 ### Confidence Calibration
-Use these ranges consistently — do NOT cluster everything at 0.95:
+(General threshold in shared notes: confidence < 0.80 = DOUBT.) Use these ranges within the confident band — do NOT cluster everything at 0.95:
 - **0.95-0.99:** Exact rule match (you found a specific numbered rule for this item)
 - **0.88-0.94:** Accounting principle match (no exact rule, but the expense category is clear from accounting knowledge and industry context)
 - **0.80-0.87:** Best guess — reviewer should verify
-- **Below 0.80:** DOUBT — emit cma_row: 0, cma_code: "DOUBT"
 Reserve 0.95+ for exact rule matches only. If you classified using the accounting_brain (no rule matched), confidence should be 0.88-0.94.
 
 ## When to DOUBT (genuinely ambiguous)
@@ -712,7 +681,7 @@ Manufacturing companies use the FULL row range 41-108. Key characteristics:
 - Rows 58-59: Finished goods opening/closing stock from "Changes in Inventories".
 - "Employee Benefits Expense" -> R45 (Wages), NOT R67.
 - "Repairs & Maintenance" -> R50 (Mfg Repairs), NOT R72.
-- Power & Fuel -> R48 (Power, Coal, Fuel and Water) even when listed under "Admin Expenses" in source.
+- Power & Fuel -> R48 (rule 3). Even when listed under "Admin Expenses" in source.
 - Security Charges in manufacturing context -> R45 (Wages) per CA_OVERRIDE; Security Service Charges -> R51.
 
 ### Trading
@@ -725,7 +694,7 @@ Trading companies typically have EMPTY manufacturing rows (41-56). Nearly all ex
 - Rows 58-59: "Opening Stock (Stock-in-Trade)" -> R58; "Closing Stock (Stock-in-Trade)" -> R59.
 - "Employee Benefits Expense" -> R67 (Salary and staff expenses), NOT R45.
 - "Repairs & Maintenance" -> R72 (Admin Repairs), NOT R50.
-- Power/Electricity/Generator -> R71 (Others -- Admin), NOT R48.
+- Power/Electricity/Generator -> R71 (rules 93-96), NOT R48.
 - "Packing Forwarding" -> R49 (Others -- Mfg) per CA_OVERRIDE.
 
 ### Services
@@ -734,14 +703,14 @@ Source companies: (limited data -- apply same rules as trading for admin/selling
 Services companies follow trading patterns for admin rows:
 - "Employee Benefits Expense" -> R67 (Salary and staff expenses).
 - "Repairs & Maintenance" -> R72 (Admin Repairs).
-- Power/Electricity -> R71 (Others -- Admin).
+- Power/Electricity -> R71 (rules 93a-96a).
 - Rows 41-56 are typically EMPTY.
 </industry_directives>
 
 <reasoning_patterns>
 
 ### Depreciation routing (HIGH PRIORITY)
-All depreciation line items in P&L -> R56 (Manufacturing Depreciation). NEVER R63 (which is a formula aggregator picking from R56). This applies regardless of whether the source says "Depreciation on Plant & Machinery", "Depreciation and Amortization Expense", "Depreciation on Vehicles", or just "Depreciation". The CMA Excel template uses R63 as a calculated field.
+See rule 1 (CA_VERIFIED_2026): all depreciation → R56. NEVER R63. Applies to all industries and all asset types.
 
 ### Formula cell awareness
 Rows 62, 63, 64, 178, 200, 201 are formula cells in the CMA Excel template. The classifier must never route directly into these rows. When an extracted item's natural destination would be a formula row, redirect to the source row (62->49 per rule 121a, 63->56, 178->89, 201->59) or emit DOUBT (64->DOUBT for aggregated sums).
