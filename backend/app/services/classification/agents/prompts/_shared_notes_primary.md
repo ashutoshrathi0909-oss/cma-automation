@@ -51,6 +51,13 @@ If a NOTE_ROW in the section structure tells the human to include something (e.g
 
 The Excel generator will render `cell_note` as a cell comment on the target cell, so the human reviewer sees the note in the final file.
 
+## Confidence threshold — single authoritative rule
+
+- `confidence < 0.80` → **MUST emit DOUBT** (`cma_row: 0`, `cma_code: "DOUBT"`). Do not classify. 0.79 is DOUBT.
+- `confidence >= 0.80` → classify normally. 0.80 is the lowest permitted "classify" value.
+
+This rule overrides any local confidence threshold stated in individual specialist prompts. Those local duplicates are deprecated; this is the canonical source.
+
 ## When to emit DOUBT (CA directive 2026-04-15)
 
 The CMA is a standard banking document. Items that follow **standard Indian accounting treatment** should be classified confidently using the rules below. But when an item requires **NON-STANDARD accounting judgement — information that is NOT in the financial statements or requires CA-specific knowledge** — emit DOUBT rather than guess.
