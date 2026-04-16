@@ -110,22 +110,24 @@ Apply rules in strict tier priority order. A higher-tier rule always overrides a
 1. "Export Sales" / "Exports" / "Sale of Products - Export" / "EXPORT SALES" / "Sales - Exports" → R23 (Exports, II_A2) [industry: all]
 2. "Gain on Exchange Fluctuations" / "Gain of Foreign Currency Fluctuation" / "Forex Rate Fluctuation Gain" / "Foreign Exchange earning" / "Gain on Foreign Exchange Fluctuation" → R32 (Gain on Exchange Fluctuations, II_B4) [industry: all]
 3. "Profit on Sale of Fixed Assets" / "Profit on sale of Asset" / "Profit on sale of Investment" / "Profit on Sale of Shares" / "Profit on sale of FA/Investments" → R31 (Profit on sale of fixed assets / Investments, II_B3) [industry: all]. NOTE: Row 177 (BS FA Movement) is a formula cell that auto-picks from R31. NEVER classify directly into 177.
+4. "Duty Drawback" / "Duty drawback / IGST received" / "Duty Drawback Received" / "IGST Refund" / "Duty Drawback Income" → R34 (Others, II_B6a) [industry: all]. This is the canonical rule for all duty drawback and IGST received items regardless of context (including deemed exports). The CA has decided R34 for ALL cases; do NOT route to R22 or R23 under any circumstance.
+5. "Extraordinary Income" / explicitly labelled non-recurring items (e.g., "Flood Relief Received", "Pandemic Grant", "One-time Windfall", "Insurance Claim Received for Extraordinary Loss", "Ex-gratia received") → R33 (Extraordinary Income, II_B5) [industry: all]. DISTINCTION: R33 is for genuinely non-recurring, extraordinary items — one-off events outside normal business operations (natural disaster relief, pandemic government grants, one-time insurance claim for catastrophic loss). R34 is for recurring other income (government subsidies received annually, insurance claims for routine business losses, bad debts recovered, miscellaneous income). When in doubt between R33 and R34, prefer R34 and flag as low-confidence.
+6. "Dividend from Mutual Fund" / "Income from Mutual Fund" / "MF Dividend" / "Dividend — Mutual Funds" / "Mutual Fund Dividend" → R29 (Dividends received from Mutual Funds, II_B1) [industry: all]. This rule applies ONLY to mutual fund dividends. Generic "Dividend Income" / "Dividend Received" / "Dividend on Shares" without a mutual fund qualifier routes to R34 per LEGACY rule 42.
 </tier_1>
 
 <tier_2 name="CA_OVERRIDE" description="CA interview overrides -- second priority">
-4. [manufacturing] "Profit on Sale of Fixed Asset" → R31 (Profit on sale of fixed assets / Investments)
-5. [manufacturing] "Consultancy Charges" → R34 (Others)
-6. [manufacturing] "(d) Insurance Claim Received" → R34 (Others)
-7. [manufacturing] "Discount Recieved" → R34 (Others)
-8. [manufacturing] "Duty drawback / IGST received" → R34 (Others (Non-Op Income))
-9. [manufacturing] "Rate Difference" → R34 (Others)
-10. [all] "Subsidy Income / Government Grant" → R34 (Others (Non-Op Income))
-11. [all] "Sales @ N%" / any line matching pattern "Sales @ <number>% (<qualifier>)" (e.g., "Sales @ 18% (Igst)", "Sales @ 28% (Local)", "Sales @ 12% (Inter-State)", "Sales @ 5% (Intra-State)") → R22 (Domestic). These are Tally-generated GST-rate-wise sales breakdowns. ALL of them are domestic sales regardless of GST rate or qualifier (Igst/Local/Inter-State/Intra-State). [sign: 1]
-12. [all] "Less : Sale Return" / "Less: Sale Return" / "Less : Sales Return" / "Less: Sales Return" / "Sale Return" → R22 (Domestic) [sign: -1]. Note: Indian Tally software uses varied spacing around colons.
-13. [all] "Less : Discount On Sale" / "Less: Discount on Sales" / "Discount on Sale" / "Discount Allowed" → R22 (Domestic) [sign: -1]. Contra-revenue item.
-14. [all] "Discount Received - GST" / "Discount Received (GST)" → R34 (Others). GST-specific discount received is non-operating income.
-15. [all] "Net Revenue From Operations" / "Net Revenue from Operations" / "Revenue From Operations" → R22 (Domestic). Top-line revenue label used by Indian companies.
-16. [all] "By Short term Capital Gain" / "Short Term Capital Gain" / "By Long term Capital Gain" / "Long Term Capital Gain" / "Capital Gain" → R31 (Profit on sale of fixed assets / Investments). Capital gains from sale of assets/investments.
+7. [manufacturing] "Profit on Sale of Fixed Asset" → R31 (Profit on sale of fixed assets / Investments)
+8. [manufacturing] "Consultancy Charges" → R34 (Others)
+9. [manufacturing] "(d) Insurance Claim Received" → R34 (Others)
+10. [manufacturing] "Discount Recieved" → R34 (Others)
+11. [manufacturing] "Rate Difference" → R34 (Others)
+12. [all] "Subsidy Income / Government Grant" → R34 (Others (Non-Op Income))
+13. [all] "Sales @ N%" / any line matching pattern "Sales @ <number>% (<qualifier>)" (e.g., "Sales @ 18% (Igst)", "Sales @ 28% (Local)", "Sales @ 12% (Inter-State)", "Sales @ 5% (Intra-State)") → R22 (Domestic). These are Tally-generated GST-rate-wise sales breakdowns. ALL of them are domestic sales regardless of GST rate or qualifier (Igst/Local/Inter-State/Intra-State). [sign: 1]
+14. [all] "Less : Sale Return" / "Less: Sale Return" / "Less : Sales Return" / "Less: Sales Return" / "Sale Return" → R22 (Domestic) [sign: -1]. Note: Indian Tally software uses varied spacing around colons.
+15. [all] "Less : Discount On Sale" / "Less: Discount on Sales" / "Discount on Sale" / "Discount Allowed" → R22 (Domestic) [sign: -1]. Contra-revenue item.
+16. [all] "Discount Received - GST" / "Discount Received (GST)" → R34 (Others). GST-specific discount received is non-operating income.
+17. [all] "Net Revenue From Operations" / "Net Revenue from Operations" / "Revenue From Operations" → R22 (Domestic). Top-line revenue label used by Indian companies.
+18. [all] "By Short term Capital Gain" / "Short Term Capital Gain" / "By Long term Capital Gain" / "Long Term Capital Gain" / "Capital Gain" → R31 (Profit on sale of fixed assets / Investments). Capital gains from sale of assets/investments.
 </tier_2>
 
 <tier_3 name="CA_INTERVIEW" description="CA interview answers -- third priority">
@@ -133,47 +135,46 @@ No additional CA_INTERVIEW rules beyond those already captured in CA_OVERRIDE an
 </tier_3>
 
 <tier_4 name="LEGACY" description="Legacy GT database rules -- lowest priority">
-17. [all] "Cash Discount allowed" → R22 (Domestic) [sign: -1]
-18. [all] "Commission / Brokerage Received (Recurring)" → R22 (Domestic)
-19. [all] "Consignment Sales" → R22 (Domestic)
-20. [all] "Delivery Charges" → R22 (Domestic)
-21. [all] "Duty Drawback" → R22 (Domestic)
-22. [all] "Hire Income (Recurring and Related to business)" → R22 (Domestic)
-23. [all] "Job Work Charges Received" / "Job Work Income" → R22 (Domestic)
-24. [all] "Kasar account" → R22 (Domestic) [sign: -1]
-25. [all] "PUC Receipts" → R22 (Domestic)
-26. [all] "Rent Income (Recurring and Related to business)" → R22 (Domestic)
-27. [all] "Royalty Fees (Recurring and Related to business)" → R22 (Domestic)
-28. [all] "Sales" / "Sale of Products" / "Sale of Goods" / "Revenue from operations" / "By Sales" → R22 (Domestic)
-29. [all] "Sales return" / "Less: Sales Return" → R22 (Domestic) [sign: -1]
-30. [all] "Trade Discount allowed" → R22 (Domestic) [sign: -1]
-31. [all] "Vatav account" → R22 (Domestic)
-32. [all] "Sale of DEPB license" → R23 (Exports)
-33. [all] "Sale of import license" → R23 (Exports)
-34. [all] "Sale of Duty Credit Scrips" / "Export Incentive" / "(b) Export Incentive" → R23 (Exports)
-35. [all] "Turnover Tax" → R25 (Less Excise Duty and Cess) [sign: -1]
-36. [all] "Bank Interest" / "Interest on FD" / "FD Interest" / "Interest from FD" → R30 (Interest Received)
-37. [all] "Interest on IT Refund" / "Interest on Income Tax Refund" → R30 (Interest Received)
-38. [all] "Interest received" / "Interest Income" / "Interest on deposits" / "Interest on Fixed Deposit" / "Interest on PPF" / "(a) Interest Received" → R30 (Interest Received)
-39. [all] "Bad debts recovered" / "Bad Debts Written Back" / "Bad Debts Recovered" → R34 (Others)
-40. [all] "Chit Fund Income" → R34 (Others)
-41. [all] "Commission / Brokerage Received (One time)" → R34 (Others)
-42. [all] "Dividend Received" / "Dividend on Shares & Unit" → R34 (Others)
-43. [all] "Hire Income (One time)" → R34 (Others)
-44. [all] "Insurance Receipts" / "Insurance Claim Received" → R34 (Others)
-45. [all] "Miscellaneous Income" / "Other Income" / "Other income" → R34 (Others)
-46. [all] "PCO Income" → R34 (Others)
-47. [all] "Refund of income tax" → R34 (Others)
-48. [all] "Refund of sales tax" → R34 (Others)
-49. [all] "Rent Income (One time)" / "Rent Receipts" → R34 (Others)
-50. [all] "Royalty Fees (One time)" → R34 (Others)
-51. [all] "Scrap Sale" → R34 (Others)
-52. [all] "Speculation Profit" → R34 (Others)
-53. [all] "Subsidies (One time)" → R34 (Others)
-54. [all] "Transport Income" → R34 (Others)
-55. [all] "Liability no longer required written Back" / "Sundry Written off" / "Advance Forfeiture" → R34 (Others)
-56. [all] "Round Off" → R34 (Others)
-57. [all] "Incentive (perquisites)" → R34 (Others)
+19. [all] "Cash Discount allowed" → R22 (Domestic) [sign: -1]
+20. [all] "Commission / Brokerage Received (Recurring)" → R22 (Domestic)
+21. [all] "Consignment Sales" → R22 (Domestic)
+22. [all] "Delivery Charges" → R22 (Domestic)
+23. [all] "Hire Income (Recurring and Related to business)" → R22 (Domestic)
+24. [all] "Job Work Charges Received" / "Job Work Income" → R22 (Domestic)
+25. [all] "Kasar account" → R22 (Domestic) [sign: -1]
+26. [all] "PUC Receipts" → R22 (Domestic)
+27. [all] "Rent Income (Recurring and Related to business)" → R22 (Domestic)
+28. [all] "Royalty Fees (Recurring and Related to business)" → R22 (Domestic)
+29. [all] "Sales" / "Sale of Products" / "Sale of Goods" / "Revenue from operations" / "By Sales" → R22 (Domestic)
+30. [all] "Sales return" / "Less: Sales Return" → R22 (Domestic) [sign: -1]
+31. [all] "Trade Discount allowed" → R22 (Domestic) [sign: -1]
+32. [all] "Vatav account" → R22 (Domestic)
+33. [all] "Sale of DEPB license" → R23 (Exports)
+34. [all] "Sale of import license" → R23 (Exports)
+35. [all] "Sale of Duty Credit Scrips" / "Export Incentive" / "(b) Export Incentive" → R23 (Exports)
+36. [all] "Turnover Tax" → R25 (Less Excise Duty and Cess) [sign: -1]
+37. [all] "Bank Interest" / "Interest on FD" / "FD Interest" / "Interest from FD" → R30 (Interest Received)
+38. [all] "Interest on IT Refund" / "Interest on Income Tax Refund" → R30 (Interest Received)
+39. [all] "Interest received" / "Interest Income" / "Interest on deposits" / "Interest on Fixed Deposit" / "Interest on PPF" / "(a) Interest Received" → R30 (Interest Received)
+40. [all] "Bad debts recovered" / "Bad Debts Written Back" / "Bad Debts Recovered" → R34 (Others)
+41. [all] "Chit Fund Income" → R34 (Others)
+42. [all] "Commission / Brokerage Received (One time)" → R34 (Others)
+43. [all] "Dividend Received" / "Dividend on Shares" / "Dividend Income" (without mutual fund qualifier) → R34 (Others). NOTE: For mutual fund dividends specifically, see CA_VERIFIED_2026 rule 6.
+44. [all] "Hire Income (One time)" → R34 (Others)
+45. [all] "Insurance Receipts" / "Insurance Claim Received" → R34 (Others)
+46. [all] "Miscellaneous Income" / "Other Income" / "Other income" → R34 (Others)
+47. [all] "PCO Income" → R34 (Others)
+48. [all] "Refund of income tax" → R34 (Others)
+49. [all] "Refund of sales tax" → R34 (Others)
+50. [all] "Rent Income (One time)" / "Rent Receipts" → R34 (Others)
+51. [all] "Royalty Fees (One time)" → R34 (Others)
+52. [all] "Scrap Sale" → R34 (Others)
+53. [all] "Speculation Profit" → R34 (Others)
+54. [all] "Subsidies (One time)" → R34 (Others)
+55. [all] "Transport Income" → R34 (Others)
+56. [all] "Liability no longer required written Back" / "Sundry Written off" / "Advance Forfeiture" → R34 (Others)
+57. [all] "Round Off" → R34 (Others)
+58. [all] "Incentive (perquisites)" → R34 (Others)
 </tier_4>
 
 <indian_accounting_context>
@@ -262,8 +263,8 @@ Do NOT use amount as the primary signal — label, section, and source_sheet alw
 <industry_directives>
 <manufacturing>
 - Domestic sales include: Sale of Manufactured Products, Sale of Trading Goods, Sale of Services, Job Work Income, Freight Charges, Packing and Installation, Taxable Supplies, Zero Rated Supplies (when immaterial), Other operating revenues. Sources: BCIPL, DYNAIR, INPL, SLIPL, MSL.
-- Export sales include: Sales - Exports, Sale of Duty Credit Scrips, Export Incentive, Duty drawback/IGST received (when combined with export sales by CA). Source: BCIPL, SLIPL, MSL.
-- Duty drawback/IGST in the Other Income note is placed in R34 by CA_OVERRIDE rule 8 unless the CA has explicitly combined it with export sales (see SLIPL pattern where it is added to R23).
+- Export sales include: Sales - Exports, Sale of Duty Credit Scrips, Export Incentive. Source: BCIPL, SLIPL, MSL.
+- Duty drawback/IGST received always maps to R34 per CA_VERIFIED_2026 rule 4 (ALL industries, ALL contexts — including deemed exports). Never R23 or R22.
 - "Consultancy Charges" from the Other Income note maps to R34 (Others), not R22 Domestic. Source: SLIPL.
 </manufacturing>
 <trading>
@@ -280,7 +281,8 @@ No v2 company coverage for services industry. Use manufacturing rules as fallbac
 <reasoning_patterns>
 - Domestic vs Export split: When a P&L line item says "Revenue from Operations" or "Sale of Products" without an export qualifier, it defaults to R22 Domestic. Only items explicitly labeled "Export", "Exports", or "Sale of Products - Export" go to R23. Management-supplied domestic/export splits are handled upstream; the classifier sees only the label.
 - Other Income breakdown: The "Other Income" note in Indian financial statements typically contains 3-8 sub-items (interest, forex gain, profit on asset sale, bad debts recovered, miscellaneous). Each sub-item routes to its specific CMA row (R30, R32, R31, R34 respectively). If the face P&L shows a single "Other Income" total with has_note_breakdowns=true, classify the face total as DOUBT and let the note-level breakdowns carry the classification.
-- Export incentives (Duty Drawback, Duty Credit Scrips, IGST refunds): These are government reimbursements linked to export activity. In CMA practice, CAs may reclassify them from FS Other Income into Row 23 Exports or leave them in Row 34 Others. The CA_OVERRIDE rule 8 (for manufacturing) places Duty drawback/IGST in R34 as the default. When the classifier sees these items, R34 is the safe default unless the item is clearly within a Revenue from Operations note alongside export sales.
+- Duty Drawback / IGST received: CA_VERIFIED_2026 rule 4 mandates R34 (Others) for ALL duty drawback and IGST received items, across ALL industries and ALL contexts — including deemed exports. Do NOT route to R22 or R23 under any circumstances. This is a final CA decision that overrides any prior LEGACY rule (the old LEGACY rule routing "Duty Drawback" to R22 Domestic has been removed).
+- Export incentives (Duty Credit Scrips, Export Incentives): LEGACY rule 35 routes "Sale of Duty Credit Scrips" and "Export Incentive" to R23 (Exports). These are distinct from Duty Drawback/IGST Refund, which go to R34 per CA_VERIFIED_2026 rule 4.
 </reasoning_patterns>
 
 <examples>
@@ -406,7 +408,7 @@ No v2 company coverage for services industry. Use manufacturing rules as fallbac
 </example>
 <example>
 <input>{"id": "ex_031", "description": "Duty Drawback Received", "amount": 1459090, "section": "Other Income", "page_type": "notes"}</input>
-<output>{"id": "ex_031", "reasoning": "Rule 8 (CA_OVERRIDE): 'Duty drawback / IGST received' in Other Income -> R34 Others for manufacturing.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.93, "sign": 1, "alternatives": [{"cma_row": 23, "cma_code": "II_A2", "confidence": 0.70}]}</output>
+<output>{"id": "ex_031", "reasoning": "Rule 4 (CA_VERIFIED_2026): 'Duty Drawback Received' -> R34 Others. CA-verified decision: all duty drawback and IGST received items go to R34 regardless of context or industry.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.99, "sign": 1, "alternatives": []}</output>
 </example>
 <example>
 <input>{"id": "ex_032", "description": "Liability no longer required written Back", "amount": 1819840, "section": "Other Income", "page_type": "notes"}</input>
@@ -422,7 +424,23 @@ No v2 company coverage for services industry. Use manufacturing rules as fallbac
 </example>
 <example>
 <input>{"id": "ex_035", "description": "Dividend on Shares & Unit", "amount": 344322, "section": "Other Income", "page_type": "notes"}</input>
-<output>{"id": "ex_035", "reasoning": "Rule 42: 'Dividend on Shares & Unit' -> R34 Others.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.93, "sign": 1, "alternatives": [{"cma_row": 29, "cma_code": "II_B1", "confidence": 0.60}]}</output>
+<output>{"id": "ex_035", "reasoning": "Rule 43 (LEGACY): 'Dividend on Shares & Unit' -> R34 Others. This is a share/equity dividend, not a mutual fund dividend. R29 is reserved exclusively for mutual fund dividends per CA_VERIFIED_2026 rule 6.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
+</example>
+<example>
+<input>{"id": "ex_r29_001", "description": "Dividend from Mutual Fund", "amount": 52400, "section": "Other Income", "page_type": "notes"}</input>
+<output>{"id": "ex_r29_001", "reasoning": "Rule 6 (CA_VERIFIED_2026): 'Dividend from Mutual Fund' -> R29 Dividends received from Mutual Funds. Explicitly identifies the source as a mutual fund.", "cma_row": 29, "cma_code": "II_B1", "confidence": 0.99, "sign": 1, "alternatives": []}</output>
+</example>
+<example>
+<input>{"id": "ex_r29_002", "description": "MF Dividend", "amount": 18750, "section": "Other Income", "page_type": "notes"}</input>
+<output>{"id": "ex_r29_002", "reasoning": "Rule 6 (CA_VERIFIED_2026): 'MF Dividend' -> R29 Dividends received from Mutual Funds. 'MF' abbreviation clearly identifies mutual fund source.", "cma_row": 29, "cma_code": "II_B1", "confidence": 0.98, "sign": 1, "alternatives": []}</output>
+</example>
+<example>
+<input>{"id": "ex_r33_001", "description": "Flood Relief Received", "amount": 250000, "section": "Other Income", "page_type": "notes"}</input>
+<output>{"id": "ex_r33_001", "reasoning": "Rule 5 (CA_VERIFIED_2026): 'Flood Relief Received' -> R33 Extraordinary Income. One-off natural disaster relief — genuinely extraordinary, non-recurring event outside normal business operations.", "cma_row": 33, "cma_code": "II_B5", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
+</example>
+<example>
+<input>{"id": "ex_r33_002", "description": "Pandemic Grant", "amount": 500000, "section": "Other Income", "page_type": "notes"}</input>
+<output>{"id": "ex_r33_002", "reasoning": "Rule 5 (CA_VERIFIED_2026): 'Pandemic Grant' -> R33 Extraordinary Income. One-time government pandemic grant — non-recurring extraordinary item, distinct from recurring government subsidies (R34).", "cma_row": 33, "cma_code": "II_B5", "confidence": 0.93, "sign": 1, "alternatives": [{"cma_row": 34, "cma_code": "II_B6a", "confidence": 0.60}]}</output>
 </example>
 <example>
 <input>{"id": "ex_036", "description": "Rent Receipts", "amount": 1278000, "section": "Other Income", "page_type": "notes"}</input>
