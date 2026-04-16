@@ -46,8 +46,6 @@ Return a single JSON object with a `classifications` array. Each entry has these
 Field rules:
 - `reasoning` MUST appear BEFORE `cma_row` in the JSON object.
 - `confidence` below 0.80 MUST produce a DOUBT record: cma_row=0, cma_code="DOUBT".
-- NEVER classify into formula rows 200 or 201 (BS Inventories — auto-computed by Excel).
-- NEVER classify into row 177 (BS FA Movement — formula cell, auto-picks from Row 31).
 - Face vs notes dedup: if has_note_breakdowns=true AND page_type="face", emit DOUBT (the face total duplicates the notes breakdown; let the reviewer decide).
 - `sign`: 1 = add (most income items), -1 = subtract (sales returns, trade discounts, excise duty).
 - `alternatives`: array of {cma_row, cma_code, confidence} for close runner-ups. Empty array if none.
@@ -55,37 +53,6 @@ Field rules:
 - Output valid JSON only. No markdown fences, no commentary, no trailing text.
 </output_schema>
 
-<data_priority>
-## Notes-First Classification Principle
-
-In Indian financial statements (Schedule III, Companies Act 2013), the actual classifiable detail lives in the **Notes to Accounts** and their sub-notes, NOT on the face page.
-
-**How a CA works:** They ALWAYS classify from notes first, then cross-check totals against the face page. The AI must do the same.
-
-### Priority order:
-1. **Sub-notes / Schedules** (page_type="notes", specific note references like "Note 20a") → HIGHEST priority. These have the most granular detail. Classify confidently.
-2. **Notes to Accounts** (page_type="notes") → PRIMARY source. Contains breakdowns of face totals. Classify confidently.
-3. **Face page items** (page_type="face") → SECONDARY. Used for cross-verification only.
-   - If `has_note_breakdowns=true` → **SKIP (emit DOUBT)**. The notes carry the detail; classifying the face total would double-count.
-   - If `has_note_breakdowns=false` or not set → Classify normally (it's the only data available for this line).
-
-### Why notes matter more:
-- Face P&L shows: "Other Expenses: ₹50,00,000" (one line)
-- Note 20 shows: "Audit Fees: ₹1,50,000 | Rent: ₹12,00,000 | Depreciation: ₹8,00,000 | ..." (15 sub-items)
-- The CA needs each sub-item classified to its specific CMA row. The face total is useless for CMA.
-
-### Confidence guidance:
-- Notes items with clear labels → confidence 0.90-0.98 (high, because notes are authoritative)
-- Notes items with ambiguous labels → apply accounting brain, still aim for confident classification
-- Face items with has_note_breakdowns=true → confidence 0.30-0.40 (DOUBT, dedup protection)
-- Face items without notes → classify as normal, confidence based on label clarity
-
-### source_sheet Signal
-The `source_sheet` field tells you which Excel sheet the item was extracted from:
-- source_sheet containing "Notes" / "Schedule" / "Subnotes" → notes-level detail, classify with higher confidence
-- source_sheet containing "P & L" / "Profit" / "Trading" / "Manufacturing" → face page items
-- Use source_sheet to confirm page_type when page_type is empty or "unknown"
-</data_priority>
 
 <valid_categories>
 NEVER output a cma_row that does not appear in this table. Before outputting, verify your chosen cma_row appears here.
@@ -102,6 +69,18 @@ NEVER output a cma_row that does not appear in this table. Before outputting, ve
 | 33 | II_B5 | Extraordinary income | Operating Statement - Non Operating Income |
 | 34 | II_B6a | Others | Operating Statement - Non Operating Income |
 </valid_categories>
+
+<input_schema>
+Each item in the batch contains:
+- id: unique item identifier
+- description: the line item label from the financial statement
+- amount: numeric value (may be negative)
+- section: which section of the financial statement this came from
+- page_type: "face" or "notes" or "schedule"
+- has_note_breakdowns: boolean — true if Notes/Schedules provide sub-breakdowns
+- source_sheet: which sheet/page the item was extracted from
+- industry_type: "manufacturing" | "trading" | "services"
+</input_schema>
 
 <classification_rules>
 Apply rules in strict tier priority order. A higher-tier rule always overrides a lower-tier rule for the same pattern.
@@ -130,9 +109,6 @@ Apply rules in strict tier priority order. A higher-tier rule always overrides a
 18. [all] "By Short term Capital Gain" / "Short Term Capital Gain" / "By Long term Capital Gain" / "Long Term Capital Gain" / "Capital Gain" → R31 (Profit on sale of fixed assets / Investments). Capital gains from sale of assets/investments.
 </tier_2>
 
-<tier_3 name="CA_INTERVIEW" description="CA interview answers -- third priority">
-No additional CA_INTERVIEW rules beyond those already captured in CA_OVERRIDE and LEGACY tiers.
-</tier_3>
 
 <tier_4 name="LEGACY" description="Legacy GT database rules -- lowest priority">
 19. [all] "Cash Discount allowed" → R22 (Domestic) [sign: -1]
@@ -146,35 +122,34 @@ No additional CA_INTERVIEW rules beyond those already captured in CA_OVERRIDE an
 27. [all] "Rent Income (Recurring and Related to business)" → R22 (Domestic)
 28. [all] "Royalty Fees (Recurring and Related to business)" → R22 (Domestic)
 29. [all] "Sales" / "Sale of Products" / "Sale of Goods" / "Revenue from operations" / "By Sales" → R22 (Domestic)
-30. [all] "Sales return" / "Less: Sales Return" → R22 (Domestic) [sign: -1]
-31. [all] "Trade Discount allowed" → R22 (Domestic) [sign: -1]
-32. [all] "Vatav account" → R22 (Domestic)
-33. [all] "Sale of DEPB license" → R23 (Exports)
-34. [all] "Sale of import license" → R23 (Exports)
-35. [all] "Sale of Duty Credit Scrips" / "Export Incentive" / "(b) Export Incentive" → R23 (Exports)
-36. [all] "Turnover Tax" → R25 (Less Excise Duty and Cess) [sign: -1]
-37. [all] "Bank Interest" / "Interest on FD" / "FD Interest" / "Interest from FD" → R30 (Interest Received)
-38. [all] "Interest on IT Refund" / "Interest on Income Tax Refund" → R30 (Interest Received)
-39. [all] "Interest received" / "Interest Income" / "Interest on deposits" / "Interest on Fixed Deposit" / "Interest on PPF" / "(a) Interest Received" → R30 (Interest Received)
-40. [all] "Bad debts recovered" / "Bad Debts Written Back" / "Bad Debts Recovered" → R34 (Others)
-41. [all] "Chit Fund Income" → R34 (Others)
-42. [all] "Commission / Brokerage Received (One time)" → R34 (Others)
-43. [all] "Dividend Received" / "Dividend on Shares" / "Dividend Income" (without mutual fund qualifier) → R34 (Others). NOTE: For mutual fund dividends specifically, see CA_VERIFIED_2026 rule 6.
-44. [all] "Hire Income (One time)" → R34 (Others)
-45. [all] "Insurance Receipts" / "Insurance Claim Received" → R34 (Others)
-46. [all] "Miscellaneous Income" / "Other Income" / "Other income" → R34 (Others)
-47. [all] "PCO Income" → R34 (Others)
-48. [all] "Refund of income tax" → R34 (Others)
-49. [all] "Refund of sales tax" → R34 (Others)
-50. [all] "Rent Income (One time)" / "Rent Receipts" → R34 (Others)
-51. [all] "Royalty Fees (One time)" → R34 (Others)
-52. [all] "Scrap Sale" → R34 (Others)
-53. [all] "Speculation Profit" → R34 (Others)
-54. [all] "Subsidies (One time)" → R34 (Others)
-55. [all] "Transport Income" → R34 (Others)
-56. [all] "Liability no longer required written Back" / "Sundry Written off" / "Advance Forfeiture" → R34 (Others)
-57. [all] "Round Off" → R34 (Others)
-58. [all] "Incentive (perquisites)" → R34 (Others)
+30. [all] "Trade Discount allowed" → R22 (Domestic) [sign: -1]
+31. [all] "Vatav account" → R22 (Domestic)
+32. [all] "Sale of DEPB license" → R23 (Exports)
+33. [all] "Sale of import license" → R23 (Exports)
+34. [all] "Sale of Duty Credit Scrips" / "Export Incentive" / "(b) Export Incentive" → R23 (Exports)
+35. [all] "Turnover Tax" → R25 (Less Excise Duty and Cess) [sign: -1]
+36. [all] "Bank Interest" / "Interest on FD" / "FD Interest" / "Interest from FD" → R30 (Interest Received)
+37. [all] "Interest on IT Refund" / "Interest on Income Tax Refund" → R30 (Interest Received)
+38. [all] "Interest received" / "Interest Income" / "Interest on deposits" / "Interest on Fixed Deposit" / "Interest on PPF" / "(a) Interest Received" → R30 (Interest Received)
+39. [all] "Bad debts recovered" / "Bad Debts Written Back" / "Bad Debts Recovered" → R34 (Others)
+40. [all] "Chit Fund Income" → R34 (Others)
+41. [all] "Commission / Brokerage Received (One time)" → R34 (Others)
+42. [all] "Dividend Received" / "Dividend on Shares" / "Dividend Income" (without mutual fund qualifier) → R34 (Others). NOTE: For mutual fund dividends specifically, see CA_VERIFIED_2026 rule 6.
+43. [all] "Hire Income (One time)" → R34 (Others)
+44. [all] "Insurance Receipts" / "Insurance Claim Received" → R34 (Others)
+45. [all] "Miscellaneous Income" / "Other Income" / "Other income" → R34 (Others)
+46. [all] "PCO Income" → R34 (Others)
+47. [all] "Refund of income tax" → R34 (Others)
+48. [all] "Refund of sales tax" → R34 (Others)
+49. [all] "Rent Income (One time)" / "Rent Receipts" → R34 (Others)
+50. [all] "Royalty Fees (One time)" → R34 (Others)
+51. [all] "Scrap Sale" → R34 (Others)
+52. [all] "Speculation Profit" → R34 (Others)
+53. [all] "Subsidies (One time)" → R34 (Others)
+54. [all] "Transport Income" → R34 (Others)
+55. [all] "Liability no longer required written Back" / "Sundry Written off" / "Advance Forfeiture" → R34 (Others)
+56. [all] "Round Off" → R34 (Others)
+57. [all] "Incentive (perquisites)" → R34 (Others)
 </tier_4>
 
 <indian_accounting_context>
@@ -241,12 +216,9 @@ The CMA template has only TWO income zones:
 - Everything else → R29-R34 based on nature (interest → R30, asset sale → R31, forex → R32, misc → R34)
 
 ### Confidence Calibration
-Use these ranges consistently — do NOT cluster everything at 0.95:
-- **0.95-0.99:** Exact rule match (you found a specific numbered rule for this item)
-- **0.88-0.94:** Accounting principle match (no exact rule, but the income category is clear from accounting knowledge)
-- **0.80-0.87:** Best guess — reviewer should verify
-- **Below 0.80:** DOUBT — emit cma_row: 0, cma_code: "DOUBT"
-Reserve 0.95+ for exact rule matches only. If you classified using the accounting_brain (no rule matched), confidence should be 0.88-0.94.
+(General threshold in shared notes: <0.80 = DOUBT)
+- Face items with `has_note_breakdowns=true` → confidence 0.30-0.40 (DOUBT, dedup protection)
+- Exact rule match → 0.95-0.99; accounting_brain match (no rule) → 0.88-0.94; best guess → 0.80-0.87
 
 ### When to DOUBT
 Only when an income item could legitimately be EITHER operating (R22) or non-operating (R34) and you cannot determine which from the label and section context. If the meaning is clear but the exact label is unfamiliar, classify confidently.
@@ -264,7 +236,7 @@ Do NOT use amount as the primary signal — label, section, and source_sheet alw
 <manufacturing>
 - Domestic sales include: Sale of Manufactured Products, Sale of Trading Goods, Sale of Services, Job Work Income, Freight Charges, Packing and Installation, Taxable Supplies, Zero Rated Supplies (when immaterial), Other operating revenues. Sources: BCIPL, DYNAIR, INPL, SLIPL, MSL.
 - Export sales include: Sales - Exports, Sale of Duty Credit Scrips, Export Incentive. Source: BCIPL, SLIPL, MSL.
-- Duty drawback/IGST received always maps to R34 per CA_VERIFIED_2026 rule 4 (ALL industries, ALL contexts — including deemed exports). Never R23 or R22.
+- Duty Drawback / IGST → R34 (CA_VERIFIED_2026 rule 4)
 - "Consultancy Charges" from the Other Income note maps to R34 (Others), not R22 Domestic. Source: SLIPL.
 </manufacturing>
 <trading>
@@ -274,14 +246,14 @@ Do NOT use amount as the primary signal — label, section, and source_sheet alw
 - "Discount Received" in a trading context: if found in Other Income note, classify to R34 (Others) per CA_OVERRIDE rule 7. Source: SSSS training data shows it mapped to R29 but this is company-specific CA relabeling; default to R34.
 </trading>
 <services>
-No v2 company coverage for services industry. Use manufacturing rules as fallback. Flag any ambiguous services items as DOUBT.
+Services companies: follow manufacturing rules unless an explicit [services] rule exists above.
 </services>
 </industry_directives>
 
 <reasoning_patterns>
 - Domestic vs Export split: When a P&L line item says "Revenue from Operations" or "Sale of Products" without an export qualifier, it defaults to R22 Domestic. Only items explicitly labeled "Export", "Exports", or "Sale of Products - Export" go to R23. Management-supplied domestic/export splits are handled upstream; the classifier sees only the label.
 - Other Income breakdown: The "Other Income" note in Indian financial statements typically contains 3-8 sub-items (interest, forex gain, profit on asset sale, bad debts recovered, miscellaneous). Each sub-item routes to its specific CMA row (R30, R32, R31, R34 respectively). If the face P&L shows a single "Other Income" total with has_note_breakdowns=true, classify the face total as DOUBT and let the note-level breakdowns carry the classification.
-- Duty Drawback / IGST received: CA_VERIFIED_2026 rule 4 mandates R34 (Others) for ALL duty drawback and IGST received items, across ALL industries and ALL contexts — including deemed exports. Do NOT route to R22 or R23 under any circumstances. This is a final CA decision that overrides any prior LEGACY rule (the old LEGACY rule routing "Duty Drawback" to R22 Domestic has been removed).
+- Duty Drawback: always R34 regardless of context — see rule 4
 - Export incentives (Duty Credit Scrips, Export Incentives): LEGACY rule 35 routes "Sale of Duty Credit Scrips" and "Export Incentive" to R23 (Exports). These are distinct from Duty Drawback/IGST Refund, which go to R34 per CA_VERIFIED_2026 rule 4.
 </reasoning_patterns>
 
@@ -328,7 +300,7 @@ No v2 company coverage for services industry. Use manufacturing rules as fallbac
 </example>
 <example>
 <input>{"id": "ex_011", "description": "Less: Sales Return", "amount": 500000, "section": "Revenue from Operations", "page_type": "notes"}</input>
-<output>{"id": "ex_011", "reasoning": "Rule 29: 'Sales return' -> R22 Domestic. Sign is -1 (contra revenue).", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.96, "sign": -1, "alternatives": []}</output>
+<output>{"id": "ex_011", "reasoning": "Rule 14 (CA_OVERRIDE): 'Sales return' -> R22 Domestic [sign: -1]. Contra revenue item.", "cma_row": 22, "cma_code": "II_A1", "confidence": 0.96, "sign": -1, "alternatives": []}</output>
 </example>
 <example>
 <input>{"id": "ex_012", "description": "Sale of products", "amount": 4227266000, "section": "Revenue from Operations", "page_type": "face"}</input>
@@ -424,7 +396,7 @@ No v2 company coverage for services industry. Use manufacturing rules as fallbac
 </example>
 <example>
 <input>{"id": "ex_035", "description": "Dividend on Shares & Unit", "amount": 344322, "section": "Other Income", "page_type": "notes"}</input>
-<output>{"id": "ex_035", "reasoning": "Rule 43 (LEGACY): 'Dividend on Shares & Unit' -> R34 Others. This is a share/equity dividend, not a mutual fund dividend. R29 is reserved exclusively for mutual fund dividends per CA_VERIFIED_2026 rule 6.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
+<output>{"id": "ex_035", "reasoning": "Rule 42 (LEGACY): 'Dividend on Shares & Unit' -> R34 Others. This is a share/equity dividend, not a mutual fund dividend. R29 is reserved exclusively for mutual fund dividends per CA_VERIFIED_2026 rule 6.", "cma_row": 34, "cma_code": "II_B6a", "confidence": 0.95, "sign": 1, "alternatives": []}</output>
 </example>
 <example>
 <input>{"id": "ex_r29_001", "description": "Dividend from Mutual Fund", "amount": 52400, "section": "Other Income", "page_type": "notes"}</input>
